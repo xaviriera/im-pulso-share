@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO — Pricing Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #1a1a2e;
+    background: #fafafa;
+  }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    background: white;
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.05);
+  }
+  h1 {
+    color: #141B36;
+    font-size: 28px;
+    font-weight: 700;
+    border-bottom: 3px solid #FF4D2E;
+    padding-bottom: 12px;
+    margin-bottom: 8px;
+  }
+  h2 {
+    color: #141B36;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 4px solid #FF4D2E;
+  }
+  h3 {
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 28px;
+    margin-bottom: 10px;
+  }
+  p { margin: 10px 0; }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 16px 0;
+    font-size: 13px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  th {
+    background: #141B36;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 9px 14px;
+    border-bottom: 1px solid #eee;
+  }
+  tr:nth-child(even) td { background: #f8f8fa; }
+  tr:hover td { background: #f0f0f5; }
+  strong { color: #141B36; }
+  em { color: #666; font-style: italic; }
+  hr {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 30px 0;
+  }
+  ul, ol { padding-left: 22px; margin: 10px 0; }
+  li { margin-bottom: 5px; }
+  code {
+    background: #f0f0f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  pre {
+    background: #141B36;
+    color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 16px 0;
+  }
+  pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+  }
+  blockquote {
+    border-left: 4px solid #FF4D2E;
+    padding: 12px 20px;
+    margin: 16px 0;
+    background: #fff8f6;
+    border-radius: 0 8px 8px 0;
+  }
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+  }
+  .header img {
+    height: 40px;
+  }
+  .header .tag {
+    font-size: 11px;
+    color: #FF4D2E;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 12px;
+    color: #999;
+  }
+  @media (max-width: 600px) {
+    .container { padding: 20px 16px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 17px; }
+    table { font-size: 11px; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/698227e0b7e498bfd5ff8b45.png" alt="IM·PULSO">
+    <div>
+      <div class="tag">Confidencial — Uso interno</div>
+    </div>
+  </div>
+  <h1>Pricing Strategy — IM·PULSO</h1>
+<p><em>Fecha: 2026-04-16</em>
+<em>Base: product-marketing-context.md + encuesta 115 inversores + análisis competitivo</em></p>
+<hr />
+<h2>1. Principios de pricing</h2>
+<h3>El contexto define todo</h3>
+<table>
+<thead>
+<tr>
+<th>Factor</th>
+<th>Dato</th>
+<th>Implicación en precio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Capital mediana por inversor</td>
+<td>€150.000</td>
+<td>Un análisis de 29€ es 0,02% de lo que se juegan — irrelevante</td>
+</tr>
+<tr>
+<td>Rentabilidad mediana</td>
+<td>25%</td>
+<td>Un informe que evita comprar caro puede salvar €10K-€50K</td>
+</tr>
+<tr>
+<td>MTVV manual</td>
+<td>1-2 semanas de trabajo</td>
+<td>Si IM·PULSO da lo mismo en minutos, €29 es un regalo</td>
+</tr>
+<tr>
+<td>Competencia</td>
+<td>Invisor 42-117€/mes</td>
+<td>Nuestro precio no puede ser mayor en la percepción inicial</td>
+</tr>
+<tr>
+<td>Pricing anterior</td>
+<td>PULSO 200€ + IMPULSO 50€</td>
+<td>Demasiado alto de entrada, no funcionó para captación masiva</td>
+</tr>
+<tr>
+<td>Intento MTVV gratis</td>
+<td>Fracasó en la comunidad</td>
+<td>El incentivo tiene que ser tangible e inmediato</td>
+</tr>
+</tbody>
+</table>
+<h3>Reglas</h3>
+<ol>
+<li><strong>El precio tiene que ser tan bajo que sea un no-brainer.</strong> No debe haber fricción de "¿me lo puedo permitir?"</li>
+<li><strong>El valor percibido debe ser mucho mayor que el precio.</strong> Que la gente sienta "esto debería costar más".</li>
+<li><strong>Desbloqueo progresivo, no todo de golpe.</strong> La gente paga por lo que necesita en ese momento.</li>
+<li><strong>La unidad es la operación, no el mes.</strong> El inversor no usa IM·PULSO todos los días — cobrar por mes genera churn entre operaciones.</li>
+<li><strong>Los MTVV son moneda de cambio.</strong> Aportar un MTVV = valor real = incentivo real.</li>
+</ol>
+<hr />
+<h2>2. Value metric</h2>
+<p><strong>Métrica principal: por análisis/operación.</strong></p>
+<p>No por mes, no por usuario. El inversor paga cuando tiene una operación encima. Esto alinea precio con valor: cuantas más operaciones haces, más pagas, y más valor recibes.</p>
+<p><strong>Excepción:</strong> para inversores activos con volumen (5+ operaciones), packs o suscripción con descuento.</p>
+<hr />
+<h2>3. Estructura de tiers — Desbloqueo progresivo</h2>
+<h3>Capa GRATIS — "Esto es lo que puedo hacer por ti"</h3>
+<p><strong>Qué ve (sin registrarse siquiera):</strong>
+- Resumen de zona: producto estrella, rotación general, KPIs macro (total anuncios, % retirados)
+- "En Elche Centro, lo que más se mueve es Piso 3h/2b con 90% de rotación"
+- Gráfico de rotación por tipología (visual atractivo, datos reales)
+- Módulo "¿Qué operación vas a hacer?" (selector: flip, CdU, alquiler, NPL, segregación)</p>
+<p><strong>Qué NO ve:</strong>
+- Precios (P25/P50/P75) → borroso/bloqueado
+- Análisis de inversión → bloqueado
+- Contactos de inmobiliarias → bloqueado
+- MTVV cruzado → bloqueado
+- Veredicto / precio máximo de compra → bloqueado</p>
+<p><strong>Objetivo:</strong> que diga "ostras, esto me dice exactamente dónde buscar... pero ¿cuánto vale?"</p>
+<h3>Tier 1 — ANÁLISIS (€29)</h3>
+<p><strong>Nombre posible:</strong> "Descubre el precio"</p>
+<p><strong>Qué desbloquea:</strong>
+- Precio de mercado del activo (P25/P50/P75)
+- €/m² por estado (reformado, a reformar, sin estado)
+- Testigos analizados (cuántos, rango, días en mercado)
+- Veredicto básico: "el asking price está por debajo / alineado / por encima del mercado"</p>
+<p><strong>Para quién:</strong> el flipper o rentista que quiere un dato rápido antes de mover ficha.</p>
+<p><strong>Valor percibido:</strong> un MTVV manual tarda 2 semanas. Esto da el precio en minutos por 29€.</p>
+<h3>Tier 2 — VALIDACIÓN (€69)</h3>
+<p><strong>Nombre posible:</strong> "Valida tu operación"</p>
+<p><strong>Qué desbloquea (además de Tier 1):</strong>
+- Análisis realista de inversión: compra + reforma + ITP + notaría + gastos → margen real
+- Escenarios de reforma (ligera/media/integral) con margen por escenario
+- Precio máximo de compra por margen objetivo (10%/15%/20%)
+- Datos notariales cruzados (€/m² escriturado, compraventas reales, tendencia, perfil comprador)
+- Contactos de inmobiliarias con script de llamada
+- Puntos a favor / puntos de atención / acciones recomendadas</p>
+<p><strong>Para quién:</strong> el inversor que va en serio y necesita certeza completa antes de ofertar.</p>
+<p><strong>Valor percibido:</strong> el análisis completo que un asesor cobraría €500+ lo tienes por 69€ con datos reales.</p>
+<h3>Tier 3 — PACK ZONA (€149)</h3>
+<p><strong>Nombre posible:</strong> "Controla tu zona"</p>
+<p><strong>Qué desbloquea:</strong>
+- PULSO completo de la zona (todos los bloques: tipo vivienda, habitaciones, hab×baños, precios, barrios, otros activos)
+- 3 análisis VALIDACIÓN incluidos (Tier 2 × 3)
+- Comparativa barrios del distrito
+- TOP productos más retirados con precios
+- Conclusiones para inversores
+- Histórico (si hay datos previos de la zona)</p>
+<p><strong>Para quién:</strong> el inversor activo que trabaja en una zona y quiere la foto completa + validar varias operaciones.</p>
+<p><strong>Valor percibido:</strong> antes el PULSO solo costaba 200€ y no incluía IMPULSO. Ahora 149€ incluye PULSO + 3 validaciones.</p>
+<h3>Tier 4 — SUSCRIPCIÓN (€79/mes)</h3>
+<p><strong>Nombre posible:</strong> "Inversor activo"</p>
+<p><strong>Qué desbloquea:</strong>
+- Análisis ilimitados de VALIDACIÓN en 1 provincia
+- PULSO actualizado de todas las zonas de esa provincia
+- Alertas cuando cambia la rotación de una zona
+- Acceso al módulo MTVV cruzado (cuando haya datos)
+- Prioridad en nuevas zonas/funcionalidades</p>
+<p><strong>Para quién:</strong> el inversor que hace 4+ operaciones al año y necesita monitorizar constantemente.</p>
+<p><strong>Valor percibido:</strong> 79€/mes = ~2,6€/día. Menos que un café para tener el mercado controlado.</p>
+<h3>Tier 5 — PARTNER (precio pactado)</h3>
+<p><strong>Sin precio público. Contacto directo.</strong></p>
+<p><strong>Qué incluye:</strong>
+- Todo lo anterior sin límites
+- IMPULSO por lotes (listados de 10-50+ inmuebles)
+- Dossieres de oportunidades validados (rama JT)
+- Integración MTVV como servicio: nosotros coordinamos los estudios de campo
+- Acompañamiento en la operación: análisis continuo conforme avanza el deal
+- Informe personalizado para presentar a inversores/socios</p>
+<p><strong>Para quién:</strong> José Peiró (56 apartamentos Arrecife), gestores del Máster, fondos con carteras.</p>
+<p><strong>Pricing:</strong> % del beneficio de la operación (a negociar, punto de partida ~0,5%) o fee fijo mensual según volumen.</p>
+<hr />
+<h2>4. Tabla resumen</h2>
+<table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>Precio</th>
+<th>Incluye</th>
+<th>Target</th>
+<th>Conversión esperada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Gratis</strong></td>
+<td>0€</td>
+<td>Resumen zona + selector operación</td>
+<td>Todos</td>
+<td>100% → registro</td>
+</tr>
+<tr>
+<td><strong>Análisis</strong></td>
+<td>29€</td>
+<td>Precio mercado + veredicto básico</td>
+<td>Curioso / primer contacto</td>
+<td>Alta (no-brainer)</td>
+</tr>
+<tr>
+<td><strong>Validación</strong></td>
+<td>69€</td>
+<td>Análisis inversión completo + notarial + contactos</td>
+<td>Inversor que va a ofertar</td>
+<td>Media-alta</td>
+</tr>
+<tr>
+<td><strong>Pack zona</strong></td>
+<td>149€</td>
+<td>PULSO completo + 3 validaciones</td>
+<td>Inversor activo en 1 zona</td>
+<td>Media</td>
+</tr>
+<tr>
+<td><strong>Suscripción</strong></td>
+<td>79€/mes</td>
+<td>Ilimitado en 1 provincia + alertas</td>
+<td>Inversor con volumen (4+/año)</td>
+<td>Baja (pero alto LTV)</td>
+</tr>
+<tr>
+<td><strong>Partner</strong></td>
+<td>Pactado</td>
+<td>Todo + lotes + dossieres + acompañamiento</td>
+<td>Gestores grandes / Máster</td>
+<td>Muy baja (pero muy alto ticket)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. Modelo MTVV — La moneda alternativa</h2>
+<h3>El problema</h3>
+<p>La comunidad ya intentó que la gente compartiera MTVVs gratis. Fracasó. No había incentivo.</p>
+<h3>La solución: el MTVV vale dinero</h3>
+<table>
+<thead>
+<tr>
+<th>Si aportas...</th>
+<th>Recibes...</th>
+<th>Valor real</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 MTVV (últimos 30 días)</td>
+<td>1 Validación gratis (Tier 2, valor 69€)</td>
+<td>69€</td>
+</tr>
+<tr>
+<td>3 MTVV (últimos 60 días)</td>
+<td>1 Pack zona gratis (Tier 3, valor 149€)</td>
+<td>149€</td>
+</tr>
+<tr>
+<td>Flujo regular (profesional MTVV)</td>
+<td>Suscripción gratis + marca compartida</td>
+<td>79€/mes</td>
+</tr>
+</tbody>
+</table>
+<h3>Condiciones del MTVV</h3>
+<ul>
+<li><strong>Frescura:</strong> máximo 30 días desde realización para valor completo. 30-60 días = 50% del valor. &gt;60 días = histórico, sin crédito.</li>
+<li><strong>Calidad:</strong> debe incluir mínimo Paso 1 y Paso 2 del MTVV (inmobiliarias consultadas + testigos). Paso 4 (verificación con anuncio real) da bonus.</li>
+<li><strong>Anonimización:</strong> datos personales (teléfonos de agentes, emails) se eliminan automáticamente.</li>
+<li><strong>Zona nueva:</strong> si el MTVV es de una zona donde NO tenemos datos → doble crédito (incentivo para expandir cobertura).</li>
+</ul>
+<h3>2 tipos de proveedor MTVV</h3>
+<p><strong>Operador puntual</strong> (la mayoría)
+- Hace 1-4 operaciones al año
+- Tiene su MTVV de la última operación
+- Incentivo: "Pásame tu MTVV de este mes → te doy una Validación gratis para tu próxima operación"
+- Volumen: muchos proveedores, pocos MTVV cada uno
+- Canal: mensaje directo, post en comunidad, boca a boca</p>
+<p><strong>Profesional MTVV</strong> (pocos, alto volumen)
+- Ofrece el servicio de hacer MTVVs para otros
+- Genera 5-10+ estudios al mes
+- Incentivo: acuerdo de colaboración → suscripción gratis + su nombre como "validador certificado IM·PULSO" + marca compartida en informes
+- Volumen: pocos proveedores, muchos MTVV
+- Canal: contacto directo, propuesta personalizada</p>
+<h3>Flywheel</h3>
+<pre><code>Más MTVV → mejores informes → más usuarios → más operaciones → más MTVV
+     ↑                                                              │
+     └──────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2>6. Rama oportunidades — pricing</h2>
+<table>
+<thead>
+<tr>
+<th>Servicio</th>
+<th>Precio</th>
+<th>Quién paga</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Validación de deal para proveedor</td>
+<td>69€ por deal (= Tier 2)</td>
+<td>El proveedor de oportunidades</td>
+</tr>
+<tr>
+<td>Dossier validado (CORE + sello IM·PULSO)</td>
+<td>149€ por dossier</td>
+<td>El gestor que presenta a inversores</td>
+</tr>
+<tr>
+<td>Dossier completo (FULL + análisis + MTVV)</td>
+<td>299€ por dossier</td>
+<td>El gestor grande</td>
+</tr>
+<tr>
+<td>Pack validación cartera (10+ deals)</td>
+<td>Precio pactado (~40€/deal)</td>
+<td>Fondos, gestores con volumen</td>
+</tr>
+<tr>
+<td>Acompañamiento operación (tipo José Peiró)</td>
+<td>% beneficio o fee mensual</td>
+<td>Promotor</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>7. Psicología de pricing aplicada</h2>
+<h3>Anchoring</h3>
+<ul>
+<li>Mostrar primero el Pack zona (149€) → hace que la Validación (69€) parezca barata</li>
+<li>En la versión gratis, mostrar "Este análisis completo vale 69€ — desbloquéalo"</li>
+</ul>
+<h3>Efecto "menos que un café"</h3>
+<ul>
+<li>Suscripción 79€/mes = 2,6€/día</li>
+<li>Validación 69€ = lo que cuesta una cena</li>
+<li>Vs €150K de mediana que se juegan = 0,05% de la inversión</li>
+</ul>
+<h3>Urgencia sin agresividad</h3>
+<ul>
+<li>"Los datos de rotación se actualizan cada scrapeo — el mercado cambia"</li>
+<li>NO usar countdown timers ni "solo quedan 3 plazas" — nuestro ICP es sofisticado</li>
+</ul>
+<h3>Social proof en cada tier</h3>
+<ul>
+<li>"X inversores han validado operaciones en esta zona"</li>
+<li>"Datos cruzados con X estudios MTVV de campo"</li>
+</ul>
+<h3>Precio de lanzamiento</h3>
+<ul>
+<li>Considerar lanzar con descuento temporal: "precio de lanzamiento comunidad IN"</li>
+<li>Tier 1: 29€ → 19€ primeros 3 meses</li>
+<li>Tier 2: 69€ → 49€ primeros 3 meses</li>
+<li>Después sube y queda como referencia de "antes valía menos"</li>
+</ul>
+<hr />
+<h2>8. Comparativa con competencia</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>IM·PULSO</th>
+<th>Invisor</th>
+<th>Lystos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Entrada gratis</td>
+<td>✅ Resumen zona</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Precio mínimo</td>
+<td>29€ por análisis</td>
+<td>42€/mes (anual)</td>
+<td>79€/mes</td>
+</tr>
+<tr>
+<td>Análisis completo</td>
+<td>69€</td>
+<td>Incluido en plan</td>
+<td>Incluido en plan</td>
+</tr>
+<tr>
+<td>Pack zona</td>
+<td>149€</td>
+<td>No tiene</td>
+<td>199€/mes (Premium)</td>
+</tr>
+<tr>
+<td>MTVV integrado</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Cálculos CdU</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Dossieres validados</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Cobro por operación</td>
+<td>✅</td>
+<td>❌ (solo mensual)</td>
+<td>❌ (solo mensual)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ventaja clave:</strong> el inversor que hace 2 operaciones al año paga 2×69€ = 138€/año con IM·PULSO vs 504€/año mínimo con Invisor. Para operaciones puntuales, somos más baratos. Para volumen, la suscripción de 79€/mes compite directamente.</p>
+<hr />
+<h2>9. Métricas a trackear</h2>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>Target inicial</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registros gratis (ven resumen zona)</td>
+<td>50+ primer mes</td>
+</tr>
+<tr>
+<td>Conversión gratis → Tier 1 (29€)</td>
+<td>&gt;15%</td>
+</tr>
+<tr>
+<td>Conversión Tier 1 → Tier 2 (69€)</td>
+<td>&gt;30% (ya pagaron una vez)</td>
+</tr>
+<tr>
+<td>Upgrade a Pack zona o Suscripción</td>
+<td>&gt;10% de los que compran Tier 2</td>
+</tr>
+<tr>
+<td>MTVV recibidos por mes</td>
+<td>5+ (objetivo inicial)</td>
+</tr>
+<tr>
+<td>Churn suscripción mensual</td>
+<td>&lt;10%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>10. Decisiones pendientes</h2>
+<ul>
+<li>[ ] ¿Precio de lanzamiento con descuento o precio definitivo desde el inicio?</li>
+<li>[ ] ¿El MTVV como crédito se aplica automáticamente o hay que solicitarlo?</li>
+<li>[ ] ¿La suscripción es por provincia o por zona más pequeña?</li>
+<li>[ ] ¿Los dossieres validados (rama oportunidades) se integran en el mismo portal o es un servicio aparte?</li>
+<li>[ ] ¿Hay un tier "equipo" para gestores con 2-3 colaboradores?</li>
+</ul>
+  <div class="footer">
+    IM·PULSO — Inteligencia de Mercado Inmobiliario — Confidencial<br>
+    Generado: 16 abril 2026
+  </div>
+</div>
+</body>
+</html>

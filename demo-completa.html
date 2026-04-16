@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO — Demo Completa | Elda, Agustín Cavero 36-38</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header {
+    background: #141B36;
+    color: white;
+    padding: 16px 0;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header img { height: 36px; }
+  .header .badge {
+    background: #FF4D2E;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    color: white;
+    padding: 48px 0 56px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-size: 15px;
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+  .hero-selectors {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .hero-selector {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+  .hero-selector.active {
+    background: #FF4D2E;
+    border-color: #FF4D2E;
+    color: white;
+  }
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  .hero-stat { text-align: center; }
+  .hero-stat .number {
+    font-size: 36px;
+    font-weight: 800;
+    color: #FF4D2E;
+  }
+  .hero-stat .label {
+    font-size: 11px;
+    opacity: 0.55;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* SECTION */
+  .section {
+    margin: 32px 0;
+    position: relative;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #141B36;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: #9ca3af;
+  }
+
+  /* PRICE BADGES */
+  .price-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .price-badge.free { background: #ecfdf5; color: #10B981; }
+  .price-badge.paid-orange { background: #fff3f0; color: #FF4D2E; }
+  .price-badge.paid-green { background: #ecfdf5; color: #10B981; border: 2px solid #10B981; }
+  .price-badge.included { background: #f5f3ff; color: #8B5CF6; }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+    border: 1px solid #e5e7eb;
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #141B36;
+    margin-bottom: 4px;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+
+  /* PRICE WIDGET */
+  .price-widget {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 16px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .price-box {
+    padding: 20px;
+    border-radius: 12px;
+    background: #f9fafb;
+  }
+  .price-box.main {
+    background: #141B36;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(20,27,54,0.3);
+  }
+  .price-box .price-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+  .price-box .price-value {
+    font-size: 28px;
+    font-weight: 800;
+  }
+  .price-box.main .price-value {
+    color: #FF4D2E;
+    font-size: 34px;
+  }
+  .price-box .price-note {
+    font-size: 11px;
+    opacity: 0.5;
+    margin-top: 4px;
+  }
+
+  /* TRIPLE VALIDATION */
+  .validation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .validation-card {
+    padding: 24px;
+    border-radius: 14px;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  .validation-card.scraping { background: #eff6ff; border-color: #bfdbfe; }
+  .validation-card.notarial { background: #f5f3ff; border-color: #ddd6fe; }
+  .validation-card.mtvv { background: #ecfdf5; border-color: #a7f3d0; }
+  .validation-card .v-icon { font-size: 28px; margin-bottom: 8px; }
+  .validation-card .v-source {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .validation-card.scraping .v-source { color: #3B82F6; }
+  .validation-card.notarial .v-source { color: #8B5CF6; }
+  .validation-card.mtvv .v-source { color: #10B981; }
+  .validation-card .v-price {
+    font-size: 26px;
+    font-weight: 800;
+    color: #141B36;
+  }
+  .validation-card .v-detail {
+    font-size: 12px;
+    color: #4b5563;
+    margin-top: 6px;
+  }
+
+  /* CONVERGENCE */
+  .convergence {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    color: white;
+    margin: 24px 0;
+  }
+  .convergence .conv-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+  .convergence .conv-verdict {
+    font-size: 24px;
+    font-weight: 800;
+    color: #10B981;
+    margin-bottom: 4px;
+  }
+  .convergence .conv-price {
+    font-size: 42px;
+    font-weight: 800;
+    color: #FF4D2E;
+  }
+  .convergence .conv-range {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+  .convergence .conv-note {
+    font-size: 13px;
+    opacity: 0.5;
+    margin-top: 16px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  th {
+    background: #141B36;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  tr:hover td { background: #f9fafb; }
+  tr.highlight td { background: #fff3f0; }
+
+  /* KPI ROW */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .kpi {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+  }
+  .kpi .kpi-value {
+    font-size: 24px;
+    font-weight: 800;
+    color: #141B36;
+  }
+  .kpi .kpi-label {
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* INSIGHT BOX */
+  .insight {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .insight-orange { background: #fff3f0; }
+  .insight-green { background: #ecfdf5; }
+  .insight-blue { background: #eff6ff; }
+  .insight-purple { background: #f5f3ff; }
+  .insight-gray { background: #f3f4f6; color: #6b7280; font-style: italic; }
+
+  /* STEP HEADER */
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #10B981;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #141B36;
+  }
+
+  /* PRICE EVOLUTION */
+  .price-evolution {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .price-step {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .price-step .ps-day {
+    font-size: 11px;
+    color: #9ca3af;
+  }
+  .price-step .ps-price {
+    font-weight: 800;
+    color: #141B36;
+  }
+  .price-step.final {
+    background: #fff3f0;
+    border: 2px solid #FF4D2E;
+  }
+  .price-step.final .ps-day { color: #FF4D2E; }
+  .price-step.final .ps-price { color: #FF4D2E; }
+  .price-arrow {
+    font-size: 20px;
+    color: #9ca3af;
+    display: flex;
+    align-items: center;
+  }
+
+  /* INVESTMENT ANALYSIS */
+  .invest-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 16px 0;
+  }
+  .invest-result {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    border-radius: 16px;
+    padding: 28px;
+    text-align: center;
+    color: white;
+  }
+  .invest-result .ir-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    margin-bottom: 4px;
+  }
+  .invest-result .ir-value {
+    font-size: 36px;
+    font-weight: 800;
+    color: #FF4D2E;
+  }
+  .invest-result .ir-sub {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+
+  /* VERDICT BOX */
+  .verdict {
+    background: #ecfdf5;
+    border: 2px solid #10B981;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 15px;
+    font-weight: 600;
+    color: #141B36;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .verdict .verdict-icon { font-size: 24px; flex-shrink: 0; }
+
+  .verdict-navy {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    border: none;
+    color: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .verdict-navy .verdict-icon { font-size: 24px; flex-shrink: 0; }
+
+  /* CONCLUSION */
+  .conclusion-list {
+    list-style: none;
+    padding: 0;
+  }
+  .conclusion-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .conclusion-list li:last-child { border-bottom: none; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 48px 0 32px;
+    color: #9ca3af;
+    font-size: 12px;
+  }
+  .footer .proto {
+    display: inline-block;
+    background: #fff3f0;
+    color: #FF4D2E;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .footer .footer-logo {
+    display: block;
+    margin: 16px auto;
+    height: 90px;
+  }
+
+  /* EXCLUSIVE BADGE */
+  .exclusive-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #ecfdf5;
+    color: #10B981;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* MTVV EXPLAINER */
+  .mtvv-explainer {
+    background: linear-gradient(135deg, #ecfdf5 0%, #f0fdf4 100%);
+    border: 2px solid #a7f3d0;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #1f2937;
+  }
+  .mtvv-explainer strong { color: #10B981; }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 2px dashed #e5e7eb;
+    margin: 40px 0;
+  }
+
+  /* LOCKED PLACEHOLDER */
+  .locked-row {
+    color: #9ca3af;
+    font-style: italic;
+  }
+
+  /* SCRIPT BOX */
+  .script-box {
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: #4b5563;
+    font-style: italic;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .validation-grid { grid-template-columns: 1fr; }
+    .price-widget { grid-template-columns: 1fr; }
+    .price-box.main { transform: none; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .hero-stats { gap: 20px; }
+    .hero h1 { font-size: 24px; }
+    .invest-grid { grid-template-columns: 1fr; }
+    .price-evolution { justify-content: center; }
+    .section-header { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/697e322e1311f62a92201cc6.png" alt="IM·PULSO">
+    <span class="badge">Demo — Análisis completo (69&euro;)</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <h1>Calle Agustín Cavero 36-38, Elda</h1>
+    <div class="subtitle">Local &rarr; 6 viviendas de 45m&sup2; &middot; Cambio de Uso &middot; Fraternidad, Elda</div>
+    <div class="hero-selectors">
+      <div class="hero-selector active">Tipo: CdU</div>
+      <div class="hero-selector" style="background:rgba(255,255,255,0.1);">Perfil: Gestor</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="number">3</div>
+        <div class="label">Fuentes cruzadas</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">57</div>
+        <div class="label">Testigos scraping</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">831</div>
+        <div class="label">Ops notariales</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">5</div>
+        <div class="label">Inmobiliarias MTVV</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 1: PULSO — Latido del Mercado -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">&#128200;</div>
+      <div>
+        <div class="section-title">PULSO — Latido del Mercado</div>
+        <div class="section-subtitle">Rotación, producto estrella y dinámica del municipio &middot; Elda</div>
+      </div>
+      <span class="price-badge free">GRATIS</span>
+    </div>
+
+    <!-- 1.1 Resumen ejecutivo -->
+    <div class="card">
+      <div class="card-title">1.1 Resumen ejecutivo</div>
+      <div class="card-subtitle">Visión macro del mercado residencial en Elda</div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-value">2.022</div>
+          <div class="kpi-label">Anuncios totales</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">1.610</div>
+          <div class="kpi-label">Retirados</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">80%</div>
+          <div class="kpi-label">Rotación media</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">Piso</div>
+          <div class="kpi-label">Producto estrella</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1.2 Por tipo de vivienda -->
+    <div class="card">
+      <div class="card-title">1.2 Por tipo de vivienda — Venta</div>
+      <div class="card-subtitle">Qué se publica y qué se vende en Elda</div>
+      <table>
+        <tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th></tr>
+        <tr class="highlight"><td><strong>Piso</strong> <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/69df3ab2243975ecf73083c8.svg" style="height:16px; vertical-align:middle; margin-left:6px;" alt="PULSO"></td><td>1.349</td><td>67%</td><td>1.119</td><td><strong style="color:#FF4D2E;">83%</strong></td><td>230</td></tr>
+        <tr><td>Chalet</td><td>497</td><td>25%</td><td>381</td><td>77%</td><td>116</td></tr>
+        <tr><td>Ático</td><td>53</td><td>3%</td><td>39</td><td>74%</td><td>14</td></tr>
+        <tr><td>Dúplex</td><td>52</td><td>3%</td><td>41</td><td>79%</td><td>11</td></tr>
+        <tr><td>Estudio</td><td>34</td><td>2%</td><td>31</td><td><strong style="color:#FF4D2E;">91%</strong></td><td>3</td></tr>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> El piso domina con el 67% de la oferta y 83% de rotación. Los estudios tienen la rotación más alta (91%) pero volumen mínimo.
+      </div>
+    </div>
+
+    <!-- 1.3 Por hab × baños -->
+    <div class="card">
+      <div class="card-title">1.3 Por hab × baños — Venta <span style="background:#fff3f0; color:#FF4D2E; font-size:10px; padding:2px 8px; border-radius:10px; font-weight:800; margin-left:8px;">EL MÁS VALIOSO</span></div>
+      <div class="card-subtitle">Combinación que más se vende vs. lo que se publica</div>
+      <table>
+        <tr><th>Combo</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Insight</th></tr>
+        <tr class="highlight"><td><strong>1h/1b</strong> <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/69df3ab2243975ecf73083c8.svg" style="height:16px; vertical-align:middle; margin-left:6px;" alt="PULSO"></td><td>75</td><td>68</td><td><strong style="color:#FF4D2E;">90%</strong></td><td>Máxima rotación, mínima oferta</td></tr>
+        <tr><td>2h/1b</td><td>152</td><td>129</td><td><strong style="color:#FF4D2E;">85%</strong></td><td>Alta demanda</td></tr>
+        <tr><td>3h/2b</td><td>278</td><td>217</td><td>78%</td><td>Mayor volumen</td></tr>
+        <tr><td>2h/2b</td><td>118</td><td>94</td><td>80%</td><td>Buen equilibrio</td></tr>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> La combinación 1h/1b tiene 90% de rotación — lo que se publica, se vende. Perfecto para CdU de unidades pequeñas.
+      </div>
+    </div>
+
+    <!-- 1.4 Por tramos de precio -->
+    <div class="card">
+      <div class="card-title">1.4 Por tramos de precio — Venta</div>
+      <div class="card-subtitle">Dónde está el volumen y dónde la velocidad</div>
+      <table>
+        <tr><th>Tramo</th><th>Publicados</th><th>Retirados</th><th>Rotación</th></tr>
+        <tr><td>25K-50K</td><td>32</td><td>30</td><td><strong style="color:#FF4D2E;">95%</strong></td></tr>
+        <tr><td>50K-75K</td><td>118</td><td>104</td><td><strong style="color:#FF4D2E;">88%</strong></td></tr>
+        <tr class="highlight"><td><strong>75K-100K</strong> <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/69df3ab2243975ecf73083c8.svg" style="height:16px; vertical-align:middle; margin-left:6px;" alt="PULSO"></td><td>203</td><td>168</td><td>83%</td></tr>
+        <tr><td>100K-125K</td><td>182</td><td>136</td><td>75%</td></tr>
+        <tr><td>125K-150K</td><td>128</td><td>87</td><td>68%</td></tr>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> El rango 50K-100K tiene la rotación más alta. Las viviendas resultantes de CdU (1h/1b ~45m²) encajan perfectamente aquí.
+      </div>
+    </div>
+
+    <!-- 1.5 Comparativa barrios -->
+    <div class="card">
+      <div class="card-title">1.5 Comparativa barrios del distrito</div>
+      <div class="card-subtitle">Dinámica de cada barrio en Elda</div>
+      <table>
+        <tr><th>Barrio</th><th>Publicados</th><th>Retirados</th><th>Rotación</th></tr>
+        <tr class="highlight"><td><strong>Centro</strong> <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/69df3ab2243975ecf73083c8.svg" style="height:16px; vertical-align:middle; margin-left:6px;" alt="PULSO"></td><td>598</td><td>478</td><td>80%</td></tr>
+        <tr><td>Fraternidad</td><td>~250</td><td>~205</td><td>82%</td></tr>
+        <tr><td>Las Trescientas</td><td>~120</td><td>~102</td><td><strong style="color:#FF4D2E;">85%</strong></td></tr>
+        <tr><td>Pza Castelar</td><td>~200</td><td>~156</td><td>78%</td></tr>
+        <tr><td>Pza Toros-Chapí</td><td>~180</td><td>~135</td><td>75%</td></tr>
+        <tr><td>San Crispín</td><td>~150</td><td>~116</td><td>77%</td></tr>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> Centro lidera en volumen absoluto (478 retirados). Las Trescientas tiene la rotación más alta (85%) pero con menos volumen.
+      </div>
+    </div>
+
+    <!-- 1.6 TOP productos más retirados -->
+    <div class="card">
+      <div class="card-title">1.6 TOP productos más retirados</div>
+      <div class="card-subtitle">Los productos que el mercado absorbe más rápido</div>
+      <table>
+        <tr><th>#</th><th>Producto</th><th>Retirados</th><th>Rotación</th></tr>
+        <tr><td>1</td><td>Piso 3h/2b</td><td>180</td><td>78%</td></tr>
+        <tr><td>2</td><td>Piso 2h/1b</td><td>148</td><td>85%</td></tr>
+        <tr><td>3</td><td>Piso 3h/1b</td><td>122</td><td>76%</td></tr>
+        <tr class="highlight"><td><strong>4</strong></td><td><strong>Piso 1h/1b</strong> <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/69df3ab2243975ecf73083c8.svg" style="height:16px; vertical-align:middle; margin-left:6px;" alt="PULSO"></td><td><strong>68</strong></td><td><strong style="color:#FF4D2E;">90%</strong></td></tr>
+        <tr><td>5</td><td>Piso 4h/2b</td><td>64</td><td>70%</td></tr>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> Piso 1h/1b es el #4 en volumen pero tiene la rotación más alta (90%). Es el producto que menos tarda en venderse.
+      </div>
+    </div>
+
+    <!-- Nota CTA -->
+    <div class="insight insight-gray" style="margin-top:4px; text-align:center;">
+      Has visto el latido del mercado. ¿Cuánto vale TU activo? &rarr;
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 2: IMPULSO — Validación de Activo -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #eff6ff; color: #3B82F6;">&#128225;</div>
+      <div>
+        <div class="section-title">IMPULSO — Validación de Activo</div>
+        <div class="section-subtitle">248K+ anuncios monitorizados &middot; Fraternidad, Elda</div>
+      </div>
+      <span class="price-badge paid-orange">29&euro;</span>
+    </div>
+
+    <!-- 2.1 Datos de la consulta -->
+    <div class="card">
+      <div class="card-title">2.1 Datos de la consulta</div>
+      <table>
+        <tr><th>Parámetro</th><th>Valor</th></tr>
+        <tr><td>Dirección</td><td><strong>Agustín Cavero 36-38, Fraternidad, Elda</strong></td></tr>
+        <tr><td>Tipo de operación</td><td>Local &rarr; viviendas (CdU)</td></tr>
+        <tr><td>Habitaciones resultantes</td><td>1</td></tr>
+        <tr><td>Baños</td><td>1</td></tr>
+        <tr><td>Superficie resultante</td><td>45 m²</td></tr>
+        <tr><td>Estado resultante</td><td>Reformado</td></tr>
+        <tr><td>Operación</td><td>Cambio de Uso</td></tr>
+      </table>
+    </div>
+
+    <!-- 2.2 Precio de mercado -->
+    <div class="card">
+      <div class="card-title">2.2 Precio de mercado</div>
+      <div class="card-subtitle">Basado en anuncios retirados con metodología IQR 1.5x trim</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">P25</div>
+          <div class="price-value">40.000&euro;</div>
+          <div class="price-note">Percentil 25</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Precio de mercado</div>
+          <div class="price-value">75.285&euro;</div>
+          <div class="price-note">P50 &middot; Mediana</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">P75</div>
+          <div class="price-value">89.000&euro;</div>
+          <div class="price-note">Percentil 75</div>
+        </div>
+      </div>
+      <table>
+        <tr><th>Métrica</th><th>Valor</th></tr>
+        <tr><td>Testigos analizados</td><td><strong>57 anuncios retirados</strong></td></tr>
+        <tr><td>&euro;/m² mediana</td><td><strong>854&euro;/m²</strong></td></tr>
+        <tr><td>Días promedio en mercado</td><td><strong>96 días</strong></td></tr>
+        <tr><td>Nivel de demanda</td><td><strong>Baja-Media</strong></td></tr>
+      </table>
+    </div>
+
+    <!-- 2.3 Variaciones por configuración -->
+    <div class="card">
+      <div class="card-title">2.3 Variaciones por configuración</div>
+      <div class="card-subtitle">Si cambias las características, cómo cambia el precio</div>
+      <table>
+        <tr><th>Config</th><th>Precio mercado</th><th>Diferencia</th><th>Testigos</th></tr>
+        <tr class="highlight"><td><strong>1h/1b (tu caso)</strong></td><td><strong>75.285&euro;</strong></td><td>—</td><td>57</td></tr>
+        <tr><td>2h/1b</td><td>82.100&euro;</td><td>+9%</td><td>43</td></tr>
+        <tr><td>2h/2b</td><td>94.800&euro;</td><td>+26%</td><td>31</td></tr>
+      </table>
+      <div class="insight insight-blue">
+        <strong>Lectura:</strong> Añadir 1 habitación sube el precio ~9%. Pero la rotación de 1h/1b (90%) es superior.
+      </div>
+    </div>
+
+    <!-- 2.4 €/m² por estado -->
+    <div class="card">
+      <div class="card-title">2.4 &euro;/m² por estado</div>
+      <div class="card-subtitle">Cómo impacta el estado de la vivienda en el precio</div>
+      <table>
+        <tr><th>Estado</th><th>&euro;/m² mediana</th><th>Rango</th></tr>
+        <tr><td>A reformar</td><td>650&euro;/m²</td><td>500-750</td></tr>
+        <tr class="highlight"><td><strong>Reformado</strong></td><td><strong>854&euro;/m²</strong></td><td>700-1.000</td></tr>
+        <tr><td>Obra nueva</td><td>1.100&euro;/m²</td><td>900-1.200</td></tr>
+      </table>
+    </div>
+
+    <!-- 2.5 Demanda en la zona -->
+    <div class="card">
+      <div class="card-title">2.5 Demanda en la zona</div>
+      <div class="card-subtitle">Velocidad de absorción por barrio</div>
+      <table>
+        <tr><th>Zona</th><th>Días promedio</th><th>Demanda</th></tr>
+        <tr><td>Centro</td><td>60</td><td><strong style="color:#10B981;">Alta</strong></td></tr>
+        <tr class="highlight"><td><strong>Fraternidad</strong></td><td><strong>96</strong></td><td>Media</td></tr>
+        <tr><td>Las Trescientas</td><td>45</td><td><strong style="color:#10B981;">Muy alta</strong></td></tr>
+      </table>
+    </div>
+
+    <!-- 2.6 Contactos inmobiliarias -->
+    <div class="card">
+      <div class="card-title">2.6 Contactos inmobiliarias</div>
+      <div class="card-subtitle">Agencias con ventas de tipología similar en la zona</div>
+      <table>
+        <tr><th>Inmobiliaria</th><th>Teléfono</th><th>Ventas similares</th></tr>
+        <tr><td>Inmobiliaria Local 1</td><td class="locked-row">Disponible al desbloquear</td><td>3 ops 1h/1b en 2025</td></tr>
+        <tr><td>Inmobiliaria Local 2</td><td class="locked-row">Disponible al desbloquear</td><td>5 ops pisos pequeños</td></tr>
+        <tr><td>Inmobiliaria Local 3</td><td class="locked-row">Disponible al desbloquear</td><td>2 ops bajos reformados</td></tr>
+        <tr><td>Inmobiliaria Local 4</td><td class="locked-row">Disponible al desbloquear</td><td>4 ops Fraternidad</td></tr>
+      </table>
+      <div class="script-box">
+        <strong>Guión de llamada:</strong><br><br>
+        "Hola, estaba siguiendo un piso de 1 habitación en Fraternidad que teníais publicado y he visto que habéis retirado el anuncio. ¿Ya lo habéis vendido?"<br><br>
+        <strong>Preguntas de seguimiento:</strong><br>
+        &bull; "¿Podría saber a qué precio se cerró finalmente?"<br>
+        &bull; "¿Os va a entrar alguno similar próximamente?"<br>
+        &bull; "¿Tenéis algún otro piso de características parecidas en la zona?"
+      </div>
+    </div>
+
+    <!-- 2.7 Veredicto IMPULSO -->
+    <div class="card">
+      <div class="card-title">2.7 Veredicto IMPULSO</div>
+      <div class="verdict-navy">
+        <div class="verdict-icon">&#128202;</div>
+        <div>
+          El precio de mercado para Piso 1h/1b ~45m² reformado en Fraternidad, Elda es <strong style="color:#FF4D2E;">75.285&euro;</strong>. Basado en 57 testigos retirados con metodología IQR 1.5x trim.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 3: NOTARIAL — Contexto Oficial -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #f5f3ff; color: #8B5CF6;">&#127963;&#65039;</div>
+      <div>
+        <div class="section-title">NOTARIAL — Contexto Oficial</div>
+        <div class="section-subtitle">Portal Estadístico del Notariado &middot; CP 03600 Elda &middot; 12 meses rolling</div>
+      </div>
+      <span class="price-badge included">Incluido</span>
+    </div>
+
+    <!-- 3.1 Datos clave -->
+    <div class="card">
+      <div class="card-title">3.1 Datos clave</div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-value">744&euro;</div>
+          <div class="kpi-label">&euro;/m² escriturado</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">831</div>
+          <div class="kpi-label">Ops reales 12m</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">+21%</div>
+          <div class="kpi-label">Variación 2025</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">69/mes</div>
+          <div class="kpi-label">Media compraventas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3.2 Tendencia histórica -->
+    <div class="card">
+      <div class="card-title">3.2 Tendencia histórica</div>
+      <div class="card-subtitle">Evolución interanual del precio por m²</div>
+      <table>
+        <tr><th>Año</th><th>Variación interanual</th></tr>
+        <tr><td>2021</td><td>+4,09%</td></tr>
+        <tr><td>2022</td><td>+2,70%</td></tr>
+        <tr><td>2023</td><td style="color:#EF4444;">-0,55%</td></tr>
+        <tr class="highlight"><td><strong>2024</strong></td><td><strong style="color:#10B981;">+26,86%</strong></td></tr>
+        <tr class="highlight"><td><strong>2025</strong></td><td><strong style="color:#10B981;">+21%</strong></td></tr>
+      </table>
+      <div class="insight insight-purple">
+        <strong>Lectura:</strong> Dos años consecutivos de subida fuerte. El mercado está en tendencia alcista.
+      </div>
+    </div>
+
+    <!-- 3.3 Perfil del comprador -->
+    <div class="card">
+      <div class="card-title">3.3 Perfil del comprador</div>
+      <table>
+        <tr><th>Indicador</th><th>Dato</th></tr>
+        <tr><td>Edad mayoritaria</td><td>31-50 años</td></tr>
+        <tr><td>Tipo</td><td>80% nacionales, 20% extranjeros</td></tr>
+        <tr><td>Uso</td><td>Primera vivienda + inversión</td></tr>
+        <tr><td>Comprador tipo</td><td>Solteros, parejas jóvenes, inversores</td></tr>
+      </table>
+    </div>
+
+    <!-- 3.4 Cruce Notarial × IMPULSO -->
+    <div class="card">
+      <div class="card-title">3.4 Cruce Notarial &times; IMPULSO</div>
+      <div class="card-subtitle">Contraste entre datos oficiales y datos de mercado</div>
+      <table>
+        <tr><th>Indicador</th><th>Notarial</th><th>IMPULSO</th><th>Lectura</th></tr>
+        <tr><td>&euro;/m² mercado general</td><td>744&euro;/m² <span style="color:#9ca3af; font-size:11px;">(todos los estados)</span></td><td>854&euro;/m² <span style="color:#9ca3af; font-size:11px;">(reformado)</span></td><td>La reforma aporta +15% sobre escriturado</td></tr>
+        <tr><td>Precio estimado 45m²</td><td>~33.480&euro; <span style="color:#9ca3af; font-size:11px;">(a reformar)</span></td><td>75.285&euro; <span style="color:#9ca3af; font-size:11px;">(reformado)</span></td><td>Margen de transformación claro</td></tr>
+        <tr><td>Tendencia</td><td>+21% en 2025</td><td>—</td><td>Precios subiendo, cada mes de retraso = dinero</td></tr>
+        <tr><td>Volumen</td><td>831 ops/año (69/mes)</td><td>57 testigos en zona</td><td>Mercado con volumen real confirmado</td></tr>
+        <tr><td>Mejor momento</td><td>Pico abril-julio (+41%)</td><td>96 días mercado</td><td>Lanzar en abril para capturar pico</td></tr>
+        <tr><td>Perfil comprador</td><td>80% nacionales, 31-50 años</td><td>—</td><td>Comprador final + inversor, valora reformado</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 4: MTVV — Validación de Campo -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #ecfdf5; color: #10B981;">&#128300;</div>
+      <div>
+        <div class="section-title">MTVV — Validación de Campo</div>
+        <div class="section-subtitle">Estudio realizado por inversor formado &middot; Metodología Programa IN</div>
+      </div>
+      <span class="exclusive-tag">&#128300; Exclusivo IM&middot;PULSO</span>
+      <span class="price-badge paid-green">69&euro;</span>
+    </div>
+
+    <!-- Explainer MTVV -->
+    <div class="mtvv-explainer">
+      <strong>¿Qué es el MTVV?</strong> Es un estudio de campo realizado por un inversor formado en la metodología del Programa IN. Este MTVV fue realizado por un compañero en la zona de Fraternidad, Elda, y aportado a IM·PULSO para cruzar con nuestros datos. No es de esta vivienda exacta, pero es de la misma microzona y tipología similar — lo que permite validar los precios con datos reales de campo que ningún algoritmo puede generar.
+    </div>
+
+    <!-- Paso 0: Contexto del micromercado -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">0</div>
+        <div class="step-title">Contexto del micromercado</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-value">55.222</div>
+          <div class="kpi-label">Habitantes</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">893&euro;</div>
+          <div class="kpi-label">&euro;/m² Fraternidad</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">978&euro;</div>
+          <div class="kpi-label">&euro;/m² Pza Castelar</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">1.173&euro;</div>
+          <div class="kpi-label">&euro;/m² Pza Toros</div>
+        </div>
+      </div>
+      <table>
+        <tr><th>Parámetro</th><th>Dato</th></tr>
+        <tr><td>Población</td><td>55.222 habitantes, tendencia al alza</td></tr>
+        <tr><td>Renta media</td><td>11.813&euro; individual, 28.509&euro; hogar</td></tr>
+        <tr><td>Oferta en la zona</td><td><strong>24 pisos, 0 de 1 habitación &rarr; oportunidad de nicho</strong></td></tr>
+        <tr><td>Viviendas vendidas/año</td><td>1.201 (2025), tendencia al alza</td></tr>
+        <tr><td>Evolución precios</td><td>+21% en 2025</td></tr>
+        <tr><td>Target comprador</td><td>80% nacionales, 20% extranjeros</td></tr>
+        <tr><td>Perfil tipo</td><td>Solteros, parejas jóvenes, inversores</td></tr>
+      </table>
+      <div class="insight insight-green">
+        <strong>Conclusión Paso 0:</strong> No hay oferta de viviendas en bajos ni de 1 habitación. Buen activo para inversión.
+      </div>
+    </div>
+
+    <!-- Paso 1: Inmobiliarias -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">Lo que dicen las inmobiliarias (5 consultadas)</div>
+      </div>
+      <table>
+        <tr><th>Inmobiliaria</th><th>Precio</th><th>Plazo venta</th><th>Insight clave</th></tr>
+        <tr><td><strong>Inmo 1</strong></td><td><strong>75K-80K</strong></td><td>&lt; 1 mes</td><td>"Hay demanda de todo tipo. 1 hab entre 75K-80K"</td></tr>
+        <tr><td><strong>Inmo 2</strong></td><td><strong>75K-85K</strong></td><td>&lt; 1 mes</td><td>"En 75K lo vendo en medio día a un inversor de mi cartera"</td></tr>
+        <tr><td><strong>Inmo 4</strong></td><td><strong>72K</strong></td><td>&lt; 30 días</td><td>"Ha vendido 1 hab por 69.900&euro; y 74.000&euro; recientemente"</td></tr>
+        <tr><td><strong>Inmo 5</strong></td><td><strong>~90K</strong> (ref)</td><td>30-90 días</td><td>"Testigo: bajo 60m² 2hab patio &rarr; 90K. Tasación justa."</td></tr>
+      </table>
+      <div class="insight insight-green">
+        <strong>Consenso:</strong> 72.000&euro; - 80.000&euro;. Plazo de venta: menos de 1 mes. Alta demanda.
+      </div>
+      <div style="margin-top:16px; background: #141B36; border-radius:12px; padding:16px; text-align:center;">
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px;">Precio Paso 1</div>
+        <div style="font-size:28px; font-weight:800; color:#FF4D2E; margin-top:4px;">80.000&euro;</div>
+      </div>
+    </div>
+
+    <!-- Paso 2: Testigos -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title">Testigos de mercado (6 testigos)</div>
+      </div>
+      <table>
+        <tr><th>Testigo</th><th>Dirección</th><th>m²</th><th>Hab/Baño</th><th>Año</th><th>Precio</th><th>Detalle</th></tr>
+        <tr><td><strong>T1</strong></td><td>c/ Vicente Blasco Ibáñez</td><td>55</td><td>1h/1b bajo</td><td>1968</td><td><strong>46.000&euro;</strong></td><td>Parece garaje habilitado. 1.034 visitas, 24 emails</td></tr>
+        <tr><td><strong>T2</strong></td><td>c/ Milagros Maestre Esteve</td><td>60</td><td>2h/1b planta 1</td><td>1980</td><td><strong>89.900&euro;</strong></td><td>Referencia pisos similares. 2.211 visitas, 167 favoritos</td></tr>
+        <tr><td><strong>T3</strong></td><td>c/ Modesto Lafuente 21</td><td>54</td><td>1h/1b bajo</td><td>2027</td><td><strong>98.000&euro;</strong></td><td>Obra nueva. Edificio bajo + 2 alturas. Precio tope referencia</td></tr>
+        <tr style="background:#fff3f0;"><td><strong>T4</strong></td><td>c/ Eduardo Dato 6</td><td>44</td><td>1h/1b bajo</td><td>2026</td><td><strong>105.000&euro;</strong></td><td>Obra nueva, parece CdU. 266 visitas, 2 contactos</td></tr>
+        <tr style="background:#fff3f0;"><td><strong>T5</strong></td><td>Zona Cooperativa (Petrer)</td><td>60</td><td>2h/1b bajo</td><td>2025</td><td><strong>120.000&euro;</strong></td><td>CdU terminado. Totalmente nuevo. 1.426 visitas, 68 favoritos</td></tr>
+        <tr><td><strong>T6</strong></td><td>Fraternidad (zona)</td><td>50</td><td>2h/1b bajo</td><td>—</td><td><strong>75.000&euro;</strong></td><td>Piso origen. Retirado el 19/03/2026. 160 visitas</td></tr>
+      </table>
+      <div class="insight" style="background:#fff3f0; border-left:4px solid #FF4D2E; padding:12px 16px; margin-top:12px; border-radius:0 8px 8px 0; font-size:13px;">
+        <strong>Dato clave:</strong> Los testigos T4 y T5 son operaciones de CdU/obra nueva ya terminadas en la misma zona — confirman que el modelo funciona y los precios de venta post-transformación están entre 98K-120K para calidades superiores.
+      </div>
+      <div style="margin-top:16px; background: #141B36; border-radius:12px; padding:16px; text-align:center;">
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px;">Precio Paso 2</div>
+        <div style="font-size:28px; font-weight:800; color:#FF4D2E; margin-top:4px;">82.500&euro;</div>
+      </div>
+    </div>
+
+    <!-- Paso 3: Hipótesis -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title">Hipótesis de precio</div>
+      </div>
+      <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:12px; text-align:center; margin:12px 0;">
+        <div style="background:#ecfdf5; padding:16px; border-radius:12px;">
+          <div style="font-size:11px; color:#10B981; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Paso 1 dice</div>
+          <div style="font-size:24px; font-weight:800; color:#141B36; margin-top:4px;">80.000&euro;</div>
+        </div>
+        <div style="background:#ecfdf5; padding:16px; border-radius:12px;">
+          <div style="font-size:11px; color:#10B981; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Paso 2 dice</div>
+          <div style="font-size:24px; font-weight:800; color:#141B36; margin-top:4px;">82.500&euro;</div>
+        </div>
+        <div style="background:#fff3f0; padding:16px; border-radius:12px; border:2px solid #FF4D2E;">
+          <div style="font-size:11px; color:#FF4D2E; text-transform:uppercase; letter-spacing:1px; font-weight:700;">Hipótesis</div>
+          <div style="font-size:24px; font-weight:800; color:#FF4D2E; margin-top:4px;">89.000&euro;</div>
+        </div>
+      </div>
+      <div class="insight insight-gray">
+        Le hemos dado peso al testigo de obra nueva como precio tope. El consenso de inmobiliarias ancla entre 75K-80K.
+      </div>
+    </div>
+
+    <!-- Paso 4: Verificación -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <div class="step-title">Verificación con anuncio real</div>
+      </div>
+      <p style="font-size: 13px; color: #4b5563; margin-bottom: 16px;">Se publicó un anuncio real en Idealista (10/03/2026) para medir respuesta del mercado:</p>
+
+      <div class="price-evolution">
+        <div class="price-step" style="background:#f3f4f6;">
+          <div class="ps-day">Día 1</div>
+          <div class="ps-price">89.000&euro;</div>
+        </div>
+        <div class="price-arrow">&rarr;</div>
+        <div class="price-step" style="background:#f3f4f6;">
+          <div class="ps-day">Día 3</div>
+          <div class="ps-price">83.000&euro;</div>
+        </div>
+        <div class="price-arrow">&rarr;</div>
+        <div class="price-step" style="background:#f3f4f6;">
+          <div class="ps-day">Día 7</div>
+          <div class="ps-price">78.000&euro;</div>
+        </div>
+        <div class="price-arrow">&rarr;</div>
+        <div class="price-step" style="background:#f3f4f6;">
+          <div class="ps-day">Día 9</div>
+          <div class="ps-price">74.000&euro;</div>
+        </div>
+        <div class="price-arrow">&rarr;</div>
+        <div class="price-step final">
+          <div class="ps-day">Día 14</div>
+          <div class="ps-price">69.000&euro;</div>
+        </div>
+      </div>
+
+      <div class="kpi-row" style="margin-top:20px;">
+        <div class="kpi">
+          <div class="kpi-value">5</div>
+          <div class="kpi-label">Contactos</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">502</div>
+          <div class="kpi-label">Visitas anuncio</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">27</div>
+          <div class="kpi-label">Favoritos</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">15</div>
+          <div class="kpi-label">Días test</div>
+        </div>
+      </div>
+
+      <h4 style="margin: 20px 0 12px; color: #141B36;">Interesados reales</h4>
+      <table>
+        <tr><th>Nombre</th><th>Fecha</th><th>Perfil</th><th>Nacionalidad</th><th>Comentario</th></tr>
+        <tr><td>Anabel</td><td>10/03</td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Contacto al publicarse</td></tr>
+        <tr><td>Ana</td><td>12/03</td><td>Pareja joven</td><td>&#127466;&#127480; Española</td><td>Primera vivienda</td></tr>
+        <tr><td>Noelia</td><td>15/03</td><td>Inversora</td><td>&#127462;&#127479; Argentina</td><td>Vive en El Albir, busca inversión Elda</td></tr>
+        <tr><td>Isabel</td><td>17/03</td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Pareja de Elda</td></tr>
+        <tr><td>Vicente</td><td>24/03</td><td>Inversor</td><td>&#127466;&#127480; Español</td><td>Trabaja para grupo inversores</td></tr>
+      </table>
+
+      <div style="margin-top:16px; background: #141B36; border-radius:12px; padding:20px; text-align:center;">
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px;">Precio verificado MTVV</div>
+        <div style="font-size:36px; font-weight:800; color:#FF4D2E; margin-top:4px;">74.000&euro;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 5: TRIPLE VALIDACIÓN — Convergencia -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">&#9889;</div>
+      <div>
+        <div class="section-title">Triple Validación — Convergencia</div>
+        <div class="section-subtitle">3 fuentes independientes &rarr; 1 precio con certeza</div>
+      </div>
+    </div>
+
+    <div class="validation-grid">
+      <div class="validation-card scraping">
+        <div class="v-icon">&#128225;</div>
+        <div class="v-source">Scraping Portales</div>
+        <div class="v-price">75.285&euro;</div>
+        <div class="v-detail">57 testigos retirados<br>854&euro;/m² mediana<br>96 días en mercado</div>
+      </div>
+      <div class="validation-card notarial">
+        <div class="v-icon">&#127963;&#65039;</div>
+        <div class="v-source">Portal Notariado</div>
+        <div class="v-price">744&euro;/m²</div>
+        <div class="v-detail">831 operaciones reales<br>CP 03600 &middot; 12 meses rolling<br>Precio escriturado oficial</div>
+      </div>
+      <div class="validation-card mtvv">
+        <div class="v-icon">&#128300;</div>
+        <div class="v-source">MTVV Campo</div>
+        <div class="v-price">74.000&euro;</div>
+        <div class="v-detail">5 inmobiliarias consultadas<br>5 interesados en 15 días<br>Verificación con anuncio real</div>
+      </div>
+    </div>
+
+    <div class="convergence">
+      <div class="conv-label">Las 3 fuentes convergen</div>
+      <div class="conv-verdict">&#10003; CONVERGENCIA ALTA</div>
+      <div class="conv-price">74.000&euro; — 75.285&euro;</div>
+      <div class="conv-range">Desviación: 1,7%</div>
+      <div class="conv-note">Cuando 3 fuentes independientes coinciden, el dato tiene la máxima fiabilidad. Las fuentes son: scraping de portales (datos masivos), notariado oficial (transacciones escrituradas), y validación de campo (estudio presencial). Ningún competidor cruza estas 3 fuentes.</div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 6: ANÁLISIS DE INVERSIÓN CdU -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">&#128188;</div>
+      <div>
+        <div class="section-title">Análisis de Inversión CdU</div>
+        <div class="section-subtitle">Desglose completo: compra + obra + impuestos + licencia &rarr; margen real</div>
+      </div>
+      <span class="price-badge included">Incluido en 69&euro;</span>
+    </div>
+
+    <!-- Costes -->
+    <div class="card">
+      <div class="card-title">Desglose de costes</div>
+      <table>
+        <tr><th>Concepto</th><th style="text-align:right;">Importe</th></tr>
+        <tr><td>Precio compra local (asking)</td><td style="text-align:right;"><strong>108.000&euro;</strong></td></tr>
+        <tr><td>Obra (6 &times; 45m² &times; 600&euro;/m²)</td><td style="text-align:right;">162.000&euro;</td></tr>
+        <tr><td>ITP 8%</td><td style="text-align:right;">8.640&euro;</td></tr>
+        <tr><td>Notaría + Registro 1,5%</td><td style="text-align:right;">1.620&euro;</td></tr>
+        <tr><td>Licencia CdU</td><td style="text-align:right;">4.500&euro;</td></tr>
+        <tr><td>Gastos durante obra (6m &times; 350&euro;)</td><td style="text-align:right;">2.100&euro;</td></tr>
+        <tr class="highlight"><td><strong>INVERSIÓN TOTAL</strong></td><td style="text-align:right;"><strong style="color:#FF4D2E; font-size:16px;">286.860&euro;</strong></td></tr>
+      </table>
+
+      <div class="invest-grid" style="margin-top:20px;">
+        <div class="invest-result">
+          <div class="ir-label">Valor 6 viviendas</div>
+          <div class="ir-value">444.000&euro;</div>
+          <div class="ir-sub">6 &times; 74.000&euro;</div>
+        </div>
+        <div class="invest-result">
+          <div class="ir-label">Beneficio bruto</div>
+          <div class="ir-value">157.140&euro;</div>
+          <div class="ir-sub">Margen: 54,8%</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Escenarios -->
+    <div class="card">
+      <div class="card-title">Escenarios según precio de venta</div>
+      <div class="card-subtitle">Sensibilidad del margen a diferentes precios unitarios</div>
+      <table>
+        <tr><th>Si vendes a...</th><th style="text-align:right;">Valor total</th><th style="text-align:right;">Beneficio</th><th style="text-align:right;">Margen</th></tr>
+        <tr><td>69.000&euro;/ud <span style="color:#9ca3af; font-size:11px;">(mínimo MTVV)</span></td><td style="text-align:right;">414.000&euro;</td><td style="text-align:right;">127.140&euro;</td><td style="text-align:right;">44,3%</td></tr>
+        <tr class="highlight"><td><strong>74.000&euro;/ud</strong> <span style="color:#FF4D2E; font-size:11px;">(MTVV verificado)</span></td><td style="text-align:right;"><strong>444.000&euro;</strong></td><td style="text-align:right;"><strong>157.140&euro;</strong></td><td style="text-align:right;"><strong style="color:#10B981;">54,8%</strong></td></tr>
+        <tr><td>75.285&euro;/ud <span style="color:#9ca3af; font-size:11px;">(IMPULSO P50)</span></td><td style="text-align:right;">451.710&euro;</td><td style="text-align:right;">164.850&euro;</td><td style="text-align:right;">57,5%</td></tr>
+        <tr><td>80.000&euro;/ud <span style="color:#9ca3af; font-size:11px;">(consenso inmos)</span></td><td style="text-align:right;">480.000&euro;</td><td style="text-align:right;">193.140&euro;</td><td style="text-align:right;"><strong style="color:#10B981;">67,3%</strong></td></tr>
+      </table>
+    </div>
+
+    <!-- Veredicto -->
+    <div class="verdict">
+      <div class="verdict-icon">&#10003;</div>
+      <div>
+        <strong>OPORTUNIDAD</strong> — Margen superior al 40% en TODOS los escenarios. Triple validación confirma mercado activo con demanda real. Recomendación: ofertar con margen de negociación.
+      </div>
+    </div>
+
+    <!-- Precio máximo de compra -->
+    <div class="card">
+      <div class="card-title">Precio máximo de compra del local</div>
+      <div class="card-subtitle">Según el margen objetivo que quieras asegurar</div>
+      <table>
+        <tr><th>Margen objetivo</th><th style="text-align:right;">Precio máx. local</th></tr>
+        <tr><td>20% mínimo</td><td style="text-align:right;"><strong>~165.000&euro;</strong></td></tr>
+        <tr><td>30% mínimo</td><td style="text-align:right;"><strong>~140.000&euro;</strong></td></tr>
+        <tr><td>40% mínimo</td><td style="text-align:right;"><strong>~120.000&euro;</strong></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 7: CONCLUSIÓN -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #f3f4f6; color: #141B36;">&#128203;</div>
+      <div>
+        <div class="section-title">Conclusión del Estudio</div>
+        <div class="section-subtitle">Resumen ejecutivo &middot; Agustín Cavero 36-38, Elda</div>
+      </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(135deg, #fafbfc 0%, #f3f4f6 100%); border: 2px solid #e5e7eb;">
+      <ul class="conclusion-list">
+        <li><span style="font-size:18px;">&#128308;</span> <span>Precio MTVV verificado (campo): <strong>74.000&euro;</strong> por vivienda</span></li>
+        <li><span style="font-size:18px;">&#128225;</span> <span>Precio IMPULSO (scraping): <strong>75.285&euro;</strong> (P50, 57 testigos)</span></li>
+        <li><span style="font-size:18px;">&#127963;&#65039;</span> <span>Precio notarial: 744&euro;/m² escriturado, mercado con 831 ops/año</span></li>
+        <li><span style="font-size:18px;">&#10003;</span> <span>Las 3 fuentes convergen (desviación 1,7%)</span></li>
+        <li><span style="font-size:18px;">&#128200;</span> <span>Mercado activo: +21% tendencia, 5 interesados reales en 15 días</span></li>
+        <li><span style="font-size:18px;">&#128188;</span> <span>Operación CdU viable: margen <strong>54,8%</strong> sobre inversión total</span></li>
+        <li><span style="font-size:18px;">&#128293;</span> <span>Demanda confirmada: 1h/1b tiene <strong>90% de rotación</strong>, la oferta más escasa</span></li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="proto">Prototipo v2 — Datos reales</div>
+  <br>
+  <img class="footer-logo" src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/698227e0b7e498bfd5ff8b45.png" alt="IM·PULSO">
+  <div style="margin-top:8px; font-size:14px; font-weight:700; color:#141B36;">IM·PULSO — Inteligencia de Mercado Inmobiliario</div>
+  <div style="margin-top:6px;">hola@im-pulso.app &middot; im-pulso.app</div>
+  <div style="margin-top:4px;">Confidencial &middot; Abril 2026</div>
+</div>
+
+</body>
+</html>

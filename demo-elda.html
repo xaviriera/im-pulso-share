@@ -658,91 +658,179 @@
       grid-template-columns: 1fr !important;
     }
 
-    /* Tabla testigos con clase especial → cards apilados */
+    /* Testigos → cards COMPACTOS (4 líneas máx) */
     .table-mobile-cards,
     .table-mobile-cards tbody,
-    .table-mobile-cards tr,
-    .table-mobile-cards td {
+    .table-mobile-cards tr {
       display: block;
       width: 100%;
     }
-    .table-mobile-cards tr:first-child {
-      display: none; /* ocultar fila de encabezado */
-    }
+    .table-mobile-cards tr:first-child { display: none; }
     .table-mobile-cards tr {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
       border: 1px solid #e5e7eb;
       border-radius: 10px;
-      padding: 14px;
+      padding: 12px 14px;
       background: white;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto auto auto;
+      column-gap: 10px;
+      row-gap: 3px;
+      align-items: baseline;
     }
     .table-mobile-cards tr[style*="fff3f0"] {
       background: #fff3f0 !important;
       border-color: #FFD4C8 !important;
     }
     .table-mobile-cards td {
-      padding: 6px 0 6px 95px;
+      padding: 0;
       border-bottom: none;
-      position: relative;
-      min-height: 22px;
-      font-size: 13px;
+      font-size: 12px;
+      color: #6b7280;
+      white-space: normal;
     }
-    .table-mobile-cards td::before {
-      position: absolute;
-      left: 0;
-      top: 6px;
-      font-size: 10px;
-      color: #9ca3af;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      width: 85px;
-    }
+    /* T1/T2 — bold navy, columna izquierda */
     .table-mobile-cards td:nth-child(1) {
-      padding-left: 0;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      font-size: 16px;
+      font-weight: 800;
+      color: #141B36;
+    }
+    /* Dirección — línea 1, columna central */
+    .table-mobile-cards td:nth-child(2) {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      font-size: 13px;
+      color: #141B36;
+      font-weight: 600;
+    }
+    /* Precio — línea 1, derecha, destacado */
+    .table-mobile-cards td:nth-child(6) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
       font-size: 15px;
       font-weight: 800;
       color: #141B36;
-      margin-bottom: 6px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #f3f4f6;
+      text-align: right;
     }
-    .table-mobile-cards td:nth-child(1)::before { content: ""; }
-    .table-mobile-cards td:nth-child(2)::before { content: "Dirección"; }
-    .table-mobile-cards td:nth-child(3)::before { content: "m²"; }
-    .table-mobile-cards td:nth-child(4)::before { content: "Hab/Baño"; }
-    .table-mobile-cards td:nth-child(5)::before { content: "Año"; }
-    .table-mobile-cards td:nth-child(6)::before { content: "Precio"; }
-    .table-mobile-cards td:nth-child(7) {
-      padding-left: 0;
-      padding-top: 10px;
-      margin-top: 6px;
-      border-top: 1px solid #f3f4f6;
-      color: #6b7280;
+    /* Stats línea (m² · hab/baño · año) — línea 2, span 3 cols */
+    .table-mobile-cards td:nth-child(3),
+    .table-mobile-cards td:nth-child(4),
+    .table-mobile-cards td:nth-child(5) {
+      grid-row: 2 / 3;
       font-size: 12px;
-      line-height: 1.5;
+      color: #6b7280;
     }
-    .table-mobile-cards td:nth-child(7)::before {
-      position: static;
-      display: block;
-      margin-bottom: 4px;
-      content: "Detalle";
-      color: #FF4D2E;
+    .table-mobile-cards td:nth-child(3) {
+      grid-column: 1 / 2;
+    }
+    .table-mobile-cards td:nth-child(3)::after { content: "m²"; opacity: 0.6; }
+    .table-mobile-cards td:nth-child(4) {
+      grid-column: 2 / 3;
+    }
+    .table-mobile-cards td:nth-child(5) {
+      grid-column: 3 / 4;
+      text-align: right;
+    }
+    /* Detalle — línea 3, span 3 cols, gris */
+    .table-mobile-cards td:nth-child(7) {
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+      margin-top: 6px;
+      padding-top: 6px;
+      border-top: 1px solid #f3f4f6;
+      font-size: 11px;
+      color: #9ca3af;
+      line-height: 1.4;
     }
 
-    /* Otras tablas: scroll horizontal limpio con sombra indicadora */
-    .card > table:not(.table-mobile-cards) {
+    /* Tablas normales: ancho completo, font reducido, sin nowrap */
+    .card > table:not(.table-mobile-cards):not(.table-scroll) {
+      width: 100%;
+      font-size: 12px;
+      table-layout: auto;
+    }
+    .card > table:not(.table-mobile-cards):not(.table-scroll) th,
+    .card > table:not(.table-mobile-cards):not(.table-scroll) td {
+      padding: 8px 6px;
+      font-size: 12px;
+      white-space: normal;
+      word-break: break-word;
+    }
+    .card > table:not(.table-mobile-cards):not(.table-scroll) th {
+      font-size: 10px;
+      padding: 8px 6px;
+    }
+
+    /* Tablas anchas (5+ cols) con scroll horizontal */
+    .card > table.table-scroll {
       display: block;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       white-space: nowrap;
-      box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.2);
+      box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.25);
     }
-    .card > table:not(.table-mobile-cards) td,
-    .card > table:not(.table-mobile-cards) th {
+    .card > table.table-scroll td,
+    .card > table.table-scroll th {
       white-space: nowrap;
-      padding: 8px 10px;
-      font-size: 12px;
+      padding: 7px 9px;
+      font-size: 11px;
+    }
+
+    /* Price-widget P25/P50/P75 → P50 arriba, P25+P75 abajo en 2 cols */
+    .price-widget {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "main main"
+        "p25 p75";
+      gap: 10px;
+    }
+    .price-widget .price-box.main {
+      grid-area: main;
+      transform: none;
+      padding: 20px 16px;
+    }
+    .price-widget .price-box.main .price-value { font-size: 32px !important; }
+    .price-widget .price-box:nth-child(1) { grid-area: p25; }
+    .price-widget .price-box:nth-child(3) { grid-area: p75; }
+
+    /* Badge PULSO → icono circular mini consistente */
+    .pulso-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #FF4D2E;
+      color: white;
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      padding: 0;
+      border-radius: 50%;
+      font-size: 10px;
+      font-weight: 800;
+      vertical-align: middle;
+      margin-left: 4px;
+      text-indent: -9999px;
+      overflow: hidden;
+      position: relative;
+    }
+    .pulso-badge::before {
+      content: "";
+      text-indent: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background-image: url('https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/69df3ab2243975ecf73083c8.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      filter: brightness(0) invert(1);
     }
   }
 </style>
@@ -830,7 +918,7 @@
     <div class="card">
       <div class="card-title">1.2 Por tipo de vivienda — Venta</div>
       <div class="card-subtitle">Qué se publica y qué se vende en Elda</div>
-      <table>
+      <table class="table-scroll">
         <tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th></tr>
         <tr class="highlight"><td><strong>&#127919; Piso</strong> <span class="pulso-badge">&#127919; PULSO</span></td><td>1.349</td><td>67%</td><td>1.119</td><td><strong style="color:#FF4D2E;">83%</strong></td><td>230</td></tr>
         <tr><td>Chalet</td><td>497</td><td>25%</td><td>381</td><td>77%</td><td>116</td></tr>
@@ -847,7 +935,7 @@
     <div class="card">
       <div class="card-title">1.3 Por hab × baños — Venta <span style="background:#fff3f0; color:#FF4D2E; font-size:10px; padding:2px 8px; border-radius:10px; font-weight:800; margin-left:8px;">EL MÁS VALIOSO</span></div>
       <div class="card-subtitle">Combinación que más se vende vs. lo que se publica</div>
-      <table>
+      <table class="table-scroll">
         <tr><th>Combo</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Insight</th></tr>
         <tr class="highlight"><td><strong>1h/1b</strong> <span class="pulso-badge">&#127919; PULSO</span></td><td>75</td><td>68</td><td><strong style="color:#FF4D2E;">90%</strong></td><td>Máxima rotación, mínima oferta</td></tr>
         <tr><td>2h/1b</td><td>152</td><td>129</td><td><strong style="color:#FF4D2E;">85%</strong></td><td>Alta demanda</td></tr>
@@ -1137,10 +1225,15 @@
     </div>
 
     <!-- 3.4 Cruce Notarial × IMPULSO (ampliado) -->
-    <div class="card">
-      <div class="card-title">3.4 Cruce Notarial &times; IMPULSO</div>
-      <div class="card-subtitle">Contraste entre datos oficiales y datos de mercado</div>
-      <table>
+    <div class="card" style="background: linear-gradient(135deg, #f5f3ff 0%, #fff3f0 100%); border: 2px solid #ddd6fe;">
+      <div class="card-title" style="display:flex; align-items:center; gap:10px;">
+        <span style="background:#8B5CF6; color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:14px;">&#127963;&#65039;</span>
+        <span>&times;</span>
+        <span style="background:#FF4D2E; color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:14px;">&#128225;</span>
+        <span>3.4 Cruce Notarial &times; IMPULSO</span>
+      </div>
+      <div class="card-subtitle">Dato oficial escriturado &times; dato de mercado real &rarr; interpretación cruzada</div>
+      <table class="table-scroll">
         <tr><th>Indicador</th><th>Notarial</th><th>IMPULSO</th><th>Lectura</th></tr>
         <tr><td>&euro;/m² mercado general</td><td>744&euro;/m² <span style="color:#9ca3af; font-size:11px;">(todos los estados)</span></td><td>854&euro;/m² <span style="color:#9ca3af; font-size:11px;">(reformado)</span></td><td>La reforma aporta +15% sobre escriturado</td></tr>
         <tr><td>Precio estimado 45m²</td><td>~33.480&euro; <span style="color:#9ca3af; font-size:11px;">(a reformar)</span></td><td>75.285&euro; <span style="color:#9ca3af; font-size:11px;">(reformado)</span></td><td>Margen de transformación claro</td></tr>
@@ -1149,6 +1242,16 @@
         <tr><td>Mejor momento</td><td>Pico abril-julio (+41%)</td><td>96 días mercado</td><td>Lanzar en abril para capturar pico</td></tr>
         <tr><td>Perfil comprador</td><td>80% nacionales, 31-50 años</td><td>—</td><td>Comprador final + inversor, valora reformado</td></tr>
       </table>
+
+      <!-- Conclusión del cruce -->
+      <div style="margin-top: 18px; padding: 18px 20px; background: #141B36; border-radius: 12px; color: white;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.6; margin-bottom: 8px; font-weight: 700;">
+          &#10003; Conclusión del cruce
+        </div>
+        <div style="font-size: 14px; line-height: 1.6;">
+          Dato oficial dice <strong style="color:#FF4D2E;">33K a reformar</strong> &middot; mercado dice <strong style="color:#FF4D2E;">75K reformado</strong>. Eso es un <strong style="color:#FF4D2E;">margen de transformación de +42K</strong> por unidad que SÍ existe, SÍ se escritura, y SÍ se vende rápido (831 ops/año en el CP). Momento óptimo de salida: <strong style="color:#FF4D2E;">abril-julio</strong>.
+        </div>
+      </div>
     </div>
   </div>
 
@@ -1338,7 +1441,7 @@
       </div>
 
       <h4 style="margin: 20px 0 12px; color: #141B36;">Interesados reales</h4>
-      <table>
+      <table class="table-scroll">
         <tr><th>Nombre</th><th>Fecha</th><th>Perfil</th><th>Nacionalidad</th><th>Comentario</th></tr>
         <tr><td>Anabel</td><td>10/03</td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Contacto al publicarse</td></tr>
         <tr><td>Ana</td><td>12/03</td><td>Pareja joven</td><td>&#127466;&#127480; Española</td><td>Primera vivienda</td></tr>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO — Planteamiento producto v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  .header {
+    background: #141B36;
+    padding: 16px 0;
+  }
+  .header-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header img { height: 32px; }
+  .header .badge {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.7);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px;
+  }
+  h1 {
+    font-size: 26px;
+    font-weight: 800;
+    color: #141B36;
+    margin-bottom: 8px;
+  }
+  .intro {
+    font-size: 15px;
+    color: #6b7280;
+    margin-bottom: 32px;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #141B36;
+    margin-top: 36px;
+    margin-bottom: 14px;
+    padding-left: 12px;
+    border-left: 4px solid #FF4D2E;
+  }
+  p { margin: 10px 0; font-size: 15px; }
+  .card {
+    background: white;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 16px 0;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card-dark {
+    background: #141B36;
+    color: white;
+    border-radius: 14px;
+    padding: 24px;
+    margin: 16px 0;
+  }
+  .card-dark .label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.5;
+    margin-bottom: 6px;
+  }
+  .card-dark .value {
+    font-size: 20px;
+    font-weight: 800;
+    color: #FF4D2E;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  th {
+    background: #141B36;
+    color: white;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  tr:hover td { background: #f9fafb; }
+  ul { padding-left: 20px; margin: 10px 0; }
+  li { margin-bottom: 6px; font-size: 14px; }
+  .highlight {
+    background: #fff3f0;
+    border-left: 4px solid #FF4D2E;
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .highlight-green {
+    background: #ecfdf5;
+    border-left: 4px solid #10B981;
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .demo-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .demo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+    color: #141B36;
+    font-weight: 600;
+    font-size: 14px;
+    transition: border-color 0.2s;
+  }
+  .demo-link:hover { border-color: #FF4D2E; }
+  .demo-link .dl-badge {
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .footer {
+    text-align: center;
+    padding: 40px 0 30px;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 40px;
+  }
+  .footer img { height: 50px; margin-bottom: 8px; }
+  .footer .ft-text { font-size: 12px; color: #9ca3af; }
+  strong { color: #141B36; }
+  @media (max-width: 600px) {
+    .container { padding: 24px 16px; }
+    h1 { font-size: 22px; }
+    h2 { font-size: 16px; }
+    .card { padding: 18px; }
+    table { font-size: 12px; display: block; overflow-x: auto; }
+    th, td { padding: 6px 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/697e322e1311f62a92201cc6.png" alt="IM·PULSO">
+    <span class="badge">Interno — Abril 2026</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <h1>IM·PULSO — Dónde estamos y hacia dónde vamos</h1>
+  <p class="intro">Rafa, te comparto las conclusiones del análisis que he hecho estas últimas semanas sobre la competencia, la comunidad, y el potencial real de IM·PULSO. Quiero que veas el punto en el que estamos y lo que implica dar el siguiente paso.</p>
+
+  <!-- LO QUE HEMOS CONSTRUIDO -->
+  <h2>Lo que ya hemos construido</h2>
+
+  <p>Entre los dos hemos montado algo que funciona:</p>
+
+  <div class="card">
+    <table>
+      <tr><th>Qué</th><th>Estado</th></tr>
+      <tr><td>Base de datos Supabase</td><td><strong>248K+ propiedades</strong>, histórico de precios</td></tr>
+      <tr><td>Scraping Idealista</td><td>105+ municipios, scrapeos periódicos</td></tr>
+      <tr><td>Workflow PULSO (n8n)</td><td>Operativo, 16 bloques, informes generados</td></tr>
+      <tr><td>Workflow IMPULSO (n8n)</td><td>Operativo, v6.1 con cálculos CdU + notarial</td></tr>
+      <tr><td>Portal Notariado</td><td>Integrado manualmente, 3 CPs cargados</td></tr>
+      <tr><td>Dossieres de oportunidades</td><td>CORE + FULL operativos, formulario legal creado</td></tr>
+      <tr><td>Web + branding</td><td>im-pulso.app, logo, firma, identidad</td></tr>
+      <tr><td>Clientes atendidos</td><td>Karen, Juan Castillo, Esther, Salva, José Peiró</td></tr>
+    </table>
+  </div>
+
+  <p><strong>Tu aportación</strong> ha sido clave: la base de datos, el scraping, el conocimiento del mercado, la red de contactos en la comunidad, la encuesta, el trabajo con JT en oportunidades, y el QA de los informes.</p>
+
+  <p><strong>Mi aportación</strong> ha sido la parte técnica: diseño de los workflows n8n, integración del notarial, los cálculos de inversión CdU, el dossier completo (CORE + FULL + formulario), la automatización, y toda la capa de producto/diseño/IA.</p>
+
+  <!-- COMPETENCIA -->
+  <h2>Lo que he descubierto de la competencia</h2>
+
+  <p>He analizado a fondo 3 competidores:</p>
+
+  <div class="card">
+    <table>
+      <tr><th>Competidor</th><th>Qué es</th><th>Precio</th><th>Peligrosidad</th></tr>
+      <tr><td><strong>Invisor.es</strong></td><td>Startup española, mismo perfil que nosotros</td><td>42-117€/mes</td><td style="color:#FF4D2E; font-weight:700;">Directa</td></tr>
+      <tr><td><strong>Lystos</strong></td><td>Barcelona, 6 años, 150+ fuentes</td><td>79-199€/mes</td><td style="color:#F59E0B; font-weight:700;">Indirecta</td></tr>
+      <tr><td><strong>Casafari</strong></td><td>Gigante europeo, enterprise</td><td>No público</td><td style="color:#9ca3af;">Lejana</td></tr>
+    </table>
+  </div>
+
+  <div class="highlight-green">
+    <strong>La buena noticia:</strong> ninguno de ellos tiene nada parecido al PULSO (análisis de rotación por zona), ni tiene el MTVV integrado, ni cubre CdU con cálculos específicos. Eso es solo nuestro.
+  </div>
+
+  <div class="highlight">
+    <strong>Lo que nos falta:</strong> el output en Notion no es profesional. Lystos tiene PDF con marca propia y link interactivo. Invisor genera memorándums exportables. Nosotros tenemos un Notion largo que la gente no lee. Ese es el gap más urgente.
+  </div>
+
+  <!-- ENCUESTA -->
+  <h2>Lo que dice tu encuesta (115 respuestas)</h2>
+
+  <div class="card">
+    <table>
+      <tr><th>Dato</th><th>Valor</th></tr>
+      <tr><td>Perfil dominante</td><td><strong>54% hace flip</strong>, 35% alquiler, 23% CdU</td></tr>
+      <tr><td>Inversores puros (no gestionan)</td><td><strong>48%</strong> — quieren certeza, no herramientas</td></tr>
+      <tr><td>Quieren hacer MÁS operaciones en 2026</td><td><strong>85%</strong></td></tr>
+      <tr><td>Capital disponible en el grupo</td><td><strong>€21M+</strong> (mediana €150K/persona)</td></tr>
+      <tr><td>Problema #1</td><td>Precios elevados (57 menciones)</td></tr>
+      <tr><td>Problema #2</td><td>Falta de oportunidades (47 menciones)</td></tr>
+      <tr><td>Problema #3</td><td>"Mi mentalidad / yo mismo" (27 menciones)</td></tr>
+    </table>
+  </div>
+
+  <p>Los problemas #1 y #2 son <strong>exactamente</strong> lo que IM·PULSO resuelve. El #3 (parálisis por análisis) se rompe cuando tienes datos fiables. Hay una demanda real y concreta.</p>
+
+  <!-- LA DEMO -->
+  <h2>Lo que puede llegar a ser — la demo</h2>
+
+  <p>He construido 3 prototipos visuales con datos reales de Elda (la operación de Salva) que muestran cómo se vería IM·PULSO v2 como aplicación web. Cada uno muestra un nivel de desbloqueo diferente:</p>
+
+  <div class="demo-links">
+    <a href="demo-gratis.html" class="demo-link">
+      <span class="dl-badge" style="background:#ecfdf5; color:#10B981;">GRATIS</span>
+      <span>Solo PULSO zona — lo que ve todo el mundo gratis</span>
+    </a>
+    <a href="demo-29.html" class="demo-link">
+      <span class="dl-badge" style="background:#fff3f0; color:#FF4D2E;">29€</span>
+      <span>+ IMPULSO desbloqueado — precio, testigos, contactos</span>
+    </a>
+    <a href="demo-completa.html" class="demo-link">
+      <span class="dl-badge" style="background:#ecfdf5; color:#10B981; border: 2px solid #10B981;">69€</span>
+      <span>+ MTVV + inversión CdU — triple validación completa</span>
+    </a>
+  </div>
+
+  <p>Esto es un prototipo, no la aplicación final. Pero muestra el potencial: <strong>información progresiva</strong> (gratis → desbloquear por pago), <strong>triple validación</strong> (scraping + notarial + MTVV), y un diseño moderno que se puede compartir con un link.</p>
+
+  <!-- ESTRATEGIA -->
+  <h2>La estrategia de producto</h2>
+
+  <p>De todo el análisis salen estas conclusiones claras:</p>
+
+  <ul>
+    <li><strong>Producto fusionado</strong> — en vez de PULSO e IMPULSO como 2 informes largos, una experiencia única adaptada al perfil del inversor</li>
+    <li><strong>Freemium</strong> — precio de entrada bajísimo (29€) para que entre mucha gente. La gente ve el potencial gratis y paga para desbloquear los datos concretos</li>
+    <li><strong>MTVV como diferenciador</strong> — nadie más tiene datos de campo de inversores formados. Cada MTVV que entra mejora todo el sistema</li>
+    <li><strong>Portal web moderno</strong> — adiós Notion. Link compartible, PDF exportable, diseño tech que impacta</li>
+    <li><strong>Captación MTVV</strong> — sistema de incentivos: aportas un MTVV → recibes un informe gratis. Dos tipos de proveedor: el que hace operaciones puntuales y el profesional que hace MTVVs como servicio</li>
+    <li><strong>Rama de oportunidades</strong> — lo que ya hacemos con JT pero escalado: validar deals con sello IM·PULSO antes de presentarlos a inversores</li>
+  </ul>
+
+  <!-- PRICING -->
+  <h2>Modelo de precios propuesto</h2>
+
+  <div class="card">
+    <table>
+      <tr><th>Tier</th><th>Precio</th><th>Qué incluye</th></tr>
+      <tr><td><strong>Gratis</strong></td><td>0€</td><td>Resumen de zona (rotación, producto estrella, KPIs)</td></tr>
+      <tr><td><strong>Análisis</strong></td><td>29€</td><td>Precio mercado + veredicto + testigos + contactos</td></tr>
+      <tr><td><strong>Validación</strong></td><td>69€</td><td>+ MTVV cruzado + notarial + inversión CdU completa</td></tr>
+      <tr><td><strong>Pack zona</strong></td><td>149€</td><td>PULSO completo + 3 validaciones incluidas</td></tr>
+      <tr><td><strong>Suscripción</strong></td><td>79€/mes</td><td>Ilimitado en 1 provincia + alertas</td></tr>
+      <tr><td><strong>Partner</strong></td><td>Pactado</td><td>Servicio completo (tipo José Peiró)</td></tr>
+    </table>
+  </div>
+
+  <p>Referencia: Invisor cobra 42-117€/mes. Nuestro modelo por operación es más competitivo para el que hace 2-3 operaciones al año.</p>
+
+  <!-- EL PUNTO -->
+  <h2>Dónde estoy yo con todo esto</h2>
+
+  <p>Rafa, quiero ser directo contigo.</p>
+
+  <p>Hasta aquí he trabajado en IM·PULSO como socio: he construido los workflows, el dossier, la integración del notarial, los cálculos de inversión, el branding, y ahora todo este análisis estratégico y las demos. Son muchas horas técnicas que he puesto encima de la mesa como parte de mi compromiso con el proyecto.</p>
+
+  <p>Pero el siguiente paso — <strong>implementar el portal web, el sistema freemium, la integración del MTVV, la captación, el diseño de la aplicación</strong> — es un trabajo técnico de otro nivel. Son semanas de desarrollo con herramientas de IA pagadas, diseño UX, programación, tests.</p>
+
+  <div class="highlight">
+    <strong>Lo que necesito plantear:</strong> una cosa es la parte de socio (estrategia, decisiones, visión compartida) y otra es el trabajo técnico de implementación. Hasta ahora no he diferenciado las dos, pero necesito hacerlo a partir de ahora. Mis horas técnicas tienen que estar cubiertas de alguna manera, igual que si contratáramos a alguien externo para hacerlo — con la diferencia de que yo conozco el producto de dentro y lo haría a un precio mucho mejor que cualquier alternativa.
+  </div>
+
+  <p>Esto no cambia nada de nuestra relación ni de lo que hemos construido. Simplemente necesito que el trabajo técnico que viene tenga una compensación, porque es mucho y no puedo seguir absorbiéndolo como "parte de ser socio".</p>
+
+  <!-- PRÓXIMOS PASOS -->
+  <h2>Próximos pasos</h2>
+
+  <div class="card">
+    <p style="font-size: 14px; margin: 0;">Lo que propongo es que hablemos de:</p>
+    <ul style="margin-top: 12px;">
+      <li>Si la dirección del producto que planteo te encaja (o qué ajustarías)</li>
+      <li>Si hoy con José Muñoz hay oportunidad de tantear la integración del MTVV</li>
+      <li>Cómo cubrimos la parte técnica de la implementación</li>
+      <li>Qué modelo nos funciona a los dos para seguir adelante</li>
+    </ul>
+  </div>
+
+  <p>Las demos ya las tienes. El análisis está hecho. El plan está diseñado. Solo falta decidir cómo lo ejecutamos.</p>
+
+</div>
+
+<div class="footer">
+  <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/698227e0b7e498bfd5ff8b45.png" alt="IM·PULSO">
+  <div class="ft-text">IM·PULSO — Inteligencia de Mercado Inmobiliario<br>Confidencial · Abril 2026</div>
+</div>
+
+</body>
+</html>

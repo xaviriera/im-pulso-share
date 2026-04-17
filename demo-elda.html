@@ -797,6 +797,76 @@
     .price-widget .price-box:nth-child(1) { grid-area: p25; }
     .price-widget .price-box:nth-child(3) { grid-area: p75; }
 
+    /* Tabla "Lo que dicen las inmobiliarias" → cards móvil */
+    .table-cards-inmos,
+    .table-cards-inmos tbody,
+    .table-cards-inmos tr {
+      display: block;
+      width: 100%;
+    }
+    .table-cards-inmos tr:first-child { display: none; }
+    .table-cards-inmos tr {
+      margin-bottom: 10px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 12px 14px;
+      background: white;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      column-gap: 10px;
+      row-gap: 4px;
+      align-items: baseline;
+    }
+    .table-cards-inmos td {
+      padding: 0;
+      border-bottom: none;
+      font-size: 12px;
+      color: #6b7280;
+      white-space: normal;
+    }
+    /* Inmo X (bold navy) */
+    .table-cards-inmos td:nth-child(1) {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+      font-size: 15px;
+      font-weight: 800;
+      color: #141B36;
+    }
+    /* Precio (bold naranja derecha) */
+    .table-cards-inmos td:nth-child(2) {
+      grid-column: 3 / 4;
+      grid-row: 1 / 2;
+      font-size: 14px;
+      font-weight: 800;
+      color: #FF4D2E;
+      text-align: right;
+    }
+    /* Plazo (small gris, línea 2) */
+    .table-cards-inmos td:nth-child(3) {
+      grid-column: 1 / 4;
+      grid-row: 2 / 3;
+      font-size: 11px;
+      color: #9ca3af;
+      font-weight: 600;
+    }
+    .table-cards-inmos td:nth-child(3)::before {
+      content: "Plazo venta: ";
+      color: #9ca3af;
+      font-weight: 400;
+    }
+    /* Insight (span completo, italic gris pequeño) */
+    .table-cards-inmos td:nth-child(4) {
+      grid-column: 1 / 4;
+      grid-row: 3 / 4;
+      margin-top: 6px;
+      padding-top: 8px;
+      border-top: 1px solid #f3f4f6;
+      font-size: 12px;
+      color: #6b7280;
+      font-style: italic;
+      line-height: 1.5;
+    }
+
     /* Badge PULSO → icono circular mini consistente */
     .pulso-badge {
       display: inline-flex;
@@ -1321,7 +1391,7 @@
         <div class="step-number">1</div>
         <div class="step-title">Lo que dicen las inmobiliarias (5 consultadas)</div>
       </div>
-      <table>
+      <table class="table-cards-inmos">
         <tr><th>Inmobiliaria</th><th>Precio</th><th>Plazo venta</th><th>Insight clave</th></tr>
         <tr><td><strong>Inmo 1</strong></td><td><strong>75K-80K</strong></td><td>&lt; 1 mes</td><td>"Hay demanda de todo tipo. 1 hab entre 75K-80K"</td></tr>
         <tr><td><strong>Inmo 2</strong></td><td><strong>75K-85K</strong></td><td>&lt; 1 mes</td><td>"En 75K lo vendo en medio día a un inversor de mi cartera"</td></tr>
@@ -1353,8 +1423,24 @@
         <tr><td><strong>T6</strong></td><td>Fraternidad (zona)</td><td>50</td><td>2h/1b bajo</td><td>—</td><td><strong>75.000&euro;</strong></td><td>Piso origen. Retirado el 19/03/2026. 160 visitas</td></tr>
       </table>
       <div class="insight" style="background:#fff3f0; border-left:4px solid #FF4D2E; padding:12px 16px; margin-top:12px; border-radius:0 8px 8px 0; font-size:13px;">
-        <strong>Dato clave:</strong> Los testigos T4 y T5 son operaciones de CdU/obra nueva ya terminadas en la misma zona — confirman que el modelo funciona y los precios de venta post-transformación están entre 98K-120K para calidades superiores.
+        <strong>Dato clave:</strong> T4 y T5 son operaciones de CdU/obra nueva ya terminadas en la misma zona — confirman que el modelo funciona y los precios de venta post-transformación están entre 98K-120K para calidades superiores.
       </div>
+
+      <!-- Breakdown cálculo Paso 2 -->
+      <div style="margin-top: 14px; padding: 16px; background: #f9fafb; border-radius: 10px; border: 1px dashed #d1d5db;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; font-weight: 700; margin-bottom: 10px;">
+          Cómo se construye el precio del Paso 2
+        </div>
+        <div style="font-size: 13px; line-height: 1.7; color: #374151;">
+          <div>&bull; <strong>Piso origen reformado (T6):</strong> 75.000&euro; &larr; <em>suelo del rango</em></div>
+          <div>&bull; <strong>Mediana 1h/1b comparables zona (T2):</strong> 89.900&euro;</div>
+          <div>&bull; <strong>Obra nueva/CdU terminada (T3/T4/T5):</strong> 98.000-120.000&euro; &larr; <em>techo aspiracional</em></div>
+          <div style="margin-top: 8px; padding-top: 10px; border-top: 1px solid #e5e7eb;">
+            &rarr; Para 1h/1b ~45m² reformado en Fraternidad (calidad media): <strong style="color:#FF4D2E;">82.500&euro;</strong> como tope realista
+          </div>
+        </div>
+      </div>
+
       <div style="margin-top:16px; background: #141B36; border-radius:12px; padding:16px; text-align:center;">
         <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px;">Precio Paso 2</div>
         <div style="font-size:28px; font-weight:800; color:#FF4D2E; margin-top:4px;">82.500&euro;</div>
@@ -1381,7 +1467,22 @@
           <div style="font-size:24px; font-weight:800; color:#FF4D2E; margin-top:4px;">89.000&euro;</div>
         </div>
       </div>
-      <div class="insight insight-gray">
+      <!-- Breakdown construcción hipótesis -->
+      <div style="margin-top: 14px; padding: 16px; background: #f9fafb; border-radius: 10px; border: 1px dashed #d1d5db;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #6b7280; font-weight: 700; margin-bottom: 10px;">
+          Cómo se construye la hipótesis
+        </div>
+        <div style="font-size: 13px; line-height: 1.7; color: #374151;">
+          <div>&bull; <strong>Paso 1 (inmobiliarias):</strong> consenso 72K-80K para venta rápida (&lt; 1 mes)</div>
+          <div>&bull; <strong>Paso 2 (testigos):</strong> tope 82.500&euro; con T3/T4/T5 CdU terminado como ancla superior (98K-120K)</div>
+          <div>&bull; <strong>Peso al testigo obra nueva T4:</strong> +6.500&euro; por referencia aspiracional comprobada en zona</div>
+          <div style="margin-top: 8px; padding-top: 10px; border-top: 1px solid #e5e7eb;">
+            &rarr; Hipótesis <strong style="color:#FF4D2E;">89.000&euro;</strong> = precio test para medir respuesta real del mercado
+          </div>
+        </div>
+      </div>
+
+      <div class="insight insight-gray" style="margin-top: 12px;">
         Le hemos dado peso al testigo de obra nueva como precio tope. El consenso de inmobiliarias ancla entre 75K-80K.
       </div>
     </div>
@@ -1442,17 +1543,63 @@
 
       <h4 style="margin: 20px 0 12px; color: #141B36;">Interesados reales</h4>
       <table class="table-scroll">
-        <tr><th>Nombre</th><th>Fecha</th><th>Perfil</th><th>Nacionalidad</th><th>Comentario</th></tr>
-        <tr><td>Anabel</td><td>10/03</td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Contacto al publicarse</td></tr>
-        <tr><td>Ana</td><td>12/03</td><td>Pareja joven</td><td>&#127466;&#127480; Española</td><td>Primera vivienda</td></tr>
-        <tr><td>Noelia</td><td>15/03</td><td>Inversora</td><td>&#127462;&#127479; Argentina</td><td>Vive en El Albir, busca inversión Elda</td></tr>
-        <tr><td>Isabel</td><td>17/03</td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Pareja de Elda</td></tr>
-        <tr><td>Vicente</td><td>24/03</td><td>Inversor</td><td>&#127466;&#127480; Español</td><td>Trabaja para grupo inversores</td></tr>
+        <tr><th>Nombre</th><th>Fecha</th><th>Día</th><th>Precio activo</th><th>Perfil</th><th>Nacionalidad</th><th>Comentario</th></tr>
+        <tr><td>Anabel</td><td>10/03</td><td>1</td><td><strong style="color:#FF4D2E;">89.000&euro;</strong></td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Contacto al publicarse</td></tr>
+        <tr><td>Ana</td><td>12/03</td><td>3</td><td><strong style="color:#FF4D2E;">83.000&euro;</strong></td><td>Pareja joven</td><td>&#127466;&#127480; Española</td><td>Primera vivienda</td></tr>
+        <tr><td>Noelia</td><td>15/03</td><td>6</td><td><strong style="color:#FF4D2E;">83.000&euro;</strong></td><td>Inversora</td><td>&#127462;&#127479; Argentina</td><td>Vive en El Albir, busca inversión Elda</td></tr>
+        <tr><td>Isabel</td><td>17/03</td><td>8</td><td><strong style="color:#FF4D2E;">78.000&euro;</strong></td><td>Inversora</td><td>&#127466;&#127480; Española</td><td>Pareja de Elda</td></tr>
+        <tr><td>Vicente</td><td>24/03</td><td>15</td><td><strong style="color:#FF4D2E;">69.000&euro;</strong></td><td>Inversor</td><td>&#127466;&#127480; Español</td><td>Trabaja para grupo inversores</td></tr>
       </table>
+
+      <!-- Distribución de demanda / campana -->
+      <div style="margin-top: 18px; padding: 18px; background: linear-gradient(135deg, #fff9f8 0%, #fff3f0 100%); border-radius: 12px; border: 1px solid #FFD4C8;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #FF4D2E; font-weight: 700; margin-bottom: 12px;">
+          &#128202; Distribución de demanda por franja de precio
+        </div>
+        <div class="demand-bars" style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="display: grid; grid-template-columns: 70px 1fr 30px; align-items: center; gap: 10px; font-size: 13px;">
+            <span style="font-weight: 700; color: #141B36;">89.000&euro;</span>
+            <div style="background: #e5e7eb; height: 24px; border-radius: 6px; overflow: hidden;">
+              <div style="background: #FF4D2E; width: 20%; height: 100%; border-radius: 6px;"></div>
+            </div>
+            <span style="font-weight: 800; color: #141B36;">1</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 70px 1fr 30px; align-items: center; gap: 10px; font-size: 13px;">
+            <span style="font-weight: 700; color: #141B36;">83.000&euro;</span>
+            <div style="background: #e5e7eb; height: 24px; border-radius: 6px; overflow: hidden;">
+              <div style="background: #FF4D2E; width: 40%; height: 100%; border-radius: 6px;"></div>
+            </div>
+            <span style="font-weight: 800; color: #FF4D2E;">2 &larr;</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 70px 1fr 30px; align-items: center; gap: 10px; font-size: 13px;">
+            <span style="font-weight: 700; color: #141B36;">78.000&euro;</span>
+            <div style="background: #e5e7eb; height: 24px; border-radius: 6px; overflow: hidden;">
+              <div style="background: #FF4D2E; width: 20%; height: 100%; border-radius: 6px;"></div>
+            </div>
+            <span style="font-weight: 800; color: #141B36;">1</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 70px 1fr 30px; align-items: center; gap: 10px; font-size: 13px;">
+            <span style="font-weight: 700; color: #9ca3af;">74.000&euro;</span>
+            <div style="background: #e5e7eb; height: 24px; border-radius: 6px;"></div>
+            <span style="font-weight: 800; color: #9ca3af;">0</span>
+          </div>
+          <div style="display: grid; grid-template-columns: 70px 1fr 30px; align-items: center; gap: 10px; font-size: 13px;">
+            <span style="font-weight: 700; color: #141B36;">69.000&euro;</span>
+            <div style="background: #e5e7eb; height: 24px; border-radius: 6px; overflow: hidden;">
+              <div style="background: #FF4D2E; width: 20%; height: 100%; border-radius: 6px;"></div>
+            </div>
+            <span style="font-weight: 800; color: #141B36;">1</span>
+          </div>
+        </div>
+        <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid #FFD4C8; font-size: 13px; line-height: 1.6; color: #141B36;">
+          <strong style="color:#FF4D2E;">Lectura:</strong> La demanda real se concentra entre <strong>78K-89K</strong> (80% de contactos en los primeros 8 días). El precio de mercado está ahí — no en el mínimo 69K. Bajar por debajo de 78K sería regalar margen.
+        </div>
+      </div>
 
       <div style="margin-top:16px; background: #141B36; border-radius:12px; padding:20px; text-align:center;">
         <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:1px;">Precio verificado MTVV</div>
         <div style="font-size:36px; font-weight:800; color:#FF4D2E; margin-top:4px;">74.000&euro;</div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 8px;">(mínimo seguro · franja real 78-89K)</div>
       </div>
     </div>
   </div>

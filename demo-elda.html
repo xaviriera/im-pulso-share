@@ -625,8 +625,125 @@
     .hero-stats { gap: 20px; }
     .hero h1 { font-size: 24px; }
     .invest-grid { grid-template-columns: 1fr; }
-    .price-evolution { justify-content: center; }
     .section-header { flex-wrap: wrap; }
+
+    /* Price evolution vertical en móvil */
+    .price-evolution {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      justify-content: flex-start;
+    }
+    .price-step {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 18px;
+    }
+    .price-step .ps-day {
+      font-size: 13px;
+    }
+    .price-step .ps-price {
+      font-size: 18px;
+    }
+    .price-arrow {
+      transform: rotate(90deg);
+      justify-content: center;
+      margin: 2px 0;
+    }
+
+    /* Hipótesis grid 3 cols → 1 col en móvil */
+    .card > div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* Tabla testigos con clase especial → cards apilados */
+    .table-mobile-cards,
+    .table-mobile-cards tbody,
+    .table-mobile-cards tr,
+    .table-mobile-cards td {
+      display: block;
+      width: 100%;
+    }
+    .table-mobile-cards tr:first-child {
+      display: none; /* ocultar fila de encabezado */
+    }
+    .table-mobile-cards tr {
+      margin-bottom: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 14px;
+      background: white;
+    }
+    .table-mobile-cards tr[style*="fff3f0"] {
+      background: #fff3f0 !important;
+      border-color: #FFD4C8 !important;
+    }
+    .table-mobile-cards td {
+      padding: 6px 0 6px 95px;
+      border-bottom: none;
+      position: relative;
+      min-height: 22px;
+      font-size: 13px;
+    }
+    .table-mobile-cards td::before {
+      position: absolute;
+      left: 0;
+      top: 6px;
+      font-size: 10px;
+      color: #9ca3af;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      width: 85px;
+    }
+    .table-mobile-cards td:nth-child(1) {
+      padding-left: 0;
+      font-size: 15px;
+      font-weight: 800;
+      color: #141B36;
+      margin-bottom: 6px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    .table-mobile-cards td:nth-child(1)::before { content: ""; }
+    .table-mobile-cards td:nth-child(2)::before { content: "Dirección"; }
+    .table-mobile-cards td:nth-child(3)::before { content: "m²"; }
+    .table-mobile-cards td:nth-child(4)::before { content: "Hab/Baño"; }
+    .table-mobile-cards td:nth-child(5)::before { content: "Año"; }
+    .table-mobile-cards td:nth-child(6)::before { content: "Precio"; }
+    .table-mobile-cards td:nth-child(7) {
+      padding-left: 0;
+      padding-top: 10px;
+      margin-top: 6px;
+      border-top: 1px solid #f3f4f6;
+      color: #6b7280;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .table-mobile-cards td:nth-child(7)::before {
+      position: static;
+      display: block;
+      margin-bottom: 4px;
+      content: "Detalle";
+      color: #FF4D2E;
+    }
+
+    /* Otras tablas: scroll horizontal limpio con sombra indicadora */
+    .card > table:not(.table-mobile-cards) {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      white-space: nowrap;
+      box-shadow: inset -10px 0 10px -10px rgba(0,0,0,0.2);
+    }
+    .card > table:not(.table-mobile-cards) td,
+    .card > table:not(.table-mobile-cards) th {
+      white-space: nowrap;
+      padding: 8px 10px;
+      font-size: 12px;
+    }
   }
 </style>
 </head>
@@ -1123,7 +1240,7 @@
         <div class="step-number">2</div>
         <div class="step-title">Testigos de mercado (6 testigos)</div>
       </div>
-      <table>
+      <table class="table-mobile-cards">
         <tr><th>Testigo</th><th>Dirección</th><th>m²</th><th>Hab/Baño</th><th>Año</th><th>Precio</th><th>Detalle</th></tr>
         <tr><td><strong>T1</strong></td><td>c/ Vicente Blasco Ibáñez</td><td>55</td><td>1h/1b bajo</td><td>1968</td><td><strong>46.000&euro;</strong></td><td>Parece garaje habilitado. 1.034 visitas, 24 emails</td></tr>
         <tr><td><strong>T2</strong></td><td>c/ Milagros Maestre Esteve</td><td>60</td><td>2h/1b planta 1</td><td>1980</td><td><strong>89.900&euro;</strong></td><td>Referencia pisos similares. 2.211 visitas, 167 favoritos</td></tr>

@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO — Tanteo Alquiler · Novelda</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.6;
+  }
+
+  /* HEADER */
+  .header { background: #141B36; color: white; padding: 16px 0; }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .header img { height: 36px; }
+  .header .badge {
+    background: #FF4D2E; color: white;
+    padding: 4px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    color: white; padding: 48px 0 56px; text-align: center;
+  }
+  .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 15px; opacity: 0.65; margin-bottom: 20px; }
+  .hero-selectors {
+    display: flex; justify-content: center; gap: 12px;
+    margin-bottom: 32px; flex-wrap: wrap;
+  }
+  .hero-selector {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 20px; border-radius: 8px;
+    font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 600;
+  }
+  .hero-selector.active { background: #FF4D2E; border-color: #FF4D2E; color: white; }
+  .hero-stats { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .hero-stat { text-align: center; }
+  .hero-stat .number { font-size: 36px; font-weight: 800; color: #FF4D2E; }
+  .hero-stat .label {
+    font-size: 11px; opacity: 0.55;
+    text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  /* CONTAINER */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* SECTION */
+  .section { margin: 32px 0; position: relative; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-icon {
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; flex-shrink: 0;
+  }
+  .section-title { font-size: 20px; font-weight: 700; color: #141B36; }
+  .section-subtitle { font-size: 13px; color: #9ca3af; }
+
+  .price-badge {
+    display: inline-block; padding: 4px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: 0.5px;
+    margin-left: auto; flex-shrink: 0;
+  }
+  .price-badge.free { background: #ecfdf5; color: #10B981; }
+  .price-badge.tanteo { background: #fff3f0; color: #FF4D2E; }
+
+  /* CARDS */
+  .card {
+    background: white; border-radius: 16px; padding: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    margin-bottom: 16px; border: 1px solid #e5e7eb;
+  }
+  .card-title { font-size: 16px; font-weight: 700; color: #141B36; margin-bottom: 4px; }
+  .card-subtitle { font-size: 13px; color: #9ca3af; margin-bottom: 16px; }
+
+  /* PRICE WIDGET */
+  .price-widget {
+    display: grid; grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 16px; text-align: center; margin: 20px 0;
+  }
+  .price-box { padding: 20px; border-radius: 12px; background: #f9fafb; }
+  .price-box.main {
+    background: #141B36; color: white; transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(20,27,54,0.3);
+  }
+  .price-box .price-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+    opacity: 0.6; margin-bottom: 4px;
+  }
+  .price-box .price-value { font-size: 28px; font-weight: 800; }
+  .price-box.main .price-value { color: #FF4D2E; font-size: 34px; }
+  .price-box .price-note { font-size: 11px; opacity: 0.5; margin-top: 4px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th {
+    background: #141B36; color: white; padding: 10px 14px;
+    text-align: left; font-weight: 600;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; }
+  tr:hover td { background: #f9fafb; }
+  tr.highlight td { background: #fff3f0; }
+  tr.warn td { background: #fef9c3; }
+
+  /* KPI ROW */
+  .kpi-row {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 12px; margin: 16px 0;
+  }
+  .kpi {
+    background: white; padding: 16px; border-radius: 12px;
+    text-align: center; border: 1px solid #e5e7eb;
+  }
+  .kpi .kpi-value { font-size: 24px; font-weight: 800; color: #141B36; }
+  .kpi .kpi-label {
+    font-size: 11px; color: #9ca3af;
+    text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px;
+  }
+
+  /* INSIGHT */
+  .insight {
+    margin-top: 12px; padding: 12px 16px; border-radius: 8px;
+    font-size: 13px; line-height: 1.5;
+  }
+  .insight-orange { background: #fff3f0; }
+  .insight-blue { background: #eff6ff; color: #1e40af; }
+  .insight-gray { background: #f3f4f6; color: #6b7280; font-style: italic; }
+  .insight-green { background: #ecfdf5; color: #047857; }
+
+  .section-divider { border: none; border-top: 2px dashed #e5e7eb; margin: 40px 0; }
+
+  /* CONVERGENCE / VEREDICTO */
+  .verdict {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    color: white; padding: 32px; border-radius: 16px;
+    text-align: center; margin: 24px 0;
+  }
+  .verdict .v-label {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 2px;
+    opacity: 0.6; margin-bottom: 8px;
+  }
+  .verdict .v-price { font-size: 44px; font-weight: 800; color: #FF4D2E; line-height: 1; }
+  .verdict .v-range { font-size: 14px; opacity: 0.8; margin-top: 6px; }
+  .verdict .v-note { font-size: 13px; opacity: 0.65; margin-top: 16px; line-height: 1.5; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center; padding: 48px 0 32px;
+    color: #9ca3af; font-size: 12px;
+  }
+  .footer .proto {
+    display: inline-block; background: #fff3f0; color: #FF4D2E;
+    padding: 6px 16px; border-radius: 20px;
+    font-weight: 700; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .footer .footer-logo { display: block; margin: 16px auto; height: 90px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .price-widget {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "main main" "p25 p75";
+      gap: 10px;
+    }
+    .price-widget .price-box.main { grid-area: main; transform: none; padding: 20px 16px; }
+    .price-widget .price-box.main .price-value { font-size: 32px; }
+    .price-widget .price-box:nth-child(1) { grid-area: p25; }
+    .price-widget .price-box:nth-child(3) { grid-area: p75; }
+    .price-box .price-value { font-size: 22px; }
+    .price-box { padding: 14px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .kpi .kpi-value { font-size: 20px; }
+    .kpi .kpi-label { font-size: 9px; }
+    .kpi { padding: 12px; }
+    .hero { padding: 30px 0 36px; }
+    .hero h1 { font-size: 22px; line-height: 1.3; }
+    .hero .subtitle { font-size: 13px; }
+    .hero-stats { gap: 16px; }
+    .hero-stat .number { font-size: 28px; }
+    .hero-stat .label { font-size: 10px; }
+    .hero-selectors { gap: 8px; }
+    .hero-selector { padding: 6px 14px; font-size: 12px; }
+    .header img { height: 28px; }
+    .header .badge { font-size: 9px; padding: 3px 10px; }
+    .section-header { flex-wrap: wrap; }
+    .section-title { font-size: 17px; }
+    .section-icon { width: 36px; height: 36px; font-size: 16px; }
+    .price-badge { font-size: 10px; padding: 3px 10px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 14px; }
+    .card > table {
+      width: 100%; font-size: 12px;
+      table-layout: auto; display: table;
+    }
+    .card > table th, .card > table td {
+      padding: 8px 6px; font-size: 12px;
+      white-space: normal; word-break: break-word;
+    }
+    .card > table th { font-size: 10px; padding: 8px 6px; }
+    .verdict { padding: 24px 16px; }
+    .verdict .v-price { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/697e322e1311f62a92201cc6.png" alt="IM·PULSO">
+    <span class="badge">Tanteo rápido — Cortesía</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <h1>Novelda — Alquiler residencial</h1>
+    <div class="subtitle">Tanteo de mercado para Salva &middot; antes de cerrar la compra</div>
+    <div class="hero-selectors">
+      <div class="hero-selector active">Operación: Alquiler</div>
+      <div class="hero-selector">Tipo: Piso</div>
+      <div class="hero-selector">Foco: 2h1b · 3h1b</div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="number">237</div>
+        <div class="label">Anuncios histórico</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">8</div>
+        <div class="label">Pisos activos hoy</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">21</div>
+        <div class="label">Días mediana en alquilarse</div>
+      </div>
+      <div class="hero-stat">
+        <div class="number">600€</div>
+        <div class="label">Mediana realista</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 1: TEMPERATURA DEL MERCADO -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">🌡️</div>
+      <div>
+        <div class="section-title">Temperatura del mercado</div>
+        <div class="section-subtitle">Pisos en alquiler residencial &middot; Novelda (Alicante)</div>
+      </div>
+      <span class="price-badge tanteo">Tanteo</span>
+    </div>
+
+    <!-- 1.1 Resumen ejecutivo -->
+    <div class="card">
+      <div class="card-title">1.1 Resumen ejecutivo</div>
+      <div class="card-subtitle">Foto general del mercado de alquiler en Novelda</div>
+      <div class="kpi-row">
+        <div class="kpi">
+          <div class="kpi-value">237</div>
+          <div class="kpi-label">Anuncios histórico</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">177</div>
+          <div class="kpi-label">Ya retirados</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">75%</div>
+          <div class="kpi-label">Rotación</div>
+        </div>
+        <div class="kpi">
+          <div class="kpi-value">21 d</div>
+          <div class="kpi-label">Mediana publicación → retirada</div>
+        </div>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> Mercado <strong>tenso y rápido</strong>. Los anuncios que se publican se retiran en una mediana de 21 días — lo que sale a un precio razonable, vuela. Stock activo bajo (8 pisos hoy en todo Novelda).
+      </div>
+    </div>
+
+    <!-- 1.2 Precio mediano global -->
+    <div class="card">
+      <div class="card-title">1.2 Precio de alquiler — Pisos Novelda</div>
+      <div class="card-subtitle">Distribución sin outliers (n=77, rango 200-2.500 €/mes)</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">P25</div>
+          <div class="price-value">600€</div>
+          <div class="price-note">Tramo bajo</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Mediana realista</div>
+          <div class="price-value">650€</div>
+          <div class="price-note">P50 — referencia</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">P75</div>
+          <div class="price-value">700€</div>
+          <div class="price-note">Tramo alto</div>
+        </div>
+      </div>
+      <div class="insight insight-blue">
+        <strong>Tu intuición:</strong> "alrededor de 650 €" → <strong>está bien orientada</strong> (cae justo en la mediana). Solo ojo: 650 € es el centro, no el techo.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 2: SEGMENTACIÓN POR TIPOLOGÍA -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #eff6ff; color: #3B82F6;">🏠</div>
+      <div>
+        <div class="section-title">Por tipología</div>
+        <div class="section-subtitle">Segmentación según los dos perfiles que mencionaste</div>
+      </div>
+    </div>
+
+    <!-- 2.1 — 3h1b ~110m² (lo habitual) -->
+    <div class="card">
+      <div class="card-title">2.1 · 3 hab / 1 baño · 90-130 m² <span style="background:#fff3f0; color:#FF4D2E; font-size:10px; padding:2px 8px; border-radius:10px; font-weight:800; margin-left:8px;">Tipología más habitual</span></div>
+      <div class="card-subtitle">Lo que más se publica y se va a alquilar (n=11 con baño único · n=33 con cualquier baño)</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">P25</div>
+          <div class="price-value">600€</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Mediana</div>
+          <div class="price-value">650€</div>
+          <div class="price-note">P50</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">P75</div>
+          <div class="price-value">682€</div>
+        </div>
+      </div>
+      <div class="insight insight-orange">
+        <strong>€/m² mediano:</strong> 6,3 €/m²/mes &middot; <strong>Underwriting prudente:</strong> usa 600 €/mes como base. 650 € entra dentro del rango realista pero deja menos margen frente a baja demanda puntual.
+      </div>
+    </div>
+
+    <!-- 2.2 — 2h1b 70-80m² (lo ideal Salva) -->
+    <div class="card">
+      <div class="card-title">2.2 · 2 hab / 1 baño · 60-85 m² <span style="background:#ecfdf5; color:#10B981; font-size:10px; padding:2px 8px; border-radius:10px; font-weight:800; margin-left:8px;">Tu ideal</span></div>
+      <div class="card-subtitle">El perfil que pediste — confirmado: tipología escasa en Novelda (n=9)</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">P25</div>
+          <div class="price-value">575€</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Mediana</div>
+          <div class="price-value">575€</div>
+          <div class="price-note">P50</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">P75</div>
+          <div class="price-value">600€</div>
+        </div>
+      </div>
+      <div class="insight insight-green">
+        <strong>€/m² mediano:</strong> 8,7 €/m²/mes (rentabilidad por m² superior al 3h1b). Si encuentras un 2h1b en este rango de superficie, alquila más caro proporcionalmente, pero <strong>la oferta es muy limitada</strong> — confirmas tu intuición de que "así pequeños no suele haber".
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 3: STOCK ACTIVO HOY -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #ecfdf5; color: #10B981;">📍</div>
+      <div>
+        <div class="section-title">Lo que hay activo HOY</div>
+        <div class="section-subtitle">Comparables vivos en Novelda &middot; última lectura BBDD: 21/04/2026</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">3.1 Pisos en alquiler activos en Novelda</div>
+      <div class="card-subtitle">Toda la oferta residencial activa que tenemos detectada (8 pisos)</div>
+      <table>
+        <tr><th>€/mes</th><th>m²</th><th>Hab</th><th>Baños</th><th>Calle</th><th>Publicado</th></tr>
+        <tr class="highlight"><td><strong>420€</strong></td><td>60</td><td>2</td><td>1</td><td>Espoz y Mina</td><td>27-feb-26</td></tr>
+        <tr><td>500€</td><td>30</td><td>1</td><td>1</td><td>Espoz y Mina</td><td>may-25</td></tr>
+        <tr class="warn"><td>600€</td><td>73</td><td>3</td><td>1</td><td>Mestre Bretón</td><td>may-25 ⚠️</td></tr>
+        <tr><td>650€</td><td>145</td><td>4</td><td>2</td><td>Goya</td><td>06-mar-26</td></tr>
+        <tr class="highlight"><td><strong>660€</strong></td><td>105</td><td>3</td><td>1</td><td>Verge dels Desemparats</td><td>30-ene-26</td></tr>
+        <tr><td>750€</td><td>114</td><td>3</td><td>2</td><td>Joanot Martorell</td><td>ago-25</td></tr>
+        <tr><td>850€</td><td>130</td><td>4</td><td>2</td><td>—</td><td>oct-25</td></tr>
+        <tr><td>1.000€</td><td>300</td><td>4</td><td>2</td><td>Cervantes 53</td><td>14-abr-26</td></tr>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Las dos referencias clave para tu compra:</strong><br>
+        🟧 <strong>660 €</strong> — 3h1b · 105m² · Verge dels Desemparats (publicado hace 3 meses, sigue activo → posible techo)<br>
+        🟩 <strong>420 €</strong> — 2h1b · 60m² · Espoz y Mina (único 2h1b activo: chollo o calle floja)
+      </div>
+      <div class="insight insight-gray">
+        ⚠️ Pisos con bandera amarilla llevan más de 6 meses publicados sin retirarse — señal de que el precio o el activo tiene algo que no termina de cerrar.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- VEREDICTO FINAL -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #141B36; color: #FF4D2E;">🎯</div>
+      <div>
+        <div class="section-title">Para underwriting de la compra</div>
+        <div class="section-subtitle">Cifra que te recomiendo usar</div>
+      </div>
+    </div>
+
+    <div class="verdict">
+      <div class="v-label">Renta esperada · 3h1b ~100 m²</div>
+      <div class="v-price">600 €/mes</div>
+      <div class="v-range">Rango realista 575 – 650 € · Techo defendible 660 €</div>
+      <div class="v-note">
+        Para 2h1b 70-80 m² (poco frecuente): <strong>575 €</strong> base · 600 € techo.<br>
+        Si buscas seguridad de cobro y ocupación rápida, calcula con 600 € y deja techo de 650 € como upside.
+      </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(135deg, #fff9f8 0%, #fff3f0 100%); border: 2px solid #FF4D2E;">
+      <div class="card-title">¿Cuándo actualizar?</div>
+      <div style="font-size: 14px; color: #4b5563; line-height: 1.6;">
+        Esta foto es del <strong>21-abr-2026</strong> (hace 6 días). Si vas a ofertar en serio, avísame y <strong>relanzo carga al día</strong> antes de cerrar la cifra. El mercado de Novelda rota cada 21 días — los datos de hoy ya no son los mismos que verás esta tarde en Idealista.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="proto">Tanteo cortesía · Sin coste</div>
+  <br>
+  <img class="footer-logo" src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/698227e0b7e498bfd5ff8b45.png" alt="IM·PULSO">
+  <div style="margin-top:8px; font-size:14px; font-weight:700; color:#141B36;">IM·PULSO — Inteligencia de Mercado Inmobiliario</div>
+  <div style="margin-top:6px;">consultor@xaviriera.com &middot; im-pulso.app</div>
+  <div style="margin-top:4px;">Confidencial · Abril 2026 · Datos: BBDD propia 248K+ anuncios</div>
+</div>
+
+</body>
+</html>

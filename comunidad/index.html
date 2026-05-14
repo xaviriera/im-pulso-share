@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO · Hecho para la Comunidad IN</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pulso-navy: #141B36;
+  --pulso-navy-2: #1f2849;
+  --pulso-orange: #FF4D2E;
+  --pulso-orange-soft: #FFE5DE;
+  --in-gold: #C9A961;
+  --in-gold-soft: rgba(201, 169, 97, 0.10);
+  --bg: #FDFCFA;
+  --ink: #1a1a1a;
+  --ink-soft: #555;
+  --ink-mute: #777;
+  --line: #e8e4db;
+}
+
+html, body {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f0eee9;
+  color: var(--ink);
+  line-height: 1.45;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 210mm;
+  min-height: 297mm;
+  margin: 24px auto;
+  background: var(--bg);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+/* === HEADER === */
+.head {
+  background: linear-gradient(135deg, var(--pulso-navy) 0%, var(--pulso-navy-2) 100%);
+  padding: 7mm 14mm 6mm;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+.head::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: var(--pulso-orange);
+}
+.head::before {
+  content: '';
+  position: absolute;
+  top: 0; right: -60px;
+  width: 220px; height: 100%;
+  background: var(--pulso-orange);
+  opacity: 0.07;
+  transform: skewX(-15deg);
+}
+.head-logo {
+  height: 44px;
+  width: auto;
+  display: block;
+  z-index: 2;
+  position: relative;
+}
+.in-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  z-index: 2;
+  position: relative;
+}
+.in-badge .it-tag {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  color: var(--in-gold);
+  text-transform: uppercase;
+}
+.in-badge .it-line {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.2px;
+}
+.in-badge .it-sub {
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.65);
+  font-weight: 500;
+}
+
+/* === BODY === */
+.body {
+  padding: 8mm 14mm 6mm;
+  display: flex;
+  flex-direction: column;
+  gap: 7mm;
+  flex: 1;
+}
+
+/* === HERO === */
+.hero h1 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 26px;
+  font-weight: 900;
+  color: var(--pulso-navy);
+  letter-spacing: -0.8px;
+  line-height: 1.08;
+  margin-bottom: 8px;
+}
+.hero h1 .accent { color: var(--pulso-orange); }
+.hero .sub {
+  font-size: 13px;
+  color: var(--ink-soft);
+  font-weight: 500;
+  line-height: 1.55;
+}
+.hero .sub strong { color: var(--pulso-navy); font-weight: 700; }
+
+/* === TRIPLE VALIDATION HERO BLOCK === */
+.triple {
+  background: var(--pulso-navy);
+  color: white;
+  border-radius: 12px;
+  padding: 16px 22px;
+  position: relative;
+  overflow: hidden;
+}
+.triple::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 6px; height: 100%;
+  background: var(--pulso-orange);
+}
+.triple-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  align-items: stretch;
+}
+.triple-cell {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.triple-cell.future {
+  background: var(--in-gold-soft);
+  border-color: var(--in-gold);
+}
+.triple-num {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 900;
+  font-size: 28px;
+  color: var(--pulso-orange);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.triple-cell.future .triple-num { color: var(--in-gold); }
+.triple-label {
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+  margin-bottom: 1px;
+}
+.triple-cell.future .triple-label { color: var(--in-gold); }
+.triple-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.3px;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+.triple-desc {
+  font-size: 10.5px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.45;
+}
+.triple-status {
+  margin-top: 6px;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--pulso-orange);
+}
+.triple-cell.future .triple-status { color: var(--in-gold); }
+
+.triple-headline {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+.triple-headline .accent { color: var(--pulso-orange); }
+
+/* === SECTION TITLE === */
+.section-title {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2.3px;
+  color: var(--pulso-navy);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+/* === COMPETIDORES === */
+.comp-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+.comp-cell {
+  padding: 11px 13px;
+  background: #f5f3ee;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+.comp-cell.us {
+  background: var(--pulso-orange-soft);
+  border-color: var(--pulso-orange);
+  border-width: 1.5px;
+}
+.comp-cell .clbl {
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 3px;
+}
+.comp-cell.us .clbl { color: var(--pulso-orange); }
+.comp-cell .cname {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: var(--pulso-navy);
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+  line-height: 1.05;
+}
+.comp-cell .cdesc {
+  font-size: 10px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.comp-cell .cdesc strong { color: var(--pulso-navy); }
+.comp-cell .cmodel {
+  font-size: 8.5px;
+  font-weight: 700;
+  color: var(--ink-mute);
+  letter-spacing: 0.2px;
+  padding-top: 5px;
+  border-top: 1px dashed rgba(0,0,0,0.1);
+}
+.comp-cell .cmodel.us {
+  color: var(--pulso-orange);
+  border-top-color: rgba(255, 77, 46, 0.3);
+  font-weight: 800;
+}
+
+/* === DIFERENCIADORES CARDS === */
+.diffs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.dcard {
+  background: white;
+  border: 1.5px solid var(--line);
+  border-top: 3px solid var(--pulso-orange);
+  border-radius: 0 0 8px 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+.dcard .dnum {
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  color: var(--pulso-orange);
+  letter-spacing: -0.3px;
+  margin-bottom: 4px;
+}
+.dcard .dtitle {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--pulso-navy);
+  letter-spacing: -0.3px;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+.dcard .ddesc {
+  font-size: 10.5px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+.dcard .ddesc strong { color: var(--pulso-navy); font-weight: 700; }
+
+/* === MODALIDADES === */
+.modalidades {
+  background: var(--pulso-navy);
+  color: white;
+  border-radius: 10px;
+  padding: 14px 18px 14px;
+  position: relative;
+  overflow: hidden;
+}
+.modalidades::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 6px; height: 100%;
+  background: var(--in-gold);
+}
+.modalidades .mtitle {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: var(--in-gold);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.modalidades h3 {
+  font-family: 'Manrope', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+  line-height: 1.25;
+}
+.modalidades h3 .accent { color: var(--in-gold); }
+.mod-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px;
+}
+.mod-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 6px;
+  padding: 10px 11px;
+  text-align: center;
+}
+.mod-card .mod-name {
+  font-family: 'Manrope', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: -0.3px;
+  margin-bottom: 3px;
+  line-height: 1.1;
+}
+.mod-card .mod-desc {
+  font-size: 9.5px;
+  color: rgba(255,255,255,0.72);
+  line-height: 1.35;
+}
+
+/* === FOOTER === */
+.foot {
+  background: linear-gradient(135deg, var(--pulso-navy) 0%, var(--pulso-navy-2) 100%);
+  padding: 6mm 14mm 6mm;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 7mm;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.foot::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: var(--pulso-orange);
+}
+.chapa {
+  height: 56px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+}
+.cta-block { color: white; }
+.cta-eyebrow {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 2.3px;
+  color: var(--in-gold);
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.cta-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.3px;
+  line-height: 1.25;
+  margin-bottom: 5px;
+}
+.cta-title .accent { color: var(--pulso-orange); }
+.cta-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.cta-url {
+  display: inline-block;
+  font-family: 'Manrope', sans-serif;
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--pulso-orange);
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  border-bottom: 2px solid var(--pulso-orange);
+  padding-bottom: 2px;
+}
+.qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.qr-img {
+  width: 86px;
+  height: 86px;
+  background: white;
+  padding: 4px;
+  border-radius: 6px;
+  display: block;
+}
+.qr-cap {
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase;
+}
+
+/* === RESPONSIVE TABLET === */
+@media (max-width: 900px) {
+  body { background: #f0eee9; }
+  .sheet {
+    max-width: 100%;
+    min-height: auto;
+    margin: 0;
+    box-shadow: none;
+  }
+  .head, .foot { padding: 6mm 5mm; }
+  .body { padding: 6mm 5mm; gap: 6mm; }
+  .head-logo { height: 38px; }
+  .in-badge .it-tag { font-size: 8px; }
+  .in-badge .it-line { font-size: 11px; }
+  .in-badge .it-sub { font-size: 8.5px; }
+  .hero h1 { font-size: 22px; }
+  .hero .sub { font-size: 12.5px; }
+  .triple-grid { grid-template-columns: 1fr; gap: 8px; }
+  .triple-headline { font-size: 14px; }
+  .comp-bar { grid-template-columns: repeat(2, 1fr); }
+  .diffs { grid-template-columns: repeat(2, 1fr); }
+  .mod-grid { grid-template-columns: repeat(3, 1fr); }
+  .foot { grid-template-columns: 1fr auto; }
+  .chapa { display: none; }
+  .qr-img { width: 76px; height: 76px; }
+}
+
+/* === RESPONSIVE MÓVIL === */
+@media (max-width: 600px) {
+  .sheet { font-size: 14px; }
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .head-logo { height: 36px; }
+  .in-badge { align-items: flex-start; }
+  .hero h1 { font-size: 19px; line-height: 1.1; }
+  .hero .sub { font-size: 12px; }
+  .triple { padding: 12px 14px; }
+  .triple-num { font-size: 24px; }
+  .triple-name { font-size: 13px; }
+  .triple-desc { font-size: 10px; }
+  .triple-headline { font-size: 13px; margin-bottom: 10px; }
+  .comp-bar { grid-template-columns: 1fr; }
+  .comp-cell .cname { font-size: 13px; }
+  .diffs { grid-template-columns: 1fr; }
+  .dcard .dtitle { font-size: 13px; }
+  .dcard .ddesc { font-size: 11px; }
+  .mod-grid { grid-template-columns: repeat(2, 1fr); }
+  .mod-card .mod-name { font-size: 12.5px; }
+  .modalidades h3 { font-size: 14px; }
+  .foot {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 14px;
+  }
+  .cta-block { text-align: left; }
+  .qr-wrap { margin: 0 auto; }
+  .cta-title { font-size: 15px; }
+  .cta-sub { font-size: 11px; }
+}
+
+/* === PRINT A4 === */
+@media print {
+  body { background: white; }
+  .sheet {
+    box-shadow: none;
+    margin: 0;
+    width: 210mm;
+    max-width: 210mm;
+  }
+  @page { size: A4; margin: 0; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- ====== HEADER ====== -->
+  <div class="head">
+    <img src="impulso-logo.png" alt="IM·PULSO · Inteligencia de Mercado" class="head-logo">
+    <div class="in-badge">
+      <span class="it-tag">Hecho desde la comunidad</span>
+      <span class="it-line">Para Inversores Programa IN</span>
+      <span class="it-sub">Grado IN · Máster IN · Comunidad</span>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ====== HERO ====== -->
+    <div class="hero">
+      <h1>Los portales generalistas no hablan tu idioma.<br><span class="accent">IM·PULSO sí.</span></h1>
+      <p class="sub">Hecho desde dentro de la Comunidad IN, con tu vocabulario y para tus operaciones. No queremos ser otro portal generalista — queremos ser <strong>el referente adaptado a la comunidad</strong>.</p>
+    </div>
+
+    <!-- ====== TRIPLE VALIDACIÓN ====== -->
+    <div class="triple">
+      <div class="triple-headline">Cruzamos <span class="accent">3 fuentes de datos</span> que ningún competidor combina</div>
+      <div class="triple-grid">
+        <div class="triple-cell">
+          <div class="triple-num">1</div>
+          <div class="triple-label">Activo</div>
+          <div class="triple-name">Datos de portales inmobiliarios</div>
+          <div class="triple-desc">Anuncios activos y retirados de Idealista, con detección de retiradas (presumiblemente vendidos).</div>
+          <div class="triple-status">✓ Operativo</div>
+        </div>
+        <div class="triple-cell">
+          <div class="triple-num">2</div>
+          <div class="triple-label">Activo</div>
+          <div class="triple-name">Datos notariales reales</div>
+          <div class="triple-desc">Precios escriturados, perfil del comprador y tendencia. La realidad legal, no la oferta.</div>
+          <div class="triple-status">✓ Operativo</div>
+        </div>
+        <div class="triple-cell future">
+          <div class="triple-num">3</div>
+          <div class="triple-label">En construcción</div>
+          <div class="triple-name">Método Total de Valoración de Vivienda</div>
+          <div class="triple-desc">Validación humana de campo del método del programa. Próxima actualización en alianza con proveedores MTVV.</div>
+          <div class="triple-status">★ Próximo</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== COMPETIDORES ====== -->
+    <div>
+      <div class="section-title">El mapa competitivo · dónde encajamos</div>
+      <div class="comp-bar">
+        <div class="comp-cell">
+          <div class="clbl">Lystos · BCN</div>
+          <div class="cname">Para agentes</div>
+          <div class="cdesc">Herramienta potente, <strong>tú la operas</strong>. Foco agente inmobiliario.</div>
+          <div class="cmodel">79 – 199 €/mes · suscripción</div>
+        </div>
+        <div class="comp-cell">
+          <div class="clbl">Casafari · Lisboa</div>
+          <div class="cname">Enterprise</div>
+          <div class="cdesc">Bancos y agencias grandes. <strong>No para inversor individual.</strong></div>
+          <div class="cmodel">Enterprise · contrato anual</div>
+        </div>
+        <div class="comp-cell">
+          <div class="clbl">Invisor.es</div>
+          <div class="cname">Scoring inversor</div>
+          <div class="cdesc">Inversor profesional generalista, <strong>sin método IN ni MTVV</strong>.</div>
+          <div class="cmodel">42 – 117 €/mes · plan anual</div>
+        </div>
+        <div class="comp-cell us">
+          <div class="clbl">IM·PULSO · Comunidad IN</div>
+          <div class="cname">Inteligencia adaptada</div>
+          <div class="cdesc">Por modalidad del programa. <strong>Vocabulario y método IN.</strong></div>
+          <div class="cmodel us">Bajo demanda · pagas lo que usas</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== 4 DIFERENCIADORES ====== -->
+    <div>
+      <div class="section-title">Las 4 cosas que ningún portal generalista hace por ti</div>
+      <div class="diffs">
+        <div class="dcard">
+          <div class="dnum">01 · PULSO</div>
+          <div class="dtitle">Te decimos dónde está el dinero antes de buscar</div>
+          <div class="ddesc">Analizamos qué tipo de vivienda se vende más rápido en cada zona. <strong>No tasamos un piso suelto</strong> — te enseñamos el mercado. Ningún competidor lo hace.</div>
+        </div>
+        <div class="dcard">
+          <div class="dnum">02 · IMPULSO</div>
+          <div class="dtitle">Precio real de mercado del activo concreto</div>
+          <div class="ddesc">Cruce automático de los datos para darte el rango realista al que se vende lo tuyo en esa zona. <strong>Decisión clara antes de ofertar.</strong></div>
+        </div>
+        <div class="dcard">
+          <div class="dnum">03 · Inmobiliarias</div>
+          <div class="dtitle">A quién llamar y qué decir</div>
+          <div class="ddesc">Listado de las inmobiliarias <strong>que han vendido tu tipología en la zona</strong> + script de llamada para confirmar precios reales de cierre. Acción ejecutable.</div>
+        </div>
+        <div class="dcard">
+          <div class="dnum">04 · Dossieres</div>
+          <div class="dtitle">Informes a medida para presentar</div>
+          <div class="ddesc">Dossieres adaptados a tu operación (JV, lotes, oportunidades). Material profesional para <strong>presentar a tu inversor o socio</strong> con la marca del gestor.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ====== MODALIDADES ====== -->
+    <div class="modalidades">
+      <div class="mtitle">Modalidades del Programa IN</div>
+      <h3>Te entendemos porque <span class="accent">nos adaptamos a cómo enfocas tú la operación</span></h3>
+      <div class="mod-grid">
+        <div class="mod-card">
+          <div class="mod-name">Cambio de Uso</div>
+          <div class="mod-desc">Locales transformados en viviendas. Tipo de vivienda resultante.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-name">Flip</div>
+          <div class="mod-desc">Compra · adecuar · vender. Margen y precio realista.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-name">Segregación</div>
+          <div class="mod-desc">División de inmuebles en unidades. Valor pieza a pieza.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-name">Alquiler</div>
+          <div class="mod-desc">Rentabilidad por zona, demanda real y vacío.</div>
+        </div>
+        <div class="mod-card">
+          <div class="mod-name">NPL & Okupas</div>
+          <div class="mod-desc">Inmueble respaldo de crédito o piso ocupado.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <div class="foot">
+    <img src="impulso-chapa.png" alt="Sello IM·PULSO" class="chapa">
+    <div class="cta-block">
+      <div class="cta-eyebrow">Sin suscripción · sin permanencia · bajo demanda</div>
+      <div class="cta-title"><span class="accent">Pagas solo cuando lo necesitas.</span> Una operación, un análisis. Sin ataduras.</div>
+      <div class="cta-sub">Antes de pagar por un portal generalista, prueba el que está hecho desde tu comunidad. Pídelo cuando tengas una operación encima — si no te encaja, no has firmado nada.</div>
+      <a href="https://im-pulso.app/" class="cta-url">→ im-pulso.app</a>
+    </div>
+    <div class="qr-wrap">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&data=https%3A%2F%2Fim-pulso.app%2F" alt="QR im-pulso.app" class="qr-img">
+      <span class="qr-cap">Escanea</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

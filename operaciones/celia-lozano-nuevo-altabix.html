@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO · Celia Lozano × María de Maeztu · Nuevo Altabix · Elche</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --pulso-navy: #141B36; --pulso-navy-2: #1f2849; --pulso-orange: #FF4D2E;
+  --pulso-orange-soft: #FFE5DE; --cdu-ochre: #E29F34; --bg: #FDFCFA;
+  --ink: #1a1a1a; --ink-soft: #555; --line: #e8e4db; --green:#1f9d6b;
+}
+html, body { font-family: 'Manrope', sans-serif; background: #f0eee9; color: var(--ink); line-height: 1.45; -webkit-font-smoothing: antialiased; }
+.sheet { width: 210mm; min-height: 297mm; margin: 24px auto; background: var(--bg); box-shadow: 0 8px 32px rgba(0,0,0,0.08); display: flex; flex-direction: column; }
+.sheet + .sheet { margin-top: 0; }
+
+.head { background: linear-gradient(135deg, var(--pulso-navy) 0%, var(--pulso-navy-2) 100%); padding: 7mm 14mm 6mm; display: flex; align-items: center; justify-content: space-between; position: relative; overflow: hidden; }
+.head::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--pulso-orange); }
+.head::before { content: ''; position: absolute; top: 0; right: -60px; width: 220px; height: 100%; background: var(--pulso-orange); opacity: 0.07; transform: skewX(-15deg); }
+.head-logo { height: 42px; z-index: 2; position: relative; }
+.collab-badge { display: flex; flex-direction: column; align-items: flex-end; gap: 3px; z-index: 2; position: relative; }
+.collab-badge .col-tag { font-size: 8.5px; font-weight: 800; letter-spacing: 1.8px; color: var(--cdu-ochre); text-transform: uppercase; }
+.collab-badge .col-line { font-size: 12px; font-weight: 700; color: white; }
+.collab-badge .col-phase { font-size: 9px; color: rgba(255,255,255,0.65); font-weight: 500; }
+
+.body { padding: 6mm 14mm 6mm; display: flex; flex-direction: column; gap: 4.5mm; flex: 1; }
+.section-tag { font-size: 9px; font-weight: 800; letter-spacing: 2.5px; color: var(--pulso-orange); text-transform: uppercase; }
+.blk-title { font-size: 9.5px; font-weight: 800; letter-spacing: 1.8px; color: var(--pulso-navy); text-transform: uppercase; margin-bottom: 6px; }
+.blk-title .note { color: var(--ink-soft); font-weight: 600; letter-spacing: .2px; text-transform: none; font-size:9px; }
+
+/* HERO */
+.hero { display: grid; grid-template-columns: 1.35fr 1fr; gap: 8mm; align-items: center; }
+.hero-left .eyebrow { font-size: 9.5px; font-weight: 800; letter-spacing: 2.3px; color: var(--pulso-orange); text-transform: uppercase; margin-bottom: 5px; }
+.hero-left h1 { font-size: 20px; font-weight: 900; color: var(--pulso-navy); letter-spacing: -0.7px; line-height: 1.08; margin-bottom: 5px; }
+.hero-left h1 .accent { color: var(--pulso-orange); }
+.hero-left .sub { font-size: 11px; color: var(--ink-soft); font-weight: 500; }
+.flow-mini { display: flex; gap: 6px; }
+.flow-mini .box { flex: 1; background: white; border: 1.5px solid var(--line); border-radius: 8px; padding: 9px 10px; text-align: center; }
+.flow-mini .box.after { border-color: var(--pulso-orange); background: var(--pulso-orange-soft); }
+.flow-mini .lbl { font-size: 8px; font-weight: 800; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 3px; }
+.flow-mini .box.after .lbl { color: var(--pulso-orange); }
+.flow-mini .val { font-size: 12px; font-weight: 800; color: var(--pulso-navy); line-height: 1.15; }
+.flow-mini .arrow { display: flex; align-items: center; font-weight: 900; font-size: 16px; color: var(--pulso-orange); }
+
+/* KPI */
+.kpi { background: var(--pulso-navy); color: white; border-radius: 10px; padding: 10px 16px; position: relative; overflow: hidden; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.kpi::before { content: ''; position: absolute; top: 0; left: 0; width: 6px; height: 100%; background: var(--pulso-orange); }
+.kpi .cell .lbl { font-size: 8px; font-weight: 700; letter-spacing: 1.3px; color: rgba(255,255,255,0.6); text-transform: uppercase; margin-bottom: 3px; }
+.kpi .cell .val { font-size: 20px; font-weight: 900; color: white; letter-spacing: -0.6px; line-height: 1; }
+.kpi .cell .val.hl { color: var(--pulso-orange); }
+.kpi .cell .sub { font-size: 8.5px; color: rgba(255,255,255,0.6); margin-top: 3px; font-weight: 500; }
+
+/* NOTARIAL */
+.nota-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.nota-card { border-radius: 10px; padding: 11px 14px; border: 1.5px solid var(--line); background: white; position: relative; }
+.nota-card.nueva { border-color: var(--pulso-orange); background: var(--pulso-orange-soft); }
+.nota-card .ntag { font-size: 8.5px; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 6px; }
+.nota-card.nueva .ntag { color: var(--pulso-orange); }
+.nota-card .nbig { font-size: 26px; font-weight: 900; color: var(--pulso-navy); letter-spacing: -1px; line-height: 1; }
+.nota-card.nueva .nbig { color: var(--pulso-orange); }
+.nota-card .nunit { font-size: 11px; font-weight: 700; color: var(--ink-soft); }
+.nota-card .nrow { display: flex; justify-content: space-between; font-size: 9.5px; color: var(--ink-soft); margin-top: 4px; }
+.nota-card .nrow b { color: var(--pulso-navy); font-weight: 700; }
+.premium-strip { margin-top: 7px; background: var(--pulso-navy); color: white; border-radius: 8px; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 10px; font-weight: 600; }
+.premium-strip .pv { font-size: 17px; font-weight: 900; color: var(--pulso-orange); letter-spacing: -0.4px; }
+
+/* EVOLUCIÓN (barras) */
+.evo-wrap { display:grid; grid-template-columns: 1.5fr 1fr; gap: 8mm; }
+.evo-bars { display: flex; align-items: flex-end; gap: 6px; height: 70px; padding-top: 4px; }
+.evo-bars .eb { flex:1; display:flex; flex-direction:column; align-items:center; gap:3px; justify-content:flex-end; height:100%; }
+.evo-bars .eb .bar { width: 100%; background: linear-gradient(180deg, var(--pulso-orange), #ff7a60); border-radius: 3px 3px 0 0; }
+.evo-bars .eb .bv { font-size: 8px; font-weight: 800; color: var(--pulso-navy); }
+.evo-bars .eb .bl { font-size: 7.5px; color: var(--ink-soft); font-weight: 600; }
+.mini-note { font-size: 9px; color: var(--ink-soft); line-height: 1.45; }
+.mini-note b { color: var(--pulso-navy); }
+
+/* TIPOLOGÍAS */
+.typo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.tcard { background: white; border: 1.5px solid var(--line); border-radius: 10px; overflow: hidden; }
+.tcard .thead { background: var(--pulso-navy); color: white; padding: 7px 11px; display: flex; justify-content: space-between; align-items: baseline; }
+.tcard .thead .tt { font-size: 13px; font-weight: 900; }
+.tcard .thead .tu { font-size: 9px; color: rgba(255,255,255,0.7); font-weight: 700; }
+.tcard .tbody { padding: 8px 11px; }
+.tcard .trow { display: flex; justify-content: space-between; font-size: 9.5px; padding: 1.5px 0; color: var(--ink-soft); }
+.tcard .trow b { color: var(--pulso-navy); font-weight: 700; }
+.tcard .tprice { margin-top: 5px; padding-top: 6px; border-top: 1px dashed var(--line); text-align: center; }
+.tcard .tprice .plab { font-size: 7.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-soft); }
+.tcard .tprice .pval { font-size: 15px; font-weight: 900; color: var(--pulso-orange); letter-spacing: -0.4px; line-height:1.15; }
+.tcard .tprice .psub { font-size: 8.5px; color: var(--ink-soft); font-weight: 600; }
+.tcard.warn .thead { background: #8a6d1f; }
+.total-strip { margin-top: 7px; background: var(--pulso-orange); color: white; border-radius: 10px; padding: 9px 16px; display: flex; justify-content: space-between; align-items: center; }
+.total-strip .tl { font-size: 10px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; }
+.total-strip .tv { font-size: 19px; font-weight: 900; letter-spacing: -0.5px; }
+
+/* TESTIGOS */
+.golden-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.gcard { background: var(--pulso-orange-soft); border: 1.5px solid var(--pulso-orange); border-radius: 8px; padding: 7px 9px; }
+.gcard .gaddr { font-size: 9.5px; font-weight: 800; color: var(--pulso-navy); line-height: 1.2; }
+.gcard .gmeta { font-size: 8px; color: var(--ink-soft); margin: 3px 0 6px; font-weight: 500; }
+.gcard .gprice { font-size: 13.5px; font-weight: 900; color: var(--pulso-orange); letter-spacing: -0.4px; line-height: 1; }
+.gcard .gper { font-size: 8px; color: var(--ink-soft); margin-top: 2px; font-weight: 600; }
+.rest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top:6px; }
+.rcard { background: white; border: 1px solid var(--line); border-radius: 6px; padding: 5px 8px; display: flex; align-items: center; justify-content: space-between; gap: 5px; }
+.rcard .raddr { font-size: 8.5px; font-weight: 700; color: var(--pulso-navy); line-height: 1.15; }
+.rcard .rmeta { font-size: 7.5px; color: var(--ink-soft); font-weight: 500; }
+.rcard .rprice { font-size: 10.5px; font-weight: 900; color: var(--pulso-navy); white-space: nowrap; }
+
+/* DEMANDA / ZONA */
+.bottom-row { display: grid; grid-template-columns: 1.15fr 1fr; gap: 8mm; }
+.demand-row { display: grid; grid-template-columns: 130px 1fr 42px; gap: 8px; align-items: center; padding: 2px 0; font-size: 10px; }
+.demand-row.featured { font-weight: 800; }
+.demand-row .dname { color: var(--pulso-navy); font-weight: 600; }
+.demand-row .dbar { background: var(--line); height: 6px; border-radius: 3px; overflow: hidden; }
+.demand-row .dbar > div { height: 100%; background: var(--pulso-orange); border-radius: 3px; }
+.demand-row.featured .dbar > div { background: var(--pulso-navy); }
+.demand-row .ddays { text-align: right; font-variant-numeric: tabular-nums; font-weight: 800; color: var(--pulso-navy); font-size: 10px; }
+.zone-card { background: white; border: 1px solid var(--line); border-left: 4px solid var(--pulso-orange); border-radius: 0 8px 8px 0; padding: 9px 12px; }
+.zone-card .ztitle { font-size: 9px; font-weight: 800; letter-spacing: 1.8px; color: var(--pulso-navy); text-transform: uppercase; margin-bottom: 5px; }
+.zone-card p { font-size: 9.5px; color: var(--ink); line-height: 1.45; margin: 0 0 5px; }
+.zone-card p:last-child { margin-bottom: 0; }
+.zone-card strong { color: var(--pulso-navy); font-weight: 700; }
+.method { font-size: 8px; color: var(--ink-soft); line-height: 1.4; border-top: 1px solid var(--line); padding-top: 5px; }
+.method b { color: var(--pulso-navy); }
+
+.foot { background: linear-gradient(135deg, var(--pulso-navy) 0%, var(--pulso-navy-2) 100%); padding: 6mm 14mm; display: grid; grid-template-columns: auto 1fr auto; gap: 7mm; align-items: center; position: relative; overflow: hidden; margin-top:auto; }
+.foot::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--pulso-orange); }
+.chapa { height: 50px; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25)); }
+.cta-eyebrow { font-size: 9px; font-weight: 800; letter-spacing: 2.3px; color: var(--pulso-orange); text-transform: uppercase; margin-bottom: 4px; }
+.cta-title { font-size: 14px; font-weight: 800; color: white; line-height: 1.2; margin-bottom: 4px; }
+.cta-title .accent { color: var(--pulso-orange); }
+.cta-sub { font-size: 9.5px; color: rgba(255,255,255,0.75); line-height: 1.4; margin-bottom: 5px; }
+.cta-url { display: inline-block; font-size: 12px; font-weight: 800; color: var(--pulso-orange); text-decoration: none; border-bottom: 2px solid var(--pulso-orange); padding-bottom: 2px; }
+.qr-img { width: 72px; height: 72px; background: white; padding: 4px; border-radius: 6px; }
+.qr-cap { font-size: 8px; font-weight: 700; letter-spacing: 1.3px; color: rgba(255,255,255,0.55); text-transform: uppercase; text-align: center; margin-top: 3px; }
+
+@media print { body { background: white; } .sheet { box-shadow: none; margin: 0; } @page { size: A4; margin: 0; } }
+</style>
+</head>
+<body>
+
+<!-- ============ PÁGINA 1 · PULSO (lectura de mercado) ============ -->
+<div class="sheet">
+  <div class="head">
+    <img src="impulso-logo.png" alt="IM·PULSO" class="head-logo">
+    <div class="collab-badge">
+      <span class="col-tag">★ Colaboración especial</span>
+      <span class="col-line">CdU de 0 a ÉXITO</span>
+      <span class="col-phase">Fase 1 · Diagnóstico GO · 03/06/2026</span>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="eyebrow">PULSO de mercado · Nuevo Altabix (Elche)</div>
+        <h1>Promoción de <span class="accent">15 viviendas de obra nueva</span> + garaje</h1>
+        <div class="sub">Celia Lozano × María de Maeztu · Zona Deportiva–Nuevo Altabix · Elche / Elx · CP 03203</div>
+      </div>
+      <div class="flow-mini">
+        <div class="box"><div class="lbl">Estado</div><div class="val">Local esquina<br>1.168 m²</div></div>
+        <div class="arrow">→</div>
+        <div class="box after"><div class="lbl">Resultante</div><div class="val">15 viviendas<br>+ garaje</div></div>
+      </div>
+    </div>
+
+    <div class="kpi">
+      <div class="cell"><div class="lbl">Viviendas</div><div class="val">15</div><div class="sub">+ garaje</div></div>
+      <div class="cell"><div class="lbl">Sup. vendible</div><div class="val">~1.210 m²</div><div class="sub">1H · 2H · 3H</div></div>
+      <div class="cell"><div class="lbl">Obra nueva real</div><div class="val hl">2.534 €/m²</div><div class="sub">escriturado · notaría 03203</div></div>
+      <div class="cell"><div class="lbl">Rotación 2H</div><div class="val">49 d</div><div class="sub">producto más líquido</div></div>
+    </div>
+
+    <!-- NOTARIAL -->
+    <div>
+      <div class="section-tag">Transacciones reales · datos de notaría · CP 03203</div>
+      <div class="blk-title" style="margin-top:4px;">Precio real escriturado <span class="note">· lo que de verdad se ha pagado, no precio de anuncio</span></div>
+      <div class="nota-grid">
+        <div class="nota-card nueva">
+          <div class="ntag">🆕 Vivienda nueva · 2026</div>
+          <div class="nbig">2.534 <span class="nunit">€/m²</span></div>
+          <div class="nrow"><span>Importe medio</span><b>228.780 €</b></div>
+          <div class="nrow"><span>Superficie media</span><b>90 m²</b></div>
+          <div class="nrow"><span>Compraventas/año</span><b>42</b></div>
+          <div class="nrow"><span>Comprador</span><b>52% extranjero · 49 años</b></div>
+        </div>
+        <div class="nota-card">
+          <div class="ntag">Segunda mano · 2026</div>
+          <div class="nbig">1.314 <span class="nunit">€/m²</span></div>
+          <div class="nrow"><span>Importe medio</span><b>125.073 €</b></div>
+          <div class="nrow"><span>Superficie media</span><b>95 m²</b></div>
+          <div class="nrow"><span>Compraventas/año</span><b>276</b></div>
+          <div class="nrow"><span>Comprador</span><b>90% nacional · 46 años</b></div>
+        </div>
+      </div>
+      <div class="premium-strip">
+        <span>La obra nueva se escritura muy por encima de la segunda mano en esta zona:</span>
+        <span class="pv">+93% €/m²</span>
+      </div>
+    </div>
+
+    <!-- EVOLUCIÓN + LIQUIDEZ -->
+    <div class="evo-wrap">
+      <div>
+        <div class="blk-title">Evolución del €/m² en la zona <span class="note">· anuncio (Idealista), media de todo el producto</span></div>
+        <div class="evo-bars">
+          <div class="eb"><div class="bv">2.132</div><div class="bar" style="height:78%"></div><div class="bl">24·Q4</div></div>
+          <div class="eb"><div class="bv">2.089</div><div class="bar" style="height:72%"></div><div class="bl">25·Q2</div></div>
+          <div class="eb"><div class="bv">2.116</div><div class="bar" style="height:76%"></div><div class="bl">25·Q3</div></div>
+          <div class="eb"><div class="bv">2.159</div><div class="bar" style="height:82%"></div><div class="bl">25·Q4</div></div>
+          <div class="eb"><div class="bv">2.132</div><div class="bar" style="height:78%"></div><div class="bl">26·Q1</div></div>
+          <div class="eb"><div class="bv">2.153</div><div class="bar" style="height:81%"></div><div class="bl">26·Q2</div></div>
+        </div>
+        <div class="mini-note" style="margin-top:6px;">Precio <b>estable con repunte suave</b>. Lo relevante: la <b>oferta en venta cae de 204 a 101 anuncios</b> en el último año (–50%) → menos producto disponible, tensión a favor del vendedor.</div>
+      </div>
+      <div>
+        <div class="blk-title">Liquidez por tipología</div>
+        <div class="demand-row featured"><div class="dname">2 hab</div><div class="dbar"><div style="width:100%"></div></div><div class="ddays">49 d</div></div>
+        <div class="demand-row"><div class="dname">3 hab</div><div class="dbar"><div style="width:56%"></div></div><div class="ddays">88 d</div></div>
+        <div class="demand-row"><div class="dname">4+ hab</div><div class="dbar"><div style="width:40%"></div></div><div class="ddays">124 d</div></div>
+        <div class="demand-row"><div class="dname">1 hab ⚠</div><div class="dbar"><div style="width:37%"></div></div><div class="ddays">133 d</div></div>
+        <div class="mini-note" style="margin-top:6px;">Barra = liquidez (menos días, más demanda). El <b>~80% de anuncios acaba retirándose</b>: mercado que absorbe.</div>
+      </div>
+    </div>
+
+    <div class="zone-card">
+      <div class="ztitle">Lectura de zona</div>
+      <p><strong>Nuevo Altabix</strong> es de las zonas en expansión de Elche (Universidad Miguel Hernández, Hospital, Ciudad Deportiva). El €/m² está claramente por encima del Altabix consolidado y la <strong>obra nueva es escasa</strong>, lo que da recorrido al producto. La demanda escritura obra nueva a casi el doble de €/m² que la segunda mano y atrae un perfil de comprador <strong>internacional</strong>.</p>
+    </div>
+    <div class="method">
+      <b>Fuentes:</b> precio real escriturado — estadística notarial por código postal (03203). Evolución y liquidez — base IM·PULSO sobre mercado de anuncios (Idealista), microzona Zona Deportiva–Nuevo Altabix + Zona Universidad, corte 12/05/2026.
+    </div>
+  </div>
+</div>
+
+<!-- ============ PÁGINA 2 · IMPULSO (el activo) ============ -->
+<div class="sheet">
+  <div class="head">
+    <img src="impulso-logo.png" alt="IM·PULSO" class="head-logo">
+    <div class="collab-badge">
+      <span class="col-tag">IM·PULSO del activo</span>
+      <span class="col-line">15 viviendas · Nuevo Altabix</span>
+      <span class="col-phase">Precio de venta esperado por tipología</span>
+    </div>
+  </div>
+
+  <div class="body">
+    <div>
+      <div class="section-tag">IMPULSO · valoración del producto resultante</div>
+      <div class="blk-title" style="margin-top:4px;">Precio de venta esperado por tipología <span class="note">· producto obra nueva con garaje, banda alta validada con notaría (2.534 €/m²)</span></div>
+      <div class="typo-grid">
+        <div class="tcard">
+          <div class="thead"><span class="tt">3 habitaciones</span><span class="tu">×6 · 2 baños</span></div>
+          <div class="tbody">
+            <div class="trow"><span>Superficie</span><b>90,9–112,5 m²</b></div>
+            <div class="trow"><span>€/m² aplicado</span><b>2.600–2.900</b></div>
+            <div class="trow"><span>Testigos vendidos</span><b>109</b></div>
+            <div class="tprice"><div class="plab">Precio esperado / ud</div><div class="pval">245.000 – 310.000 €</div><div class="psub">6 uds ≈ 1,55 M€</div></div>
+          </div>
+        </div>
+        <div class="tcard">
+          <div class="thead"><span class="tt">2 habitaciones</span><span class="tu">×4 · 2 baños</span></div>
+          <div class="tbody">
+            <div class="trow"><span>Superficie</span><b>66,3–112,8 m²</b></div>
+            <div class="trow"><span>€/m² aplicado</span><b>2.700–3.050</b></div>
+            <div class="trow"><span>Testigos vendidos</span><b>36</b></div>
+            <div class="tprice"><div class="plab">Precio esperado / ud</div><div class="pval">185.000 – 345.000 €</div><div class="psub">4 uds ≈ 0,95 M€</div></div>
+          </div>
+        </div>
+        <div class="tcard warn">
+          <div class="thead"><span class="tt">1 habitación</span><span class="tu">×5 · 1 baño</span></div>
+          <div class="tbody">
+            <div class="trow"><span>Superficie</span><b>42,8–57,3 m²</b></div>
+            <div class="trow"><span>€/m² aplicado</span><b>2.900–3.200</b></div>
+            <div class="trow"><span>Testigos</span><b>muestra baja ⚠</b></div>
+            <div class="tprice"><div class="plab">Precio esperado / ud</div><div class="pval">130.000 – 170.000 €</div><div class="psub">5 uds ≈ 0,70 M€</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="total-strip">
+        <span class="tl">Valor de venta total estimado · 15 viviendas</span>
+        <span class="tv">≈ 2,9 – 3,4 M€</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="blk-title">Testigos directos · misma calle del activo <span class="note">· €/m² medio de estos 4: 2.800</span></div>
+      <div class="golden-grid">
+        <div class="gcard"><div class="gaddr">Celia Lozano s/n</div><div class="gmeta">2H·2b · 74 m² · vendido 35d</div><div class="gprice">228.000 €</div><div class="gper">3.081 €/m²</div></div>
+        <div class="gcard"><div class="gaddr">Celia Lozano, 14</div><div class="gmeta">2H·2b · 93 m² · en venta</div><div class="gprice">295.000 €</div><div class="gper">3.172 €/m²</div></div>
+        <div class="gcard"><div class="gaddr">Celia Lozano</div><div class="gmeta">2H·2b · 97 m² · vendido 8d</div><div class="gprice">232.000 €</div><div class="gper">2.392 €/m²</div></div>
+        <div class="gcard"><div class="gaddr">Celia Lozano, 3</div><div class="gmeta">3H·1b · 90 m² · vendido 6d</div><div class="gprice">230.000 €</div><div class="gper">2.556 €/m²</div></div>
+      </div>
+      <div class="rest-grid">
+        <div class="rcard"><div><div class="raddr">Nuevo Altabix</div><div class="rmeta">3H · 92 m²</div></div><div class="rprice">330.000 €</div></div>
+        <div class="rcard"><div><div class="raddr">Cañete Juárez, 2</div><div class="rmeta">2H · 105 m²</div></div><div class="rprice">295.000 €</div></div>
+        <div class="rcard"><div><div class="raddr">Nuevo Altabix</div><div class="rmeta">2H · 79 m²</div></div><div class="rprice">295.000 €</div></div>
+        <div class="rcard"><div><div class="raddr">Nuevo Altabix</div><div class="rmeta">3H · 86 m²</div></div><div class="rprice">235.000 €</div></div>
+        <div class="rcard"><div><div class="raddr">Cañete Juárez, 2</div><div class="rmeta">3H · 95 m²</div></div><div class="rprice">226.000 €</div></div>
+        <div class="rcard"><div><div class="raddr">Pza. Pepe Belso</div><div class="rmeta">2H · 96 m²</div></div><div class="rprice">216.900 €</div></div>
+        <div class="rcard"><div><div class="raddr">Navarro Campello, 6</div><div class="rmeta">2H · 85 m²</div></div><div class="rprice">215.000 €</div></div>
+        <div class="rcard"><div><div class="raddr">M. Martínez Valero</div><div class="rmeta">2H · 90 m²</div></div><div class="rprice">191.000 €</div></div>
+      </div>
+    </div>
+
+    <div class="bottom-row">
+      <div class="zone-card">
+        <div class="ztitle">Síntesis para la decisión</div>
+        <p><strong>Producto correcto para la zona.</strong> La obra nueva escritura a 2.534 €/m² real (228.780 € de media); tus tipologías encajan en esa banda con recorrido.</p>
+        <p><strong>Mix con salida.</strong> El 2H es el más líquido (≈7 semanas) y el 3H tiene la mayor bolsa de comparables. El 1H es el de menor evidencia (validar en obra).</p>
+        <p><strong>Absorción de 15 uds escalonada</strong>, apoyada en demanda real y oferta a la baja (–50% de anuncios en un año).</p>
+      </div>
+      <div class="zone-card" style="border-left-color:var(--pulso-navy);">
+        <div class="ztitle">Cómo leer estas cifras</div>
+        <p>El <strong>notarial</strong> es precio real pagado del CP completo; el <strong>esperado por tipología</strong> aplica la banda de obra nueva al producto concreto (m² y nº de baños de cada vivienda).</p>
+        <p>Rangos <strong>conservador → optimista</strong>: el límite alto exige acabados y comercialización a la altura del mejor producto de la zona.</p>
+      </div>
+    </div>
+
+    <div class="method">
+      <b>Nota:</b> documento de Fase 1 (encaje de mercado y precio de venta esperado). El análisis de viabilidad económica (suelo, costes, márgenes) corresponde a Fase 2. Tipología 1H con muestra reducida en la microzona: cifra orientativa.
+    </div>
+  </div>
+
+  <div class="foot">
+    <img src="impulso-chapa.png" alt="Sello IM·PULSO" class="chapa">
+    <div>
+      <div class="cta-eyebrow">¿Tienes una operación entre manos?</div>
+      <div class="cta-title">Pide tu informe <span class="accent">IM·PULSO</span> y decide con datos, no con intuición.</div>
+      <div class="cta-sub">Inteligencia de mercado para inversores, gestores de operaciones y comunidades inmobiliarias.</div>
+      <a href="https://im-pulso.app/" class="cta-url">→ im-pulso.app</a>
+    </div>
+    <div>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=0&data=https%3A%2F%2Fim-pulso.app%2F" alt="QR" class="qr-img">
+      <div class="qr-cap">Escanea</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

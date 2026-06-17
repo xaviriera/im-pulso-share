@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO v2 — Beniarbeig · Av. del Vergel 5 | Edificio Residencial</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header { background: #141B36; color: white; padding: 16px 0; }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .header-logo {
+    font-size: 20px; font-weight: 800; color: white; letter-spacing: -0.5px;
+  }
+  .header-logo span { color: #FF4D2E; }
+  .header .badge {
+    background: #FF4D2E; color: white; padding: 4px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0;
+  }
+
+  /* CO-BRANDING BAR */
+  .cobrand-bar { background: #0f1429; color: rgba(255,255,255,0.85); padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .cobrand-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 12px;
+  }
+  .cobrand-label { text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; opacity: 0.6; }
+  .cobrand-cdu { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #E29F34; }
+  .cobrand-inner a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    color: white; padding: 48px 0 56px; text-align: center;
+  }
+  .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; }
+  .hero .subtitle { font-size: 15px; opacity: 0.65; margin-bottom: 20px; }
+  .hero-selectors { display: flex; justify-content: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .hero-selector {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 20px; border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 600;
+  }
+  .hero-selector.active { background: #FF4D2E; border-color: #FF4D2E; color: white; }
+
+  /* FICHA */
+  .op-ficha { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 820px; margin: 0 auto 32px; text-align: left; }
+  .op-cell { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 18px; }
+  .op-key { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: #FF4D2E; font-weight: 800; margin-bottom: 6px; }
+  .op-val { font-size: 14px; font-weight: 600; color: white; line-height: 1.4; }
+  .op-val small { display: block; font-size: 12px; font-weight: 400; opacity: 0.6; margin-top: 3px; }
+
+  /* SOURCE PILLS */
+  .hero-sources { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; max-width: 820px; margin: 0 auto 28px; }
+  .source-pill { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 14px 18px; text-align: center; flex: 1; min-width: 200px; }
+  .source-pill .sp-icon { font-size: 22px; margin-bottom: 6px; }
+  .source-pill .sp-title { font-size: 13px; font-weight: 700; color: white; }
+  .source-pill .sp-desc { font-size: 11px; opacity: 0.55; margin-top: 2px; }
+
+  /* GALERÍA LIGHTBOX */
+  .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
+  .gallery-thumb {
+    cursor: pointer; border-radius: 10px; overflow: hidden; aspect-ratio: 4/3;
+    border: 2px solid rgba(255,255,255,0.1); transition: border-color .2s;
+  }
+  .gallery-thumb:hover { border-color: #FF4D2E; }
+  .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .gallery-caption { font-size: 10px; color: rgba(255,255,255,0.5); text-align: center; margin-top: 4px; padding: 0 4px; line-height: 1.3; }
+
+  /* LIGHTBOX */
+  #lightbox {
+    display: none; position: fixed; z-index: 9999; inset: 0;
+    background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+    flex-direction: column;
+  }
+  #lightbox.open { display: flex; }
+  #lb-img { max-width: 90vw; max-height: 80vh; object-fit: contain; border-radius: 8px; }
+  #lb-caption { color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 12px; font-family: 'Manrope', sans-serif; }
+  .lb-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.1); border: none; color: white; font-size: 28px;
+    width: 50px; height: 50px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  #lb-prev { left: 20px; }
+  #lb-next { right: 20px; }
+  #lb-close {
+    position: absolute; top: 16px; right: 20px; background: rgba(255,255,255,0.1);
+    border: none; color: white; font-size: 22px; width: 40px; height: 40px;
+    border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+
+  /* CONTAINER */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* SECTION */
+  .section { margin: 48px 0; position: relative; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .section-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+  .section-title { font-size: 20px; font-weight: 700; color: #141B36; }
+  .section-subtitle { font-size: 13px; color: #9ca3af; }
+
+  /* BADGES */
+  .zone-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-left: auto; flex-shrink: 0; }
+  .zone-badge.pulso { background: #ecfdf5; color: #10B981; }
+  .zone-badge.impulso { background: #fff3f0; color: #FF4D2E; }
+  .zone-badge.notarial { background: #f5f3ff; color: #8B5CF6; }
+  .zone-badge.mtvv { background: #ecfdf5; color: #10B981; border: 2px solid #10B981; }
+  .zone-badge.inversor { background: #fef3c7; color: #d97706; }
+
+  /* CARDS */
+  .card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); margin-bottom: 16px; border: 1px solid #e5e7eb; }
+  .card-title { font-size: 16px; font-weight: 700; color: #141B36; margin-bottom: 4px; }
+  .card-subtitle { font-size: 13px; color: #9ca3af; margin-bottom: 16px; }
+
+  /* KPI ROW */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+  .kpi { background: white; padding: 16px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; }
+  .kpi .kpi-value { font-size: 22px; font-weight: 800; color: #141B36; }
+  .kpi .kpi-label { font-size: 11px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* MARKS */
+  .mark { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 5px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.5px; text-transform: uppercase; }
+  .mark-pulso { background: #FF4D2E; color: white; }
+  .mark-asset { background: #10B981; color: white; }
+  .mark-warn { background: #f59e0b; color: white; }
+  .mark-prov { background: #8B5CF6; color: white; }
+
+  /* LEGEND */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: #6b7280; margin: 4px 0 14px; align-items: center; }
+  .legend .lg-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .lg-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0; }
+  th { background: #141B36; color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid #f3f4f6; }
+  tr:hover td { background: #f9fafb; }
+  tr.highlight td { background: #ecfdf5; }
+  tr.highlight-asset td { background: #fff3f0; }
+  tr.total-row td { background: #141B36; color: white; font-weight: 700; }
+  tr.total-row:hover td { background: #1e2a4a; }
+  .table-wrap { overflow-x: auto; }
+
+  /* INSIGHT BOX */
+  .insight { margin-top: 12px; padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.55; }
+  .insight-orange { background: #fff3f0; }
+  .insight-green { background: #ecfdf5; }
+  .insight-purple { background: #f5f3ff; }
+  .insight-gray { background: #f3f4f6; color: #6b7280; }
+  .insight-yellow { background: #fffbeb; border: 1px solid #fde68a; color: #78350f; }
+  .insight-amber { background: #fef3c7; border: 1px solid #fcd34d; }
+
+  /* TERM EXPLAINER */
+  .term-explainer {
+    background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #141B36;
+    border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6;
+  }
+  .term-explainer strong { color: #141B36; }
+
+  /* STEP HEADER */
+  .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .step-number { width: 32px; height: 32px; border-radius: 50%; background: #10B981; color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+  .step-title { font-size: 16px; font-weight: 700; color: #141B36; }
+
+  /* STEP PRICE */
+  .step-price { margin-top: 16px; background: #141B36; border-radius: 12px; padding: 16px; text-align: center; }
+  .step-price .sp-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+  .step-price .sp-value { font-size: 28px; font-weight: 800; color: #FF4D2E; margin-top: 4px; }
+  .step-price .sp-note { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+  /* CONVERGENCE */
+  .convergence { background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%); border-radius: 16px; padding: 32px; text-align: center; color: white; margin: 24px 0; }
+  .conv-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-bottom: 8px; }
+  .conv-verdict { font-size: 24px; font-weight: 800; color: #10B981; margin-bottom: 4px; }
+  .conv-price { font-size: 42px; font-weight: 800; color: #FF4D2E; }
+  .conv-range { font-size: 14px; opacity: 0.6; margin-top: 4px; }
+  .conv-note { font-size: 13px; opacity: 0.6; margin-top: 16px; max-width: 640px; margin-left: auto; margin-right: auto; line-height: 1.6; }
+
+  /* VALIDATION GRID */
+  .validation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  .validation-card { padding: 24px; border-radius: 14px; text-align: center; border: 2px solid transparent; }
+  .validation-card.scraping { background: #fff3f0; border-color: #FFD4C8; }
+  .validation-card.notarial-v { background: #f5f3ff; border-color: #ddd6fe; }
+  .validation-card.mtvv-v { background: #ecfdf5; border-color: #a7f3d0; }
+  .validation-card.amber-v { background: #fffbeb; border-color: #fcd34d; }
+  .v-icon { font-size: 28px; margin-bottom: 8px; }
+  .v-source { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 12px; }
+  .validation-card.scraping .v-source { color: #FF4D2E; }
+  .validation-card.notarial-v .v-source { color: #8B5CF6; }
+  .validation-card.mtvv-v .v-source { color: #10B981; }
+  .validation-card.amber-v .v-source { color: #d97706; }
+  .v-price { font-size: 26px; font-weight: 800; color: #141B36; }
+  .v-detail { font-size: 12px; color: #4b5563; margin-top: 6px; }
+  .semaforo { display: inline-block; width: 14px; height: 14px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+  .sem-green { background: #10B981; }
+  .sem-amber { background: #f59e0b; }
+  .sem-red { background: #ef4444; }
+
+  /* VERDICT BOX */
+  .verdict-navy {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    border: none; color: white; border-radius: 12px; padding: 20px 24px; margin: 20px 0;
+    font-size: 15px; font-weight: 600; display: flex; align-items: flex-start; gap: 14px;
+  }
+  .verdict-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(255,77,46,0.15); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+
+  /* RISK BANNER */
+  .risk-banner { background: #fef2f2; border: 2px solid #fca5a5; border-radius: 14px; padding: 20px 24px; margin-bottom: 20px; }
+  .risk-banner .rb-title { font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #dc2626; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .risk-item { display: flex; gap: 12px; align-items: flex-start; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #fee2e2; }
+  .risk-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+  .risk-k { width: 32px; height: 32px; border-radius: 8px; background: #dc2626; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; flex-shrink: 0; }
+  .risk-body { font-size: 13px; line-height: 1.5; color: #1f2937; }
+  .risk-body strong { color: #dc2626; }
+
+  /* GRID VIVIENDAS */
+  .viv-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 16px 0; }
+  .viv-card { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px; text-align: center; }
+  .viv-card.tipo-1d { border-top: 3px solid #8B5CF6; }
+  .viv-card.tipo-2d { border-top: 3px solid #FF4D2E; }
+  .viv-card.tipo-3d { border-top: 3px solid #10B981; }
+  .viv-card.tipo-4d { border-top: 3px solid #f59e0b; }
+  .viv-id { font-size: 10px; color: #9ca3af; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .viv-tipo { font-size: 13px; font-weight: 700; color: #141B36; margin: 4px 0; }
+  .viv-m2 { font-size: 12px; color: #6b7280; }
+  .viv-precio { font-size: 15px; font-weight: 800; color: #FF4D2E; margin-top: 6px; }
+
+  /* PRECIO MAXIMO */
+  .precio-max-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0; }
+  .pm-card { padding: 20px; border-radius: 12px; text-align: center; border: 2px solid #e5e7eb; background: white; }
+  .pm-card.best { background: #ecfdf5; border-color: #a7f3d0; }
+  .pm-margen { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #9ca3af; font-weight: 700; margin-bottom: 8px; }
+  .pm-valor { font-size: 28px; font-weight: 800; color: #141B36; }
+  .pm-nota { font-size: 11px; color: #6b7280; margin-top: 6px; }
+
+  /* COLLAPSIBLE NOTES */
+  .notes-collapsible { margin-top: 20px; }
+  .notes-toggle { cursor: pointer; background: #f3f4f6; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px 16px; font-size: 13px; font-weight: 600; color: #6b7280; display: flex; align-items: center; justify-content: space-between; user-select: none; }
+  .notes-body { display: none; background: #f9fafb; border: 1px solid #e5e7eb; border-top: none; border-radius: 0 0 8px 8px; padding: 16px; font-size: 12.5px; color: #4b5563; line-height: 1.7; }
+  .notes-body.open { display: block; }
+
+  /* PROVENANCE */
+  .provenance { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #78350f; }
+  .provenance strong { color: #92400e; }
+
+  /* DISCLAIMER */
+  .disclaimer { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #1e3a8a; }
+
+  /* HUECO */
+  .hueco { background: #f3f4f6; border: 2px dashed #d1d5db; border-radius: 8px; padding: 12px 16px; font-size: 13px; color: #9ca3af; font-style: italic; margin: 8px 0; }
+
+  /* SECTION DIVIDER */
+  .section-divider { border: none; border-top: 2px dashed #e5e7eb; margin: 40px 0; }
+
+  /* FOOTER */
+  .footer { background: #141B36; color: rgba(255,255,255,0.7); padding: 48px 0 40px; margin-top: 56px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
+  .footer .footer-cta-title { font-size: 22px; font-weight: 800; color: white; margin-bottom: 8px; }
+  .footer .footer-cta-sub { font-size: 14px; opacity: 0.6; margin-bottom: 24px; }
+  .wa-button { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; text-decoration: none; padding: 14px 28px; border-radius: 30px; font-size: 16px; font-weight: 700; box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
+  .footer-fine { margin-top: 24px; font-size: 11px; opacity: 0.45; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .validation-grid { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .op-ficha { grid-template-columns: 1fr; }
+    .hero { padding: 30px 0 36px; }
+    .hero h1 { font-size: 22px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .precio-max-grid { grid-template-columns: 1fr; }
+    .viv-grid { grid-template-columns: repeat(2, 1fr); }
+    .section { margin: 32px 0; }
+    .container { padding: 0 16px; }
+    .card { padding: 18px; }
+    .table-wrap table { font-size: 12px; }
+    table th, table td { padding: 8px 10px; }
+    .conv-price { font-size: 28px; }
+  }
+  @media (max-width: 480px) {
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .viv-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <button id="lb-close" onclick="closeLightbox()">&#10005;</button>
+  <button class="lb-nav" id="lb-prev" onclick="lbNav(-1)">&#8249;</button>
+  <img id="lb-img" src="" alt="">
+  <div id="lb-caption"></div>
+  <button class="lb-nav" id="lb-next" onclick="lbNav(1)">&#8250;</button>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-logo">IM<span>·</span>PULSO</div>
+    <span class="badge">IM·PULSO v2 · Operación Beniarbeig</span>
+  </div>
+</div>
+
+<!-- CO-BRANDING BAR -->
+<div class="cobrand-bar">
+  <div class="cobrand-inner">
+    <span class="cobrand-label">Operación</span>
+    <span class="cobrand-cdu">CdU de 0 a ÉXITO · Xavi + Rus</span>
+    <a href="https://tucambiodeuso.com" target="_blank" rel="noopener">tucambiodeuso.com</a>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 1 — HERO + FICHA -->
+<!-- ============================================================ -->
+<div class="hero">
+  <div class="container">
+    <h1>Beniarbeig · Av. del Vergel 5</h1>
+    <div class="subtitle">Edificio residencial inacabado · 20 viviendas · Alicante (Marina Alta)</div>
+    <div class="hero-selectors">
+      <div class="hero-selector active">IM·PULSO</div>
+      <div class="hero-selector">Notariado</div>
+      <div class="hero-selector">MTVV</div>
+    </div>
+
+    <div class="op-ficha">
+      <div class="op-cell">
+        <div class="op-key">La operación</div>
+        <div class="op-val">Terminación obra + venta
+          <small>Edificio plurifamiliar inacabado — terminación + venta unidades</small>
+        </div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">El activo</div>
+        <div class="op-val">20 viviendas + 20 plazas garaje
+          <small>C/ Sant Roc 22 esq. Av. del Vergel · 03778 Beniarbeig · Ref. cat. 0416215YH6001N0001SU</small>
+        </div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">El resultado esperado</div>
+        <div class="op-val">GDV 5.258.250 €
+          <small>Precio pedido: 900.000 € · Veredicto: 🟡 GO-CONDICIONADO ≤ 800k</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-sources">
+      <div class="source-pill">
+        <div class="sp-icon">&#128225;</div>
+        <div class="sp-title">IM·PULSO</div>
+        <div class="sp-desc">~25 testigos reales comarca</div>
+      </div>
+      <div class="source-pill">
+        <div class="sp-icon">&#127963;&#65039;</div>
+        <div class="sp-title">Portal del Notariado</div>
+        <div class="sp-desc">25 compraventas CP 03778</div>
+      </div>
+      <div class="source-pill">
+        <div class="sp-icon">&#128300;</div>
+        <div class="sp-title">MTVV · Programa IN</div>
+        <div class="sp-desc">Testigos Jávea · Dénia · El Verger · Pedreguer</div>
+      </div>
+    </div>
+
+    <!-- GALERÍA -->
+    <div class="gallery-grid" id="gallery">
+      <div class="gallery-thumb" onclick="openLightbox(0)">
+        <img src="assets/01-fachada.jpg" alt="Fachada principal">
+        <div class="gallery-caption">Fachada principal</div>
+      </div>
+      <div class="gallery-thumb" onclick="openLightbox(1)">
+        <img src="assets/02-interior-bruto.jpg" alt="Interior en bruto">
+        <div class="gallery-caption">Interior en bruto ⚠️</div>
+      </div>
+      <div class="gallery-thumb" onclick="openLightbox(2)">
+        <img src="assets/03-humedades-paredes.jpg" alt="Humedad capilar">
+        <div class="gallery-caption">Humedad capilar 🔴</div>
+      </div>
+      <div class="gallery-thumb" onclick="openLightbox(3)">
+        <img src="assets/04-interior-puerta.jpg" alt="Interior acceso">
+        <div class="gallery-caption">Interior acceso 🔴</div>
+      </div>
+      <div class="gallery-thumb" onclick="openLightbox(4)">
+        <img src="assets/05-sotano-boveda.jpg" alt="Sótano abovedado">
+        <div class="gallery-caption">Sótano abovedado ⚠️</div>
+      </div>
+      <div class="gallery-thumb" onclick="openLightbox(5)">
+        <img src="assets/06-estructura-chimenea.jpg" alt="Estructura piedra">
+        <div class="gallery-caption">Estructura piedra 🔴</div>
+      </div>
+      <div class="gallery-thumb" onclick="openLightbox(6)">
+        <img src="assets/07-interior-corredor.jpg" alt="Corredor interior">
+        <div class="gallery-caption">Corredor interior 🔴</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 2 — PULSO DE MERCADO -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#ecfdf5;color:#10B981;">&#128200;</div>
+    <div>
+      <div class="section-title">2 · PULSO — El latido del mercado</div>
+      <div class="section-subtitle">Qué se publica y qué se mueve en Beniarbeig y comarca Marina Alta</div>
+    </div>
+    <span class="zone-badge pulso">El mercado</span>
+  </div>
+
+  <div class="card">
+    <div class="legend">
+      <span class="lg-item"><span class="lg-dot" style="background:#FF4D2E;"></span> <strong>PULSO</strong> = el segmento con MÁS volumen del mercado (el producto dominante de la zona).</span>
+      <span class="lg-item"><span class="lg-dot" style="background:#10B981;"></span> <strong>Viviendas resultantes</strong> = las 20 viviendas del edificio (2×1D · 11×2D · 4×ático 3D · 3×ático 4D).</span>
+    </div>
+    <div class="insight insight-gray" style="margin-top:0;">
+      Fuente: ~20-25 testigos reales de Fotocasa / Habitaclia / Idealista / ThinkSpain / Tucasa / Housage / NuRoa / AbbeyProperties / PromocionesDeñia (junio 2026). <strong>Sin BBDD de scraping IM·PULSO para esta zona</strong> (operación privada Xavi+Rus, fuera del flujo habitual). Ver nota técnica al final de la sección.
+    </div>
+  </div>
+
+  <!-- 2.1 KPIs -->
+  <div class="card">
+    <div class="card-title">2.1 Resumen del mercado de venta — KPIs comarca</div>
+    <div class="card-subtitle">Beniarbeig + El Verger + Els Poblets + Pedreguer + Ondara + Pego</div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-value">~25</div><div class="kpi-label">Testigos analizados</div></div>
+      <div class="kpi"><div class="kpi-value">72</div><div class="kpi-label">Compraventas/año Beniarbeig (2024)</div></div>
+      <div class="kpi"><div class="kpi-value">2.025&nbsp;€/m²</div><div class="kpi-label">Precio medio 2ª mano (Beniarbeig)</div></div>
+      <div class="kpi"><div class="kpi-value">+12-18%</div><div class="kpi-label">Tendencia interanual provincial</div></div>
+    </div>
+    <div class="insight insight-green">
+      Mercado comarcal activo y alcista. Beniarbeig absorbe ~58-72 ops/año en total, de las que solo 0-5 son obra nueva. Las 20 viviendas del edificio son 4-10× la oferta nueva histórica anual: la venta viable requiere captación comarcal + internacional.
+    </div>
+  </div>
+
+  <!-- 2.2 Por tipo de inmueble -->
+  <div class="card">
+    <div class="card-title">2.2 Por tipo de inmueble</div>
+    <div class="card-subtitle">Testigos comarca Marina Alta interior (excluye Dénia y Jávea como mercados premium de costa)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipo</th><th>Testigos comarca</th><th>€/m² medio</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr class="highlight"><td><strong>Apartamento 2D (piso, sin ático)</strong> <span class="mark mark-pulso">PULSO</span></td><td>Mayoría del stock</td><td>2.053–2.843 €/m²</td><td>2ª mano a ON interior</td></tr>
+          <tr class="highlight-asset"><td><strong>Ático / dúplex</strong> <span class="mark mark-asset">Viviendas resultantes (7 áticos)</span></td><td>Minoritario</td><td>2.636–3.324 €/m²</td><td>Prima por terraza / solárium</td></tr>
+          <tr><td>Unifamiliar / adosado</td><td>Presente comarca</td><td>3.324 €/m² (Gata de Gorgos, ON)</td><td>Segmento diferente</td></tr>
+          <tr><td>Garaje / plaza</td><td>Escaso en anuncios</td><td>10.000–14.000 €/plaza</td><td>Interior comarcal; Dénia 12-24k€</td></tr>
+          <tr><td>Local / comercial</td><td colspan="2"><span class="hueco" style="display:inline;">[HUECO: sin testigos en zona — mercado muy escaso]</span></td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-green">
+      <strong>Marca PULSO:</strong> Apartamento 2D 2ª mano, 70-95 m², 150-200k€.<br>
+      <strong>Marca viviendas resultantes:</strong> Mix (2×1D + 11×2D ON + 7 áticos dúplex premium). ON sin competencia directa local.
+    </div>
+  </div>
+
+  <!-- 2.3 Por número de habitaciones -->
+  <div class="card">
+    <div class="card-title">2.3 Por número de habitaciones</div>
+    <div class="card-subtitle">Señal de mercado por tipología</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Habitaciones</th><th>€/m² medio testigos</th><th>Rango precio total</th><th>Muestra</th></tr></thead>
+        <tbody>
+          <tr><td><strong>1 dormitorio</strong></td><td>2.800–3.650 €/m²</td><td>134.000–237.000 €</td><td>2 testigos</td></tr>
+          <tr class="highlight"><td><strong>2 dormitorios</strong> <span class="mark mark-pulso">PULSO</span></td><td>2.053–2.843 €/m²</td><td>157.900–318.000 €</td><td>6 testigos</td></tr>
+          <tr class="highlight-asset"><td><strong>3 dormitorios (ático/dúplex)</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td>2.636–3.324 €/m²</td><td>239.000–369.000 €</td><td>4 testigos</td></tr>
+          <tr class="highlight-asset"><td><strong>4 dormitorios</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td>Sin testigos ON directos</td><td>~390.000 € (EST)</td><td>Extrapolado</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2.4 Por hab+baños -->
+  <div class="card">
+    <div class="card-title">2.4 Por habitaciones y baños</div>
+    <div class="card-subtitle">Cruce tipología — datos disponibles por inferencia</div>
+    <div class="provenance">
+      <strong>HUECO PARCIAL:</strong> los testigos documentados no detallan sistemáticamente el número de baños. En Beniarbeig / interior Marina Alta el driver de precio es <strong>terraza/solárium &gt; nº baños</strong>.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipología</th><th>Baños estimados</th><th>€/m² defensible</th></tr></thead>
+        <tbody>
+          <tr><td>1D · ~50 m²</td><td>1 baño</td><td>2.800 €/m²</td></tr>
+          <tr class="highlight"><td><strong>2D · ~75 m²</strong> <span class="mark mark-pulso">DOMINANTE</span></td><td>1-2 baños</td><td>2.700 €/m²</td></tr>
+          <tr class="highlight-asset"><td><strong>Ático 3D · ~110 m² dúplex</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td>2 baños</td><td>3.025 €/m² (+prima terraza)</td></tr>
+          <tr class="highlight-asset"><td><strong>Ático 4D · ~130 m² dúplex</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td>2-3 baños</td><td>3.025 €/m² (+prima terraza)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2.5 Tramos de precio -->
+  <div class="card">
+    <div class="card-title">2.5 Por tramos de precio</div>
+    <div class="card-subtitle">Posicionamiento de la operación en el mercado comarcal</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tramo de precio</th><th>Tipología dominante comarca</th><th>Nota</th></tr></thead>
+        <tbody>
+          <tr><td>&lt; 150.000 €</td><td>2ª mano 1D / pequeños en Pego-Ondara</td><td>Bajo poder adquisitivo</td></tr>
+          <tr class="highlight"><td><strong>150.000 – 200.000 €</strong> <span class="mark mark-pulso">PULSO</span></td><td>2D 2ª mano (Beniarbeig, Ondara, Pego)</td><td>195k-199k€ — producto dominante</td></tr>
+          <tr class="highlight-asset"><td><strong>200.000 – 270.000 €</strong></td><td>2D ON pueblos sin playa / áticos 2ª mano</td><td>Zona de 2D ON (194k) y ático 3D bajo (239k)</td></tr>
+          <tr class="highlight-asset"><td><strong>270.000 – 400.000 €</strong></td><td>Áticos/dúplex ON comarca</td><td>Zona ático 3D (332k) y 4D (393k)</td></tr>
+          <tr><td>&gt; 400.000 €</td><td>ON playa primera línea (El Verger-EDENIA, Jávea)</td><td>Mercado diferente</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-green">
+      La operación se posiciona en rango 140k–393k€ por unidad — accesible respecto al precio de playa primera línea. ON sin competencia local en el segmento medio-premium interior.
+    </div>
+  </div>
+
+  <!-- 2.6 Comparativa por zona -->
+  <div class="card">
+    <div class="card-title">2.6 Comparativa por zona / testigos directos en el activo</div>
+    <div class="card-subtitle">Testigos con referencia directa al entorno del edificio (C/ Sant Roc 22)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Zona</th><th>Muestra</th><th>€/m² observado</th><th>Vs. Beniarbeig</th></tr></thead>
+        <tbody>
+          <tr class="highlight-asset"><td><strong>Beniarbeig pueblo</strong> (C/ Sant Roc, zona centro)</td><td>3 testigos directos</td><td>1.679–3.022 €/m²</td><td>Referencia</td></tr>
+          <tr><td>Els Poblets (La Pinada, sin playa)</td><td>2 testigos ON</td><td>2.843–3.025 €/m²</td><td>+10-20%</td></tr>
+          <tr><td>El Verger (interior)</td><td>1 testigo ON / índice</td><td>3.112 €/m² índice</td><td>+54% (efecto playa)</td></tr>
+          <tr><td>Pedreguer</td><td>1 testigo / índice</td><td>2.401 €/m² (índice) + 3.470 (La Sella premium)</td><td>+18-70%</td></tr>
+          <tr><td>Ondara</td><td>1 testigo 2D 2ª mano</td><td>2.140 €/m²</td><td>+5%</td></tr>
+          <tr><td>Pego</td><td>1 testigo ático 2ª mano</td><td>2.706 €/m² (Monte Pego, vistas mar)</td><td>Similar</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-orange">
+      <strong>Testigos directos en el activo (C/ Sant Roc 22 y alrededores):</strong><br>
+      • 1D 46 m² (fotocasa 189776629): 139.000 € = <strong>3.022 €/m²</strong> (seminuevo, 2ª mano)<br>
+      • 2D 95 m² (habitaclia/tucasa): 195.000 € = <strong>2.053 €/m²</strong> (2011, 2ª mano)<br>
+      • 4D 137 m² terraza (habitaclia/tucasa): 230.000 € = <strong>1.679 €/m²</strong> (2ª mano antigua)<br>
+      El gap 2ª mano (1.679–3.022) vs. ON proyectada (2.700–3.025) es sostenible: la ON termina con CTE vigente, nuevas instalaciones, eficiencia y calidades.
+    </div>
+  </div>
+
+  <!-- 2.7 Otros activos -->
+  <div class="card">
+    <div class="card-title">2.7 Otros activos (no vivienda)</div>
+    <div class="card-subtitle">Activos no residenciales del municipio</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipo</th><th>Testigos</th><th>€/ud o €/m²</th><th>Señal</th></tr></thead>
+        <tbody>
+          <tr class="highlight-asset"><td><strong>Garaje / plaza</strong></td><td>Escaso</td><td>10.000–14.000 €/plaza</td><td>Demanda vinculada a vivienda</td></tr>
+          <tr><td>Local / comercial</td><td>Sin testigos</td><td colspan="2"><span class="hueco" style="display:inline;">[HUECO: sin datos suficientes en zona]</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-gray">
+      El municipio (~2.000 hab) tiene muy escaso stock comercial visible en portales. Las 20 plazas de garaje se valorarán vinculadas a vivienda (12.000 €/plaza, dato provisional).
+    </div>
+  </div>
+
+  <!-- 2.8 Alquiler -->
+  <div class="card">
+    <div class="card-title">2.9 Mercado de alquiler</div>
+    <div class="card-subtitle">Datos comarcales indirectos — sin testigos directos en Beniarbeig</div>
+    <div class="hueco">[HUECO: sin testigos de alquiler residencial en Beniarbeig en la muestra analizada]</div>
+    <div class="insight insight-gray">
+      Alquiler vacacional comarca (Dénia-Jávea): 800–1.800 €/mes temporada (referencia por extrapolación).<br>
+      <strong>Recomendación:</strong> NO alquilar residencial como estrategia principal — destruye la ventaja del IVA soportado (alquiler residencial = operación exenta IVA).
+    </div>
+  </div>
+
+  <!-- Nota técnica colapsable -->
+  <div class="notes-collapsible">
+    <div class="notes-toggle" onclick="toggleNotes(this)">
+      <span>📝 Nota técnica de fuente de datos (Supabase / BBDD IM·PULSO)</span>
+      <span>▼</span>
+    </div>
+    <div class="notes-body">
+      No existe BBDD de scraping IM·PULSO en Supabase para Beniarbeig. Esta es una operación privada Xavi+Rus, fuera del flujo habitual de IM·PULSO. Los datos del PULSO proceden de testigos reales documentados en el análisis económico (investigación web pública profunda, junio 2026). La cobertura geográfica es comarcal: Beniarbeig + El Verger + Els Poblets + Pedreguer + Ondara + Pego (se excluyen Dénia y Jávea como mercados premium de costa de primer nivel). El Estudio de Mercado de IM·PULSO se integrará en otra sesión.
+    </div>
+  </div>
+
+  <div class="verdict-navy">
+    <div class="verdict-icon">&#128200;</div>
+    <div>
+      <strong>Conclusión del PULSO.</strong> El latido principal del mercado comarcal es el <strong>apartamento 2D de 2ª mano en el rango 150k–200k€</strong>. Las 20 viviendas ON del edificio se posicionan sin competencia directa local: 11 × 2D son exactamente el producto más demandado pero en versión nueva; los 7 áticos dúplex premium están en el segmento de mayor ticket sin oferta ON en el municipio. El riesgo no es el producto sino la velocidad de absorción: Beniarbeig absorbe solo 0-5 ON/año histórico — se requiere demanda comarcal e internacional.
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 3 — VALORACIÓN IMPULSO -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#fff3f0;color:#FF4D2E;">&#128225;</div>
+    <div>
+      <div class="section-title">3 · VALORACIÓN IMPULSO — Activo terminado «casi nuevo»</div>
+      <div class="section-subtitle">GDV (Gross Development Value) del edificio terminado como obra nueva</div>
+    </div>
+    <span class="zone-badge impulso">El activo</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">3.1 Tabla de valoración por tipología</div>
+    <div class="card-subtitle">Distribución provisional símil (pendiente de planos reales) — valores verificados matemáticamente</div>
+    <div class="provenance">
+      <strong>Superficies PROVISIONALES (símil)</strong>: derivadas de comparables reales (fotocasa, habitaclia, thinkspain, tucasa, housage, promociones-deñia, junio 2026). Sin planos acotados disponibles. Solicitar cuadro de superficies al vendedor o archivo municipal (exp. 2068/2023) antes de cerrar precio.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Tipología</th><th>Nº uds</th><th>m²/ud</th><th>€/m² ON</th><th>€/ud</th><th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Apt. 1 dorm</td><td>2</td><td>50 <span class="mark mark-prov">PROV</span></td><td>2.800</td><td>140.000</td><td><strong>280.000 €</strong></td></tr>
+          <tr class="highlight"><td><strong>Apt. 2 dorm</strong> <span class="mark mark-pulso">PULSO</span></td><td>11</td><td>75 <span class="mark mark-prov">PROV</span></td><td>2.700</td><td>202.500</td><td><strong>2.227.500 €</strong></td></tr>
+          <tr class="highlight-asset"><td><strong>Ático dúplex 3 dorm</strong></td><td>4</td><td>110 <span class="mark mark-prov">PROV</span></td><td>3.025</td><td>332.750</td><td><strong>1.331.000 €</strong></td></tr>
+          <tr class="highlight-asset"><td><strong>Ático dúplex 4 dorm</strong></td><td>3</td><td>130 <span class="mark mark-prov">PROV</span></td><td>3.025</td><td>393.250</td><td><strong>1.179.750 €</strong></td></tr>
+          <tr class="total-row"><td><strong>TOTAL viviendas</strong></td><td><strong>20</strong></td><td><strong>1.755 m²</strong></td><td>—</td><td>—</td><td><strong>5.018.250 €</strong></td></tr>
+          <tr><td>Garaje (20 plazas)</td><td>20</td><td>622 m² total</td><td>—</td><td>12.000 €/plaza <span class="mark mark-prov">PROV</span></td><td><strong>240.000 €</strong></td></tr>
+          <tr class="total-row"><td colspan="5"><strong>GDV TOTAL</strong></td><td><strong>5.258.250 €</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-yellow">
+      <strong>Nota:</strong> Distribución provisional símil (pendiente de planos reales) — marcada como provisional. Garaje 12.000 €/plaza = provisional; rango real comarca 10.000–14.000 €/plaza.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">3.2 Ajuste 2ª mano → Obra nueva · Por qué 2.700–3.025 €/m² y no 1.495 €/m²</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Fuente</th><th>€/m²</th><th>Naturaleza</th></tr></thead>
+        <tbody>
+          <tr><td>Notarial CP 03778 (Supabase)</td><td><strong>1.495 €/m²</strong></td><td>Cierre real 2ª mano — suelo del mercado</td></tr>
+          <tr><td>Asking Idealista (dic-2025)</td><td>2.025 €/m²</td><td>Precio de salida 2ª mano</td></tr>
+          <tr><td>Descuento notarial/asking</td><td>−26%</td><td>Brecha media de negociación española</td></tr>
+          <tr class="highlight-asset"><td><strong>ON realista (análisis económico)</strong></td><td><strong>2.700–3.025 €/m²</strong></td><td>Producto terminado nuevo con CTE 2026</td></tr>
+          <tr><td>Prima ON sobre notarial</td><td>+81% a +102%</td><td>Justificada: producto nuevo vs. usado</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-orange">
+      El notarial (1.495 €/m²) registra operaciones de <strong>segunda mano del mercado general</strong>. La ON del edificio incorpora: CTE 2026 vigente, nuevas instalaciones, eficiencia energética, terrazas/solárium en áticos, acabados contemporáneos — diferencial de ~1.200–1.530 €/m² que justifica la prima.
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 4 — NOTARIAL -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#f5f3ff;color:#8B5CF6;">&#127963;&#65039;</div>
+    <div>
+      <div class="section-title">4 · NOTARIAL — Contexto oficial</div>
+      <div class="section-subtitle">Compraventas escrituradas reales · Portal Estadístico del Notariado · CP 03778</div>
+    </div>
+    <span class="zone-badge notarial">Notariado</span>
+  </div>
+
+  <div class="card">
+    <div class="card-title">4.1 Datos clave CP 03778 (Beniarbeig)</div>
+    <div class="kpi-row">
+      <div class="kpi" style="background:#f5f3ff;border-color:#ddd6fe;"><div class="kpi-value" style="color:#8B5CF6;">1.495 €/m²</div><div class="kpi-label">€/m² notarial medio</div></div>
+      <div class="kpi" style="background:#f5f3ff;border-color:#ddd6fe;"><div class="kpi-value" style="color:#8B5CF6;">25</div><div class="kpi-label">Operaciones (período)</div></div>
+      <div class="kpi" style="background:#f5f3ff;border-color:#ddd6fe;"><div class="kpi-value" style="color:#8B5CF6;">+9,29%</div><div class="kpi-label">Variación interanual</div></div>
+      <div class="kpi" style="background:#f5f3ff;border-color:#ddd6fe;"><div class="kpi-value" style="color:#8B5CF6;">2ª mano</div><div class="kpi-label">Tipo construcción</div></div>
+    </div>
+    <div class="term-explainer">
+      <strong>Cómo leer el dato notarial:</strong> el €/m² notarial es el <strong>precio real de cierre</strong> de las compraventas escrituradas (lo que se paga en notaría, no lo que se pide en el anuncio). Incluye todas las tipologías y años de construcción del CP, lo que lo hace más bajo que el precio de salida y especialmente más bajo que una obra nueva terminada.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">4.2 Perfil del comprador — Solo dato comarcal externo</div>
+    <div class="provenance">
+      <strong>ADVERTENCIA DE DATOS:</strong> Los campos de perfil comprador del registro 03778 en Supabase (edad mediana, % extranjeros, nacionalidades) están <strong>contaminados</strong> — heredados del CP 03203 (Elche) por un bug del workflow n8n. <strong>Se descartan totalmente</strong> y se usa exclusivamente el dato comarcal externo verificado.
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Indicador</th><th>Valor</th><th>Fuente</th></tr></thead>
+        <tbody>
+          <tr><td>Compradores extranjeros Marina Alta (2023)</td><td><strong>36%</strong> de las compras</td><td>INE / lamarina.eldiario.es</td></tr>
+          <tr><td>Nacionalidades dominantes</td><td>NL ~19% / DE ~12% / GB ~11%</td><td>Observatori Marina Alta</td></tr>
+          <tr><td>Edad media comprador zona</td><td>~49-52 años</td><td>Dato comarcal externo</td></tr>
+          <tr><td>Parque en manos extranjeras (Beniarbeig)</td><td>20,3% del parque total</td><td>Registro de la Propiedad</td></tr>
+          <tr><td>Parque vivienda Beniarbeig</td><td>52,2% secundaria / vacacional</td><td>Mismo registro</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="disclaimer">
+      <strong>Perfil de Supabase descartado por contaminación con datos de Elche</strong> (CP 03203). Únicamente se usan los datos comarcales externos verificados arriba. El bug n8n que causó la herencia de campos está pendiente de corrección.
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">4.3 Comparativa notarial / asking comarca</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Municipio</th><th>€/m² asking (dic-2025)</th><th>Var. 2025</th></tr></thead>
+        <tbody>
+          <tr><td>El Verger</td><td>3.112 €/m²</td><td>+48,0%</td></tr>
+          <tr><td>Els Poblets</td><td>2.931 €/m²</td><td>+12,9%</td></tr>
+          <tr><td>Pedreguer</td><td>2.401 €/m²</td><td>+10,6%</td></tr>
+          <tr class="highlight-asset"><td><strong>Beniarbeig</strong></td><td><strong>2.025 €/m²</strong></td><td>−7,1% (muestra pequeña — no estructural)</td></tr>
+          <tr><td>Ondara</td><td>1.534–1.756 €/m²</td><td>+15,5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-purple">
+      Diferencial notarial/asking en Beniarbeig: 1.495 €/m² vs 2.025 €/m² = <strong>26% de descuento sobre asking</strong>. Coherente con el patrón general del mercado español. El −7,1% de asking Idealista es estadísticamente no significativo (muestra pequeña) — la tendencia comarcal y provincial es alcista sostenida.
+    </div>
+  </div>
+
+  <!-- Nota técnica colapsable -->
+  <div class="notes-collapsible">
+    <div class="notes-toggle" onclick="toggleNotes(this)">
+      <span>📝 Nota técnica Supabase · CP 03778 (queries ejecutadas y campos descartados)</span>
+      <span>▼</span>
+    </div>
+    <div class="notes-body">
+      Tabla <code>notarial_datos</code> (proyecto IM·PULSO, Supabase qrsqnhljcqdrhmccpqpj) — row id=18. Campos propios confirmados: euros_m2 (1.495), compraventas_total (25), importe_medio (140.181 €), superficie_media (93,77 m²), variacion_pct (+9,29%), tipo_construccion (2ª mano), anno (2026). Campos descartados (heredados de CP 03203 Elche): pct_nacionales, edad_mediana, historial_variaciones, datos_mensuales, extranjeros_top, edad_rangos. Bug pendiente en el workflow n8n de ingesta notarial.
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 5 — MTVV -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#ecfdf5;color:#10B981;">&#128300;</div>
+    <div>
+      <div class="section-title">5 · MTVV — Método de Tasación por Valores de Venta</div>
+      <div class="section-subtitle">Valoración micro-zona · Testigos Jávea · Dénia · El Verger · Pedreguer · Beniarbeig</div>
+    </div>
+    <span class="zone-badge mtvv">Exclusivo</span>
+  </div>
+
+  <div class="card" style="background:linear-gradient(135deg,#ecfdf5 0%,#f0fdf4 100%);border:2px solid #a7f3d0;">
+    <div style="font-size:13px;line-height:1.6;color:#1f2937;">
+      <strong style="color:#10B981;">El MTVV (Método Total de Valoración de Vivienda)</strong> es el método de campo del Programa IN. Cruza 4 fases: micromercado → testigos inmobiliarios → testigos de anuncios → verificación con anuncio real publicado. El resultado es el precio de venta real esperado, el más fiable de los tres métodos.
+    </div>
+  </div>
+
+  <!-- Paso 0 -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-number">0</div>
+      <div class="step-title">Micromercado definido</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>KPI del micromercado</th><th>Valor</th></tr></thead>
+        <tbody>
+          <tr><td>Municipio</td><td>Beniarbeig · CP 03778 · Marina Alta, Alicante</td></tr>
+          <tr><td>Población</td><td>~2.000 hab (municipio interior)</td></tr>
+          <tr><td>€/m² zona (asking 2ª mano)</td><td>2.025 €/m² (Idealista, dic-2025)</td></tr>
+          <tr><td>€/m² ON comarca (rango)</td><td>2.800–3.025 €/m² (sin playa)</td></tr>
+          <tr><td>Compraventas/año</td><td>72 (2024) · media histórica 58/año</td></tr>
+          <tr><td>Obra nueva absorbida/año</td><td>0-5 unidades (histórico)</td></tr>
+          <tr><td>Tendencia</td><td>Alicante = máximo histórico 2.764 €/m² abr-2026 · +12-18% interanual</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Paso 1 -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-number">1</div>
+      <div class="step-title">Testigos de mercado</div>
+    </div>
+    <div class="card-subtitle" style="margin-bottom:12px;">Comparables reales de la comarca (Jávea, Dénia, El Verger, Pedreguer)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Comparable</th><th>m²</th><th>Tipo</th><th>Municipio</th><th>€/m²</th><th>Precio total</th><th>Fuente</th></tr></thead>
+        <tbody>
+          <tr><td>1D (2ª mano seminuevo)</td><td>46</td><td>Apt. 2ª mano</td><td>Beniarbeig</td><td>3.022</td><td>139.000 €</td><td>fotocasa 189776629</td></tr>
+          <tr><td>2D (2ª mano, 2011)</td><td>95</td><td>Apt. 2ª mano</td><td>Beniarbeig</td><td>2.053</td><td>195.000 €</td><td>habitaclia/tucasa</td></tr>
+          <tr><td>4D terraza (2ª mano antigua)</td><td>137</td><td>Apt. 2ª mano</td><td>Beniarbeig</td><td>1.679</td><td>230.000 €</td><td>habitaclia/tucasa</td></tr>
+          <tr><td>2D ON pueblo (sin playa)</td><td>70</td><td>ON</td><td>Els Poblets (La Pinada)</td><td>2.843</td><td>199.000 €</td><td>housage.es</td></tr>
+          <tr><td>Ático 3D ON</td><td>79</td><td>ON ático</td><td>Els Poblets (La Pinada)</td><td>3.025</td><td>239.000 €</td><td>housage.es</td></tr>
+          <tr><td>Ático 3D (vistas mar)</td><td>109</td><td>2ª mano ático</td><td>Pego (Monte Pego)</td><td>2.706</td><td>295.000 €</td><td>thinkspain/9650915</td></tr>
+          <tr><td>Ático+solárium ON</td><td>137</td><td>ON ático</td><td>Dénia centro</td><td>~2.600</td><td>356.000 €</td><td>habitaclia</td></tr>
+          <tr><td>Adosado ON 3-4D</td><td>102</td><td>ON</td><td>Gata de Gorgos</td><td>3.324</td><td>339.000 €</td><td>tucasa / thinkspain</td></tr>
+          <tr><td>1D premium ON playa</td><td>65</td><td>ON playa</td><td>El Verger (EDENIA I)</td><td>~3.646</td><td>237.000 €</td><td>promociones-denia.com</td></tr>
+          <tr><td>2D ON playa</td><td>87</td><td>ON playa</td><td>El Verger (EDENIA I)</td><td>~3.448</td><td>300.000 €</td><td>promociones-denia.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="step-price">
+      <div class="sp-label">Rango testigos comarca (sin playa primera línea)</div>
+      <div class="sp-value">2.053 – 3.324 €/m²</div>
+      <div class="sp-note">Rango defensible para ON interior Marina Alta: 2.700–3.025 €/m²</div>
+    </div>
+  </div>
+
+  <!-- Paso 2 -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-number">2</div>
+      <div class="step-title">Homogeneización</div>
+    </div>
+    <div class="term-explainer">
+      Se aplican correcciones al rango bruto para obtener el valor específico del edificio Beniarbeig:<br>
+      &bull; <strong>Factor localización:</strong> interior pueblo (no playa) → aplicar descuento vs El Verger/EDENIA (-15 a -25%)<br>
+      &bull; <strong>Factor tipología:</strong> ON vs 2ª mano → prima +30-50% sobre notarial base<br>
+      &bull; <strong>Factor ático/terraza:</strong> prima +10-15% sobre piso plano en misma zona<br>
+      &bull; <strong>Factor absorción:</strong> edificio de 20 uds en mercado de 0-5 ON/año → pequeño ajuste a la baja en áticos 4D (menor demanda relativa)
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipología</th><th>€/m² bruto comarca</th><th>Ajuste</th><th>€/m² MTVV defensible</th></tr></thead>
+        <tbody>
+          <tr><td>Apt. 1D ~50 m²</td><td>2.800–3.650</td><td>Interior pueblo, sin playa</td><td><strong>2.800 €/m²</strong></td></tr>
+          <tr><td>Apt. 2D ~75 m²</td><td>2.053–2.843</td><td>ON vs 2ª mano; sin playa</td><td><strong>2.700 €/m²</strong></td></tr>
+          <tr><td>Ático dúplex 3D ~110 m²</td><td>2.706–3.324</td><td>Prima terraza; ON nueva</td><td><strong>3.025 €/m²</strong></td></tr>
+          <tr><td>Ático dúplex 4D ~130 m²</td><td>Sin testigo ON directo</td><td>Extrapolado del 3D (+misma prima)</td><td><strong>3.025 €/m²</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Paso 3 -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-number">3</div>
+      <div class="step-title">Valor de tasación MTVV</div>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Tipología</th><th>Uds</th><th>m²/ud</th><th>€/m² MTVV</th><th>€/ud</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>Apt. 1 dorm</td><td>2</td><td>50</td><td>2.800</td><td>140.000</td><td>280.000 €</td></tr>
+          <tr class="highlight"><td><strong>Apt. 2 dorm</strong> <span class="mark mark-pulso">DOMINANTE</span></td><td>11</td><td>75</td><td>2.700</td><td>202.500</td><td>2.227.500 €</td></tr>
+          <tr><td>Ático dúplex 3 dorm</td><td>4</td><td>110</td><td>3.025</td><td>332.750</td><td>1.331.000 €</td></tr>
+          <tr><td>Ático dúplex 4 dorm</td><td>3</td><td>130</td><td>3.025</td><td>393.250</td><td>1.179.750 €</td></tr>
+          <tr class="total-row"><td colspan="5"><strong>GDV viviendas + garaje</strong></td><td><strong>5.258.250 €</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="step-price">
+      <div class="sp-label">Valoración MTVV (GDV total)</div>
+      <div class="sp-value">5.258.250 €</div>
+      <div class="sp-note">Activo terminado obra nueva · Marina Alta interior · junio 2026</div>
+    </div>
+  </div>
+
+  <!-- Paso 4 -->
+  <div class="card">
+    <div class="step-header">
+      <div class="step-number">4</div>
+      <div class="step-title">Anuncio real publicado</div>
+    </div>
+    <div class="insight insight-amber">
+      <strong style="color:#d97706;">PENDIENTE</strong> — El Paso 4 del MTVV (verificación con anuncio real publicado y seguimiento de evolución de precio) no se ha podido completar: no existe un anuncio de obra nueva terminada comparable en Beniarbeig pueblo publicado actualmente en los portales. Este paso se completará cuando exista un anuncio de la propia promoción o de obra nueva comparable en la zona. Mientras tanto, los Pasos 1-3 y la validación con el notarial/askings proporcionan suficiente soporte para la valoración.
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 6 — CONVERGENCIA -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#f3f4f6;color:#6b7280;">&#127881;</div>
+    <div>
+      <div class="section-title">6 · CONVERGENCIA de las fuentes</div>
+      <div class="section-subtitle">Semáforo de 3 métodos + veredicto final</div>
+    </div>
+    <span class="zone-badge" style="background:#f3f4f6;color:#6b7280;">Síntesis</span>
+  </div>
+
+  <div class="validation-grid">
+    <div class="validation-card notarial-v">
+      <div class="v-icon">&#127963;&#65039;</div>
+      <div class="v-source">&#128993; Notarial 2ª mano</div>
+      <div class="v-price">1.495 €/m²</div>
+      <div class="v-detail">CP 03778 · 25 ops · +9,29% interanual<br>Base de suelo — no converge</div>
+    </div>
+    <div class="validation-card scraping">
+      <div class="v-icon">&#128200;</div>
+      <div class="v-source">&#128993; Asking mercado</div>
+      <div class="v-price">2.025 €/m²</div>
+      <div class="v-detail">Índice Idealista dic-2025 · 2ª mano<br>Referencia intermedia</div>
+    </div>
+    <div class="validation-card mtvv-v">
+      <div class="v-icon">&#128300;</div>
+      <div class="v-source">&#128994; IM·PULSO ON terminado</div>
+      <div class="v-price">2.700–3.025 €/m²</div>
+      <div class="v-detail">Obra nueva Costa / Marina Alta<br>GDV 5.258.250 € ✓</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Por qué el notarial no converge — y es correcto que así sea</div>
+    <div class="term-explainer">
+      El dato notarial (1.495 €/m²) registra <strong>compraventas reales escrituradas de segunda mano</strong> del CP 03778. Incluye viviendas de 1990, 2000, 2010 — usadas, sin actualizar, con instalaciones antiguas. Representa el <strong>suelo del mercado</strong>, no el techo.<br><br>
+      La ON del edificio (2.700–3.025 €/m²) incorpora: CTE 2026 vigente, instalaciones nuevas de cero, eficiencia energética, acabados modernos, terrazas/solárium en áticos, sin derramas inmediatas, hipotecable por comprador desde el primer día. La prima de 1.200–1.530 €/m² sobre el notarial es normal, esperada, y se ve en todos los mercados con diferencial ON/2ª mano. <strong>No convergen porque no deben converger.</strong>
+    </div>
+  </div>
+
+  <div class="convergence">
+    <div class="conv-label">Veredicto final de convergencia</div>
+    <div class="conv-verdict">&#10003; Valoración fundamentada</div>
+    <div class="conv-price">5.258.250 €</div>
+    <div class="conv-range">GDV obra nueva · Rango: 4.635.800 € (cons.) — 5.843.600 € (opt.)</div>
+    <div class="conv-note">La diferencia entre el suelo notarial (1.495 €/m² 2ª mano) y el GDV obra nueva (2.700–3.025 €/m²) justifica el margen promotor. Con precio de compra ≤ 800k, coste terminación central ~2,9 M€ y GDV 5,26 M€, el margen central es ~+891k€ (ROI 20,6%). <strong>Condicionado a la validación urbanística y patologías.</strong></div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- ============================================================ -->
+<!-- SECCIÓN 7 — LECTURA INVERSOR -->
+<!-- ============================================================ -->
+<div class="section">
+  <div class="section-header">
+    <div class="section-icon" style="background:#fef3c7;color:#d97706;">&#128200;</div>
+    <div>
+      <div class="section-title">7 · LECTURA PARA EL INVERSOR</div>
+      <div class="section-subtitle">Riesgos, cuadro de viviendas y precio máximo de compra</div>
+    </div>
+    <span class="zone-badge inversor">Decisión</span>
+  </div>
+
+  <!-- Riesgos Killer -->
+  <div class="risk-banner">
+    <div class="rb-title">&#9888;&#65039; 3 RIESGOS KILLER — Evaluar ANTES de cualquier oferta</div>
+    <div class="risk-item">
+      <div class="risk-k">K1</div>
+      <div class="risk-body"><strong>Encaje urbanístico (PGE/POP 2023):</strong> si el plan limita a 2 plantas, el edificio de 3+bajocubierta queda fuera de ordenación → sin hipoteca bancaria posible. Validar mediante <strong>Cédula de Compatibilidad Urbanística</strong> (50-150 €) antes de ofertar. Estado: 🔴 NO VERIFICADO.</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-k">K2</div>
+      <div class="risk-body"><strong>Licencia 2068/2023 con plazos vencidos</strong> (~junio 2024 inicio, ~septiembre 2025 ejecución) → riesgo de caducidad. Si la licencia caducó, nueva licencia exige CTE 2026: +5-15k€ y +6-12 meses. Estado: 🔴 NO VERIFICADO.</div>
+    </div>
+    <div class="risk-item">
+      <div class="risk-k">K3</div>
+      <div class="risk-body"><strong>Humedades por capilaridad + potencial freático alto en sótano</strong> (zona aluvial Río Girona, 18-20 años desprotegido). Ensayos de hormigón imprescindibles: carbonatación + permeabilidad. Estado: 🔴 SIN ENSAYOS.</div>
+    </div>
+  </div>
+
+  <!-- Costes ineludibles -->
+  <div class="card">
+    <div class="card-title">7.1 Costes ineludibles (independientes del precio de compra)</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concepto</th><th>Rango €</th><th>Notas</th></tr></thead>
+        <tbody>
+          <tr><td>OCT (Organismo Control Técnico)</td><td>15.000–30.000 €</td><td>Bureau Veritas o Gloval · edificio Tipo 4 (LOE plena)</td></tr>
+          <tr><td>Póliza decenal</td><td>7.500–22.500 €</td><td>Seguro defectos constructivos — exigible por notario</td></tr>
+          <tr><td>Honorarios técnicos</td><td>5.000–12.000 €</td><td>Patologías, ensayos hormigón, revisión CTE 2026</td></tr>
+          <tr class="total-row"><td><strong>TOTAL costes ineludibles</strong></td><td><strong>27.500–64.500 €</strong></td><td>Imprescindibles hasta escritura</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="disclaimer">
+      <strong>Due diligence pre-oferta (coste ~200 €):</strong> (1) Nota simple registral 9€ → titular + cargas; (2) IBI + tasas municipales 0€ → deuda acumulada; (3) <strong>Cédula de Compatibilidad Urbanística</strong> 50-150€ → encaje PGE/POP 2023; (4) Expediente licencia 2068/2023 0-500€ → estado, plazos, reactivación; (5) Ensayos hormigón sótano (valorar antes de firmar).
+    </div>
+  </div>
+
+  <!-- Cuadrícula 20 viviendas -->
+  <div class="card">
+    <div class="card-title">7.2 Cuadrícula — Las 20 viviendas + garaje</div>
+    <div class="card-subtitle">Superficies PROVISIONALES (símil) · pendientes de planos reales</div>
+
+    <div style="margin-bottom:12px;font-size:12px;color:#6b7280;">
+      <strong>Planta Baja</strong> (6 viviendas):
+    </div>
+    <div class="viv-grid">
+      <div class="viv-card tipo-2d"><div class="viv-id">PB-01</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">PB-02</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">PB-03</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">PB-04</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-1d"><div class="viv-id">PB-05</div><div class="viv-tipo">Apt. 1 dorm</div><div class="viv-m2">50 m² · 1 plaza garaje</div><div class="viv-precio">140.000 €</div></div>
+      <div class="viv-card tipo-1d"><div class="viv-id">PB-06</div><div class="viv-tipo">Apt. 1 dorm</div><div class="viv-m2">50 m² · 1 plaza garaje</div><div class="viv-precio">140.000 €</div></div>
+    </div>
+
+    <div style="margin:16px 0 12px;font-size:12px;color:#6b7280;">
+      <strong>Planta 1ª</strong> (7 viviendas):
+    </div>
+    <div class="viv-grid">
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-01</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-02</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-03</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-04</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-05</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-06</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+      <div class="viv-card tipo-2d"><div class="viv-id">P1-07</div><div class="viv-tipo">Apt. 2 dorm</div><div class="viv-m2">75 m² · 1 plaza garaje</div><div class="viv-precio">202.500 €</div></div>
+    </div>
+
+    <div style="margin:16px 0 12px;font-size:12px;color:#6b7280;">
+      <strong>Planta 2ª + Bajocubierta — Áticos Dúplex</strong> (7 viviendas):
+    </div>
+    <div class="viv-grid">
+      <div class="viv-card tipo-4d"><div class="viv-id">P2-BC-01</div><div class="viv-tipo">Ático dúplex 4D</div><div class="viv-m2">130 m² · 1 plaza garaje</div><div class="viv-precio">393.250 €</div></div>
+      <div class="viv-card tipo-4d"><div class="viv-id">P2-BC-02</div><div class="viv-tipo">Ático dúplex 4D</div><div class="viv-m2">130 m² · 1 plaza garaje</div><div class="viv-precio">393.250 €</div></div>
+      <div class="viv-card tipo-4d"><div class="viv-id">P2-BC-03</div><div class="viv-tipo">Ático dúplex 4D</div><div class="viv-m2">130 m² · 1 plaza garaje</div><div class="viv-precio">393.250 €</div></div>
+      <div class="viv-card tipo-3d"><div class="viv-id">P2-BC-04</div><div class="viv-tipo">Ático dúplex 3D</div><div class="viv-m2">110 m² · 1 plaza garaje</div><div class="viv-precio">332.750 €</div></div>
+      <div class="viv-card tipo-3d"><div class="viv-id">P2-BC-05</div><div class="viv-tipo">Ático dúplex 3D</div><div class="viv-m2">110 m² · 1 plaza garaje</div><div class="viv-precio">332.750 €</div></div>
+      <div class="viv-card tipo-3d"><div class="viv-id">P2-BC-06</div><div class="viv-tipo">Ático dúplex 3D</div><div class="viv-m2">110 m² · 1 plaza garaje</div><div class="viv-precio">332.750 €</div></div>
+      <div class="viv-card tipo-3d"><div class="viv-id">P2-BC-07</div><div class="viv-tipo">Ático dúplex 3D</div><div class="viv-m2">110 m² · 1 plaza garaje</div><div class="viv-precio">332.750 €</div></div>
+    </div>
+
+    <div style="margin-top:20px;">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tipología</th><th>Nº</th><th>m²/ud</th><th>€/ud</th><th>Total tipología</th></tr></thead>
+          <tbody>
+            <tr><td>Apt. 1 dorm</td><td>2</td><td>50</td><td>140.000 €</td><td>280.000 €</td></tr>
+            <tr><td>Apt. 2 dorm</td><td>11</td><td>75</td><td>202.500 €</td><td>2.227.500 €</td></tr>
+            <tr><td>Ático dúplex 3D</td><td>4</td><td>110</td><td>332.750 €</td><td>1.331.000 €</td></tr>
+            <tr><td>Ático dúplex 4D</td><td>3</td><td>130</td><td>393.250 €</td><td>1.179.750 €</td></tr>
+            <tr><td>Garaje (20 plazas)</td><td>20</td><td>622 m² total</td><td>12.000 €</td><td>240.000 €</td></tr>
+            <tr class="total-row"><td><strong>TOTAL</strong></td><td><strong>20 viv.</strong></td><td><strong>1.755 m²</strong></td><td>—</td><td><strong>5.258.250 €</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Precio máximo -->
+  <div class="card">
+    <div class="card-title">7.3 Precio máximo de compra por margen objetivo</div>
+    <div class="card-subtitle">Fórmula: Precio máx. compra = GDV − Costes terminación − Costes promotores − Margen</div>
+
+    <div class="insight insight-yellow" style="margin-bottom:16px;">
+      <strong>Costes de terminación (análisis interno Opus, no API Rus):</strong><br>
+      Bajo: ~2,0 M€ (estructura sana, CTE asumible) · <strong>Central: ~2,9 M€</strong> · Alto: ~3,9 M€ (patologías graves + sótano)<br>
+      <em>Los datos del API de Rus (reforma 993k, venta 2,91 M€) son cifras del comercializador, incompletas (sin blandos ni fiscalidad). No se usan como dato propio.</em>
+    </div>
+
+    <div style="font-size:13px;color:#374151;margin-bottom:12px;"><strong>Escenario coste central (2,9 M€ terminación):</strong></div>
+    <div class="precio-max-grid">
+      <div class="pm-card">
+        <div class="pm-margen">Margen 10%</div>
+        <div class="pm-valor">1.832.775 €</div>
+        <div class="pm-nota">GDV 5.258.250 − 2.900.000 − 525.475 (margen 10%)</div>
+      </div>
+      <div class="pm-card best">
+        <div class="pm-margen">Margen 15%</div>
+        <div class="pm-valor">1.571.263 €</div>
+        <div class="pm-nota">Precio máx. cómodo · Asking 900k = amplio margen</div>
+      </div>
+      <div class="pm-card">
+        <div class="pm-margen">Margen 20%</div>
+        <div class="pm-valor">1.306.450 €</div>
+        <div class="pm-nota">Margen conservador · muy superior al asking</div>
+      </div>
+    </div>
+
+    <div class="insight insight-green" style="margin-top:12px;">
+      Con el escenario central (2,9 M€ terminación), el precio de asking de 900.000 € ofrece márgenes muy superiores al 20% en todos los escenarios — <strong>si se verifican las condiciones K1-K3</strong>. El precio de negociación objetivo es 700k–800k€ (ideal ≤750k€).
+    </div>
+
+    <div class="insight insight-yellow" style="margin-top:8px;">
+      <strong>Con coste alto (3,9 M€ — patologías graves):</strong> precio máximo 10% margen = 832.775 € · 15% = 571.263 € · 20% = 306.450 €. A este coste, el asking de 900k solo funciona con margen &lt;10%. Por eso el diagnóstico de sótano y hormigón es CRÍTICO antes de ofertar.
+    </div>
+  </div>
+
+  <!-- Veredicto final -->
+  <div class="verdict-navy">
+    <div class="verdict-icon">&#128200;</div>
+    <div>
+      <strong>Veredicto inversor: 🟡 GO-CONDICIONADO</strong><br><br>
+      GDV fundamentado en 5.258.250 € (obra nueva Costa / Marina Alta). Precio máximo de compra con margen 20% y coste central: 1,3 M€ — muy por encima del asking 900k. El activo tiene potencial claro. Las tres condiciones sine qua non: (1) <strong>Cédula de Compatibilidad Urbanística</strong> confirma encaje PGE+POP 2023; (2) ensayos hormigón + diagnóstico sótano; (3) nota simple titular real + cargas limpias. Sin estas tres validaciones, <strong>no ofertar</strong>.
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-cta-title">¿Quieres analizar tu operación?</div>
+    <div class="footer-cta-sub">IM·PULSO · Inteligencia de mercado para inversores inmobiliarios</div>
+    <a href="https://wa.me/34600000000" class="wa-button">
+      <svg viewBox="0 0 24 24" fill="white" width="24" height="24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar por WhatsApp
+    </a>
+    <div class="footer-fine">
+      Informe IM·PULSO v2 · Operación Beniarbeig · Generado: junio 2026 · Uso interno · Confidencial Xavi + Rus<br>
+      Los datos de mercado son orientativos. Las superficies son PROVISIONALES (símil, pendiente planos reales). GDV = 5.258.250 € verificado matemáticamente. No constituye asesoramiento financiero ni inmobiliario.
+    </div>
+  </div>
+</div>
+
+<script>
+// === LIGHTBOX ===
+const photos = [
+  { src: 'assets/01-fachada.jpg', caption: 'Fachada principal — estructura completa, cara vista sin revestir' },
+  { src: 'assets/02-interior-bruto.jpg', caption: '⚠️ Interior en bruto — paredes sin reformar, signos de humedad' },
+  { src: 'assets/03-humedades-paredes.jpg', caption: '🔴 Humedad capilar base de paredes — rising damp confirmado' },
+  { src: 'assets/04-interior-puerta.jpg', caption: '🔴 Acceso interior — humedades extensas en paredes' },
+  { src: 'assets/05-sotano-boveda.jpg', caption: '⚠️ Espacio abovedado sótano — verificar presencia agua in situ' },
+  { src: 'assets/06-estructura-chimenea.jpg', caption: '🔴 Estructura de piedra/ladrillo — manchas de humedad' },
+  { src: 'assets/07-interior-corredor.jpg', caption: '🔴 Corredor interior — manchas extensas de humedad' }
+];
+let currentIdx = 0;
+
+function openLightbox(idx) {
+  currentIdx = idx;
+  updateLightbox();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbNav(dir) {
+  currentIdx = (currentIdx + dir + photos.length) % photos.length;
+  updateLightbox();
+}
+function updateLightbox() {
+  document.getElementById('lb-img').src = photos[currentIdx].src;
+  document.getElementById('lb-caption').textContent = photos[currentIdx].caption;
+}
+document.getElementById('lightbox').addEventListener('click', function(e) {
+  if (e.target === this) closeLightbox();
+});
+document.addEventListener('keydown', function(e) {
+  const lb = document.getElementById('lightbox');
+  if (!lb.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLightbox();
+  if (e.key === 'ArrowLeft') lbNav(-1);
+  if (e.key === 'ArrowRight') lbNav(1);
+});
+
+// === COLLAPSIBLE NOTES ===
+function toggleNotes(el) {
+  const body = el.nextElementSibling;
+  body.classList.toggle('open');
+  const arrow = el.querySelector('span:last-child');
+  arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+</script>
+</body>
+</html>

@@ -95,6 +95,20 @@
     opacity: 0.65;
     margin-bottom: 20px;
   }
+  .hero-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,77,46,0.15);
+    border: 1px solid rgba(255,77,46,0.55);
+    color: #FF4D2E;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+  }
   .hero-selectors {
     display: flex;
     justify-content: center;
@@ -968,6 +982,7 @@
   <div class="container">
     <h1>Calle D'Estoup 17, Las Torres de Cotillas</h1>
     <div class="subtitle">Murcia · CP 30565 · Estudio de mercado y valoración cruzada</div>
+    <div class="hero-date">&#128197; Lectura de mercado · junio 2026</div>
     <div class="hero-selectors">
       <div class="hero-selector active">Operación: Cambio de Uso</div>
       <div class="hero-selector">Perfil: Inversor / Gestor</div>
@@ -1270,22 +1285,6 @@
       </table>
     </div>
 
-    <!-- 2.2 Testigos del propio edificio -->
-    <div class="card">
-      <div class="card-title">2.2 Testigos relevantes del propio edificio (nº 17)</div>
-      <div class="card-subtitle">Dos viviendas del mismo número que ya se retiraron del mercado</div>
-      <table class="table-mobile">
-        <thead><tr><th>Tipo</th><th>Superficie</th><th>Habitaciones</th><th>Precio de retirada</th><th>Días en mercado</th><th>&euro; por m²</th></tr></thead>
-        <tbody>
-        <tr class="highlight-asset"><td><strong>Estudio</strong></td><td data-label="Superficie">40 m²</td><td data-label="Habitaciones">0</td><td data-label="Precio de retirada"><strong>69.800&euro;</strong></td><td data-label="Días en mercado">13 días</td><td data-label="&euro; por m²">1.875&euro;</td></tr>
-        <tr class="highlight-asset"><td><strong>Piso</strong></td><td data-label="Superficie">35 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada"><strong>59.500&euro;</strong></td><td data-label="Días en mercado">31 días</td><td data-label="&euro; por m²">1.997&euro;</td></tr>
-        </tbody>
-      </table>
-      <div class="insight insight-orange">
-        <strong>Dato importante:</strong> dos unidades del <strong>propio número 17</strong> ya se retiraron a un precio de 1.875 a 1.997 &euro; por m², en solo 13 y 31 días. Es el comparable más fiable que existe para esta operación: mismo edificio, mismo tipo de producto.
-      </div>
-    </div>
-
     <!-- 2.3 Testigos comparables -->
     <div class="card">
       <div class="card-title">2.3 Testigos comparables de la zona</div>
@@ -1293,17 +1292,15 @@
       <table class="table-mobile">
         <thead><tr><th>Dirección</th><th>Tipo</th><th>Superficie</th><th>Habitaciones</th><th>Precio de retirada</th><th>Días</th><th>&euro; por m²</th></tr></thead>
         <tbody>
-        <tr class="highlight-asset"><td><strong>C/ D'Estoup 17</strong></td><td data-label="Tipo">Piso</td><td data-label="Superficie">35 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">59.500&euro;</td><td data-label="Días">31</td><td data-label="&euro; por m²">1.997&euro;</td></tr>
-        <tr class="highlight-asset"><td><strong>C/ D'Estoup 17</strong></td><td data-label="Tipo">Estudio</td><td data-label="Superficie">40 m²</td><td data-label="Habitaciones">0</td><td data-label="Precio de retirada">69.800&euro;</td><td data-label="Días">13</td><td data-label="&euro; por m²">1.875&euro;</td></tr>
         <tr><td>C/ Miguel Ángel 1</td><td data-label="Tipo">Piso</td><td data-label="Superficie">40 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">64.000&euro;</td><td data-label="Días">6</td><td data-label="&euro; por m²">1.600&euro;</td></tr>
-        <tr><td>C/ Mula 9</td><td data-label="Tipo">Piso</td><td data-label="Superficie">45 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">55.000&euro;</td><td data-label="Días">43</td><td data-label="&euro; por m²">1.444&euro;</td></tr>
+        <tr><td>C/ Mula 9</td><td data-label="Tipo">Piso</td><td data-label="Superficie">45 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">55.000&euro;</td><td data-label="Días">43</td><td data-label="&euro; por m²">1.222&euro;</td></tr>
         <tr><td>C/ Princesa Sofía 15</td><td data-label="Tipo">Piso</td><td data-label="Superficie">46 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">98.500&euro;</td><td data-label="Días">66</td><td data-label="&euro; por m²">2.141&euro;</td></tr>
         <tr><td>C/ Doña Amparo Barrio</td><td data-label="Tipo">Piso</td><td data-label="Superficie">50 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">90.000&euro;</td><td data-label="Días">1</td><td data-label="&euro; por m²">1.800&euro;</td></tr>
         <tr><td>C/ Doña Amparo Barrio</td><td data-label="Tipo">Piso</td><td data-label="Superficie">50 m²</td><td data-label="Habitaciones">1</td><td data-label="Precio de retirada">90.000&euro;</td><td data-label="Días">38</td><td data-label="&euro; por m²">1.800&euro;</td></tr>
         </tbody>
       </table>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> 7 viviendas pequeñas comparables de la zona, todas retiradas, se movieron entre 1.444 y 2.141 &euro; por m². Las dos del propio edificio marcan el centro de ese rango.
+        <strong>Lectura:</strong> 5 testigos reales del municipio, viviendas pequeñas comparables, todas retiradas, se movieron entre 1.222 y 2.141 &euro; por m². El valor central de mercado se sitúa en 1.800 &euro; por m².
       </div>
     </div>
 
@@ -1312,7 +1309,7 @@
       <div class="card-title">2.4 Precio de mercado por unidad</div>
       <div class="card-subtitle">Cuánto se puede pedir por cada vivienda resultante</div>
       <div class="term-explainer">
-        <strong>Qué significan los tres escenarios</strong> (todos calculados a partir del precio por m² de las 7 viviendas comparables):<br>
+        <strong>Qué significan los tres escenarios</strong> (todos calculados a partir del precio por m² de los 5 testigos reales del municipio):<br>
         &bull; <strong>Conservador:</strong> el precio más prudente, el que pagarían los compradores más exigentes. Sale de los testigos más baratos.<br>
         &bull; <strong>Precio medio:</strong> el valor central, lo más probable según el grueso de los comparables.<br>
         &bull; <strong>Optimista:</strong> el precio que alcanzan los testigos mejor pagados de la zona.
@@ -1320,7 +1317,7 @@
       <div class="price-widget">
         <div class="price-box">
           <div class="price-label">Conservador</div>
-          <div class="price-value">171.000&euro;</div>
+          <div class="price-value">168.000&euro;</div>
           <div class="price-note">Las 3 unidades</div>
         </div>
         <div class="price-box main">
@@ -1330,16 +1327,16 @@
         </div>
         <div class="price-box">
           <div class="price-label">Optimista</div>
-          <div class="price-value">203.000&euro;</div>
+          <div class="price-value">225.000&euro;</div>
           <div class="price-note">Las 3 unidades</div>
         </div>
       </div>
       <table class="table-mobile">
         <thead><tr><th>Unidad</th><th>Precio estimado</th><th>Rango</th></tr></thead>
         <tbody>
-        <tr><td>Estudio loft 34 m² (unidad 1)</td><td data-label="Precio estimado"><strong>~61.200&euro;</strong></td><td data-label="Rango">57.800 – 65.800&euro;</td></tr>
-        <tr><td>Estudio loft 34 m² (unidad 2)</td><td data-label="Precio estimado"><strong>~61.200&euro;</strong></td><td data-label="Rango">57.800 – 65.800&euro;</td></tr>
-        <tr><td>Apartamento 1 dormitorio 37 m²</td><td data-label="Precio estimado"><strong>~66.600&euro;</strong></td><td data-label="Rango">62.900 – 71.600&euro;</td></tr>
+        <tr><td>Estudio loft 34 m² (unidad 1)</td><td data-label="Precio estimado"><strong>~61.200&euro;</strong></td><td data-label="Rango">54.400 – 72.800&euro;</td></tr>
+        <tr><td>Estudio loft 34 m² (unidad 2)</td><td data-label="Precio estimado"><strong>~61.200&euro;</strong></td><td data-label="Rango">54.400 – 72.800&euro;</td></tr>
+        <tr><td>Apartamento 1 dormitorio 37 m²</td><td data-label="Precio estimado"><strong>~66.600&euro;</strong></td><td data-label="Rango">59.200 – 79.200&euro;</td></tr>
         </tbody>
       </table>
       <div class="insight insight-orange">
@@ -1376,7 +1373,6 @@
         <div class="kpi" style="background:#fff9f8; border-color:#FFD4C8;"><div class="kpi-value" style="color:#FF4D2E;">125 días</div><div class="kpi-label">Media de la zona</div></div>
         <div class="kpi" style="background:#fff9f8; border-color:#FFD4C8;"><div class="kpi-value" style="color:#FF4D2E;">78 días</div><div class="kpi-label">Valor central de la zona</div></div>
         <div class="kpi" style="background:#ecfdf5; border-color:#a7f3d0;"><div class="kpi-value" style="color:#10B981;">~28 días</div><div class="kpi-label">Vivienda pequeña (media)</div></div>
-        <div class="kpi" style="background:#ecfdf5; border-color:#a7f3d0;"><div class="kpi-value" style="color:#10B981;">13–31 días</div><div class="kpi-label">Unidades del MISMO edificio (D'Estoup 17)</div></div>
       </div>
       <div class="demand-bell" style="margin-top:16px;">
         <div class="db-title">&#9201;&#65039; Velocidad de retirada (más corto = más demanda)</div>
@@ -1387,17 +1383,12 @@
         </div>
         <div class="db-row">
           <span style="font-weight:700; color:#141B36;">Vivienda pequeña</span>
-          <div class="db-bar-bg"><div class="db-bar-fill" style="width:22%;"></div></div>
-          <span style="font-weight:800; color:#FF4D2E; text-align:right;">~28 d</span>
-        </div>
-        <div class="db-row">
-          <span style="font-weight:700; color:#141B36;">Mismo edificio (nº 17)</span>
-          <div class="db-bar-bg"><div class="db-bar-fill" style="width:18%; background:#10B981;"></div></div>
-          <span style="font-weight:800; color:#10B981; text-align:right;">13–31 d</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:22%; background:#10B981;"></div></div>
+          <span style="font-weight:800; color:#10B981; text-align:right;">~28 d</span>
         </div>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> una vivienda cualquiera de la zona tarda unos 125 días de media en retirarse del mercado. El producto pequeño es mucho más rápido: se retira en torno a 28 días. Y el dato más fiable de todos —<strong>las dos unidades del MISMO edificio, Calle D'Estoup 17</strong>— se retiraron en solo <strong>13 a 31 días</strong>. La demanda para este producto es <strong>ALTA</strong>: se retira del mercado en cuestión de pocas semanas, frente a los dos meses y medio de la media de la zona.
+        <strong>Lectura:</strong> una vivienda cualquiera de la zona tarda unos 125 días de media en retirarse del mercado. El producto pequeño es mucho más rápido: se retira en torno a <strong>28 días</strong>. La demanda para este producto es <strong>ALTA</strong>: se retira del mercado en cuestión de pocas semanas, frente a los dos meses y medio de la media de la zona.
       </div>
     </div>
 
@@ -1434,7 +1425,7 @@
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#FF4D2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
       <div>
-        <strong>Veredicto IMPULSO.</strong> El valor de salida de las 3 viviendas se estima en <strong style="color:#FF4D2E;">189.000&euro;</strong> (rango de 171.000 a 203.000&euro;), anclado en las dos unidades del propio número 17, que se retiraron a 1.875–1.997&euro; por m². Es un producto en el segmento de máxima liquidez de la zona. El riesgo no es venderlo —rota en aproximadamente un mes— sino acertar el precio de cada unidad.
+        <strong>Veredicto IMPULSO.</strong> El valor de salida de las 3 viviendas se estima en <strong style="color:#FF4D2E;">189.000&euro;</strong> (rango de 168.000 a 225.000&euro;), sobre 5 testigos reales del municipio con un valor central de mercado de 1.800&euro; por m². Es un producto en el segmento de máxima liquidez de la zona. El riesgo no es venderlo —rota en aproximadamente un mes— sino acertar el precio de cada unidad.
       </div>
     </div>
   </div>
@@ -1800,7 +1791,7 @@
         <div class="v-icon">&#128225;</div>
         <div class="v-source">IMPULSO (motor automático)</div>
         <div class="v-price">189.000&euro;</div>
-        <div class="v-detail">7 testigos comparables<br>Anclado en las 2 unidades del nº 17</div>
+        <div class="v-detail">5 testigos reales del municipio<br>Valor central de mercado 1.800&euro;/m²</div>
       </div>
       <div class="validation-card mtvv">
         <div class="v-icon">&#128300;</div>
@@ -1896,7 +1887,7 @@
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l2-9 4 18 2-9h6"></path></svg></span>
-          <span><strong>IMPULSO (motor automático):</strong> unos 189.000&euro; por las 3 unidades, anclado en las dos viviendas del propio número 17 (1.875–1.997&euro;/m²).</span>
+          <span><strong>IMPULSO (motor automático):</strong> unos 189.000&euro; por las 3 unidades, sobre 5 testigos reales del municipio (valor central de mercado 1.800&euro;/m²).</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>

@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO v2 — Calle Nuestra Señora del Mar 32, El Grau de Castelló | Adquisición, reforma y explotación en alquiler por habitaciones</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Manrope', -apple-system, sans-serif;
+    background: #f9fafb;
+    color: #1f2937;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* HEADER */
+  .header {
+    background: #141B36;
+    color: white;
+    padding: 16px 0;
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .header img { height: 36px; }
+  .header .badge {
+    background: #FF4D2E;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    color: white;
+    padding: 48px 0 56px;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 8px;
+  }
+  .hero .subtitle {
+    font-size: 15px;
+    opacity: 0.65;
+    margin-bottom: 20px;
+  }
+  .hero-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: rgba(255,77,46,0.15);
+    border: 1px solid rgba(255,77,46,0.55);
+    color: #FF4D2E;
+    padding: 6px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 22px;
+  }
+  .hero-selectors {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .hero-selector {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    font-weight: 600;
+  }
+  .hero-selector.active {
+    background: #FF4D2E;
+    border-color: #FF4D2E;
+    color: white;
+  }
+
+  /* FICHA DE OPERACIÓN */
+  .op-ficha {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 820px;
+    margin: 0 auto 32px;
+    text-align: left;
+  }
+  .op-ficha .op-cell {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 16px 18px;
+  }
+  .op-ficha .op-key {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #FF4D2E;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+  .op-ficha .op-val {
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    line-height: 1.4;
+  }
+  .op-ficha .op-val small {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.6;
+    margin-top: 3px;
+  }
+
+  .hero-sources {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .source-pill {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    padding: 14px 18px;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+  }
+  .source-pill .sp-icon { font-size: 22px; margin-bottom: 6px; }
+  .source-pill .sp-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: white;
+  }
+  .source-pill .sp-desc {
+    font-size: 11px;
+    opacity: 0.55;
+    margin-top: 2px;
+  }
+
+  /* CONTAINER */
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* SECTION */
+  .section {
+    margin: 48px 0;
+    position: relative;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #141B36;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: #9ca3af;
+  }
+
+  /* ZONE BADGES */
+  .zone-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .zone-badge.pulso { background: #ecfdf5; color: #10B981; }
+  .zone-badge.impulso { background: #fff3f0; color: #FF4D2E; }
+  .zone-badge.notarial { background: #f5f3ff; color: #8B5CF6; }
+  .zone-badge.mtvv { background: #ecfdf5; color: #10B981; border: 2px solid #10B981; }
+
+  /* CARDS */
+  .card {
+    background: white;
+    border-radius: 16px;
+    padding: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+    margin-bottom: 16px;
+    border: 1px solid #e5e7eb;
+  }
+  .card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #141B36;
+    margin-bottom: 4px;
+  }
+  .card-subtitle {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+
+  /* PRICE WIDGET */
+  .price-widget {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 16px;
+    text-align: center;
+    margin: 20px 0;
+  }
+  .price-box {
+    padding: 20px;
+    border-radius: 12px;
+    background: #f9fafb;
+  }
+  .price-box.main {
+    background: #141B36;
+    color: white;
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(20,27,54,0.3);
+  }
+  .price-box .price-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.6;
+    margin-bottom: 4px;
+  }
+  .price-box .price-value {
+    font-size: 26px;
+    font-weight: 800;
+  }
+  .price-box.main .price-value {
+    color: #FF4D2E;
+    font-size: 32px;
+  }
+  .price-box .price-note {
+    font-size: 11px;
+    opacity: 0.55;
+    margin-top: 4px;
+  }
+
+  /* TRIPLE VALIDATION */
+  .validation-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .validation-card {
+    padding: 24px;
+    border-radius: 14px;
+    text-align: center;
+    border: 2px solid transparent;
+  }
+  .validation-card.scraping { background: #fff3f0; border-color: #FFD4C8; }
+  .validation-card.notarial { background: #f5f3ff; border-color: #ddd6fe; }
+  .validation-card.mtvv { background: #ecfdf5; border-color: #a7f3d0; }
+  .validation-card .v-icon { font-size: 28px; margin-bottom: 8px; }
+  .validation-card .v-source {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+  .validation-card.scraping .v-source { color: #FF4D2E; }
+  .validation-card.notarial .v-source { color: #8B5CF6; }
+  .validation-card.mtvv .v-source { color: #10B981; }
+  .validation-card .v-price {
+    font-size: 26px;
+    font-weight: 800;
+    color: #141B36;
+  }
+  .validation-card .v-detail {
+    font-size: 12px;
+    color: #4b5563;
+    margin-top: 6px;
+  }
+
+  /* CONVERGENCE */
+  .convergence {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    color: white;
+    margin: 24px 0;
+  }
+  .convergence .conv-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.5;
+    margin-bottom: 8px;
+  }
+  .convergence .conv-verdict {
+    font-size: 24px;
+    font-weight: 800;
+    color: #10B981;
+    margin-bottom: 4px;
+  }
+  .convergence .conv-price {
+    font-size: 42px;
+    font-weight: 800;
+    color: #FF4D2E;
+  }
+  .convergence .conv-range {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-top: 4px;
+  }
+  .convergence .conv-note {
+    font-size: 13px;
+    opacity: 0.6;
+    margin-top: 16px;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  th {
+    background: #141B36;
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  tr:hover td { background: #f9fafb; }
+  tr.highlight td { background: #fff3f0; }
+  tr.highlight-asset td { background: #ecfdf5; }
+
+  /* MARKERS — dominante (PULSO, verde) y producto de la operación (naranja) */
+  .mark {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 5px;
+    margin-left: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .mark-pulso { background: #FF4D2E; color: white; }
+  .mark-asset { background: #10B981; color: white; }
+  .legend {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    font-size: 12px;
+    color: #6b7280;
+    margin: 4px 0 14px;
+    align-items: center;
+  }
+  .legend .lg-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .lg-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  /* KPI ROW */
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 16px 0;
+  }
+  .kpi {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+  }
+  .kpi .kpi-value {
+    font-size: 22px;
+    font-weight: 800;
+    color: #141B36;
+  }
+  .kpi .kpi-label {
+    font-size: 11px;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+
+  /* INSIGHT BOX */
+  .insight {
+    margin-top: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .insight-orange { background: #fff3f0; }
+  .insight-green { background: #ecfdf5; }
+  .insight-purple { background: #f5f3ff; }
+  .insight-gray { background: #f3f4f6; color: #6b7280; }
+  .insight-red { background: #fef2f2; color: #7f1d1d; }
+
+  /* METHOD */
+  .insight-method {
+    background: linear-gradient(135deg, #ffffff 0%, #FDFCFA 100%);
+    border: 1.5px solid #FF4D2E;
+    border-left: 5px solid #FF4D2E;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 16px;
+    box-shadow: 0 2px 10px rgba(20,27,54,0.06);
+  }
+  .insight-method .im-title {
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: #141B36;
+    margin-bottom: 10px;
+  }
+  .insight-method .im-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #141B36;
+  }
+  .insight-method .im-text b { color: #FF4D2E; font-weight: 800; }
+
+  /* EXPLAINER */
+  .term-explainer {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #141B36;
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  .term-explainer strong { color: #141B36; }
+
+  /* NO SAMPLE */
+  .no-sample {
+    background: #fef2f2;
+    border: 1px solid #FCA5A5;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #7f1d1d;
+  }
+  .no-sample strong { color: #b91c1c; }
+
+  /* FIABILIDAD (semáforo de testigos) */
+  .fiab { font-weight: 800; font-size: 12.5px; white-space: nowrap; }
+  .fiab-alta { color: #10B981; }
+  .fiab-media { color: #d97706; }
+  .fiab-baja { color: #EF4444; }
+
+  /* STEP HEADER */
+  .step-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .step-number {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #10B981;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .step-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #141B36;
+  }
+
+  /* VERDICT BOX */
+  .verdict-navy {
+    background: linear-gradient(135deg, #141B36 0%, #1e2a4a 100%);
+    border: none;
+    color: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 20px 0;
+    font-size: 15px;
+    font-weight: 600;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+  .verdict-navy .verdict-icon {
+    flex-shrink: 0;
+    width: 40px; height: 40px;
+    background: rgba(255,77,46,0.15);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .verdict-navy .verdict-icon svg { width: 22px; height: 22px; }
+
+  /* CONCLUSION */
+  .conclusion-list { list-style: none; padding: 0; }
+  .conclusion-list li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f3f4f6;
+    font-size: 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .conclusion-list li:last-child { border-bottom: none; }
+  .conclusion-list .cl-icon {
+    width: 30px; height: 30px;
+    border-radius: 8px;
+    background: #141B36;
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .conclusion-list .cl-icon svg { width: 16px; height: 16px; }
+
+  /* FLAG SVG */
+  .flag {
+    width: 20px; height: 14px;
+    border-radius: 2px;
+    vertical-align: middle;
+    margin-right: 6px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
+    display: inline-block;
+  }
+
+  /* DASHED CONSTRUCTION BOX */
+  .build-box {
+    margin-top: 14px;
+    padding: 16px;
+    background: #f9fafb;
+    border-radius: 10px;
+    border: 1px dashed #d1d5db;
+  }
+  .build-box .bb-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #6b7280;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .build-box .bb-body { font-size: 13px; line-height: 1.7; color: #374151; }
+  .build-box .bb-total {
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .step-price {
+    margin-top: 16px;
+    background: #141B36;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .step-price .sp-label {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  .step-price .sp-value {
+    font-size: 28px;
+    font-weight: 800;
+    color: #FF4D2E;
+    margin-top: 4px;
+  }
+  .step-price .sp-note { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+  /* PROVENANCE NOTE */
+  .provenance {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #78350f;
+  }
+  .provenance strong { color: #92400e; }
+
+  /* DISCLAIMER */
+  .disclaimer {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 14px 0;
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #1e3a8a;
+  }
+
+  /* SECTION DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 2px dashed #e5e7eb;
+    margin: 40px 0;
+  }
+
+  /* SCRIPT BOX */
+  .script-box {
+    background: #f9fafb;
+    border: 1px dashed #d1d5db;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: #374151;
+    line-height: 1.7;
+  }
+  .script-box .sb-title {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #141B36;
+    font-weight: 800;
+    margin-bottom: 10px;
+  }
+  .script-box .sb-quote {
+    background: white;
+    border-left: 3px solid #FF4D2E;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    margin: 10px 0;
+  }
+  .script-box ol { margin: 8px 0 0 20px; }
+  .script-box ol li { margin-bottom: 6px; }
+
+  /* FOOTER */
+  .footer {
+    background: #141B36;
+    color: rgba(255,255,255,0.7);
+    padding: 48px 0 40px;
+    margin-top: 56px;
+  }
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+  }
+  .footer .footer-cta-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 8px;
+  }
+  .footer .footer-cta-sub {
+    font-size: 14px;
+    opacity: 0.6;
+    margin-bottom: 24px;
+  }
+  .wa-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.35);
+  }
+  .wa-button svg { width: 24px; height: 24px; }
+  .footer-logo {
+    height: 70px;
+    margin: 32px auto 12px;
+    display: block;
+  }
+  .footer-links {
+    font-size: 13px;
+    margin-top: 8px;
+  }
+  .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .footer-links a:hover { color: white; }
+  .footer-fine {
+    margin-top: 24px;
+    font-size: 11px;
+    opacity: 0.45;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .validation-grid { grid-template-columns: 1fr; }
+    .price-widget {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas: "main main" "p25 p75";
+      gap: 10px;
+    }
+    .price-widget .price-box.main { grid-area: main; transform: none; padding: 20px 16px; }
+    .price-widget .price-box.main .price-value { font-size: 30px !important; }
+    .price-widget .price-box:nth-child(1) { grid-area: p25; }
+    .price-widget .price-box:nth-child(3) { grid-area: p75; }
+    .price-box .price-value { font-size: 22px; }
+    .price-box { padding: 14px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .kpi .kpi-value { font-size: 19px; }
+    .kpi .kpi-label { font-size: 9px; }
+    .kpi { padding: 12px; }
+    .op-ficha { grid-template-columns: 1fr; }
+    .hero { padding: 30px 0 36px; }
+    .hero h1 { font-size: 21px; line-height: 1.3; }
+    .hero .subtitle { font-size: 13px; }
+    .hero-selector { padding: 6px 14px; font-size: 12px; }
+    .header img { height: 26px; }
+    .header .badge { font-size: 9px; padding: 3px 10px; }
+    .section { margin: 32px 0; }
+    .section-header { flex-wrap: wrap; }
+    .section-title { font-size: 17px; }
+    .section-icon { width: 36px; height: 36px; font-size: 16px; }
+    .zone-badge { font-size: 10px; padding: 3px 10px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 14px; }
+    .source-pill { min-width: 0; }
+    .hypo-grid { grid-template-columns: 1fr !important; }
+
+    /* TABLAS COMO CARDS EN MÓVIL */
+    .table-mobile { display: block; width: 100%; }
+    .table-mobile thead { display: none; }
+    .table-mobile tbody, .table-mobile tr { display: block; width: 100%; }
+    .table-mobile tr {
+      margin-bottom: 12px;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 14px 16px;
+      background: white;
+    }
+    .table-mobile tr.highlight { background: #fff3f0; border-color: #FFD4C8; }
+    .table-mobile tr.highlight-asset { background: #ecfdf5; border-color: #a7f3d0; }
+    .table-mobile td {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 5px 0;
+      border-bottom: none;
+      font-size: 13px;
+      text-align: right;
+    }
+    .table-mobile td:first-child {
+      font-size: 15px;
+      font-weight: 800;
+      color: #141B36;
+      padding-bottom: 8px;
+      margin-bottom: 4px;
+      border-bottom: 1px solid #f3f4f6;
+      text-align: left;
+      display: block;
+    }
+    .table-mobile td:not(:first-child)::before {
+      content: attr(data-label);
+      font-size: 11px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+    .table-mobile tr:hover td { background: transparent; }
+
+    .convergence { padding: 24px 16px; }
+    .convergence .conv-price { font-size: 28px; }
+    .convergence .conv-verdict { font-size: 18px; }
+    .container { padding: 0 16px; }
+    .step-price .sp-value { font-size: 24px; }
+    .footer-cta-title { font-size: 18px; }
+  }
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 18px; }
+    .kpi-row { grid-template-columns: 1fr 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/697e322e1311f62a92201cc6.png" alt="IM·PULSO">
+    <span class="badge">IM·PULSO v2 · Informe real · El Grau de Castelló</span>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <h1>Calle Nuestra Señora del Mar 32, bajo</h1>
+    <div class="subtitle">El Grau de Castelló (Castellón) · CP 12100 · Estudio de mercado y valoración cruzada</div>
+    <div class="hero-date">&#128197; Lectura de mercado · julio 2026</div>
+    <div class="hero-selectors">
+      <div class="hero-selector active">Operación: Alquiler por habitaciones</div>
+      <div class="hero-selector active">Perfil: Propietario-inversor</div>
+    </div>
+
+    <!-- FICHA DE OPERACIÓN -->
+    <div class="op-ficha">
+      <div class="op-cell">
+        <div class="op-key">La operación</div>
+        <div class="op-val">Adquisición, reforma integral y alquiler por habitaciones
+          <small>Frente a la alternativa de alquiler tradicional</small>
+        </div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">El activo</div>
+        <div class="op-val">Piso de 67 m², 3 habitaciones, planta baja
+          <small>A reformar integralmente (presupuesto 36.000&euro;)</small>
+        </div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">El resultado</div>
+        <div class="op-val">3 habitaciones alquilables por separado
+          <small>Renta prevista 825&ndash;900&euro;/mes conjunto</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUENTES -->
+    <div class="hero-sources">
+      <div class="source-pill">
+        <div class="sp-icon">&#128225;</div>
+        <div class="sp-title">Testigos IM·PULSO</div>
+        <div class="sp-desc">211 anuncios de alquiler + 236 anuncios de venta retirados analizados en El Grau de Castelló</div>
+      </div>
+      <div class="source-pill">
+        <div class="sp-icon">&#127963;&#65039;</div>
+        <div class="sp-title">Portal del Notariado</div>
+        <div class="sp-desc">215 compraventas oficiales escrituradas · CP 12100</div>
+      </div>
+      <div class="source-pill">
+        <div class="sp-icon">&#128300;</div>
+        <div class="sp-title">Cruce de las dos fuentes</div>
+        <div class="sp-desc">Testigos de mercado y notariado combinados en un único análisis</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- PLANTEAMIENTO DE LA OPERACIÓN -->
+  <div class="section" style="margin-top:32px;">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">&#128203;</div>
+      <div>
+        <div class="section-title">Planteamiento de la operación</div>
+        <div class="section-subtitle">Qué se plantea y qué mide este informe</div>
+      </div>
+      <span class="zone-badge impulso">Perfil: propietario inversor</span>
+    </div>
+    <div class="card">
+      <p style="font-size:14px; line-height:1.7; color:#374151;">
+        La operación consiste en la adquisición del inmueble situado en Calle Nuestra Señora del Mar 32, bajo, El Grau de Castelló, su reforma integral (presupuesto de 36.000&euro;) y su explotación mediante <strong>alquiler por habitaciones</strong> frente a la alternativa de alquiler tradicional.
+      </p>
+      <p style="font-size:14px; line-height:1.7; color:#374151; margin-top:10px;">
+        Este informe mide tres cosas: la renta esperada por habitaciones frente al alquiler tradicional, si el precio pedido (150.000&euro;) está alineado con el mercado, y la rentabilidad resultante según el precio final de compra.
+      </p>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 1: PULSO — RADIOGRAFÍA DEL ALQUILER -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #ecfdf5; color: #10B981;">&#128200;</div>
+      <div>
+        <div class="section-title">1 · PULSO — Radiografía del alquiler en El Grau</div>
+        <div class="section-subtitle">Qué se publica y qué se retira en el mercado de alquiler del municipio</div>
+      </div>
+      <span class="zone-badge pulso">El mercado</span>
+    </div>
+
+    <div class="card">
+      <div class="legend">
+        <span class="lg-item"><span class="lg-dot" style="background:#FF4D2E;"></span> <strong>PULSO</strong> = el segmento con MÁS volumen del mercado (el producto dominante de la zona).</span>
+        <span class="lg-item"><span class="lg-dot" style="background:#10B981;"></span> <strong>Producto de la operación</strong> = alquiler por habitaciones, el producto de esta operación.</span>
+      </div>
+      <div class="term-explainer">
+        <strong>Cómo leer estas tablas:</strong><br>
+        &bull; <strong>Publicados</strong> = anuncios activos + retirados (volumen histórico total del segmento).<br>
+        &bull; <strong>% Rotación</strong> = Retirados &divide; Publicados &mdash; cuanto más alta, más rápido se mueve ese segmento del mercado.<br>
+        &bull; Categorías con menos de 3 anuncios no se muestran. Se requieren al menos 5 anuncios para una lectura de mercado fiable.
+      </div>
+      <div class="insight insight-gray" style="margin-top:0;">
+        Los datos combinan anuncios activos y retirados; un retirado es un anuncio que dejó de publicarse (precio de salida), no una firma de contrato confirmada.
+      </div>
+    </div>
+
+    <!-- 1.1 Resumen -->
+    <div class="card">
+      <div class="card-title">1.1 Resumen del mercado de alquiler</div>
+      <div class="card-subtitle">Visión general del alquiler en El Grau de Castelló, todos los tipos de inmueble</div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-value">211</div><div class="kpi-label">Anuncios analizados</div></div>
+        <div class="kpi"><div class="kpi-value">145</div><div class="kpi-label">Anuncios activos</div></div>
+        <div class="kpi"><div class="kpi-value">66</div><div class="kpi-label">Anuncios retirados</div></div>
+        <div class="kpi"><div class="kpi-value">31,3%</div><div class="kpi-label">Rotación</div></div>
+      </div>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> el precio de mercado del alquiler en El Grau (P50, anuncios activos) es de <strong>725&euro;/mes</strong>, con una rotación del 31,3%.
+      </div>
+    </div>
+
+    <!-- 1.2 Alquiler tradicional — por número de habitaciones -->
+    <div class="card">
+      <div class="card-title">1.2 Alquiler tradicional — por número de habitaciones</div>
+      <div class="card-subtitle">Todos los tipos de inmueble, El Grau de Castelló</div>
+      <table class="table-mobile">
+        <thead><tr><th>Producto</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Activos</th></tr></thead>
+        <tbody>
+        <tr><td>Estudio (0 hab)</td><td data-label="Publicados">9</td><td data-label="Retirados">5</td><td data-label="% Rotación"><strong>55,6%</strong></td><td data-label="Activos">4</td></tr>
+        <tr><td>1 habitación</td><td data-label="Publicados">15</td><td data-label="Retirados">6</td><td data-label="% Rotación"><strong>40,0%</strong></td><td data-label="Activos">9</td></tr>
+        <tr><td>2 habitaciones</td><td data-label="Publicados">40</td><td data-label="Retirados">15</td><td data-label="% Rotación"><strong>37,5%</strong></td><td data-label="Activos">25</td></tr>
+        <tr class="highlight"><td><strong>3 habitaciones</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados"><strong>77</strong></td><td data-label="Retirados"><strong>23</strong></td><td data-label="% Rotación"><strong>29,9%</strong></td><td data-label="Activos"><strong>54</strong></td></tr>
+        <tr><td>4 habitaciones</td><td data-label="Publicados">40</td><td data-label="Retirados">11</td><td data-label="% Rotación"><strong>27,5%</strong></td><td data-label="Activos">29</td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> el mercado de alquiler tradicional en El Grau se mueve sobre todo en pisos de 3 habitaciones (77 anuncios, 29,9% de rotación), la misma tipología que el inmueble de esta operación.
+      </div>
+    </div>
+
+    <!-- 1.3 Alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.3 Alquiler por habitaciones</div>
+      <div class="card-subtitle">Mercado de habitaciones en El Grau de Castelló &mdash; producto de esta operación</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">Precio mínimo</div>
+          <div class="price-value">275&euro;</div>
+          <div class="price-note">El 25% se alquila por debajo</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Precio de mercado &#9733;</div>
+          <div class="price-value">300&euro;</div>
+          <div class="price-note">Por habitación</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">Precio máximo</div>
+          <div class="price-value">365&euro;</div>
+          <div class="price-note">El 25% se alquila por encima</div>
+        </div>
+      </div>
+      <table class="table-mobile">
+        <thead><tr><th>Producto</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Activos</th></tr></thead>
+        <tbody>
+        <tr class="highlight-asset"><td><strong>Habitación</strong> <span class="mark mark-asset">Producto de la operación</span></td><td data-label="Publicados"><strong>44</strong></td><td data-label="Retirados"><strong>15</strong></td><td data-label="% Rotación"><strong>34,1%</strong></td><td data-label="Activos"><strong>29</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-gray" style="margin-top:0;">
+        Las habitaciones estándar se mueven en 220&ndash;365&euro;/mes; las que incluyen extras (baño privado, parking, gastos incluidos) alcanzan 400&ndash;500&euro;/mes.
+      </div>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> el 84% de las habitaciones en alquiler del municipio proceden de viviendas de 3-4 habitaciones, el mismo perfil que el inmueble de esta operación tras la reforma.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 2: EL ACTIVO — CUÁNTO RENTA -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">&#128225;</div>
+      <div>
+        <div class="section-title">2 · El activo: cuánto renta</div>
+        <div class="section-subtitle">Alquiler por habitaciones vs alquiler tradicional · Calle Nuestra Señora del Mar 32, bajo</div>
+      </div>
+      <span class="zone-badge impulso">El activo</span>
+    </div>
+
+    <!-- 2.1 Datos consulta -->
+    <div class="card">
+      <div class="card-title">2.1 Datos de la consulta</div>
+      <table class="table-mobile">
+        <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+        <tbody>
+        <tr><td>Dirección</td><td data-label="Valor"><strong>Calle Nuestra Señora del Mar 32, bajo, El Grau de Castelló (12100)</strong></td></tr>
+        <tr><td>Tipología</td><td data-label="Valor">Piso, 3 habitaciones, 67 m², planta baja</td></tr>
+        <tr><td>Estado</td><td data-label="Valor">A reformar integralmente (presupuesto 36.000&euro;)</td></tr>
+        <tr><td>Operación planteada</td><td data-label="Valor">Adquisición, reforma integral y alquiler por habitaciones (3 habitaciones)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 2.2 Precio de mercado: alquiler tradicional vs alquiler por habitación -->
+    <div class="card">
+      <div class="card-title">2.2 Precio de mercado: alquiler tradicional vs alquiler por habitación</div>
+      <div class="card-subtitle">Piso de 3 habitaciones, anuncios activos, El Grau de Castelló</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">Precio mínimo</div>
+          <div class="price-value">650&euro;</div>
+          <div class="price-note">El 25% se alquila por debajo</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Precio de mercado &#9733;</div>
+          <div class="price-value">750&euro;</div>
+          <div class="price-note">Alquiler tradicional</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">Precio máximo</div>
+          <div class="price-value">944&euro;</div>
+          <div class="price-note">El 25% se alquila por encima</div>
+        </div>
+      </div>
+      <div class="card-subtitle" style="margin-top:18px;">Alquiler por habitación, anuncios activos, El Grau de Castelló</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">Precio mínimo</div>
+          <div class="price-value">275&euro;</div>
+          <div class="price-note">El 25% se alquila por debajo</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Precio de mercado &#9733;</div>
+          <div class="price-value">300&euro;</div>
+          <div class="price-note">Por habitación</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">Precio máximo</div>
+          <div class="price-value">365&euro;</div>
+          <div class="price-note">El 25% se alquila por encima</div>
+        </div>
+      </div>
+      <table class="table-mobile">
+        <thead><tr><th>Modalidad</th><th>Cómo se calcula</th><th>Base</th><th>Renta estimada</th></tr></thead>
+        <tbody>
+        <tr><td>Tradicional (activos)</td><td data-label="Cómo se calcula">Piso 3 hab, anuncios activos</td><td data-label="Base">54 anuncios</td><td data-label="Renta">650&ndash;944&euro;/mes</td></tr>
+        <tr><td>Tradicional (retirados)</td><td data-label="Cómo se calcula">Piso 3 hab, anuncios retirados</td><td data-label="Base">23 anuncios</td><td data-label="Renta">400&ndash;800&euro;/mes</td></tr>
+        <tr class="highlight-asset"><td><strong>Por habitaciones</strong> <span class="mark mark-asset">Producto de la operación</span></td><td data-label="Cómo se calcula">3 &times; precio de habitación en la zona</td><td data-label="Base">Precio de habitación (44 anuncios)</td><td data-label="Renta"><strong>825&ndash;900&euro;/mes</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-gray">
+        <strong>&#9432; Sobre estas cifras.</strong> La renta por habitaciones se estima a partir del precio de habitación en la zona; no existe aún una muestra de este piso alquilado por habitaciones.
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> 3 habitaciones &times; 275&ndash;300&euro;/hab &asymp; 825&ndash;900&euro;/mes, un margen moderado (10&ndash;20%) por encima del alquiler tradicional (650&ndash;944&euro;/mes).
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 3: VALORACIÓN DE LA COMPRA -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #f5f3ff; color: #8B5CF6;">&#127963;&#65039;</div>
+      <div>
+        <div class="section-title">3 · Valoración de la compra</div>
+        <div class="section-subtitle">¿Está bien de precio los 150.000&euro; pedidos? · Cruce con testigos de venta y notariado</div>
+      </div>
+      <span class="zone-badge notarial">La compra</span>
+    </div>
+
+    <!-- 3.1 Testigos venta -->
+    <div class="card">
+      <div class="card-title">3.1 Testigos comparables de venta</div>
+      <div class="card-subtitle">Pisos de 3 habitaciones, 55-80 m², ya retirados del mercado en El Grau de Castelló</div>
+      <table class="table-mobile">
+        <thead><tr><th>Dirección</th><th>Superficie</th><th>Precio de retirada</th><th>&euro; por m²</th></tr></thead>
+        <tbody>
+        <tr><td>Camino del Segon Canal</td><td data-label="Superficie">67 m²</td><td data-label="Precio de retirada">90.000&euro;</td><td data-label="&euro; por m²">1.343&euro;</td></tr>
+        <tr><td>CL Canalejas 19</td><td data-label="Superficie">60 m²</td><td data-label="Precio de retirada">85.000&euro;</td><td data-label="&euro; por m²">1.417&euro;</td></tr>
+        <tr><td>El Grau de Castelló</td><td data-label="Superficie">76 m²</td><td data-label="Precio de retirada">123.000&euro;</td><td data-label="&euro; por m²">1.618&euro;</td></tr>
+        <tr><td>Camino Travesera</td><td data-label="Superficie">79 m²</td><td data-label="Precio de retirada">157.900&euro;</td><td data-label="&euro; por m²">1.999&euro;</td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-purple" style="margin-top:0;">
+        <strong>Testigos:</strong> 4 anuncios retirados, muestra reducida. El dato es orientativo, no concluyente; conviene confirmar con inmobiliarias antes de fijar una oferta.
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> 4 testigos reales del municipio, pisos de tamaño similar al del inmueble, se movieron entre 1.343 y 1.999&euro;/m² (media <strong>~1.594&euro;/m²</strong>).
+      </div>
+      <div class="insight-method">
+        <div class="im-title">Cómo leemos un mercado con pocos testigos</div>
+        <div class="im-text">Con solo 4 testigos directos, el valor se cruza con el mercado más amplio (53 anuncios de piso de 3 hab del municipio) y con el <b>notariado</b> (215 compraventas escrituradas del CP 12100). Cuando el escenario conservador de los testigos y el dato notarial coinciden, la lectura es fiable.</div>
+      </div>
+    </div>
+
+    <!-- 3.2 Escenarios de precio -->
+    <div class="card">
+      <div class="card-title">3.2 Precio de compra estimado — 3 escenarios</div>
+      <div class="card-subtitle">Sobre 67 m², calculados a partir del &euro;/m² de los testigos de venta</div>
+      <div class="term-explainer">
+        <strong>Qué significan los tres escenarios:</strong><br>
+        &bull; <strong>Conservador:</strong> a partir del &euro;/m² medio de todos los pisos de 3 hab del municipio (53 testigos).<br>
+        &bull; <strong>Precio de mercado &#9733;:</strong> a partir de los 4 testigos directos, mismo tamaño que el inmueble (55-80 m²) &mdash; el más específico.<br>
+        &bull; <strong>Optimista:</strong> el &euro;/m² del testigo directo mejor pagado de la zona.
+      </div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">Conservador</div>
+          <div class="price-value">88.000&euro;</div>
+          <div class="price-note">&euro;/m² medio municipio &times; 67 m²</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Precio de mercado &#9733;</div>
+          <div class="price-value">107.000&euro;</div>
+          <div class="price-note">Testigos directos (55-80 m²) &times; 67 m²</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">Optimista</div>
+          <div class="price-value">134.000&euro;</div>
+          <div class="price-note">Testigo directo mejor pagado &times; 67 m²</div>
+        </div>
+      </div>
+      <div class="insight insight-gray" style="margin-bottom:0;">
+        <strong>&#9432; Sobre estas cifras.</strong> Los comparables son anuncios <strong>retirados del mercado</strong> (precio de salida del anuncio), no precio de firma ante notario. El escenario <strong>de mercado (107.000&euro;)</strong> es la cifra más específica de referencia, por ser el único basado en testigos del mismo tamaño exacto que el inmueble.
+      </div>
+    </div>
+
+    <!-- 3.3 Cruce notarial x mercado -->
+    <div class="card" style="background: linear-gradient(135deg, #f5f3ff 0%, #fff3f0 100%); border: 2px solid #ddd6fe;">
+      <div class="card-title" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="background:#8B5CF6; color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:14px;">&#127963;&#65039;</span>
+        <span>&times;</span>
+        <span style="background:#FF4D2E; color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:14px;">&#128225;</span>
+        <span>3.3 Cruce Notarial &times; Mercado</span>
+      </div>
+      <div class="card-subtitle">El notariado como contexto oficial, no como precio de referencia directo</div>
+      <table class="table-mobile">
+        <thead><tr><th>Indicador</th><th>Notarial (oficial)</th><th>Mercado (escenario conservador)</th><th>Lectura</th></tr></thead>
+        <tbody>
+        <tr><td>&euro; por m²</td><td data-label="Notarial (oficial)"><strong>1.360,81&euro;/m²</strong> (cierre real escriturado, 215 compraventas CP 12100)</td><td data-label="Mercado"><strong>~1.313&euro;/m²</strong> (P50 municipio, testigos de venta)</td><td data-label="Lectura">Diferencia de solo +3,7% &mdash; convergencia alta</td></tr>
+        </tbody>
+      </table>
+      <div style="margin-top: 18px; padding: 18px 20px; background: #141B36; border-radius: 12px; color: white;">
+        <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.6; margin-bottom: 8px; font-weight: 700;">Conclusión del cruce</div>
+        <div style="font-size: 14px; line-height: 1.6;">
+          El escenario <strong style="color:#FF4D2E;">conservador (88.000&euro;)</strong> converge con el equivalente notarial para 67 m² (<strong style="color:#FF4D2E;">91.174&euro;</strong>, a 1.360,81&euro;/m²): diferencia de solo <strong>+3,7%</strong>. Dos fuentes independientes &mdash;testigos de mercado y compraventas oficiales escrituradas&mdash; coinciden en que el valor real del piso ronda los 88.000-91.000&euro;, muy lejos de los 150.000&euro; pedidos.
+        </div>
+      </div>
+      <div class="insight insight-purple">
+        <strong>Lectura:</strong> el precio pedido (150.000&euro; = 2.238&euro;/m²) está un <strong>+64,5%</strong> por encima del &euro;/m² notarial y un <strong>+11,9%</strong> por encima del escenario optimista (134.000&euro;): no es un precio de mercado, es un precio de salida con <strong>amplio margen de negociación</strong>.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 4: RENTABILIDAD DE LA OPERACIÓN -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #ecfdf5; color: #10B981;">&#128176;</div>
+      <div>
+        <div class="section-title">4 · Rentabilidad de la operación</div>
+        <div class="section-subtitle">Renta por habitaciones sobre la inversión total (compra + reforma)</div>
+      </div>
+      <span class="zone-badge pulso">El resultado</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">4.1 Dos escenarios según el precio de compra</div>
+      <div class="card-subtitle">Renta anual estimada: 10.350&euro; (862&euro;/mes de media, banda 825-900&euro;/mes por habitaciones)</div>
+      <table class="table-mobile">
+        <thead><tr><th>Escenario</th><th>Precio de compra</th><th>+ Reforma</th><th>Inversión total</th><th>Renta anual</th><th>Rentabilidad bruta</th></tr></thead>
+        <tbody>
+        <tr><td>A precio pedido</td><td data-label="Precio de compra">150.000&euro;</td><td data-label="+ Reforma">36.000&euro;</td><td data-label="Inversión total"><strong>186.000&euro;</strong></td><td data-label="Renta anual">10.350&euro;</td><td data-label="Rentabilidad bruta">5,6%</td></tr>
+        <tr class="highlight"><td><strong>A precio de mercado &#9733;</strong> <span class="mark mark-pulso">Negociado</span></td><td data-label="Precio de compra">107.000&euro;</td><td data-label="+ Reforma">36.000&euro;</td><td data-label="Inversión total"><strong>143.000&euro;</strong></td><td data-label="Renta anual">10.350&euro;</td><td data-label="Rentabilidad bruta">7,2%</td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> la renta no depende del precio de compra &mdash; la <strong>palanca de la operación</strong> es negociarlo: pasar de 150.000&euro; a los 107.000&euro; del escenario de mercado mejora la rentabilidad bruta de 5,6% a 7,2% sin tocar el alquiler ni la reforma.
+      </div>
+      <div class="insight insight-gray">
+        <strong>&#9432; Rentabilidad bruta, no neta.</strong> Estas cifras no descuentan IBI, comunidad, seguros, suministros compartidos, gestión de la rotación de inquilinos ni posible fiscalidad de actividad económica por alquilar por habitaciones &mdash; ver huecos en la sección 7.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 5: HACIA DÓNDE ENFOCAR LA REFORMA -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #fff3f0; color: #FF4D2E;">&#128295;</div>
+      <div>
+        <div class="section-title">5 · Hacia dónde enfocar la reforma</div>
+        <div class="section-subtitle">Indicios sobre el perfil de inquilino que se anuncia en El Grau &mdash; no una certeza estadística</div>
+      </div>
+      <span class="zone-badge impulso">Indicio</span>
+    </div>
+
+    <div class="card">
+      <div class="insight insight-red" style="margin-top:0;">
+        <strong>&#9888; Aviso de fiabilidad:</strong> fiabilidad baja. No existe en la base de datos un campo de "perfil de inquilino"; estas cifras salen de menciones de texto libre en 44 anuncios de habitación, no de una encuesta. Es una <strong>señal</strong>, no un dato validado &mdash; confirmar con inmobiliarias o con inquilinos tipo antes de decidir la reforma.
+      </div>
+      <table class="table-mobile">
+        <thead><tr><th>Mención en el anuncio</th><th>Testigos</th><th>% del total</th></tr></thead>
+        <tbody>
+        <tr><td>"Estudiante(s)"</td><td data-label="Testigos">12 de 44 anuncios</td><td data-label="%">27%</td></tr>
+        <tr><td>"Trabajador(es)"</td><td data-label="Testigos">6 de 44 anuncios</td><td data-label="%">14%</td></tr>
+        <tr><td>Parking / aparcamiento</td><td data-label="Testigos">7 de 44 anuncios</td><td data-label="%">16%</td></tr>
+        <tr><td>Universidad / UJI</td><td data-label="Testigos">2 de 44 anuncios</td><td data-label="%">5%</td></tr>
+        <tr class="highlight-asset"><td><strong>Baño privado</strong> <span class="mark mark-asset">Oportunidad</span></td><td data-label="Testigos">4 de 44 anuncios</td><td data-label="%">9%</td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> "estudiante" (27%) y "trabajador joven" (14%) son las menciones más frecuentes, y el <strong>baño privado</strong> &mdash;presente en solo el 9% de los anuncios&mdash; aparece como posible palanca de diferenciación en la reforma.
+      </div>
+      <div class="term-explainer" style="margin-top:14px;">
+        <strong>Ejemplos reales de anuncios (texto verbatim, El Grau de Castelló):</strong><br>
+        &bull; "Habitación grande cama double... Para estudiantes y trabajadores jóvenes. A solo 10 minutos a pie de la playa" (365&euro;)<br>
+        &bull; "Alquilo habitación con baño privado en un piso para compartir solamente con una persona más" (275&euro;)<br>
+        &bull; "habitación de grande, con muy buena hubicacion delante de la UJI" (300&euro;)
+      </div>
+      <div class="no-sample">
+        <strong>&#9888; Sin cruce de precio por perfil.</strong> No existe una columna que categorice al inquilino, así que no se puede afirmar con rigor "los estudiantes pagan X de media y los trabajadores Y". Solo se puede cruzar precio con menciones de texto, y con 44 anuncios partidos en subgrupos de 6-12, la significancia es baja. <strong>Siguiente paso:</strong> confirmar con las inmobiliarias de la sección 6 antes de definir el estándar de reforma (nº de baños privados, extras incluidos).
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 6: CONTACTOS PARA VALIDACIÓN -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #f5f3ff; color: #8B5CF6;">&#128222;</div>
+      <div>
+        <div class="section-title">6 · Contactos para validación</div>
+        <div class="section-subtitle">Inmobiliarias que mueven alquiler en El Grau de Castelló</div>
+      </div>
+      <span class="zone-badge notarial">Validar</span>
+    </div>
+
+    <div class="card">
+      <div class="insight insight-purple" style="margin-top:0;">
+        <strong>Por qué estas inmobiliarias.</strong> Agencias con más anuncios de alquiler publicados en El Grau de Castelló; por volumen, son las que mejor conocen a qué precio se mueve el mercado de habitaciones y de alquiler tradicional en la zona.
+      </div>
+      <table class="table-mobile">
+        <thead><tr><th>Inmobiliaria</th><th>Teléfono</th><th>Anuncios de alquiler</th></tr></thead>
+        <tbody>
+        <tr><td>Properties 360</td><td data-label="Teléfono">864 870 928</td><td data-label="Anuncios">9</td></tr>
+        <tr><td>Inmobiliaria Promograu</td><td data-label="Teléfono">864 870 324</td><td data-label="Anuncios">5</td></tr>
+        <tr><td>Gomez Lauterio Promociones</td><td data-label="Teléfono">864 870 753</td><td data-label="Anuncios">4</td></tr>
+        <tr><td>Live4Life</td><td data-label="Teléfono">854 780 546</td><td data-label="Anuncios">4</td></tr>
+        <tr><td>Engel &amp; Völkers València</td><td data-label="Teléfono">960 378 736</td><td data-label="Anuncios">4</td></tr>
+        <tr><td>Inmobiliaria Costa Azahar</td><td data-label="Teléfono">864 870 770</td><td data-label="Anuncios">3</td></tr>
+        </tbody>
+      </table>
+      <div class="insight insight-gray">
+        <strong>&#9432; Sobre los teléfonos.</strong> Los números con prefijo <strong>864870xxx</strong> son líneas de contacto del propio portal (Idealista/Fotocasa), no la línea corporativa directa de la agencia &mdash; al llamar, identifica la inmobiliaria durante la conversación, no por el número.
+      </div>
+      <div class="script-box">
+        <div class="sb-title">&#128222; Guión de llamada recomendado</div>
+        <div class="sb-quote">"Hola, estoy valorando comprar un piso de 3 habitaciones en El Grau para reformarlo y alquilarlo por habitaciones. ¿Manejáis ese tipo de alquiler en la zona?"</div>
+        <strong>Preguntas clave para validar precio y perfil:</strong>
+        <ol>
+          <li>"¿A qué precio se alquila hoy una habitación individual con baño compartido, y una con baño privado?"</li>
+          <li>"¿Qué perfil de inquilino veis más: estudiantes, trabajadores jóvenes o ambos?"</li>
+          <li>"¿Hay demanda suficiente para tener las 3 habitaciones ocupadas todo el año?"</li>
+          <li>"¿Qué extras marcan más diferencia de precio: parking, gastos incluidos, baño privado?"</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- SECCIÓN 7: METODOLOGÍA Y LÍMITES -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: #141B36; color: #FF4D2E;">&#9878;&#65039;</div>
+      <div>
+        <div class="section-title">7 · Metodología y límites</div>
+        <div class="section-subtitle">Qué se mide, cómo, y qué queda fuera de este informe</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Qué NO se puede sostener con datos reales</div>
+      <div class="no-sample">
+        <strong>1. Sin comparable real de planta baja + 3 hab + ~67 m².</strong> Solo hay 1 registro de planta baja + 3 hab en toda la base (160 m², no comparable en tamaño). No se puede aislar el efecto de la planta baja sobre el precio con datos propios &mdash; ni al alza ni a la baja.
+      </div>
+      <div class="no-sample">
+        <strong>2. La reforma de 36.000&euro; no está contrastada con proveedores.</strong> Es el presupuesto facilitado para esta operación, no verificado con precios de mercado de reforma integral. Fuera del alcance de Supabase/Notion.
+      </div>
+      <div class="no-sample">
+        <strong>3. El perfil de inquilino (sección 5) es un indicio textual, no una encuesta validada.</strong> Muestra reducida (44 anuncios en subgrupos de 6 a 12) y fiabilidad baja; confirmar con inmobiliarias.
+      </div>
+      <div class="no-sample">
+        <strong>4. No hay coste de gestión ni de rotación de alquiler por habitaciones</strong> (IBI, suministros compartidos, seguros, posible actividad económica/IVA). Fuera del alcance de estas fuentes &mdash; consultar con Lexia/Fiscus si aplica.
+      </div>
+      <div class="no-sample">
+        <strong>5. Los 4 comparables directos de venta son muestra pequeña.</strong> Se usan junto con el &euro;/m² notarial (215 compraventas, más fiable) como ancla principal, no de forma aislada.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Disclaimers y vigencia</div>
+      <div class="disclaimer">
+        <strong>Anuncios ≠ contratos firmados.</strong> Todos los datos de alquiler y venta de este informe proceden de anuncios <strong>activos o retirados del mercado</strong> (precio de salida del anuncio). No son precios de firma de contrato de alquiler ni de escritura de compraventa &mdash; ese dato, cuando existe, solo lo aporta el notariado.
+      </div>
+      <div class="disclaimer">
+        <strong>Vigencia de los datos.</strong> Cifras extraídas el 7 de julio de 2026. El mercado inmobiliario se mueve; para una decisión de compra u oferta, conviene repetir la consulta a las inmobiliarias de la sección 6 en el momento de negociar.
+      </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(135deg, #fafbfc 0%, #f3f4f6 100%); border: 2px solid #e5e7eb;">
+      <ul class="conclusion-list">
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+          <span><strong>Renta:</strong> por habitaciones (825-900&euro;/mes) supera el alquiler tradicional (650-944&euro;/mes) en un margen moderado del 10-20%, con más gestión y rotación.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+          <span><strong>Compra:</strong> el precio pedido (150.000&euro;) está un +64,5% sobre el valor real convergente (88.000-91.200&euro;, mercado y notarial coinciden) &mdash; hay amplio margen de negociación.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l2-9 4 18 2-9h6"></path></svg></span>
+          <span><strong>Rentabilidad:</strong> el precio de compra es la palanca &mdash; de 5,6% (a precio pedido) a 7,2% (a precio de mercado negociado), sin cambiar el alquiler.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+          <span><strong>Riesgos a considerar:</strong> muestra pequeña en los testigos directos de compra (4) y en el perfil de inquilino (44, indicio no validado); costes de gestión y fiscalidad de alquiler por habitaciones no incluidos en la rentabilidad bruta.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span>
+          <span><strong>Siguiente paso:</strong> llamar a las inmobiliarias de la sección 6 para confirmar precio de habitación y perfil de inquilino, y negociar la compra hacia el rango 88.000-107.000&euro;.</span>
+        </li>
+      </ul>
+      <div class="verdict-navy" style="margin-bottom:0;">
+        <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#FF4D2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
+        <div>No opinamos del mercado: lo medimos. Y lo medimos con <strong>tres fuentes independientes</strong> &mdash;testigos IM·PULSO de alquiler y venta, y el Portal del Notariado&mdash;. El mercado y el notariado convergen en el valor real de compra; la decisión de precio final corresponde al inversor.</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-cta-title">¿Interesa un estudio como este?</div>
+    <div class="footer-cta-sub">Disponible bajo petición, con datos reales de la zona.</div>
+    <a class="wa-button" href="https://wa.me/34611031611?text=Hola%2C%20he%20visto%20el%20informe%20de%20El%20Grau%20de%20Castell%C3%B3%20de%20IM%C2%B7PULSO%20y%20me%20interesar%C3%ADa%20uno%20para%20mi%20operaci%C3%B3n." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Contactar por WhatsApp
+    </a>
+
+    <img class="footer-logo" src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/698227e0b7e498bfd5ff8b45.png" alt="IM·PULSO">
+    <div style="font-size:14px; font-weight:700; color:white;"><a href="https://im-pulso.app" target="_blank" rel="noopener" style="color:white; text-decoration:none;">IM·PULSO — Inteligencia de Mercado Inmobiliario</a></div>
+    <div class="footer-links"><a href="https://im-pulso.app" target="_blank" rel="noopener">im-pulso.app</a></div>
+
+    <div class="footer-fine">IM·PULSO v2 · Informe real · Calle Nuestra Señora del Mar 32, El Grau de Castelló (Castellón)</div>
+  </div>
+</div>
+
+</body>
+</html>

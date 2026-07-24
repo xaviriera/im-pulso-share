@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IM·PULSO V2 — {{DIRECCION}}, {{MUNICIPIO}} | Plantilla definitiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    /* Motor 1.1 — PULSO */
+    --pulso: #F97316;
+    --pulso-bg: #FFF7ED;
+    --pulso-border: #FDBA74;
+    /* Motor 1.2 — IMPULSO */
+    --impulso: #16A34A;
+    --impulso-bg: #F0FDF4;
+    --impulso-border: #86EFAC;
+    /* Motor 2 — NOTARIADO */
+    --notarial: #7C3AED;
+    --notarial-bg: #F5F3FF;
+    --notarial-border: #C4B5FD;
+    /* Motor 3 — MTVV (Programa IN, exclusivo) */
+    --mtvv: #DA1839;
+    --mtvv-bg: #FEF2F4;
+    --mtvv-border: #F4A6B2;
+    /* Navy */
+    --navy: #0F1F3D;
+    --navy-soft: #1E3A5F;
+    /* Neutros */
+    --gray-900: #111827;
+    --gray-700: #374151;
+    --gray-500: #6B7280;
+    --gray-300: #D1D5DB;
+    --gray-100: #F3F4F6;
+    --gray-50:  #F9FAFB;
+    --white: #FFFFFF;
+    /* Insight */
+    --insight-orange: #F97316;
+    --insight-green:  #16A34A;
+    --insight-purple: #7C3AED;
+    --insight-gray:   #6B7280;
+    --insight-red:    #DC2626;
+  }
+  body {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* ===================== HEADER ===================== */
+  .header { background: var(--navy); color: white; padding: 16px 0; }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .header img { height: 36px; }
+  .badge {
+    background: var(--pulso); color: white; padding: 4px 14px; border-radius: 20px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0;
+  }
+
+  /* ===================== COBRAND BAR (condicional) ===================== */
+  .cobrand-bar { background: #0a1226; color: rgba(255,255,255,0.85); padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+  .cobrand-inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 12px;
+  }
+  .cobrand-inner .cobrand-label { text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; opacity: 0.6; }
+  .cobrand-cdu { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #E29F34; }
+  .cobrand-cdu svg { width: 22px; height: 22px; }
+  .cobrand-inner a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .cobrand-inner a:hover { color: white; }
+  .footer-cobrand {
+    margin-top: 28px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.12);
+    display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap; font-size: 13px;
+  }
+  .footer-cobrand .fc-label { text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; opacity: 0.55; }
+  .fc-cdu { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: #E29F34; }
+  .fc-cdu svg { width: 26px; height: 26px; }
+  .footer-cobrand a { color: rgba(255,255,255,0.7); text-decoration: none; }
+
+  /* ===================== HERO ===================== */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: white; padding: 48px 0 40px; text-align: center; }
+  .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+  .hero .subtitle { font-size: 15px; opacity: 0.65; margin-bottom: 20px; }
+
+  .hero-meta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  .hero-meta .hm-item { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 6px; }
+  .hero-meta .hm-item svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .hero-meta .hm-sep { width: 1px; height: 14px; background: rgba(255,255,255,0.2); }
+
+  .hero-selectors { display: flex; justify-content: center; gap: 12px; margin-bottom: 28px; flex-wrap: wrap; }
+  .hero-selector {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    padding: 8px 20px; border-radius: 8px; font-size: 13px; color: rgba(255,255,255,0.8); font-weight: 600;
+  }
+  .hero-selector.active { background: var(--pulso); border-color: var(--pulso); color: white; }
+
+  .op-ficha {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    max-width: 860px; margin: 0 auto 32px; text-align: left; padding: 0 24px;
+  }
+  .op-cell { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 16px 18px; }
+  .op-key { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--pulso); font-weight: 800; margin-bottom: 6px; }
+  .op-val { font-size: 14px; font-weight: 600; color: white; line-height: 1.4; }
+  .op-val small { display: block; font-size: 12px; font-weight: 400; opacity: 0.6; margin-top: 3px; }
+
+  .hero-sources { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .source-pill {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px;
+    padding: 16px 16px; text-align: center; flex: 1; min-width: 200px;
+  }
+  .source-pill .sp-icon { display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  .source-pill .sp-icon svg { width: 24px; height: 24px; }
+  .source-pill .sp-name-title { font-size: 13px; font-weight: 700; color: white; }
+  .source-pill .sp-subtitle { font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.75); margin-top: 3px; }
+  .source-pill .sp-desc { font-size: 11px; opacity: 0.55; margin-top: 4px; line-height: 1.5; }
+  .source-pill .sp-badge {
+    display: inline-block; margin-top: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.32);
+    border-radius: 10px; padding: 2px 9px; font-size: 10px; font-weight: 700; letter-spacing: 0.4px; color: rgba(255,255,255,0.85); text-transform: uppercase;
+  }
+
+  /* ===================== CONTAINER / SECTION ===================== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { margin: 48px 0; position: relative; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .section-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-icon svg { width: 22px; height: 22px; }
+  .section-title { font-size: 22px; font-weight: 700; color: var(--navy); }
+  .section-subtitle { font-size: 13px; color: var(--gray-500); }
+  .section-divider { border: none; border-top: 2px dashed var(--gray-300); margin: 40px 0; }
+
+  /* ===================== ZONE BADGE ===================== */
+  .zone-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-left: auto; flex-shrink: 0; }
+  .zone-badge.pulso { background: var(--pulso-bg); color: var(--pulso); }
+  .zone-badge.impulso { background: var(--impulso-bg); color: var(--impulso); }
+  .zone-badge.notarial { background: var(--notarial-bg); color: var(--notarial); }
+  .zone-badge.mtvv { background: var(--mtvv-bg); color: var(--mtvv); border: 2px solid var(--mtvv); }
+
+  /* ===================== CARD ===================== */
+  .card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); margin-bottom: 16px; border: 1px solid #e5e7eb; }
+  .card-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .card-subtitle { font-size: 13px; color: var(--gray-500); margin-bottom: 16px; }
+
+  /* Borde izquierdo de card por motor (§2.2 UI-SPEC) */
+  .motor-pulso .card { border-left: 4px solid var(--pulso); }
+  .motor-impulso .card { border-left: 4px solid var(--impulso); }
+  .motor-notarial .card { border-left: 4px solid var(--notarial); }
+  .motor-mtvv .card { border-left: 4px solid var(--mtvv); }
+
+  /* ===================== LEYENDA / EXPLAINERS ===================== */
+  .legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--gray-700); margin: 4px 0 14px; align-items: center; }
+  .legend .lg-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend .lg-dot { width: 12px; height: 12px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
+
+  .term-explainer { background: var(--gray-50); border: 1px solid #e2e8f0; border-left: 4px solid var(--navy); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6; }
+  .term-explainer strong { color: var(--navy); }
+
+  .mtvv-explainer { background: linear-gradient(135deg, var(--mtvv-bg) 0%, #fff5f6 100%); border: 2px solid var(--mtvv-border); border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; font-size: 13px; line-height: 1.6; color: var(--gray-900); }
+  .mtvv-explainer strong { color: var(--mtvv); }
+
+  .insight-method { background: linear-gradient(135deg, #ffffff 0%, #FDFCFA 100%); border: 1.5px solid var(--pulso); border-left: 5px solid var(--pulso); border-radius: 10px; padding: 18px 22px; margin-top: 16px; box-shadow: 0 2px 10px rgba(20,27,54,0.06); }
+  .insight-method .im-title { font-size: 13px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: var(--navy); margin-bottom: 10px; }
+  .insight-method .im-text { font-size: 14px; line-height: 1.65; color: var(--navy); }
+  .insight-method .im-text b { color: var(--pulso); font-weight: 800; }
+
+  /* ===================== TABLE (responsive: table-wrap único) ===================== */
+  .table-wrap { overflow-x: auto; margin: 12px 0; }
+  .table-wrap table { min-width: 480px; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+  th:first-child { border-radius: 8px 0 0 0; }
+  th:last-child { border-radius: 0 8px 0 0; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--gray-100); }
+  tr:hover td { background: var(--gray-50); }
+  tr.highlight td { background: var(--pulso-bg); }
+  tr.highlight-asset td { background: var(--impulso-bg); }
+  tr.no-data td { background: var(--gray-100); color: var(--gray-500); font-style: italic; }
+  tr.warn td { background: #FEF3C7; }
+  tr.highlight-notarial td { background: var(--notarial-bg); }
+
+  .mark { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 5px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.5px; text-transform: uppercase; }
+  .mark-pulso { background: var(--pulso); color: white; }
+  .mark-asset { background: var(--impulso); color: white; }
+  .mark-notarial { background: var(--notarial); color: white; }
+
+  @media (max-width: 480px) {
+    .table-mobile thead { display: none; }
+    .table-mobile tbody, .table-mobile tr { display: block; width: 100%; }
+    .table-mobile tr { margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; background: white; }
+    .table-mobile tr.highlight { background: var(--pulso-bg); border-color: var(--pulso-border); }
+    .table-mobile tr.highlight-asset { background: var(--impulso-bg); border-color: var(--impulso-border); }
+    .table-mobile tr.highlight-notarial { background: var(--notarial-bg); border-color: var(--notarial-border); }
+    .table-mobile td { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 5px 0; border-bottom: none; font-size: 13px; text-align: right; }
+    .table-mobile td:first-child { font-size: 15px; font-weight: 800; color: var(--navy); padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--gray-100); text-align: left; display: block; }
+    .table-mobile td:not(:first-child)::before { content: attr(data-label); font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
+    .table-mobile tr:hover td { background: transparent; }
+    .table-wrap table.table-mobile { min-width: 0; }
+  }
+
+  /* ===================== KPI ===================== */
+  .kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+  .kpi { background: white; padding: 16px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; }
+  .kpi-value { font-size: 28px; font-weight: 800; color: var(--navy); }
+  .kpi-label { font-size: 12px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* Alias funcional Motor 2 */
+  .notarial-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0; }
+  .nat-box { background: white; border: 1px solid var(--notarial-border); border-radius: 12px; padding: 16px; text-align: center; }
+  .nat-box .nb-val { font-size: 22px; font-weight: 800; color: var(--notarial); }
+  .nat-box .nb-label { font-size: 11px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; }
+
+  /* ===================== INSIGHT / AVISOS ===================== */
+  .insight { margin-top: 12px; padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.55; }
+  .insight-orange { background: var(--pulso-bg); border-left: 3px solid var(--insight-orange); }
+  .insight-green { background: var(--impulso-bg); border-left: 3px solid var(--insight-green); }
+  .insight-purple { background: var(--notarial-bg); border-left: 3px solid var(--insight-purple); }
+  .insight-gray { background: var(--gray-100); color: var(--gray-700); border-left: 3px solid var(--insight-gray); }
+  .insight-red { background: #FEF2F2; border-left: 3px solid var(--insight-red); color: #7F1D1D; }
+
+  .no-sample { background: #fef2f2; border: 1px solid #FCA5A5; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #7f1d1d; display: flex; gap: 12px; align-items: flex-start; }
+  .no-sample strong { color: #b91c1c; }
+  .no-sample .ns-icon { flex-shrink: 0; width: 22px; height: 22px; }
+  .no-sample .ns-icon svg { width: 22px; height: 22px; }
+
+  .callout { background: var(--gray-50); border: 1px solid #e2e8f0; border-left: 4px solid var(--navy); border-radius: 0 10px 10px 0; padding: 14px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6; }
+  .callout strong { color: var(--navy); }
+
+  .disclaimer { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #1e3a8a; }
+  .disclaimer strong { color: #1e40af; }
+
+  .scope-note { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #1e3a8a; }
+  .scope-note strong { color: #1e40af; }
+
+  /* ===================== PRICE WIDGET / SCENARIOS ===================== */
+  .price-widget { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; text-align: center; margin: 20px 0; }
+  .price-box { padding: 20px; border-radius: 12px; background: var(--gray-50); }
+  .price-box.main { background: var(--navy); color: white; transform: scale(1.05); box-shadow: 0 8px 24px rgba(15,31,61,0.3); }
+  .price-box .price-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.65; margin-bottom: 4px; font-weight: 700; }
+  .price-box .price-value { font-size: 26px; font-weight: 800; }
+  .price-box.main .price-value { color: var(--pulso); font-size: 32px; }
+  .price-box .price-note { font-size: 11px; opacity: 0.55; margin-top: 4px; }
+
+  .scenario-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+  .scenario-box { background: var(--gray-50); border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; text-align: center; }
+  .scenario-box.main-scenario { background: var(--navy); color: white; border-color: transparent; transform: scale(1.03); box-shadow: 0 4px 20px rgba(15,31,61,0.25); }
+  .scenario-box .sc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 4px; font-weight: 700; }
+  .scenario-box.main-scenario .sc-label { color: rgba(255,255,255,0.55); }
+  .scenario-box .sc-value { font-size: 24px; font-weight: 800; color: var(--navy); }
+  .scenario-box.main-scenario .sc-value { color: var(--pulso); }
+
+  /* ===================== MULTI-TIPOLOGÍA ===================== */
+  .tipo-card { background: white; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+  .tipo-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
+  .tipo-card-title { font-size: 17px; font-weight: 700; color: var(--navy); }
+  .tipo-card-sub { font-size: 12px; color: var(--gray-500); }
+
+  .demand-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .demand-badge svg { width: 12px; height: 12px; }
+  .demand-badge.alta { background: var(--impulso-bg); color: var(--impulso); }
+  .demand-badge.baja { background: #fef2f2; color: var(--insight-red); }
+  .demand-badge.na { background: var(--gray-100); color: var(--gray-500); }
+
+  .units-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin: 16px 0; }
+  .unit-card { background: white; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 14px; font-size: 12px; }
+  .unit-card .u-num { font-size: 10px; color: var(--gray-500); text-transform: uppercase; letter-spacing: 1px; }
+  .unit-card .u-tipo { font-weight: 700; color: var(--navy); margin: 3px 0; font-size: 13px; }
+  .unit-card .u-price { color: var(--pulso); font-weight: 700; font-size: 14px; }
+  .unit-card.no-val { border-color: var(--gray-300); border-style: dashed; background: var(--gray-50); }
+  .unit-card.no-val .u-price { color: var(--gray-500); font-style: italic; }
+
+  /* Fiabilidad por tipología */
+  .fiab-alta, .fiab-media, .fiab-baja { display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px; border-radius: 20px; font-size: 10.5px; font-weight: 700; }
+  .fiab-alta { background: var(--impulso-bg); color: var(--impulso); }
+  .fiab-media { background: #FFFBEB; color: #B45309; }
+  .fiab-baja { background: #fef2f2; color: var(--insight-red); }
+
+  /* ===================== CONTACTOS DESTACADOS ===================== */
+  .contactos-destacados { background: linear-gradient(135deg, #ffffff 0%, var(--impulso-bg) 100%); border: 2px solid var(--impulso-border); border-radius: 18px; padding: 28px; margin-top: 20px; box-shadow: 0 10px 30px rgba(22,163,74,0.12); }
+  .contactos-destacados .cd-header { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .contactos-destacados .cd-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--impulso); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contactos-destacados .cd-icon svg { width: 22px; height: 22px; stroke: white; }
+  .contactos-destacados .cd-title { font-size: 17px; font-weight: 800; color: var(--navy); }
+  .contactos-destacados .cd-sub { font-size: 13px; color: var(--gray-700); margin-bottom: 18px; }
+  .contactos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .contacto-card { background: white; border: 2px solid var(--impulso-border); border-radius: 14px; padding: 18px 20px; box-shadow: 0 4px 14px rgba(22,163,74,0.10); transition: transform 0.15s, box-shadow 0.15s; }
+  .contacto-card:hover { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(22,163,74,0.18); }
+  .contacto-card .cc-name { font-size: 15px; font-weight: 800; color: var(--navy); margin-bottom: 4px; }
+  .contacto-card .cc-phone { font-size: 14px; font-weight: 700; color: var(--impulso); display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .contacto-card .cc-phone svg { width: 15px; height: 15px; }
+  .contacto-card .cc-op { font-size: 12.5px; color: var(--gray-700); line-height: 1.5; }
+  .contact-tag { display: inline-block; background: var(--impulso-bg); color: var(--impulso); padding: 2px 9px; border-radius: 6px; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.3px; margin-top: 8px; }
+
+  .script-box { background: var(--gray-50); border: 1px dashed var(--gray-300); border-radius: 10px; padding: 18px 22px; margin-top: 18px; font-size: 13px; color: var(--gray-700); line-height: 1.7; }
+  .script-box .sb-title { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: var(--navy); font-weight: 800; margin-bottom: 10px; display: flex; align-items: center; gap: 7px; }
+  .script-box .sb-title svg { width: 15px; height: 15px; }
+  .script-box .sb-quote { background: white; border-left: 3px solid var(--impulso); padding: 10px 14px; border-radius: 0 8px 8px 0; font-style: italic; margin: 10px 0; }
+  .script-box ol { margin: 8px 0 0 20px; }
+  .script-box ol li { margin-bottom: 6px; }
+
+  /* ===================== MTVV: STEPPER / PASOS 0-4 ===================== */
+  .step-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .step-number { width: 32px; height: 32px; border-radius: 50%; background: var(--mtvv); color: white; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 800; flex-shrink: 0; }
+  .step-number.done { background: var(--mtvv); }
+  .step-number.pending { background: var(--gray-300); color: var(--gray-500); }
+  .step-title { font-size: 16px; font-weight: 700; color: var(--navy); }
+
+  .step-price { margin-top: 16px; background: var(--navy); border-radius: 12px; padding: 16px; text-align: center; }
+  .step-price .sp-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; }
+  .step-price .sp-value { font-size: 28px; font-weight: 800; color: var(--mtvv); margin-top: 4px; }
+  .step-price .sp-note { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+  .build-box { margin-top: 14px; padding: 16px; background: var(--gray-50); border-radius: 10px; border: 1px dashed var(--gray-300); }
+  .build-box .bb-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); font-weight: 700; margin-bottom: 10px; }
+  .build-box .bb-body { font-size: 13px; line-height: 1.7; color: var(--gray-700); }
+  .build-box .bb-total { margin-top: 8px; padding-top: 10px; border-top: 1px solid #e5e7eb; }
+
+  .price-evolution { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .price-step { padding: 8px 16px; border-radius: 8px; text-align: center; background: var(--gray-100); }
+  .price-step .ps-day { font-size: 11px; color: var(--gray-500); }
+  .price-step .ps-price { font-weight: 800; color: var(--navy); }
+  .price-step.final { background: var(--mtvv-bg); border: 2px solid var(--mtvv); }
+  .price-step.final .ps-day { color: var(--mtvv); }
+  .price-step.final .ps-price { color: var(--mtvv); }
+  .price-arrow { font-size: 20px; color: var(--gray-500); display: flex; align-items: center; }
+  .price-arrow svg { width: 18px; height: 18px; }
+
+  .demand-bell { margin-top: 18px; padding: 18px; background: linear-gradient(135deg, #fff5f6 0%, var(--mtvv-bg) 100%); border-radius: 12px; border: 1px solid var(--mtvv-border); }
+  .demand-bell .db-title { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--mtvv); font-weight: 700; margin-bottom: 12px; }
+  .demand-bell .db-row { display: grid; grid-template-columns: 80px 1fr 60px; align-items: center; gap: 10px; font-size: 13px; margin-bottom: 6px; }
+  .demand-bell .db-bar-bg { background: var(--gray-300); height: 24px; border-radius: 6px; overflow: hidden; }
+  .demand-bell .db-bar-fill { background: var(--mtvv); height: 100%; border-radius: 6px; }
+  .demand-bell .db-foot { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--mtvv-border); font-size: 13px; line-height: 1.6; color: var(--navy); }
+
+  .invest-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0; }
+  .invest-result { background: var(--gray-50); border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; text-align: center; }
+  .invest-result .ir-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); font-weight: 700; }
+  .invest-result .ir-value { font-size: 22px; font-weight: 800; color: var(--navy); margin-top: 4px; }
+  .invest-result .ir-sub { font-size: 11px; color: var(--gray-500); margin-top: 2px; }
+
+  .provenance { background: var(--mtvv-bg); border: 1px solid var(--mtvv-border); border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #7a1228; display: flex; gap: 10px; align-items: flex-start; }
+  .provenance svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; }
+  .provenance strong { color: var(--mtvv); }
+
+  .exclusive-tag { display: inline-flex; align-items: center; gap: 5px; background: var(--mtvv-bg); color: var(--mtvv); padding: 4px 12px; border-radius: 8px; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; border: 1px solid var(--mtvv-border); }
+  .exclusive-tag svg { width: 13px; height: 13px; }
+
+  .pulso-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(218,24,57,0.1); border: 1px solid var(--mtvv-border); color: var(--mtvv); padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .pulso-ecg { width: 16px; height: 16px; }
+
+  .mtvv-logo-in { height: 34px; width: auto; display: block; }
+
+  /* ===================== CONVERGENCIA ===================== */
+  .convergence { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius: 16px; padding: 32px; text-align: center; color: white; margin: 24px 0; }
+  .convergence .conv-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.55; margin-bottom: 8px; }
+  .convergence .conv-verdict { font-size: 22px; font-weight: 800; color: var(--impulso); margin-bottom: 4px; }
+  .convergence .conv-verdict.provisional { color: #FCD34D; }
+  .convergence .conv-price { font-size: 40px; font-weight: 800; color: var(--pulso); }
+  .convergence .conv-range { font-size: 14px; opacity: 0.6; margin-top: 4px; }
+  .convergence .conv-note { font-size: 13px; opacity: 0.65; margin-top: 16px; max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.65; }
+
+  .validation-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 20px 0; }
+  .validation-card { padding: 24px; border-radius: 14px; text-align: center; border: 2px solid transparent; }
+  .validation-card .v-icon { display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
+  .validation-card .v-icon svg { width: 26px; height: 26px; }
+  .validation-card .v-source { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; margin-bottom: 12px; }
+  .validation-card .v-price { font-size: 26px; font-weight: 800; color: var(--navy); }
+  .validation-card .v-detail { font-size: 12px; color: var(--gray-700); margin-top: 6px; line-height: 1.5; }
+  .validation-card.scraping { background: var(--pulso-bg); border-color: var(--pulso-border); }
+  .validation-card.scraping .v-source { color: var(--pulso); }
+  .validation-card.notarial { background: var(--notarial-bg); border-color: var(--notarial-border); }
+  .validation-card.notarial .v-source { color: var(--notarial); }
+  .validation-card.mtvv { background: var(--mtvv-bg); border-color: var(--mtvv-border); }
+  .validation-card.mtvv .v-source { color: var(--mtvv); }
+
+  /* ===================== CIERRE ===================== */
+  .conclusion-list { list-style: none; padding: 0; }
+  .conclusion-list li { padding: 12px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; display: flex; gap: 12px; align-items: flex-start; }
+  .conclusion-list li:last-child { border-bottom: none; }
+  .conclusion-list .cl-icon { width: 30px; height: 30px; border-radius: 8px; background: var(--navy); color: white; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .conclusion-list .cl-icon svg { width: 16px; height: 16px; }
+
+  .verdict-navy { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: white; border-radius: 12px; padding: 20px 24px; margin: 20px 0; font-size: 15px; font-weight: 600; display: flex; align-items: flex-start; gap: 14px; }
+  .verdict-navy .verdict-icon { flex-shrink: 0; width: 40px; height: 40px; background: rgba(249,115,22,0.18); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .verdict-navy .verdict-icon svg { width: 22px; height: 22px; }
+
+  .flag { width: 20px; height: 14px; border-radius: 2px; vertical-align: middle; margin-right: 6px; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); display: inline-block; }
+
+  /* ===================== FOOTER ===================== */
+  .footer { background: var(--navy); color: rgba(255,255,255,0.7); padding: 48px 0 40px; margin-top: 56px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
+  .footer-cta-title { font-size: 22px; font-weight: 800; color: white; margin-bottom: 8px; }
+  .footer-cta-sub { font-size: 14px; opacity: 0.6; margin-bottom: 24px; }
+  .wa-button { display: inline-flex; align-items: center; gap: 10px; background: #25D366; color: white; text-decoration: none; padding: 14px 28px; border-radius: 30px; font-size: 16px; font-weight: 700; box-shadow: 0 6px 20px rgba(37,211,102,0.35); }
+  .wa-button svg { width: 24px; height: 24px; }
+  .footer-logo { height: 60px; margin: 32px auto 12px; display: block; }
+  .footer-links { font-size: 13px; margin-top: 8px; }
+  .footer-links a { color: rgba(255,255,255,0.7); text-decoration: none; }
+  .footer-links a:hover { color: white; }
+  .footer-fine { margin-top: 24px; font-size: 12px; opacity: 0.45; }
+
+  /* ===================== RESPONSIVE ===================== */
+  @media (max-width: 768px) {
+    .validation-grid { grid-template-columns: 1fr; }
+    .price-widget { display: grid; grid-template-columns: 1fr 1fr; grid-template-areas: "main main" "p25 p75"; gap: 10px; }
+    .price-widget .price-box.main { grid-area: main; transform: none; padding: 20px 16px; }
+    .price-widget .price-box.main .price-value { font-size: 30px !important; }
+    .price-widget .price-box:nth-child(1) { grid-area: p25; }
+    .price-widget .price-box:nth-child(3) { grid-area: p75; }
+    .price-box .price-value { font-size: 22px; }
+    .price-box { padding: 14px; }
+    .kpi-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .kpi-value { font-size: 19px; }
+    .kpi-label { font-size: 9px; }
+    .kpi { padding: 12px; }
+    .notarial-grid { grid-template-columns: 1fr 1fr; }
+    .op-ficha { grid-template-columns: 1fr; }
+    .hero { padding: 30px 0 32px; }
+    .hero h1 { font-size: 24px; line-height: 1.3; }
+    .hero .subtitle { font-size: 13px; }
+    .hero-selector { padding: 6px 14px; font-size: 12px; }
+    .hero-meta { flex-direction: column; gap: 8px; }
+    .hero-meta .hm-sep { display: none; }
+    .header img { height: 26px; }
+    .badge { font-size: 9px; padding: 3px 10px; }
+    .cobrand-inner { font-size: 11px; gap: 8px; }
+    .section { margin: 32px 0; }
+    .section-header { flex-wrap: wrap; }
+    .section-title { font-size: 19px; }
+    .section-icon { width: 36px; height: 36px; }
+    .section-icon svg { width: 18px; height: 18px; }
+    .zone-badge { font-size: 10px; padding: 3px 10px; }
+    .card { padding: 18px; }
+    .card-title { font-size: 16px; }
+    .source-pill { min-width: 0; }
+    .scenario-row { grid-template-columns: 1fr; }
+    .scenario-box.main-scenario { transform: none; }
+    .units-grid { grid-template-columns: 1fr 1fr; }
+    .invest-grid { grid-template-columns: 1fr; }
+    .contactos-grid { grid-template-columns: 1fr; }
+    .price-evolution { flex-direction: column; align-items: stretch; gap: 4px; }
+    .price-step { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 12px 18px; }
+    .price-arrow { transform: rotate(90deg); justify-content: center; margin: 2px 0; }
+    .convergence { padding: 24px 16px; }
+    .convergence .conv-price { font-size: 26px; }
+    .convergence .conv-verdict { font-size: 17px; }
+    .demand-bell .db-row { grid-template-columns: 64px 1fr 44px; font-size: 12px; }
+    .container { padding: 0 16px; }
+    .step-price .sp-value { font-size: 24px; }
+    .footer-cta-title { font-size: 18px; }
+    table { font-size: 13px; }
+    th { font-size: 11px; }
+    .footer-fine { font-size: 11px; }
+  }
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 19px; }
+    .kpi-row { grid-template-columns: 1fr 1fr; gap: 6px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================ -->
+<!-- 1. HEADER -->
+<!-- ============================================ -->
+<div class="header">
+  <div class="header-inner">
+    <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/697e322e1311f62a92201cc6.png" alt="IM·PULSO">
+    <span class="badge">Informe V2 · Datos reales</span>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 2. COBRAND BAR — condicional, solo si la operación ES CdU. En esta plantilla el caso demo (Elda) sí lo es. -->
+<!-- ============================================ -->
+<div class="cobrand-bar">
+  <div class="cobrand-inner">
+    <span class="cobrand-label">En colaboración especial con</span>
+    <span class="cobrand-cdu">
+      <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#E29F34" d="M 520.64 70.62 C 531.64 65.17 545.37 68.71 553.78 77.24 C 593.60 114.04 632.54 151.83 672.00 189.03 C 750.63 263.05 829.03 337.31 907.64 411.35 C 917.07 419.76 922.65 432.33 922.16 444.99 C 922.12 463.82 908.44 481.68 889.99 486.00 C 888.30 486.61 885.31 486.77 885.18 489.06 C 885.08 596.37 885.29 703.68 885.12 810.99 C 885.51 822.43 882.21 834.61 873.52 842.52 C 860.72 855.24 839.36 856.90 823.98 848.04 C 812.14 841.13 804.50 827.70 804.75 813.98 C 804.60 689.64 804.74 565.29 804.65 440.94 C 804.66 438.14 804.10 435.09 801.79 433.24 C 750.65 386.07 700.58 337.77 649.81 290.20 C 613.95 256.75 578.47 222.86 542.80 189.20 C 539.57 186.06 536.12 181.84 531.15 182.18 C 526.15 182.93 522.76 186.99 519.29 190.28 C 424.84 280.50 330.46 370.79 236.05 461.06 C 230.93 464.44 232.61 470.82 232.34 476.00 C 232.41 572.30 232.22 668.61 232.56 764.91 C 267.02 765.33 301.52 765.00 335.99 765.07 C 339.31 764.96 343.35 765.70 345.74 762.78 C 370.32 737.67 394.05 711.74 418.29 686.31 C 471.09 630.83 523.93 575.37 576.53 519.73 C 561.40 521.09 546.17 520.68 530.99 520.83 C 521.26 521.00 511.19 518.68 503.44 512.55 C 484.60 498.05 482.10 467.31 497.32 449.37 C 504.72 441.02 515.84 436.36 526.95 436.38 C 576.30 436.33 625.65 436.36 675.00 436.39 C 680.33 436.39 685.69 436.24 691.00 436.92 C 703.99 438.36 715.44 447.63 720.20 459.70 C 722.78 466.13 722.84 473.19 722.77 480.01 C 722.81 532.01 722.85 584.02 722.81 636.03 C 722.76 647.80 717.39 659.69 707.91 666.83 C 690.86 681.20 662.35 679.17 647.85 662.10 C 641.83 655.17 638.57 646.14 638.04 637.05 C 638.04 618.88 637.99 600.71 638.08 582.54 C 558.33 665.58 479.14 749.27 397.30 830.30 C 384.63 841.57 369.68 852.92 351.96 853.14 C 291.98 853.40 231.99 853.22 172.01 853.22 C 155.98 853.61 140.50 842.97 135.07 827.90 C 131.82 820.01 132.35 811.33 132.35 803.00 C 132.34 687.66 132.32 572.32 132.32 456.98 C 132.28 445.23 136.86 433.56 145.27 425.29 C 190.46 381.80 236.48 339.19 281.53 295.55 C 355.88 223.87 431.24 153.26 505.80 81.78 C 510.62 77.90 514.74 72.93 520.64 70.62 Z"/></svg>
+      CdU de 0 a ÉXITO
+    </span>
+    <a href="https://tucambiodeuso.com" target="_blank" rel="noopener">tucambiodeuso.com</a>
+  </div>
+</div>
+
+<!-- ============================================ -->
+<!-- 3. HERO -->
+<!-- ============================================ -->
+<div class="hero">
+  <div class="container">
+    <h1>{{DIRECCION}}, {{MUNICIPIO}}</h1>
+    <div class="subtitle">{{PROVINCIA}} · CP {{CODIGO_POSTAL}} · Estudio de mercado y valoración cruzada</div>
+
+    <div class="hero-meta">
+      <div class="hm-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        Lectura de mercado · {{FECHA_INFORME}}
+      </div>
+      <span class="hm-sep"></span>
+      <div class="hm-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18.7 8l-5.1 5.1-2.8-2.8L7 14"/></svg>
+        612 viviendas analizadas en la zona
+      </div>
+    </div>
+
+    <!-- FICHA DE OPERACIÓN -->
+    <div class="op-ficha">
+      <div class="op-cell">
+        <div class="op-key">La operación</div>
+        <div class="op-val">Cambio de Uso
+          <small>Transformar un local en planta baja en viviendas</small>
+        </div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">El activo</div>
+        <div class="op-val">Local de {{M2_ORIGEN}} m² ({{DESCRIPCION_ORIGEN}})
+          <small>En planta baja de {{DIRECCION}}</small>
+        </div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">El resultado</div>
+        <div class="op-val">{{N_VIVIENDAS}} viviendas resultantes
+          <small>2 estudios tipo loft (~32 m²) + 1 piso de 1 dormitorio (~38 m²)</small>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 FUENTES = 3 MOTORES -->
+    <div class="hero-sources">
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <div class="sp-name-title">PULSO + IMPULSO</div>
+        <div class="sp-subtitle">Motor de mercado</div>
+        <div class="sp-desc">612 viviendas analizadas en la zona</div>
+      </div>
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        </div>
+        <div class="sp-name-title">Portal del Notariado</div>
+        <div class="sp-subtitle">Contexto oficial</div>
+        <div class="sp-desc">94 compraventas oficiales al año</div>
+      </div>
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#F4A6B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
+        <div class="sp-name-title">MTVV</div>
+        <div class="sp-subtitle">Validación de campo</div>
+        <div class="sp-desc">4 inmobiliarias + anuncio real probado</div>
+        <span class="sp-badge">Exclusivo Comunidad IN</span>
+      </div>
+    </div>
+
+    <div class="hero-selectors">
+      <div class="hero-selector active">Operación: Cambio de Uso</div>
+      <div class="hero-selector">Perfil: Inversor / Gestor</div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- ============================================ -->
+  <!-- 4-5. AVISO MUESTRA PEQUEÑA + LEYENDA (antes de Motor 1) -->
+  <!-- ============================================ -->
+  <div class="card">
+    <div class="legend">
+      <span class="lg-item"><span class="lg-dot" style="background:var(--pulso);"></span> <strong>PULSO</strong> = el segmento con MÁS volumen del mercado (el producto dominante de la zona).</span>
+      <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Viviendas resultantes</strong> = dónde caen las viviendas que resultan de esta operación.</span>
+      <span class="lg-item"><span class="lg-dot" style="background:var(--notarial);"></span> <strong>Notarial</strong> = contexto oficial de compraventas escrituradas.</span>
+      <span class="lg-item"><span class="lg-dot" style="background:var(--mtvv);"></span> <strong>MTVV</strong> = validación de campo, exclusiva del Programa IN.</span>
+    </div>
+    <div class="insight insight-gray" style="margin-top:0;">
+      El <strong>PULSO</strong> es el latido principal del mercado: el tipo de vivienda que más se mueve. El producto de esta operación puede ser distinto (más pequeño): comparamos uno contra otro en cada tabla para entender dónde encaja.
+    </div>
+    <div class="no-sample" style="margin-top:12px;">
+      <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+      <span><strong>Muestra insuficiente para la tipología exacta de esta operación (estudio &lt;35 m²):</strong> los testigos disponibles en el municipio no permiten un cálculo estadísticamente representativo por sí solos. Se amplía a barrios colindantes con producto comparable y se contrasta con el MTVV en el Motor 3 — así se documenta en cada tabla afectada.</span>
+    </div>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- 6. MOTOR 1.1 · PULSO -->
+  <!-- ============================================ -->
+  <div class="section motor-pulso">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--pulso-bg); color: var(--pulso);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Motor 1.1 · PULSO — El latido del mercado</div>
+        <div class="section-subtitle">Qué se publica y qué se retira en {{MUNICIPIO}} ({{PROVINCIA}})</div>
+      </div>
+      <span class="zone-badge pulso">El mercado</span>
+    </div>
+
+    <!-- 1.1 Resumen -->
+    <div class="card">
+      <div class="card-title">1.1 Resumen del mercado de venta</div>
+      <div class="card-subtitle">Visión general de la vivienda en venta en el municipio</div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-value">612</div><div class="kpi-label">Piso analizados</div></div>
+        <div class="kpi"><div class="kpi-value">471</div><div class="kpi-label">Anuncios retirados</div></div>
+        <div class="kpi"><div class="kpi-value">77,0%</div><div class="kpi-label">Rotación</div></div>
+        <div class="kpi"><div class="kpi-value">156.400&euro;</div><div class="kpi-label">Precio medio</div></div>
+      </div>
+      <div class="term-explainer">
+        <strong>Cómo leer estas tablas (lo importante):</strong><br>
+        &bull; <strong>Anuncios publicados:</strong> cuántos pisos de ese tipo salieron al mercado.<br>
+        &bull; <strong>Anuncios retirados:</strong> cuántos dejaron de anunciarse (señal de absorción del mercado).<br>
+        &bull; <strong>Rotación:</strong> porcentaje de anuncios retirados sobre publicados. Más rotación = producto más líquido.<br>
+        &bull; <strong>Precio medio:</strong> el precio típico de ese grupo de pisos.
+      </div>
+      <div class="insight insight-orange">
+        141 anuncios siguen activos y 471 ya se han retirado: el mercado tiene una rotación alta (77,0%). Un piso tarda de media 118 días en retirarse (el valor central está en 72 días).
+      </div>
+    </div>
+
+    <!-- 1.2 Por tipo -->
+    <div class="card">
+      <div class="card-title">1.2 Por tipo de inmueble</div>
+      <div class="card-subtitle">Qué tipos de piso mueve el mercado</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tipo</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <tbody>
+          <tr class="highlight"><td><strong>Piso 3 dormitorios</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">312</td><td data-label="Retirados">241</td><td data-label="Rotación">77,2%</td><td data-label="Precio medio">168.900&euro;</td></tr>
+          <tr><td>Piso 2 dormitorios</td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
+          <tr><td>Ático</td><td data-label="Publicados">44</td><td data-label="Retirados">30</td><td data-label="Rotación">68,2%</td><td data-label="Precio medio">195.000&euro;</td></tr>
+          <tr><td>Dúplex</td><td data-label="Publicados">38</td><td data-label="Retirados">32</td><td data-label="Rotación">84,2%</td><td data-label="Precio medio">148.700&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el latido principal del mercado es el <strong>piso de 3 dormitorios</strong> (312 anuncios): es el producto dominante de la zona. El producto de esta operación —el estudio pequeño— es un nicho con muy poca oferta (6 anuncios en todo el municipio), lo que significa poca competencia directa.
+      </div>
+    </div>
+
+    <!-- 1.3 Por dormitorios y baños -->
+    <div class="card">
+      <div class="card-title">1.3 Por dormitorios y baños</div>
+      <div class="card-subtitle">Cuántos dormitorios y baños busca el mercado</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Dormitorios · Baños</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <tbody>
+          <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">28</td><td data-label="Retirados">24</td><td data-label="Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td></tr>
+          <tr><td>Estudio (0 dormitorios) · 1 baño</td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
+          <tr><td>2 dormitorios · 1 baño</td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
+          <tr class="highlight"><td><strong>3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">312</td><td data-label="Retirados">241</td><td data-label="Rotación">77,2%</td><td data-label="Precio medio">168.900&euro;</td></tr>
+          <tr><td>4 o más dormitorios · 2 baños</td><td data-label="Publicados">86</td><td data-label="Retirados">63</td><td data-label="Rotación">73,3%</td><td data-label="Precio medio">241.200&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el mercado se mueve sobre todo en <strong>3 dormitorios · 2 baños</strong> (312 anuncios). El producto de esta operación, el piso de <strong>1 dormitorio · 1 baño</strong>, tiene rotación todavía mayor (85,7%) con muy poca oferta: se retira rápido y casi no tiene competencia.
+      </div>
+    </div>
+
+    <!-- 1.4 Tramos de precio -->
+    <div class="card">
+      <div class="card-title">1.4 Por tramos de precio</div>
+      <div class="card-subtitle">Dónde está el volumen y dónde la velocidad de venta</div>
+      <div class="term-explainer">
+        <strong>Cómo se reparten los precios en la zona:</strong> de cada 10 pisos, el más barato ronda los 38.000 &euro; y el más caro los 312.000 &euro;. El precio que parte el mercado por la mitad es de <strong>128.500 &euro;</strong>.
+      </div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tramo de precio</th><th>Publicados</th><th>Retirados</th><th>Rotación</th></tr></thead>
+          <tbody>
+          <tr><td>Menos de 50.000&euro;</td><td data-label="Publicados">74</td><td data-label="Retirados">62</td><td data-label="Rotación">83,8%</td></tr>
+          <tr class="highlight-asset"><td><strong>50.000 – 80.000&euro;</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">61</td><td data-label="Retirados">51</td><td data-label="Rotación">83,6%</td></tr>
+          <tr><td>80.000 – 110.000&euro;</td><td data-label="Publicados">58</td><td data-label="Retirados">47</td><td data-label="Rotación">81,0%</td></tr>
+          <tr class="highlight"><td><strong>110.000 – 160.000&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">102</td><td data-label="Retirados">78</td><td data-label="Rotación">76,5%</td></tr>
+          <tr><td>160.000 – 220.000&euro;</td><td data-label="Publicados">67</td><td data-label="Retirados">46</td><td data-label="Rotación">68,7%</td></tr>
+          <tr><td>220.000&euro; o más</td><td data-label="Publicados">44</td><td data-label="Retirados">27</td><td data-label="Rotación">61,4%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el tramo con más volumen es el de <strong>110.000 a 160.000 &euro;</strong>, el precio del producto dominante. La rotación más alta está por debajo: en el tramo barato (hasta 80.000 &euro;) supera el 83%, mientras que por encima de 220.000 &euro; cae al 61%. <strong>El producto barato gira más rápido.</strong> Las viviendas resultantes de esta operación caen en el tramo de 50.000 a 80.000 &euro;.
+      </div>
+    </div>
+
+    <!-- 1.5 Comparativa zona -->
+    <div class="card">
+      <div class="card-title">1.5 Comparativa por barrio/calle</div>
+      <div class="card-subtitle">Zonas con 5 o más anuncios · incluye la propia calle de la operación</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Zona</th><th>Anuncios</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <tbody>
+          <tr><td>Barrio Centro</td><td data-label="Anuncios">14</td><td data-label="Retirados">13</td><td data-label="Rotación">92,9%</td><td data-label="Precio medio">102.400&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark mark-asset">Tu calle</span></td><td data-label="Anuncios">7</td><td data-label="Retirados">7</td><td data-label="Rotación">100,0%</td><td data-label="Precio medio">44.200&euro;</td></tr>
+          <tr><td>Barrio San Francisco</td><td data-label="Anuncios">11</td><td data-label="Retirados">9</td><td data-label="Rotación">81,8%</td><td data-label="Precio medio">88.700&euro;</td></tr>
+          <tr><td>Barrio La Estación</td><td data-label="Anuncios">9</td><td data-label="Retirados">8</td><td data-label="Rotación">88,9%</td><td data-label="Precio medio">67.500&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> la propia calle de la operación ha retirado el 100% de sus anuncios (7 de 7): todo lo que sale a la venta en esta calle, se coloca. Es la mejor señal de liquidez posible para esta ubicación.
+      </div>
+    </div>
+
+    <!-- 1.6 TOP retirados -->
+    <div class="card">
+      <div class="card-title">1.6 Productos que más se retiran</div>
+      <div class="card-subtitle">Los productos que el mercado absorbe más rápido</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Producto</th><th>Retirados</th><th>Rotación</th></tr></thead>
+          <tbody>
+          <tr class="highlight"><td><strong>Piso 3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">156</td><td data-label="Rotación">77,2%</td></tr>
+          <tr><td>Piso 2 dormitorios · 1 baño</td><td data-label="Retirados">98</td><td data-label="Rotación">78,4%</td></tr>
+          <tr class="highlight-asset"><td><strong>Piso 1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Retirados">18</td><td data-label="Rotación">85,7%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el piso pequeño de 1 dormitorio se retira limpio cuando aparece: poca oferta, pero todo lo que sale se coloca, con la rotación más alta de la tabla.
+      </div>
+    </div>
+
+    <!-- 1.7 Alquiler tradicional -->
+    <div class="card">
+      <div class="card-title">1.7 Mercado de alquiler — tradicional</div>
+      <div class="card-subtitle">89 anuncios de alquiler tradicional analizados</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Por dormitorios</th><th>Anuncios</th><th>Rotación</th><th>Renta media</th></tr></thead>
+          <tbody>
+          <tr class="highlight-asset"><td><strong>1 dormitorio</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Anuncios">12</td><td data-label="Rotación">91,7%</td><td data-label="Renta media">445&euro;/mes</td></tr>
+          <tr><td>2 dormitorios</td><td data-label="Anuncios">34</td><td data-label="Rotación">88,2%</td><td data-label="Renta media">560&euro;/mes</td></tr>
+          <tr><td>3 dormitorios</td><td data-label="Anuncios">28</td><td data-label="Rotación">82,1%</td><td data-label="Renta media">640&euro;/mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el alquiler de 1 dormitorio se mueve sobre <strong>445 &euro;/mes</strong> y rota al 91,7%: si en lugar de vender se decide alquilar, el producto también tiene salida rápida.
+      </div>
+    </div>
+
+    <!-- 1.8 Alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.8 Mercado de alquiler — por habitaciones sueltas</div>
+      <div class="card-subtitle">Modalidad de habitación individual dentro de piso compartido</div>
+      <div class="no-sample">
+        <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        <span><strong>Muestra insuficiente para alquiler por habitaciones en {{MUNICIPIO}}:</strong> los datos disponibles no permiten un cálculo estadísticamente representativo (menos de 5 anuncios activos en los últimos 12 meses). No se amplía a zona colindante por ser una modalidad de nicho muy local; se muestra el hueco de dato en lugar de forzar una cifra.</span>
+      </div>
+    </div>
+
+    <!-- Term-explainer de cierre (antes del veredicto) -->
+    <div class="term-explainer">
+      <strong>Antes de leer el veredicto:</strong> todas las tablas de este motor comparan el <strong>PULSO</strong> (el producto que más se mueve, piso de 3 dormitorios) con las <strong>viviendas resultantes</strong> de esta operación (piso pequeño). Rotación alta = el mercado absorbe rápido ese producto; ese es el dato que sostiene la conclusión siguiente.
+    </div>
+
+    <!-- Conclusión PULSO -->
+    <div class="verdict-navy">
+      <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
+      <div>
+        <strong>Conclusión del PULSO.</strong> El latido principal del mercado es el piso de 3 dormitorios en el tramo de 110.000 a 160.000 &euro;. Pero la liquidez máxima está en el producto pequeño y barato: el piso de 1 dormitorio rota al 85,7%, el tramo por debajo de 80.000 &euro; al 83,6%, y la propia calle de la operación al 100%. Trocear el local en unidades pequeñas las coloca exactamente en el segmento de mayor rotación de la zona.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- 7. MOTOR 1.2 · IMPULSO -->
+  <!-- ============================================ -->
+  <div class="section motor-impulso">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--impulso-bg); color: var(--impulso);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Motor 1.2 · IMPULSO — Valoración del activo</div>
+        <div class="section-subtitle">Cuánto valen las viviendas resultantes · {{DIRECCION}}</div>
+      </div>
+      <span class="zone-badge impulso">El activo</span>
+    </div>
+
+    <!-- 2.1 Datos de consulta -->
+    <div class="card">
+      <div class="card-title">2.1 Datos de la consulta</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+          <tbody>
+          <tr><td>Dirección</td><td data-label="Valor"><strong>{{DIRECCION}}, {{MUNICIPIO}} ({{CODIGO_POSTAL}})</strong></td></tr>
+          <tr><td>Inmueble de origen</td><td data-label="Valor">Local en planta baja de {{M2_ORIGEN}} m²</td></tr>
+          <tr><td>Operación</td><td data-label="Valor">Cambio de Uso &rarr; {{N_VIVIENDAS}} viviendas</td></tr>
+          <tr><td>Resultado</td><td data-label="Valor">2 estudios tipo loft (~32 m²) + 1 piso de 1 dormitorio (~38 m²)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- 2.2 Testigos comparables -->
+    <div class="card">
+      <div class="card-title">2.2 Testigos comparables de la zona</div>
+      <div class="card-subtitle">Piso de hasta 45 m², de 0 a 1 dormitorio, ya retirados del mercado</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Dirección</th><th>Tipo</th><th>Superficie</th><th>Dormitorios</th><th>Precio de retirada</th><th>Días</th><th>&euro;/m²</th></tr></thead>
+          <tbody>
+          <tr><td>C/ San Isidro 4</td><td data-label="Tipo">Piso</td><td data-label="Superficie">38 m²</td><td data-label="Dormitorios">1</td><td data-label="Precio de retirada">58.000&euro;</td><td data-label="Días">9</td><td data-label="&euro;/m²">1.526&euro;</td></tr>
+          <tr><td>C/ Colón 22</td><td data-label="Tipo">Piso</td><td data-label="Superficie">41 m²</td><td data-label="Dormitorios">1</td><td data-label="Precio de retirada">62.500&euro;</td><td data-label="Días">31</td><td data-label="&euro;/m²">1.524&euro;</td></tr>
+          <tr><td>C/ Reina 9</td><td data-label="Tipo">Piso</td><td data-label="Superficie">44 m²</td><td data-label="Dormitorios">1</td><td data-label="Precio de retirada">78.900&euro;</td><td data-label="Días">52</td><td data-label="&euro;/m²">1.793&euro;</td></tr>
+          <tr><td>C/ Doctor Fleming 3</td><td data-label="Tipo">Piso</td><td data-label="Superficie">36 m²</td><td data-label="Dormitorios">0 (estudio)</td><td data-label="Precio de retirada">48.000&euro;</td><td data-label="Días">18</td><td data-label="&euro;/m²">1.333&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> 4 testigos reales del municipio, viviendas pequeñas comparables, todas retiradas, se movieron entre 1.333 y 1.793 &euro;/m². El valor central de mercado se sitúa en 1.550 &euro;/m².
+      </div>
+      <div class="insight-method">
+        <div class="im-title">Cómo leemos un mercado pequeño</div>
+        <div class="im-text">Con pocos testigos, el valor no se sostiene en uno solo, sino en el <b>cruce de tres motores</b>: el <b>mercado (IMPULSO)</b> fija el precio por los testigos reales y su rotación; el <b>notariado</b> aporta el contexto oficial y el perfil del comprador y confirma el dato; el <b>MTVV</b> lo contrasta con interesados reales. Cuando los tres convergen, esa coincidencia entre motores independientes es lo que da la lectura correcta del valor.</div>
+      </div>
+    </div>
+
+    <!-- 2.3 Price widget -->
+    <div class="card">
+      <div class="card-title">2.3 Precio de mercado por unidad</div>
+      <div class="card-subtitle">Cuánto se puede pedir por cada vivienda resultante</div>
+      <div class="term-explainer">
+        <strong>Qué significan los tres escenarios</strong> (calculados a partir del &euro;/m² de los testigos reales del municipio):<br>
+        &bull; <strong>Conservador:</strong> el precio más prudente, el que pagarían los compradores más exigentes.<br>
+        &bull; <strong>Medio:</strong> el valor central, lo más probable según el grueso de los comparables.<br>
+        &bull; <strong>Optimista:</strong> el precio que alcanzan los testigos mejor pagados de la zona.
+      </div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">Conservador</div>
+          <div class="price-value">142.000&euro;</div>
+          <div class="price-note">Las 3 unidades</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Medio</div>
+          <div class="price-value">159.000&euro;</div>
+          <div class="price-note">Las 3 unidades</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">Optimista</div>
+          <div class="price-value">188.000&euro;</div>
+          <div class="price-note">Las 3 unidades</div>
+        </div>
+      </div>
+      <div class="insight insight-gray" style="margin-bottom:12px;">
+        Los comparables son anuncios <strong>retirados del mercado</strong> (precio de salida), no precio de firma ante notario. El escenario <strong>medio (159.000&euro;)</strong> es la cifra realista y prudente de referencia.
+      </div>
+    </div>
+
+    <!-- 2.4 Variaciones -->
+    <div class="card">
+      <div class="card-title">2.4 Variaciones según la configuración</div>
+      <div class="card-subtitle">Cómo cambia el precio y la rotación según el tipo de piso · marcadas las <strong>viviendas resultantes</strong> de esta operación</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Configuración</th><th>Anuncios</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <tbody>
+          <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Anuncios">28</td><td data-label="Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio (0 dormitorios)</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Anuncios">6</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
+          <tr><td>2 dormitorios · 1 baño</td><td data-label="Anuncios">180</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> esta operación produce 3 viviendas resultantes en las dos configuraciones de mayor rotación de la tabla (83-86%). No son una opción para cambiar: el local solo da para estas unidades pequeñas.
+      </div>
+    </div>
+
+    <!-- 2.5 Tipologías múltiples (multi-unidad) -->
+    <div class="card">
+      <div class="card-title">2.5 Tipologías múltiples de esta operación</div>
+      <div class="card-subtitle">Desglose por tipología y unidad resultante</div>
+      <div class="tipo-card">
+        <div class="tipo-card-header">
+          <div>
+            <div class="tipo-card-title">Estudio loft · 32 m²</div>
+            <div class="tipo-card-sub">2 unidades resultantes · rango 44.300 – 58.600&euro; por unidad</div>
+          </div>
+        </div>
+        <div class="units-grid">
+          <div class="unit-card">
+            <div class="u-num">Unidad 1</div>
+            <div class="u-tipo">Estudio loft 32 m²</div>
+            <div class="u-price">~49.600&euro;</div>
+          </div>
+          <div class="unit-card">
+            <div class="u-num">Unidad 2</div>
+            <div class="u-tipo">Estudio loft 32 m²</div>
+            <div class="u-price">~49.600&euro;</div>
+          </div>
+        </div>
+      </div>
+      <div class="tipo-card">
+        <div class="tipo-card-header">
+          <div>
+            <div class="tipo-card-title">Piso 1 dormitorio · 38 m²</div>
+            <div class="tipo-card-sub">1 unidad resultante · rango 53.400 – 70.800&euro;</div>
+          </div>
+        </div>
+        <div class="units-grid">
+          <div class="unit-card">
+            <div class="u-num">Unidad 3</div>
+            <div class="u-tipo">Piso 1 dormitorio 38 m²</div>
+            <div class="u-price">~59.800&euro;</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2.6 Demanda -->
+    <div class="card">
+      <div class="card-title">2.6 Demanda: cuánto tarda en retirarse del mercado</div>
+      <div class="card-subtitle">Días desde publicación hasta retirada. Menos días = más demanda.</div>
+      <div class="kpi-row">
+        <div class="kpi" style="background:#fff9f5; border-color:var(--pulso-border);"><div class="kpi-value" style="color:var(--pulso);">118 días</div><div class="kpi-label">Media de la zona</div></div>
+        <div class="kpi" style="background:#fff9f5; border-color:var(--pulso-border);"><div class="kpi-value" style="color:var(--pulso);">72 días</div><div class="kpi-label">Valor central de la zona</div></div>
+        <div class="kpi" style="background:var(--impulso-bg); border-color:var(--impulso-border);"><div class="kpi-value" style="color:var(--impulso);">~26 días</div><div class="kpi-label">Piso pequeño (media)</div></div>
+      </div>
+      <div class="demand-bell" style="background:linear-gradient(135deg,#fff9f5 0%,var(--pulso-bg) 100%); border-color:var(--pulso-border);">
+        <div class="db-title" style="color:var(--pulso);">Velocidad de retirada (más corto = más demanda)</div>
+        <div class="db-row">
+          <span style="font-weight:700; color:var(--navy);">Media zona</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:100%; background:#9ca3af;"></div></div>
+          <span style="font-weight:800; color:var(--navy); text-align:right;">118 d</span>
+        </div>
+        <div class="db-row">
+          <span style="font-weight:700; color:var(--navy);">Piso pequeño</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:22%; background:var(--impulso);"></div></div>
+          <span style="font-weight:800; color:var(--impulso); text-align:right;">~26 d</span>
+        </div>
+      </div>
+      <div class="insight insight-green">
+        <strong>Lectura:</strong> la demanda del producto pequeño es <strong>ALTA</strong>: se retira en unas 4 semanas, frente a los casi 4 meses de media de la zona.
+      </div>
+    </div>
+
+    <!-- 2.7 Fiabilidad por tipología -->
+    <div class="card">
+      <div class="card-title">2.7 Fiabilidad de la lectura por tipología</div>
+      <div class="card-subtitle">Cuánto podemos confiar en cada precio según el número de testigos reales usados</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tipología</th><th>Testigos (n)</th><th>Fiabilidad</th></tr></thead>
+          <tbody>
+          <tr><td>Estudio loft 32 m²</td><td data-label="Testigos (n)">4</td><td data-label="Fiabilidad"><span class="fiab-media">Fiabilidad media</span></td></tr>
+          <tr><td>Piso 1 dormitorio 38 m²</td><td data-label="Testigos (n)">6</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-gray" style="margin-top:0;">
+        <strong>Fiabilidad media</strong> (n≥3, &lt;6 testigos): rango de trabajo razonable, no cifra cerrada. <strong>Fiabilidad alta</strong> (n≥6): cálculo estadísticamente representativo para la zona.
+      </div>
+    </div>
+
+    <!-- 2.8 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
+    <div class="contactos-destacados">
+      <div class="cd-header">
+        <span class="cd-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </span>
+        <span class="cd-title">2.8 Contactos reales para validar el precio</span>
+      </div>
+      <div class="cd-sub">Inmobiliarias que han movido este producto en la zona — contacto directo verificado, es el activo que respalda esta valoración.</div>
+      <div class="contactos-grid">
+        <div class="contacto-card">
+          <div class="cc-name">Inmobiliaria del Centro</div>
+          <div class="cc-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {{TELEFONO_1}}
+          </div>
+          <div class="cc-op">Vendió un estudio similar en la misma calle hace 3 meses a 55.000&euro;.</div>
+          <span class="contact-tag">Operación confirmada</span>
+        </div>
+        <div class="contacto-card">
+          <div class="cc-name">Aitor Fincas</div>
+          <div class="cc-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {{TELEFONO_2}}
+          </div>
+          <div class="cc-op">Tiene lista de espera de inversores para producto de menos de 50 m².</div>
+          <span class="contact-tag">Demanda activa</span>
+        </div>
+        <div class="contacto-card">
+          <div class="cc-name">Urbana Gestión</div>
+          <div class="cc-phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {{TELEFONO_3}}
+          </div>
+          <div class="cc-op">Confirma horquilla de 55.000-65.000&euro; para piso reformado de 1 dormitorio.</div>
+          <span class="contact-tag">Precio confirmado</span>
+        </div>
+      </div>
+      <div class="script-box">
+        <div class="sb-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Guión de llamada recomendado
+        </div>
+        <div class="sb-quote">"Hola, estaba siguiendo un piso en {{MUNICIPIO}} que teníais publicado y he visto que habéis retirado el anuncio. ¿Ya lo habéis vendido?"</div>
+        <strong>Si confirman la venta, continúa con estas 4 preguntas:</strong>
+        <ol>
+          <li>"¿Podría saber a qué precio se cerró finalmente?"</li>
+          <li>"¿Os va a entrar alguno similar próximamente?"</li>
+          <li>"¿Hay mucha demanda de este tipo de piso en la zona?"</li>
+          <li>"¿Creéis que el mercado puede absorber varias unidades similares a la vez?"</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Veredicto IMPULSO -->
+    <div class="verdict-navy">
+      <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
+      <div>
+        <strong>Veredicto IMPULSO.</strong> El valor de salida de las 3 viviendas se estima en <strong style="color:#F97316;">159.000&euro;</strong> (rango de 142.000 a 188.000&euro;), sobre testigos reales del municipio con valor central de mercado de 1.550&euro;/m². Producto en el segmento de máxima liquidez de la zona: se retira en aproximadamente un mes.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- 8. MOTOR 2 · NOTARIADO -->
+  <!-- ============================================ -->
+  <div class="section motor-notarial">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--notarial-bg); color: var(--notarial);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Motor 2 · NOTARIADO — Contexto oficial</div>
+        <div class="section-subtitle">Compraventas escrituradas reales · Portal Estadístico del Notariado · CP {{CODIGO_POSTAL}}</div>
+      </div>
+      <span class="zone-badge notarial">El contexto</span>
+    </div>
+
+    <!-- 3.1 Datos clave -->
+    <div class="card">
+      <div class="card-title">3.1 Datos clave</div>
+      <div class="notarial-grid">
+        <div class="nat-box"><div class="nb-val">742&euro;</div><div class="nb-label">&euro;/m² escriturado</div></div>
+        <div class="nat-box"><div class="nb-val">94</div><div class="nb-label">Compraventas al año</div></div>
+        <div class="nat-box"><div class="nb-val">83.400&euro;</div><div class="nb-label">Importe medio</div></div>
+        <div class="nat-box"><div class="nb-val">108 m²</div><div class="nb-label">Superficie media</div></div>
+      </div>
+    </div>
+
+    <!-- 3.2 Cómo leer -->
+    <div class="card">
+      <div class="card-title">3.2 Cómo leer este dato</div>
+      <div class="insight insight-gray" style="margin-top:0; margin-bottom:12px;">
+        <strong>Qué cubre el CP {{CODIGO_POSTAL}}.</strong> Es el código postal de {{MUNICIPIO}}: abarca el casco urbano y sus pedanías. La lectura notarial de este apartado se ciñe a ese ámbito —el propio municipio de la operación—, no a toda la comarca.
+      </div>
+      <div class="insight insight-purple" style="margin-top:0;">
+        El precio del notariado (742&euro;/m²) <strong>no sirve aquí como precio de referencia directo</strong>: mide vivienda grande de segunda mano (108 m² de media), no producto pequeño reformado (que cotiza cerca de 1.550&euro;/m²). Por eso el dato notarial se muestra como <strong>suelo y contexto oficial de la zona</strong>: confirma que el mercado existe, es real y tiene volumen, pero no fija el precio de las viviendas de esta operación.
+      </div>
+    </div>
+
+    <!-- 3.3 Evolución -->
+    <div class="card">
+      <div class="card-title">3.3 Evolución del mercado en 12 meses</div>
+      <div class="card-subtitle">Compraventas escrituradas mes a mes</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Mes</th><th>&euro;/m²</th><th>Importe medio</th><th>Compraventas</th></tr></thead>
+          <tbody>
+          <tr><td>Julio 2025</td><td data-label="&euro;/m²">720&euro;</td><td data-label="Importe medio">78.900&euro;</td><td data-label="Compraventas">8</td></tr>
+          <tr><td>Agosto 2025</td><td data-label="&euro;/m²">sin dato</td><td data-label="Importe medio">sin dato</td><td data-label="Compraventas">2</td></tr>
+          <tr><td>Septiembre 2025</td><td data-label="&euro;/m²">781&euro;</td><td data-label="Importe medio">86.200&euro;</td><td data-label="Compraventas">9</td></tr>
+          <tr><td>Octubre 2025</td><td data-label="&euro;/m²">704&euro;</td><td data-label="Importe medio">75.100&euro;</td><td data-label="Compraventas">7</td></tr>
+          <tr><td>Noviembre 2025</td><td data-label="&euro;/m²">755&euro;</td><td data-label="Importe medio">81.400&euro;</td><td data-label="Compraventas">10</td></tr>
+          <tr><td>Diciembre 2025</td><td data-label="&euro;/m²">698&euro;</td><td data-label="Importe medio">72.600&euro;</td><td data-label="Compraventas">6</td></tr>
+          <tr><td>Enero 2026</td><td data-label="&euro;/m²">762&euro;</td><td data-label="Importe medio">88.900&euro;</td><td data-label="Compraventas">8</td></tr>
+          <tr><td>Febrero 2026</td><td data-label="&euro;/m²">sin dato</td><td data-label="Importe medio">sin dato</td><td data-label="Compraventas">3</td></tr>
+          <tr><td>Marzo 2026</td><td data-label="&euro;/m²">733&euro;</td><td data-label="Importe medio">80.200&euro;</td><td data-label="Compraventas">9</td></tr>
+          <tr><td>Abril 2026</td><td data-label="&euro;/m²">748&euro;</td><td data-label="Importe medio">84.500&euro;</td><td data-label="Compraventas">11</td></tr>
+          <tr><td>Mayo 2026</td><td data-label="&euro;/m²">759&euro;</td><td data-label="Importe medio">83.100&euro;</td><td data-label="Compraventas">9</td></tr>
+          <tr><td>Junio 2026</td><td data-label="&euro;/m²">742&euro;</td><td data-label="Importe medio">83.400&euro;</td><td data-label="Compraventas">12</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-purple">
+        <strong>Lectura:</strong> el municipio cierra entre 6 y 12 compraventas al mes de forma sostenida: mercado líquido con actividad constante. El precio por m² oscila mes a mes porque cada mes se escrituran pocas operaciones de tipos distintos, así que esas subidas y bajadas no marcan una tendencia, solo reflejan qué se vendió cada mes.
+      </div>
+    </div>
+
+    <!-- 3.4 Perfil edad -->
+    <div class="card">
+      <div class="card-title">3.4 Perfil del comprador por edad</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Rango de edad</th><th>Porcentaje</th></tr></thead>
+          <tbody>
+          <tr><td>Menos de 31 años</td><td data-label="Porcentaje">18,90%</td></tr>
+          <tr class="highlight-notarial"><td><strong>De 31 a 40 años</strong> <span class="mark mark-notarial">Dominante</span></td><td data-label="Porcentaje"><strong>33,20%</strong></td></tr>
+          <tr><td>De 41 a 50 años</td><td data-label="Porcentaje">21,60%</td></tr>
+          <tr><td>De 51 a 60 años</td><td data-label="Porcentaje">16,10%</td></tr>
+          <tr><td>Más de 60 años</td><td data-label="Porcentaje">10,20%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-purple">
+        <strong>Lectura:</strong> el 52% de los compradores tiene menos de 40 años. Comprador joven, que encaja con un producto pequeño y de precio de entrada.
+      </div>
+    </div>
+
+    <!-- 3.5 Nacionalidades -->
+    <div class="card">
+      <div class="card-title">3.5 Nacionalidad del comprador</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Nacionalidad</th><th>% del total</th></tr></thead>
+          <tbody>
+          <tr class="highlight-notarial"><td><svg class="flag" viewBox="0 0 6 4"><rect width="6" height="4" fill="#AD1519"/><rect width="6" height="2" y="1" fill="#FABD00"/></svg> <strong>España</strong> <span class="mark mark-notarial">Dominante</span></td><td data-label="Porcentaje"><strong>88,40%</strong></td></tr>
+          <tr><td><svg class="flag" viewBox="0 0 60 40"><rect width="60" height="40" fill="#c1272d"/><polygon fill="none" stroke="#006233" stroke-width="1.6" points="30,13.5 32.6,21.6 25.7,16.6 34.3,16.6 27.4,21.6"/></svg> Marruecos</td><td data-label="Porcentaje">7,10%</td></tr>
+          <tr><td><svg class="flag" viewBox="0 0 60 40"><clipPath id="gb"><rect width="60" height="40"/></clipPath><rect width="60" height="40" fill="#012169"/><g clip-path="url(#gb)"><path d="M0,0 60,40M60,0 0,40" stroke="#fff" stroke-width="8"/><path d="M0,0 60,40M60,0 0,40" stroke="#C8102E" stroke-width="4"/><path d="M30,0 V40M0,20 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V40M0,20 H60" stroke="#C8102E" stroke-width="7"/></g></svg> Reino Unido</td><td data-label="Porcentaje">1,80%</td></tr>
+          <tr><td>Otros países</td><td data-label="Porcentaje">2,70%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-purple">
+        <strong>Lectura:</strong> el mercado es abrumadoramente nacional: más del 88% de los compradores son españoles. El comprador objetivo de esta operación es, por tanto, local.
+      </div>
+    </div>
+
+    <!-- 3.6 Cruce Notarial × Motor -->
+    <div class="card" style="background: linear-gradient(135deg, var(--notarial-bg) 0%, var(--pulso-bg) 100%); border: 2px solid var(--notarial-border);">
+      <div class="card-title" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <span style="background:var(--notarial); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        </span>
+        <span>&times;</span>
+        <span style="background:var(--pulso); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </span>
+        <span>3.6 Cruce Notarial &times; Motor</span>
+      </div>
+      <div class="card-subtitle">El valor que crea el Cambio de Uso, explicado con datos</div>
+      <div class="insight-method">
+        <div class="im-title">Conclusión del cruce</div>
+        <div class="im-text">El precio medio de escritura del CP {{CODIGO_POSTAL}} (<b>742&euro;/m²</b>) <b>diverge</b> de la valoración IMPULSO del producto pequeño (<b>~1.550&euro;/m²</b>) en un <b>+109%</b>. El notarial no converge directo porque mide todo tamaño y tipo de vivienda del CP (108 m² de media): incluye protocolo completo, no filtra por tipología pequeña reformada. La diferencia entre ambos <b>es el valor que crea el Cambio de Uso</b>: transformar un local en producto pequeño reformado de alta rotación.</div>
+      </div>
+    </div>
+
+    <!-- Conclusión NOTARIADO -->
+    <div class="verdict-navy">
+      <div class="verdict-icon" style="background: rgba(124,58,237,0.18);"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
+      <div>
+        <strong>Conclusión del NOTARIADO.</strong> El contexto oficial confirma un mercado activo (94 compraventas al año) con precio suelo de 742&euro;/m² sobre vivienda media de 108 m². No fija el precio del producto de esta operación, pero valida que el mercado existe, es líquido, y que el comprador dominante —joven, nacional— encaja con el perfil de las viviendas resultantes.
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- 9. MOTOR 3 · MTVV — Estado (a) FRESCO, Pasos 0-4 completos -->
+  <!-- ============================================ -->
+  <div class="section motor-mtvv" style="background: linear-gradient(180deg, var(--mtvv-bg) 0%, transparent 8%); padding-top: 4px; border-radius: 20px;">
+    <div class="section-header" style="align-items:flex-start;">
+      <div class="section-icon" style="background: var(--mtvv-bg); color: var(--mtvv); border: 2px solid var(--mtvv-border);">
+        <span class="pulso-ecg">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+        </span>
+      </div>
+      <div style="flex:1;">
+        <div class="section-title" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          Motor 3 · MTVV — Validación de campo
+          <img class="mtvv-logo-in" src="./assets/logo-in.png" alt="Comunidad IN">
+          <span class="pulso-badge">
+            <span class="pulso-ecg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
+            Validado en campo
+          </span>
+        </div>
+        <div class="section-subtitle">Método Total de Valoración de Vivienda · Metodología Programa IN</div>
+      </div>
+      <span class="zone-badge mtvv">La validación</span>
+      <span class="exclusive-tag">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 1-5 5 1.2 7-6.2-3.3L5.8 21.5 7 14.5l-5-5 7-1z"/></svg>
+        Exclusivo Comunidad IN
+      </span>
+    </div>
+
+    <!-- Explainer MTVV (obligatorio siempre) -->
+    <div class="mtvv-explainer">
+      <strong>¿Qué es el Método Total de Valoración de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación. Es la validación humana que ningún algoritmo da: hablar con las inmobiliarias de la zona, buscar testigos reales y, finalmente, probar el precio publicando un anuncio de verdad para medir la respuesta del mercado. Un MTVV sin Paso 4 (anuncio real + medición de demanda) no se considera un MTVV completo.
+    </div>
+
+    <!-- Provenance (obligatorio siempre) -->
+    <div class="provenance">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      <span><strong>Sobre el origen de este MTVV.</strong> Realizado en junio de 2026, dentro de los últimos 12 meses. Corresponde al estudio de campo específico de esta operación — es el MTVV vigente, no un histórico.</span>
+    </div>
+
+    <!-- Paso 0 -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">0</div>
+        <div class="step-title">Paso 0 — Contexto del micromercado</div>
+      </div>
+      <div class="kpi-row">
+        <div class="kpi"><div class="kpi-value">18.240</div><div class="kpi-label">Habitantes</div></div>
+        <div class="kpi"><div class="kpi-value">1.180&euro;</div><div class="kpi-label">&euro;/m² del barrio</div></div>
+        <div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">Pisos de 1 dorm. en venta</div></div>
+        <div class="kpi"><div class="kpi-value">94</div><div class="kpi-label">Compraventas registradas (2025)</div></div>
+      </div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Parámetro</th><th>Dato</th></tr></thead>
+          <tbody>
+          <tr><td>Renta neta por hogar</td><td data-label="Dato">31.480&euro;</td></tr>
+          <tr><td>Precio del barrio</td><td data-label="Dato">1.180&euro;/m² (zona intermedia del municipio)</td></tr>
+          <tr><td>Oferta de 1 dormitorio en venta</td><td data-label="Dato">0 viviendas (nicho sin competencia)</td></tr>
+          <tr><td>Oferta de alquiler comparable</td><td data-label="Dato">Apenas 2 pisos en todo el municipio</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-green">
+        <strong>Conclusión del Paso 0:</strong> el producto de 1 dormitorio es inexistente en la oferta actual. Eso es un hueco de mercado: demanda sin competencia directa.
+      </div>
+    </div>
+
+    <!-- Paso 1 -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">1</div>
+        <div class="step-title">Paso 1 — Inmobiliarias: lo que dicen (3 consultadas)</div>
+      </div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Inmobiliaria</th><th>Precio</th><th>Qué dicen</th></tr></thead>
+          <tbody>
+          <tr><td><strong>Inmobiliaria del Centro</strong></td><td data-label="Precio"><strong>55.000&euro;</strong></td><td data-label="Qué dicen">"Venta de 50.000 a 60.000&euro;. Target: inversores y parejas jóvenes."</td></tr>
+          <tr><td><strong>Aitor Fincas</strong></td><td data-label="Precio"><strong>52.000&euro;</strong></td><td data-label="Qué dicen">"Pisos como nuevo de esta tipología, 50.000-55.000&euro; como mucho."</td></tr>
+          <tr><td><strong>Urbana Gestión</strong></td><td data-label="Precio"><strong>58.000&euro;</strong></td><td data-label="Qué dicen">"Si está reformado y bien ubicado, hasta 60.000&euro;."</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-green">
+        <strong>Conclusión del Paso 1:</strong> consenso en una horquilla de 50.000 a 60.000&euro; para un piso como nuevo. La media de las 3 inmobiliarias es de 55.000&euro;.
+      </div>
+      <div class="step-price">
+        <div class="sp-label">Precio del Paso 1 (inmobiliarias)</div>
+        <div class="sp-value">55.000&euro;</div>
+      </div>
+    </div>
+
+    <!-- Paso 2 -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">2</div>
+        <div class="step-title">Paso 2 — Testigos de mercado (anuncios)</div>
+      </div>
+      <div class="insight insight-gray" style="margin-top:0;">
+        <strong>Testigos limitados.</strong> Solo 2 anuncios de esta tipología exacta (piso de 1 dormitorio) en la zona, ambos ya retirados: 58.000&euro; y 51.000&euro;. Muestra pequeña pero coherente con el Paso 1.
+      </div>
+      <div class="step-price">
+        <div class="sp-label">Precio del Paso 2 (testigos)</div>
+        <div class="sp-value">54.500&euro;</div>
+        <div class="sp-note">Media de 2 testigos: 58.000&euro; y 51.000&euro;</div>
+      </div>
+    </div>
+
+    <!-- Paso 3 -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">3</div>
+        <div class="step-title">Paso 3 — Hipótesis de precio</div>
+      </div>
+      <div class="build-box">
+        <div class="bb-title">Cómo se construye la hipótesis</div>
+        <div class="bb-body">
+          <div>&bull; <strong>Paso 1 (inmobiliarias):</strong> media de 55.000&euro;, consenso en 50.000-60.000&euro;.</div>
+          <div>&bull; <strong>Paso 2 (anuncios):</strong> media de 54.500&euro; sobre 2 testigos.</div>
+          <div class="bb-total">&rarr; La hipótesis de precio combina ambos pasos: <strong style="color:var(--mtvv);">54.750&euro;</strong>.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paso 4 (obligatorio) -->
+    <div class="card">
+      <div class="step-header">
+        <div class="step-number">4</div>
+        <div class="step-title">Paso 4 — Verificación con un anuncio real</div>
+      </div>
+      <p style="font-size: 13px; color: var(--gray-700); margin-bottom: 16px;">Se publicó un anuncio real en Idealista y Fotocasa el 3 de junio de 2026 para medir la respuesta del mercado. El precio de salida se fue ajustando:</p>
+
+      <div class="price-evolution">
+        <div class="price-step"><div class="ps-day">Salida</div><div class="ps-price">64.900&euro;</div></div>
+        <div class="price-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="price-step"><div class="ps-day">Ajuste</div><div class="ps-price">61.500&euro;</div></div>
+        <div class="price-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
+        <div class="price-step final"><div class="ps-day">Pico de interés</div><div class="ps-price">54.000&euro;</div></div>
+      </div>
+
+      <div class="kpi-row" style="margin-top:20px;">
+        <div class="kpi"><div class="kpi-value">11</div><div class="kpi-label">Contactos totales</div></div>
+        <div class="kpi"><div class="kpi-value">6</div><div class="kpi-label">Llamadas de interesados</div></div>
+        <div class="kpi"><div class="kpi-value">5</div><div class="kpi-label">Emails de portales</div></div>
+        <div class="kpi"><div class="kpi-value">1</div><div class="kpi-label">Oferta firme (52.000&euro;)</div></div>
+      </div>
+
+      <!-- Campana de demanda -->
+      <div class="demand-bell">
+        <div class="db-title">Interés según el precio de salida</div>
+        <div class="db-row">
+          <span style="font-weight:700; color:var(--navy);">64.900&euro;</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:20%;"></div></div>
+          <span style="font-weight:800; color:var(--navy); text-align:right;">Bajo</span>
+        </div>
+        <div class="db-row">
+          <span style="font-weight:700; color:var(--navy);">61.500&euro;</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:48%;"></div></div>
+          <span style="font-weight:800; color:var(--navy); text-align:right;">Medio</span>
+        </div>
+        <div class="db-row">
+          <span style="font-weight:700; color:var(--navy);">54.000&euro;</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:100%;"></div></div>
+          <span style="font-weight:800; color:var(--mtvv); text-align:right;">Pico</span>
+        </div>
+        <div class="db-foot">
+          <strong style="color:var(--mtvv);">Lectura:</strong> a 64.900&euro; el interés era escaso. A 61.500&euro; aparecieron particulares. A 54.000&euro; se produjo el pico de interés sostenido, con una oferta firme a 52.000&euro;. La demanda de quien quiere vivir ahí se concentra en la franja baja.
+        </div>
+      </div>
+
+      <div class="step-price">
+        <div class="sp-label">Veredicto del Paso 4 (verificado con anuncio real)</div>
+        <div class="sp-value">156.000&euro;</div>
+        <div class="sp-note">Piso 1 dormitorio 52.000&euro; + 2 estudios a 52.000&euro; cada uno</div>
+      </div>
+      <div class="insight insight-green">
+        <strong>Veredicto del Paso 4:</strong> el piso de 1 dormitorio se vende sin problema en torno a 52.000&euro;, y cada estudio alcanza una cifra similar de suelo. En total, las 3 unidades suman <strong>156.000&euro;</strong>.
+      </div>
+    </div>
+
+    <!-- Veredicto MTVV -->
+    <div class="verdict-navy">
+      <div class="verdict-icon" style="background: rgba(218,24,57,0.18);"><svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div>
+        <strong>Veredicto MTVV.</strong> El estudio de campo verificado con anuncio real confirma un valor de <strong style="color:#DA1839;">156.000&euro;</strong> para las 3 unidades, con oferta firme incluida a 52.000&euro;. Validación humana del Programa IN que confirma, de forma independiente, la valoración del motor IMPULSO.
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       ESTADO SIN MTVV — bloque alternativo documentado (NO se usa en esta plantilla,
+       la plantilla muestra el estado (a) MTVV fresco arriba para exponer el
+       potencial completo del Motor 3). Este comentario deja fijado el texto
+       VERBATIM del Estado A para cuando la zona real no tenga MTVV.
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--mtvv-bg); color: var(--mtvv); border: 2px solid var(--mtvv-border);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Motor 3 · MTVV — Validación de campo <img class="mtvv-logo-in" src="./assets/logo-in.png" alt="Comunidad IN"></div>
+        <div class="section-subtitle">Método Total de Valoración de Vivienda · Metodología Programa IN</div>
+      </div>
+      <span class="exclusive-tag">Exclusivo Comunidad IN</span>
+    </div>
+    <div class="mtvv-explainer">
+      <strong>¿Qué es el Método Total de Valoración de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación.
+    </div>
+    <div class="disclaimer">
+      Validación de campo (MTVV) — no disponible para esta zona. Nuestra base de datos no contiene ningún Método Total de Valoración de Vivienda para este ámbito. Conviene aclarar que un MTVV en base de datos sería, en todo caso, un estudio histórico de una operación anterior. La validación con valor real de decisión es el MTVV que se realiza específicamente para esta operación (trabajo de campo del inversor, con anuncio real y medición de respuesta del mercado), que no forma parte de este informe.
+    </div>
+  </div>
+
+  ESTADO (b) MTVV HISTÓRICO — variante intermedia: misma estructura de Pasos 0-4 que
+  el estado (a), pero con un .disclaimer visible ANTES del stepper:
+
+  <div class="disclaimer">
+    <strong>Nota sobre la fecha.</strong> Este MTVV se realizó hace más de 12 meses / corresponde a
+    una operación anterior en la zona. Se muestra como referencia histórica, no como validación de
+    esta operación. Para una decisión de compra actualizada, IM·PULSO recomienda un nuevo Paso 4.
+  </div>
+  -->
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- 10. CONVERGENCIA DE LAS FUENTES -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--pulso-bg); color: var(--pulso);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <div>
+        <div class="section-title">10 · Convergencia de las fuentes disponibles</div>
+        <div class="section-subtitle">Tres motores independientes, comparados</div>
+      </div>
+    </div>
+
+    <div class="validation-grid">
+      <div class="validation-card scraping">
+        <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <div class="v-source">Motor 1 · IMPULSO</div>
+        <div class="v-price">159.000&euro;</div>
+        <div class="v-detail">Testigos reales del municipio<br>Valor central de mercado 1.550&euro;/m²</div>
+      </div>
+      <div class="validation-card mtvv">
+        <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+        <div class="v-source">Motor 3 · MTVV (Programa IN)</div>
+        <div class="v-price">156.000&euro;</div>
+        <div class="v-detail">3 inmobiliarias consultadas<br>Verificado con anuncio real</div>
+      </div>
+      <div class="validation-card notarial">
+        <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
+        <div class="v-source">Motor 2 · Notarial (contexto)</div>
+        <div class="v-price">742&euro;/m²</div>
+        <div class="v-detail">94 compraventas/año<br>Suelo oficial (no converge, explicado)</div>
+      </div>
+    </div>
+
+    <div class="convergence">
+      <div class="conv-label">Las dos valoraciones del producto coinciden</div>
+      <div class="conv-verdict">Convergencia alta</div>
+      <div class="conv-price">156.000&euro; — 159.000&euro;</div>
+      <div class="conv-range">Diferencia: +1,9%</div>
+      <div class="conv-note">
+        Dos fuentes independientes —el motor IMPULSO y el MTVV del Programa IN— coinciden en el escenario medio: el producto vale entre 156.000 y 159.000&euro;. Cuando dos métodos que no se hablan entre sí llegan al mismo número, el dato es fiable. El rango completo de los 3 escenarios IMPULSO es <strong>142.000&euro; (conservador) · 159.000&euro; (medio) · 188.000&euro; (optimista)</strong>.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Por qué el notarial no converge (y está bien que no lo haga)</div>
+      <div class="insight insight-purple" style="margin-top:0;">
+        El dato notarial (742&euro;/m²) no encaja en esta convergencia, y es lógico: mide vivienda grande de segunda mano, no producto pequeño reformado. No es la valoración del producto de esta operación, sino el <strong>suelo y contexto oficial</strong> que confirma que el mercado es real, tiene volumen y está activo.
+      </div>
+    </div>
+
+    <!-- Patrón alternativo documentado: convergencia PROVISIONAL cuando falta MTVV fresco.
+         Se activa sustituyendo el bloque .convergence de arriba por este cuando el Motor 3
+         cae en Estado (b) o (c):
+    <div class="convergence">
+      <div class="conv-label">Convergencia provisional</div>
+      <div class="conv-verdict provisional">Calculada solo con 2 fuentes</div>
+      <div class="conv-price">{{PRECIO}}&euro;</div>
+      <div class="conv-note">Convergencia provisional: calculada solo con Motor 1 (IMPULSO) y Motor 2 (Notarial). No se fuerza una tercera tarjeta vacía — cuando exista un MTVV específico para esta operación, la convergencia se recalculará con las tres fuentes.</div>
+    </div>
+    -->
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- 11. LECTURA PARA EL INVERSOR -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--navy); color: var(--pulso);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
+      </div>
+      <div>
+        <div class="section-title">11 · Lectura para el inversor</div>
+        <div class="section-subtitle">Síntesis de valoración y mercado · {{DIRECCION}}</div>
+      </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(135deg, #fafbfc 0%, var(--gray-100) 100%); border: 2px solid #e5e7eb;">
+      <ul class="conclusion-list">
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
+          <span><strong>Valor de salida de las 3 viviendas:</strong> escenario medio entre 156.000 y 159.000&euro;, donde convergen el motor IMPULSO y el MTVV, con una diferencia de solo +1,9%. Rango completo: <strong>142.000&euro; · 159.000&euro; · 188.000&euro;</strong> (conservador / medio / optimista).</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+          <span><strong>Producto en el segmento de máxima liquidez:</strong> 1 dormitorio, tramo por debajo de 80.000&euro;, y la propia calle de la operación que rota al 100%. Demanda alta: se retira en torno a 26 días, frente a los 72 de media de la zona.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+          <span><strong>Nicho confirmado:</strong> la oferta de pisos de 1 dormitorio en venta es de 0 en el municipio (Paso 0 del MTVV). No hay competencia directa.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
+          <span><strong>Perfil del comprador (notarial):</strong> joven (52% con menos de 40 años) y más del 88% nacional. Encaja con un producto pequeño de entrada o de inversión.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span>
+          <span><strong>El siguiente paso:</strong> el análisis de inversión detallado (costes, márgenes, rentabilidad) lo realiza el equipo aparte cuando la operación aporta esos datos. Este informe valida el <strong>precio</strong> y el <strong>mercado</strong>: el producto tiene salida, hay demanda y no hay competencia.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ============================================ -->
+  <!-- 12. CONCLUSIÓN + LÍMITES + VIGENCIA -->
+  <!-- ============================================ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background: var(--gray-100); color: var(--navy);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </div>
+      <div>
+        <div class="section-title">12 · Conclusión del estudio</div>
+        <div class="section-subtitle">Resumen ejecutivo · {{DIRECCION}}, {{MUNICIPIO}}</div>
+      </div>
+    </div>
+
+    <div class="card" style="background: linear-gradient(135deg, #fafbfc 0%, var(--gray-100) 100%); border: 2px solid #e5e7eb;">
+      <ul class="conclusion-list">
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></span>
+          <span><strong>PULSO:</strong> el producto pequeño es el de mayor liquidez de la zona (1 dormitorio al 85,7%, tramo por debajo de 80.000&euro; al 83,6%, la calle de la operación al 100% de retirada).</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l2-9 4 18 2-9h6"></path></svg></span>
+          <span><strong>IMPULSO (motor automático):</strong> unos 159.000&euro; por las 3 unidades, sobre testigos reales del municipio (valor central de mercado 1.550&euro;/m²).</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>
+          <span><strong>MTVV (Programa IN):</strong> 156.000&euro; (Paso 4 verificado con un anuncio real).</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span><strong>Convergencia IMPULSO ↔ MTVV:</strong> +1,9%, convergencia alta en el escenario medio: el producto vale entre 156.000 y 159.000&euro;.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
+          <span><strong>Notarial:</strong> 742&euro;/m² escriturado, 94 operaciones al año, comprador joven. Es el suelo y contexto oficial de la zona.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Qué NO se puede sostener -->
+    <div class="card">
+      <div class="card-title">Qué queda fuera del alcance de este estudio</div>
+      <div class="no-sample">
+        <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        <span><strong>1. Muestra pequeña del producto pequeño.</strong> Los testigos comparables de venta son limitados (4 en total). Es suficiente para fijar un rango de trabajo, no para prometer una cifra cerrada al euro — por eso este informe habla siempre en rangos.</span>
+      </div>
+      <div class="no-sample">
+        <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        <span><strong>2. Alquiler por habitaciones sueltas.</strong> No hay muestra suficiente en el municipio para este formato (menos de 5 anuncios activos en 12 meses). Este informe no puede sostener una cifra de renta por habitación.</span>
+      </div>
+      <div class="no-sample">
+        <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        <span><strong>3. El notarial (742&euro;/m²) no es específico del producto pequeño.</strong> Mide todo tamaño y tipo de vivienda del CP {{CODIGO_POSTAL}} (superficie media 108 m², el triple de las unidades de esta operación). Sirve como contexto y suelo oficial, no como precio de referencia directo.</span>
+      </div>
+      <div class="no-sample">
+        <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        <span><strong>4. Costes de reforma y explotación.</strong> No están contrastados con proveedores en esta plantilla. Quedan fuera del alcance de las fuentes de este informe — el inversor debe afinarlos aparte.</span>
+      </div>
+    </div>
+
+    <!-- Vigencia -->
+    <div class="card">
+      <div class="card-title">Alcance y vigencia del estudio</div>
+      <div class="scope-note">
+        <strong>Anuncios &ne; contratos firmados.</strong> Todos los datos de este informe proceden de anuncios <strong>activos o retirados del mercado</strong> (precio de salida o último precio del anuncio). No son precios de firma de contrato ni de escritura de compraventa — ese dato, cuando existe, solo lo aporta el notariado, y el notariado de este informe mide todo tamaño de vivienda, no el producto pequeño específico.
+      </div>
+      <div class="scope-note">
+        <strong>Vigencia de los datos.</strong> Cifras extraídas y verificadas en {{FECHA_INFORME}}. El mercado inmobiliario se mueve; para una decisión de compra, alquiler o precio de salida, conviene repetir la consulta a las inmobiliarias del apartado 2.8 en el momento de negociar. No operar con datos de más de 6 meses sin revalidar.
+      </div>
+    </div>
+
+    <!-- Veredicto final del estudio (cierra la sección 12) -->
+    <div class="verdict-navy">
+      <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
+      <div>No opinamos del mercado: lo medimos. Y lo medimos <strong>tres veces</strong> —testigos IMPULSO, Portal del Notariado y MTVV (Programa IN)— con <strong>tres fuentes independientes</strong>. Las dos que valoran el producto convergen.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ============================================ -->
+<!-- 13. FOOTER -->
+<!-- ============================================ -->
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-cta-title">¿Quieres un estudio como este para tu operación?</div>
+    <div class="footer-cta-sub">Habla con nosotros y te lo preparamos.</div>
+    <a class="wa-button" href="https://wa.me/34611031611?text=Hola%2C%20he%20visto%20el%20informe%20de%20{{MUNICIPIO}}%20y%20me%20interesar%C3%ADa%20uno%20para%20mi%20operaci%C3%B3n." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Habla con nosotros
+    </a>
+
+    <img class="footer-logo" src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/698227e0b7e498bfd5ff8b45.png" alt="IM·PULSO">
+    <div style="font-size:14px; font-weight:700; color:white;"><a href="https://im-pulso.app" target="_blank" rel="noopener" style="color:white; text-decoration:none;">IM·PULSO — Inteligencia de Mercado Inmobiliario</a></div>
+    <div class="footer-links"><a href="https://im-pulso.app" target="_blank" rel="noopener">im-pulso.app</a></div>
+
+    <div class="footer-cobrand">
+      <span class="fc-label">En colaboración especial con</span>
+      <span class="fc-cdu">
+        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg"><path fill="#E29F34" d="M 520.64 70.62 C 531.64 65.17 545.37 68.71 553.78 77.24 C 593.60 114.04 632.54 151.83 672.00 189.03 C 750.63 263.05 829.03 337.31 907.64 411.35 C 917.07 419.76 922.65 432.33 922.16 444.99 C 922.12 463.82 908.44 481.68 889.99 486.00 C 888.30 486.61 885.31 486.77 885.18 489.06 C 885.08 596.37 885.29 703.68 885.12 810.99 C 885.51 822.43 882.21 834.61 873.52 842.52 C 860.72 855.24 839.36 856.90 823.98 848.04 C 812.14 841.13 804.50 827.70 804.75 813.98 C 804.60 689.64 804.74 565.29 804.65 440.94 C 804.66 438.14 804.10 435.09 801.79 433.24 C 750.65 386.07 700.58 337.77 649.81 290.20 C 613.95 256.75 578.47 222.86 542.80 189.20 C 539.57 186.06 536.12 181.84 531.15 182.18 C 526.15 182.93 522.76 186.99 519.29 190.28 C 424.84 280.50 330.46 370.79 236.05 461.06 C 230.93 464.44 232.61 470.82 232.34 476.00 C 232.41 572.30 232.22 668.61 232.56 764.91 C 267.02 765.33 301.52 765.00 335.99 765.07 C 339.31 764.96 343.35 765.70 345.74 762.78 C 370.32 737.67 394.05 711.74 418.29 686.31 C 471.09 630.83 523.93 575.37 576.53 519.73 C 561.40 521.09 546.17 520.68 530.99 520.83 C 521.26 521.00 511.19 518.68 503.44 512.55 C 484.60 498.05 482.10 467.31 497.32 449.37 C 504.72 441.02 515.84 436.36 526.95 436.38 C 576.30 436.33 625.65 436.36 675.00 436.39 C 680.33 436.39 685.69 436.24 691.00 436.92 C 703.99 438.36 715.44 447.63 720.20 459.70 C 722.78 466.13 722.84 473.19 722.77 480.01 C 722.81 532.01 722.85 584.02 722.81 636.03 C 722.76 647.80 717.39 659.69 707.91 666.83 C 690.86 681.20 662.35 679.17 647.85 662.10 C 641.83 655.17 638.57 646.14 638.04 637.05 C 638.04 618.88 637.99 600.71 638.08 582.54 C 558.33 665.58 479.14 749.27 397.30 830.30 C 384.63 841.57 369.68 852.92 351.96 853.14 C 291.98 853.40 231.99 853.22 172.01 853.22 C 155.98 853.61 140.50 842.97 135.07 827.90 C 131.82 820.01 132.35 811.33 132.35 803.00 C 132.34 687.66 132.32 572.32 132.32 456.98 C 132.28 445.23 136.86 433.56 145.27 425.29 C 190.46 381.80 236.48 339.19 281.53 295.55 C 355.88 223.87 431.24 153.26 505.80 81.78 C 510.62 77.90 514.74 72.93 520.64 70.62 Z"/></svg>
+        CdU de 0 a ÉXITO
+      </span>
+      <a href="https://tucambiodeuso.com" target="_blank" rel="noopener">tucambiodeuso.com</a>
+    </div>
+
+    <div class="footer-fine">IM·PULSO V2 · Plantilla definitiva · Caso demo — {{MUNICIPIO}} · Informe generado el {{FECHA_INFORME}}</div>
+  </div>
+</div>
+
+</body>
+</html>

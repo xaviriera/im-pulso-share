@@ -112,6 +112,15 @@
   .source-pill.mtvv-inactive { opacity: 0.5; filter: grayscale(0.9); }
   .source-pill.mtvv-inactive .sp-name-title { color: rgba(255,255,255,0.6) !important; }
   .source-pill.mtvv-inactive .sp-icon svg { stroke: #9CA3AF !important; }
+  /* Tarjeta MTVV "no disponible para esta zona": misma tarjeta activa, atenuación ligera + badge prominente */
+  .source-pill.mtvv-dimmed { position: relative; }
+  .mtvv-dim-inner { opacity: 0.68; display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .mtvv-unavailable-badge {
+    position: absolute; top: -10px; left: 50%; transform: translateX(-50%); z-index: 2;
+    background: #DA1839; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: 0.3px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.45); box-shadow: 0 3px 8px rgba(0,0,0,0.4); white-space: nowrap;
+  }
 
   .op-ficha {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
@@ -582,24 +591,21 @@
         <div class="sp-subtitle">Contexto oficial</div>
         <div class="sp-desc">Compraventas escrituradas reales del Portal del Notariado: precio por m², volumen y perfil del comprador.</div>
       </div>
-      <!-- MTVV (Método Total de Valoración de Vivienda) — rojo IN — variante SIN MTVV: tarjeta desactivada -->
-      <div class="source-pill mtvv-inactive">
-        <div class="sp-icon">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#DA1839" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <!-- MTVV (Método Total de Validación de Vivienda) — rojo IN — variante SIN MTVV: misma tarjeta activa, atenuada + badge "no disponible para esta zona" -->
+      <div class="source-pill mtvv-dimmed">
+        <div class="mtvv-unavailable-badge">No disponible para esta zona</div>
+        <div class="mtvv-dim-inner">
+          <div class="sp-icon sp-icon-row">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#DA1839" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+            <img src="./assets/logo-in.png" alt="Programa IN" class="sp-seal">
+          </div>
+          <div class="sp-name-title" style="color:#FF8B96;">MTVV</div>
+          <div class="sp-subtitle">Método Total de Validación de Vivienda</div>
+          <div class="sp-desc">Validación de campo del Programa IN.</div>
+          <div class="sp-micronote">
+            <span>Referencia de zona · no de esta operación.</span>
+          </div>
         </div>
-        <div class="sp-name-title" style="color:#FF8B96;">MTVV</div>
-        <div class="sp-subtitle">Método Total de Valoración de Vivienda</div>
-        <div class="sp-desc">Contraste final con inmobiliarias reales y anuncio de prueba: confirma o corrige el precio antes de operar.</div>
-        <!-- ESTADO MTVV NO DISPONIBLE — activo en esta variante -->
-        <div class="mtvv-status status-inactive">
-          <span>No disponible para esta operación</span>
-        </div>
-        <!-- Estado activo (usar en la variante con MTVV disponible)
-        <div class="mtvv-status status-active">
-          <img src="./assets/logo-in.png" alt="Comunidad IN" class="mtvv-status-logo">
-          <span>MTVV activo para esta operación</span>
-        </div>
-        -->
       </div>
     </div>
   </div>

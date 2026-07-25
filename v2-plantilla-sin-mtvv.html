@@ -105,10 +105,10 @@
   .motors-intro { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.4); margin: 0 auto 14px; font-weight: 700; text-align: center; }
   .hero-sources.sources-4 .source-pill { text-align: left; }
   .hero-sources.sources-4 .sp-icon { justify-content: flex-start; }
-  .mtvv-status { display: flex; align-items: center; gap: 7px; margin-top: 10px; padding: 5px 9px; border-radius: 8px; font-size: 10.5px; font-weight: 700; line-height: 1.3; }
+  .mtvv-status { display: flex; align-items: center; gap: 6px; margin-top: 8px; padding: 4px 8px; border-radius: 8px; font-size: 9.5px; font-weight: 700; line-height: 1.25; }
   .mtvv-status.status-active { background: rgba(218,24,57,0.16); border: 1px solid rgba(218,24,57,0.4); color: #FFC2CB; }
   .mtvv-status.status-inactive { background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.25); color: rgba(255,255,255,0.5); text-transform: none; letter-spacing: 0; }
-  .mtvv-status-logo { height: 16px; width: auto; display: block; flex-shrink: 0; background: #fff; border-radius: 3px; padding: 2px 3px; }
+  .mtvv-status-logo { height: 14px; width: auto; display: block; flex-shrink: 0; background: #fff; border-radius: 3px; padding: 2px 3px; }
   .source-pill.mtvv-inactive { opacity: 0.5; filter: grayscale(0.9); }
   .source-pill.mtvv-inactive .sp-name-title { color: rgba(255,255,255,0.6) !important; }
   .source-pill.mtvv-inactive .sp-icon svg { stroke: #9CA3AF !important; }
@@ -122,16 +122,19 @@
   .op-val { font-size: 14px; font-weight: 600; color: white; line-height: 1.4; }
   .op-val small { display: block; font-size: 12px; font-weight: 400; opacity: 0.6; margin-top: 3px; }
 
-  .hero-sources { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; padding: 0 24px; }
+  .hero-sources { display: flex; justify-content: center; align-items: stretch; gap: 14px; flex-wrap: wrap; max-width: 900px; margin: 0 auto; padding: 0 24px; }
   .source-pill {
     background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 14px;
-    padding: 16px 16px; text-align: center; flex: 1; min-width: 200px;
+    padding: 13px 15px; text-align: center; flex: 1; min-width: 200px; min-height: 142px;
+    display: flex; flex-direction: column;
   }
-  .source-pill .sp-icon { display: flex; align-items: center; justify-content: center; margin-bottom: 8px; }
-  .source-pill .sp-icon svg { width: 24px; height: 24px; }
-  .source-pill .sp-name-title { font-size: 13px; font-weight: 700; color: white; }
-  .source-pill .sp-subtitle { font-size: 11.5px; font-weight: 600; color: rgba(255,255,255,0.75); margin-top: 3px; }
-  .source-pill .sp-desc { font-size: 11px; opacity: 0.55; margin-top: 4px; line-height: 1.5; }
+  .source-pill .sp-icon { display: flex; align-items: center; justify-content: center; margin-bottom: 6px; }
+  .source-pill .sp-icon svg { width: 21px; height: 21px; }
+  .source-pill .sp-name-title { font-size: 12.5px; font-weight: 700; color: white; line-height: 1.3; }
+  .source-pill .sp-subtitle { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.75); margin-top: 3px; line-height: 1.35; }
+  .source-pill .sp-desc { font-size: 10.5px; opacity: 0.55; margin-top: 4px; line-height: 1.4; }
+  .source-pill .sp-micronote { font-size: 9.5px; line-height: 1.35; color: rgba(255,255,255,0.5); margin-top: auto; padding-top: 6px; display: flex; align-items: flex-start; gap: 5px; text-align: left; }
+  .sp-micronote-logo { height: 13px; width: auto; flex-shrink: 0; background: #fff; border-radius: 2px; padding: 1px 2px; margin-top: 1px; }
   .source-pill .sp-badge {
     display: inline-block; margin-top: 8px; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.32);
     border-radius: 10px; padding: 2px 9px; font-size: 10px; font-weight: 700; letter-spacing: 0.4px; color: rgba(255,255,255,0.85); text-transform: uppercase;

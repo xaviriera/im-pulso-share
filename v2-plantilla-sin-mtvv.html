@@ -576,22 +576,22 @@
         <div class="sp-subtitle">Contexto oficial</div>
         <div class="sp-desc">Compraventas escrituradas reales del Portal del Notariado: precio por m², volumen y perfil del comprador.</div>
       </div>
-      <!-- MTVV (Método Total de Valoración de Vivienda) — rojo IN — SIEMPRE presente, con etiqueta de estado -->
-      <div class="source-pill">
+      <!-- MTVV (Método Total de Valoración de Vivienda) — rojo IN — variante SIN MTVV: tarjeta desactivada -->
+      <div class="source-pill mtvv-inactive">
         <div class="sp-icon">
           <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#DA1839" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
         <div class="sp-name-title" style="color:#FF8B96;">MTVV</div>
         <div class="sp-subtitle">Método Total de Valoración de Vivienda</div>
         <div class="sp-desc">Contraste final con inmobiliarias reales y anuncio de prueba: confirma o corrige el precio antes de operar.</div>
-        <!-- Estado por defecto: MTVV activo para esta operación -->
+        <!-- ESTADO MTVV NO DISPONIBLE — activo en esta variante -->
+        <div class="mtvv-status status-inactive">
+          <span>No disponible para esta operación</span>
+        </div>
+        <!-- Estado activo (usar en la variante con MTVV disponible)
         <div class="mtvv-status status-active">
           <img src="./assets/logo-in.png" alt="Comunidad IN" class="mtvv-status-logo">
           <span>MTVV activo para esta operación</span>
-        </div>
-        <!-- ESTADO MTVV NO DISPONIBLE — usar esta variante en lugar de la de arriba cuando no haya MTVV para la operación
-        <div class="mtvv-status status-inactive">
-          <span>No disponible para esta operación</span>
         </div>
         -->
       </div>

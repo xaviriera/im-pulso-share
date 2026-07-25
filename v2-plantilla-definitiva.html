@@ -101,6 +101,15 @@
   }
   .hero-selector.active { background: var(--pulso); border-color: var(--pulso); color: white; }
 
+  /* ===================== HERO · 4 TARJETAS DE MOTORES (rediseño 2026-07-25) ===================== */
+  .motors-intro { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.4); margin: 0 auto 14px; font-weight: 700; text-align: center; }
+  .hero-sources.sources-4 .source-pill { text-align: left; }
+  .hero-sources.sources-4 .sp-icon { justify-content: flex-start; }
+  .mtvv-status { display: flex; align-items: center; gap: 7px; margin-top: 10px; padding: 5px 9px; border-radius: 8px; font-size: 10.5px; font-weight: 700; line-height: 1.3; }
+  .mtvv-status.status-active { background: rgba(218,24,57,0.16); border: 1px solid rgba(218,24,57,0.4); color: #FFC2CB; }
+  .mtvv-status.status-inactive { background: rgba(255,255,255,0.05); border: 1px dashed rgba(255,255,255,0.25); color: rgba(255,255,255,0.5); text-transform: none; letter-spacing: 0; }
+  .mtvv-status-logo { height: 16px; width: auto; display: block; flex-shrink: 0; background: #fff; border-radius: 3px; padding: 2px 3px; }
+
   .op-ficha {
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
     max-width: 860px; margin: 0 auto 32px; text-align: left; padding: 0 24px;
@@ -476,8 +485,9 @@
 </div>
 
 <!-- ============================================ -->
-<!-- 2. COBRAND BAR — condicional, solo si la operación ES CdU. En esta plantilla el caso demo (Elda) sí lo es. -->
+<!-- 2. COBRAND BAR — condicional, NO se muestra por defecto. Solo se activa en operaciones CdU. -->
 <!-- ============================================ -->
+<!-- COBRAND CDU: activar solo en operaciones CdU
 <div class="cobrand-bar">
   <div class="cobrand-inner">
     <span class="cobrand-label">En colaboración especial con</span>
@@ -488,6 +498,8 @@
     <a href="https://tucambiodeuso.com" target="_blank" rel="noopener">tucambiodeuso.com</a>
   </div>
 </div>
+-->
+
 
 <!-- ============================================ -->
 <!-- 3. HERO -->
@@ -531,32 +543,54 @@
       </div>
     </div>
 
-    <!-- 3 FUENTES = 3 MOTORES -->
-    <div class="hero-sources">
+    <!-- LOS 4 MOTORES QUE CRUZAMOS -->
+    <p class="motors-intro">Los 4 motores que cruzamos para leer el mercado y valorar esta operación</p>
+    <div class="hero-sources sources-4">
+      <!-- PULSO — naranja -->
       <div class="source-pill">
         <div class="sp-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#FF4D2E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <div class="sp-name-title">PULSO + IMPULSO</div>
-        <div class="sp-subtitle">Motor de mercado</div>
-        <div class="sp-desc">612 viviendas analizadas en la zona</div>
+        <div class="sp-name-title" style="color:#FF7A5C;">PULSO</div>
+        <div class="sp-subtitle">Latido del mercado</div>
+        <div class="sp-desc">Qué se publica y qué se retira en la zona: tipología dominante, tramos de precio y velocidad de venta.</div>
       </div>
+      <!-- IMPULSO — verde -->
       <div class="source-pill">
         <div class="sp-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C4B5FD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#10B981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <div class="sp-name-title">Portal del Notariado</div>
+        <div class="sp-name-title" style="color:#34D399;">IMPULSO</div>
+        <div class="sp-subtitle">Valoración del activo</div>
+        <div class="sp-desc">Cuánto valen las viviendas resultantes de esta operación, con testigos reales y tres escenarios de precio.</div>
+      </div>
+      <!-- NOTARIADO — gris neutro -->
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#9CA3AF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+        </div>
+        <div class="sp-name-title" style="color:#9CA3AF;">NOTARIADO</div>
         <div class="sp-subtitle">Contexto oficial</div>
-        <div class="sp-desc">94 compraventas oficiales al año</div>
+        <div class="sp-desc">Compraventas escrituradas reales del Portal del Notariado: precio por m², volumen y perfil del comprador.</div>
       </div>
+      <!-- MÉTODO TOTAL (MTVV) — rojo IN — SIEMPRE presente, con etiqueta de estado -->
       <div class="source-pill">
         <div class="sp-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#F4A6B2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#DA1839" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <div class="sp-name-title">MTVV</div>
-        <div class="sp-subtitle">Validación de campo</div>
-        <div class="sp-desc">4 inmobiliarias + anuncio real probado</div>
-        <span class="sp-badge">Exclusivo Comunidad IN</span>
+        <div class="sp-name-title" style="color:#FF8B96;">MÉTODO TOTAL</div>
+        <div class="sp-subtitle">Validación de campo (MTVV)</div>
+        <div class="sp-desc">Contraste final con inmobiliarias reales y anuncio de prueba: confirma o corrige el precio antes de operar.</div>
+        <!-- Estado por defecto: MTVV activo para esta operación -->
+        <div class="mtvv-status status-active">
+          <img src="./assets/logo-in.png" alt="Comunidad IN" class="mtvv-status-logo">
+          <span>Método Total activo para esta operación</span>
+        </div>
+        <!-- ESTADO MTVV NO DISPONIBLE — usar esta variante en lugar de la de arriba cuando no haya MTVV para la operación
+        <div class="mtvv-status status-inactive">
+          <span>No disponible para esta operación</span>
+        </div>
+        -->
       </div>
     </div>
 
@@ -570,22 +604,25 @@
 <div class="container">
 
   <!-- ============================================ -->
-  <!-- 4-5. AVISO MUESTRA PEQUEÑA + LEYENDA (antes de Motor 1) -->
+  <!-- 4. QUÉ VAS A ENCONTRAR EN ESTE MOTOR (bloque introductorio único, antes de Motor 1.1 · PULSO) -->
+  <!-- Nota: Notarial y Método Total ya se explican en las 4 tarjetas de portada — no se repiten aquí. -->
   <!-- ============================================ -->
   <div class="card">
+    <div class="card-title">Qué vas a encontrar en este motor</div>
+    <div class="card-subtitle">Motor 1.1 · PULSO — el latido del mercado</div>
     <div class="legend">
-      <span class="lg-item"><span class="lg-dot" style="background:var(--pulso);"></span> <strong>PULSO</strong> = el segmento con MÁS volumen del mercado (el producto dominante de la zona).</span>
+      <span class="lg-item"><span class="lg-dot" style="background:var(--pulso);"></span> <strong>PULSO</strong> = el segmento con MÁS volumen (el producto dominante de la zona).</span>
       <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Viviendas resultantes</strong> = dónde caen las viviendas que resultan de esta operación.</span>
-      <span class="lg-item"><span class="lg-dot" style="background:var(--notarial);"></span> <strong>Notarial</strong> = contexto oficial de compraventas escrituradas.</span>
-      <span class="lg-item"><span class="lg-dot" style="background:var(--mtvv);"></span> <strong>MTVV</strong> = validación de campo, exclusiva del Programa IN.</span>
     </div>
-    <div class="insight insight-gray" style="margin-top:0;">
-      El <strong>PULSO</strong> es el latido principal del mercado: el tipo de vivienda que más se mueve. El producto de esta operación puede ser distinto (más pequeño): comparamos uno contra otro en cada tabla para entender dónde encaja.
+    <div class="term-explainer">
+      Aquí se analiza <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}: qué tipo de piso domina el mercado (el <strong>PULSO</strong>), en qué dormitorios/baños y tramos de precio se mueve, cómo compara la calle de la operación con el resto de la zona, y qué pasa con el alquiler (tradicional y por habitaciones). Cada tabla enfrenta el PULSO con las <strong>viviendas resultantes</strong> de esta operación para ver dónde encajan.
     </div>
+    <!-- AVISO CONDICIONAL: solo si testigos insuficientes para la tipología exacta de esta operación. Mostrar únicamente cuando aplique al caso real; no forma parte del render por defecto.
     <div class="no-sample" style="margin-top:12px;">
       <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
       <span><strong>Muestra insuficiente para la tipología exacta de esta operación (estudio &lt;35 m²):</strong> los testigos disponibles en el municipio no permiten un cálculo estadísticamente representativo por sí solos. Se amplía a barrios colindantes con producto comparable y se contrasta con el MTVV en el Motor 3 — así se documenta en cada tabla afectada.</span>
     </div>
+    -->
   </div>
 
   <!-- ============================================ -->
@@ -649,21 +686,25 @@
     <!-- 1.3 Por dormitorios y baños -->
     <div class="card">
       <div class="card-title">1.3 Por dormitorios y baños</div>
-      <div class="card-subtitle">Cuántos dormitorios y baños busca el mercado</div>
+      <div class="card-subtitle">Todas las tipologías con datos suficientes en el municipio (dormitorios × baños)</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Dormitorios · Baños</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
           <tbody>
+          <tr><td>Estudio (0 dorm.) · 1 baño</td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
           <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">28</td><td data-label="Retirados">24</td><td data-label="Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td></tr>
-          <tr><td>Estudio (0 dormitorios) · 1 baño</td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
           <tr><td>2 dormitorios · 1 baño</td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
+          <tr><td>2 dormitorios · 2 baños</td><td data-label="Publicados">39</td><td data-label="Retirados">29</td><td data-label="Rotación">74,4%</td><td data-label="Precio medio">139.800&euro;</td></tr>
+          <tr><td>3 dormitorios · 1 baño</td><td data-label="Publicados">64</td><td data-label="Retirados">49</td><td data-label="Rotación">76,6%</td><td data-label="Precio medio">143.200&euro;</td></tr>
           <tr class="highlight"><td><strong>3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">312</td><td data-label="Retirados">241</td><td data-label="Rotación">77,2%</td><td data-label="Precio medio">168.900&euro;</td></tr>
-          <tr><td>4 o más dormitorios · 2 baños</td><td data-label="Publicados">86</td><td data-label="Retirados">63</td><td data-label="Rotación">73,3%</td><td data-label="Precio medio">241.200&euro;</td></tr>
+          <tr><td>4 dormitorios · 2 baños</td><td data-label="Publicados">62</td><td data-label="Retirados">45</td><td data-label="Rotación">72,6%</td><td data-label="Precio medio">225.400&euro;</td></tr>
+          <tr><td>4 dormitorios · 3 baños</td><td data-label="Publicados">24</td><td data-label="Retirados">18</td><td data-label="Rotación">75,0%</td><td data-label="Precio medio">261.900&euro;</td></tr>
+          <tr><td>5 o más dormitorios · 3 baños</td><td data-label="Publicados">14</td><td data-label="Retirados">9</td><td data-label="Rotación">64,3%</td><td data-label="Precio medio">312.600&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el mercado se mueve sobre todo en <strong>3 dormitorios · 2 baños</strong> (312 anuncios). El producto de esta operación, el piso de <strong>1 dormitorio · 1 baño</strong>, tiene rotación todavía mayor (85,7%) con muy poca oferta: se retira rápido y casi no tiene competencia.
+        <strong>Lectura:</strong> el mercado se mueve sobre todo en <strong>3 dormitorios · 2 baños</strong> (312 anuncios, el PULSO). El producto de esta operación, el piso de <strong>1 dormitorio · 1 baño</strong>, tiene rotación todavía mayor (85,7%) con muy poca oferta: se retira rápido y casi no tiene competencia. Por encima de 4 dormitorios la rotación cae —producto más grande, más lento de colocar.
       </div>
     </div>
 
@@ -714,50 +755,68 @@
 
     <!-- 1.6 TOP retirados -->
     <div class="card">
-      <div class="card-title">1.6 Productos que más se retiran</div>
-      <div class="card-subtitle">Los productos que el mercado absorbe más rápido</div>
+      <div class="card-title">1.6 Productos que más rápido desaparecen del mercado</div>
+      <div class="card-subtitle">Tiempo medio en mercado hasta la retirada, por producto — no es la misma lectura que la tabla de dormitorios × baños: aquí importa la VELOCIDAD, no el volumen</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Producto</th><th>Retirados</th><th>Rotación</th></tr></thead>
+          <thead><tr><th>Producto</th><th>Retirados</th><th>Días medios en mercado</th><th>Días valor central</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Piso 3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">156</td><td data-label="Rotación">77,2%</td></tr>
-          <tr><td>Piso 2 dormitorios · 1 baño</td><td data-label="Retirados">98</td><td data-label="Rotación">78,4%</td></tr>
-          <tr class="highlight-asset"><td><strong>Piso 1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Retirados">18</td><td data-label="Rotación">85,7%</td></tr>
+          <tr class="highlight-asset"><td><strong>Piso 1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Retirados">24</td><td data-label="Días medios en mercado">31 días</td><td data-label="Días valor central">19 días</td></tr>
+          <tr><td>Estudio (0 dorm.) · 1 baño</td><td data-label="Retirados">5</td><td data-label="Días medios en mercado">38 días</td><td data-label="Días valor central">22 días</td></tr>
+          <tr class="highlight"><td><strong>Piso 3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">241</td><td data-label="Días medios en mercado">104 días</td><td data-label="Días valor central">68 días</td></tr>
+          <tr><td>Piso 4 dormitorios · 2 baños</td><td data-label="Retirados">45</td><td data-label="Días medios en mercado">142 días</td><td data-label="Días valor central">97 días</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el piso pequeño de 1 dormitorio se retira limpio cuando aparece: poca oferta, pero todo lo que sale se coloca, con la rotación más alta de la tabla.
+        <strong>Lectura:</strong> el producto pequeño (1 dormitorio, estudio) no solo rota más en porcentaje, además tarda menos tiempo en desaparecer del mercado: unas 3-4 semanas frente a los 3-4 meses del piso de 3 dormitorios. Es la señal de demanda más directa de esta operación.
       </div>
     </div>
 
     <!-- 1.7 Alquiler tradicional -->
     <div class="card">
       <div class="card-title">1.7 Mercado de alquiler — tradicional</div>
-      <div class="card-subtitle">89 anuncios de alquiler tradicional analizados</div>
+      <div class="card-subtitle">89 anuncios de alquiler tradicional analizados · piso completo, contrato de larga duración</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Por dormitorios</th><th>Anuncios</th><th>Rotación</th><th>Renta media</th></tr></thead>
+          <thead><tr><th>Tipo · Dormitorios</th><th>Baños</th><th>Superficie media</th><th>Anuncios</th><th>Rotación</th><th>Renta media</th><th>&euro;/m²/mes</th></tr></thead>
           <tbody>
-          <tr class="highlight-asset"><td><strong>1 dormitorio</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Anuncios">12</td><td data-label="Rotación">91,7%</td><td data-label="Renta media">445&euro;/mes</td></tr>
-          <tr><td>2 dormitorios</td><td data-label="Anuncios">34</td><td data-label="Rotación">88,2%</td><td data-label="Renta media">560&euro;/mes</td></tr>
-          <tr><td>3 dormitorios</td><td data-label="Anuncios">28</td><td data-label="Rotación">82,1%</td><td data-label="Renta media">640&euro;/mes</td></tr>
+          <tr class="highlight-asset"><td><strong>Piso 1 dormitorio</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Baños">1</td><td data-label="Superficie media">39 m²</td><td data-label="Anuncios">12</td><td data-label="Rotación">91,7%</td><td data-label="Renta media">445&euro;/mes</td><td data-label="&euro;/m²/mes">11,4&euro;</td></tr>
+          <tr><td>Estudio (0 dormitorios)</td><td data-label="Baños">1</td><td data-label="Superficie media">32 m²</td><td data-label="Anuncios">5</td><td data-label="Rotación">100,0%</td><td data-label="Renta media">380&euro;/mes</td><td data-label="&euro;/m²/mes">11,9&euro;</td></tr>
+          <tr><td>Piso 2 dormitorios</td><td data-label="Baños">1</td><td data-label="Superficie media">64 m²</td><td data-label="Anuncios">34</td><td data-label="Rotación">88,2%</td><td data-label="Renta media">560&euro;/mes</td><td data-label="&euro;/m²/mes">8,7&euro;</td></tr>
+          <tr><td>Piso 3 dormitorios</td><td data-label="Baños">2</td><td data-label="Superficie media">88 m²</td><td data-label="Anuncios">28</td><td data-label="Rotación">82,1%</td><td data-label="Renta media">640&euro;/mes</td><td data-label="&euro;/m²/mes">7,3&euro;</td></tr>
+          <tr><td>Chalet / vivienda unifamiliar</td><td data-label="Baños">2+</td><td data-label="Superficie media">142 m²</td><td data-label="Anuncios">10</td><td data-label="Rotación">70,0%</td><td data-label="Renta media">890&euro;/mes</td><td data-label="&euro;/m²/mes">6,3&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el alquiler de 1 dormitorio se mueve sobre <strong>445 &euro;/mes</strong> y rota al 91,7%: si en lugar de vender se decide alquilar, el producto también tiene salida rápida.
+        <strong>Lectura:</strong> el alquiler de 1 dormitorio se mueve sobre <strong>445 &euro;/mes</strong> (11,4&euro;/m²) y rota al 91,7%: si en lugar de vender se decide alquilar, el producto también tiene salida rápida. El &euro;/m²/mes baja según crece la superficie —el piso pequeño es el que mejor rentabiliza por metro cuadrado.
       </div>
     </div>
 
     <!-- 1.8 Alquiler por habitaciones -->
     <div class="card">
-      <div class="card-title">1.8 Mercado de alquiler — por habitaciones sueltas</div>
-      <div class="card-subtitle">Modalidad de habitación individual dentro de piso compartido</div>
+      <div class="card-title">1.8 Mercado de alquiler — por habitaciones</div>
+      <div class="card-subtitle">Otra tipología distinta: viviendas donde el propietario alquila cada habitación por separado (no el piso completo). Compara si trocear en habitaciones rinde más que el alquiler tradicional.</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Habitaciones en la unidad</th><th>Anuncios</th><th>Renta media / habitación</th><th>Renta total estimada</th><th>Ocupación</th></tr></thead>
+          <tbody>
+          <tr><td>2 habitaciones</td><td data-label="Anuncios">4</td><td data-label="Renta media / habitación">245&euro;/mes</td><td data-label="Renta total estimada">490&euro;/mes</td><td data-label="Ocupación">Alta</td></tr>
+          <tr class="highlight-asset"><td><strong>3 habitaciones</strong> <span class="mark mark-asset">Más frecuente</span></td><td data-label="Anuncios">7</td><td data-label="Renta media / habitación">270&euro;/mes</td><td data-label="Renta total estimada">810&euro;/mes</td><td data-label="Ocupación">Alta</td></tr>
+          <tr><td>4 o más habitaciones</td><td data-label="Anuncios">3</td><td data-label="Renta media / habitación">230&euro;/mes</td><td data-label="Renta total estimada">920&euro;/mes</td><td data-label="Ocupación">Media</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> un piso de 3 habitaciones alquilado por habitaciones puede sumar en torno a 810&euro;/mes frente a los 640&euro;/mes del mismo piso en alquiler tradicional (ver 1.7) — la modalidad por habitaciones tensiona más la renta a cambio de más rotación de inquilinos.
+      </div>
+      <!-- AVISO CONDICIONAL: mostrar solo si el municipio tiene menos de 5 anuncios activos de esta modalidad en los últimos 12 meses. No forma parte del render por defecto.
       <div class="no-sample">
         <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
         <span><strong>Muestra insuficiente para alquiler por habitaciones en {{MUNICIPIO}}:</strong> los datos disponibles no permiten un cálculo estadísticamente representativo (menos de 5 anuncios activos en los últimos 12 meses). No se amplía a zona colindante por ser una modalidad de nicho muy local; se muestra el hueco de dato en lugar de forzar una cifra.</span>
       </div>
+      -->
     </div>
 
     <!-- Term-explainer de cierre (antes del veredicto) -->

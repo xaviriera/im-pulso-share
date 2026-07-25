@@ -628,12 +628,12 @@
         <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Viviendas resultantes</strong> = dónde caen las viviendas que resultan de esta operación.</span>
       </div>
       <div class="term-explainer">
-        Aquí se analiza <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}: qué tipo de piso domina el mercado (el <strong>PULSO</strong>), en qué dormitorios/baños y tramos de precio se mueve, cómo compara la calle de la operación con el resto de la zona, y qué pasa con el alquiler (tradicional y por habitaciones). Cada tabla enfrenta el PULSO con las <strong>viviendas resultantes</strong> de esta operación para ver dónde encajan.
+        Medimos <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}: qué tipo de piso domina el mercado (el <strong>PULSO</strong>), en qué dormitorios/baños y tramos de precio se mueve, cómo compara la calle de la operación con el resto de la zona, y qué pasa con el alquiler (tradicional y por habitaciones). Cada tabla cruza el PULSO con las <strong>viviendas resultantes</strong> de esta operación para mostrar dónde encajan.
       </div>
       <!-- AVISO DE MERCADO PEQUEÑO — bloque condicional único: aparece solo cuando la zona de la operación tiene poca muestra (pocos testigos). Consolida aquí lo que antes se repetía en varios módulos del informe; si la zona real tiene muestra amplia, se retira este bloque entero y no hace falta repetirlo en ningún otro punto. -->
       <div class="insight-method">
         <div class="im-title">Cómo leemos un mercado pequeño</div>
-        <div class="im-text">{{MUNICIPIO}} es un municipio pequeño, con pocos testigos —y menos aún de la tipología exacta de esta operación, precisamente porque casi no hay oferta de vivienda pequeña reformada: es justo el producto que crea este Cambio de Uso. Con poca muestra de precio, miramos el <b>movimiento</b>: lo que sale se retira rápido y el nicho de 1 dormitorio casi no tiene competencia, como muestran las tablas de este motor. Mostramos los testigos reales del municipio y los cruzamos con el contexto oficial del notariado (<b>MOTOR 3</b>) y la validación de campo del MTVV (<b>MOTOR 4</b>) — la confirmación definitiva del precio llega con esa convergencia entre motores independientes.</div>
+        <div class="im-text">{{MUNICIPIO}} es un municipio pequeño, con poca oferta de vivienda pequeña reformada —precisamente el producto que crea este Cambio de Uso—, así que los testigos de la tipología exacta son escasos. Con muestra limitada leemos el <b>movimiento</b> del mercado: lo que sale se retira rápido y el nicho de 1 dormitorio apenas tiene competencia, como muestran las tablas de este motor. Cruzamos los testigos reales del municipio con el contexto oficial del notariado (<b>MOTOR 3</b>) y la validación de campo del MTVV (<b>MOTOR 4</b>); la confirmación final del precio llega de esa convergencia entre motores independientes.</div>
       </div>
       <!-- AVISO CONDICIONAL: solo si testigos insuficientes para la tipología exacta de esta operación. Mostrar únicamente cuando aplique al caso real; no forma parte del render por defecto.
       <div class="no-sample" style="margin-top:12px;">
@@ -861,7 +861,7 @@
         <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>IMPULSO</strong> = el precio real de las viviendas resultantes de esta operación, calculado sobre testigos comparables.</span>
       </div>
       <div class="term-explainer">
-        Aquí se responde a la pregunta que sostiene toda la operación: <strong>cuánto vale de verdad</strong> cada vivienda resultante. Cruzamos los testigos reales de venta del municipio —pisos de tamaño y tipología comparable, ya retirados del mercado— para fijar un &euro;/m² y tres escenarios de precio (conservador, medio, optimista). Después contrastamos ese precio con la velocidad de venta, la fiabilidad de la muestra según el número de testigos, y el contacto directo con las inmobiliarias que han movido el producto en la zona.
+        Respondemos a la pregunta que sostiene toda la operación: <strong>cuánto vale de verdad</strong> cada vivienda resultante. Cruzamos los testigos reales de venta del municipio —pisos de tamaño y tipología comparable, ya retirados del mercado— para fijar un &euro;/m² y tres escenarios de precio (conservador, medio, optimista). Después contrastamos ese precio con la velocidad de venta, la fiabilidad de la muestra según el número de testigos y el contacto directo con las inmobiliarias que han movido el producto en la zona.
       </div>
     </div>
 

@@ -245,6 +245,11 @@
   .no-sample .ns-icon { flex-shrink: 0; width: 22px; height: 22px; }
   .no-sample .ns-icon svg { width: 22px; height: 22px; }
 
+  /* Aviso discreto de muestra reducida (tira, no card) — deliberadamente distinto de .insight-method / .card */
+  .market-note { display: flex; gap: 9px; align-items: flex-start; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 9px 14px; margin: 12px 0 0; font-size: 11.5px; line-height: 1.55; color: #92400E; }
+  .market-note svg { flex-shrink: 0; width: 15px; height: 15px; margin-top: 1px; }
+  .market-note strong { color: #B45309; }
+
   .callout { background: var(--gray-50); border: 1px solid #e2e8f0; border-left: 4px solid var(--navy); border-radius: 0 10px 10px 0; padding: 14px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6; }
   .callout strong { color: var(--navy); }
 
@@ -630,11 +635,7 @@
       <div class="term-explainer">
         Medimos <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}: qué tipo de piso domina el mercado (el <strong>PULSO</strong>), en qué dormitorios/baños y tramos de precio se mueve, cómo compara la calle de la operación con el resto de la zona, y qué pasa con el alquiler (tradicional y por habitaciones). Cada tabla cruza el PULSO con las <strong>viviendas resultantes</strong> de esta operación para mostrar dónde encajan.
       </div>
-      <!-- AVISO DE MERCADO PEQUEÑO — bloque condicional único: aparece solo cuando la zona de la operación tiene poca muestra (pocos testigos). Consolida aquí lo que antes se repetía en varios módulos del informe; si la zona real tiene muestra amplia, se retira este bloque entero y no hace falta repetirlo en ningún otro punto. -->
-      <div class="insight-method">
-        <div class="im-title">Cómo leemos un mercado pequeño</div>
-        <div class="im-text">{{MUNICIPIO}} es un municipio pequeño, con poca oferta de vivienda pequeña reformada —precisamente el producto que crea este Cambio de Uso—, así que los testigos de la tipología exacta son escasos. Con muestra limitada leemos el <b>movimiento</b> del mercado: lo que sale se retira rápido y el nicho de 1 dormitorio apenas tiene competencia, como muestran las tablas de este motor. Cruzamos los testigos reales del municipio con el contexto oficial del notariado (<b>MOTOR 3</b>) y la validación de campo del MTVV (<b>MOTOR 4</b>); la confirmación final del precio llega de esa convergencia entre motores independientes.</div>
-      </div>
+      <!-- El aviso de "mercado pequeño" (muestra reducida) vive ahora dentro de MOTOR 2 · IMPULSO, junto al bloque de precio al que realmente afecta. -->
       <!-- AVISO CONDICIONAL: solo si testigos insuficientes para la tipología exacta de esta operación. Mostrar únicamente cuando aplique al caso real; no forma parte del render por defecto.
       <div class="no-sample" style="margin-top:12px;">
         <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
@@ -857,13 +858,17 @@
     <div class="card">
       <div class="card-title">Qué vas a encontrar en este motor</div>
       <div class="card-subtitle">MOTOR 2 · IMPULSO — la valoración del activo</div>
-      <div class="legend">
-        <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>IMPULSO</strong> = el precio real de las viviendas resultantes de esta operación, calculado sobre testigos comparables.</span>
-      </div>
       <div class="term-explainer">
-        Respondemos a la pregunta que sostiene toda la operación: <strong>cuánto vale de verdad</strong> cada vivienda resultante. Cruzamos los testigos reales de venta del municipio —pisos de tamaño y tipología comparable, ya retirados del mercado— para fijar un &euro;/m² y tres escenarios de precio (conservador, medio, optimista). Después contrastamos ese precio con la velocidad de venta, la fiabilidad de la muestra según el número de testigos y el contacto directo con las inmobiliarias que han movido el producto en la zona.
+        IMPULSO no fija un precio de venta cerrado: construye una <strong>estimación de mercado</strong>. Partimos de los testigos reales de venta del municipio —pisos comparables, ya <strong>retirados</strong> del mercado, es decir, el precio al que se anunciaron por última vez, no el precio de firma— y con ellos calculamos un &euro;/m² de referencia y una horquilla de tres escenarios (conservador, medio, optimista) para cada vivienda resultante de esta operación. Un anuncio retirado sugiere que hubo comprador cerca de ese precio, pero no lo confirma: esa confirmación llega con el precio escriturado (<strong>MOTOR 3 · Notariado</strong>) y la validación de campo (<strong>MOTOR 4 · MTVV</strong>).
       </div>
     </div>
+
+    <!-- DISCLAIMER MERCADO PEQUEÑO: solo si aplica (la zona de la operación tiene muestra reducida de testigos comparables; si el municipio tiene muestra amplia, este aviso se retira entero) -->
+    <div class="market-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span><strong>Aviso — muestra limitada en {{MUNICIPIO}}.</strong> Es un municipio pequeño con poca oferta de vivienda comparable al producto de esta operación: los testigos disponibles son pocos. Leemos igualmente el movimiento del mercado con los testigos reales que hay, y contrastamos con el Notariado (Motor 3) y el MTVV (Motor 4) antes de dar el precio por confirmado.</span>
+    </div>
+    <!-- /DISCLAIMER MERCADO PEQUEÑO -->
 
     <!-- 2.1 Datos de consulta -->
     <div class="card">
@@ -881,7 +886,7 @@
       </div>
     </div>
 
-    <!-- 2.2 Testigos comparables -->
+    <!-- 2.2 Testigos comparables — la materia prima del cálculo -->
     <div class="card">
       <div class="card-title">2.2 Testigos comparables de la zona</div>
       <div class="card-subtitle">Piso de hasta 45 m², de 0 a 1 dormitorio, ya retirados del mercado</div>
@@ -897,19 +902,84 @@
         </table>
       </div>
       <div class="insight insight-green">
-        <strong>Lectura:</strong> 4 testigos reales del municipio, viviendas pequeñas comparables, todas retiradas, se movieron entre 1.333 y 1.793 &euro;/m². El valor central de mercado se sitúa en 1.550 &euro;/m².
+        <strong>Lectura:</strong> 4 testigos reales del municipio, viviendas pequeñas comparables, todas retiradas, se movieron entre 1.333 y 1.793 &euro;/m². El valor central de mercado se sitúa en 1.550 &euro;/m². Esta horquilla es la base del precio que calculamos a continuación.
       </div>
     </div>
 
-    <!-- 2.3 Price widget -->
+    <!-- 2.3 Fiabilidad — cuánto podemos confiar en esos testigos antes de dar el precio -->
     <div class="card">
-      <div class="card-title">2.3 Precio de mercado por unidad</div>
-      <div class="card-subtitle">Cuánto se puede pedir por cada vivienda resultante</div>
+      <div class="card-title">2.3 Fiabilidad de la lectura por tipología</div>
+      <div class="card-subtitle">Cuánto podemos confiar en cada precio según el número de testigos reales usados</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tipología</th><th>Testigos (n)</th><th>Fiabilidad</th></tr></thead>
+          <tbody>
+          <tr><td>Estudio loft 32 m²</td><td data-label="Testigos (n)">4</td><td data-label="Fiabilidad"><span class="fiab-media">Fiabilidad media</span></td></tr>
+          <tr><td>Piso 1 dormitorio 38 m²</td><td data-label="Testigos (n)">6</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-gray" style="margin-top:0;">
+        <strong>Fiabilidad media</strong> (n≥3, &lt;6 testigos): rango de trabajo razonable, no cifra cerrada. <strong>Fiabilidad alta</strong> (n≥6): cálculo estadísticamente representativo para la zona.
+      </div>
+    </div>
+
+    <!-- 2.4 Precio por vivienda resultante — el resultado del cruce, desglosado y con traza del cálculo -->
+    <div class="card">
+      <div class="card-title">2.4 Precio por vivienda resultante</div>
+      <div class="card-subtitle">Estimación de mercado, conservador / medio / optimista — desglosada por cada unidad</div>
       <div class="term-explainer">
-        <strong>Qué significan los tres escenarios</strong> (calculados a partir del &euro;/m² de los testigos reales del municipio):<br>
-        &bull; <strong>Conservador:</strong> el precio más prudente, el que pagarían los compradores más exigentes.<br>
-        &bull; <strong>Medio:</strong> el valor central, lo más probable según el grueso de los comparables.<br>
-        &bull; <strong>Optimista:</strong> el precio que alcanzan los testigos mejor pagados de la zona.
+        <strong>De dónde sale esta horquilla:</strong> testigos reales de venta del municipio (2.2) &rarr; precio al que se retiraron del mercado &rarr; mediana/percentiles de esos &euro;/m² comparables (central 1.550&euro;/m², rango 1.333–1.793&euro;/m²) &rarr; aplicado a la superficie de cada vivienda resultante &rarr; la horquilla de abajo. Es una estimación de mercado sobre anuncios retirados, no un precio de cierre.
+      </div>
+
+      <div class="tipo-card">
+        <div class="tipo-card-header">
+          <div>
+            <div class="tipo-card-title">Estudio loft · 32 m² <span class="mark mark-asset">2 unidades</span></div>
+            <div class="tipo-card-sub">Unidades 1 y 2 · testigos comparables de ~32-38 m²</div>
+          </div>
+        </div>
+        <div class="scenario-row">
+          <div class="scenario-box">
+            <div class="sc-label">Conservador</div>
+            <div class="sc-value">44.300&euro;</div>
+          </div>
+          <div class="scenario-box main-scenario">
+            <div class="sc-label">Medio</div>
+            <div class="sc-value">49.600&euro;</div>
+          </div>
+          <div class="scenario-box">
+            <div class="sc-label">Optimista</div>
+            <div class="sc-value">58.600&euro;</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tipo-card">
+        <div class="tipo-card-header">
+          <div>
+            <div class="tipo-card-title">Piso 1 dormitorio · 38 m² <span class="mark mark-asset">1 unidad</span></div>
+            <div class="tipo-card-sub">Unidad 3 · testigos comparables de 1 dormitorio</div>
+          </div>
+        </div>
+        <div class="scenario-row">
+          <div class="scenario-box">
+            <div class="sc-label">Conservador</div>
+            <div class="sc-value">53.400&euro;</div>
+          </div>
+          <div class="scenario-box main-scenario">
+            <div class="sc-label">Medio</div>
+            <div class="sc-value">59.800&euro;</div>
+          </div>
+          <div class="scenario-box">
+            <div class="sc-label">Optimista</div>
+            <div class="sc-value">70.800&euro;</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-explainer" style="margin-top:16px; margin-bottom:0;">
+        <strong>Total de la operación · las 3 viviendas</strong>
       </div>
       <div class="price-widget">
         <div class="price-box">
@@ -928,14 +998,14 @@
           <div class="price-note">Las 3 unidades</div>
         </div>
       </div>
-      <div class="insight insight-gray" style="margin-bottom:12px;">
-        Los comparables son anuncios <strong>retirados del mercado</strong> (precio de salida), no precio de firma ante notario. El escenario <strong>medio (159.000&euro;)</strong> es la cifra realista y prudente de referencia.
+      <div class="insight insight-gray" style="margin-bottom:0;">
+        Los comparables son anuncios <strong>retirados del mercado</strong> (precio de salida), no precio de firma ante notario: es una estimación de mercado, no un precio de venta confirmado. El escenario <strong>medio (159.000&euro; en conjunto)</strong> es la cifra prudente de referencia; el cierre real se contrasta en el Notariado (MOTOR 3) y se valida en campo con el MTVV (MOTOR 4).
       </div>
     </div>
 
-    <!-- 2.4 Variaciones -->
+    <!-- 2.5 Variaciones según configuración/tipología -->
     <div class="card">
-      <div class="card-title">2.4 Variaciones según la configuración</div>
+      <div class="card-title">2.5 Variaciones según la configuración</div>
       <div class="card-subtitle">Cómo cambia el precio y la rotación según el tipo de piso · marcadas las <strong>viviendas resultantes</strong> de esta operación</div>
       <div class="table-wrap">
         <table class="table-mobile">
@@ -949,47 +1019,6 @@
       </div>
       <div class="insight insight-green">
         <strong>Lectura:</strong> esta operación produce 3 viviendas resultantes en las dos configuraciones de mayor rotación de la tabla (83-86%). No son una opción para cambiar: el local solo da para estas unidades pequeñas.
-      </div>
-    </div>
-
-    <!-- 2.5 Tipologías múltiples (multi-unidad) -->
-    <div class="card">
-      <div class="card-title">2.5 Tipologías múltiples de esta operación</div>
-      <div class="card-subtitle">Desglose por tipología y unidad resultante</div>
-      <div class="tipo-card">
-        <div class="tipo-card-header">
-          <div>
-            <div class="tipo-card-title">Estudio loft · 32 m²</div>
-            <div class="tipo-card-sub">2 unidades resultantes · rango 44.300 – 58.600&euro; por unidad</div>
-          </div>
-        </div>
-        <div class="units-grid">
-          <div class="unit-card">
-            <div class="u-num">Unidad 1</div>
-            <div class="u-tipo">Estudio loft 32 m²</div>
-            <div class="u-price">~49.600&euro;</div>
-          </div>
-          <div class="unit-card">
-            <div class="u-num">Unidad 2</div>
-            <div class="u-tipo">Estudio loft 32 m²</div>
-            <div class="u-price">~49.600&euro;</div>
-          </div>
-        </div>
-      </div>
-      <div class="tipo-card">
-        <div class="tipo-card-header">
-          <div>
-            <div class="tipo-card-title">Piso 1 dormitorio · 38 m²</div>
-            <div class="tipo-card-sub">1 unidad resultante · rango 53.400 – 70.800&euro;</div>
-          </div>
-        </div>
-        <div class="units-grid">
-          <div class="unit-card">
-            <div class="u-num">Unidad 3</div>
-            <div class="u-tipo">Piso 1 dormitorio 38 m²</div>
-            <div class="u-price">~59.800&euro;</div>
-          </div>
-        </div>
       </div>
     </div>
 
@@ -1020,33 +1049,15 @@
       </div>
     </div>
 
-    <!-- 2.7 Fiabilidad por tipología -->
-    <div class="card">
-      <div class="card-title">2.7 Fiabilidad de la lectura por tipología</div>
-      <div class="card-subtitle">Cuánto podemos confiar en cada precio según el número de testigos reales usados</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Tipología</th><th>Testigos (n)</th><th>Fiabilidad</th></tr></thead>
-          <tbody>
-          <tr><td>Estudio loft 32 m²</td><td data-label="Testigos (n)">4</td><td data-label="Fiabilidad"><span class="fiab-media">Fiabilidad media</span></td></tr>
-          <tr><td>Piso 1 dormitorio 38 m²</td><td data-label="Testigos (n)">6</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-gray" style="margin-top:0;">
-        <strong>Fiabilidad media</strong> (n≥3, &lt;6 testigos): rango de trabajo razonable, no cifra cerrada. <strong>Fiabilidad alta</strong> (n≥6): cálculo estadísticamente representativo para la zona.
-      </div>
-    </div>
-
-    <!-- 2.8 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
+    <!-- 2.7 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
     <div class="contactos-destacados">
       <div class="cd-header">
         <span class="cd-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </span>
-        <span class="cd-title">2.8 Contactos reales para validar el precio</span>
+        <span class="cd-title">2.7 Contactos reales para contrastar el precio</span>
       </div>
-      <div class="cd-sub">Inmobiliarias que han movido este producto en la zona — contacto directo verificado, es el activo que respalda esta valoración.</div>
+      <div class="cd-sub">Inmobiliarias de {{MUNICIPIO}} con anuncios de este tipo de producto — contacto directo para contrastar la estimación antes de fijar el precio de salida.</div>
       <div class="contactos-grid">
         <div class="contacto-card">
           <div class="cc-name">Inmobiliaria del Centro</div>
@@ -1054,8 +1065,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             {{TELEFONO_1}}
           </div>
-          <div class="cc-op">Vendió un estudio similar en la misma calle hace 3 meses a 55.000&euro;.</div>
-          <span class="contact-tag">Operación confirmada</span>
+          <div class="cc-op">Anuncios activos de vivienda pequeña reformada en {{MUNICIPIO}}.</div>
+          <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-name">Aitor Fincas</div>
@@ -1063,8 +1074,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             {{TELEFONO_2}}
           </div>
-          <div class="cc-op">Tiene lista de espera de inversores para producto de menos de 50 m².</div>
-          <span class="contact-tag">Demanda activa</span>
+          <div class="cc-op">Especializada en producto de menos de 50 m² en la zona.</div>
+          <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-name">Urbana Gestión</div>
@@ -1072,8 +1083,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             {{TELEFONO_3}}
           </div>
-          <div class="cc-op">Confirma horquilla de 55.000-65.000&euro; para piso reformado de 1 dormitorio.</div>
-          <span class="contact-tag">Precio confirmado</span>
+          <div class="cc-op">Gestiona operaciones de vivienda reformada en {{MUNICIPIO}}.</div>
+          <span class="contact-tag">Contacto directo</span>
         </div>
       </div>
       <div class="script-box">
@@ -1096,7 +1107,7 @@
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
       <div>
-        <strong>Veredicto IMPULSO.</strong> El valor de salida de las 3 viviendas se estima en <strong style="color:#F97316;">159.000&euro;</strong> (rango de 142.000 a 188.000&euro;), sobre testigos reales del municipio con valor central de mercado de 1.550&euro;/m². Producto en el segmento de máxima liquidez de la zona: se retira en aproximadamente un mes.
+        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">159.000&euro;</strong> para las 3 viviendas (horquilla de 142.000 a 188.000&euro;), a partir de testigos reales retirados en el municipio (valor central &asymp;1.550&euro;/m²). Es una estimación de mercado, no un precio de cierre: la confirmación llega con el Notariado (MOTOR 3) y la validación de campo del MTVV (MOTOR 4). Producto en el segmento de máxima liquidez de la zona: se retira en aproximadamente un mes.
       </div>
     </div>
   </div>

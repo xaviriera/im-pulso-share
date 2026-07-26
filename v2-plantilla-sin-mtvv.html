@@ -319,15 +319,14 @@
     border-radius: 16px; padding: 24px 28px; margin: 28px 0;
     box-shadow: 0 10px 30px rgba(15,31,61,0.22);
   }
-  .mpp-icon { flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px; background: rgba(218,24,57,0.18); border: 1px solid rgba(218,24,57,0.4); display: flex; align-items: center; justify-content: center; }
+  .mpp-icon { flex-shrink: 0; width: 62px; height: 62px; border-radius: 14px; background: #fff; border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.18); padding: 6px; }
   .mpp-icon svg { width: 24px; height: 24px; }
   .mpp-body { flex: 1; min-width: 0; }
   .mpp-title { font-size: 17px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: 0.2px; }
   .mpp-title span { color: #FF8B96; }
   .mpp-text { font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.82); }
   .mpp-text strong { color: white; }
-  .mpp-logo { height: 26px; width: auto; margin-top: 14px; display: block; background: #fff; border-radius: 4px; padding: 3px 6px; }
-  .mpp-icon img { height: 26px; width: auto; display: block; }
+  .mpp-icon img { height: 38px; width: auto; display: block; }
   @media (max-width: 768px) {
     .mtvv-prefilter-panel { flex-direction: column; padding: 20px; gap: 14px; }
   }
@@ -350,26 +349,31 @@
 
   /* ===================== PRICE WIDGET / SCENARIOS ===================== */
   .price-widget { display: grid; grid-template-columns: 1fr 1.5fr 1fr; gap: 16px; text-align: center; margin: 20px 0; }
-  .price-box { padding: 20px; border-radius: 12px; background: var(--gray-50); }
-  .price-box.main { background: var(--navy); color: white; transform: scale(1.05); box-shadow: 0 8px 24px rgba(15,31,61,0.3); }
+  .price-box { padding: 20px; border-radius: 12px; background: var(--impulso-bg); border: 1px solid var(--impulso-border); }
+  .price-box.main { background: var(--impulso); color: white; border-color: transparent; transform: scale(1.05); box-shadow: 0 8px 24px rgba(22,163,74,0.32); }
   .price-box .price-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.65; margin-bottom: 4px; font-weight: 700; }
-  .price-box .price-value { font-size: 26px; font-weight: 800; }
-  .price-box.main .price-value { color: var(--pulso); font-size: 32px; }
+  .price-box .price-value { font-size: 26px; font-weight: 800; color: var(--navy); }
+  .price-box.main .price-value { color: white; font-size: 32px; }
   .price-box .price-note { font-size: 11px; opacity: 0.55; margin-top: 4px; }
 
   .scenario-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
-  .scenario-box { background: var(--gray-50); border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; text-align: center; }
-  .scenario-box.main-scenario { background: var(--navy); color: white; border-color: transparent; transform: scale(1.03); box-shadow: 0 4px 20px rgba(15,31,61,0.25); }
+  .scenario-box { background: var(--impulso-bg); border: 1px solid var(--impulso-border); border-radius: 12px; padding: 18px; text-align: center; }
+  .scenario-box.main-scenario { background: var(--impulso); color: white; border-color: transparent; transform: scale(1.03); box-shadow: 0 4px 20px rgba(22,163,74,0.28); }
   .scenario-box .sc-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--gray-500); margin-bottom: 4px; font-weight: 700; }
-  .scenario-box.main-scenario .sc-label { color: rgba(255,255,255,0.55); }
+  .scenario-box.main-scenario .sc-label { color: rgba(255,255,255,0.65); }
   .scenario-box .sc-value { font-size: 24px; font-weight: 800; color: var(--navy); }
-  .scenario-box.main-scenario .sc-value { color: var(--pulso); }
+  .scenario-box.main-scenario .sc-value { color: white; }
+
+  /* Conector visual entre las tarjetas por tipología y el total (§2.4 IMPULSO) */
+  .sum-connector { display: flex; align-items: center; justify-content: center; margin: -4px 0 8px; }
+  .sum-connector .sc-symbol { width: 34px; height: 34px; border-radius: 50%; background: var(--impulso); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 800; box-shadow: 0 3px 10px rgba(22,163,74,0.32); }
 
   /* ===================== MULTI-TIPOLOGÍA ===================== */
-  .tipo-card { background: white; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin-bottom: 16px; }
+  .tipo-card { background: white; border: 1px solid #e5e7eb; border-left: 4px solid var(--impulso); border-radius: 14px; padding: 24px; margin-bottom: 16px; }
   .tipo-card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px; }
   .tipo-card-title { font-size: 17px; font-weight: 700; color: var(--navy); }
   .tipo-card-sub { font-size: 12px; color: var(--gray-500); }
+  .tipo-card-testigos { font-size: 11.5px; color: var(--impulso); font-weight: 700; margin-top: 3px; }
 
   .demand-badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
   .demand-badge svg { width: 12px; height: 12px; }
@@ -744,7 +748,6 @@
       <div class="mpp-text">
         El <strong>Método Total de Validación de Vivienda (MTVV)</strong> sigue siendo el estándar del Programa IN y quien valida de forma empírica el precio en firme. Lo que tienes delante es un paso previo &mdash; un <strong>prefiltro rápido</strong> que cruza varias fuentes de datos para darte una lectura aproximada de forma inmediata. Sirve para decidir, con datos y sin perder tiempo, si la operación que tienes delante merece avanzar. Si los números cuadran aquí, el siguiente paso es el MTVV; si no cuadran, te ahorras incertidumbre, trabajo y dinero.
       </div>
-      <img class="mpp-logo" src="./assets/logo-in.png" alt="Programa IN">
     </div>
   </div>
 
@@ -791,7 +794,7 @@
         <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Viviendas resultantes</strong> = dónde caen las viviendas que resultan de esta operación.</span>
       </div>
       <div class="term-explainer">
-        Medimos <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}, en venta y en alquiler: qué tipo de vivienda domina el mercado (el <strong>PULSO</strong>), en qué tramos de precio se mueve, cómo compara la calle de la operación con el resto de zonas, qué pasa con otros activos (locales, garajes, trasteros...) y con el alquiler por habitaciones. Cada tabla cruza el PULSO con las <strong>viviendas resultantes</strong> de esta operación para mostrar dónde encajan.
+El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se pide, sino <strong>qué se publica, qué se retira y a qué velocidad</strong>, en venta y en alquiler. De ahí sale qué tipo de vivienda domina el mercado (el <strong>PULSO</strong>), en qué tramos de precio se mueve, cómo compara la calle de la operación con el resto de zonas, qué pasa con otros activos (locales, garajes, trasteros...) y con el alquiler por habitaciones. Cada tabla cruza el PULSO con las <strong>viviendas resultantes</strong> de esta operación para mostrar dónde encajan.
       </div>
       <!-- El aviso de "mercado pequeño" (muestra reducida) vive ahora dentro de MOTOR 2 · IMPULSO, junto al bloque de precio al que realmente afecta. -->
       <!-- AVISO CONDICIONAL: solo si testigos insuficientes para la tipología exacta de esta operación. Mostrar únicamente cuando aplique al caso real; no forma parte del render por defecto.
@@ -1161,6 +1164,7 @@
           <div>
             <div class="tipo-card-title">Estudio loft · 32 m² <span class="mark mark-asset">2 unidades</span></div>
             <div class="tipo-card-sub">Unidades 1 y 2 · testigos comparables de ~32-38 m²</div>
+            <div class="tipo-card-testigos">Media de 4 testigos retirados cruzados para esta tipología</div>
           </div>
         </div>
         <div class="scenario-row">
@@ -1179,11 +1183,14 @@
         </div>
       </div>
 
+      <div class="sum-connector"><span class="sc-symbol">+</span></div>
+
       <div class="tipo-card">
         <div class="tipo-card-header">
           <div>
             <div class="tipo-card-title">Piso 1 dormitorio · 38 m² <span class="mark mark-asset">1 unidad</span></div>
             <div class="tipo-card-sub">Unidad 3 · testigos comparables de 1 dormitorio</div>
+            <div class="tipo-card-testigos">Media de 6 testigos retirados cruzados para esta tipología</div>
           </div>
         </div>
         <div class="scenario-row">
@@ -1202,7 +1209,9 @@
         </div>
       </div>
 
-      <div class="term-explainer" style="margin-top:16px; margin-bottom:0;">
+      <div class="sum-connector"><span class="sc-symbol">=</span></div>
+
+      <div class="term-explainer" style="margin-top:0; margin-bottom:0; background: var(--impulso-bg); border-left-color: var(--impulso);">
         <strong>Total de la operación · las 3 viviendas</strong>
       </div>
       <div class="price-widget">
@@ -1222,33 +1231,23 @@
           <div class="price-note">Las 3 unidades</div>
         </div>
       </div>
+
+      <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso); margin-top:12px;">
+        <strong>Qué significa cada escenario, en cifras:</strong>
+        <ul class="scenario-list">
+          <li><span class="sl-tag">Conservador</span> <span><strong>(P25):</strong> venta a <strong>142.000&euro;</strong> en 6 meses &mdash; el 75% de los pisos similares se retiran por encima de este precio.</span></li>
+          <li><span class="sl-tag">Medio</span> <span><strong>(P50):</strong> venta a <strong>159.000&euro;</strong> en 6 meses &mdash; la mitad se retira por encima y la mitad por debajo.</span></li>
+          <li><span class="sl-tag">Optimista</span> <span><strong>(P75):</strong> venta a <strong>188.000&euro;</strong> en 6 meses &mdash; solo el 25% se retira por encima de este precio.</span></li>
+        </ul>
+      </div>
       <div class="insight insight-gray" style="margin-bottom:0;">
         El escenario <strong>medio (159.000&euro; en conjunto)</strong> es la cifra prudente de referencia. El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
       </div>
     </div>
 
-    <!-- 2.5 Variaciones según configuración/tipología -->
+    <!-- 2.5 Demanda -->
     <div class="card">
-      <div class="card-title">2.5 Variaciones según la configuración</div>
-      <div class="card-subtitle">Cómo cambia el precio y la rotación según el tipo de piso · marcadas las <strong>viviendas resultantes</strong> de esta operación</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Configuración</th><th>Anuncios</th><th>Rotación</th><th>Precio medio</th></tr></thead>
-          <tbody>
-          <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Anuncios">28</td><td data-label="Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>Estudio (0 dormitorios)</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Anuncios">6</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
-          <tr><td>2 dormitorios · 1 baño</td><td data-label="Anuncios">180</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-green">
-        <strong>Lectura:</strong> esta operación produce 3 viviendas resultantes en las dos configuraciones de mayor rotación de la tabla (83-86%). No son una opción para cambiar: el local solo da para estas unidades pequeñas.
-      </div>
-    </div>
-
-    <!-- 2.6 Demanda -->
-    <div class="card">
-      <div class="card-title">2.6 Demanda: cuánto tarda en retirarse del mercado</div>
+      <div class="card-title">2.5 Demanda: cuánto tarda en retirarse del mercado</div>
       <div class="card-subtitle">Días desde publicación hasta retirada. Menos días = más demanda.</div>
       <div class="kpi-row">
         <div class="kpi" style="background:#fff9f5; border-color:var(--pulso-border);"><div class="kpi-value" style="color:var(--pulso);">118 días</div><div class="kpi-label">Media de la zona</div></div>
@@ -1256,30 +1255,36 @@
         <div class="kpi" style="background:var(--impulso-bg); border-color:var(--impulso-border);"><div class="kpi-value" style="color:var(--impulso);">~26 días</div><div class="kpi-label">Piso pequeño (media)</div></div>
       </div>
       <div class="demand-bell" style="background:linear-gradient(135deg,#fff9f5 0%,var(--pulso-bg) 100%); border-color:var(--pulso-border);">
-        <div class="db-title" style="color:var(--pulso);">Velocidad de retirada (más corto = más demanda)</div>
+        <div class="db-title" style="color:var(--pulso);">Velocidad de retirada, por producto (más corto = más demanda)</div>
         <div class="db-row">
-          <span style="font-weight:700; color:var(--navy);">Media zona</span>
+          <span style="font-weight:700; color:var(--navy);">Media zona (general)</span>
           <div class="db-bar-bg"><div class="db-bar-fill" style="width:100%; background:#9ca3af;"></div></div>
           <span style="font-weight:800; color:var(--navy); text-align:right;">118 d</span>
         </div>
         <div class="db-row">
-          <span style="font-weight:700; color:var(--navy);">Piso pequeño</span>
+          <span style="font-weight:700; color:var(--navy);">Piso 1 dormitorio</span>
           <div class="db-bar-bg"><div class="db-bar-fill" style="width:22%; background:var(--impulso);"></div></div>
-          <span style="font-weight:800; color:var(--impulso); text-align:right;">~26 d</span>
+          <span style="font-weight:800; color:var(--impulso); text-align:right;">26 d</span>
         </div>
+        <div class="db-row">
+          <span style="font-weight:700; color:var(--navy);">Estudio loft</span>
+          <div class="db-bar-bg"><div class="db-bar-fill" style="width:19%; background:var(--impulso);"></div></div>
+          <span style="font-weight:800; color:var(--impulso); text-align:right;">22 d</span>
+        </div>
+        <div class="db-foot" style="border-top-color:var(--pulso-border); color:var(--navy);">Las dos tipologías que produce esta operación se retiran entre 4 y 5 veces más rápido que la media de la zona.</div>
       </div>
       <div class="insight insight-green">
-        <strong>Lectura:</strong> la demanda del producto pequeño es <strong>ALTA</strong>: se retira en unas 4 semanas, frente a los casi 4 meses de media de la zona.
+        <strong>Lectura:</strong> la demanda de las dos viviendas resultantes es <strong>ALTA</strong>: se retiran en 22-26 días (3-4 semanas), frente a los casi 4 meses de media de la zona.
       </div>
     </div>
 
-    <!-- 2.7 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
+    <!-- 2.6 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
     <div class="contactos-destacados">
       <div class="cd-header">
         <span class="cd-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         </span>
-        <span class="cd-title">2.7 Contactos reales para contrastar el precio</span>
+        <span class="cd-title">2.6 Contactos reales para contrastar el precio</span>
       </div>
       <div class="cd-sub">El dato revelador: cada inmobiliaria de abajo ha <strong>retirado</strong> anuncios con las características de las viviendas resultantes de esta operación (analizamos varias tipologías, es un Cambio de Uso). Ordenadas de más a menos movimiento — contacto directo para contrastar la estimación antes de fijar el precio de salida.</div>
       <div class="contactos-grid">
@@ -1452,13 +1457,6 @@
     <div class="card">
       <div class="card-title">3.5 Evolución del mercado (12 meses)</div>
       <div class="card-subtitle">Compraventas escrituradas mes a mes · CP {{CODIGO_POSTAL}}</div>
-      <div class="now-flag">
-        <span class="nf-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z"/><circle cx="12" cy="9" r="2.4"/></svg></span>
-        <div>
-          <div class="nf-title">Estamos aquí</div>
-          <div class="nf-text"><strong>Junio 2026</strong> — 742&euro;/m², 83.400&euro; de importe medio, 12 compraventas escrituradas ese mes: el último dato disponible del Notariado.</div>
-        </div>
-      </div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Mes</th><th>&euro;/m²</th><th>Importe medio</th><th>Compraventas</th></tr></thead>
@@ -1479,7 +1477,7 @@
         </table>
       </div>
       <div class="insight insight-purple">
-        <strong>Lectura:</strong> el municipio cierra entre 6 y 12 compraventas al mes de forma sostenida: mercado líquido con actividad constante. El precio por m² oscila mes a mes porque cada mes se escrituran pocas operaciones de tipos distintos, así que esas subidas y bajadas no marcan una tendencia, solo reflejan qué se vendió cada mes. Junio 2026 (12 compraventas, 742&euro;/m²) es el mes de mayor actividad de todo el periodo.
+        <strong>Lectura:</strong> el municipio cierra entre 6 y 12 compraventas al mes de forma sostenida: mercado líquido con actividad constante. El precio por m² oscila mes a mes porque cada mes se escrituran pocas operaciones de tipos distintos, así que esas subidas y bajadas no marcan una tendencia, solo reflejan qué se vendió cada mes. <strong style="color:var(--notarial);">Ahora mismo, junio 2026 es el mes de mayor actividad de toda la serie: 12 compraventas a 742&euro;/m².</strong>
       </div>
     </div>
 
@@ -1544,60 +1542,70 @@
       </div>
     </div>
 
-    <!-- 3.7 Cruce PULSO + IMPULSO × NOTARIADO -->
+    <!-- 3.7 Cruce IM·PULSO × NOTARIADO — dos fuentes independientes (oferta y retirada son dos capas DENTRO de IM·PULSO, no dos fuentes) -->
     <div class="card" style="background: linear-gradient(135deg, var(--notarial-bg) 0%, var(--pulso-bg) 100%); border: 2px solid var(--notarial-border);">
       <div class="card-title" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-        <span style="background:var(--pulso); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </span>
-        <span>+</span>
-        <span style="background:var(--impulso); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
+        <span style="background:linear-gradient(135deg, var(--pulso) 0%, var(--impulso) 100%); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
         </span>
         <span>&times;</span>
         <span style="background:var(--notarial); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
         </span>
-        <span>3.7 Cruce PULSO + IMPULSO &times; NOTARIADO</span>
+        <span>3.7 Cruce IM&middot;PULSO &times; NOTARIADO</span>
       </div>
-      <div class="card-subtitle">Tres capas de precio, contrastadas una por una · el valor que crea el Cambio de Uso</div>
+      <div class="card-subtitle">Dos fuentes independientes · tres capas de precio: oferta &rarr; retirada &rarr; escriturado</div>
+      <div class="term-explainer" style="margin-top:0;">
+        <strong>Qué se compara aquí.</strong> IM&middot;PULSO es <strong>una sola fuente</strong> —la lectura del mercado a través de los anuncios— con dos capas internas: lo que se <strong>pide</strong> (oferta) y lo que realmente se <strong>cierra</strong> (retirada). El Notariado es una fuente <strong>independiente</strong>: lo que de verdad se firma ante notario. El cruce que importa es IM&middot;PULSO frente a Notariado, no oferta frente a retirada &mdash;eso es una sola fuente comparándose consigo misma.
+      </div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Indicador</th><th class="th-pulso">PULSO (oferta)</th><th class="th-impulso">IMPULSO (testigos)</th><th class="th-notarial">NOTARIADO (escritura)</th><th>Lectura</th></tr></thead>
+          <thead>
+            <tr>
+              <th rowspan="2">Indicador</th>
+              <th colspan="2" style="background:var(--navy); color:#fff; text-align:center;">IM&middot;PULSO (mercado)</th>
+              <th rowspan="2" class="th-notarial">NOTARIADO (escriturado)</th>
+              <th rowspan="2">Lectura</th>
+            </tr>
+            <tr>
+              <th class="th-pulso" style="font-size:10.5px;">Oferta</th>
+              <th class="th-impulso" style="font-size:10.5px;">Retirada</th>
+            </tr>
+          </thead>
           <tbody>
           <tr>
             <td>&euro;/m²</td>
-            <td data-label="PULSO (oferta)">1.480&euro; <small style="color:var(--gray-500);">(zona Centro)</small></td>
-            <td data-label="IMPULSO (testigos)">1.550&euro; <small style="color:var(--gray-500);">(producto pequeño)</small></td>
-            <td data-label="NOTARIADO (escritura)">742&euro; <small style="color:var(--gray-500);">(todo tamaño)</small></td>
-            <td data-label="Lectura">Tres capas de precio, no una contradicción: oferta de barrio &rarr; cierre de producto pequeño reformado &rarr; escritura de vivienda general del municipio.</td>
+            <td data-label="IM·PULSO — Oferta">1.480&euro; <small style="color:var(--gray-500);">(zona Centro)</small></td>
+            <td data-label="IM·PULSO — Retirada">1.550&euro; <small style="color:var(--gray-500);">(producto pequeño)</small></td>
+            <td data-label="NOTARIADO — Escriturado">742&euro; <small style="color:var(--gray-500);">(todo tamaño)</small></td>
+            <td data-label="Lectura">Dentro de IM&middot;PULSO, la oferta de barrio y el cierre del producto pequeño reformado son coherentes entre sí; el salto grande aparece al cruzar con el Notariado, que escritura vivienda general del municipio.</td>
           </tr>
           <tr>
             <td>Precio medio / unidad</td>
-            <td data-label="PULSO (oferta)">58.400&euro; <small style="color:var(--gray-500);">(tu calle)</small></td>
-            <td data-label="IMPULSO (testigos)">&asymp;53.000&euro; <small style="color:var(--gray-500);">(159.000&euro; / 3)</small></td>
-            <td data-label="NOTARIADO (escritura)">83.400&euro; <small style="color:var(--gray-500);">(todo tamaño)</small></td>
+            <td data-label="IM·PULSO — Oferta">58.400&euro; <small style="color:var(--gray-500);">(tu calle)</small></td>
+            <td data-label="IM·PULSO — Retirada">&asymp;53.000&euro; <small style="color:var(--gray-500);">(159.000&euro; / 3)</small></td>
+            <td data-label="NOTARIADO — Escriturado">83.400&euro; <small style="color:var(--gray-500);">(todo tamaño)</small></td>
             <td data-label="Lectura">El importe de entrada de la vivienda resultante queda por debajo del importe medio notarial: coherente con un producto de menor superficie.</td>
           </tr>
           <tr>
             <td>Días hasta cierre</td>
-            <td data-label="PULSO (oferta)">24 días <small style="color:var(--gray-500);">(tu calle)</small></td>
-            <td data-label="IMPULSO (testigos)">22-26 días <small style="color:var(--gray-500);">(testigos usados)</small></td>
-            <td data-label="NOTARIADO (escritura)">sin dato <small style="color:var(--gray-500);">(no lo mide)</small></td>
-            <td data-label="Lectura">Las dos fuentes que sí miden velocidad de mercado coinciden: liquidez alta y consistente, producto que se coloca en menos de un mes.</td>
+            <td data-label="IM·PULSO — Oferta">24 días <small style="color:var(--gray-500);">(tu calle)</small></td>
+            <td data-label="IM·PULSO — Retirada">22-26 días <small style="color:var(--gray-500);">(testigos usados)</small></td>
+            <td data-label="NOTARIADO — Escriturado">sin dato <small style="color:var(--gray-500);">(no lo mide)</small></td>
+            <td data-label="Lectura">Las dos capas de IM&middot;PULSO, que sí miden velocidad, coinciden entre sí: liquidez alta y consistente, producto que se coloca en menos de un mes. El Notariado no mide este dato.</td>
           </tr>
           <tr>
             <td>Volumen / actividad</td>
-            <td data-label="PULSO (oferta)">612 <small style="color:var(--gray-500);">(viviendas analizadas)</small></td>
-            <td data-label="IMPULSO (testigos)">4 <small style="color:var(--gray-500);">(testigos comparables)</small></td>
-            <td data-label="NOTARIADO (escritura)">94/año <small style="color:var(--gray-500);">(compraventas)</small></td>
-            <td data-label="Lectura">El Notariado confirma a escala oficial lo que el PULSO ya mostraba con testigos de portal: volumen real, no un espejismo de anuncios.</td>
+            <td data-label="IM·PULSO — Oferta">612 <small style="color:var(--gray-500);">(viviendas analizadas)</small></td>
+            <td data-label="IM·PULSO — Retirada">4 <small style="color:var(--gray-500);">(testigos comparables)</small></td>
+            <td data-label="NOTARIADO — Escriturado">94/año <small style="color:var(--gray-500);">(compraventas)</small></td>
+            <td data-label="Lectura">El Notariado, fuente independiente, confirma a escala oficial lo que IM&middot;PULSO ya mostraba con datos de portal: volumen real, no un espejismo de anuncios.</td>
           </tr>
           <tr>
             <td>Rotación / demanda</td>
-            <td data-label="PULSO (oferta)">77,1% <small style="color:var(--gray-500);">(piso, zona)</small></td>
-            <td data-label="IMPULSO (testigos)">&asymp;84,5% <small style="color:var(--gray-500);">(estudio + 1 dorm.)</small></td>
-            <td data-label="NOTARIADO (escritura)">no aplica <small style="color:var(--gray-500);">(no mide retirada)</small></td>
+            <td data-label="IM·PULSO — Oferta">77,1% <small style="color:var(--gray-500);">(piso, zona)</small></td>
+            <td data-label="IM·PULSO — Retirada">&asymp;84,5% <small style="color:var(--gray-500);">(estudio + 1 dorm.)</small></td>
+            <td data-label="NOTARIADO — Escriturado">no aplica <small style="color:var(--gray-500);">(no mide retirada)</small></td>
             <td data-label="Lectura">Las tipologías resultantes rotan por encima de la media del mercado general: se mueven más rápido que el conjunto de la zona.</td>
           </tr>
           </tbody>
@@ -1605,7 +1613,7 @@
       </div>
       <div class="cruce-verdict">
         <div class="cv-title">Conclusión del cruce</div>
-        <div class="cv-text">El precio medio de escritura del CP {{CODIGO_POSTAL}} (<strong>742&euro;/m²</strong>) <strong>diverge</strong> de la valoración IMPULSO del producto pequeño (<strong>~1.550&euro;/m²</strong>) en un <strong>+109%</strong>. No es una contradicción entre fuentes: es el salto natural entre <strong>oferta de barrio (1.480&euro;/m²)</strong>, <strong>cierre de producto pequeño reformado (1.550&euro;/m²)</strong> y <strong>escritura media del municipio, todo tamaño (742&euro;/m²)</strong>. Donde las tres fuentes SÍ coinciden es en la lectura de fondo: mercado líquido (77-94,5% de rotación según capa), con volumen real (94 escrituras/año, 612 viviendas analizadas) y comprador que encaja con el producto (joven, nacional). Esa distancia entre capas <strong>es el valor que crea el Cambio de Uso</strong> al reposicionar el activo en un segmento de mayor rotación.</div>
+        <div class="cv-text">El precio escriturado del CP {{CODIGO_POSTAL}} (<strong>742&euro;/m²</strong>) <strong>diverge</strong> de la capa de retirada de IM&middot;PULSO para el producto pequeño (<strong>~1.550&euro;/m²</strong>) en un <strong>+109%</strong>. No es una contradicción entre fuentes: son dos fuentes independientes que miden cosas distintas. IM&middot;PULSO recorre <strong>oferta (1.480&euro;/m²) &rarr; retirada (1.550&euro;/m²)</strong> del producto pequeño y reformado; el Notariado firma <strong>escritura (742&euro;/m²)</strong> de la vivienda media del municipio, todo tamaño. Ese margen entre lo que el mercado pide/cierra y lo que de verdad se firma es la <strong>señal de precio</strong> de esta operación: confirma que el producto pequeño reformado cotiza muy por encima del suelo notarial genérico, y es coherente que lo haga (menor superficie, a estrenar, mayor rotación). Donde las dos fuentes SÍ coinciden, de forma independiente, es en el fondo del mercado: liquidez alta, volumen real (94 escrituras/año, 612 viviendas analizadas) y comprador que encaja con el producto (joven, nacional). Ese margen entre mercado y registro <strong>es, en gran medida, el valor que crea el Cambio de Uso</strong>.</div>
       </div>
     </div>
 
@@ -1804,7 +1812,7 @@
     <div class="verdict-navy">
       <div class="verdict-icon" style="background: rgba(218,24,57,0.18);"><svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
       <div>
-        <strong>Veredicto MTVV.</strong> El estudio de campo verificado con anuncio real confirma un valor de <strong style="color:#DA1839;">156.000&euro;</strong> para las 3 unidades, con oferta firme incluida a 52.000&euro;. Validación humana del Programa IN que confirma, de forma independiente, la valoración de la fuente IMPULSO.
+        <strong>Veredicto MTVV.</strong> El estudio de campo verificado con anuncio real confirma un valor de <strong style="color:#DA1839;">156.000&euro;</strong> para las 3 unidades, con oferta firme incluida a 52.000&euro;. Validación humana del Programa IN que confirma, de forma independiente, la valoración de la fuente IM&middot;PULSO.
       </div>
     </div>
   </div>
@@ -1863,7 +1871,7 @@
     <div class="validation-grid">
       <div class="validation-card scraping">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-        <div class="v-source">Fuente 2 · IMPULSO</div>
+        <div class="v-source">Fuente 1+2 · IM&middot;PULSO (mercado)</div>
         <div class="v-price">159.000&euro;</div>
         <div class="v-detail">Testigos reales del municipio<br>Valor central de mercado 1.550&euro;/m²</div>
       </div>
@@ -1902,7 +1910,7 @@
       </div>
       <div class="conv-graphic-deviation">Diferencia IMPULSO &harr; MTVV: <strong>+1,9%</strong> — dos métodos que no se hablan entre sí, prácticamente el mismo número.</div>
       <div class="conv-graphic-legend">
-        <span class="cgl-item"><span class="cgl-dot" style="background:var(--pulso);"></span>IMPULSO (testigos de mercado)</span>
+        <span class="cgl-item"><span class="cgl-dot" style="background:var(--pulso);"></span>IM&middot;PULSO (testigos de mercado)</span>
         <span class="cgl-item"><span class="cgl-dot" style="background:var(--mtvv);"></span>MTVV (validación de campo)</span>
       </div>
       <div class="insight insight-gray" style="margin-top:16px;">
@@ -1916,7 +1924,7 @@
       <div class="conv-price">156.000&euro; — 159.000&euro;</div>
       <div class="conv-range">Diferencia: +1,9%</div>
       <div class="conv-note">
-        Dos fuentes independientes —la fuente IMPULSO y el MTVV del Programa IN— coinciden en el escenario medio: el producto vale entre 156.000 y 159.000&euro;. Cuando dos métodos que no se hablan entre sí llegan al mismo número, el dato es fiable. El rango completo de los 3 escenarios IMPULSO es <strong>142.000&euro; (conservador) · 159.000&euro; (medio) · 188.000&euro; (optimista)</strong>.
+        Dos fuentes independientes —la fuente IM&middot;PULSO y el MTVV del Programa IN— coinciden en el escenario medio: el producto vale entre 156.000 y 159.000&euro;. Cuando dos métodos que no se hablan entre sí llegan al mismo número, el dato es fiable. El rango completo de los 3 escenarios IM&middot;PULSO es <strong>142.000&euro; (conservador) · 159.000&euro; (medio) · 188.000&euro; (optimista)</strong>.
       </div>
     </div>
 
@@ -1959,7 +1967,7 @@
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-          <span><strong>Valor de salida de las 3 viviendas:</strong> escenario medio entre 156.000 y 159.000&euro;, donde convergen la fuente IMPULSO y el MTVV, con una diferencia de solo +1,9%. Rango completo: <strong>142.000&euro; · 159.000&euro; · 188.000&euro;</strong> (conservador / medio / optimista).</span>
+          <span><strong>Valor de salida de las 3 viviendas:</strong> escenario medio entre 156.000 y 159.000&euro;, donde convergen la fuente IM&middot;PULSO y el MTVV, con una diferencia de solo +1,9%. Rango completo: <strong>142.000&euro; · 159.000&euro; · 188.000&euro;</strong> (conservador / medio / optimista).</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
@@ -2050,7 +2058,7 @@
         <strong>Anuncios &ne; contratos firmados.</strong> Todos los datos de este informe proceden de anuncios <strong>activos o retirados del mercado</strong> (precio de salida o último precio del anuncio). No son precios de firma de contrato ni de escritura de compraventa — ese dato, cuando existe, solo lo aporta el notariado, y el notariado de este informe mide todo tamaño de vivienda, no el producto pequeño específico.
       </div>
       <div class="scope-note">
-        <strong>Vigencia de los datos.</strong> Cifras extraídas y verificadas en {{FECHA_INFORME}}. El mercado inmobiliario se mueve; para una decisión de compra, alquiler o precio de salida, conviene repetir la consulta a las inmobiliarias del apartado 2.8 en el momento de negociar. No operar con datos de más de 6 meses sin revalidar.
+        <strong>Vigencia de los datos.</strong> Cifras extraídas y verificadas en {{FECHA_INFORME}}. El mercado inmobiliario se mueve; para una decisión de compra, alquiler o precio de salida, conviene repetir la consulta a las inmobiliarias del apartado 2.6 en el momento de negociar. No operar con datos de más de 6 meses sin revalidar.
       </div>
     </div>
 

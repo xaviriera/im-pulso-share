@@ -250,6 +250,33 @@
   .market-note svg { flex-shrink: 0; width: 15px; height: 15px; margin-top: 1px; }
   .market-note strong { color: #B45309; }
 
+  /* ===================== AA-1 · PANEL MTVV-PREFILTRO (bloque de inicio, más peso que una nota) ===================== */
+  .mtvv-prefilter-panel {
+    display: flex; gap: 20px; align-items: flex-start;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+    border: 1px solid rgba(218,24,57,0.35); border-left: 6px solid var(--mtvv);
+    border-radius: 16px; padding: 24px 28px; margin: 28px 0;
+    box-shadow: 0 10px 30px rgba(15,31,61,0.22);
+  }
+  .mpp-icon { flex-shrink: 0; width: 46px; height: 46px; border-radius: 12px; background: rgba(218,24,57,0.18); border: 1px solid rgba(218,24,57,0.4); display: flex; align-items: center; justify-content: center; }
+  .mpp-icon svg { width: 24px; height: 24px; }
+  .mpp-body { flex: 1; min-width: 0; }
+  .mpp-title { font-size: 17px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: 0.2px; }
+  .mpp-title span { color: #FF8B96; }
+  .mpp-text { font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.82); }
+  .mpp-text strong { color: white; }
+  .mpp-logo { height: 26px; width: auto; margin-top: 14px; display: block; background: #fff; border-radius: 4px; padding: 3px 6px; }
+  @media (max-width: 768px) {
+    .mtvv-prefilter-panel { flex-direction: column; padding: 20px; gap: 14px; }
+  }
+
+  /* ===================== AA-2 · NOTA "CÓMO LEEMOS UN MERCADO PEQUEÑO" (condicional) ===================== */
+  .small-market-note { background: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid #f59e0b; border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 0 0 28px; }
+  .small-market-note .smn-title { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #B45309; margin-bottom: 8px; }
+  .small-market-note .smn-title svg { width: 15px; height: 15px; flex-shrink: 0; }
+  .small-market-note .smn-body { font-size: 13px; line-height: 1.6; color: #78350f; }
+  .small-market-note .smn-body strong { color: #92400E; }
+
   .callout { background: var(--gray-50); border: 1px solid #e2e8f0; border-left: 4px solid var(--navy); border-radius: 0 10px 10px 0; padding: 14px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6; }
   .callout strong { color: var(--navy); }
 
@@ -586,7 +613,7 @@
         <div class="sp-subtitle">Contexto oficial</div>
         <div class="sp-desc">Compraventas escrituradas reales del Portal del Notariado: precio por m², volumen y perfil del comprador.</div>
       </div>
-      <!-- MTVV (Método Total de Valoración de Vivienda) — rojo IN — SIEMPRE presente, con etiqueta de estado -->
+      <!-- MTVV (Método Total de Validación de Vivienda) — rojo IN — SIEMPRE presente, con etiqueta de estado -->
       <div class="source-pill">
         <div class="sp-icon">
           <img src="./assets/logo-in.png" alt="Programa IN" class="sp-icon-logo">
@@ -602,6 +629,39 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- ============================================ -->
+<!-- AA. BLOQUE DE INICIO — tras la portada, antes de MOTOR 1 · PULSO -->
+<!-- ============================================ -->
+<div class="container">
+
+  <!-- AA-1. PANEL MTVV-PREFILTRO (permanente, muy destacado) -->
+  <div class="mtvv-prefilter-panel">
+    <div class="mpp-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#FF8B96" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+    </div>
+    <div class="mpp-body">
+      <div class="mpp-title">Este informe no sustituye al <span>MTVV</span></div>
+      <div class="mpp-text">
+        El <strong>Método Total de Validación de Vivienda (MTVV)</strong> sigue siendo el estándar del Programa IN y quien valida el precio en firme: inmobiliarias consultadas en persona y un anuncio real publicado para medir la respuesta del mercado. Lo que tienes delante es el paso previo — un <strong>prefiltro rápido</strong> que cruza PULSO, IMPULSO y Notariado para darte, en una lectura de minutos, el pulso del mercado, el valor probable del activo y de cada vivienda resultante. Sirve para decidir, con datos y sin perder tiempo, <strong>si esta operación merece el método total</strong>. Si los números cuadran aquí, el siguiente paso es el MTVV; si no cuadran, te ahorras el trabajo de campo.
+      </div>
+      <img class="mpp-logo" src="./assets/logo-in.png" alt="Programa IN">
+    </div>
+  </div>
+
+  <!-- NOTA CONDICIONAL MERCADO PEQUEÑO: solo si aplica -->
+  <div class="small-market-note">
+    <div class="smn-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      Cómo leemos un mercado pequeño
+    </div>
+    <div class="smn-body">
+      {{MUNICIPIO}} tiene poca oferta de vivienda comparable al producto de esta operación. La vivienda usada marca el suelo del mercado (en torno a <strong>1.800&euro;/m²</strong>), la obra nueva de la zona marca el techo (<strong>2.141&euro;/m²</strong>), y el producto a estrenar por Cambio de Uso —edificio y comunidad ya existentes, pero vivienda nueva— se coloca en el equilibrio entre ambos, en torno a <strong>1.970&euro;/m²</strong>. La muestra del municipio es limitada: el cálculo se apoya en los testigos reales disponibles, documentado en cada tabla afectada. Plazo de venta estimado, 1-2 meses por unidad.
+    </div>
+  </div>
+  <!-- /NOTA CONDICIONAL MERCADO PEQUEÑO -->
+
 </div>
 
 <div class="container">
@@ -633,7 +693,7 @@
         <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Viviendas resultantes</strong> = dónde caen las viviendas que resultan de esta operación.</span>
       </div>
       <div class="term-explainer">
-        Medimos <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}: qué tipo de piso domina el mercado (el <strong>PULSO</strong>), en qué dormitorios/baños y tramos de precio se mueve, cómo compara la calle de la operación con el resto de la zona, y qué pasa con el alquiler (tradicional y por habitaciones). Cada tabla cruza el PULSO con las <strong>viviendas resultantes</strong> de esta operación para mostrar dónde encajan.
+        Medimos <strong>qué se publica, qué se retira y a qué velocidad</strong> en {{MUNICIPIO}}, en venta y en alquiler: qué tipo de vivienda domina el mercado (el <strong>PULSO</strong>), en qué tramos de precio se mueve, cómo compara la calle de la operación con el resto de zonas, qué pasa con otros activos (locales, garajes, trasteros...) y con el alquiler por habitaciones. Cada tabla cruza el PULSO con las <strong>viviendas resultantes</strong> de esta operación para mostrar dónde encajan.
       </div>
       <!-- El aviso de "mercado pequeño" (muestra reducida) vive ahora dentro de MOTOR 2 · IMPULSO, junto al bloque de precio al que realmente afecta. -->
       <!-- AVISO CONDICIONAL: solo si testigos insuficientes para la tipología exacta de esta operación. Mostrar únicamente cuando aplique al caso real; no forma parte del render por defecto.
@@ -646,161 +706,180 @@
 
     <!-- 1.1 Resumen -->
     <div class="card">
-      <div class="card-title">1.1 Resumen del mercado de venta</div>
-      <div class="card-subtitle">Visión general de la vivienda en venta en el municipio</div>
+      <div class="card-title">1.1 Resumen del mercado</div>
+      <div class="card-subtitle">Venta y alquiler en {{MUNICIPIO}}</div>
       <div class="kpi-row">
-        <div class="kpi"><div class="kpi-value">612</div><div class="kpi-label">Piso analizados</div></div>
-        <div class="kpi"><div class="kpi-value">471</div><div class="kpi-label">Anuncios retirados</div></div>
-        <div class="kpi"><div class="kpi-value">77,0%</div><div class="kpi-label">Rotación</div></div>
-        <div class="kpi"><div class="kpi-value">156.400&euro;</div><div class="kpi-label">Precio medio</div></div>
+        <div class="kpi"><div class="kpi-value">77,0%</div><div class="kpi-label">Rotación venta</div></div>
+        <div class="kpi"><div class="kpi-value">85,4%</div><div class="kpi-label">Rotación alquiler</div></div>
+        <div class="kpi"><div class="kpi-value">118 días</div><div class="kpi-label">Días hasta retirarse · venta</div></div>
+        <div class="kpi"><div class="kpi-value">35 días</div><div class="kpi-label">Días hasta retirarse · alquiler</div></div>
       </div>
       <div class="term-explainer">
         <strong>Cómo leer estas tablas (lo importante):</strong><br>
-        &bull; <strong>Anuncios publicados:</strong> cuántos pisos de ese tipo salieron al mercado.<br>
-        &bull; <strong>Anuncios retirados:</strong> cuántos dejaron de anunciarse (señal de absorción del mercado).<br>
-        &bull; <strong>Rotación:</strong> porcentaje de anuncios retirados sobre publicados. Más rotación = producto más líquido.<br>
-        &bull; <strong>Precio medio:</strong> el precio típico de ese grupo de pisos.
+        &bull; <strong>Publicados:</strong> cuántos anuncios de ese tipo salieron al mercado.<br>
+        &bull; <strong>Retirados:</strong> cuántos dejaron de anunciarse (señal de absorción real, no solo de intención).<br>
+        &bull; <strong>% Rotación:</strong> retirados sobre publicados. Más rotación = producto más líquido.<br>
+        &bull; <strong>Días hasta retirarse:</strong> lo que tarda de media un anuncio en dejar de publicarse.
       </div>
       <div class="insight insight-orange">
-        141 anuncios siguen activos y 471 ya se han retirado: el mercado tiene una rotación alta (77,0%). Un piso tarda de media 118 días en retirarse (el valor central está en 72 días).
+        612 viviendas analizadas en venta, 471 ya retiradas: rotación alta (77,0%), 118 días de media hasta retirarse. El alquiler rota todavía más (85,4%) y se coloca mucho más rápido (35 días de media): {{MUNICIPIO}} es un mercado activo tanto en venta como en alquiler.
       </div>
     </div>
 
-    <!-- 1.2 Por tipo -->
+    <!-- 1.2 Tipologías en venta -->
     <div class="card">
-      <div class="card-title">1.2 Por tipo de inmueble</div>
-      <div class="card-subtitle">Qué tipos de piso mueve el mercado</div>
+      <div class="card-title">1.2 Tipologías en venta</div>
+      <div class="card-subtitle">Categorías residenciales de {{MUNICIPIO}} (anuncios de venta)</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Tipo</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <thead><tr><th>Categoría</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Piso 3 dormitorios</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">312</td><td data-label="Retirados">241</td><td data-label="Rotación">77,2%</td><td data-label="Precio medio">168.900&euro;</td></tr>
-          <tr><td>Piso 2 dormitorios</td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
-          <tr><td>Ático</td><td data-label="Publicados">44</td><td data-label="Retirados">30</td><td data-label="Rotación">68,2%</td><td data-label="Precio medio">195.000&euro;</td></tr>
-          <tr><td>Dúplex</td><td data-label="Publicados">38</td><td data-label="Retirados">32</td><td data-label="Rotación">84,2%</td><td data-label="Precio medio">148.700&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">480</td><td data-label="Retirados">370</td><td data-label="% Rotación">77,1%</td><td data-label="Precio medio">148.200&euro;</td><td data-label="Días hasta retirarse">108</td><td data-label="€/m²">1.320&euro;</td></tr>
+          <tr><td>Chalet</td><td data-label="Publicados">62</td><td data-label="Retirados">44</td><td data-label="% Rotación">71,0%</td><td data-label="Precio medio">245.000&euro;</td><td data-label="Días hasta retirarse">155</td><td data-label="€/m²">780&euro;</td></tr>
+          <tr><td>Dúplex</td><td data-label="Publicados">38</td><td data-label="Retirados">32</td><td data-label="% Rotación">84,2%</td><td data-label="Precio medio">148.700&euro;</td><td data-label="Días hasta retirarse">96</td><td data-label="€/m²">1.190&euro;</td></tr>
+          <tr><td>Ático</td><td data-label="Publicados">26</td><td data-label="Retirados">20</td><td data-label="% Rotación">76,9%</td><td data-label="Precio medio">195.000&euro;</td><td data-label="Días hasta retirarse">88</td><td data-label="€/m²">1.410&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td><td data-label="Días hasta retirarse">22</td><td data-label="€/m²">1.322&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el latido principal del mercado es el <strong>piso de 3 dormitorios</strong> (312 anuncios): es el producto dominante de la zona. El producto de esta operación —el estudio pequeño— es un nicho con muy poca oferta (6 anuncios en todo el municipio), lo que significa poca competencia directa.
+        <strong>Lectura:</strong> el latido del mercado en venta es el <strong>piso</strong> (480 anuncios, 77,1% de rotación): el producto dominante de {{MUNICIPIO}}. Dentro de ese agregado, el segmento de 1 dormitorio —una de las dos tipologías resultantes de esta operación— es el de mayor liquidez. El <strong>estudio</strong> —la otra tipología resultante, el loft— es un nicho de solo 6 anuncios, pero se retira rápido (83,3%, 22 días).
       </div>
     </div>
 
-    <!-- 1.3 Por dormitorios y baños -->
+    <!-- 1.3 Tipologías en alquiler -->
     <div class="card">
-      <div class="card-title">1.3 Por dormitorios y baños</div>
-      <div class="card-subtitle">Todas las tipologías con datos suficientes en el municipio (dormitorios × baños)</div>
+      <div class="card-title">1.3 Tipologías en alquiler</div>
+      <div class="card-subtitle">Categorías residenciales de {{MUNICIPIO}} (anuncios de alquiler)</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Dormitorios · Baños</th><th>Publicados</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <thead><tr><th>Categoría</th><th>Baños</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr><td>Estudio (0 dorm.) · 1 baño</td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">28</td><td data-label="Retirados">24</td><td data-label="Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td></tr>
-          <tr><td>2 dormitorios · 1 baño</td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td></tr>
-          <tr><td>2 dormitorios · 2 baños</td><td data-label="Publicados">39</td><td data-label="Retirados">29</td><td data-label="Rotación">74,4%</td><td data-label="Precio medio">139.800&euro;</td></tr>
-          <tr><td>3 dormitorios · 1 baño</td><td data-label="Publicados">64</td><td data-label="Retirados">49</td><td data-label="Rotación">76,6%</td><td data-label="Precio medio">143.200&euro;</td></tr>
-          <tr class="highlight"><td><strong>3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">312</td><td data-label="Retirados">241</td><td data-label="Rotación">77,2%</td><td data-label="Precio medio">168.900&euro;</td></tr>
-          <tr><td>4 dormitorios · 2 baños</td><td data-label="Publicados">62</td><td data-label="Retirados">45</td><td data-label="Rotación">72,6%</td><td data-label="Precio medio">225.400&euro;</td></tr>
-          <tr><td>4 dormitorios · 3 baños</td><td data-label="Publicados">24</td><td data-label="Retirados">18</td><td data-label="Rotación">75,0%</td><td data-label="Precio medio">261.900&euro;</td></tr>
-          <tr><td>5 o más dormitorios · 3 baños</td><td data-label="Publicados">14</td><td data-label="Retirados">9</td><td data-label="Rotación">64,3%</td><td data-label="Precio medio">312.600&euro;</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Baños">1</td><td data-label="Publicados">74</td><td data-label="Retirados">64</td><td data-label="% Rotación">86,5%</td><td data-label="Precio medio">572&euro;</td><td data-label="Días hasta retirarse">34</td><td data-label="€/m²">9,0&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Baños">1</td><td data-label="Publicados">5</td><td data-label="Retirados">5</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">380&euro;</td><td data-label="Días hasta retirarse">15</td><td data-label="€/m²">11,9&euro;</td></tr>
+          <tr><td>Chalet</td><td data-label="Baños">2</td><td data-label="Publicados">10</td><td data-label="Retirados">7</td><td data-label="% Rotación">70,0%</td><td data-label="Precio medio">890&euro;</td><td data-label="Días hasta retirarse">58</td><td data-label="€/m²">6,3&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el mercado se mueve sobre todo en <strong>3 dormitorios · 2 baños</strong> (312 anuncios, el PULSO). El producto de esta operación, el piso de <strong>1 dormitorio · 1 baño</strong>, tiene rotación todavía mayor (85,7%) con muy poca oferta: se retira rápido y casi no tiene competencia. Por encima de 4 dormitorios la rotación cae —producto más grande, más lento de colocar.
+        <strong>Lectura:</strong> en alquiler el latido también es el <strong>piso</strong> (86,5% de rotación). El <strong>estudio</strong> rota al 100%, con retirada en apenas 15 días: si en lugar de vender se opta por alquilar, el producto pequeño tiene salida garantizada.
       </div>
     </div>
 
-    <!-- 1.4 Tramos de precio -->
+    <!-- 1.4 Tramos de precio en venta -->
     <div class="card">
-      <div class="card-title">1.4 Por tramos de precio</div>
-      <div class="card-subtitle">Dónde está el volumen y dónde la velocidad de venta</div>
+      <div class="card-title">1.4 Tramos de precio en venta</div>
+      <div class="card-subtitle">Todos los tramos, {{MUNICIPIO}}</div>
       <div class="term-explainer">
-        <strong>Cómo se reparten los precios en la zona:</strong> de cada 10 pisos, el más barato ronda los 38.000 &euro; y el más caro los 312.000 &euro;. El precio que parte el mercado por la mitad es de <strong>128.500 &euro;</strong>.
+        <strong>Cómo se reparten los precios:</strong> de cada 10 pisos, el más barato ronda los 38.000&euro; y el más caro los 312.000&euro;. El precio que parte el mercado por la mitad es de <strong>128.500&euro;</strong>.
       </div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Tramo de precio</th><th>Publicados</th><th>Retirados</th><th>Rotación</th></tr></thead>
+          <thead><tr><th>Tramo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
-          <tr><td>Menos de 50.000&euro;</td><td data-label="Publicados">74</td><td data-label="Retirados">62</td><td data-label="Rotación">83,8%</td></tr>
-          <tr class="highlight-asset"><td><strong>50.000 – 80.000&euro;</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">61</td><td data-label="Retirados">51</td><td data-label="Rotación">83,6%</td></tr>
-          <tr><td>80.000 – 110.000&euro;</td><td data-label="Publicados">58</td><td data-label="Retirados">47</td><td data-label="Rotación">81,0%</td></tr>
-          <tr class="highlight"><td><strong>110.000 – 160.000&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">102</td><td data-label="Retirados">78</td><td data-label="Rotación">76,5%</td></tr>
-          <tr><td>160.000 – 220.000&euro;</td><td data-label="Publicados">67</td><td data-label="Retirados">46</td><td data-label="Rotación">68,7%</td></tr>
-          <tr><td>220.000&euro; o más</td><td data-label="Publicados">44</td><td data-label="Retirados">27</td><td data-label="Rotación">61,4%</td></tr>
+          <tr><td>Menos de 50.000&euro;</td><td data-label="Publicados">68</td><td data-label="Retirados">57</td><td data-label="% Rotación">83,8%</td><td data-label="Días hasta retirarse">165</td></tr>
+          <tr class="highlight-asset"><td><strong>50.000 – 80.000&euro;</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">79</td><td data-label="Retirados">66</td><td data-label="% Rotación">83,5%</td><td data-label="Días hasta retirarse">71</td></tr>
+          <tr><td>80.000 – 110.000&euro;</td><td data-label="Publicados">88</td><td data-label="Retirados">70</td><td data-label="% Rotación">79,5%</td><td data-label="Días hasta retirarse">98</td></tr>
+          <tr class="highlight"><td><strong>110.000 – 160.000&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">158</td><td data-label="Retirados">122</td><td data-label="% Rotación">77,2%</td><td data-label="Días hasta retirarse">88</td></tr>
+          <tr><td>160.000 – 220.000&euro;</td><td data-label="Publicados">121</td><td data-label="Retirados">89</td><td data-label="% Rotación">73,6%</td><td data-label="Días hasta retirarse">121</td></tr>
+          <tr><td>220.000&euro; o más</td><td data-label="Publicados">98</td><td data-label="Retirados">67</td><td data-label="% Rotación">68,4%</td><td data-label="Días hasta retirarse">158</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el tramo con más volumen es el de <strong>110.000 a 160.000 &euro;</strong>, el precio del producto dominante. La rotación más alta está por debajo: en el tramo barato (hasta 80.000 &euro;) supera el 83%, mientras que por encima de 220.000 &euro; cae al 61%. <strong>El producto barato gira más rápido.</strong> Las viviendas resultantes de esta operación caen en el tramo de 50.000 a 80.000 &euro;.
+        <strong>Lectura:</strong> el tramo con más volumen es <strong>110.000-160.000&euro;</strong>, el precio del producto dominante. Las viviendas resultantes de esta operación caen en el tramo de <strong>50.000-80.000&euro;</strong>, con rotación alta (83,5%) y solo 71 días hasta retirarse — muy por debajo de la media general (118 días).
       </div>
     </div>
 
-    <!-- 1.5 Comparativa zona -->
+    <!-- 1.5 Tramos de renta en alquiler -->
     <div class="card">
-      <div class="card-title">1.5 Comparativa por barrio/calle</div>
-      <div class="card-subtitle">Zonas con 5 o más anuncios · incluye la propia calle de la operación</div>
+      <div class="card-title">1.5 Tramos de renta en alquiler</div>
+      <div class="card-subtitle">Todos los tramos, {{MUNICIPIO}}</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Zona</th><th>Anuncios</th><th>Retirados</th><th>Rotación</th><th>Precio medio</th></tr></thead>
+          <thead><tr><th>Tramo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
-          <tr><td>Barrio Centro</td><td data-label="Anuncios">14</td><td data-label="Retirados">13</td><td data-label="Rotación">92,9%</td><td data-label="Precio medio">102.400&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark mark-asset">Tu calle</span></td><td data-label="Anuncios">7</td><td data-label="Retirados">7</td><td data-label="Rotación">100,0%</td><td data-label="Precio medio">44.200&euro;</td></tr>
-          <tr><td>Barrio San Francisco</td><td data-label="Anuncios">11</td><td data-label="Retirados">9</td><td data-label="Rotación">81,8%</td><td data-label="Precio medio">88.700&euro;</td></tr>
-          <tr><td>Barrio La Estación</td><td data-label="Anuncios">9</td><td data-label="Retirados">8</td><td data-label="Rotación">88,9%</td><td data-label="Precio medio">67.500&euro;</td></tr>
+          <tr><td>Menos de 350&euro;</td><td data-label="Publicados">4</td><td data-label="Retirados">4</td><td data-label="% Rotación">100,0%</td><td data-label="Días hasta retirarse">20</td></tr>
+          <tr class="highlight-asset"><td><strong>350 – 500&euro;</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">9</td><td data-label="Retirados">8</td><td data-label="% Rotación">88,9%</td><td data-label="Días hasta retirarse">24</td></tr>
+          <tr class="highlight"><td><strong>500 – 650&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">38</td><td data-label="Retirados">33</td><td data-label="% Rotación">86,8%</td><td data-label="Días hasta retirarse">30</td></tr>
+          <tr><td>650 – 800&euro;</td><td data-label="Publicados">24</td><td data-label="Retirados">20</td><td data-label="% Rotación">83,3%</td><td data-label="Días hasta retirarse">42</td></tr>
+          <tr><td>800 – 1.000&euro;</td><td data-label="Publicados">9</td><td data-label="Retirados">7</td><td data-label="% Rotación">77,8%</td><td data-label="Días hasta retirarse">55</td></tr>
+          <tr><td>1.000&euro; o más</td><td data-label="Publicados">5</td><td data-label="Retirados">4</td><td data-label="% Rotación">80,0%</td><td data-label="Días hasta retirarse">70</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> la propia calle de la operación ha retirado el 100% de sus anuncios (7 de 7): todo lo que sale a la venta en esta calle, se coloca. Es la mejor señal de liquidez posible para esta ubicación.
+        <strong>Lectura:</strong> el grueso del alquiler está en <strong>500-650&euro;</strong>, el tramo dominante. Las viviendas resultantes caen en <strong>350-500&euro;</strong>, con rotación muy alta (88,9%) y apenas 24 días hasta retirarse.
       </div>
     </div>
 
-    <!-- 1.6 TOP retirados -->
+    <!-- 1.6 Comparativa por barrios/zonas — VENTA -->
     <div class="card">
-      <div class="card-title">1.6 Productos que más rápido desaparecen del mercado</div>
-      <div class="card-subtitle">Tiempo medio en mercado hasta la retirada, por producto — no es la misma lectura que la tabla de dormitorios × baños: aquí importa la VELOCIDAD, no el volumen</div>
+      <div class="card-title">1.6 Comparativa por barrios/zonas — venta</div>
+      <div class="card-subtitle">Zonas con actividad de venta en {{MUNICIPIO}} · incluye la propia calle de la operación</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Producto</th><th>Retirados</th><th>Días medios en mercado</th><th>Días valor central</th></tr></thead>
+          <thead><tr><th>Zona</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight-asset"><td><strong>Piso 1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Retirados">24</td><td data-label="Días medios en mercado">31 días</td><td data-label="Días valor central">19 días</td></tr>
-          <tr><td>Estudio (0 dorm.) · 1 baño</td><td data-label="Retirados">5</td><td data-label="Días medios en mercado">38 días</td><td data-label="Días valor central">22 días</td></tr>
-          <tr class="highlight"><td><strong>Piso 3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">241</td><td data-label="Días medios en mercado">104 días</td><td data-label="Días valor central">68 días</td></tr>
-          <tr><td>Piso 4 dormitorios · 2 baños</td><td data-label="Retirados">45</td><td data-label="Días medios en mercado">142 días</td><td data-label="Días valor central">97 días</td></tr>
+          <tr class="highlight"><td>Centro <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">132</td><td data-label="Retirados">108</td><td data-label="% Rotación">81,8%</td><td data-label="Precio medio">168.900&euro;</td><td data-label="Días hasta retirarse">96</td><td data-label="€/m²">1.480&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark mark-asset">Tu calle</span></td><td data-label="Publicados">7</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">58.400&euro;</td><td data-label="Días hasta retirarse">24</td><td data-label="€/m²">1.290&euro;</td></tr>
+          <tr><td>Barrio San Francisco</td><td data-label="Publicados">58</td><td data-label="Retirados">47</td><td data-label="% Rotación">81,0%</td><td data-label="Precio medio">138.700&euro;</td><td data-label="Días hasta retirarse">102</td><td data-label="€/m²">1.190&euro;</td></tr>
+          <tr><td>Barrio La Estación</td><td data-label="Publicados">41</td><td data-label="Retirados">33</td><td data-label="% Rotación">80,5%</td><td data-label="Precio medio">112.500&euro;</td><td data-label="Días hasta retirarse">110</td><td data-label="€/m²">980&euro;</td></tr>
+          <tr><td>Zona Norte</td><td data-label="Publicados">36</td><td data-label="Retirados">26</td><td data-label="% Rotación">72,2%</td><td data-label="Precio medio">205.600&euro;</td><td data-label="Días hasta retirarse">134</td><td data-label="€/m²">1.620&euro;</td></tr>
+          <tr><td>Periferia / Polígono</td><td data-label="Publicados">22</td><td data-label="Retirados">14</td><td data-label="% Rotación">63,6%</td><td data-label="Precio medio">96.200&euro;</td><td data-label="Días hasta retirarse">148</td><td data-label="€/m²">740&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el producto pequeño (1 dormitorio, estudio) no solo rota más en porcentaje, además tarda menos tiempo en desaparecer del mercado: unas 3-4 semanas frente a los 3-4 meses del piso de 3 dormitorios. Es la señal de demanda más directa de esta operación.
+        <strong>Lectura:</strong> la propia calle de la operación ha retirado el 100% de sus anuncios (7 de 7) en apenas 24 días: todo lo que sale a la venta en esta calle, se coloca. Es la mejor señal de liquidez posible para esta ubicación.
       </div>
     </div>
 
-    <!-- 1.7 Alquiler tradicional -->
+    <!-- 1.7 Comparativa por barrios/zonas — ALQUILER -->
     <div class="card">
-      <div class="card-title">1.7 Mercado de alquiler — tradicional</div>
-      <div class="card-subtitle">89 anuncios de alquiler tradicional analizados · piso completo, contrato de larga duración</div>
+      <div class="card-title">1.7 Comparativa por barrios/zonas — alquiler</div>
+      <div class="card-subtitle">Zonas con actividad de alquiler en {{MUNICIPIO}}</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Tipo · Dormitorios</th><th>Baños</th><th>Superficie media</th><th>Anuncios</th><th>Rotación</th><th>Renta media</th><th>&euro;/m²/mes</th></tr></thead>
+          <thead><tr><th>Zona</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight-asset"><td><strong>Piso 1 dormitorio</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Baños">1</td><td data-label="Superficie media">39 m²</td><td data-label="Anuncios">12</td><td data-label="Rotación">91,7%</td><td data-label="Renta media">445&euro;/mes</td><td data-label="&euro;/m²/mes">11,4&euro;</td></tr>
-          <tr><td>Estudio (0 dormitorios)</td><td data-label="Baños">1</td><td data-label="Superficie media">32 m²</td><td data-label="Anuncios">5</td><td data-label="Rotación">100,0%</td><td data-label="Renta media">380&euro;/mes</td><td data-label="&euro;/m²/mes">11,9&euro;</td></tr>
-          <tr><td>Piso 2 dormitorios</td><td data-label="Baños">1</td><td data-label="Superficie media">64 m²</td><td data-label="Anuncios">34</td><td data-label="Rotación">88,2%</td><td data-label="Renta media">560&euro;/mes</td><td data-label="&euro;/m²/mes">8,7&euro;</td></tr>
-          <tr><td>Piso 3 dormitorios</td><td data-label="Baños">2</td><td data-label="Superficie media">88 m²</td><td data-label="Anuncios">28</td><td data-label="Rotación">82,1%</td><td data-label="Renta media">640&euro;/mes</td><td data-label="&euro;/m²/mes">7,3&euro;</td></tr>
-          <tr><td>Chalet / vivienda unifamiliar</td><td data-label="Baños">2+</td><td data-label="Superficie media">142 m²</td><td data-label="Anuncios">10</td><td data-label="Rotación">70,0%</td><td data-label="Renta media">890&euro;/mes</td><td data-label="&euro;/m²/mes">6,3&euro;</td></tr>
+          <tr class="highlight"><td>Centro <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">44</td><td data-label="Retirados">39</td><td data-label="% Rotación">88,6%</td><td data-label="Precio medio">612&euro;</td><td data-label="Días hasta retirarse">28</td><td data-label="€/m²">9,4&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark mark-asset">Tu calle</span></td><td data-label="Publicados">3</td><td data-label="Retirados">3</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">420&euro;</td><td data-label="Días hasta retirarse">18</td><td data-label="€/m²">11,8&euro;</td></tr>
+          <tr><td>Barrio San Francisco</td><td data-label="Publicados">21</td><td data-label="Retirados">18</td><td data-label="% Rotación">85,7%</td><td data-label="Precio medio">545&euro;</td><td data-label="Días hasta retirarse">33</td><td data-label="€/m²">8,6&euro;</td></tr>
+          <tr><td>Barrio La Estación</td><td data-label="Publicados">14</td><td data-label="Retirados">11</td><td data-label="% Rotación">78,6%</td><td data-label="Precio medio">480&euro;</td><td data-label="Días hasta retirarse">41</td><td data-label="€/m²">7,9&euro;</td></tr>
+          <tr><td>Zona Norte</td><td data-label="Publicados">9</td><td data-label="Retirados">6</td><td data-label="% Rotación">66,7%</td><td data-label="Precio medio">690&euro;</td><td data-label="Días hasta retirarse">55</td><td data-label="€/m²">9,9&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el alquiler de 1 dormitorio se mueve sobre <strong>445 &euro;/mes</strong> (11,4&euro;/m²) y rota al 91,7%: si en lugar de vender se decide alquilar, el producto también tiene salida rápida. El &euro;/m²/mes baja según crece la superficie —el piso pequeño es el que mejor rentabiliza por metro cuadrado.
+        <strong>Lectura:</strong> la calle de la operación también lidera en alquiler: 100% de rotación en 18 días. El barrio Centro es el que más volumen mueve (44 anuncios, 88,6%), con el &euro;/m² más alto de la comparativa junto a la propia calle.
       </div>
     </div>
 
-    <!-- 1.8 Alquiler por habitaciones -->
+    <!-- 1.8 Otros activos -->
     <div class="card">
-      <div class="card-title">1.8 Mercado de alquiler — por habitaciones</div>
+      <div class="card-title">1.8 Otros activos</div>
+      <div class="card-subtitle">Mercado no residencial de {{MUNICIPIO}}: locales, garajes, trasteros, terrenos y oficinas</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tipo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th></tr></thead>
+          <tbody>
+          <tr class="highlight"><td>Locales o naves <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">46</td><td data-label="Retirados">33</td><td data-label="% Rotación">71,7%</td><td data-label="Precio medio">88.500&euro;</td></tr>
+          <tr><td>Garaje</td><td data-label="Publicados">18</td><td data-label="Retirados">13</td><td data-label="% Rotación">72,2%</td><td data-label="Precio medio">11.200&euro;</td></tr>
+          <tr><td>Terreno</td><td data-label="Publicados">5</td><td data-label="Retirados">2</td><td data-label="% Rotación">40,0%</td><td data-label="Precio medio">98.000&euro;</td></tr>
+          <tr><td>Trastero</td><td data-label="Publicados">6</td><td data-label="Retirados">3</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">6.800&euro;</td></tr>
+          <tr><td>Oficina</td><td data-label="Publicados">3</td><td data-label="Retirados">2</td><td data-label="% Rotación">66,7%</td><td data-label="Precio medio">72.500&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-gray">
+        Mercado no residencial, se muestra por completitud; no es el objeto de esta operación.
+      </div>
+    </div>
+
+    <!-- 1.9 Alquiler por habitaciones (simplificado) -->
+    <div class="card">
+      <div class="card-title">1.9 Alquiler por habitaciones</div>
       <div class="card-subtitle">Renta media por habitación suelta y volumen de anuncios, por tamaño de piso</div>
       <div class="table-wrap">
         <table class="table-mobile">
@@ -823,16 +902,63 @@
       -->
     </div>
 
+    <!-- 1.10 Configuración por dormitorios y baños (mercado, todas las combinaciones) -->
+    <div class="card">
+      <div class="card-title">1.10 Configuración por dormitorios y baños</div>
+      <div class="card-subtitle">Todas las combinaciones en venta de {{MUNICIPIO}} · marcadas las <strong>viviendas resultantes</strong> de esta operación</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Categoría</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
+          <tbody>
+          <tr class="highlight-asset"><td><strong>Estudio · 1 baño</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td><td data-label="Días hasta retirarse">22</td><td data-label="€/m²">1.322&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Publicados">28</td><td data-label="Retirados">24</td><td data-label="% Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td><td data-label="Días hasta retirarse">26</td><td data-label="€/m²">1.480&euro;</td></tr>
+          <tr class="highlight"><td><strong>2 dormitorios · 1 baño</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="% Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td><td data-label="Días hasta retirarse">95</td><td data-label="€/m²">1.180&euro;</td></tr>
+          <tr><td>2 dormitorios · 2 baños</td><td data-label="Publicados">96</td><td data-label="Retirados">75</td><td data-label="% Rotación">78,1%</td><td data-label="Precio medio">148.900&euro;</td><td data-label="Días hasta retirarse">88</td><td data-label="€/m²">1.360&euro;</td></tr>
+          <tr><td>3 dormitorios · 1 baño</td><td data-label="Publicados">54</td><td data-label="Retirados">39</td><td data-label="% Rotación">72,2%</td><td data-label="Precio medio">138.200&euro;</td><td data-label="Días hasta retirarse">128</td><td data-label="€/m²">1.150&euro;</td></tr>
+          <tr><td>3 dormitorios · 2 baños</td><td data-label="Publicados">72</td><td data-label="Retirados">54</td><td data-label="% Rotación">75,0%</td><td data-label="Precio medio">172.400&euro;</td><td data-label="Días hasta retirarse">108</td><td data-label="€/m²">1.340&euro;</td></tr>
+          <tr><td>4 dormitorios · 2 baños</td><td data-label="Publicados">30</td><td data-label="Retirados">21</td><td data-label="% Rotación">70,0%</td><td data-label="Precio medio">208.600&euro;</td><td data-label="Días hasta retirarse">142</td><td data-label="€/m²">1.260&euro;</td></tr>
+          <tr><td>4 dormitorios · 3 baños</td><td data-label="Publicados">10</td><td data-label="Retirados">6</td><td data-label="% Rotación">60,0%</td><td data-label="Precio medio">249.500&euro;</td><td data-label="Días hasta retirarse">165</td><td data-label="€/m²">1.420&euro;</td></tr>
+          <tr><td>5+ dormitorios · 3 baños</td><td data-label="Publicados">4</td><td data-label="Retirados">2</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">295.000&euro;</td><td data-label="Días hasta retirarse">188</td><td data-label="€/m²">1.180&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el grueso del mercado está en <strong>2 dormitorios · 1 baño</strong> (180 anuncios, el PULSO de esta tabla). Las dos configuraciones que produce esta operación —estudio y 1 dormitorio· 1 baño— están entre las de mayor rotación (83-86%) y menor tiempo de retirada de toda la tabla.
+      </div>
+    </div>
+
+    <!-- 1.11 Productos que más se retiran (ranking de liquidez, venta + alquiler) -->
+    <div class="card">
+      <div class="card-title">1.11 Productos que más se retiran</div>
+      <div class="card-subtitle">Ranking de mayor a menor rotación · venta y alquiler de {{MUNICIPIO}}</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Producto / Tipología</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
+          <tbody>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> (alquiler) <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Retirados">5</td><td data-label="% Rotación">100,0%</td><td data-label="Días hasta retirarse">15</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> (venta) <span class="mark mark-asset">Tu calle</span></td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Días hasta retirarse">24</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> (alquiler) <span class="mark mark-asset">Tu calle</span></td><td data-label="Retirados">3</td><td data-label="% Rotación">100,0%</td><td data-label="Días hasta retirarse">18</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> (venta) <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Días hasta retirarse">22</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> (alquiler) <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">64</td><td data-label="% Rotación">86,5%</td><td data-label="Días hasta retirarse">34</td></tr>
+          <tr><td>Dúplex (venta)</td><td data-label="Retirados">32</td><td data-label="% Rotación">84,2%</td><td data-label="Días hasta retirarse">96</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el estudio en alquiler y la propia calle de la operación (venta y alquiler) rotan al 100%: todo lo que sale se coloca, en menos de un mes. Son la señal de demanda más fuerte de toda la lectura de mercado.
+      </div>
+    </div>
+
     <!-- Term-explainer de cierre (antes del veredicto) -->
     <div class="term-explainer">
-      <strong>Antes de leer el veredicto:</strong> todas las tablas de este motor comparan el <strong>PULSO</strong> (el producto que más se mueve, piso de 3 dormitorios) con las <strong>viviendas resultantes</strong> de esta operación (piso pequeño). Rotación alta = el mercado absorbe rápido ese producto; ese es el dato que sostiene la conclusión siguiente.
+      <strong>Antes de leer el veredicto:</strong> todas las tablas de este motor comparan el <strong>PULSO</strong> (el producto que más se mueve) con las <strong>viviendas resultantes</strong> de esta operación (estudio loft y piso de 1 dormitorio). Rotación alta = el mercado absorbe rápido ese producto; ese es el dato que sostiene la conclusión siguiente.
     </div>
 
     <!-- Conclusión PULSO -->
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
       <div>
-        <strong>Conclusión del PULSO.</strong> El latido principal del mercado es el piso de 3 dormitorios en el tramo de 110.000 a 160.000 &euro;. Pero la liquidez máxima está en el producto pequeño y barato: el piso de 1 dormitorio rota al 85,7%, el tramo por debajo de 80.000 &euro; al 83,6%, y la propia calle de la operación al 100%. Trocear el local en unidades pequeñas las coloca exactamente en el segmento de mayor rotación de la zona.
+        <strong>Conclusión del PULSO.</strong> El latido principal del mercado es el piso, tanto en venta (480 anuncios, tramo 110.000-160.000&euro;) como en alquiler (74 anuncios, tramo 500-650&euro;). Pero la liquidez máxima está en el producto pequeño y barato: las viviendas resultantes rotan al 83,5% en venta y al 88,9% en alquiler, muy por encima de sus tramos de referencia en velocidad, y la propia calle de la operación retira el 100% de sus anuncios tanto en venta como en alquiler. Trocear el local en unidades pequeñas las coloca exactamente en el segmento de mayor rotación de la zona.
       </div>
     </div>
   </div>
@@ -859,16 +985,11 @@
       <div class="card-title">Qué vas a encontrar en este motor</div>
       <div class="card-subtitle">MOTOR 2 · IMPULSO — la valoración del activo</div>
       <div class="term-explainer">
-        IMPULSO no fija un precio de venta cerrado: construye una <strong>estimación de mercado</strong>. Partimos de los testigos reales de venta del municipio —pisos comparables, ya <strong>retirados</strong> del mercado, es decir, el precio al que se anunciaron por última vez, no el precio de firma— y con ellos calculamos un &euro;/m² de referencia y una horquilla de tres escenarios (conservador, medio, optimista) para cada vivienda resultante de esta operación. Un anuncio retirado sugiere que hubo comprador cerca de ese precio, pero no lo confirma: esa confirmación llega con el precio escriturado (<strong>MOTOR 3 · Notariado</strong>) y la validación de campo (<strong>MOTOR 4 · MTVV</strong>).
+        IMPULSO no fija un precio de venta cerrado: construye una <strong>estimación de mercado</strong>. Partimos de los testigos reales del municipio ya <strong>retirados</strong> del mercado —el precio al que se anunciaron por última vez, no el precio de firma— y calculamos, sobre esos &euro;/m² comparables, la <strong>mediana</strong> y los <strong>percentiles</strong> de la muestra: el <strong>percentil 25</strong> marca el escenario <strong>Conservador</strong>, la <strong>mediana (percentil 50)</strong> el escenario <strong>Medio</strong> —la cifra prudente de referencia—, y el <strong>percentil 75</strong> el escenario <strong>Optimista</strong>. Aplicado a la superficie de cada vivienda resultante, esa horquilla es el precio que verás en este motor. Es una estimación honesta sobre anuncios retirados, no un precio cerrado: la confirmación llega con el precio escriturado (<strong>MOTOR 3 · Notariado</strong>) y la validación de campo (<strong>MOTOR 4 · MTVV</strong>).
       </div>
     </div>
 
-    <!-- DISCLAIMER MERCADO PEQUEÑO: solo si aplica (la zona de la operación tiene muestra reducida de testigos comparables; si el municipio tiene muestra amplia, este aviso se retira entero) -->
-    <div class="market-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span><strong>Aviso — muestra limitada en {{MUNICIPIO}}.</strong> Es un municipio pequeño con poca oferta de vivienda comparable al producto de esta operación: los testigos disponibles son pocos. Leemos igualmente el movimiento del mercado con los testigos reales que hay, y contrastamos con el Notariado (Motor 3) y el MTVV (Motor 4) antes de dar el precio por confirmado.</span>
-    </div>
-    <!-- /DISCLAIMER MERCADO PEQUEÑO -->
+    <!-- El aviso "mercado pequeño" (muestra reducida) se movió al bloque de inicio AA-2, antes de MOTOR 1 · PULSO -->
 
     <!-- 2.1 Datos de consulta -->
     <div class="card">
@@ -929,7 +1050,7 @@
       <div class="card-title">2.4 Precio por vivienda resultante</div>
       <div class="card-subtitle">Estimación de mercado, conservador / medio / optimista — desglosada por cada unidad</div>
       <div class="term-explainer">
-        <strong>De dónde sale esta horquilla:</strong> testigos reales de venta del municipio (2.2) &rarr; precio al que se retiraron del mercado &rarr; mediana/percentiles de esos &euro;/m² comparables (central 1.550&euro;/m², rango 1.333–1.793&euro;/m²) &rarr; aplicado a la superficie de cada vivienda resultante &rarr; la horquilla de abajo. Es una estimación de mercado sobre anuncios retirados, no un precio de cierre.
+        <strong>De dónde sale esta horquilla:</strong> testigos reales de venta del municipio (2.2) &rarr; precio al que se retiraron del mercado &rarr; percentiles de esos &euro;/m² comparables: <strong>P25 = Conservador</strong>, <strong>P50 (mediana) = Medio</strong> (1.550&euro;/m²), <strong>P75 = Optimista</strong> (rango 1.333–1.793&euro;/m²) &rarr; aplicado a la superficie de cada vivienda resultante &rarr; la horquilla de abajo. Es una estimación de mercado sobre anuncios retirados, no un precio de cierre.
       </div>
 
       <div class="tipo-card">
@@ -1267,7 +1388,7 @@
             Validado en campo
           </span>
         </div>
-        <div class="section-subtitle">Método Total de Valoración de Vivienda · Metodología Programa IN</div>
+        <div class="section-subtitle">Método Total de Validación de Vivienda · Metodología Programa IN</div>
       </div>
       <span class="zone-badge mtvv">La validación</span>
       <span class="exclusive-tag">
@@ -1278,7 +1399,7 @@
 
     <!-- Explainer MTVV (obligatorio siempre) -->
     <div class="mtvv-explainer">
-      <strong>¿Qué es el Método Total de Valoración de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación. Es la validación humana que ningún algoritmo da: hablar con las inmobiliarias de la zona, buscar testigos reales y, finalmente, probar el precio publicando un anuncio de verdad para medir la respuesta del mercado. Un MTVV sin Paso 4 (anuncio real + medición de demanda) no se considera un MTVV completo.
+      <strong>¿Qué es el Método Total de Validación de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación. Es la validación humana que ningún algoritmo da: hablar con las inmobiliarias de la zona, buscar testigos reales y, finalmente, probar el precio publicando un anuncio de verdad para medir la respuesta del mercado. Un MTVV sin Paso 4 (anuncio real + medición de demanda) no se considera un MTVV completo.
     </div>
 
     <!-- Provenance (obligatorio siempre) -->
@@ -1450,15 +1571,15 @@
       </div>
       <div>
         <div class="section-title">MOTOR 4 · MTVV — Validación de campo <img class="mtvv-logo-in" src="./assets/logo-in.png" alt="Comunidad IN"></div>
-        <div class="section-subtitle">Método Total de Valoración de Vivienda · Metodología Programa IN</div>
+        <div class="section-subtitle">Método Total de Validación de Vivienda · Metodología Programa IN</div>
       </div>
       <span class="exclusive-tag">Exclusivo Comunidad IN</span>
     </div>
     <div class="mtvv-explainer">
-      <strong>¿Qué es el Método Total de Valoración de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación.
+      <strong>¿Qué es el Método Total de Validación de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación.
     </div>
     <div class="disclaimer">
-      Validación de campo (MTVV) — no disponible para esta zona. Nuestra base de datos no contiene ningún Método Total de Valoración de Vivienda para este ámbito. Conviene aclarar que un MTVV en base de datos sería, en todo caso, un estudio histórico de una operación anterior. La validación con valor real de decisión es el MTVV que se realiza específicamente para esta operación (trabajo de campo del inversor, con anuncio real y medición de respuesta del mercado), que no forma parte de este informe.
+      Validación de campo (MTVV) — no disponible para esta zona. Nuestra base de datos no contiene ningún Método Total de Validación de Vivienda para este ámbito. Conviene aclarar que un MTVV en base de datos sería, en todo caso, un estudio histórico de una operación anterior. La validación con valor real de decisión es el MTVV que se realiza específicamente para esta operación (trabajo de campo del inversor, con anuncio real y medición de respuesta del mercado), que no forma parte de este informe.
     </div>
   </div>
 
@@ -1678,6 +1799,7 @@
     <div style="font-size:14px; font-weight:700; color:white;"><a href="https://im-pulso.app" target="_blank" rel="noopener" style="color:white; text-decoration:none;">IM·PULSO — Inteligencia de Mercado Inmobiliario</a></div>
     <div class="footer-links"><a href="https://im-pulso.app" target="_blank" rel="noopener">im-pulso.app</a></div>
 
+    <!-- COBRAND CDU FOOTER: activar solo en operaciones CdU
     <div class="footer-cobrand">
       <span class="fc-label">En colaboración especial con</span>
       <span class="fc-cdu">
@@ -1686,6 +1808,7 @@
       </span>
       <a href="https://tucambiodeuso.com" target="_blank" rel="noopener">tucambiodeuso.com</a>
     </div>
+    -->
 
     <div class="footer-fine">IM·PULSO V2 · Plantilla definitiva · Caso demo — {{MUNICIPIO}} · Informe generado el {{FECHA_INFORME}}</div>
   </div>

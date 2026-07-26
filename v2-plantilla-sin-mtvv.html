@@ -113,14 +113,16 @@
   .source-pill.mtvv-inactive .sp-name-title { color: rgba(255,255,255,0.6) !important; }
   .source-pill.mtvv-inactive .sp-icon svg { stroke: #9CA3AF !important; }
 
-  /* Tarjeta MTVV "no disponible para esta zona": tarjeta atenuada + logo desaturado + etiqueta rojiza dentro de la tarjeta */
+  /* Tarjeta MTVV "no disponible para esta zona": tarjeta atenuada + logo desaturado,
+     badge FUERA de la capa atenuada para que quede nítido y bien legible. */
   .mtvv-dim-inner { opacity: 0.55; filter: saturate(0.7); display: flex; flex-direction: column; flex: 1; min-height: 0; }
   .mtvv-dim-inner .sp-icon-logo { filter: grayscale(0.55) saturate(0.5); }
   .mtvv-unavailable-badge {
     align-self: flex-start; margin-top: 8px;
-    background: rgba(218,24,57,0.32); color: #FFD9DD; font-size: 8.5px; font-weight: 700; letter-spacing: 0.3px;
-    text-transform: uppercase; padding: 3px 8px; border-radius: 999px;
-    border: 1px solid rgba(218,24,57,0.65); white-space: nowrap;
+    background: #DA1839; color: #FFFFFF; font-size: 9px; font-weight: 800; letter-spacing: 0.3px;
+    text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.35); white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(218,24,57,0.45);
   }
 
   .op-ficha {
@@ -710,7 +712,8 @@
         <div class="sp-subtitle">Contexto oficial</div>
         <div class="sp-desc">Compraventas escrituradas reales del Portal del Notariado: precio por m², volumen y perfil del comprador.</div>
       </div>
-      <!-- MTVV (Método Total de Validación de Vivienda) — rojo IN — variante SIN MTVV: tarjeta desactivada, atenuada + badge "no disponible para esta zona" -->
+      <!-- MTVV (Método Total de Validación de Vivienda) — rojo IN — variante SIN MTVV: tarjeta desactivada
+           (atenuada + logo desaturado), badge "no disponible" FUERA de la capa atenuada para que quede nítido -->
       <div class="source-pill mtvv-dimmed">
         <div class="mtvv-dim-inner">
           <div class="sp-icon">
@@ -723,8 +726,8 @@
           <div class="sp-micronote">
             <span>Referencia de zona · no de esta operación.</span>
           </div>
-          <div class="mtvv-unavailable-badge">No disponible para esta zona</div>
         </div>
+        <div class="mtvv-unavailable-badge">No disponible para esta zona</div>
       </div>
     </div>
   </div>
@@ -1161,15 +1164,15 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         </div>
         <div class="scenario-row">
           <div class="scenario-box">
-            <div class="sc-label">Conservador</div>
+            <div class="sc-label">Conservador (P25)</div>
             <div class="sc-value">44.300&euro;</div>
           </div>
           <div class="scenario-box main-scenario">
-            <div class="sc-label">Medio</div>
+            <div class="sc-label">Medio (P50)</div>
             <div class="sc-value">49.600&euro;</div>
           </div>
           <div class="scenario-box">
-            <div class="sc-label">Optimista</div>
+            <div class="sc-label">Optimista (P75)</div>
             <div class="sc-value">58.600&euro;</div>
           </div>
         </div>
@@ -1187,15 +1190,15 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         </div>
         <div class="scenario-row">
           <div class="scenario-box">
-            <div class="sc-label">Conservador</div>
+            <div class="sc-label">Conservador (P25)</div>
             <div class="sc-value">53.400&euro;</div>
           </div>
           <div class="scenario-box main-scenario">
-            <div class="sc-label">Medio</div>
+            <div class="sc-label">Medio (P50)</div>
             <div class="sc-value">59.800&euro;</div>
           </div>
           <div class="scenario-box">
-            <div class="sc-label">Optimista</div>
+            <div class="sc-label">Optimista (P75)</div>
             <div class="sc-value">70.800&euro;</div>
           </div>
         </div>
@@ -1227,9 +1230,9 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso); margin-top:12px;">
         <strong>Qué significa cada escenario, en cifras:</strong>
         <ul class="scenario-list">
-          <li><span class="sl-tag">Conservador</span> <span><strong>(P25):</strong> venta a <strong>142.000&euro;</strong> en 6 meses &mdash; el 75% de los pisos similares se retiran por encima de este precio.</span></li>
-          <li><span class="sl-tag">Medio</span> <span><strong>(P50):</strong> venta a <strong>159.000&euro;</strong> en 6 meses &mdash; la mitad se retira por encima y la mitad por debajo.</span></li>
-          <li><span class="sl-tag">Optimista</span> <span><strong>(P75):</strong> venta a <strong>188.000&euro;</strong> en 6 meses &mdash; solo el 25% se retira por encima de este precio.</span></li>
+          <li><span class="sl-tag">Conservador (P25)</span> <span>venta a <strong>142.000&euro;</strong> en 6 meses &mdash; el 75% de los pisos similares se retiran por encima de este precio.</span></li>
+          <li><span class="sl-tag">Medio (P50)</span> <span>venta a <strong>159.000&euro;</strong> en 6 meses &mdash; la mitad se retira por encima y la mitad por debajo.</span></li>
+          <li><span class="sl-tag">Optimista (P75)</span> <span>venta a <strong>188.000&euro;</strong> en 6 meses &mdash; solo el 25% se retira por encima de este precio.</span></li>
         </ul>
       </div>
 
@@ -1627,232 +1630,6 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
   <hr class="section-divider">
 
   <!-- ============================================ -->
-  <!-- 9. MOTOR 4 · MTVV — Estado (a) FRESCO, Pasos 0-4 completos -->
-  <!-- ============================================ -->
-  <div class="section motor-mtvv" style="background: linear-gradient(180deg, var(--mtvv-bg) 0%, transparent 8%); padding-top: 4px; border-radius: 20px;">
-    <div class="section-header" style="align-items:flex-start;">
-      <div class="section-icon" style="background: var(--mtvv-bg); color: var(--mtvv); border: 2px solid var(--mtvv-border);">
-        <span class="pulso-ecg">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
-        </span>
-      </div>
-      <div style="flex:1;">
-        <div class="section-title" style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-          FUENTE 4 · MTVV — Validación de campo
-          <img class="mtvv-logo-in" src="./assets/logo-in.png" alt="Comunidad IN">
-          <span class="pulso-badge">
-            <span class="pulso-ecg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></span>
-            Validado en campo
-          </span>
-        </div>
-        <div class="section-subtitle">Método Total de Validación de Vivienda · Metodología Programa IN</div>
-      </div>
-      <span class="zone-badge mtvv">La validación</span>
-      <span class="exclusive-tag">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6.5 7 1-5 5 1.2 7-6.2-3.3L5.8 21.5 7 14.5l-5-5 7-1z"/></svg>
-        Exclusivo Comunidad IN
-      </span>
-    </div>
-
-    <!-- Explainer MTVV (obligatorio siempre) -->
-    <div class="mtvv-explainer">
-      <strong>¿Qué es el Método Total de Validación de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación. Es la validación humana que ningún algoritmo da: hablar con las inmobiliarias de la zona, buscar testigos reales y, finalmente, probar el precio publicando un anuncio de verdad para medir la respuesta del mercado. Un MTVV sin Paso 4 (anuncio real + medición de demanda) no se considera un MTVV completo.
-    </div>
-
-    <!-- Provenance (obligatorio siempre) -->
-    <div class="provenance">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-      <span><strong>Sobre el origen de este MTVV.</strong> Realizado en junio de 2026, dentro de los últimos 12 meses. Corresponde al estudio de campo específico de esta operación — es el MTVV vigente, no un histórico.</span>
-    </div>
-
-    <!-- Paso 0 -->
-    <div class="card">
-      <div class="step-header">
-        <div class="step-number">0</div>
-        <div class="step-title">Paso 0 — Contexto del micromercado</div>
-      </div>
-      <div class="kpi-row">
-        <div class="kpi"><div class="kpi-value">18.240</div><div class="kpi-label">Habitantes</div></div>
-        <div class="kpi"><div class="kpi-value">1.180&euro;</div><div class="kpi-label">&euro;/m² del barrio</div></div>
-        <div class="kpi"><div class="kpi-value">0</div><div class="kpi-label">Pisos de 1 dorm. en venta</div></div>
-        <div class="kpi"><div class="kpi-value">94</div><div class="kpi-label">Compraventas registradas (2025)</div></div>
-      </div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Parámetro</th><th>Dato</th></tr></thead>
-          <tbody>
-          <tr><td>Renta neta por hogar</td><td data-label="Dato">31.480&euro;</td></tr>
-          <tr><td>Precio del barrio</td><td data-label="Dato">1.180&euro;/m² (zona intermedia del municipio)</td></tr>
-          <tr><td>Oferta de 1 dormitorio en venta</td><td data-label="Dato">0 viviendas (nicho sin competencia)</td></tr>
-          <tr><td>Oferta de alquiler comparable</td><td data-label="Dato">Apenas 2 pisos en todo el municipio</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-green">
-        <strong>Conclusión del Paso 0:</strong> el producto de 1 dormitorio es inexistente en la oferta actual. Eso es un hueco de mercado: demanda sin competencia directa.
-      </div>
-    </div>
-
-    <!-- Paso 1 -->
-    <div class="card">
-      <div class="step-header">
-        <div class="step-number">1</div>
-        <div class="step-title">Paso 1 — Inmobiliarias: lo que dicen (3 consultadas)</div>
-      </div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Inmobiliaria</th><th>Precio</th><th>Qué dicen</th></tr></thead>
-          <tbody>
-          <tr><td><strong>Inmobiliaria del Centro</strong></td><td data-label="Precio"><strong>55.000&euro;</strong></td><td data-label="Qué dicen">"Venta de 50.000 a 60.000&euro;. Target: inversores y parejas jóvenes."</td></tr>
-          <tr><td><strong>Aitor Fincas</strong></td><td data-label="Precio"><strong>52.000&euro;</strong></td><td data-label="Qué dicen">"Pisos como nuevo de esta tipología, 50.000-55.000&euro; como mucho."</td></tr>
-          <tr><td><strong>Urbana Gestión</strong></td><td data-label="Precio"><strong>58.000&euro;</strong></td><td data-label="Qué dicen">"Si está reformado y bien ubicado, hasta 60.000&euro;."</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-green">
-        <strong>Conclusión del Paso 1:</strong> consenso en una horquilla de 50.000 a 60.000&euro; para un piso como nuevo. La media de las 3 inmobiliarias es de 55.000&euro;.
-      </div>
-      <div class="step-price">
-        <div class="sp-label">Precio del Paso 1 (inmobiliarias)</div>
-        <div class="sp-value">55.000&euro;</div>
-      </div>
-    </div>
-
-    <!-- Paso 2 -->
-    <div class="card">
-      <div class="step-header">
-        <div class="step-number">2</div>
-        <div class="step-title">Paso 2 — Testigos de mercado (anuncios)</div>
-      </div>
-      <div class="insight insight-gray" style="margin-top:0;">
-        <strong>Testigos limitados.</strong> Solo 2 anuncios de esta tipología exacta (piso de 1 dormitorio) en la zona, ambos ya retirados: 58.000&euro; y 51.000&euro;. Muestra pequeña pero coherente con el Paso 1.
-      </div>
-      <div class="step-price">
-        <div class="sp-label">Precio del Paso 2 (testigos)</div>
-        <div class="sp-value">54.500&euro;</div>
-        <div class="sp-note">Media de 2 testigos: 58.000&euro; y 51.000&euro;</div>
-      </div>
-    </div>
-
-    <!-- Paso 3 -->
-    <div class="card">
-      <div class="step-header">
-        <div class="step-number">3</div>
-        <div class="step-title">Paso 3 — Hipótesis de precio</div>
-      </div>
-      <div class="build-box">
-        <div class="bb-title">Cómo se construye la hipótesis</div>
-        <div class="bb-body">
-          <div>&bull; <strong>Paso 1 (inmobiliarias):</strong> media de 55.000&euro;, consenso en 50.000-60.000&euro;.</div>
-          <div>&bull; <strong>Paso 2 (anuncios):</strong> media de 54.500&euro; sobre 2 testigos.</div>
-          <div class="bb-total">&rarr; La hipótesis de precio combina ambos pasos: <strong style="color:var(--mtvv);">54.750&euro;</strong>.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Paso 4 (obligatorio) -->
-    <div class="card">
-      <div class="step-header">
-        <div class="step-number">4</div>
-        <div class="step-title">Paso 4 — Verificación con un anuncio real</div>
-      </div>
-      <p style="font-size: 13px; color: var(--gray-700); margin-bottom: 16px;">Se publicó un anuncio real en Idealista y Fotocasa el 3 de junio de 2026 para medir la respuesta del mercado. El precio de salida se fue ajustando:</p>
-
-      <div class="price-evolution">
-        <div class="price-step"><div class="ps-day">Salida</div><div class="ps-price">64.900&euro;</div></div>
-        <div class="price-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="price-step"><div class="ps-day">Ajuste</div><div class="ps-price">61.500&euro;</div></div>
-        <div class="price-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-        <div class="price-step final"><div class="ps-day">Pico de interés</div><div class="ps-price">54.000&euro;</div></div>
-      </div>
-
-      <div class="kpi-row" style="margin-top:20px;">
-        <div class="kpi"><div class="kpi-value">11</div><div class="kpi-label">Contactos totales</div></div>
-        <div class="kpi"><div class="kpi-value">6</div><div class="kpi-label">Llamadas de interesados</div></div>
-        <div class="kpi"><div class="kpi-value">5</div><div class="kpi-label">Emails de portales</div></div>
-        <div class="kpi"><div class="kpi-value">1</div><div class="kpi-label">Oferta firme (52.000&euro;)</div></div>
-      </div>
-
-      <!-- Campana de demanda -->
-      <div class="demand-bell">
-        <div class="db-title">Interés según el precio de salida</div>
-        <div class="db-row">
-          <span style="font-weight:700; color:var(--navy);">64.900&euro;</span>
-          <div class="db-bar-bg"><div class="db-bar-fill" style="width:20%;"></div></div>
-          <span style="font-weight:800; color:var(--navy); text-align:right;">Bajo</span>
-        </div>
-        <div class="db-row">
-          <span style="font-weight:700; color:var(--navy);">61.500&euro;</span>
-          <div class="db-bar-bg"><div class="db-bar-fill" style="width:48%;"></div></div>
-          <span style="font-weight:800; color:var(--navy); text-align:right;">Medio</span>
-        </div>
-        <div class="db-row">
-          <span style="font-weight:700; color:var(--navy);">54.000&euro;</span>
-          <div class="db-bar-bg"><div class="db-bar-fill" style="width:100%;"></div></div>
-          <span style="font-weight:800; color:var(--mtvv); text-align:right;">Pico</span>
-        </div>
-        <div class="db-foot">
-          <strong style="color:var(--mtvv);">Lectura:</strong> a 64.900&euro; el interés era escaso. A 61.500&euro; aparecieron particulares. A 54.000&euro; se produjo el pico de interés sostenido, con una oferta firme a 52.000&euro;. La demanda de quien quiere vivir ahí se concentra en la franja baja.
-        </div>
-      </div>
-
-      <div class="step-price">
-        <div class="sp-label">Veredicto del Paso 4 (verificado con anuncio real)</div>
-        <div class="sp-value">156.000&euro;</div>
-        <div class="sp-note">Piso 1 dormitorio 52.000&euro; + 2 estudios a 52.000&euro; cada uno</div>
-      </div>
-      <div class="insight insight-green">
-        <strong>Veredicto del Paso 4:</strong> el piso de 1 dormitorio se vende sin problema en torno a 52.000&euro;, y cada estudio alcanza una cifra similar de suelo. En total, las 3 unidades suman <strong>156.000&euro;</strong>.
-      </div>
-    </div>
-
-    <!-- Veredicto MTVV -->
-    <div class="verdict-navy">
-      <div class="verdict-icon" style="background: rgba(218,24,57,0.18);"><svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <div>
-        <strong>Veredicto MTVV.</strong> El estudio de campo verificado con anuncio real confirma un valor de <strong style="color:#DA1839;">156.000&euro;</strong> para las 3 unidades, con oferta firme incluida a 52.000&euro;. Validación humana del Programa IN que confirma, de forma independiente, la valoración de la fuente IM&middot;PULSO.
-      </div>
-    </div>
-  </div>
-
-  <!-- ============================================
-       ESTADO SIN MTVV — bloque alternativo documentado (NO se usa en esta plantilla,
-       la plantilla muestra el estado (a) MTVV fresco arriba para exponer el
-       potencial completo del Motor 4). Este comentario deja fijado el texto
-       VERBATIM del Estado A para cuando la zona real no tenga MTVV.
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon" style="background: var(--mtvv-bg); color: var(--mtvv); border: 2px solid var(--mtvv-border);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      </div>
-      <div>
-        <div class="section-title">MOTOR 4 · MTVV — Validación de campo <img class="mtvv-logo-in" src="./assets/logo-in.png" alt="Comunidad IN"></div>
-        <div class="section-subtitle">Método Total de Validación de Vivienda · Metodología Programa IN</div>
-      </div>
-      <span class="exclusive-tag">Exclusivo Comunidad IN</span>
-    </div>
-    <div class="mtvv-explainer">
-      <strong>¿Qué es el Método Total de Validación de Vivienda (MTVV)?</strong> Es el estudio que realiza un inversor formado en la metodología del Programa IN sobre la propia microzona y tipología de la operación.
-    </div>
-    <div class="disclaimer">
-      Validación de campo (MTVV) — no disponible para esta zona. Nuestra base de datos no contiene ningún Método Total de Validación de Vivienda para este ámbito. Conviene aclarar que un MTVV en base de datos sería, en todo caso, un estudio histórico de una operación anterior. La validación con valor real de decisión es el MTVV que se realiza específicamente para esta operación (trabajo de campo del inversor, con anuncio real y medición de respuesta del mercado), que no forma parte de este informe.
-    </div>
-  </div>
-
-  ESTADO (b) MTVV HISTÓRICO — variante intermedia: misma estructura de Pasos 0-4 que
-  el estado (a), pero con un .disclaimer visible ANTES del stepper:
-
-  <div class="disclaimer">
-    <strong>Nota sobre la fecha.</strong> Este MTVV se realizó hace más de 12 meses / corresponde a
-    una operación anterior en la zona. Se muestra como referencia histórica, no como validación de
-    esta operación. Para una decisión de compra actualizada, IM·PULSO recomienda un nuevo Paso 4.
-  </div>
-  -->
-
-  <hr class="section-divider">
-
-  <!-- ============================================ -->
   <!-- 10. CONVERGENCIA DE LAS FUENTES -->
   <!-- ============================================ -->
   <div class="section">
@@ -1861,23 +1638,17 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
       <div>
-        <div class="section-title">10 · Convergencia de las fuentes disponibles</div>
-        <div class="section-subtitle">Tres fuentes independientes, comparadas</div>
+        <div class="section-title">9 · Convergencia de las fuentes disponibles</div>
+        <div class="section-subtitle">Dos fuentes independientes, comparadas</div>
       </div>
     </div>
 
-    <div class="validation-grid">
+    <div class="validation-grid" style="grid-template-columns: repeat(2, 1fr);">
       <div class="validation-card scraping">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
         <div class="v-source">Fuente 1+2 · IM&middot;PULSO (mercado)</div>
         <div class="v-price">159.000&euro;</div>
         <div class="v-detail">Testigos reales del municipio<br>Valor central de mercado 1.550&euro;/m²</div>
-      </div>
-      <div class="validation-card mtvv">
-        <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#DA1839" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-        <div class="v-source">Fuente 4 · MTVV (Programa IN)</div>
-        <div class="v-price">156.000&euro;</div>
-        <div class="v-detail">3 inmobiliarias consultadas<br>Verificado con anuncio real</div>
       </div>
       <div class="validation-card notarial">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
@@ -1887,16 +1658,12 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- Gráfico de convergencia: horquilla + marcadores -->
+    <!-- Gráfico: dónde se sitúa el precio dentro de la horquilla IMPULSO (sin marcador MTVV, no disponible) -->
     <div class="card conv-graphic-card">
-      <div class="card-title">Dónde convergen los rangos de precio</div>
+      <div class="card-title">Dónde se sitúa el precio dentro de la horquilla</div>
       <div class="card-subtitle">Horquilla de valor de las 3 viviendas · escenario venta</div>
       <div class="conv-graphic-track">
         <div class="conv-graphic-band" style="left:18.5%; width:70.7%;"></div>
-        <div class="conv-marker mtvv" style="left:40.0%;">
-          <span class="cgm-label">MTVV<br>156.000&euro;</span>
-          <span class="cgm-dot"></span>
-        </div>
         <div class="conv-marker main" style="left:44.6%;">
           <span class="cgm-dot"></span>
           <span class="cgm-label">IMPULSO P50<br>159.000&euro;</span>
@@ -1906,43 +1673,30 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         <span style="left:18.5%;">142.000&euro; (P25)</span>
         <span style="left:89.2%;">188.000&euro; (P75)</span>
       </div>
-      <div class="conv-graphic-deviation">Diferencia IMPULSO &harr; MTVV: <strong>+1,9%</strong> — dos métodos que no se hablan entre sí, prácticamente el mismo número.</div>
       <div class="conv-graphic-legend">
         <span class="cgl-item"><span class="cgl-dot" style="background:var(--pulso);"></span>IM&middot;PULSO (testigos de mercado)</span>
-        <span class="cgl-item"><span class="cgl-dot" style="background:var(--mtvv);"></span>MTVV (validación de campo)</span>
       </div>
       <div class="insight insight-gray" style="margin-top:16px;">
-        El Notariado no entra en este gráfico: mide &euro;/m² de vivienda de otro tamaño (108 m² de media), no el valor total de las 3 unidades resultantes. Su cruce con las otras dos fuentes está desarrollado en el apartado 3.7.
+        El Notariado no entra en este gráfico: mide &euro;/m² de vivienda de otro tamaño (108 m² de media), no el valor total de las 3 unidades resultantes. Su cruce con la fuente IM&middot;PULSO está desarrollado en el apartado 3.7.
       </div>
     </div>
 
     <div class="convergence">
-      <div class="conv-label">Las dos valoraciones del producto coinciden</div>
-      <div class="conv-verdict">Convergencia alta</div>
-      <div class="conv-price">156.000&euro; — 159.000&euro;</div>
-      <div class="conv-range">Diferencia: +1,9%</div>
+      <div class="conv-label">Convergencia provisional — sin validación de campo (MTVV) para esta zona</div>
+      <div class="conv-verdict provisional">Calculada solo con 2 fuentes</div>
+      <div class="conv-price">159.000&euro;</div>
+      <div class="conv-range">Rango completo IM&middot;PULSO: 142.000&euro; (P25) &middot; 159.000&euro; (P50) &middot; 188.000&euro; (P75)</div>
       <div class="conv-note">
-        Dos fuentes independientes —la fuente IM&middot;PULSO y el MTVV del Programa IN— coinciden en el escenario medio: el producto vale entre 156.000 y 159.000&euro;. Cuando dos métodos que no se hablan entre sí llegan al mismo número, el dato es fiable. El rango completo de los 3 escenarios IM&middot;PULSO es <strong>142.000&euro; (conservador) · 159.000&euro; (medio) · 188.000&euro; (optimista)</strong>.
+        Sin un MTVV específico para esta operación, el precio se apoya en una única fuente que valora el producto —IM&middot;PULSO, sobre testigos reales del municipio— con el Notariado como segunda fuente independiente de contexto (liquidez y comprador del mercado, no precio del producto). No se fuerza una convergencia entre dos números que miden cosas distintas: cuando exista un MTVV específico para esta operación, esta sección se recalculará con las dos fuentes que sí valoran el producto.
       </div>
     </div>
 
     <div class="card">
       <div class="card-title">Por qué el notarial no converge (y está bien que no lo haga)</div>
       <div class="insight insight-purple" style="margin-top:0;">
-        El dato notarial (742&euro;/m²) no encaja en esta convergencia, y es lógico: mide vivienda grande de segunda mano, no producto pequeño reformado. No es la valoración del producto de esta operación, sino el <strong>suelo y contexto oficial</strong> que confirma que el mercado es real, tiene volumen y está activo.
+        El dato notarial (742&euro;/m²) no encaja como valoración del producto, y es lógico: mide vivienda grande de segunda mano, no producto pequeño reformado. No es la valoración del producto de esta operación, sino el <strong>suelo y contexto oficial</strong> que confirma que el mercado es real, tiene volumen y está activo.
       </div>
     </div>
-
-    <!-- Patrón alternativo documentado: convergencia PROVISIONAL cuando falta MTVV fresco.
-         Se activa sustituyendo el bloque .convergence de arriba por este cuando el Motor 4
-         cae en Estado (b) o (c):
-    <div class="convergence">
-      <div class="conv-label">Convergencia provisional</div>
-      <div class="conv-verdict provisional">Calculada solo con 2 fuentes</div>
-      <div class="conv-price">{{PRECIO}}&euro;</div>
-      <div class="conv-note">Convergencia provisional: calculada solo con Motor 2 (IMPULSO) y Motor 3 (Notarial). No se fuerza una tercera tarjeta vacía — cuando exista un MTVV específico para esta operación, la convergencia se recalculará con las tres fuentes.</div>
-    </div>
-    -->
   </div>
 
   <hr class="section-divider">
@@ -1956,7 +1710,7 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
       </div>
       <div>
-        <div class="section-title">11 · Lectura para el inversor</div>
+        <div class="section-title">10 · Lectura para el inversor</div>
         <div class="section-subtitle">Síntesis de valoración y mercado · {{DIRECCION}}</div>
       </div>
     </div>
@@ -1965,15 +1719,11 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-          <span><strong>Valor de salida de las 3 viviendas:</strong> escenario medio entre 156.000 y 159.000&euro;, donde convergen la fuente IM&middot;PULSO y el MTVV, con una diferencia de solo +1,9%. Rango completo: <strong>142.000&euro; · 159.000&euro; · 188.000&euro;</strong> (conservador / medio / optimista).</span>
+          <span><strong>Valor de salida de las 3 viviendas:</strong> escenario medio de 159.000&euro; (fuente IM&middot;PULSO, sobre testigos reales del municipio). Rango completo: <strong>142.000&euro; · 159.000&euro; · 188.000&euro;</strong> (conservador / medio / optimista).</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
           <span><strong>Producto en el segmento de máxima liquidez:</strong> 1 dormitorio, tramo por debajo de 80.000&euro;, y la propia calle de la operación que rota al 100%. Demanda alta: se retira en torno a 26 días, frente a los 72 de media de la zona.</span>
-        </li>
-        <li>
-          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-          <span><strong>Nicho confirmado:</strong> la oferta de pisos de 1 dormitorio en venta es de 0 en el municipio (Paso 0 del MTVV). No hay competencia directa.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
@@ -1990,7 +1740,7 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
   <hr class="section-divider">
 
   <!-- ============================================ -->
-  <!-- 12. CONCLUSIÓN + LÍMITES + VIGENCIA -->
+  <!-- 11. CONCLUSIÓN + LÍMITES + VIGENCIA -->
   <!-- ============================================ -->
   <div class="section">
     <div class="section-header">
@@ -1998,7 +1748,7 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </div>
       <div>
-        <div class="section-title">12 · Conclusión del estudio</div>
+        <div class="section-title">11 · Conclusión del estudio</div>
         <div class="section-subtitle">Resumen ejecutivo · {{DIRECCION}}, {{MUNICIPIO}}</div>
       </div>
     </div>
@@ -2012,14 +1762,6 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l2-9 4 18 2-9h6"></path></svg></span>
           <span><strong>IMPULSO (fuente automática):</strong> unos 159.000&euro; por las 3 unidades, sobre testigos reales del municipio (valor central de mercado 1.550&euro;/m²).</span>
-        </li>
-        <li>
-          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>
-          <span><strong>MTVV (Programa IN):</strong> 156.000&euro; (Paso 4 verificado con un anuncio real).</span>
-        </li>
-        <li>
-          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <span><strong>Convergencia IMPULSO ↔ MTVV:</strong> +1,9%, convergencia alta en el escenario medio: el producto vale entre 156.000 y 159.000&euro;.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
@@ -2060,17 +1802,17 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- Veredicto final del estudio (cierra la sección 12) -->
+    <!-- Veredicto final del estudio (cierra la sección 11) -->
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
-      <div>No opinamos del mercado: lo medimos. Y lo medimos <strong>tres veces</strong> —testigos IMPULSO, Portal del Notariado y MTVV (Programa IN)— con <strong>tres fuentes independientes</strong>. Las dos que valoran el producto convergen.</div>
+      <div>No opinamos del mercado: lo medimos. Y lo medimos <strong>dos veces</strong> —testigos IM&middot;PULSO y Portal del Notariado— con <strong>dos fuentes independientes</strong>. IM&middot;PULSO fija el precio del producto; el Notariado confirma el contexto y la liquidez del mercado.</div>
     </div>
   </div>
 
 </div>
 
 <!-- ============================================ -->
-<!-- 13. FOOTER -->
+<!-- 12. FOOTER -->
 <!-- ============================================ -->
 <div class="footer">
   <div class="footer-inner">

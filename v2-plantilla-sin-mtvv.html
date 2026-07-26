@@ -481,7 +481,6 @@
   .convergence { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius: 16px; padding: 32px; text-align: center; color: white; margin: 24px 0; }
   .convergence .conv-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: 0.55; margin-bottom: 8px; }
   .convergence .conv-verdict { font-size: 22px; font-weight: 800; color: var(--impulso); margin-bottom: 4px; }
-  .convergence .conv-verdict.provisional { color: #FCD34D; }
   .convergence .conv-price { font-size: 40px; font-weight: 800; color: var(--pulso); }
   .convergence .conv-range { font-size: 14px; opacity: 0.6; margin-top: 4px; }
   .convergence .conv-note { font-size: 13px; opacity: 0.65; margin-top: 16px; max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.65; }
@@ -1400,6 +1399,9 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
         <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         <span><strong>Muestra moderada.</strong> 94 compraventas al año equivalen a ~8 al mes: suficiente para una lectura de tendencia, pero en meses de menor volumen (2-3 operaciones) el &euro;/m² deja de ser representativo — ver los meses "sin dato" en 3.5.</span>
       </div>
+      <div class="insight insight-purple" style="margin-top:12px; margin-bottom:0;">
+        <strong>Lectura:</strong> el 91,2% de compradores particulares y 7,8 años de renta de esfuerzo describen un mercado de uso real, no de inversión especulativa. El 94,7% de segunda mano frente al 5,3% de obra nueva confirma que el stock existente domina la oferta —terreno favorable para un producto a estrenar por cambio de uso, que compite con poca oferta nueva real.
+      </div>
     </div>
 
     <!-- 3.2 Cómo leer -->
@@ -1658,36 +1660,37 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- Gráfico: dónde se sitúa el precio dentro de la horquilla IMPULSO (sin marcador MTVV, no disponible) -->
-    <div class="card conv-graphic-card">
-      <div class="card-title">Dónde se sitúa el precio dentro de la horquilla</div>
-      <div class="card-subtitle">Horquilla de valor de las 3 viviendas · escenario venta</div>
-      <div class="conv-graphic-track">
-        <div class="conv-graphic-band" style="left:18.5%; width:70.7%;"></div>
-        <div class="conv-marker main" style="left:44.6%;">
-          <span class="cgm-dot"></span>
-          <span class="cgm-label">IMPULSO P50<br>159.000&euro;</span>
+    <div class="card">
+      <div class="card-title">Rango de valor de las 3 viviendas</div>
+      <div class="card-subtitle">Conservador / medio / optimista, sobre testigos reales del municipio</div>
+      <div class="price-widget">
+        <div class="price-box">
+          <div class="price-label">Conservador (P25)</div>
+          <div class="price-value">142.000&euro;</div>
+          <div class="price-note">Las 3 unidades</div>
+        </div>
+        <div class="price-box main">
+          <div class="price-label">Medio (P50)</div>
+          <div class="price-value">159.000&euro;</div>
+          <div class="price-note">Las 3 unidades</div>
+        </div>
+        <div class="price-box">
+          <div class="price-label">Optimista (P75)</div>
+          <div class="price-value">188.000&euro;</div>
+          <div class="price-note">Las 3 unidades</div>
         </div>
       </div>
-      <div class="conv-graphic-scale">
-        <span style="left:18.5%;">142.000&euro; (P25)</span>
-        <span style="left:89.2%;">188.000&euro; (P75)</span>
-      </div>
-      <div class="conv-graphic-legend">
-        <span class="cgl-item"><span class="cgl-dot" style="background:var(--pulso);"></span>IM&middot;PULSO (testigos de mercado)</span>
-      </div>
-      <div class="insight insight-gray" style="margin-top:16px;">
-        El Notariado no entra en este gráfico: mide &euro;/m² de vivienda de otro tamaño (108 m² de media), no el valor total de las 3 unidades resultantes. Su cruce con la fuente IM&middot;PULSO está desarrollado en el apartado 3.7.
+      <div class="insight insight-gray" style="margin-top:16px; margin-bottom:0;">
+        El Notariado no entra en este rango: mide &euro;/m² de vivienda de otro tamaño (108 m² de media), no el valor total de las 3 unidades resultantes. Su cruce con la fuente IM&middot;PULSO está desarrollado en el apartado 3.7.
       </div>
     </div>
 
     <div class="convergence">
-      <div class="conv-label">Convergencia provisional — sin validación de campo (MTVV) para esta zona</div>
-      <div class="conv-verdict provisional">Calculada solo con 2 fuentes</div>
+      <div class="conv-label">Valoración de mercado</div>
       <div class="conv-price">159.000&euro;</div>
-      <div class="conv-range">Rango completo IM&middot;PULSO: 142.000&euro; (P25) &middot; 159.000&euro; (P50) &middot; 188.000&euro; (P75)</div>
+      <div class="conv-range">Rango IM&middot;PULSO: 142.000&euro; (P25) &middot; 159.000&euro; (P50) &middot; 188.000&euro; (P75)</div>
       <div class="conv-note">
-        Sin un MTVV específico para esta operación, el precio se apoya en una única fuente que valora el producto —IM&middot;PULSO, sobre testigos reales del municipio— con el Notariado como segunda fuente independiente de contexto (liquidez y comprador del mercado, no precio del producto). No se fuerza una convergencia entre dos números que miden cosas distintas: cuando exista un MTVV específico para esta operación, esta sección se recalculará con las dos fuentes que sí valoran el producto.
+        Precio sostenido por los testigos reales de venta del municipio, aplicados a las 3 tipologías resultantes de la operación. El Notariado confirma el contexto que lo rodea: mercado activo y líquido (94 compraventas/año, +9,4% interanual), con la mayor subida de la serie histórica en 2025 (+21,0%) y un comprador &mdash;joven, nacional&mdash; que encaja con el producto.
       </div>
     </div>
 
@@ -1719,19 +1722,27 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-          <span><strong>Valor de salida de las 3 viviendas:</strong> escenario medio de 159.000&euro; (fuente IM&middot;PULSO, sobre testigos reales del municipio). Rango completo: <strong>142.000&euro; · 159.000&euro; · 188.000&euro;</strong> (conservador / medio / optimista).</span>
+          <span><strong>Valor orientativo de las 3 viviendas:</strong> en venta (escenario protagonista), un valor medio de <strong>159.000&euro;</strong> agregado (rango 142.000&euro; &middot; 159.000&euro; &middot; 188.000&euro;, conservador / medio / optimista), sobre testigos reales del municipio (valor central &asymp;1.550&euro;/m²). En alquiler (contraste), las dos tipologías resultantes caen en el tramo de mayor rotación del mercado (350-500&euro;/mes, 88,9% de rotación, 24 días hasta retirarse). El piso de 1 dormitorio se coloca algo por encima del estudio loft en ambos escenarios (59.800&euro; frente a 49.600&euro; en venta, escenario medio), una diferencia moderada por formato, según los testigos.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
-          <span><strong>Producto en el segmento de máxima liquidez:</strong> 1 dormitorio, tramo por debajo de 80.000&euro;, y la propia calle de la operación que rota al 100%. Demanda alta: se retira en torno a 26 días, frente a los 72 de media de la zona.</span>
+          <span><strong>Nicho de baja competencia, no el latido del barrio:</strong> el latido real de {{MUNICIPIO}} —la actividad dominante— es el <strong>piso</strong> (77,1% de rotación, 480 anuncios). El estudio loft apenas tiene oferta directa (6 anuncios): las viviendas resultantes no compiten con ese producto dominante, sino que abren un segmento de precio de entrada distinto, con rotación alta por sí mismo (83,3%).</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
-          <span><strong>Perfil del comprador (notarial):</strong> joven (52% con menos de 40 años) y más del 88% nacional. Encaja con un producto pequeño de entrada o de inversión.</span>
+          <span><strong>Liquidez alta en venta y alquiler:</strong> las dos tipologías resultantes se retiran en 22-26 días, frente a los 118 de media de la zona (72 en su valor central) — entre 3 y 5 veces más rápido. En alquiler, el estudio rota al 100% en apenas 15 días, y la propia calle de la operación rota al 100% tanto en venta (24 días) como en alquiler (18 días): todo lo que sale en esta ubicación y este formato, se coloca.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
+          <span><strong>Notarial como contexto, no como referencia directa:</strong> el CP {{CODIGO_POSTAL}} confirma un mercado activo y en aceleración (742&euro;/m² de media, +9,4% interanual, con 2025 como la mayor subida de la serie histórica, +21,0%), pero mide vivienda de todo tamaño (108 m² de media): el producto pequeño resultante cotiza muy por encima porque es un segmento distinto.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+          <span><strong>Sobre estas cifras:</strong> los rangos de venta y alquiler salen de anuncios de portal (activos o retirados), no de precios de escritura ni de contratos de alquiler firmados. La muestra del producto pequeño es limitada (4 testigos de venta cruzados por tipología): suficiente para un rango de trabajo, no para una cifra cerrada al euro.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span>
-          <span><strong>El siguiente paso:</strong> el análisis de inversión detallado (costes, márgenes, rentabilidad) lo realiza el equipo aparte cuando la operación aporta esos datos. Este informe valida el <strong>precio</strong> y el <strong>mercado</strong>: el producto tiene salida, hay demanda y no hay competencia.</span>
+          <span><strong>El siguiente paso:</strong> el cálculo fino de rentabilidad neta, costes de reforma, licencias e impuestos lo realiza el propio inversor. Este informe valida el <strong>rango de precio</strong> y el <strong>mercado</strong>: el producto tiene salida, hay demanda y la competencia directa es escasa.</span>
         </li>
       </ul>
     </div>
@@ -1757,15 +1768,27 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></span>
-          <span><strong>PULSO:</strong> el producto pequeño es el de mayor liquidez de la zona (1 dormitorio al 85,7%, tramo por debajo de 80.000&euro; al 83,6%, la calle de la operación al 100% de retirada).</span>
+          <span><strong>PULSO:</strong> el latido de {{MUNICIPIO}} —la actividad dominante— es el <strong>piso</strong>, con 77,1% de rotación en venta (480 anuncios) y 86,5% en alquiler. El producto pequeño (estudio loft, piso 1 dormitorio) es un nicho de oferta reducida, pero con rotación propia alta: 83,3% en venta el estudio, 100% en alquiler, y el tramo 50.000-80.000&euro; de las viviendas resultantes al 83,5%.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h6l2-9 4 18 2-9h6"></path></svg></span>
-          <span><strong>IMPULSO (fuente automática):</strong> unos 159.000&euro; por las 3 unidades, sobre testigos reales del municipio (valor central de mercado 1.550&euro;/m²).</span>
+          <span><strong>IMPULSO — Alquiler:</strong> las 2 tipologías resultantes caen en el tramo de renta 350-500&euro;/mes, el de mayor rotación del mercado (88,9%, 24 días hasta retirarse). El estudio loft en alquiler rota al 100% (15 días) y la propia calle de la operación, también al 100% (18 días).</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>
+          <span><strong>IMPULSO — Venta:</strong> un valor medio de <strong>159.000&euro;</strong> agregado por las 3 unidades (rango 142.000 – 188.000&euro;), sobre testigos reales de venta del municipio (valor central &asymp;1.550&euro;/m²). El piso 1 dormitorio (59.800&euro;) cotiza algo por encima del estudio loft (49.600&euro;), según los testigos.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
-          <span><strong>Notarial:</strong> 742&euro;/m² escriturado, 94 operaciones al año, comprador joven. Es el suelo y contexto oficial de la zona.</span>
+          <span><strong>Notarial:</strong> 742&euro;/m² escriturado, mercado activo del CP {{CODIGO_POSTAL}} (94 compraventas/año, +9,4% interanual, con 2025 como la mayor subida de la serie histórica, +21,0%). Es el suelo y contexto oficial de la zona, no la referencia del producto pequeño.</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
+          <span><strong>Cruce notarial &times; mercado:</strong> 94 compraventas/año, +9,4% interanual, 91,2% comprador particular y comprador joven (52% menor de 40 años) confirman un mercado líquido, al alza y de uso real, con un importe de entrada (83.400&euro; de media) coherente con el de esta operación (ver apartado 3.7).</span>
+        </li>
+        <li>
+          <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></span>
+          <span><strong>Demanda:</strong> rotación alta en venta y alquiler (77,1% / 85,4% de mercado general); las tipologías resultantes se retiran en 22-26 días, entre 3 y 5 veces más rápido que la media de la zona (118 días); la propia calle de la operación rota al 100% tanto en venta (24 días) como en alquiler (18 días).</span>
         </li>
       </ul>
     </div>
@@ -1805,8 +1828,9 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
     <!-- Veredicto final del estudio (cierra la sección 11) -->
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
-      <div>No opinamos del mercado: lo medimos. Y lo medimos <strong>dos veces</strong> —testigos IM&middot;PULSO y Portal del Notariado— con <strong>dos fuentes independientes</strong>. IM&middot;PULSO fija el precio del producto; el Notariado confirma el contexto y la liquidez del mercado.</div>
+      <div>No opinamos del mercado: lo medimos. Y lo medimos con <strong>dos fuentes independientes</strong> —testigos reales de venta y alquiler (IM&middot;PULSO) y Portal del Notariado— que confirman lo mismo desde ángulos distintos. Los rangos de venta y alquiler proceden de anuncios de portal, no de precios de escritura ni de contrato firmado.</div>
     </div>
+    <div style="margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,#ffffff,#fdf7ee);border-left:5px solid var(--pulso);border-radius:6px;font-size:12.5px;color:var(--navy);line-height:1.5;"><strong>Importante:</strong> esta lectura refleja el mercado a fecha de julio de 2026. Si la operación se demora varios meses, conviene actualizar el estudio antes de fijar el precio de salida definitivo.</div>
   </div>
 
 </div>

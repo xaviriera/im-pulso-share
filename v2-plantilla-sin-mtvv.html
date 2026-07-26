@@ -1545,78 +1545,35 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- 3.7 Cruce IM·PULSO × NOTARIADO — dos fuentes independientes (oferta y retirada son dos capas DENTRO de IM·PULSO, no dos fuentes) -->
+    <!-- 3.7 Cruce Notarial × Mercado — modelo limpio (calcado de Pepi/Elda): tabla simple Notarial/Mercado/Lectura + conclusión -->
     <div class="card" style="background: linear-gradient(135deg, var(--notarial-bg) 0%, var(--pulso-bg) 100%); border: 2px solid var(--notarial-border);">
       <div class="card-title" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
-        <span style="background:linear-gradient(135deg, var(--pulso) 0%, var(--impulso) 100%); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
-          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        </span>
-        <span>&times;</span>
         <span style="background:var(--notarial); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
         </span>
-        <span>3.7 Cruce IM&middot;PULSO &times; NOTARIADO</span>
+        <span>&times;</span>
+        <span style="background:linear-gradient(135deg, var(--pulso) 0%, var(--impulso) 100%); color:white; width:28px; height:28px; border-radius:8px; display:inline-flex; align-items:center; justify-content:center;">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="white" stroke-width="2.4"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </span>
+        <span>3.7 Cruce Notarial &times; Mercado</span>
       </div>
-      <div class="card-subtitle">Dos fuentes independientes · tres capas de precio: oferta &rarr; retirada &rarr; escriturado</div>
-      <div class="term-explainer" style="margin-top:0;">
-        <strong>Qué se compara aquí.</strong> IM&middot;PULSO es <strong>una sola fuente</strong> —la lectura del mercado a través de los anuncios— con dos capas internas: lo que se <strong>pide</strong> (oferta) y lo que realmente se <strong>cierra</strong> (retirada). El Notariado es una fuente <strong>independiente</strong>: lo que de verdad se firma ante notario. El cruce que importa es IM&middot;PULSO frente a Notariado, no oferta frente a retirada &mdash;eso es una sola fuente comparándose consigo misma.
-      </div>
+      <div class="card-subtitle">El valor que crea el Cambio de Uso, explicado con datos</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead>
-            <tr>
-              <th rowspan="2">Indicador</th>
-              <th colspan="2" style="background:var(--navy); color:#fff; text-align:center;">IM&middot;PULSO (mercado)</th>
-              <th rowspan="2" class="th-notarial">NOTARIADO (escriturado)</th>
-              <th rowspan="2">Lectura</th>
-            </tr>
-            <tr>
-              <th class="th-pulso" style="font-size:10.5px;">Oferta</th>
-              <th class="th-impulso" style="font-size:10.5px;">Retirada</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Indicador</th><th>Notarial (oficial)</th><th>Mercado (IM&middot;PULSO)</th><th>Lectura</th></tr></thead>
           <tbody>
-          <tr>
-            <td>&euro;/m²</td>
-            <td data-label="IM·PULSO — Oferta">1.480&euro; <small style="color:var(--gray-500);">(zona Centro)</small></td>
-            <td data-label="IM·PULSO — Retirada">1.550&euro; <small style="color:var(--gray-500);">(producto pequeño)</small></td>
-            <td data-label="NOTARIADO — Escriturado">742&euro; <small style="color:var(--gray-500);">(todo tamaño)</small></td>
-            <td data-label="Lectura">Dentro de IM&middot;PULSO, la oferta de barrio y el cierre del producto pequeño reformado son coherentes entre sí; el salto grande aparece al cruzar con el Notariado, que escritura vivienda general del municipio.</td>
-          </tr>
-          <tr>
-            <td>Precio medio / unidad</td>
-            <td data-label="IM·PULSO — Oferta">58.400&euro; <small style="color:var(--gray-500);">(tu calle)</small></td>
-            <td data-label="IM·PULSO — Retirada">&asymp;53.000&euro; <small style="color:var(--gray-500);">(159.000&euro; / 3)</small></td>
-            <td data-label="NOTARIADO — Escriturado">83.400&euro; <small style="color:var(--gray-500);">(todo tamaño)</small></td>
-            <td data-label="Lectura">El importe de entrada de la vivienda resultante queda por debajo del importe medio notarial: coherente con un producto de menor superficie.</td>
-          </tr>
-          <tr>
-            <td>Días hasta cierre</td>
-            <td data-label="IM·PULSO — Oferta">24 días <small style="color:var(--gray-500);">(tu calle)</small></td>
-            <td data-label="IM·PULSO — Retirada">22-26 días <small style="color:var(--gray-500);">(testigos usados)</small></td>
-            <td data-label="NOTARIADO — Escriturado">sin dato <small style="color:var(--gray-500);">(no lo mide)</small></td>
-            <td data-label="Lectura">Las dos capas de IM&middot;PULSO, que sí miden velocidad, coinciden entre sí: liquidez alta y consistente, producto que se coloca en menos de un mes. El Notariado no mide este dato.</td>
-          </tr>
-          <tr>
-            <td>Volumen / actividad</td>
-            <td data-label="IM·PULSO — Oferta">612 <small style="color:var(--gray-500);">(viviendas analizadas)</small></td>
-            <td data-label="IM·PULSO — Retirada">4 <small style="color:var(--gray-500);">(testigos comparables)</small></td>
-            <td data-label="NOTARIADO — Escriturado">94/año <small style="color:var(--gray-500);">(compraventas)</small></td>
-            <td data-label="Lectura">El Notariado, fuente independiente, confirma a escala oficial lo que IM&middot;PULSO ya mostraba con datos de portal: volumen real, no un espejismo de anuncios.</td>
-          </tr>
-          <tr>
-            <td>Rotación / demanda</td>
-            <td data-label="IM·PULSO — Oferta">77,1% <small style="color:var(--gray-500);">(piso, zona)</small></td>
-            <td data-label="IM·PULSO — Retirada">&asymp;84,5% <small style="color:var(--gray-500);">(estudio + 1 dorm.)</small></td>
-            <td data-label="NOTARIADO — Escriturado">no aplica <small style="color:var(--gray-500);">(no mide retirada)</small></td>
-            <td data-label="Lectura">Las tipologías resultantes rotan por encima de la media del mercado general: se mueven más rápido que el conjunto de la zona.</td>
-          </tr>
+          <tr><td>Liquidez</td><td data-label="Notarial (oficial)"><strong>94 compraventas/año</strong> (CP {{CODIGO_POSTAL}})</td><td data-label="Mercado (IM·PULSO)">Rotación 77,1% en venta (zona); las viviendas resultantes retiran al 83,3-85,7%</td><td data-label="Lectura">Mercado activo, bajo riesgo de no vender</td></tr>
+          <tr><td>Tendencia de precios</td><td data-label="Notarial (oficial)"><strong>+9,4%</strong> interanual (2025: +21,0%, el mayor salto de la serie)</td><td data-label="Mercado (IM·PULSO)">&euro;/m² de oferta en zona Centro: 1.480&euro;, el más alto de referencia</td><td data-label="Lectura">Precios al alza; favorece a quien entra ahora</td></tr>
+          <tr><td>Tipo de construcción</td><td data-label="Notarial (oficial)"><strong>94,7% segunda mano</strong> (solo 5,3% obra nueva)</td><td data-label="Mercado (IM·PULSO)">Local a reformar para cambio de uso</td><td data-label="Lectura">Mercado de reforma: encaja de lleno con esta operación</td></tr>
+          <tr><td>Importe medio de compraventa</td><td data-label="Notarial (oficial)"><strong>83.400&euro;</strong></td><td data-label="Mercado (IM·PULSO)">Importe de entrada de las viviendas resultantes: 49.600-59.800&euro; por unidad</td><td data-label="Lectura">Por debajo del importe medio notarial: coherente con un producto de menor superficie</td></tr>
+          <tr><td>Perfil comprador</td><td data-label="Notarial (oficial)"><strong>91,2%</strong> personas físicas, comprador joven (52% menor de 40 años)</td><td data-label="Mercado (IM·PULSO)">&mdash;</td><td data-label="Lectura">Demanda de uso real, no institucional</td></tr>
+          <tr><td>&euro; por m² (por capas)</td><td data-label="Notarial (oficial)"><strong>742&euro;/m²</strong> (escritura, todo tamaño, 108 m² de media)</td><td data-label="Mercado (IM·PULSO)">1.480&euro;/m² (oferta de zona) &rarr; 1.550&euro;/m² (retirada, producto pequeño)</td><td data-label="Lectura">Tres capas distintas: escritura &lt; oferta &lt; producto reformado; no tienen por qué coincidir</td></tr>
           </tbody>
         </table>
       </div>
       <div class="cruce-verdict">
         <div class="cv-title">Conclusión del cruce</div>
-        <div class="cv-text">El precio escriturado del CP {{CODIGO_POSTAL}} (<strong>742&euro;/m²</strong>) <strong>diverge</strong> de la capa de retirada de IM&middot;PULSO para el producto pequeño (<strong>~1.550&euro;/m²</strong>) en un <strong>+109%</strong>. No es una contradicción entre fuentes: son dos fuentes independientes que miden cosas distintas. IM&middot;PULSO recorre <strong>oferta (1.480&euro;/m²) &rarr; retirada (1.550&euro;/m²)</strong> del producto pequeño y reformado; el Notariado firma <strong>escritura (742&euro;/m²)</strong> de la vivienda media del municipio, todo tamaño. Ese margen entre lo que el mercado pide/cierra y lo que de verdad se firma es la <strong>señal de precio</strong> de esta operación: confirma que el producto pequeño reformado cotiza muy por encima del suelo notarial genérico, y es coherente que lo haga (menor superficie, a estrenar, mayor rotación). Donde las dos fuentes SÍ coinciden, de forma independiente, es en el fondo del mercado: liquidez alta, volumen real (94 escrituras/año, 612 viviendas analizadas) y comprador que encaja con el producto (joven, nacional). Ese margen entre mercado y registro <strong>es, en gran medida, el valor que crea el Cambio de Uso</strong>.</div>
+        <div class="cv-text">Dos fuentes independientes &mdash;los testigos de IM&middot;PULSO (mercado) y el Portal del Notariado (oficial)&mdash; apuntan en la misma dirección: un mercado <strong>líquido</strong> (94 compraventas/año), <strong>al alza</strong> (+9,4% interanual, +21,0% en 2025) y <strong>de reforma</strong> (94,7% segunda mano), con un comprador de uso real (91,2% personas físicas). La diferencia entre el &euro;/m² escriturado (742&euro;), el de oferta de zona (1.480&euro;) y el de retirada del producto reformado (1.550&euro;) no es una contradicción: son tres capas de precio distintas, y su distancia <strong>es el valor que crea el Cambio de Uso</strong> al reposicionar el activo en un segmento de mayor rotación.</div>
       </div>
     </div>
 
@@ -1649,55 +1606,19 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       <div class="validation-card scraping">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
         <div class="v-source">Fuente 1+2 · IM&middot;PULSO (mercado)</div>
-        <div class="v-price">159.000&euro;</div>
         <div class="v-detail">Testigos reales del municipio<br>Valor central de mercado 1.550&euro;/m²</div>
       </div>
       <div class="validation-card notarial">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
         <div class="v-source">Fuente 3 · Notarial (contexto)</div>
-        <div class="v-price">742&euro;/m²</div>
-        <div class="v-detail">94 compraventas/año<br>Suelo oficial (no converge, explicado)</div>
+        <div class="v-detail">94 compraventas/año<br>742&euro;/m² escriturado — suelo oficial (no converge, explicado)</div>
       </div>
     </div>
 
     <div class="card">
-      <div class="card-title">Rango de valor de las 3 viviendas</div>
-      <div class="card-subtitle">Conservador / medio / optimista, sobre testigos reales del municipio</div>
-      <div class="price-widget">
-        <div class="price-box">
-          <div class="price-label">Conservador (P25)</div>
-          <div class="price-value">142.000&euro;</div>
-          <div class="price-note">Las 3 unidades</div>
-        </div>
-        <div class="price-box main">
-          <div class="price-label">Medio (P50)</div>
-          <div class="price-value">159.000&euro;</div>
-          <div class="price-note">Las 3 unidades</div>
-        </div>
-        <div class="price-box">
-          <div class="price-label">Optimista (P75)</div>
-          <div class="price-value">188.000&euro;</div>
-          <div class="price-note">Las 3 unidades</div>
-        </div>
-      </div>
-      <div class="insight insight-gray" style="margin-top:16px; margin-bottom:0;">
-        El Notariado no entra en este rango: mide &euro;/m² de vivienda de otro tamaño (108 m² de media), no el valor total de las 3 unidades resultantes. Su cruce con la fuente IM&middot;PULSO está desarrollado en el apartado 3.7.
-      </div>
-    </div>
-
-    <div class="convergence">
-      <div class="conv-label">Valoración de mercado</div>
-      <div class="conv-price">159.000&euro;</div>
-      <div class="conv-range">Rango IM&middot;PULSO: 142.000&euro; (P25) &middot; 159.000&euro; (P50) &middot; 188.000&euro; (P75)</div>
-      <div class="conv-note">
-        Precio sostenido por los testigos reales de venta del municipio, aplicados a las 3 tipologías resultantes de la operación. El Notariado confirma el contexto que lo rodea: mercado activo y líquido (94 compraventas/año, +9,4% interanual), con la mayor subida de la serie histórica en 2025 (+21,0%) y un comprador &mdash;joven, nacional&mdash; que encaja con el producto.
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="card-title">Por qué el notarial no converge (y está bien que no lo haga)</div>
+      <div class="card-title">Lo que confirman las fuentes disponibles</div>
       <div class="insight insight-purple" style="margin-top:0;">
-        El dato notarial (742&euro;/m²) no encaja como valoración del producto, y es lógico: mide vivienda grande de segunda mano, no producto pequeño reformado. No es la valoración del producto de esta operación, sino el <strong>suelo y contexto oficial</strong> que confirma que el mercado es real, tiene volumen y está activo.
+        Las dos fuentes disponibles confirman el mismo mercado: activo y líquido (94 compraventas/año, +9,4% interanual, con la mayor subida de la serie histórica en 2025, +21,0%) y con un comprador &mdash;joven, nacional&mdash; que encaja con el producto. El dato notarial no converge como valoración del producto &mdash;y es lógico: mide vivienda grande de segunda mano, no producto pequeño reformado&mdash;, sino que confirma el <strong>suelo y contexto oficial</strong> de la zona: el mercado es real, tiene volumen y está activo. El precio del producto ya está fijado en el apartado 2.4, sobre testigos reales de su mismo tamaño.
       </div>
     </div>
   </div>
@@ -1755,7 +1676,7 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
   <!-- ============================================ -->
   <div class="section">
     <div class="section-header">
-      <div class="section-icon" style="background: var(--gray-100); color: var(--navy);">
+      <div class="section-icon" style="background: var(--navy); color: #fff;">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </div>
       <div>
@@ -1825,12 +1746,14 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
+    <!-- Nota de vigencia -->
+    <div style="margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,#ffffff,#fdf7ee);border-left:5px solid var(--pulso);border-radius:6px;font-size:12.5px;color:var(--navy);line-height:1.5;"><strong>Importante:</strong> esta lectura refleja el mercado a fecha de julio de 2026. Si la operación se demora varios meses, conviene actualizar el estudio antes de fijar el precio de salida definitivo.</div>
+
     <!-- Veredicto final del estudio (cierra la sección 11) -->
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
       <div>No opinamos del mercado: lo medimos. Y lo medimos con <strong>dos fuentes independientes</strong> —testigos reales de venta y alquiler (IM&middot;PULSO) y Portal del Notariado— que confirman lo mismo desde ángulos distintos. Los rangos de venta y alquiler proceden de anuncios de portal, no de precios de escritura ni de contrato firmado.</div>
     </div>
-    <div style="margin-top:10px;padding:10px 14px;background:linear-gradient(135deg,#ffffff,#fdf7ee);border-left:5px solid var(--pulso);border-radius:6px;font-size:12.5px;color:var(--navy);line-height:1.5;"><strong>Importante:</strong> esta lectura refleja el mercado a fecha de julio de 2026. Si la operación se demora varios meses, conviene actualizar el estudio antes de fijar el precio de salida definitivo.</div>
   </div>
 
 </div>

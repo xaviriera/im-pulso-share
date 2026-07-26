@@ -309,14 +309,14 @@
     border-radius: 16px; padding: 24px 28px; margin: 28px 0;
     box-shadow: 0 10px 30px rgba(15,31,61,0.22);
   }
-  .mpp-icon { flex-shrink: 0; width: 62px; height: 62px; border-radius: 14px; background: #fff; border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.18); padding: 6px; }
-  .mpp-icon svg { width: 24px; height: 24px; }
+  .mpp-icon { flex-shrink: 0; width: 44px; height: 44px; border-radius: 12px; background: #fff; border: 1px solid rgba(0,0,0,0.06); display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.18); padding: 6px; }
+  .mpp-icon svg { width: 22px; height: 22px; }
   .mpp-body { flex: 1; min-width: 0; }
   .mpp-title { font-size: 17px; font-weight: 800; color: white; margin-bottom: 8px; letter-spacing: 0.2px; }
   .mpp-title span { color: #FF8B96; }
   .mpp-text { font-size: 13.5px; line-height: 1.65; color: rgba(255,255,255,0.82); }
   .mpp-text strong { color: white; }
-  .mpp-icon img { height: 38px; width: auto; display: block; }
+  .mpp-icon img { height: 22px; width: auto; display: block; }
   @media (max-width: 768px) {
     .mtvv-prefilter-panel { flex-direction: column; padding: 20px; gap: 14px; }
   }
@@ -1138,14 +1138,6 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
     <div class="card">
       <div class="card-title">2.4 Precio por vivienda resultante</div>
       <div class="card-subtitle">Estimación de mercado, conservador / medio / optimista — desglosada por cada unidad</div>
-      <div class="term-explainer">
-        <strong>De dónde sale esta horquilla:</strong> testigos reales de venta del municipio (2.2) &rarr; percentiles de esos &euro;/m² comparables &rarr; aplicado a la superficie de cada vivienda resultante.
-        <ul class="scenario-list">
-          <li><span class="sl-tag">Conservador</span> <span>Percentil 25 (P25): el 25% más barato de los testigos.</span></li>
-          <li><span class="sl-tag">Medio</span> <span>Mediana (P50): el punto central de la muestra &mdash; la cifra prudente de referencia.</span></li>
-          <li><span class="sl-tag">Optimista</span> <span>Percentil 75 (P75): el 25% más caro de los testigos.</span></li>
-        </ul>
-      </div>
 
       <div class="tipo-card">
         <div class="tipo-card-header">
@@ -1199,22 +1191,22 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
 
       <div class="sum-connector"><span class="sc-symbol">=</span></div>
 
-      <div class="term-explainer" style="margin-top:0; margin-bottom:0; background: var(--impulso-bg); border-left-color: var(--impulso);">
-        <strong>Total de la operación · las 3 viviendas</strong>
+      <div class="term-explainer" style="margin-top:0; margin-bottom:12px; background: var(--impulso-bg); border-left-color: var(--impulso);">
+        <strong>Total de la operación · las 3 viviendas.</strong> De dónde sale esta horquilla: testigos reales de venta del municipio (2.2) &rarr; percentiles de esos &euro;/m² comparables &rarr; aplicado a la superficie de cada vivienda resultante. El resultado, aquí abajo: tres escenarios de precio para el conjunto.
       </div>
       <div class="price-widget">
         <div class="price-box">
-          <div class="price-label">Conservador</div>
+          <div class="price-label">Conservador (P25)</div>
           <div class="price-value">142.000&euro;</div>
           <div class="price-note">Las 3 unidades</div>
         </div>
         <div class="price-box main">
-          <div class="price-label">Medio</div>
+          <div class="price-label">Medio (P50)</div>
           <div class="price-value">159.000&euro;</div>
           <div class="price-note">Las 3 unidades</div>
         </div>
         <div class="price-box">
-          <div class="price-label">Optimista</div>
+          <div class="price-label">Optimista (P75)</div>
           <div class="price-value">188.000&euro;</div>
           <div class="price-note">Las 3 unidades</div>
         </div>
@@ -1228,6 +1220,12 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
           <li><span class="sl-tag">Optimista</span> <span><strong>(P75):</strong> venta a <strong>188.000&euro;</strong> en 6 meses &mdash; solo el 25% se retira por encima de este precio.</span></li>
         </ul>
       </div>
+
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Apunte (observación, no garantía).</strong> Por las lecturas históricas de IM&middot;PULSO, el escenario optimista suele acercarse más a la realidad que el medio/realista. Es una observación de método sobre operaciones pasadas, no una previsión garantizada para esta operación en concreto.</span>
+      </div>
+
       <div class="insight insight-gray" style="margin-bottom:0;">
         El escenario <strong>medio (159.000&euro; en conjunto)</strong> es la cifra prudente de referencia. El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
       </div>

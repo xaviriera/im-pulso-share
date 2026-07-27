@@ -239,6 +239,9 @@
   .market-note { display: flex; gap: 9px; align-items: flex-start; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 9px 14px; margin: 12px 0 0; font-size: 11.5px; line-height: 1.55; color: #92400E; }
   .market-note svg { flex-shrink: 0; width: 15px; height: 15px; margin-top: 1px; }
   .market-note strong { color: #B45309; }
+  .impulso-note { display: flex; gap: 12px; align-items: flex-start; background: var(--impulso-bg); border: 1.5px solid var(--impulso-border); border-left: 5px solid var(--impulso); border-radius: 12px; padding: 16px 18px; margin: 14px 0 0; font-size: 13px; line-height: 1.6; color: var(--gray-800); }
+  .impulso-note svg { flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; color: var(--impulso); }
+  .impulso-note strong { color: var(--impulso-dark); }
 
   .intro-note-heading {
     display: flex; align-items: center; gap: 10px;
@@ -403,6 +406,70 @@
     .hero h1 { font-size: 19px; }
     .kpi-row { grid-template-columns: 1fr 1fr; gap: 6px; }
   }
+@media (max-width: 480px) {
+  section,
+  .section {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+  }
+
+  .hero-sources,
+  .hero-sources.sources-4 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .source-pill,
+  .hero-sources.sources-4 .source-pill {
+    box-sizing: border-box;
+    flex: initial;
+    min-width: 0;
+    width: auto;
+    max-width: 100%;
+  }
+
+  .source-pill *,
+  .sp-name-title,
+  .sp-subtitle,
+  .sp-desc,
+  .sp-micronote,
+  .mtvv-unavailable-badge,
+  .mtvv-dim-inner {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .mtvv-unavailable-badge { white-space: normal; text-align: center; line-height: 1.3; }
+  .hist-bar-val { font-size: 8px; }
+  .nat-box .nb-val { font-size: 18px; }
+
+  .sp-name-title {
+    font-size: 0.95rem;
+  }
+
+  .kpi-row,
+  .notarial-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hist-bar-col.up {
+    box-sizing: border-box;
+    min-width: 0;
+    max-width: 100%;
+  }
+}
 </style>
 </head>
 <body>
@@ -586,9 +653,9 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Categoría</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight highlight-asset"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">1.345</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Precio medio">337.465&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.941&euro;</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">1.345</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Precio medio">340.981&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.975&euro;</td></tr>
           <tr><td>Ático</td><td data-label="Publicados">142</td><td data-label="Retirados">114</td><td data-label="% Rotación">80,3%</td><td data-label="Precio medio">442.235&euro;</td><td data-label="Días hasta retirarse">38,1</td><td data-label="€/m²">3.784&euro;</td></tr>
-          <tr><td>Chalet <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">7</td><td data-label="Retirados">4</td><td data-label="% Rotación">57,1%</td><td data-label="Precio medio">492.000&euro;</td><td data-label="Días hasta retirarse">78,3</td><td data-label="€/m²">1.142&euro;</td></tr>
+          <tr><td>Chalet</td><td data-label="Publicados">7</td><td data-label="Retirados">4</td><td data-label="% Rotación">57,1%</td><td data-label="Precio medio">492.000&euro;</td><td data-label="Días hasta retirarse">78,3</td><td data-label="€/m²">1.142&euro;</td></tr>
           <tr><td>Dúplex <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">2</td><td data-label="Retirados">2</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">412.500&euro;</td><td data-label="Días hasta retirarse">90,5</td><td data-label="€/m²">2.950&euro;</td></tr>
           <tr><td>Estudio <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">3</td><td data-label="Retirados">3</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">189.667&euro;</td><td data-label="Días hasta retirarse">20,3</td><td data-label="€/m²">4.047&euro;</td></tr>
           </tbody>
@@ -601,7 +668,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
 
     <!-- 1.3 Tipologías en alquiler -->
     <div class="card">
-      <div class="card-title">1.3 Tipologías en alquiler</div>
+      <div class="card-title">1.3 Tipologías en alquiler por habitaciones</div>
       <div class="card-subtitle">Categorías residenciales de Ronda-Arabial, Granada (anuncios de alquiler)</div>
       <div class="table-wrap">
         <table class="table-mobile">
@@ -622,7 +689,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="card-title">1.4 Tramos de precio en venta</div>
       <div class="card-subtitle">Todos los tramos relevantes, Ronda-Arabial, Granada</div>
       <div class="term-explainer">
-        <strong>Dónde se sitúa esta operación:</strong> el piso se anuncia a 250.000&euro; (a reformar). La valoración del piso ya reformado (apartado 2.4) se mueve entre 284.100&euro; y 355.300&euro;, con un valor medio de 311.700&euro;.
+        <strong>Dónde se sitúa esta operación:</strong> el piso se anuncia a 250.000&euro; (a reformar). La valoración del piso ya reformado (apartado 2.4) se mueve entre 284.700&euro; y 349.800&euro;, con un valor medio de 307.100&euro;.
       </div>
       <div class="table-wrap">
         <table class="table-mobile">
@@ -630,7 +697,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tbody>
           <tr><td>Hasta 200.000&euro;</td><td data-label="Publicados">47</td><td data-label="Retirados">33</td><td data-label="% Rotación">70,2%</td><td data-label="Días hasta retirarse">57,8</td></tr>
           <tr><td>Hasta 225.000&euro;</td><td data-label="Publicados">46</td><td data-label="Retirados">18</td><td data-label="% Rotación">39,1%</td><td data-label="Días hasta retirarse">65,9</td></tr>
-          <tr class="highlight-asset"><td><strong>Hasta 250.000&euro;</strong> <span class="mark mark-asset">Precio anunciado</span></td><td data-label="Publicados">111</td><td data-label="Retirados">96</td><td data-label="% Rotación">86,5%</td><td data-label="Días hasta retirarse">69,4</td></tr>
+          <tr class="highlight-asset"><td><strong>Hasta 250.000&euro;</strong> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">111</td><td data-label="Retirados">96</td><td data-label="% Rotación">86,5%</td><td data-label="Días hasta retirarse">69,4</td></tr>
           <tr><td>Hasta 275.000&euro;</td><td data-label="Publicados">125</td><td data-label="Retirados">67</td><td data-label="% Rotación">53,6%</td><td data-label="Días hasta retirarse">55,1</td></tr>
           <tr><td>Hasta 300.000&euro;</td><td data-label="Publicados">181</td><td data-label="Retirados">151</td><td data-label="% Rotación">83,4%</td><td data-label="Días hasta retirarse">82,8</td></tr>
           <tr class="highlight"><td><strong>Hasta 350.000&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">391</td><td data-label="Retirados">284</td><td data-label="% Rotación">72,6%</td><td data-label="Días hasta retirarse">65,7</td></tr>
@@ -640,24 +707,24 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el tramo con más volumen es <strong>hasta 350.000&euro;</strong> (391 anuncios), el PULSO de precio de la zona. El precio de salida actual (250.000&euro;) cae en un tramo con rotación muy alta (86,5%); el rango de valoración del piso reformado (284.100&euro;-355.300&euro;) queda repartido entre los tramos de 300.000 a 400.000&euro;, todos con rotación entre 72,6% y 92,3%.
+        <strong>Lectura:</strong> el tramo con más volumen es <strong>hasta 350.000&euro;</strong> (391 anuncios), el PULSO de precio de la zona. El precio de salida actual (250.000&euro;) cae en un tramo con rotación muy alta (86,5%); el rango de valoración del piso reformado (284.700&euro;-349.800&euro;) queda repartido entre los tramos de 300.000 a 400.000&euro;, todos con rotación entre 72,6% y 92,3%.
       </div>
     </div>
 
     <!-- 1.5 Tramos de renta en alquiler -->
     <div class="card">
-      <div class="card-title">1.5 Tramos de renta en alquiler</div>
+      <div class="card-title">1.5 Tramos de renta en alquiler por habitaciones</div>
       <div class="card-subtitle">Alquiler por habitación (única modalidad disponible), Ronda-Arabial</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Tramo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
           <tr><td>Hasta 200&euro; <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">5</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Días hasta retirarse">20,0</td></tr>
-          <tr><td>Hasta 250&euro; <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">19</td><td data-label="Retirados">14</td><td data-label="% Rotación">73,7%</td><td data-label="Días hasta retirarse">19,9</td></tr>
+          <tr><td>Hasta 250&euro;</td><td data-label="Publicados">19</td><td data-label="Retirados">14</td><td data-label="% Rotación">73,7%</td><td data-label="Días hasta retirarse">19,9</td></tr>
           <tr><td>Hasta 300&euro;</td><td data-label="Publicados">77</td><td data-label="Retirados">50</td><td data-label="% Rotación">64,9%</td><td data-label="Días hasta retirarse">17,5</td></tr>
           <tr class="highlight"><td><strong>Hasta 350&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">106</td><td data-label="Retirados">45</td><td data-label="% Rotación">42,5%</td><td data-label="Días hasta retirarse">20,5</td></tr>
           <tr><td>Hasta 400&euro;</td><td data-label="Publicados">59</td><td data-label="Retirados">33</td><td data-label="% Rotación">55,9%</td><td data-label="Días hasta retirarse">21,1</td></tr>
-          <tr><td>Hasta 450&euro; <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">11</td><td data-label="Retirados">5</td><td data-label="% Rotación">45,5%</td><td data-label="Días hasta retirarse">29,6</td></tr>
+          <tr><td>Hasta 450&euro;</td><td data-label="Publicados">11</td><td data-label="Retirados">5</td><td data-label="% Rotación">45,5%</td><td data-label="Días hasta retirarse">29,6</td></tr>
           </tbody>
         </table>
       </div>
@@ -668,8 +735,30 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
 
     <!-- 1.6 Comparativa por calles/zonas — VENTA -->
     <div class="card">
-      <div class="card-title">1.6 Comparativa por calles — venta</div>
-      <div class="card-subtitle">Pisos en venta en Ronda-Arabial, agrupados por calle según la dirección del anuncio</div>
+      <div class="card-title">1.6 Comparativa por barrios — venta</div>
+      <div class="card-subtitle">Pisos en venta en Granada: Ronda-Arabial frente a sus barrios colindantes y a los de mayor volumen de la ciudad</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Barrio</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
+          <tbody>
+          <tr class="highlight highlight-asset"><td><strong>Ronda-Arabial</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">1.345</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Precio medio">340.981&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.975&euro;</td></tr>
+          <tr><td>Plaza de Toros</td><td data-label="Publicados">437</td><td data-label="Retirados">328</td><td data-label="% Rotación">75,1%</td><td data-label="Precio medio">347.281&euro;</td><td data-label="Días hasta retirarse">51,5</td><td data-label="€/m²">2.839&euro;</td></tr>
+          <tr><td>Los Pajaritos</td><td data-label="Publicados">414</td><td data-label="Retirados">254</td><td data-label="% Rotación">61,4%</td><td data-label="Precio medio">332.573&euro;</td><td data-label="Días hasta retirarse">62,6</td><td data-label="€/m²">2.714&euro;</td></tr>
+          <tr><td>Gran Capitán</td><td data-label="Publicados">410</td><td data-label="Retirados">235</td><td data-label="% Rotación">57,3%</td><td data-label="Precio medio">337.901&euro;</td><td data-label="Días hasta retirarse">58,4</td><td data-label="€/m²">3.044&euro;</td></tr>
+          <tr><td>Recogidas</td><td data-label="Publicados">407</td><td data-label="Retirados">273</td><td data-label="% Rotación">67,1%</td><td data-label="Precio medio">443.278&euro;</td><td data-label="Días hasta retirarse">56,2</td><td data-label="€/m²">3.246&euro;</td></tr>
+          <tr><td>Cuesta Escoriaza - Barranco del Abogado</td><td data-label="Publicados">303</td><td data-label="Retirados">143</td><td data-label="% Rotación">47,2%</td><td data-label="Precio medio">317.518&euro;</td><td data-label="Días hasta retirarse">77,9</td><td data-label="€/m²">3.342&euro;</td></tr>
+          <tr><td>Jardín Botánico</td><td data-label="Publicados">184</td><td data-label="Retirados">120</td><td data-label="% Rotación">65,2%</td><td data-label="Precio medio">361.424&euro;</td><td data-label="Días hasta retirarse">49,4</td><td data-label="€/m²">2.720&euro;</td></tr>
+          <tr><td>Carrera de la Virgen - Paseo del Salón</td><td data-label="Publicados">137</td><td data-label="Retirados">95</td><td data-label="% Rotación">69,3%</td><td data-label="Precio medio">504.098&euro;</td><td data-label="Días hasta retirarse">82,0</td><td data-label="€/m²">3.657&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el barrio de la operación se lleva el PULSO de la ciudad por volumen: <strong>Ronda-Arabial</strong> mueve 1.345 anuncios de piso, más del triple que el siguiente barrio (Plaza de Toros, 437), con una rotación del 70,4%. Hay barrios que rotan algo más rápido (Plaza de Toros 75,1%, 51,5 días), pero con un tercio del mercado. En precio, Ronda-Arabial (2.975&euro;/m²) se sitúa por debajo de Recogidas (3.246&euro;), Cuesta Escoriaza (3.342&euro;) y Carrera de la Virgen (3.657&euro;), y por encima de Los Pajaritos (2.714&euro;): zona céntrica de precio intermedio con el mayor volumen de operaciones de la ciudad.
+      </div>
+      <div class="insight insight-gray" style="font-size:11.5px;">
+        Cobertura: la comparativa recoge los barrios de Granada con volumen suficiente en la carga actual. Un bloque grande de anuncios de la ciudad no trae barrio informado en origen, así que la foto por barrios es representativa pero no censal.
+      </div>
+      <div class="card-subtitle">Detalle por calles dentro de Ronda-Arabial</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
@@ -679,26 +768,19 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tr><td>José Recuerda</td><td data-label="Publicados">57</td><td data-label="Retirados">7</td><td data-label="% Rotación">12,3%</td><td data-label="Precio medio">315.702&euro;</td><td data-label="Días hasta retirarse">39,7</td><td data-label="€/m²">3.216&euro;</td></tr>
           <tr><td>Ángel Barrios</td><td data-label="Publicados">53</td><td data-label="Retirados">44</td><td data-label="% Rotación">83,0%</td><td data-label="Precio medio">263.651&euro;</td><td data-label="Días hasta retirarse">112,6</td><td data-label="€/m²">3.414&euro;</td></tr>
           <tr><td>Pío Baroja</td><td data-label="Publicados">50</td><td data-label="Retirados">49</td><td data-label="% Rotación">98,0%</td><td data-label="Precio medio">294.240&euro;</td><td data-label="Días hasta retirarse">55,2</td><td data-label="€/m²">2.488&euro;</td></tr>
-          <tr><td>Escultor Antonio Martinez Olalla</td><td data-label="Publicados">31</td><td data-label="Retirados">21</td><td data-label="% Rotación">67,7%</td><td data-label="Precio medio">265.671&euro;</td><td data-label="Días hasta retirarse">59,5</td><td data-label="€/m²">3.177&euro;</td></tr>
-          <tr><td>Infanta Beatriz</td><td data-label="Publicados">28</td><td data-label="Retirados">28</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">325.143&euro;</td><td data-label="Días hasta retirarse">14,0</td><td data-label="€/m²">3.032&euro;</td></tr>
           <tr><td>Santa Clotilde</td><td data-label="Publicados">28</td><td data-label="Retirados">21</td><td data-label="% Rotación">75,0%</td><td data-label="Precio medio">285.779&euro;</td><td data-label="Días hasta retirarse">58,6</td><td data-label="€/m²">2.698&euro;</td></tr>
-          <tr><td>Méndez Núñez</td><td data-label="Publicados">24</td><td data-label="Retirados">16</td><td data-label="% Rotación">66,7%</td><td data-label="Precio medio">366.542&euro;</td><td data-label="Días hasta retirarse">128,6</td><td data-label="€/m²">3.198&euro;</td></tr>
-          <tr><td>Rivadavia</td><td data-label="Publicados">23</td><td data-label="Retirados">20</td><td data-label="% Rotación">87,0%</td><td data-label="Precio medio">312.957&euro;</td><td data-label="Días hasta retirarse">94,8</td><td data-label="€/m²">2.847&euro;</td></tr>
-          <tr><td>Plaza Albert Einstein</td><td data-label="Publicados">23</td><td data-label="Retirados">23</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">345.217&euro;</td><td data-label="Días hasta retirarse">24,3</td><td data-label="€/m²">3.146&euro;</td></tr>
-          <tr><td>Emperatriz Eugenia</td><td data-label="Publicados">22</td><td data-label="Retirados">20</td><td data-label="% Rotación">90,9%</td><td data-label="Precio medio">327.864&euro;</td><td data-label="Días hasta retirarse">106,6</td><td data-label="€/m²">3.290&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>San Isidoro (la calle del activo)</strong> <span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">4</td><td data-label="Retirados">2</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">272.475&euro;</td><td data-label="Días hasta retirarse">72,0</td><td data-label="€/m²">&mdash;</td></tr>
-          <tr><td>Sin calle especificada (anuncios a nivel de barrio)</td><td data-label="Publicados">316</td><td data-label="Retirados">208</td><td data-label="% Rotación">65,8%</td><td data-label="Precio medio">374.475&euro;</td><td data-label="Días hasta retirarse">71,9</td><td data-label="€/m²">3.177&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>San Isidoro</strong> <span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">4</td><td data-label="Retirados">2</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">272.475&euro;</td><td data-label="Días hasta retirarse">72,0</td><td data-label="€/m²">&mdash;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> la calle con más mercado es <strong>Camino de Ronda</strong> (356 anuncios de piso, 72,2% de rotación) — el eje comercial del barrio. Las calles interiores más líquidas son Infanta Beatriz y Plaza Albert Einstein (100% de rotación, 14-24 días). San Isidoro, la calle del activo, tiene muestra limitada (4 anuncios): su precio medio (272.475&euro;) queda por debajo de la media del barrio, coherente con producto a reformar.
+        <strong>Lectura:</strong> dentro del barrio, la calle con más mercado es <strong>Camino de Ronda</strong> (356 anuncios de piso, 72,2% de rotación): el eje comercial. Pío Baroja y Ángel Barrios colocan casi todo lo que publican (98,0% y 83,0%), aunque Ángel Barrios tarda mucho más (112,6 días). San Isidoro, la calle del activo, tiene muestra limitada (4 anuncios) y un precio medio (272.475&euro;) por debajo de la media del barrio, coherente con producto a reformar.
       </div>
     </div>
 
     <!-- 1.7 Comparativa por calles/zonas — ALQUILER -->
     <div class="card">
-      <div class="card-title">1.7 Comparativa por calles — alquiler</div>
+      <div class="card-title">1.7 Comparativa por calles — alquiler por habitaciones</div>
       <div class="card-subtitle">Alquiler por habitación en Ronda-Arabial, agrupado por calle según la dirección del anuncio</div>
       <div class="table-wrap">
         <table class="table-mobile">
@@ -708,18 +790,12 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tr><td>Pedro Antonio de Alarcón</td><td data-label="Publicados">54</td><td data-label="Retirados">24</td><td data-label="% Rotación">44,4%</td><td data-label="Precio medio">327&euro;</td><td data-label="Días hasta retirarse">20,0</td></tr>
           <tr><td>Gonzalo Gallas</td><td data-label="Publicados">22</td><td data-label="Retirados">6</td><td data-label="% Rotación">27,3%</td><td data-label="Precio medio">290&euro;</td><td data-label="Días hasta retirarse">16,2</td></tr>
           <tr><td>Santa Clotilde</td><td data-label="Publicados">16</td><td data-label="Retirados">12</td><td data-label="% Rotación">75,0%</td><td data-label="Precio medio">317&euro;</td><td data-label="Días hasta retirarse">18,7</td></tr>
-          <tr><td>Cañaveral <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">9</td><td data-label="Retirados">1</td><td data-label="% Rotación">11,1%</td><td data-label="Precio medio">306&euro;</td><td data-label="Días hasta retirarse">7,0</td></tr>
-          <tr><td>Recoletos <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">7</td><td data-label="Retirados">4</td><td data-label="% Rotación">57,1%</td><td data-label="Precio medio">256&euro;</td><td data-label="Días hasta retirarse">11,0</td></tr>
-          <tr><td>Méndez Núñez <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">6</td><td data-label="Retirados">2</td><td data-label="% Rotación">33,3%</td><td data-label="Precio medio">303&euro;</td><td data-label="Días hasta retirarse">22,0</td></tr>
-          <tr><td>Ángel Barrios <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">5</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Precio medio">288&euro;</td><td data-label="Días hasta retirarse">12,0</td></tr>
-          <tr><td>José Recuerda <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">5</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Precio medio">295&euro;</td><td data-label="Días hasta retirarse">12,3</td></tr>
-          <tr class="highlight-asset"><td><strong>San Isidoro (la calle del activo)</strong> <span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">1</td><td data-label="Retirados">1</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">360&euro;</td><td data-label="Días hasta retirarse">55,0</td></tr>
-          <tr><td>Sin calle especificada (anuncios a nivel de barrio)</td><td data-label="Publicados">30</td><td data-label="Retirados">20</td><td data-label="% Rotación">66,7%</td><td data-label="Precio medio">327&euro;</td><td data-label="Días hasta retirarse">14,2</td></tr>
+          <tr class="highlight-asset"><td><strong>San Isidoro</strong> <span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">1</td><td data-label="Retirados">1</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">360&euro;</td><td data-label="Días hasta retirarse">55,0</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el alquiler por habitación se concentra en los mismos ejes que la venta: <strong>Camino de Ronda</strong> (88 anuncios) y <strong>Pedro Antonio de Alarcón</strong> (54). Las rentas son muy homogéneas por calle (256-327&euro;/mes de media) y la colocación es rápida en todas (7-22 días).
+        <strong>Lectura:</strong> el alquiler por habitación se concentra en los mismos ejes que la venta: <strong>Camino de Ronda</strong> (88 anuncios) y <strong>Pedro Antonio de Alarcón</strong> (54). Las rentas son muy homogéneas entre calles (290-360&euro;/mes de media) y la colocación es rápida en los ejes principales (16-20 días).
       </div>
     </div>
 
@@ -733,9 +809,9 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tbody>
           <tr class="highlight"><td>Locales o naves <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">177</td><td data-label="Retirados">127</td><td data-label="% Rotación">71,8%</td><td data-label="Precio medio">217.482&euro;</td></tr>
           <tr><td>Garaje</td><td data-label="Publicados">95</td><td data-label="Retirados">41</td><td data-label="% Rotación">43,2%</td><td data-label="Precio medio">46.650&euro;</td></tr>
-          <tr><td>Terreno <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">15</td><td data-label="Retirados">2</td><td data-label="% Rotación">13,3%</td><td data-label="Precio medio">102.250&euro;</td></tr>
-          <tr><td>Casa Rural <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">13</td><td data-label="Retirados">5</td><td data-label="% Rotación">38,5%</td><td data-label="Precio medio">525.000&euro;</td></tr>
-          <tr><td>Trastero <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">7</td><td data-label="Retirados">3</td><td data-label="% Rotación">42,9%</td><td data-label="Precio medio">192.333&euro;</td></tr>
+          <tr><td>Terreno</td><td data-label="Publicados">15</td><td data-label="Retirados">2</td><td data-label="% Rotación">13,3%</td><td data-label="Precio medio">102.250&euro;</td></tr>
+          <tr><td>Casa Rural</td><td data-label="Publicados">13</td><td data-label="Retirados">5</td><td data-label="% Rotación">38,5%</td><td data-label="Precio medio">525.000&euro;</td></tr>
+          <tr><td>Trastero</td><td data-label="Publicados">7</td><td data-label="Retirados">3</td><td data-label="% Rotación">42,9%</td><td data-label="Precio medio">192.333&euro;</td></tr>
           <tr><td>Edificio <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">4</td><td data-label="Retirados">4</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">950.000&euro;</td></tr>
           <tr><td>Oficina <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">3</td><td data-label="Retirados">0</td><td data-label="% Rotación">0,0%</td><td data-label="Precio medio">No disponible</td></tr>
           <tr><td>Obra Nueva <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">2</td><td data-label="Retirados">0</td><td data-label="% Rotación">0,0%</td><td data-label="Precio medio">No disponible</td></tr>
@@ -750,7 +826,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
     <!-- 1.9 Alquiler por habitaciones -->
     <div class="card">
       <div class="card-title">1.9 Alquiler por habitaciones</div>
-      <div class="card-subtitle">Renta media por habitación suelta en Ronda-Arabial</div>
+      <div class="card-subtitle">Resumen unitario de renta media por habitación; 1.3 muestra la tipología y su rotación</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Modalidad</th><th>Renta media / habitación</th><th>Anuncios (muestra)</th><th>Baños medios del piso</th></tr></thead>
@@ -772,18 +848,18 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Categoría</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th></tr></thead>
           <tbody>
-          <tr><td>1 dormitorio · 1 baño <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">7</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">172.714&euro;</td></tr>
+          <tr><td>1 dormitorio · 1 baño</td><td data-label="Publicados">7</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">172.714&euro;</td></tr>
           <tr><td>2 dormitorios · 1 baño</td><td data-label="Publicados">46</td><td data-label="Retirados">12</td><td data-label="% Rotación">26,1%</td><td data-label="Precio medio">220.254&euro;</td></tr>
           <tr><td>2 dormitorios · 2 baños</td><td data-label="Publicados">31</td><td data-label="Retirados">22</td><td data-label="% Rotación">71,0%</td><td data-label="Precio medio">398.565&euro;</td></tr>
           <tr><td>3 dormitorios · 1 baño</td><td data-label="Publicados">134</td><td data-label="Retirados">80</td><td data-label="% Rotación">59,7%</td><td data-label="Precio medio">257.006&euro;</td></tr>
-          <tr class="highlight highlight-asset"><td><strong>3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto (aprox.)</span></td><td data-label="Publicados">271</td><td data-label="Retirados">142</td><td data-label="% Rotación">52,4%</td><td data-label="Precio medio">323.584&euro;</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>3 dormitorios · 2 baños</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">271</td><td data-label="Retirados">142</td><td data-label="% Rotación">52,4%</td><td data-label="Precio medio">323.584&euro;</td></tr>
           <tr><td>3 dormitorios · 3 baños <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">1</td><td data-label="Retirados">0</td><td data-label="% Rotación">0,0%</td><td data-label="Precio medio">450.000&euro;</td></tr>
           <tr><td>4 dormitorios · 1 baño</td><td data-label="Publicados">25</td><td data-label="Retirados">13</td><td data-label="% Rotación">52,0%</td><td data-label="Precio medio">282.264&euro;</td></tr>
           <tr><td>4 dormitorios · 2 baños</td><td data-label="Publicados">216</td><td data-label="Retirados">155</td><td data-label="% Rotación">71,8%</td><td data-label="Precio medio">395.220&euro;</td></tr>
           <tr><td>4 dormitorios · 3 baños <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">3</td><td data-label="Retirados">3</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">533.333&euro;</td></tr>
-          <tr><td>5 dormitorios · 1 baño <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">13</td><td data-label="Retirados">12</td><td data-label="% Rotación">92,3%</td><td data-label="Precio medio">259.000&euro;</td></tr>
+          <tr><td>5 dormitorios · 1 baño</td><td data-label="Publicados">13</td><td data-label="Retirados">12</td><td data-label="% Rotación">92,3%</td><td data-label="Precio medio">259.000&euro;</td></tr>
           <tr><td>5 dormitorios · 2 baños</td><td data-label="Publicados">172</td><td data-label="Retirados">128</td><td data-label="% Rotación">74,4%</td><td data-label="Precio medio">358.988&euro;</td></tr>
-          <tr><td>6 dormitorios · 1 baño <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">6</td><td data-label="Retirados">0</td><td data-label="% Rotación">0,0%</td><td data-label="Precio medio">259.000&euro;</td></tr>
+          <tr><td>6 dormitorios · 1 baño</td><td data-label="Publicados">6</td><td data-label="Retirados">0</td><td data-label="% Rotación">0,0%</td><td data-label="Precio medio">259.000&euro;</td></tr>
           <tr><td>6 dormitorios · 2 baños <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">2</td><td data-label="Retirados">1</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">462.500&euro;</td></tr>
           </tbody>
         </table>
@@ -805,8 +881,12 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tr><td>Locales o naves (venta)</td><td data-label="N">177</td><td data-label="% Rotación">71,8%</td><td data-label="Días hasta retirarse">77,7</td></tr>
           <tr class="highlight-asset"><td><strong>Piso</strong> (venta) <span class="mark mark-asset">Producto</span></td><td data-label="N">1.345</td><td data-label="% Rotación">70,4%</td><td data-label="Días hasta retirarse">71,0</td></tr>
           <tr><td>Habitación (alquiler)</td><td data-label="N">320</td><td data-label="% Rotación">47,8%</td><td data-label="Días hasta retirarse">19,5</td></tr>
+          <tr class="no-data"><td>Alquiler tradicional (vivienda completa)</td><td data-label="N">Sin muestra</td><td data-label="% Rotación">&mdash;</td><td data-label="Días hasta retirarse">&mdash;</td></tr>
           </tbody>
         </table>
+      </div>
+      <div class="insight insight-gray" style="font-size:11.5px;">
+        El alquiler de vivienda completa no figura en la carga actual de la zona: la categoría no se descargó en origen. Por eso el bloque de alquiler de este informe refleja alquiler por habitaciones.
       </div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> con muestra suficiente (N&ge;30), el ático rota más rápido (80,3%), pero es un nicho pequeño (142 anuncios). El <strong>piso</strong> — el producto de esta operación — es, con diferencia, la tipología con más volumen de toda la zona (1.345 anuncios) y una rotación sólida (70,4%): no es el segmento más veloz, pero sí el más profundo y líquido.
@@ -872,10 +952,10 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="card-title">2.2 Base de testigos utilizada</div>
       <div class="card-subtitle">Testigos reales de venta ya retirados en Ronda-Arabial</div>
       <div class="term-explainer">
-        La valoración se apoya en dos cestas de testigos reales, ambas de anuncios de venta <strong>ya retirados</strong> del mercado en Ronda-Arabial: una banda amplia de <strong>484 testigos</strong> (pisos de 85-125 m², cualquier número de dormitorios, superficie media de la muestra 104 m²) y un subconjunto más estricto de <strong>219 testigos</strong> (mismo rango de superficie, pero limitado a viviendas de 3 dormitorios como el activo, superficie media de la muestra 101 m²). El precio final del apartado 2.4 se calcula sobre la banda amplia (n=484), la de mayor tamaño muestral.
+        La valoración se apoya en una <strong>única cesta</strong> de testigos reales: anuncios de venta <strong>ya retirados</strong> del mercado en Ronda-Arabial, de pisos cuya superficie cae en la banda del activo &mdash;&plusmn;15 m² sobre sus 106 m², es decir <strong>91-121 m²</strong>&mdash;. Son <strong>380 testigos</strong>, con una superficie media de muestra de 107 m². Es la cesta sobre la que se calcula el precio del apartado 2.4.
       </div>
       <div class="insight insight-green">
-        <strong>Lectura:</strong> ambas cestas son consistentes entre sí en magnitud, lo que da solidez a la valoración: no depende de un puñado de anuncios aislados, sino de cientos de testigos reales de la misma zona y tamaño.
+        <strong>Lectura:</strong> la cesta es consistente en magnitud, lo que da solidez a la valoración: no depende de un puñado de anuncios aislados, sino de cientos de testigos reales de la misma zona y tamaño.
       </div>
     </div>
 
@@ -887,13 +967,12 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Cesta de testigos</th><th>Testigos (n)</th><th>Fiabilidad</th></tr></thead>
           <tbody>
-          <tr class="highlight-asset"><td><strong>Piso 106 m² (banda 85-125 m², todos)</strong> <span class="mark mark-asset">Usada en 2.4</span></td><td data-label="Testigos (n)">484</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
-          <tr><td>Piso 3 dormitorios (mismo perfil que el activo)</td><td data-label="Testigos (n)">219</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
+          <tr class="highlight-asset"><td><strong>Piso 106 m² (banda 91-121 m²)</strong> <span class="mark mark-asset">Producto</span></td><td data-label="Testigos (n)">380</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-gray" style="margin-top:0;">
-        <strong>Fiabilidad alta</strong> (n&ge;6): cálculo estadísticamente representativo para la zona. Ambas cestas superan ese umbral con holgura.
+        <strong>Fiabilidad alta</strong> (n&ge;6): cálculo estadísticamente representativo para la zona. La cesta supera ese umbral con holgura.
       </div>
     </div>
 
@@ -903,23 +982,23 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="card-subtitle">Piso reformado de 106 m² · estimación de mercado, conservador / medio / optimista</div>
 
       <div class="term-explainer" style="margin-top:0; margin-bottom:12px; background: var(--impulso-bg); border-left-color: var(--impulso);">
-        <strong>De dónde sale esta horquilla:</strong> testigos reales de venta ya retirados en Ronda-Arabial (2.2, n=484) &rarr; percentiles de precio de esos testigos comparables &rarr; aplicados a la superficie del piso (106 m²). El resultado, aquí abajo: tres escenarios de precio para el piso ya reformado.
+        <strong>De dónde sale esta horquilla:</strong> testigos reales de venta ya retirados en Ronda-Arabial (2.2, n=380) &rarr; percentiles de precio de esos testigos comparables &rarr; aplicados a la superficie del piso (106 m²). El resultado, aquí abajo: tres escenarios de precio para el piso ya reformado.
       </div>
 
       <div class="price-widget">
         <div class="price-box">
           <div class="price-label">Conservador</div>
-          <div class="price-value">284.100&euro;</div>
+          <div class="price-value">284.700&euro;</div>
           <div class="price-note">Piso reformado, 106 m²</div>
         </div>
         <div class="price-box main">
           <div class="price-label">Medio</div>
-          <div class="price-value">311.700&euro;</div>
+          <div class="price-value">307.100&euro;</div>
           <div class="price-note">Piso reformado, 106 m²</div>
         </div>
         <div class="price-box">
           <div class="price-label">Optimista</div>
-          <div class="price-value">355.300&euro;</div>
+          <div class="price-value">349.800&euro;</div>
           <div class="price-note">Piso reformado, 106 m²</div>
         </div>
       </div>
@@ -927,19 +1006,19 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso); margin-top:12px;">
         <strong>Qué significa cada escenario, en cifras:</strong>
         <ul class="scenario-list">
-          <li><span class="sl-tag">Conservador</span> <span>venta a <strong>284.100&euro;</strong> &mdash; el 75% de los pisos similares ya reformados se retiran por encima de este precio.</span></li>
-          <li><span class="sl-tag">Medio</span> <span>venta a <strong>311.700&euro;</strong> &mdash; la mitad se retira por encima y la mitad por debajo.</span></li>
-          <li><span class="sl-tag">Optimista</span> <span>venta a <strong>355.300&euro;</strong> &mdash; solo el 25% se retira por encima de este precio.</span></li>
+          <li><span class="sl-tag">Conservador</span> <span>venta a <strong>284.700&euro;</strong> &mdash; el 75% de los pisos similares ya reformados se retiran por encima de este precio.</span></li>
+          <li><span class="sl-tag">Medio</span> <span>venta a <strong>307.100&euro;</strong> &mdash; la mitad se retira por encima y la mitad por debajo.</span></li>
+          <li><span class="sl-tag">Optimista</span> <span>venta a <strong>349.800&euro;</strong> &mdash; solo el 25% se retira por encima de este precio.</span></li>
         </ul>
       </div>
 
-      <div class="market-note">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="impulso-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.75V16h8v-1.25A7 7 0 0 0 12 2z"/></svg>
         <span><strong>Apunte (observación, no garantía).</strong> Por las lecturas históricas de IM&middot;PULSO, el escenario optimista suele acercarse más a la realidad que el medio/realista. Es una observación de método sobre operaciones pasadas, no una previsión garantizada para esta operación en concreto.</span>
       </div>
 
       <div class="insight insight-gray" style="margin-bottom:0;">
-        El escenario <strong>medio (311.700&euro;)</strong> es la cifra prudente de referencia. El piso se anuncia hoy a <strong>250.000&euro;</strong> (a reformar): el margen bruto entre precio de compra y valor medio reformado es orientativo y no incluye coste de reforma, impuestos ni gastos de compraventa — esos los aporta el inversor. El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
+        El escenario <strong>medio (307.100&euro;)</strong> es la cifra prudente de referencia. El piso se anuncia hoy a <strong>250.000&euro;</strong> (a reformar): el margen bruto entre precio de compra y valor medio reformado es orientativo y no incluye coste de reforma, impuestos ni gastos de compraventa — esos los aporta el inversor. El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
       </div>
     </div>
 
@@ -964,136 +1043,84 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         </span>
         <span class="cd-title">2.6 Contactos reales para contrastar el precio</span>
       </div>
-      <div class="cd-sub">Las inmobiliarias que más anuncios han movido en Ronda-Arabial (por volumen de referencias en la zona). En el conjunto de la zona, 1.828 anuncios los publica un profesional frente a 307 de particulares: el canal inmobiliario domina, y contrastar con estas agencias es el paso lógico antes de fijar el precio de salida.</div>
+      <div class="cd-sub">Las inmobiliarias que más anuncios mueven <strong>del mismo perfil que el activo</strong> (piso en venta de 91-121 m² en Ronda-Arabial). En el conjunto de la zona, 1.828 anuncios los publica un profesional frente a 307 de particulares: el canal inmobiliario domina, y contrastar con estas agencias es el paso lógico antes de fijar el precio de salida.</div>
       <div class="contactos-grid">
         <div class="contacto-card">
           <div class="cc-head">
             <div class="cc-name">Don Piso Granada Centro</div>
-            <div class="cc-count"><div class="cc-count-n">86</div><div class="cc-count-label">Anuncios</div></div>
+            <div class="cc-count"><div class="cc-count-n">21</div><div class="cc-count-label">Anuncios</div></div>
           </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
+          <div class="cc-tipologia">Piso 91-121 m² en venta &middot; Ronda-Arabial</div>
           <div class="cc-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
+            <a href="tel:+34858210551" style="color:inherit; text-decoration:none;">858 210 551</a>
           </div>
-          <div class="cc-op">La agencia con más anuncios de la zona.</div>
-          <span class="contact-tag">Contacto directo</span>
-        </div>
-        <div class="contacto-card">
-          <div class="cc-head">
-            <div class="cc-name">RK Granada</div>
-            <div class="cc-count"><div class="cc-count-n">69</div><div class="cc-count-label">Anuncios</div></div>
-          </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
-          <div class="cc-phone">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
-          </div>
-          <div class="cc-op">Segunda agencia con más movimiento en la zona.</div>
-          <span class="contact-tag">Contacto directo</span>
-        </div>
-        <div class="contacto-card">
-          <div class="cc-head">
-            <div class="cc-name">Inmobiliaria Violón-Aminares</div>
-            <div class="cc-count"><div class="cc-count-n">59</div><div class="cc-count-label">Anuncios</div></div>
-          </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
-          <div class="cc-phone">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
-          </div>
-          <div class="cc-op">Movimiento alto y sostenido en la zona.</div>
+          <div class="cc-op">La agencia con más producto del perfil del activo.</div>
           <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-head">
             <div class="cc-name">Grupo Navygar</div>
-            <div class="cc-count"><div class="cc-count-n">56</div><div class="cc-count-label">Anuncios</div></div>
+            <div class="cc-count"><div class="cc-count-n">18</div><div class="cc-count-label">Anuncios</div></div>
           </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
+          <div class="cc-tipologia">Piso 91-121 m² en venta &middot; Ronda-Arabial</div>
           <div class="cc-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
+            <a href="tel:+34858210249" style="color:inherit; text-decoration:none;">858 210 249</a>
           </div>
-          <div class="cc-op">Presencia constante en la zona.</div>
+          <div class="cc-op">Segunda por volumen en el mismo tramo de superficie.</div>
           <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-head">
             <div class="cc-name">Homix</div>
-            <div class="cc-count"><div class="cc-count-n">55</div><div class="cc-count-label">Anuncios</div></div>
+            <div class="cc-count"><div class="cc-count-n">17</div><div class="cc-count-label">Anuncios</div></div>
           </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
+          <div class="cc-tipologia">Piso 91-121 m² en venta &middot; Ronda-Arabial</div>
           <div class="cc-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
+            <a href="tel:+34858210257" style="color:inherit; text-decoration:none;">858 210 257</a>
           </div>
-          <div class="cc-op">Volumen alto de anuncios en la zona.</div>
+          <div class="cc-op">Fuerte presencia en piso de 90-120 m² en la zona.</div>
           <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-head">
-            <div class="cc-name">Álvarez Salmerón</div>
-            <div class="cc-count"><div class="cc-count-n">51</div><div class="cc-count-label">Anuncios</div></div>
+            <div class="cc-name">RK Granada</div>
+            <div class="cc-count"><div class="cc-count-n">17</div><div class="cc-count-label">Anuncios</div></div>
           </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
+          <div class="cc-tipologia">Piso 91-121 m² en venta &middot; Ronda-Arabial</div>
           <div class="cc-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
+            <a href="tel:+34858210986" style="color:inherit; text-decoration:none;">858 210 986</a>
           </div>
-          <div class="cc-op">Agencia consolidada de la zona.</div>
+          <div class="cc-op">Mismo volumen que Homix en el perfil del activo.</div>
           <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-head">
-            <div class="cc-name">Inmobiliaria Naveros</div>
-            <div class="cc-count"><div class="cc-count-n">48</div><div class="cc-count-label">Anuncios</div></div>
+            <div class="cc-name">Inmobiliaria Vélez Casas</div>
+            <div class="cc-count"><div class="cc-count-n">16</div><div class="cc-count-label">Anuncios</div></div>
           </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
+          <div class="cc-tipologia">Piso 91-121 m² en venta &middot; Ronda-Arabial</div>
           <div class="cc-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
+            <a href="tel:+34858210088" style="color:inherit; text-decoration:none;">858 210 088</a>
           </div>
-          <div class="cc-op">Movimiento estable en la zona.</div>
+          <div class="cc-op">Referencia local con producto comparable.</div>
           <span class="contact-tag">Contacto directo</span>
         </div>
         <div class="contacto-card">
           <div class="cc-head">
-            <div class="cc-name">Vélez Casas</div>
-            <div class="cc-count"><div class="cc-count-n">47</div><div class="cc-count-label">Anuncios</div></div>
+            <div class="cc-name">Álvarez Salmerón Inmobiliaria</div>
+            <div class="cc-count"><div class="cc-count-n">16</div><div class="cc-count-label">Anuncios</div></div>
           </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
+          <div class="cc-tipologia">Piso 91-121 m² en venta &middot; Ronda-Arabial</div>
           <div class="cc-phone">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
+            <a href="tel:+34858210807" style="color:inherit; text-decoration:none;">858 210 807</a>
           </div>
-          <div class="cc-op">Agencia local con volumen constante.</div>
-          <span class="contact-tag">Contacto directo</span>
-        </div>
-        <div class="contacto-card">
-          <div class="cc-head">
-            <div class="cc-name">Ivercasa</div>
-            <div class="cc-count"><div class="cc-count-n">44</div><div class="cc-count-label">Anuncios</div></div>
-          </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
-          <div class="cc-phone">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
-          </div>
-          <div class="cc-op">Presencia habitual en la zona.</div>
-          <span class="contact-tag">Contacto directo</span>
-        </div>
-        <div class="contacto-card">
-          <div class="cc-head">
-            <div class="cc-name">Grupo Torres</div>
-            <div class="cc-count"><div class="cc-count-n">41</div><div class="cc-count-label">Anuncios</div></div>
-          </div>
-          <div class="cc-tipologia">Piso en Ronda-Arabial</div>
-          <div class="cc-phone">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Ref. en BBDD · teléfono disponible en ficha
-          </div>
-          <div class="cc-op">Cierra el top 10 de movimiento en la zona.</div>
+          <div class="cc-op">Cierra el grupo de cabecera del perfil.</div>
           <span class="contact-tag">Contacto directo</span>
         </div>
       </div>
@@ -1117,7 +1144,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
       <div>
-        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">311.700&euro;</strong> para el piso una vez reformado (horquilla de 284.100 a 355.300&euro;), a partir de 484 testigos reales retirados en Ronda-Arabial. El precio de compra anunciado (250.000&euro;, a reformar) queda por debajo del escenario conservador de reformado, coherente con una estrategia de flip — el margen exacto depende del coste de reforma, que no está en esta base de datos.
+        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">307.100&euro;</strong> para el piso una vez reformado (horquilla de 284.700 a 349.800&euro;), a partir de 380 testigos reales retirados en Ronda-Arabial. El precio de compra anunciado (250.000&euro;, a reformar) queda por debajo del escenario conservador de reformado, coherente con una estrategia de flip — el margen exacto depende del coste de reforma, que no está en esta base de datos.
       </div>
     </div>
   </div>
@@ -1181,7 +1208,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <strong>Qué cubre el CP 18003.</strong> Es un código postal de Granada capital (zona Ronda-Arabial y colindantes). La lectura notarial de este apartado se ciñe a ese ámbito, no a toda la provincia.
       </div>
       <div class="insight insight-purple" style="margin-top:0;">
-        El precio del notariado (1.991&euro;/m²) <strong>no sirve aquí como precio de referencia directo</strong>: mide vivienda de 120 m² de media en todo estado de conservación, no producto pequeño reformado. El &euro;/m² de oferta de la tipología Piso en Ronda-Arabial es de 2.941&euro;/m² (apartado 1.2), y el rango de testigos retirados usado en la valoración (apartado 2.4) se mueve por encima de eso. El dato notarial se muestra como <strong>suelo y contexto oficial de la zona</strong>: confirma que el mercado existe, es real y tiene volumen, pero no fija el precio del activo de esta operación.
+        El precio del notariado (1.991&euro;/m²) <strong>no sirve aquí como precio de referencia directo</strong>: mide vivienda de 120 m² de media en todo estado de conservación, no producto pequeño reformado. El &euro;/m² de oferta de la tipología Piso en Ronda-Arabial es de 2.975&euro;/m² (apartado 1.2), y el rango de testigos retirados usado en la valoración (apartado 2.4) se mueve por encima de eso. El dato notarial se muestra como <strong>suelo y contexto oficial de la zona</strong>: confirma que el mercado existe, es real y tiene volumen, pero no fija el precio del activo de esta operación.
       </div>
     </div>
 
@@ -1332,17 +1359,17 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <thead><tr><th>Indicador</th><th>Notarial (oficial)</th><th>Mercado (IM&middot;PULSO)</th><th>Lectura</th></tr></thead>
           <tbody>
           <tr><td>Liquidez</td><td data-label="Notarial (oficial)"><strong>269 compraventas/año</strong> (CP 18003)</td><td data-label="Mercado (IM·PULSO)">Rotación 69,0% venta zona; tipo Piso al 70,4%</td><td data-label="Lectura">Mercado activo en ambas fuentes</td></tr>
-          <tr><td>Tendencia de precios</td><td data-label="Notarial (oficial)"><strong>-2,58%</strong> interanual (tras 8 años de subidas)</td><td data-label="Mercado (IM·PULSO)">&euro;/m² de oferta tipo Piso: 2.941&euro;</td><td data-label="Lectura">Corrección leve en escritura; la oferta de mercado sigue firme</td></tr>
+          <tr><td>Tendencia de precios</td><td data-label="Notarial (oficial)"><strong>-2,58%</strong> interanual (tras 8 años de subidas)</td><td data-label="Mercado (IM·PULSO)">&euro;/m² de oferta tipo Piso: 2.975&euro;</td><td data-label="Lectura">Corrección leve en escritura; la oferta de mercado sigue firme</td></tr>
           <tr><td>Tipo de construcción</td><td data-label="Notarial (oficial)"><strong>71,92% segunda mano</strong> (28,08% obra nueva)</td><td data-label="Mercado (IM·PULSO)">Piso a reformar (segunda mano)</td><td data-label="Lectura">Encaja con el perfil dominante de la zona</td></tr>
-          <tr><td>Importe medio de compraventa</td><td data-label="Notarial (oficial)"><strong>238.945&euro;</strong></td><td data-label="Mercado (IM·PULSO)">Valor medio del piso reformado: 311.700&euro;</td><td data-label="Lectura">Por encima del importe medio notarial: coherente con producto ya reformado sobre una base notarial que mezcla todo estado de conservación</td></tr>
+          <tr><td>Importe medio de compraventa</td><td data-label="Notarial (oficial)"><strong>238.945&euro;</strong></td><td data-label="Mercado (IM·PULSO)">Valor medio del piso reformado: 307.100&euro;</td><td data-label="Lectura">Por encima del importe medio notarial: coherente con producto ya reformado sobre una base notarial que mezcla todo estado de conservación</td></tr>
           <tr><td>Perfil comprador</td><td data-label="Notarial (oficial)"><strong>96,85%</strong> personas físicas, edad mediana 49 años</td><td data-label="Mercado (IM·PULSO)">&mdash;</td><td data-label="Lectura">Demanda de uso real, comprador maduro</td></tr>
-          <tr><td>&euro; por m² (por capas)</td><td data-label="Notarial (oficial)"><strong>1.991&euro;/m²</strong> (escritura, 120 m² de media, todo estado)</td><td data-label="Mercado (IM·PULSO)">2.941&euro;/m² (oferta zona, tipo Piso) &rarr; rango del piso reformado: 284.100-355.300&euro; en total</td><td data-label="Lectura">Tres capas distintas: escritura mixta &lt; oferta de zona &lt; producto reformado</td></tr>
+          <tr><td>&euro; por m² (por capas)</td><td data-label="Notarial (oficial)"><strong>1.991&euro;/m²</strong> (escritura, 120 m² de media, todo estado)</td><td data-label="Mercado (IM·PULSO)">2.975&euro;/m² (oferta zona, tipo Piso) &rarr; rango del piso reformado: 284.700-349.800&euro; en total</td><td data-label="Lectura">Tres capas distintas: escritura mixta &lt; oferta de zona &lt; producto reformado</td></tr>
           </tbody>
         </table>
       </div>
       <div class="cruce-verdict">
         <div class="cv-title">Conclusión del cruce</div>
-        <div class="cv-text">Dos fuentes independientes &mdash;los testigos de IM&middot;PULSO (mercado) y el Portal del Notariado (oficial)&mdash; describen el mismo mercado desde ángulos distintos: <strong>líquido</strong> (269 compraventas/año) y <strong>de uso real</strong> (96,85% personas físicas), pero con una <strong>corrección de precio leve</strong> en 2025 (-2,58%) tras ocho años de subidas. No es un mercado en boom ahora mismo, pero tampoco en caída fuerte: es un contexto sólido y estable para una operación de flip, siempre que el margen se calcule sobre el escenario conservador (284.100&euro;) y no sobre el optimista.</div>
+        <div class="cv-text">Dos fuentes independientes &mdash;los testigos de IM&middot;PULSO (mercado) y el Portal del Notariado (oficial)&mdash; describen el mismo mercado desde ángulos distintos: <strong>líquido</strong> (269 compraventas/año) y <strong>de uso real</strong> (96,85% personas físicas), pero con una <strong>corrección de precio leve</strong> en 2025 (-2,58%) tras ocho años de subidas. No es un mercado en boom ahora mismo, pero tampoco en caída fuerte: es un contexto sólido y estable para una operación de flip, siempre que el margen se calcule sobre el escenario conservador (284.700&euro;) y no sobre el optimista.</div>
       </div>
     </div>
 
@@ -1375,7 +1402,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="validation-card scraping">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
         <div class="v-source">Fuente 1+2 · IM&middot;PULSO (mercado)</div>
-        <div class="v-detail">484 testigos reales retirados en Ronda-Arabial<br>Valor medio estimado 311.700&euro;</div>
+        <div class="v-detail">380 testigos reales retirados en Ronda-Arabial<br>Valor medio estimado 307.100&euro;</div>
       </div>
       <div class="validation-card notarial">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
@@ -1412,7 +1439,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-          <span><strong>Valor orientativo del piso reformado:</strong> un valor medio de <strong>311.700&euro;</strong> (rango 284.100&euro; &middot; 311.700&euro; &middot; 355.300&euro;, conservador / medio / optimista), sobre 484 testigos reales de venta ya retirados en Ronda-Arabial. El precio de compra anunciado (250.000&euro;, a reformar) queda por debajo del escenario conservador de reformado.</span>
+          <span><strong>Valor orientativo del piso reformado:</strong> un valor medio de <strong>307.100&euro;</strong> (rango 284.700&euro; &middot; 307.100&euro; &middot; 349.800&euro;, conservador / medio / optimista), sobre 380 testigos reales de venta ya retirados en Ronda-Arabial. El precio de compra anunciado (250.000&euro;, a reformar) queda por debajo del escenario conservador de reformado.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
@@ -1428,7 +1455,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-          <span><strong>Sobre estas cifras:</strong> los rangos de venta salen de anuncios de portal (activos o retirados), no de precios de escritura. La muestra que sostiene la valoración es amplia (484 testigos): suficiente para un rango de trabajo sólido, no para una cifra cerrada al euro.</span>
+          <span><strong>Sobre estas cifras:</strong> los rangos de venta salen de anuncios de portal (activos o retirados), no de precios de escritura. La muestra que sostiene la valoración es amplia (380 testigos): suficiente para un rango de trabajo sólido, no para una cifra cerrada al euro.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span>
@@ -1462,7 +1489,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>
-          <span><strong>IMPULSO — Venta:</strong> un valor medio de <strong>311.700&euro;</strong> para el piso reformado (rango 284.100-355.300&euro;), sobre 484 testigos reales de venta ya retirados. El precio de compra anunciado (250.000&euro;) queda por debajo del escenario conservador reformado.</span>
+          <span><strong>IMPULSO — Venta:</strong> un valor medio de <strong>307.100&euro;</strong> para el piso reformado (rango 284.700-349.800&euro;), sobre 380 testigos reales de venta ya retirados. El precio de compra anunciado (250.000&euro;) queda por debajo del escenario conservador reformado.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>

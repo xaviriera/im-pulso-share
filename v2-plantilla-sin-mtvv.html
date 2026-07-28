@@ -225,6 +225,17 @@
   .mark-pulso { background: var(--pulso); color: white; }
   .mark-asset { background: var(--impulso); color: white; }
   .mark-notarial { background: var(--notarial); color: white; }
+  .mark-muestra { background: var(--gray-300); color: var(--gray-700); }
+  .mark-line { display: block; margin-top: 5px; }
+  .mark-line .mark { margin-left: 0; margin-right: 5px; }
+  .unit { font-size: 0.78em; font-weight: 700; color: var(--gray-500); margin-left: 1px; }
+
+  .table-config { table-layout: auto; }
+  .table-config td, .table-config th { vertical-align: top; }
+  .table-config .mark { font-size: 8px; padding: 2px 5px; letter-spacing: 0.3px; }
+  .table-config thead th:nth-child(1), .table-config thead th:nth-child(2) { font-size: 10px; }
+  .table-config th:nth-child(1), .table-config td:nth-child(1),
+  .table-config th:nth-child(2), .table-config td:nth-child(2) { width: 1%; white-space: nowrap; padding-right: 12px; }
 
   @media (max-width: 480px) {
     .table-mobile thead { display: none; }
@@ -238,6 +249,38 @@
     .table-mobile td:not(:first-child)::before { content: attr(data-label); font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
     .table-mobile tr:hover td { background: transparent; }
     .table-wrap table.table-mobile { min-width: 0; }
+
+    .hero-sources,
+    .hero-sources.sources-4 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .source-pill,
+    .hero-sources.sources-4 .source-pill {
+      box-sizing: border-box;
+      flex: initial;
+      min-width: 0;
+      width: auto;
+      max-width: 100%;
+    }
+
+    .source-pill *,
+    .sp-name-title,
+    .sp-subtitle,
+    .sp-desc,
+    .sp-micronote,
+    .mtvv-unavailable-badge,
+    .mtvv-dim-inner {
+      min-width: 0;
+      max-width: 100%;
+      overflow-wrap: anywhere;
+      word-break: normal;
+    }
+
+    .mtvv-unavailable-badge { white-space: normal; text-align: center; line-height: 1.3; }
   }
 
   /* ===================== KPI ===================== */
@@ -304,6 +347,8 @@
   .market-note { display: flex; gap: 9px; align-items: flex-start; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 9px 14px; margin: 12px 0 0; font-size: 11.5px; line-height: 1.55; color: #92400E; }
   .market-note svg { flex-shrink: 0; width: 15px; height: 15px; margin-top: 1px; }
   .market-note strong { color: #B45309; }
+  .market-note.no-aplica { background: var(--gray-50); border-color: var(--gray-300); color: var(--gray-700); }
+  .market-note.no-aplica strong { color: var(--gray-700); }
 
   /* ===================== AA-0 · TITULILLO "INFORMACIÓN IMPORTANTE" (agrupa los 2 disclaimers) ===================== */
   .intro-note-heading {
@@ -807,41 +852,45 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       -->
     </div>
 
-    <!-- 1.1 Resumen -->
+    <!-- 1.1 Resumen del mercado -->
     <div class="card">
       <div class="card-title">1.1 Resumen del mercado</div>
-      <div class="card-subtitle">Venta y alquiler en {{MUNICIPIO}}</div>
+      <div class="card-subtitle">Venta, alquiler tradicional y alquiler por habitaciones en {{MUNICIPIO}}</div>
       <div class="kpi-row">
         <div class="kpi"><div class="kpi-value">77,0%</div><div class="kpi-label">Rotación venta</div></div>
-        <div class="kpi"><div class="kpi-value">85,4%</div><div class="kpi-label">Rotación alquiler</div></div>
+        <div class="kpi"><div class="kpi-value">85,4%</div><div class="kpi-label">Rotación alquiler tradicional</div></div>
         <div class="kpi"><div class="kpi-value">118 días</div><div class="kpi-label">Días hasta retirarse · venta</div></div>
         <div class="kpi"><div class="kpi-value">35 días</div><div class="kpi-label">Días hasta retirarse · alquiler</div></div>
       </div>
       <div class="term-explainer">
-        <strong>Cómo leer estas tablas (lo importante):</strong><br>
-        &bull; <strong>Publicados:</strong> cuántos anuncios de ese tipo salieron al mercado.<br>
-        &bull; <strong>Retirados:</strong> cuántos dejaron de anunciarse (señal de absorción real, no solo de intención).<br>
-        &bull; <strong>% Rotación:</strong> retirados sobre publicados. Más rotación = producto más líquido.<br>
-        &bull; <strong>Días hasta retirarse:</strong> lo que tarda de media un anuncio en dejar de publicarse.
+        <strong>Cómo leer estas tablas:</strong><br>
+        &bull; <strong>Publicados</strong> &mdash; todo lo que salió al mercado en el periodo. Es el tamaño real del mercado.<br>
+        &bull; <strong>%</strong> &mdash; cuánto pesa ese producto sobre el total. Dice si estás ante el mercado principal o ante un nicho.<br>
+        &bull; <strong>Retirados</strong> &mdash; cuántos anuncios dejaron de publicarse. <strong>Mide la absorción: lo que el mercado se ha tragado de verdad</strong>, no la intención de vender.<br>
+        &bull; <strong>% Rotación</strong> &mdash; retirados sobre publicados. Cuanto más alta, más líquido es el producto.<br>
+        &bull; <strong>Activos</strong> &mdash; los que siguen publicados hoy. <strong>Mide la competencia: contra cuánta oferta compites si sales al mercado ahora.</strong><br>
+        &bull; <strong>Días hasta retirarse</strong> &mdash; lo que tarda de media un anuncio en desaparecer. Mide la velocidad de colocación.<br>
+        &bull; <strong>&euro;/m²</strong> &mdash; precio de oferta por metro cuadrado, para poder comparar productos de tamaños distintos.<br>
+        &bull; <strong>Precio medio</strong> &mdash; el último precio al que estuvieron anunciados los inmuebles que ya se han retirado del mercado. No es el precio de salida ni el precio de escritura.
       </div>
       <div class="insight insight-orange">
-        612 viviendas analizadas en venta, 471 ya retiradas: rotación alta (77,0%), 118 días de media hasta retirarse. El alquiler rota todavía más (85,4%) y se coloca mucho más rápido (35 días de media): {{MUNICIPIO}} es un mercado activo tanto en venta como en alquiler.
+        612 viviendas analizadas en venta, 471 ya retiradas: rotación alta (77,0%), 118 días de media hasta retirarse. El alquiler tradicional rota todavía más (85,4%) y se coloca mucho más rápido (35 días de media). El alquiler por habitaciones queda como modalidad visible en la plantilla para completar cuando la carga incluya retirados y activos.
       </div>
     </div>
 
-    <!-- 1.2 Tipologías en venta -->
+    <!-- 1.2 Tipologías de vivienda &middot; modalidad venta -->
     <div class="card">
-      <div class="card-title">1.2 Tipologías en venta</div>
-      <div class="card-subtitle">Categorías residenciales de {{MUNICIPIO}} (anuncios de venta)</div>
+      <div class="card-title">1.2 Tipologías de vivienda &middot; modalidad venta</div>
+      <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de vender, en {{MUNICIPIO}}</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Categoría</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
+          <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>€/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">480</td><td data-label="Retirados">370</td><td data-label="% Rotación">77,1%</td><td data-label="Precio medio">148.200&euro;</td><td data-label="Días hasta retirarse">108</td><td data-label="€/m²">1.320&euro;</td></tr>
-          <tr><td>Chalet</td><td data-label="Publicados">62</td><td data-label="Retirados">44</td><td data-label="% Rotación">71,0%</td><td data-label="Precio medio">245.000&euro;</td><td data-label="Días hasta retirarse">155</td><td data-label="€/m²">780&euro;</td></tr>
-          <tr><td>Dúplex</td><td data-label="Publicados">38</td><td data-label="Retirados">32</td><td data-label="% Rotación">84,2%</td><td data-label="Precio medio">148.700&euro;</td><td data-label="Días hasta retirarse">96</td><td data-label="€/m²">1.190&euro;</td></tr>
-          <tr><td>Ático</td><td data-label="Publicados">26</td><td data-label="Retirados">20</td><td data-label="% Rotación">76,9%</td><td data-label="Precio medio">195.000&euro;</td><td data-label="Días hasta retirarse">88</td><td data-label="€/m²">1.410&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td><td data-label="Días hasta retirarse">22</td><td data-label="€/m²">1.322&euro;</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">480</td><td data-label="%">78,4%</td><td data-label="Retirados">370</td><td data-label="% Rotación">77,1%</td><td data-label="Activos">110</td><td data-label="Precio medio">148.200&euro;</td><td data-label="Días hasta retirarse">108</td><td data-label="€/m²">1.320&euro;</td></tr>
+          <tr><td>Chalet</td><td data-label="Publicados">62</td><td data-label="%">10,1%</td><td data-label="Retirados">44</td><td data-label="% Rotación">71,0%</td><td data-label="Activos">18</td><td data-label="Precio medio">245.000&euro;</td><td data-label="Días hasta retirarse">155</td><td data-label="€/m²">780&euro;</td></tr>
+          <tr><td>Dúplex</td><td data-label="Publicados">38</td><td data-label="%">6,2%</td><td data-label="Retirados">32</td><td data-label="% Rotación">84,2%</td><td data-label="Activos">6</td><td data-label="Precio medio">148.700&euro;</td><td data-label="Días hasta retirarse">96</td><td data-label="€/m²">1.190&euro;</td></tr>
+          <tr><td>Ático</td><td data-label="Publicados">26</td><td data-label="%">4,2%</td><td data-label="Retirados">20</td><td data-label="% Rotación">76,9%</td><td data-label="Activos">6</td><td data-label="Precio medio">195.000&euro;</td><td data-label="Días hasta retirarse">88</td><td data-label="€/m²">1.410&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Publicados">6</td><td data-label="%">1,0%</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Activos">1</td><td data-label="Precio medio">42.300&euro;</td><td data-label="Días hasta retirarse">22</td><td data-label="€/m²">1.322&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -850,17 +899,17 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- 1.3 Tipologías en alquiler -->
+    <!-- 1.3 Tipologías de vivienda &middot; modalidad alquiler tradicional -->
     <div class="card">
-      <div class="card-title">1.3 Tipologías en alquiler</div>
-      <div class="card-subtitle">Categorías residenciales de {{MUNICIPIO}} (anuncios de alquiler)</div>
+      <div class="card-title">1.3 Tipologías de vivienda &middot; modalidad alquiler tradicional</div>
+      <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de alquilar la vivienda completa, en {{MUNICIPIO}}</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Categoría</th><th>Baños</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
+          <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Baños</th><th>Precio medio</th><th>Días hasta retirarse</th><th>€/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Baños">1</td><td data-label="Publicados">74</td><td data-label="Retirados">64</td><td data-label="% Rotación">86,5%</td><td data-label="Precio medio">572&euro;</td><td data-label="Días hasta retirarse">34</td><td data-label="€/m²">9,0&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Baños">1</td><td data-label="Publicados">5</td><td data-label="Retirados">5</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">380&euro;</td><td data-label="Días hasta retirarse">15</td><td data-label="€/m²">11,9&euro;</td></tr>
-          <tr><td>Chalet</td><td data-label="Baños">2</td><td data-label="Publicados">10</td><td data-label="Retirados">7</td><td data-label="% Rotación">70,0%</td><td data-label="Precio medio">890&euro;</td><td data-label="Días hasta retirarse">58</td><td data-label="€/m²">6,3&euro;</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">74</td><td data-label="%">83,1%</td><td data-label="Retirados">64</td><td data-label="% Rotación">86,5%</td><td data-label="Activos">10</td><td data-label="Baños">1</td><td data-label="Precio medio">572&euro;</td><td data-label="Días hasta retirarse">34</td><td data-label="€/m²">9,0&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Publicados">5</td><td data-label="%">5,6%</td><td data-label="Retirados">5</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Baños">1</td><td data-label="Precio medio">380&euro;</td><td data-label="Días hasta retirarse">15</td><td data-label="€/m²">11,9&euro;</td></tr>
+          <tr><td>Chalet</td><td data-label="Publicados">10</td><td data-label="%">11,2%</td><td data-label="Retirados">7</td><td data-label="% Rotación">70,0%</td><td data-label="Activos">3</td><td data-label="Baños">2</td><td data-label="Precio medio">890&euro;</td><td data-label="Días hasta retirarse">58</td><td data-label="€/m²">6,3&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -869,159 +918,33 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- 1.4 Tramos de precio en venta -->
+    <!-- 1.4 Tipologías de vivienda &middot; modalidad alquiler por habitaciones -->
     <div class="card">
-      <div class="card-title">1.4 Tramos de precio en venta</div>
-      <div class="card-subtitle">Todos los tramos, {{MUNICIPIO}}</div>
-      <div class="term-explainer">
-        <strong>Cómo se reparten los precios:</strong> de cada 10 pisos, el más barato ronda los 38.000&euro; y el más caro los 312.000&euro;. El precio que parte el mercado por la mitad es de <strong>128.500&euro;</strong>.
-      </div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Tramo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
-          <tbody>
-          <tr><td>Menos de 50.000&euro;</td><td data-label="Publicados">68</td><td data-label="Retirados">57</td><td data-label="% Rotación">83,8%</td><td data-label="Días hasta retirarse">165</td></tr>
-          <tr class="highlight-asset"><td><strong>50.000 – 80.000&euro;</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">79</td><td data-label="Retirados">66</td><td data-label="% Rotación">83,5%</td><td data-label="Días hasta retirarse">71</td></tr>
-          <tr><td>80.000 – 110.000&euro;</td><td data-label="Publicados">88</td><td data-label="Retirados">70</td><td data-label="% Rotación">79,5%</td><td data-label="Días hasta retirarse">98</td></tr>
-          <tr class="highlight"><td><strong>110.000 – 160.000&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">158</td><td data-label="Retirados">122</td><td data-label="% Rotación">77,2%</td><td data-label="Días hasta retirarse">88</td></tr>
-          <tr><td>160.000 – 220.000&euro;</td><td data-label="Publicados">121</td><td data-label="Retirados">89</td><td data-label="% Rotación">73,6%</td><td data-label="Días hasta retirarse">121</td></tr>
-          <tr><td>220.000&euro; o más</td><td data-label="Publicados">98</td><td data-label="Retirados">67</td><td data-label="% Rotación">68,4%</td><td data-label="Días hasta retirarse">158</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-orange">
-        <strong>Lectura:</strong> el tramo con más volumen es <strong>110.000-160.000&euro;</strong>, el precio del producto dominante. Las viviendas resultantes de esta operación caen en el tramo de <strong>50.000-80.000&euro;</strong>, con rotación alta (83,5%) y solo 71 días hasta retirarse — muy por debajo de la media general (118 días).
+      <div class="card-title">1.4 Tipologías de vivienda &middot; modalidad alquiler por habitaciones</div>
+      <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de alquilar por habitaciones, en {{MUNICIPIO}}</div>
+      <div class="market-note no-aplica">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span><strong>No aplica a esta modalidad.</strong> Usa este aviso cuando la dimensión no tenga sentido para la modalidad analizada. Mantén el bloque visible para conservar la numeración y explicar que no falta una tabla: simplemente no corresponde medirla aquí.</span>
       </div>
     </div>
 
-    <!-- 1.5 Tramos de renta en alquiler -->
+    <!-- 1.5 Configuración por dormitorios y baños &middot; modalidad venta -->
     <div class="card">
-      <div class="card-title">1.5 Tramos de renta en alquiler</div>
-      <div class="card-subtitle">Todos los tramos, {{MUNICIPIO}}</div>
+      <div class="card-title">1.5 Configuración por dormitorios y baños &middot; modalidad venta</div>
+      <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de vender, en {{MUNICIPIO}}</div>
       <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Tramo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
+        <table class="table-mobile table-config">
+          <thead><tr><th>Dormitorios</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>€/m²</th></tr></thead>
           <tbody>
-          <tr><td>Menos de 350&euro;</td><td data-label="Publicados">4</td><td data-label="Retirados">4</td><td data-label="% Rotación">100,0%</td><td data-label="Días hasta retirarse">20</td></tr>
-          <tr class="highlight-asset"><td><strong>350 – 500&euro;</strong> <span class="mark mark-asset">Viviendas resultantes</span></td><td data-label="Publicados">9</td><td data-label="Retirados">8</td><td data-label="% Rotación">88,9%</td><td data-label="Días hasta retirarse">24</td></tr>
-          <tr class="highlight"><td><strong>500 – 650&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">38</td><td data-label="Retirados">33</td><td data-label="% Rotación">86,8%</td><td data-label="Días hasta retirarse">30</td></tr>
-          <tr><td>650 – 800&euro;</td><td data-label="Publicados">24</td><td data-label="Retirados">20</td><td data-label="% Rotación">83,3%</td><td data-label="Días hasta retirarse">42</td></tr>
-          <tr><td>800 – 1.000&euro;</td><td data-label="Publicados">9</td><td data-label="Retirados">7</td><td data-label="% Rotación">77,8%</td><td data-label="Días hasta retirarse">55</td></tr>
-          <tr><td>1.000&euro; o más</td><td data-label="Publicados">5</td><td data-label="Retirados">4</td><td data-label="% Rotación">80,0%</td><td data-label="Días hasta retirarse">70</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-orange">
-        <strong>Lectura:</strong> el grueso del alquiler está en <strong>500-650&euro;</strong>, el tramo dominante. Las viviendas resultantes caen en <strong>350-500&euro;</strong>, con rotación muy alta (88,9%) y apenas 24 días hasta retirarse.
-      </div>
-    </div>
-
-    <!-- 1.6 Comparativa por barrios/zonas — VENTA -->
-    <div class="card">
-      <div class="card-title">1.6 Comparativa por barrios/zonas — venta</div>
-      <div class="card-subtitle">Zonas con actividad de venta en {{MUNICIPIO}} · incluye la propia calle de la operación</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Zona</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
-          <tbody>
-          <tr class="highlight"><td>Centro <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">132</td><td data-label="Retirados">108</td><td data-label="% Rotación">81,8%</td><td data-label="Precio medio">168.900&euro;</td><td data-label="Días hasta retirarse">96</td><td data-label="€/m²">1.480&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark mark-asset">Tu calle</span></td><td data-label="Publicados">7</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">58.400&euro;</td><td data-label="Días hasta retirarse">24</td><td data-label="€/m²">1.290&euro;</td></tr>
-          <tr><td>Barrio San Francisco</td><td data-label="Publicados">58</td><td data-label="Retirados">47</td><td data-label="% Rotación">81,0%</td><td data-label="Precio medio">138.700&euro;</td><td data-label="Días hasta retirarse">102</td><td data-label="€/m²">1.190&euro;</td></tr>
-          <tr><td>Barrio La Estación</td><td data-label="Publicados">41</td><td data-label="Retirados">33</td><td data-label="% Rotación">80,5%</td><td data-label="Precio medio">112.500&euro;</td><td data-label="Días hasta retirarse">110</td><td data-label="€/m²">980&euro;</td></tr>
-          <tr><td>Zona Norte</td><td data-label="Publicados">36</td><td data-label="Retirados">26</td><td data-label="% Rotación">72,2%</td><td data-label="Precio medio">205.600&euro;</td><td data-label="Días hasta retirarse">134</td><td data-label="€/m²">1.620&euro;</td></tr>
-          <tr><td>Periferia / Polígono</td><td data-label="Publicados">22</td><td data-label="Retirados">14</td><td data-label="% Rotación">63,6%</td><td data-label="Precio medio">96.200&euro;</td><td data-label="Días hasta retirarse">148</td><td data-label="€/m²">740&euro;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-orange">
-        <strong>Lectura:</strong> la propia calle de la operación ha retirado el 100% de sus anuncios (7 de 7) en apenas 24 días: todo lo que sale a la venta en esta calle, se coloca. Es la mejor señal de liquidez posible para esta ubicación.
-      </div>
-    </div>
-
-    <!-- 1.7 Comparativa por barrios/zonas — ALQUILER -->
-    <div class="card">
-      <div class="card-title">1.7 Comparativa por barrios/zonas — alquiler</div>
-      <div class="card-subtitle">Zonas con actividad de alquiler en {{MUNICIPIO}}</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Zona</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
-          <tbody>
-          <tr class="highlight"><td>Centro <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">44</td><td data-label="Retirados">39</td><td data-label="% Rotación">88,6%</td><td data-label="Precio medio">612&euro;</td><td data-label="Días hasta retirarse">28</td><td data-label="€/m²">9,4&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark mark-asset">Tu calle</span></td><td data-label="Publicados">3</td><td data-label="Retirados">3</td><td data-label="% Rotación">100,0%</td><td data-label="Precio medio">420&euro;</td><td data-label="Días hasta retirarse">18</td><td data-label="€/m²">11,8&euro;</td></tr>
-          <tr><td>Barrio San Francisco</td><td data-label="Publicados">21</td><td data-label="Retirados">18</td><td data-label="% Rotación">85,7%</td><td data-label="Precio medio">545&euro;</td><td data-label="Días hasta retirarse">33</td><td data-label="€/m²">8,6&euro;</td></tr>
-          <tr><td>Barrio La Estación</td><td data-label="Publicados">14</td><td data-label="Retirados">11</td><td data-label="% Rotación">78,6%</td><td data-label="Precio medio">480&euro;</td><td data-label="Días hasta retirarse">41</td><td data-label="€/m²">7,9&euro;</td></tr>
-          <tr><td>Zona Norte</td><td data-label="Publicados">9</td><td data-label="Retirados">6</td><td data-label="% Rotación">66,7%</td><td data-label="Precio medio">690&euro;</td><td data-label="Días hasta retirarse">55</td><td data-label="€/m²">9,9&euro;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-orange">
-        <strong>Lectura:</strong> la calle de la operación también lidera en alquiler: 100% de rotación en 18 días. El barrio Centro es el que más volumen mueve (44 anuncios, 88,6%), con el &euro;/m² más alto de la comparativa junto a la propia calle.
-      </div>
-    </div>
-
-    <!-- 1.8 Otros activos -->
-    <div class="card">
-      <div class="card-title">1.8 Otros activos</div>
-      <div class="card-subtitle">Mercado no residencial de {{MUNICIPIO}}: locales, garajes, trasteros, terrenos y oficinas</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Tipo</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th></tr></thead>
-          <tbody>
-          <tr class="highlight"><td>Locales o naves <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">46</td><td data-label="Retirados">33</td><td data-label="% Rotación">71,7%</td><td data-label="Precio medio">88.500&euro;</td></tr>
-          <tr><td>Garaje</td><td data-label="Publicados">18</td><td data-label="Retirados">13</td><td data-label="% Rotación">72,2%</td><td data-label="Precio medio">11.200&euro;</td></tr>
-          <tr><td>Terreno</td><td data-label="Publicados">5</td><td data-label="Retirados">2</td><td data-label="% Rotación">40,0%</td><td data-label="Precio medio">98.000&euro;</td></tr>
-          <tr><td>Trastero</td><td data-label="Publicados">6</td><td data-label="Retirados">3</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">6.800&euro;</td></tr>
-          <tr><td>Oficina</td><td data-label="Publicados">3</td><td data-label="Retirados">2</td><td data-label="% Rotación">66,7%</td><td data-label="Precio medio">72.500&euro;</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-gray">
-        Mercado no residencial, se muestra por completitud; no es el objeto de esta operación.
-      </div>
-    </div>
-
-    <!-- 1.9 Alquiler por habitaciones (simplificado) -->
-    <div class="card">
-      <div class="card-title">1.9 Alquiler por habitaciones</div>
-      <div class="card-subtitle">Renta media por habitación suelta y volumen de anuncios, por tamaño de piso</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Tamaño del piso</th><th>Renta media / habitación</th><th>Anuncios (muestra)</th></tr></thead>
-          <tbody>
-          <tr><td>2 habitaciones</td><td data-label="Renta media / habitación">245&euro;/mes</td><td data-label="Anuncios (muestra)">4</td></tr>
-          <tr class="highlight-asset"><td><strong>3 habitaciones</strong> <span class="mark mark-asset">Más frecuente</span></td><td data-label="Renta media / habitación">270&euro;/mes</td><td data-label="Anuncios (muestra)">7</td></tr>
-          <tr><td>4 o más habitaciones</td><td data-label="Renta media / habitación">230&euro;/mes</td><td data-label="Anuncios (muestra)">3</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="insight insight-gray" style="font-size:11.5px;">
-        <strong>Nota de transparencia:</strong> el dato es a nivel de anuncio, no de piso único, y el número de habitaciones es autodeclarado por el anunciante.
-      </div>
-      <!-- AVISO CONDICIONAL: mostrar solo si el municipio tiene menos de 5 anuncios activos de esta modalidad en los últimos 12 meses. No forma parte del render por defecto.
-      <div class="no-sample">
-        <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
-        <span><strong>Muestra insuficiente para alquiler por habitaciones en {{MUNICIPIO}}:</strong> los datos disponibles no permiten un cálculo estadísticamente representativo (menos de 5 anuncios activos en los últimos 12 meses). No se amplía a zona colindante por ser una modalidad de nicho muy local; se muestra el hueco de dato en lugar de forzar una cifra.</span>
-      </div>
-      -->
-    </div>
-
-    <!-- 1.10 Configuración por dormitorios y baños (mercado, todas las combinaciones) -->
-    <div class="card">
-      <div class="card-title">1.10 Configuración por dormitorios y baños</div>
-      <div class="card-subtitle">Todas las combinaciones en venta de {{MUNICIPIO}} · marcadas las <strong>viviendas resultantes</strong> de esta operación</div>
-      <div class="table-wrap">
-        <table class="table-mobile">
-          <thead><tr><th>Categoría</th><th>Publicados</th><th>Retirados</th><th>% Rotación</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
-          <tbody>
-          <tr class="highlight-asset"><td><strong>Estudio · 1 baño</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Publicados">6</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Precio medio">42.300&euro;</td><td data-label="Días hasta retirarse">22</td><td data-label="€/m²">1.322&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>1 dormitorio · 1 baño</strong> <span class="mark mark-asset">Vivienda resultante</span></td><td data-label="Publicados">28</td><td data-label="Retirados">24</td><td data-label="% Rotación">85,7%</td><td data-label="Precio medio">78.100&euro;</td><td data-label="Días hasta retirarse">26</td><td data-label="€/m²">1.480&euro;</td></tr>
-          <tr class="highlight"><td><strong>2 dormitorios · 1 baño</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">180</td><td data-label="Retirados">138</td><td data-label="% Rotación">76,7%</td><td data-label="Precio medio">122.500&euro;</td><td data-label="Días hasta retirarse">95</td><td data-label="€/m²">1.180&euro;</td></tr>
-          <tr><td>2 dormitorios · 2 baños</td><td data-label="Publicados">96</td><td data-label="Retirados">75</td><td data-label="% Rotación">78,1%</td><td data-label="Precio medio">148.900&euro;</td><td data-label="Días hasta retirarse">88</td><td data-label="€/m²">1.360&euro;</td></tr>
-          <tr><td>3 dormitorios · 1 baño</td><td data-label="Publicados">54</td><td data-label="Retirados">39</td><td data-label="% Rotación">72,2%</td><td data-label="Precio medio">138.200&euro;</td><td data-label="Días hasta retirarse">128</td><td data-label="€/m²">1.150&euro;</td></tr>
-          <tr><td>3 dormitorios · 2 baños</td><td data-label="Publicados">72</td><td data-label="Retirados">54</td><td data-label="% Rotación">75,0%</td><td data-label="Precio medio">172.400&euro;</td><td data-label="Días hasta retirarse">108</td><td data-label="€/m²">1.340&euro;</td></tr>
-          <tr><td>4 dormitorios · 2 baños</td><td data-label="Publicados">30</td><td data-label="Retirados">21</td><td data-label="% Rotación">70,0%</td><td data-label="Precio medio">208.600&euro;</td><td data-label="Días hasta retirarse">142</td><td data-label="€/m²">1.260&euro;</td></tr>
-          <tr><td>4 dormitorios · 3 baños</td><td data-label="Publicados">10</td><td data-label="Retirados">6</td><td data-label="% Rotación">60,0%</td><td data-label="Precio medio">249.500&euro;</td><td data-label="Días hasta retirarse">165</td><td data-label="€/m²">1.420&euro;</td></tr>
-          <tr><td>5+ dormitorios · 3 baños</td><td data-label="Publicados">4</td><td data-label="Retirados">2</td><td data-label="% Rotación">50,0%</td><td data-label="Precio medio">295.000&euro;</td><td data-label="Días hasta retirarse">188</td><td data-label="€/m²">1.180&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>Estudio</strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Baños"><strong>1 <span class="unit">B</span></strong></td><td data-label="Publicados">6</td><td data-label="%">1,2%</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Activos">1</td><td data-label="Precio medio">42.300&euro;</td><td data-label="Días hasta retirarse">22</td><td data-label="€/m²">1.322&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>1 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Baños"><strong>1 <span class="unit">B</span></strong></td><td data-label="Publicados">28</td><td data-label="%">5,8%</td><td data-label="Retirados">24</td><td data-label="% Rotación">85,7%</td><td data-label="Activos">4</td><td data-label="Precio medio">78.100&euro;</td><td data-label="Días hasta retirarse">26</td><td data-label="€/m²">1.480&euro;</td></tr>
+          <tr class="highlight"><td><strong>2 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Baños"><strong>1 <span class="unit">B</span></strong></td><td data-label="Publicados">180</td><td data-label="%">37,5%</td><td data-label="Retirados">138</td><td data-label="% Rotación">76,7%</td><td data-label="Activos">42</td><td data-label="Precio medio">122.500&euro;</td><td data-label="Días hasta retirarse">95</td><td data-label="€/m²">1.180&euro;</td></tr>
+          <tr><td>2 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">96</td><td data-label="%">20,0%</td><td data-label="Retirados">75</td><td data-label="% Rotación">78,1%</td><td data-label="Activos">21</td><td data-label="Precio medio">148.900&euro;</td><td data-label="Días hasta retirarse">88</td><td data-label="€/m²">1.360&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">54</td><td data-label="%">11,2%</td><td data-label="Retirados">39</td><td data-label="% Rotación">72,2%</td><td data-label="Activos">15</td><td data-label="Precio medio">138.200&euro;</td><td data-label="Días hasta retirarse">128</td><td data-label="€/m²">1.150&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">72</td><td data-label="%">15,0%</td><td data-label="Retirados">54</td><td data-label="% Rotación">75,0%</td><td data-label="Activos">18</td><td data-label="Precio medio">172.400&euro;</td><td data-label="Días hasta retirarse">108</td><td data-label="€/m²">1.340&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">30</td><td data-label="%">6,2%</td><td data-label="Retirados">21</td><td data-label="% Rotación">70,0%</td><td data-label="Activos">9</td><td data-label="Precio medio">208.600&euro;</td><td data-label="Días hasta retirarse">142</td><td data-label="€/m²">1.260&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">3 <span class="unit">B</span></td><td data-label="Publicados">10</td><td data-label="%">2,1%</td><td data-label="Retirados">6</td><td data-label="% Rotación">60,0%</td><td data-label="Activos">4</td><td data-label="Precio medio">249.500&euro;</td><td data-label="Días hasta retirarse">165</td><td data-label="€/m²">1.420&euro;</td></tr>
+          <tr><td>5+ <span class="unit">D</span></td><td data-label="Baños">3 <span class="unit">B</span></td><td data-label="Publicados">4</td><td data-label="%">0,8%</td><td data-label="Retirados">2</td><td data-label="% Rotación">50,0%</td><td data-label="Activos">2</td><td data-label="Precio medio">295.000&euro;</td><td data-label="Días hasta retirarse">188</td><td data-label="€/m²">1.180&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -1030,10 +953,217 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
-    <!-- 1.11 Productos que más se retiran (ranking de liquidez, venta + alquiler) -->
+    <!-- 1.6 Configuración por dormitorios y baños &middot; modalidad alquiler tradicional -->
     <div class="card">
-      <div class="card-title">1.11 Productos que más se retiran</div>
-      <div class="card-subtitle">Ranking de mayor a menor rotación · venta y alquiler de {{MUNICIPIO}}</div>
+      <div class="card-title">1.6 Configuración por dormitorios y baños &middot; modalidad alquiler tradicional</div>
+      <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de alquilar la vivienda completa, en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.7 Configuración por dormitorios y baños &middot; modalidad alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.7 Configuración por dormitorios y baños &middot; modalidad alquiler por habitaciones</div>
+      <div class="card-subtitle">Qué configuración de vivienda aloja la habitación a la hora de alquilar por habitaciones, en {{MUNICIPIO}}</div>
+      <div class="table-wrap">
+        <table class="table-mobile table-config">
+          <thead><tr><th>Dormitorios</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Renta media</th></tr></thead>
+          <tbody>
+          <tr><td>2 <span class="unit">D</span></td><td data-label="Baños">—</td><td data-label="Publicados">4</td><td data-label="%">28,6%</td><td data-label="Retirados">—</td><td data-label="% Rotación">—</td><td data-label="Activos">—</td><td data-label="Renta media">245&euro;/mes</td></tr>
+          <tr class="highlight-asset"><td><strong>3 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-asset">Más frecuente</span></span></td><td data-label="Baños">—</td><td data-label="Publicados">7</td><td data-label="%">50,0%</td><td data-label="Retirados">—</td><td data-label="% Rotación">—</td><td data-label="Activos">—</td><td data-label="Renta media">270&euro;/mes</td></tr>
+          <tr><td>4+ <span class="unit">D</span></td><td data-label="Baños">—</td><td data-label="Publicados">3</td><td data-label="%">21,4%</td><td data-label="Retirados">—</td><td data-label="% Rotación">—</td><td data-label="Activos">—</td><td data-label="Renta media">230&euro;/mes</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-gray" style="font-size:11.5px;">
+        <strong>Nota de plantilla:</strong> la demo conserva la muestra simplificada de habitaciones. Cuando se complete con retirados, sustituye los guiones de absorción y activos por los datos descargados.
+      </div>
+    </div>
+
+    <!-- 1.8 Tramos de precio &middot; modalidad venta -->
+    <div class="card">
+      <div class="card-title">1.8 Tramos de precio &middot; modalidad venta</div>
+      <div class="card-subtitle">Qué tramo de precio mueve el mercado a la hora de vender, en {{MUNICIPIO}}</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días hasta retirarse</th></tr></thead>
+          <tbody>
+          <tr><td>Menos de 50.000&euro;</td><td data-label="Publicados">68</td><td data-label="%">11,1%</td><td data-label="Retirados">57</td><td data-label="% Rotación">83,8%</td><td data-label="Activos">11</td><td data-label="Días hasta retirarse">165</td></tr>
+          <tr class="highlight-asset"><td><strong>50.000 – 80.000&euro;</strong> <span class="mark-line"><span class="mark mark-asset">Viviendas resultantes</span></span></td><td data-label="Publicados">79</td><td data-label="%">12,9%</td><td data-label="Retirados">66</td><td data-label="% Rotación">83,5%</td><td data-label="Activos">13</td><td data-label="Días hasta retirarse">71</td></tr>
+          <tr><td>80.000 – 110.000&euro;</td><td data-label="Publicados">88</td><td data-label="%">14,4%</td><td data-label="Retirados">70</td><td data-label="% Rotación">79,5%</td><td data-label="Activos">18</td><td data-label="Días hasta retirarse">98</td></tr>
+          <tr class="highlight"><td><strong>110.000 – 160.000&euro;</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">158</td><td data-label="%">25,8%</td><td data-label="Retirados">122</td><td data-label="% Rotación">77,2%</td><td data-label="Activos">36</td><td data-label="Días hasta retirarse">88</td></tr>
+          <tr><td>160.000 – 220.000&euro;</td><td data-label="Publicados">121</td><td data-label="%">19,8%</td><td data-label="Retirados">89</td><td data-label="% Rotación">73,6%</td><td data-label="Activos">32</td><td data-label="Días hasta retirarse">121</td></tr>
+          <tr><td>220.000&euro; o más</td><td data-label="Publicados">98</td><td data-label="%">16,0%</td><td data-label="Retirados">67</td><td data-label="% Rotación">68,4%</td><td data-label="Activos">31</td><td data-label="Días hasta retirarse">158</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el tramo con más volumen es <strong>110.000-160.000&euro;</strong>, el precio del producto dominante. Las viviendas resultantes de esta operación caen en el tramo de <strong>50.000-80.000&euro;</strong>, con rotación alta (83,5%) y solo 71 días hasta retirarse — muy por debajo de la media general (118 días).
+      </div>
+    </div>
+
+    <!-- 1.9 Tramos de precio &middot; modalidad alquiler tradicional -->
+    <div class="card">
+      <div class="card-title">1.9 Tramos de precio &middot; modalidad alquiler tradicional</div>
+      <div class="card-subtitle">Qué tramo de renta mueve el mercado a la hora de alquilar la vivienda completa, en {{MUNICIPIO}}</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días hasta retirarse</th></tr></thead>
+          <tbody>
+          <tr><td>Menos de 350&euro;</td><td data-label="Publicados">4</td><td data-label="%">4,5%</td><td data-label="Retirados">4</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Días hasta retirarse">20</td></tr>
+          <tr class="highlight-asset"><td><strong>350 – 500&euro;</strong> <span class="mark-line"><span class="mark mark-asset">Viviendas resultantes</span></span></td><td data-label="Publicados">9</td><td data-label="%">10,1%</td><td data-label="Retirados">8</td><td data-label="% Rotación">88,9%</td><td data-label="Activos">1</td><td data-label="Días hasta retirarse">24</td></tr>
+          <tr class="highlight"><td><strong>500 – 650&euro;</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">38</td><td data-label="%">42,7%</td><td data-label="Retirados">33</td><td data-label="% Rotación">86,8%</td><td data-label="Activos">5</td><td data-label="Días hasta retirarse">30</td></tr>
+          <tr><td>650 – 800&euro;</td><td data-label="Publicados">24</td><td data-label="%">27,0%</td><td data-label="Retirados">20</td><td data-label="% Rotación">83,3%</td><td data-label="Activos">4</td><td data-label="Días hasta retirarse">42</td></tr>
+          <tr><td>800 – 1.000&euro;</td><td data-label="Publicados">9</td><td data-label="%">10,1%</td><td data-label="Retirados">7</td><td data-label="% Rotación">77,8%</td><td data-label="Activos">2</td><td data-label="Días hasta retirarse">55</td></tr>
+          <tr><td>1.000&euro; o más</td><td data-label="Publicados">5</td><td data-label="%">5,6%</td><td data-label="Retirados">4</td><td data-label="% Rotación">80,0%</td><td data-label="Activos">1</td><td data-label="Días hasta retirarse">70</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> el grueso del alquiler está en <strong>500-650&euro;</strong>, el tramo dominante. Las viviendas resultantes caen en <strong>350-500&euro;</strong>, con rotación muy alta (88,9%) y apenas 24 días hasta retirarse.
+      </div>
+    </div>
+
+    <!-- 1.10 Tramos de precio &middot; modalidad alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.10 Tramos de precio &middot; modalidad alquiler por habitaciones</div>
+      <div class="card-subtitle">Qué tramo de renta mueve el mercado a la hora de alquilar por habitaciones, en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.11 Comparativa por distritos colindantes &middot; modalidad venta -->
+    <div class="card">
+      <div class="card-title">1.11 Comparativa por distritos colindantes &middot; modalidad venta</div>
+      <div class="card-subtitle">Zonas con actividad de venta en {{MUNICIPIO}} · incluye la propia calle de la operación</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Distrito</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>€/m²</th></tr></thead>
+          <tbody>
+          <tr class="highlight"><td>Centro <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">132</td><td data-label="%">44,6%</td><td data-label="Retirados">108</td><td data-label="% Rotación">81,8%</td><td data-label="Activos">24</td><td data-label="Precio medio">168.900&euro;</td><td data-label="Días hasta retirarse">96</td><td data-label="€/m²">1.480&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark-line"><span class="mark mark-asset">Tu calle</span></span></td><td data-label="Publicados">7</td><td data-label="%">2,4%</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Precio medio">58.400&euro;</td><td data-label="Días hasta retirarse">24</td><td data-label="€/m²">1.290&euro;</td></tr>
+          <tr><td>Barrio San Francisco</td><td data-label="Publicados">58</td><td data-label="%">19,6%</td><td data-label="Retirados">47</td><td data-label="% Rotación">81,0%</td><td data-label="Activos">11</td><td data-label="Precio medio">138.700&euro;</td><td data-label="Días hasta retirarse">102</td><td data-label="€/m²">1.190&euro;</td></tr>
+          <tr><td>Barrio La Estación</td><td data-label="Publicados">41</td><td data-label="%">13,9%</td><td data-label="Retirados">33</td><td data-label="% Rotación">80,5%</td><td data-label="Activos">8</td><td data-label="Precio medio">112.500&euro;</td><td data-label="Días hasta retirarse">110</td><td data-label="€/m²">980&euro;</td></tr>
+          <tr><td>Zona Norte</td><td data-label="Publicados">36</td><td data-label="%">12,2%</td><td data-label="Retirados">26</td><td data-label="% Rotación">72,2%</td><td data-label="Activos">10</td><td data-label="Precio medio">205.600&euro;</td><td data-label="Días hasta retirarse">134</td><td data-label="€/m²">1.620&euro;</td></tr>
+          <tr><td>Periferia / Polígono</td><td data-label="Publicados">22</td><td data-label="%">7,4%</td><td data-label="Retirados">14</td><td data-label="% Rotación">63,6%</td><td data-label="Activos">8</td><td data-label="Precio medio">96.200&euro;</td><td data-label="Días hasta retirarse">148</td><td data-label="€/m²">740&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> la propia calle de la operación ha retirado el 100% de sus anuncios (7 de 7) en apenas 24 días: todo lo que sale a la venta en esta calle, se coloca. Es la mejor señal de liquidez posible para esta ubicación.
+      </div>
+    </div>
+
+    <!-- 1.12 Comparativa por distritos colindantes &middot; modalidad alquiler tradicional -->
+    <div class="card">
+      <div class="card-title">1.12 Comparativa por distritos colindantes &middot; modalidad alquiler tradicional</div>
+      <div class="card-subtitle">Zonas con actividad de alquiler tradicional en {{MUNICIPIO}}</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Distrito</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>€/m²</th></tr></thead>
+          <tbody>
+          <tr class="highlight"><td>Centro <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">44</td><td data-label="%">48,4%</td><td data-label="Retirados">39</td><td data-label="% Rotación">88,6%</td><td data-label="Activos">5</td><td data-label="Precio medio">612&euro;</td><td data-label="Días hasta retirarse">28</td><td data-label="€/m²">9,4&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>{{CALLE}}</strong> <span class="mark-line"><span class="mark mark-asset">Tu calle</span></span></td><td data-label="Publicados">3</td><td data-label="%">3,3%</td><td data-label="Retirados">3</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Precio medio">420&euro;</td><td data-label="Días hasta retirarse">18</td><td data-label="€/m²">11,8&euro;</td></tr>
+          <tr><td>Barrio San Francisco</td><td data-label="Publicados">21</td><td data-label="%">23,1%</td><td data-label="Retirados">18</td><td data-label="% Rotación">85,7%</td><td data-label="Activos">3</td><td data-label="Precio medio">545&euro;</td><td data-label="Días hasta retirarse">33</td><td data-label="€/m²">8,6&euro;</td></tr>
+          <tr><td>Barrio La Estación</td><td data-label="Publicados">14</td><td data-label="%">15,4%</td><td data-label="Retirados">11</td><td data-label="% Rotación">78,6%</td><td data-label="Activos">3</td><td data-label="Precio medio">480&euro;</td><td data-label="Días hasta retirarse">41</td><td data-label="€/m²">7,9&euro;</td></tr>
+          <tr><td>Zona Norte</td><td data-label="Publicados">9</td><td data-label="%">9,9%</td><td data-label="Retirados">6</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">3</td><td data-label="Precio medio">690&euro;</td><td data-label="Días hasta retirarse">55</td><td data-label="€/m²">9,9&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-orange">
+        <strong>Lectura:</strong> la calle de la operación también lidera en alquiler: 100% de rotación en 18 días. El barrio Centro es el que más volumen mueve (44 anuncios, 88,6%), con el &euro;/m² más alto de la comparativa junto a la propia calle.
+      </div>
+    </div>
+
+    <!-- 1.13 Comparativa por distritos colindantes &middot; modalidad alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.13 Comparativa por distritos colindantes &middot; modalidad alquiler por habitaciones</div>
+      <div class="card-subtitle">Zonas con actividad de alquiler por habitaciones en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.14 Comparativa por calles &middot; modalidad venta -->
+    <div class="card">
+      <div class="card-title">1.14 Comparativa por calles &middot; modalidad venta</div>
+      <div class="card-subtitle">Calles con actividad de venta en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.15 Comparativa por calles &middot; modalidad alquiler tradicional -->
+    <div class="card">
+      <div class="card-title">1.15 Comparativa por calles &middot; modalidad alquiler tradicional</div>
+      <div class="card-subtitle">Calles con actividad de alquiler tradicional en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.16 Comparativa por calles &middot; modalidad alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.16 Comparativa por calles &middot; modalidad alquiler por habitaciones</div>
+      <div class="card-subtitle">Calles con actividad de alquiler por habitaciones en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.17 Otros activos &middot; modalidad venta -->
+    <div class="card">
+      <div class="card-title">1.17 Otros activos &middot; modalidad venta</div>
+      <div class="card-subtitle">Mercado no residencial de {{MUNICIPIO}}: locales, garajes, trasteros, terrenos y oficinas</div>
+      <div class="table-wrap">
+        <table class="table-mobile">
+          <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th></tr></thead>
+          <tbody>
+          <tr class="highlight"><td>Locales o naves <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">46</td><td data-label="%">59,0%</td><td data-label="Retirados">33</td><td data-label="% Rotación">71,7%</td><td data-label="Activos">13</td><td data-label="Precio medio">88.500&euro;</td></tr>
+          <tr><td>Garaje</td><td data-label="Publicados">18</td><td data-label="%">23,1%</td><td data-label="Retirados">13</td><td data-label="% Rotación">72,2%</td><td data-label="Activos">5</td><td data-label="Precio medio">11.200&euro;</td></tr>
+          <tr><td>Terreno</td><td data-label="Publicados">5</td><td data-label="%">6,4%</td><td data-label="Retirados">2</td><td data-label="% Rotación">40,0%</td><td data-label="Activos">3</td><td data-label="Precio medio">98.000&euro;</td></tr>
+          <tr><td>Trastero</td><td data-label="Publicados">6</td><td data-label="%">7,7%</td><td data-label="Retirados">3</td><td data-label="% Rotación">50,0%</td><td data-label="Activos">3</td><td data-label="Precio medio">6.800&euro;</td></tr>
+          <tr><td>Oficina</td><td data-label="Publicados">3</td><td data-label="%">3,8%</td><td data-label="Retirados">2</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">1</td><td data-label="Precio medio">72.500&euro;</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="insight insight-gray">
+        Mercado no residencial, se muestra por completitud; no es el objeto de esta operación.
+      </div>
+    </div>
+
+    <!-- 1.18 Otros activos &middot; modalidad alquiler tradicional -->
+    <div class="card">
+      <div class="card-title">1.18 Otros activos &middot; modalidad alquiler tradicional</div>
+      <div class="card-subtitle">Qué otros activos mueve el mercado a la hora de alquilar la vivienda completa, en {{MUNICIPIO}}</div>
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#B45309" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span><strong>Sin datos.</strong> Usa este aviso cuando esta dimensión sí exista para la modalidad, pero el dato no se haya descargado o no esté disponible en la carga. Deja el bloque visible y sustituye este texto por la causa concreta antes de publicar el informe final.</span>
+      </div>
+    </div>
+
+    <!-- 1.19 Otros activos &middot; modalidad alquiler por habitaciones -->
+    <div class="card">
+      <div class="card-title">1.19 Otros activos &middot; modalidad alquiler por habitaciones</div>
+      <div class="card-subtitle">Qué otros activos mueve el mercado a la hora de alquilar por habitaciones, en {{MUNICIPIO}}</div>
+      <div class="market-note no-aplica">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+        <span><strong>No aplica a esta modalidad.</strong> Usa este aviso cuando la dimensión no tenga sentido para la modalidad analizada. Mantén el bloque visible para conservar la numeración y explicar que no falta una tabla: simplemente no corresponde medirla aquí.</span>
+      </div>
+    </div>
+
+    <!-- 1.20 Productos que más se retiran -->
+    <div class="card">
+      <div class="card-title">1.20 Productos que más se retiran</div>
+      <div class="card-subtitle">Ranking de productos retirados del mercado por liquidez en {{MUNICIPIO}}</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Producto / Tipología</th><th>Retirados</th><th>% Rotación</th><th>Días hasta retirarse</th></tr></thead>
@@ -1052,10 +1182,12 @@ El PULSO mide la <strong>actividad real</strong> de {{MUNICIPIO}}: no lo que se 
       </div>
     </div>
 
+
     <!-- Term-explainer de cierre (antes del veredicto) -->
     <div class="term-explainer">
-      <strong>Antes de leer el veredicto:</strong> todas las tablas de esta fuente comparan el <strong>PULSO</strong> (el producto que más se mueve) con las <strong>viviendas resultantes</strong> de esta operación (estudio loft y piso de 1 dormitorio). Rotación alta = el mercado absorbe rápido ese producto; ese es el dato que sostiene la conclusión siguiente.
+      <strong>Antes de leer el veredicto:</strong> todas las tablas de esta fuente comparan el <strong>PULSO</strong> (el producto que más se mueve) con las <strong>viviendas resultantes</strong> de esta operación. Rotación alta = absorción; activos = competencia viva contra la que sale el producto.
     </div>
+
 
     <!-- Conclusión PULSO -->
     <div class="verdict-navy">

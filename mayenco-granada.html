@@ -179,6 +179,11 @@
   .mark-line { display: block; margin-top: 5px; }
   .mark-line .mark { margin-left: 0; margin-right: 5px; }
   .unit { font-size: 0.78em; font-weight: 700; color: var(--gray-500); margin-left: 1px; }
+  .block-summary { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; margin-top: 14px;
+    padding: 11px 15px; background: #F8FAFC; border: 1px solid #E5E7EB; border-radius: 10px; font-size: 12.5px; color: var(--gray-700); }
+  .block-summary strong { font-size: 15px; color: var(--navy); font-weight: 800; margin-right: 4px; }
+  .block-summary em { font-style: normal; color: var(--gray-500); font-size: 11.5px; margin-left: 4px; }
+  .block-summary .bs-pulso { margin-left: auto; font-weight: 800; color: var(--pulso); text-transform: uppercase; font-size: 11px; letter-spacing: 0.4px; }
   .table-config { table-layout: auto; }
   .table-config .mark { font-size: 8px; padding: 2px 5px; letter-spacing: 0.3px; }
   .table-config thead th:nth-child(1), .table-config thead th:nth-child(2) { font-size: 10px; }
@@ -464,6 +469,9 @@
   }
 
   .mtvv-unavailable-badge { white-space: normal; text-align: center; line-height: 1.3; }
+  .block-summary { gap: 6px 14px; padding: 10px 12px; font-size: 12px; }
+  .block-summary strong { font-size: 14px; }
+  .block-summary .bs-pulso { margin-left: 0; width: 100%; padding-top: 6px; border-top: 1px solid #E5E7EB; }
   .hist-bar-val { font-size: 8px; }
   .nat-box .nb-val { font-size: 18px; }
 
@@ -674,6 +682,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>1.494</strong> publicados</span><span><strong>1.065</strong> retirados<em>71,3%</em></span><span><strong>429</strong> activos<em>28,7%</em></span><span class="bs-pulso">PULSO &middot; Piso</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> el latido del mercado en venta es el <strong>piso</strong> (1.345 anuncios, 90,0% de la oferta mostrada y 70,4% de rotación) &mdash; y es, además, el mismo tipo de activo que esta operación: el PULSO de la zona y el producto de esta operación coinciden. Ático y chalet quedan como segmentos secundarios frente al piso.
       </div>
@@ -719,6 +728,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>915</strong> publicados</span><span><strong>571</strong> retirados<em>62,4%</em></span><span><strong>344</strong> activos<em>37,6%</em></span><span class="bs-pulso">PULSO &middot; 3 D &middot; 2 B</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> el activo tiene 3 dormitorios y encaja con la configuración <strong>3 dormitorios / 2 baños</strong>, la de mayor volumen de toda la tabla (271 anuncios, 29,6% del mercado) y el producto señalado como PULSO. Hoy siguen activos 129 anuncios de esta combinación.
       </div>
@@ -754,6 +764,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>297</strong> publicados</span><span><strong>146</strong> retirados<em>49,2%</em></span><span><strong>151</strong> activos<em>50,8%</em></span><span class="bs-pulso">PULSO &middot; 4 D &middot; 2 B</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> el producto que más se mueve es la vivienda de <strong>4 dormitorios / 2 baños</strong> (89 anuncios, 30,0% del mercado de habitaciones), un piso típico para estudiantes; 46 anuncios de esta configuración siguen activos hoy.
       </div>
@@ -777,6 +788,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>1.345</strong> publicados</span><span><strong>947</strong> retirados<em>70,4%</em></span><span><strong>398</strong> activos<em>29,6%</em></span><span class="bs-pulso">PULSO &middot; 300.001 &mdash; 350.000&euro;</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> el PULSO de precio es <strong>300.001 &mdash; 350.000&euro;</strong> (395 anuncios), que también recoge el valor medio del piso ya reformado estimado en el apartado 2.4 (307.100&euro;, dentro de una horquilla de 284.700&euro; a 349.800&euro;). El precio anunciado del activo a reformar (250.000&euro;) cae en el tramo <strong>200.001 &mdash; 250.000&euro;</strong>, con 77,3% de rotación y 30 anuncios activos.
       </div>
@@ -809,6 +821,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>313</strong> publicados</span><span><strong>151</strong> retirados<em>48,2%</em></span><span><strong>162</strong> activos<em>51,8%</em></span><span class="bs-pulso">PULSO &middot; 251 &mdash; 300&euro;</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> la renta se concentra entre <strong>251 y 350&euro;</strong>, con los dos tramos de mayor volumen: 119 anuncios en 251 &mdash; 300&euro; y 97 anuncios en 301 &mdash; 350&euro;. El tramo PULSO es 251 &mdash; 300&euro;, con 38,0% de la oferta; por encima de 400&euro;, la rotación baja al 28,6%.
       </div>
@@ -829,6 +842,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>2.404</strong> publicados</span><span><strong>1.653</strong> retirados<em>68,8%</em></span><span><strong>751</strong> activos<em>31,2%</em></span><span class="bs-pulso">PULSO &middot; Ronda-Arabial</span></div>
       <div class="insight insight-gray">
         <strong>Con qué comparamos.</strong> Ronda-Arabial pertenece al distrito Ronda de Granada y hace frontera con Los Pajaritos al norte, Recogidas al este y Rosaleda-Juventud al noroeste. Son los tres barrios contra los que compite de verdad un comprador que busca en esta zona: mismo tipo de ciudad, mismos servicios y misma distancia al centro. Comparar con barrios más alejados daría una foto más grande pero menos útil para decidir.
       </div>
@@ -859,6 +873,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>570</strong> publicados</span><span><strong>285</strong> retirados<em>50,0%</em></span><span><strong>285</strong> activos<em>50,0%</em></span><span class="bs-pulso">PULSO &middot; Ronda-Arabial</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> Ronda-Arabial concentra más de la mitad del alquiler por habitaciones de la zona (315 anuncios, 55,3%) y marca el PULSO de esta comparativa. Recogidas tiene la renta media más alta con volumen suficiente (340&euro;), mientras Los Pajaritos coloca algo más rápido, con 17,8 días de media hasta retirarse.
       </div>
@@ -884,6 +899,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>1.049</strong> publicados</span><span><strong>716</strong> retirados<em>68,3%</em></span><span><strong>333</strong> activos<em>31,7%</em></span><span class="bs-pulso">PULSO &middot; Camino de Ronda</span></div>
       <div class="insight insight-gray" style="font-size:11.5px;">
         Las calles agregan sus variantes de dirección: por ejemplo, "Camino de Ronda, 73" suma a "Camino de Ronda". Entra Arabial, la arteria que da nombre a la zona.
       </div>
@@ -918,6 +934,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>231</strong> publicados</span><span><strong>116</strong> retirados<em>50,2%</em></span><span><strong>115</strong> activos<em>49,8%</em></span><span class="bs-pulso">PULSO &middot; Camino de Ronda</span></div>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> Camino de Ronda es la calle PULSO en alquiler por habitaciones (90 anuncios, 39,0%), seguida de Pedro Antonio de Alarcón (57 anuncios, 24,7%). Las rentas apenas varían entre calles con volumen suficiente: Camino de Ronda y Pedro Antonio de Alarcón quedan en 318&euro; de renta media.
       </div>
@@ -939,6 +956,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           </tbody>
         </table>
       </div>
+            <div class="block-summary"><span><strong>307</strong> publicados</span><span><strong>178</strong> retirados<em>58,0%</em></span><span><strong>129</strong> activos<em>42,0%</em></span><span class="bs-pulso">PULSO &middot; Locales o Naves</span></div>
       <div class="insight insight-gray">
         Mercado no residencial, se muestra por completitud; no es el objeto de esta operación.
       </div>

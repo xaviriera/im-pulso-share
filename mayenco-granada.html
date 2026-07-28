@@ -178,6 +178,12 @@
   .mark-muestra { background: var(--gray-300); color: var(--gray-700); }
   .mark-line { display: block; margin-top: 5px; }
   .mark-line .mark { margin-left: 0; margin-right: 5px; }
+  .unit { font-size: 0.78em; font-weight: 700; color: var(--gray-500); margin-left: 1px; }
+  .table-config { table-layout: auto; }
+  .table-config .mark { font-size: 8px; padding: 2px 5px; letter-spacing: 0.3px; }
+  .table-config thead th:nth-child(1), .table-config thead th:nth-child(2) { font-size: 10px; }
+  .table-config th:nth-child(1), .table-config td:nth-child(1),
+  .table-config th:nth-child(2), .table-config td:nth-child(2) { width: 1%; white-space: nowrap; padding-right: 12px; }
 
   @media (max-width: 480px) {
     .table-mobile thead { display: none; }
@@ -698,18 +704,18 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="card-title">1.5 Configuración por dormitorios y baños &middot; modalidad venta</div>
       <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de vender, en Ronda-Arabial</div>
       <div class="table-wrap">
-        <table class="table-mobile">
+        <table class="table-mobile table-config">
           <thead><tr><th>Dormitorios</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th></tr></thead>
           <tbody>
-          <tr><td>1</td><td data-label="Baños">1</td><td data-label="Publicados">7</td><td data-label="%">0,8%</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Precio medio">172.714&euro;</td></tr>
-          <tr><td>2</td><td data-label="Baños">1</td><td data-label="Publicados">46</td><td data-label="%">5,0%</td><td data-label="Retirados">12</td><td data-label="% Rotación">26,1%</td><td data-label="Activos">34</td><td data-label="Precio medio">220.254&euro;</td></tr>
-          <tr><td>2</td><td data-label="Baños">2</td><td data-label="Publicados">31</td><td data-label="%">3,4%</td><td data-label="Retirados">22</td><td data-label="% Rotación">71,0%</td><td data-label="Activos">9</td><td data-label="Precio medio">398.565&euro;</td></tr>
-          <tr><td>3</td><td data-label="Baños">1</td><td data-label="Publicados">134</td><td data-label="%">14,6%</td><td data-label="Retirados">80</td><td data-label="% Rotación">59,7%</td><td data-label="Activos">54</td><td data-label="Precio medio">257.006&euro;</td></tr>
-          <tr class="highlight highlight-asset"><td><strong>3</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Baños"><strong>2</strong></td><td data-label="Publicados">271</td><td data-label="%">29,6%</td><td data-label="Retirados">142</td><td data-label="% Rotación">52,4%</td><td data-label="Activos">129</td><td data-label="Precio medio">323.584&euro;</td></tr>
-          <tr><td>4</td><td data-label="Baños">1</td><td data-label="Publicados">25</td><td data-label="%">2,7%</td><td data-label="Retirados">13</td><td data-label="% Rotación">52,0%</td><td data-label="Activos">12</td><td data-label="Precio medio">282.264&euro;</td></tr>
-          <tr><td>4</td><td data-label="Baños">2</td><td data-label="Publicados">216</td><td data-label="%">23,6%</td><td data-label="Retirados">155</td><td data-label="% Rotación">71,8%</td><td data-label="Activos">61</td><td data-label="Precio medio">395.220&euro;</td></tr>
-          <tr><td>5</td><td data-label="Baños">1</td><td data-label="Publicados">13</td><td data-label="%">1,4%</td><td data-label="Retirados">12</td><td data-label="% Rotación">92,3%</td><td data-label="Activos">1</td><td data-label="Precio medio">259.000&euro;</td></tr>
-          <tr><td>5</td><td data-label="Baños">2</td><td data-label="Publicados">172</td><td data-label="%">18,8%</td><td data-label="Retirados">128</td><td data-label="% Rotación">74,4%</td><td data-label="Activos">44</td><td data-label="Precio medio">358.988&euro;</td></tr>
+          <tr><td>1 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">7</td><td data-label="%">0,8%</td><td data-label="Retirados">7</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Precio medio">172.714&euro;</td></tr>
+          <tr><td>2 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">46</td><td data-label="%">5,0%</td><td data-label="Retirados">12</td><td data-label="% Rotación">26,1%</td><td data-label="Activos">34</td><td data-label="Precio medio">220.254&euro;</td></tr>
+          <tr><td>2 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">31</td><td data-label="%">3,4%</td><td data-label="Retirados">22</td><td data-label="% Rotación">71,0%</td><td data-label="Activos">9</td><td data-label="Precio medio">398.565&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">134</td><td data-label="%">14,6%</td><td data-label="Retirados">80</td><td data-label="% Rotación">59,7%</td><td data-label="Activos">54</td><td data-label="Precio medio">257.006&euro;</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>3 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Baños"><strong>2 <span class="unit">B</span></strong></td><td data-label="Publicados">271</td><td data-label="%">29,6%</td><td data-label="Retirados">142</td><td data-label="% Rotación">52,4%</td><td data-label="Activos">129</td><td data-label="Precio medio">323.584&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">25</td><td data-label="%">2,7%</td><td data-label="Retirados">13</td><td data-label="% Rotación">52,0%</td><td data-label="Activos">12</td><td data-label="Precio medio">282.264&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">216</td><td data-label="%">23,6%</td><td data-label="Retirados">155</td><td data-label="% Rotación">71,8%</td><td data-label="Activos">61</td><td data-label="Precio medio">395.220&euro;</td></tr>
+          <tr><td>5 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">13</td><td data-label="%">1,4%</td><td data-label="Retirados">12</td><td data-label="% Rotación">92,3%</td><td data-label="Activos">1</td><td data-label="Precio medio">259.000&euro;</td></tr>
+          <tr><td>5 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">172</td><td data-label="%">18,8%</td><td data-label="Retirados">128</td><td data-label="% Rotación">74,4%</td><td data-label="Activos">44</td><td data-label="Precio medio">358.988&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -733,18 +739,18 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <div class="card-title">1.7 Configuración por dormitorios y baños &middot; modalidad alquiler por habitaciones</div>
       <div class="card-subtitle">Qué configuración de vivienda aloja la habitación a la hora de alquilar por habitaciones, en Ronda-Arabial. Se han excluido 5 anuncios que el portal clasificó como habitación pero que eran el piso completo (rentas de 595 a 1.440&euro;): contaminaban la media.</div>
       <div class="table-wrap">
-        <table class="table-mobile">
+        <table class="table-mobile table-config">
           <thead><tr><th>Dormitorios</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Renta media</th></tr></thead>
           <tbody>
-          <tr><td>1</td><td data-label="Baños">2</td><td data-label="Publicados">10</td><td data-label="%">3,4%</td><td data-label="Retirados">2</td><td data-label="% Rotación">20,0%</td><td data-label="Activos">8</td><td data-label="Renta media">331&euro;</td></tr>
-          <tr><td>2</td><td data-label="Baños">1</td><td data-label="Publicados">7</td><td data-label="%">2,4%</td><td data-label="Retirados">3</td><td data-label="% Rotación">42,9%</td><td data-label="Activos">4</td><td data-label="Renta media">348&euro;</td></tr>
-          <tr><td>3</td><td data-label="Baños">1</td><td data-label="Publicados">81</td><td data-label="%">27,3%</td><td data-label="Retirados">42</td><td data-label="% Rotación">51,9%</td><td data-label="Activos">39</td><td data-label="Renta media">306&euro;</td></tr>
-          <tr><td>3</td><td data-label="Baños">2</td><td data-label="Publicados">26</td><td data-label="%">8,8%</td><td data-label="Retirados">12</td><td data-label="% Rotación">46,2%</td><td data-label="Activos">14</td><td data-label="Renta media">326&euro;</td></tr>
-          <tr><td>3 <span class="mark-line"><span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Baños">3</td><td data-label="Publicados">5</td><td data-label="%">1,7%</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Activos">2</td><td data-label="Renta media">325&euro;</td></tr>
-          <tr><td>4</td><td data-label="Baños">1</td><td data-label="Publicados">31</td><td data-label="%">10,4%</td><td data-label="Retirados">14</td><td data-label="% Rotación">45,2%</td><td data-label="Activos">17</td><td data-label="Renta media">280&euro;</td></tr>
-          <tr class="highlight"><td><strong>4</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Baños"><strong>2</strong></td><td data-label="Publicados">89</td><td data-label="%">30,0%</td><td data-label="Retirados">43</td><td data-label="% Rotación">48,3%</td><td data-label="Activos">46</td><td data-label="Renta media">304&euro;</td></tr>
-          <tr><td>5</td><td data-label="Baños">2</td><td data-label="Publicados">42</td><td data-label="%">14,1%</td><td data-label="Retirados">26</td><td data-label="% Rotación">61,9%</td><td data-label="Activos">16</td><td data-label="Renta media">328&euro;</td></tr>
-          <tr><td>6</td><td data-label="Baños">3</td><td data-label="Publicados">6</td><td data-label="%">2,0%</td><td data-label="Retirados">1</td><td data-label="% Rotación">16,7%</td><td data-label="Activos">5</td><td data-label="Renta media">348&euro;</td></tr>
+          <tr><td>1 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">10</td><td data-label="%">3,4%</td><td data-label="Retirados">2</td><td data-label="% Rotación">20,0%</td><td data-label="Activos">8</td><td data-label="Renta media">331&euro;</td></tr>
+          <tr><td>2 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">7</td><td data-label="%">2,4%</td><td data-label="Retirados">3</td><td data-label="% Rotación">42,9%</td><td data-label="Activos">4</td><td data-label="Renta media">348&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">81</td><td data-label="%">27,3%</td><td data-label="Retirados">42</td><td data-label="% Rotación">51,9%</td><td data-label="Activos">39</td><td data-label="Renta media">306&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">26</td><td data-label="%">8,8%</td><td data-label="Retirados">12</td><td data-label="% Rotación">46,2%</td><td data-label="Activos">14</td><td data-label="Renta media">326&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span> <span class="mark-line"><span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Baños">3 <span class="unit">B</span></td><td data-label="Publicados">5</td><td data-label="%">1,7%</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Activos">2</td><td data-label="Renta media">325&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">31</td><td data-label="%">10,4%</td><td data-label="Retirados">14</td><td data-label="% Rotación">45,2%</td><td data-label="Activos">17</td><td data-label="Renta media">280&euro;</td></tr>
+          <tr class="highlight"><td><strong>4 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Baños"><strong>2 <span class="unit">B</span></strong></td><td data-label="Publicados">89</td><td data-label="%">30,0%</td><td data-label="Retirados">43</td><td data-label="% Rotación">48,3%</td><td data-label="Activos">46</td><td data-label="Renta media">304&euro;</td></tr>
+          <tr><td>5 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">42</td><td data-label="%">14,1%</td><td data-label="Retirados">26</td><td data-label="% Rotación">61,9%</td><td data-label="Activos">16</td><td data-label="Renta media">328&euro;</td></tr>
+          <tr><td>6 <span class="unit">D</span></td><td data-label="Baños">3 <span class="unit">B</span></td><td data-label="Publicados">6</td><td data-label="%">2,0%</td><td data-label="Retirados">1</td><td data-label="% Rotación">16,7%</td><td data-label="Activos">5</td><td data-label="Renta media">348&euro;</td></tr>
           </tbody>
         </table>
       </div>

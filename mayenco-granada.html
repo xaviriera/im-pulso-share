@@ -176,6 +176,8 @@
   .mark-asset { background: var(--impulso); color: white; }
   .mark-notarial { background: var(--notarial); color: white; }
   .mark-muestra { background: var(--gray-300); color: var(--gray-700); }
+  .mark-line { display: block; margin-top: 5px; }
+  .mark-line .mark { margin-left: 0; margin-right: 5px; }
 
   @media (max-width: 480px) {
     .table-mobile thead { display: none; }
@@ -620,10 +622,10 @@
       <div class="card-subtitle">FUENTE 1 · PULSO — el latido del mercado</div>
       <div class="legend">
         <span class="lg-item"><span class="lg-dot" style="background:var(--pulso);"></span> <strong>PULSO</strong> = el segmento con MÁS volumen (el producto dominante de la zona).</span>
-        <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Producto</strong> = dónde cae el piso de este flip, una vez reformado.</span>
+        <span class="lg-item"><span class="lg-dot" style="background:var(--impulso);"></span> <strong>Producto</strong> = dónde cae el piso de esta operación, una vez reformado.</span>
       </div>
       <div class="term-explainer">
-El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no lo que se pide, sino <strong>qué se publica, qué se retira y a qué velocidad</strong>, en venta y en alquiler. De ahí sale qué tipo de vivienda domina el mercado (el <strong>PULSO</strong>), en qué tramos de precio se mueve y qué pasa con otros activos (locales, garajes, trasteros...) y con el alquiler por habitaciones. Cada tabla cruza el PULSO con el <strong>piso de la operación</strong> — el producto de este flip — para mostrar dónde encaja.
+El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no lo que se pide, sino <strong>qué se publica, qué se retira y a qué velocidad</strong>, en venta y en alquiler. De ahí sale qué tipo de vivienda domina el mercado (el <strong>PULSO</strong>), en qué tramos de precio se mueve y qué pasa con otros activos (locales, garajes, trasteros...) y con el alquiler por habitaciones. Cada tabla cruza el PULSO con el <strong>piso de la operación</strong> — el producto de esta operación — para mostrar dónde encaja.
       </div>
     </div>
 
@@ -635,7 +637,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <div class="kpi"><div class="kpi-value">2.135</div><div class="kpi-label">Anuncios zona</div></div>
         <div class="kpi"><div class="kpi-value">69,0%</div><div class="kpi-label">Rotación venta</div></div>
         <div class="kpi"><div class="kpi-value">Sin datos</div><div class="kpi-label">Alquiler tradicional</div></div>
-        <div class="kpi"><div class="kpi-value">47,8%</div><div class="kpi-label">Rotación habitaciones</div></div>
+        <div class="kpi"><div class="kpi-value">47,9%</div><div class="kpi-label">Rotación habitaciones</div></div>
       </div>
       <div class="term-explainer">
         <strong>Cómo leer estas tablas:</strong><br>
@@ -648,7 +650,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         &bull; <strong>&euro;/m²</strong> &mdash; precio de oferta por metro cuadrado, para poder comparar productos de tamaños distintos.
       </div>
       <div class="insight insight-orange">
-        <strong>Venta:</strong> 1.815 anuncios &middot; 1.252 retirados &middot; 69,0% de rotación. <strong>Alquiler tradicional:</strong> sin datos en esta carga (incidencia de descarga). <strong>Alquiler por habitaciones:</strong> 320 anuncios &middot; 153 retirados &middot; 47,8% de rotación.
+        <strong>Venta:</strong> 1.815 anuncios &middot; 1.252 retirados &middot; 69,0% de rotación. <strong>Alquiler tradicional:</strong> sin datos en esta carga (incidencia de descarga). <strong>Alquiler por habitaciones:</strong> 315 anuncios &middot; 151 retirados &middot; 47,9% de rotación.
       </div>
     </div>
 
@@ -660,14 +662,14 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight highlight-asset"><td><strong>Piso</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">1.345</td><td data-label="%">90,0%</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Activos">398</td><td data-label="Precio medio">340.981&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.975&euro;</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Publicados">1.345</td><td data-label="%">90,0%</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Activos">398</td><td data-label="Precio medio">340.981&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.975&euro;</td></tr>
           <tr><td>Ático</td><td data-label="Publicados">142</td><td data-label="%">9,5%</td><td data-label="Retirados">114</td><td data-label="% Rotación">80,3%</td><td data-label="Activos">28</td><td data-label="Precio medio">452.036&euro;</td><td data-label="Días hasta retirarse">38,1</td><td data-label="€/m²">3.707&euro;</td></tr>
           <tr><td>Chalet</td><td data-label="Publicados">7</td><td data-label="%">0,5%</td><td data-label="Retirados">4</td><td data-label="% Rotación">57,1%</td><td data-label="Activos">3</td><td data-label="Precio medio">536.856&euro;</td><td data-label="Días hasta retirarse">78,3</td><td data-label="€/m²">1.072&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el latido del mercado en venta es el <strong>piso</strong> (1.345 anuncios, 90,0% de la oferta mostrada y 70,4% de rotación) &mdash; y es, además, el mismo tipo de activo que esta operación: el PULSO de la zona y el producto de este flip coinciden. Ático y chalet quedan como segmentos secundarios frente al piso.
+        <strong>Lectura:</strong> el latido del mercado en venta es el <strong>piso</strong> (1.345 anuncios, 90,0% de la oferta mostrada y 70,4% de rotación) &mdash; y es, además, el mismo tipo de activo que esta operación: el PULSO de la zona y el producto de esta operación coinciden. Ático y chalet quedan como segmentos secundarios frente al piso.
       </div>
     </div>
 
@@ -703,7 +705,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tr><td>2</td><td data-label="Baños">1</td><td data-label="Publicados">46</td><td data-label="%">5,0%</td><td data-label="Retirados">12</td><td data-label="% Rotación">26,1%</td><td data-label="Activos">34</td><td data-label="Precio medio">220.254&euro;</td></tr>
           <tr><td>2</td><td data-label="Baños">2</td><td data-label="Publicados">31</td><td data-label="%">3,4%</td><td data-label="Retirados">22</td><td data-label="% Rotación">71,0%</td><td data-label="Activos">9</td><td data-label="Precio medio">398.565&euro;</td></tr>
           <tr><td>3</td><td data-label="Baños">1</td><td data-label="Publicados">134</td><td data-label="%">14,6%</td><td data-label="Retirados">80</td><td data-label="% Rotación">59,7%</td><td data-label="Activos">54</td><td data-label="Precio medio">257.006&euro;</td></tr>
-          <tr class="highlight highlight-asset"><td><strong>3</strong></td><td data-label="Baños"><strong>2</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">271</td><td data-label="%">29,6%</td><td data-label="Retirados">142</td><td data-label="% Rotación">52,4%</td><td data-label="Activos">129</td><td data-label="Precio medio">323.584&euro;</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>3</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Baños"><strong>2</strong></td><td data-label="Publicados">271</td><td data-label="%">29,6%</td><td data-label="Retirados">142</td><td data-label="% Rotación">52,4%</td><td data-label="Activos">129</td><td data-label="Precio medio">323.584&euro;</td></tr>
           <tr><td>4</td><td data-label="Baños">1</td><td data-label="Publicados">25</td><td data-label="%">2,7%</td><td data-label="Retirados">13</td><td data-label="% Rotación">52,0%</td><td data-label="Activos">12</td><td data-label="Precio medio">282.264&euro;</td></tr>
           <tr><td>4</td><td data-label="Baños">2</td><td data-label="Publicados">216</td><td data-label="%">23,6%</td><td data-label="Retirados">155</td><td data-label="% Rotación">71,8%</td><td data-label="Activos">61</td><td data-label="Precio medio">395.220&euro;</td></tr>
           <tr><td>5</td><td data-label="Baños">1</td><td data-label="Publicados">13</td><td data-label="%">1,4%</td><td data-label="Retirados">12</td><td data-label="% Rotación">92,3%</td><td data-label="Activos">1</td><td data-label="Precio medio">259.000&euro;</td></tr>
@@ -729,25 +731,25 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
     <!-- 1.7 Configuración por dormitorios y baños — alquiler por habitaciones -->
     <div class="card">
       <div class="card-title">1.7 Configuración por dormitorios y baños &middot; modalidad alquiler por habitaciones</div>
-      <div class="card-subtitle">Qué configuración de vivienda aloja la habitación a la hora de alquilar por habitaciones, en Ronda-Arabial</div>
+      <div class="card-subtitle">Qué configuración de vivienda aloja la habitación a la hora de alquilar por habitaciones, en Ronda-Arabial. Se han excluido 5 anuncios que el portal clasificó como habitación pero que eran el piso completo (rentas de 595 a 1.440&euro;): contaminaban la media.</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Dormitorios</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Renta media</th></tr></thead>
           <tbody>
-          <tr><td>1</td><td data-label="Baños">2</td><td data-label="Publicados">10</td><td data-label="%">3,3%</td><td data-label="Retirados">2</td><td data-label="% Rotación">20,0%</td><td data-label="Activos">8</td><td data-label="Renta media">331&euro;</td></tr>
-          <tr><td>2</td><td data-label="Baños">1</td><td data-label="Publicados">7</td><td data-label="%">2,3%</td><td data-label="Retirados">3</td><td data-label="% Rotación">42,9%</td><td data-label="Activos">4</td><td data-label="Renta media">348&euro;</td></tr>
-          <tr><td>3</td><td data-label="Baños">1</td><td data-label="Publicados">84</td><td data-label="%">27,8%</td><td data-label="Retirados">44</td><td data-label="% Rotación">52,4%</td><td data-label="Activos">40</td><td data-label="Renta media">324&euro;</td></tr>
-          <tr><td>3</td><td data-label="Baños">2</td><td data-label="Publicados">27</td><td data-label="%">8,9%</td><td data-label="Retirados">12</td><td data-label="% Rotación">44,4%</td><td data-label="Activos">15</td><td data-label="Renta media">336&euro;</td></tr>
-          <tr><td>3</td><td data-label="Baños">3 <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">5</td><td data-label="%">1,7%</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Activos">2</td><td data-label="Renta media">325&euro;</td></tr>
-          <tr><td>4</td><td data-label="Baños">1</td><td data-label="Publicados">31</td><td data-label="%">10,3%</td><td data-label="Retirados">14</td><td data-label="% Rotación">45,2%</td><td data-label="Activos">17</td><td data-label="Renta media">280&euro;</td></tr>
-          <tr class="highlight"><td><strong>4</strong></td><td data-label="Baños"><strong>2</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">90</td><td data-label="%">29,8%</td><td data-label="Retirados">43</td><td data-label="% Rotación">47,8%</td><td data-label="Activos">47</td><td data-label="Renta media">317&euro;</td></tr>
-          <tr><td>5</td><td data-label="Baños">2</td><td data-label="Publicados">42</td><td data-label="%">13,9%</td><td data-label="Retirados">26</td><td data-label="% Rotación">61,9%</td><td data-label="Activos">16</td><td data-label="Renta media">328&euro;</td></tr>
+          <tr><td>1</td><td data-label="Baños">2</td><td data-label="Publicados">10</td><td data-label="%">3,4%</td><td data-label="Retirados">2</td><td data-label="% Rotación">20,0%</td><td data-label="Activos">8</td><td data-label="Renta media">331&euro;</td></tr>
+          <tr><td>2</td><td data-label="Baños">1</td><td data-label="Publicados">7</td><td data-label="%">2,4%</td><td data-label="Retirados">3</td><td data-label="% Rotación">42,9%</td><td data-label="Activos">4</td><td data-label="Renta media">348&euro;</td></tr>
+          <tr><td>3</td><td data-label="Baños">1</td><td data-label="Publicados">81</td><td data-label="%">27,3%</td><td data-label="Retirados">42</td><td data-label="% Rotación">51,9%</td><td data-label="Activos">39</td><td data-label="Renta media">306&euro;</td></tr>
+          <tr><td>3</td><td data-label="Baños">2</td><td data-label="Publicados">26</td><td data-label="%">8,8%</td><td data-label="Retirados">12</td><td data-label="% Rotación">46,2%</td><td data-label="Activos">14</td><td data-label="Renta media">326&euro;</td></tr>
+          <tr><td>3 <span class="mark-line"><span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Baños">3</td><td data-label="Publicados">5</td><td data-label="%">1,7%</td><td data-label="Retirados">3</td><td data-label="% Rotación">60,0%</td><td data-label="Activos">2</td><td data-label="Renta media">325&euro;</td></tr>
+          <tr><td>4</td><td data-label="Baños">1</td><td data-label="Publicados">31</td><td data-label="%">10,4%</td><td data-label="Retirados">14</td><td data-label="% Rotación">45,2%</td><td data-label="Activos">17</td><td data-label="Renta media">280&euro;</td></tr>
+          <tr class="highlight"><td><strong>4</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Baños"><strong>2</strong></td><td data-label="Publicados">89</td><td data-label="%">30,0%</td><td data-label="Retirados">43</td><td data-label="% Rotación">48,3%</td><td data-label="Activos">46</td><td data-label="Renta media">304&euro;</td></tr>
+          <tr><td>5</td><td data-label="Baños">2</td><td data-label="Publicados">42</td><td data-label="%">14,1%</td><td data-label="Retirados">26</td><td data-label="% Rotación">61,9%</td><td data-label="Activos">16</td><td data-label="Renta media">328&euro;</td></tr>
           <tr><td>6</td><td data-label="Baños">3</td><td data-label="Publicados">6</td><td data-label="%">2,0%</td><td data-label="Retirados">1</td><td data-label="% Rotación">16,7%</td><td data-label="Activos">5</td><td data-label="Renta media">348&euro;</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> el producto que más se mueve es la vivienda de <strong>4 dormitorios / 2 baños</strong> (90 anuncios, 29,8% del mercado de habitaciones), un piso típico para estudiantes; 47 anuncios de esta configuración siguen activos hoy.
+        <strong>Lectura:</strong> el producto que más se mueve es la vivienda de <strong>4 dormitorios / 2 baños</strong> (89 anuncios, 30,0% del mercado de habitaciones), un piso típico para estudiantes; 46 anuncios de esta configuración siguen activos hoy.
       </div>
     </div>
 
@@ -760,9 +762,9 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
           <tr><td>Hasta 200.000&euro;</td><td data-label="Publicados">42</td><td data-label="%">3,1%</td><td data-label="Retirados">31</td><td data-label="% Rotación">73,8%</td><td data-label="Activos">11</td><td data-label="Días hasta retirarse">38,4</td></tr>
-          <tr class="highlight-asset"><td><strong>200.001 &mdash; 250.000&euro;</strong> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">132</td><td data-label="%">9,8%</td><td data-label="Retirados">102</td><td data-label="% Rotación">77,3%</td><td data-label="Activos">30</td><td data-label="Días hasta retirarse">71,7</td></tr>
+          <tr class="highlight-asset"><td><strong>200.001 &mdash; 250.000&euro;</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Publicados">132</td><td data-label="%">9,8%</td><td data-label="Retirados">102</td><td data-label="% Rotación">77,3%</td><td data-label="Activos">30</td><td data-label="Días hasta retirarse">71,7</td></tr>
           <tr><td>250.001 &mdash; 300.000&euro;</td><td data-label="Publicados">268</td><td data-label="%">19,9%</td><td data-label="Retirados">155</td><td data-label="% Rotación">57,8%</td><td data-label="Activos">113</td><td data-label="Días hasta retirarse">58,2</td></tr>
-          <tr class="highlight"><td><strong>300.001 &mdash; 350.000&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">395</td><td data-label="%">29,4%</td><td data-label="Retirados">281</td><td data-label="% Rotación">71,1%</td><td data-label="Activos">114</td><td data-label="Días hasta retirarse">71,9</td></tr>
+          <tr class="highlight"><td><strong>300.001 &mdash; 350.000&euro;</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">395</td><td data-label="%">29,4%</td><td data-label="Retirados">281</td><td data-label="% Rotación">71,1%</td><td data-label="Activos">114</td><td data-label="Días hasta retirarse">71,9</td></tr>
           <tr><td>350.001 &mdash; 400.000&euro;</td><td data-label="Publicados">327</td><td data-label="%">24,3%</td><td data-label="Retirados">281</td><td data-label="% Rotación">85,9%</td><td data-label="Activos">46</td><td data-label="Días hasta retirarse">72,3</td></tr>
           <tr><td>400.001 &mdash; 500.000&euro;</td><td data-label="Publicados">109</td><td data-label="%">8,1%</td><td data-label="Retirados">56</td><td data-label="% Rotación">51,4%</td><td data-label="Activos">53</td><td data-label="Días hasta retirarse">84,1</td></tr>
           <tr><td>Más de 500.000&euro;</td><td data-label="Publicados">72</td><td data-label="%">5,4%</td><td data-label="Retirados">41</td><td data-label="% Rotación">56,9%</td><td data-label="Activos">31</td><td data-label="Días hasta retirarse">108,5</td></tr>
@@ -793,17 +795,16 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
           <tr><td>Hasta 200&euro;</td><td data-label="Publicados">12</td><td data-label="%">3,8%</td><td data-label="Retirados">8</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">4</td><td data-label="Días hasta retirarse">20,0</td></tr>
-          <tr><td>201 &mdash; 250&euro;</td><td data-label="Publicados">37</td><td data-label="%">11,6%</td><td data-label="Retirados">25</td><td data-label="% Rotación">67,6%</td><td data-label="Activos">12</td><td data-label="Días hasta retirarse">14,0</td></tr>
-          <tr class="highlight"><td><strong>251 &mdash; 300&euro;</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">119</td><td data-label="%">37,2%</td><td data-label="Retirados">52</td><td data-label="% Rotación">43,7%</td><td data-label="Activos">67</td><td data-label="Días hasta retirarse">21,3</td></tr>
-          <tr><td>301 &mdash; 350&euro;</td><td data-label="Publicados">97</td><td data-label="%">30,3%</td><td data-label="Retirados">44</td><td data-label="% Rotación">45,4%</td><td data-label="Activos">53</td><td data-label="Días hasta retirarse">17,1</td></tr>
-          <tr><td>351 &mdash; 400&euro;</td><td data-label="Publicados">34</td><td data-label="%">10,6%</td><td data-label="Retirados">18</td><td data-label="% Rotación">52,9%</td><td data-label="Activos">16</td><td data-label="Días hasta retirarse">29,2</td></tr>
-          <tr><td>401 &mdash; 450&euro;</td><td data-label="Publicados">14</td><td data-label="%">4,4%</td><td data-label="Retirados">4</td><td data-label="% Rotación">28,6%</td><td data-label="Activos">10</td><td data-label="Días hasta retirarse">21,0</td></tr>
-          <tr><td>Más de 450&euro;</td><td data-label="Publicados">7</td><td data-label="%">2,2%</td><td data-label="Retirados">2</td><td data-label="% Rotación">28,6%</td><td data-label="Activos">5</td><td data-label="Días hasta retirarse">3,5</td></tr>
+          <tr><td>201 &mdash; 250&euro;</td><td data-label="Publicados">37</td><td data-label="%">11,8%</td><td data-label="Retirados">25</td><td data-label="% Rotación">67,6%</td><td data-label="Activos">12</td><td data-label="Días hasta retirarse">14,0</td></tr>
+          <tr class="highlight"><td><strong>251 &mdash; 300&euro;</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">119</td><td data-label="%">38,0%</td><td data-label="Retirados">52</td><td data-label="% Rotación">43,7%</td><td data-label="Activos">67</td><td data-label="Días hasta retirarse">21,3</td></tr>
+          <tr><td>301 &mdash; 350&euro;</td><td data-label="Publicados">97</td><td data-label="%">31,0%</td><td data-label="Retirados">44</td><td data-label="% Rotación">45,4%</td><td data-label="Activos">53</td><td data-label="Días hasta retirarse">17,1</td></tr>
+          <tr><td>351 &mdash; 400&euro;</td><td data-label="Publicados">34</td><td data-label="%">10,9%</td><td data-label="Retirados">18</td><td data-label="% Rotación">52,9%</td><td data-label="Activos">16</td><td data-label="Días hasta retirarse">29,2</td></tr>
+          <tr><td>401 &mdash; 450&euro;</td><td data-label="Publicados">14</td><td data-label="%">4,5%</td><td data-label="Retirados">4</td><td data-label="% Rotación">28,6%</td><td data-label="Activos">10</td><td data-label="Días hasta retirarse">21,0</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> la renta se concentra entre <strong>251 y 350&euro;</strong> (216 de 320 anuncios, dos tercios del mercado). Por encima de 400&euro;, la rotación cae por debajo de un tercio: 28,6% tanto en 401 &mdash; 450&euro; como en más de 450&euro;.
+        <strong>Lectura:</strong> la renta se concentra entre <strong>251 y 350&euro;</strong>, con los dos tramos de mayor volumen: 119 anuncios en 251 &mdash; 300&euro; y 97 anuncios en 301 &mdash; 350&euro;. El tramo PULSO es 251 &mdash; 300&euro;, con 38,0% de la oferta; por encima de 400&euro;, la rotación baja al 28,6%.
       </div>
     </div>
 
@@ -815,7 +816,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Barrio</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight highlight-asset"><td><strong>Ronda-Arabial</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">1.345</td><td data-label="%">55,9%</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Activos">398</td><td data-label="Precio medio">340.981&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.975&euro;</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>Ronda-Arabial</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Publicados">1.345</td><td data-label="%">55,9%</td><td data-label="Retirados">947</td><td data-label="% Rotación">70,4%</td><td data-label="Activos">398</td><td data-label="Precio medio">340.981&euro;</td><td data-label="Días hasta retirarse">71,0</td><td data-label="€/m²">2.975&euro;</td></tr>
           <tr><td>Los Pajaritos</td><td data-label="Publicados">414</td><td data-label="%">17,2%</td><td data-label="Retirados">254</td><td data-label="% Rotación">61,4%</td><td data-label="Activos">160</td><td data-label="Precio medio">332.573&euro;</td><td data-label="Días hasta retirarse">62,6</td><td data-label="€/m²">2.714&euro;</td></tr>
           <tr><td>Recogidas</td><td data-label="Publicados">407</td><td data-label="%">16,9%</td><td data-label="Retirados">273</td><td data-label="% Rotación">67,1%</td><td data-label="Activos">134</td><td data-label="Precio medio">443.278&euro;</td><td data-label="Días hasta retirarse">56,2</td><td data-label="€/m²">3.246&euro;</td></tr>
           <tr><td>Rosaleda - Juventud</td><td data-label="Publicados">238</td><td data-label="%">9,9%</td><td data-label="Retirados">179</td><td data-label="% Rotación">75,2%</td><td data-label="Activos">59</td><td data-label="Precio medio">340.980&euro;</td><td data-label="Días hasta retirarse">44,9</td><td data-label="€/m²">3.214&euro;</td></tr>
@@ -845,15 +846,15 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Barrio</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Renta media</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
-          <tr class="highlight highlight-asset"><td><strong>Ronda-Arabial</strong> <span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></td><td data-label="Publicados">320</td><td data-label="%">54,5%</td><td data-label="Retirados">153</td><td data-label="% Rotación">47,8%</td><td data-label="Activos">167</td><td data-label="Renta media">319&euro;</td><td data-label="Días hasta retirarse">19,5</td></tr>
-          <tr><td>Recogidas</td><td data-label="Publicados">147</td><td data-label="%">25,0%</td><td data-label="Retirados">81</td><td data-label="% Rotación">55,1%</td><td data-label="Activos">66</td><td data-label="Renta media">349&euro;</td><td data-label="Días hasta retirarse">20,8</td></tr>
-          <tr><td>Los Pajaritos</td><td data-label="Publicados">90</td><td data-label="%">15,3%</td><td data-label="Retirados">41</td><td data-label="% Rotación">45,6%</td><td data-label="Activos">49</td><td data-label="Renta media">359&euro;</td><td data-label="Días hasta retirarse">17,4</td></tr>
-          <tr><td>Rosaleda - Juventud</td><td data-label="Publicados">30</td><td data-label="%">5,1%</td><td data-label="Retirados">13</td><td data-label="% Rotación">43,3%</td><td data-label="Activos">17</td><td data-label="Renta media">301&euro;</td><td data-label="Días hasta retirarse">22,2</td></tr>
+          <tr class="highlight highlight-asset"><td><strong>Ronda-Arabial</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Publicados">315</td><td data-label="%">55,3%</td><td data-label="Retirados">151</td><td data-label="% Rotación">47,9%</td><td data-label="Activos">164</td><td data-label="Renta media">310&euro;</td><td data-label="Días hasta retirarse">19,8</td></tr>
+          <tr><td>Recogidas</td><td data-label="Publicados">140</td><td data-label="%">24,6%</td><td data-label="Retirados">81</td><td data-label="% Rotación">57,9%</td><td data-label="Activos">59</td><td data-label="Renta media">340&euro;</td><td data-label="Días hasta retirarse">20,8</td></tr>
+          <tr><td>Los Pajaritos</td><td data-label="Publicados">85</td><td data-label="%">14,9%</td><td data-label="Retirados">40</td><td data-label="% Rotación">47,1%</td><td data-label="Activos">45</td><td data-label="Renta media">317&euro;</td><td data-label="Días hasta retirarse">17,8</td></tr>
+          <tr><td>Rosaleda - Juventud</td><td data-label="Publicados">30</td><td data-label="%">5,3%</td><td data-label="Retirados">13</td><td data-label="% Rotación">43,3%</td><td data-label="Activos">17</td><td data-label="Renta media">301&euro;</td><td data-label="Días hasta retirarse">22,2</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> Ronda-Arabial concentra más de la mitad del alquiler por habitaciones de la zona (320 anuncios, 54,5%). Los Pajaritos tiene la renta más alta (359&euro;) y coloca más rápido, con 17,4 días de media hasta retirarse.
+        <strong>Lectura:</strong> Ronda-Arabial concentra más de la mitad del alquiler por habitaciones de la zona (315 anuncios, 55,3%) y marca el PULSO de esta comparativa. Recogidas tiene la renta media más alta con volumen suficiente (340&euro;), mientras Los Pajaritos coloca algo más rápido, con 17,8 días de media hasta retirarse.
       </div>
     </div>
 
@@ -865,7 +866,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th><th>Días hasta retirarse</th><th>&euro;/m²</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Camino de Ronda</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">360</td><td data-label="%">34,3%</td><td data-label="Retirados">261</td><td data-label="% Rotación">72,5%</td><td data-label="Activos">99</td><td data-label="Precio medio">364.284&euro;</td><td data-label="Días hasta retirarse">67,7</td><td data-label="€/m²">2.803&euro;</td></tr>
+          <tr class="highlight"><td><strong>Camino de Ronda</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">360</td><td data-label="%">34,3%</td><td data-label="Retirados">261</td><td data-label="% Rotación">72,5%</td><td data-label="Activos">99</td><td data-label="Precio medio">364.284&euro;</td><td data-label="Días hasta retirarse">67,7</td><td data-label="€/m²">2.803&euro;</td></tr>
           <tr><td>Arabial</td><td data-label="Publicados">318</td><td data-label="%">30,3%</td><td data-label="Retirados">210</td><td data-label="% Rotación">66,0%</td><td data-label="Activos">108</td><td data-label="Precio medio">374.420&euro;</td><td data-label="Días hasta retirarse">76,8</td><td data-label="€/m²">3.176&euro;</td></tr>
           <tr><td>Pedro Antonio de Alarcón</td><td data-label="Publicados">168</td><td data-label="%">16,0%</td><td data-label="Retirados">117</td><td data-label="% Rotación">69,6%</td><td data-label="Activos">51</td><td data-label="Precio medio">337.313&euro;</td><td data-label="Días hasta retirarse">69,8</td><td data-label="€/m²">2.826&euro;</td></tr>
           <tr><td>José Recuerda</td><td data-label="Publicados">58</td><td data-label="%">5,5%</td><td data-label="Retirados">7</td><td data-label="% Rotación">12,1%</td><td data-label="Activos">51</td><td data-label="Precio medio">315.776&euro;</td><td data-label="Días hasta retirarse">39,7</td><td data-label="€/m²">3.214&euro;</td></tr>
@@ -873,7 +874,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <tr><td>Pío Baroja</td><td data-label="Publicados">50</td><td data-label="%">4,8%</td><td data-label="Retirados">49</td><td data-label="% Rotación">98,0%</td><td data-label="Activos">1</td><td data-label="Precio medio">294.240&euro;</td><td data-label="Días hasta retirarse">55,2</td><td data-label="€/m²">2.488&euro;</td></tr>
           <tr><td>Santa Clotilde</td><td data-label="Publicados">29</td><td data-label="%">2,8%</td><td data-label="Retirados">21</td><td data-label="% Rotación">72,4%</td><td data-label="Activos">8</td><td data-label="Precio medio">284.886&euro;</td><td data-label="Días hasta retirarse">58,6</td><td data-label="€/m²">2.726&euro;</td></tr>
           <tr><td>Gonzalo Gallas</td><td data-label="Publicados">9</td><td data-label="%">0,9%</td><td data-label="Retirados">6</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">3</td><td data-label="Precio medio">285.322&euro;</td><td data-label="Días hasta retirarse">58,3</td><td data-label="€/m²">2.347&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>San Isidoro</strong> <span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">3</td><td data-label="%">0,3%</td><td data-label="Retirados">1</td><td data-label="% Rotación">33,3%</td><td data-label="Activos">2</td><td data-label="Precio medio">264.967&euro;</td><td data-label="Días hasta retirarse">91,0</td><td data-label="€/m²">3.094&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>San Isidoro</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Publicados">3</td><td data-label="%">0,3%</td><td data-label="Retirados">1</td><td data-label="% Rotación">33,3%</td><td data-label="Activos">2</td><td data-label="Precio medio">264.967&euro;</td><td data-label="Días hasta retirarse">91,0</td><td data-label="€/m²">3.094&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -900,19 +901,19 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Renta media</th><th>Días hasta retirarse</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Camino de Ronda</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Publicados">90</td><td data-label="%">38,6%</td><td data-label="Retirados">45</td><td data-label="% Rotación">50,0%</td><td data-label="Activos">45</td><td data-label="Renta media">325&euro;</td><td data-label="Días hasta retirarse">19,3</td></tr>
-          <tr><td>Pedro Antonio de Alarcón</td><td data-label="Publicados">58</td><td data-label="%">24,9%</td><td data-label="Retirados">25</td><td data-label="% Rotación">43,1%</td><td data-label="Activos">33</td><td data-label="Renta media">325&euro;</td><td data-label="Días hasta retirarse">20,6</td></tr>
-          <tr><td>Arabial</td><td data-label="Publicados">31</td><td data-label="%">13,3%</td><td data-label="Retirados">20</td><td data-label="% Rotación">64,5%</td><td data-label="Activos">11</td><td data-label="Renta media">329&euro;</td><td data-label="Días hasta retirarse">15,1</td></tr>
-          <tr><td>Gonzalo Gallas</td><td data-label="Publicados">24</td><td data-label="%">10,3%</td><td data-label="Retirados">6</td><td data-label="% Rotación">25,0%</td><td data-label="Activos">18</td><td data-label="Renta media">292&euro;</td><td data-label="Días hasta retirarse">16,2</td></tr>
+          <tr class="highlight"><td><strong>Camino de Ronda</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">90</td><td data-label="%">39,0%</td><td data-label="Retirados">46</td><td data-label="% Rotación">51,1%</td><td data-label="Activos">44</td><td data-label="Renta media">318&euro;</td><td data-label="Días hasta retirarse">20,2</td></tr>
+          <tr><td>Pedro Antonio de Alarcón</td><td data-label="Publicados">57</td><td data-label="%">24,7%</td><td data-label="Retirados">24</td><td data-label="% Rotación">42,1%</td><td data-label="Activos">33</td><td data-label="Renta media">318&euro;</td><td data-label="Días hasta retirarse">21,2</td></tr>
+          <tr><td>Arabial</td><td data-label="Publicados">30</td><td data-label="%">13,0%</td><td data-label="Retirados">19</td><td data-label="% Rotación">63,3%</td><td data-label="Activos">11</td><td data-label="Renta media">315&euro;</td><td data-label="Días hasta retirarse">15,8</td></tr>
+          <tr><td>Gonzalo Gallas</td><td data-label="Publicados">24</td><td data-label="%">10,4%</td><td data-label="Retirados">6</td><td data-label="% Rotación">25,0%</td><td data-label="Activos">18</td><td data-label="Renta media">292&euro;</td><td data-label="Días hasta retirarse">16,2</td></tr>
           <tr><td>Santa Clotilde</td><td data-label="Publicados">16</td><td data-label="%">6,9%</td><td data-label="Retirados">12</td><td data-label="% Rotación">75,0%</td><td data-label="Activos">4</td><td data-label="Renta media">317&euro;</td><td data-label="Días hasta retirarse">18,7</td></tr>
           <tr><td>Ángel Barrios</td><td data-label="Publicados">7</td><td data-label="%">3,0%</td><td data-label="Retirados">4</td><td data-label="% Rotación">57,1%</td><td data-label="Activos">3</td><td data-label="Renta media">287&euro;</td><td data-label="Días hasta retirarse">23,0</td></tr>
           <tr><td>José Recuerda</td><td data-label="Publicados">6</td><td data-label="%">2,6%</td><td data-label="Retirados">4</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">2</td><td data-label="Renta media">282&euro;</td><td data-label="Días hasta retirarse">10,3</td></tr>
-          <tr class="highlight-asset"><td><strong>San Isidoro</strong> <span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></td><td data-label="Publicados">1</td><td data-label="%">0,4%</td><td data-label="Retirados">1</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Renta media">360&euro;</td><td data-label="Días hasta retirarse">55,0</td></tr>
+          <tr class="highlight-asset"><td><strong>San Isidoro</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span> <span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Publicados">1</td><td data-label="%">0,4%</td><td data-label="Retirados">1</td><td data-label="% Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="Renta media">360&euro;</td><td data-label="Días hasta retirarse">55,0</td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> Camino de Ronda y Pedro Antonio de Alarcón suman casi dos tercios de la oferta de habitaciones (148 de 233 anuncios). Las rentas apenas varían entre calles con volumen suficiente: se mueven entre 282&euro; y 329&euro;.
+        <strong>Lectura:</strong> Camino de Ronda es la calle PULSO en alquiler por habitaciones (90 anuncios, 39,0%), seguida de Pedro Antonio de Alarcón (57 anuncios, 24,7%). Las rentas apenas varían entre calles con volumen suficiente: Camino de Ronda y Pedro Antonio de Alarcón quedan en 318&euro; de renta media.
       </div>
     </div>
 
@@ -924,7 +925,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Precio medio</th></tr></thead>
           <tbody>
-          <tr><td>Locales o Naves</td><td data-label="Publicados">177</td><td data-label="%">57,7%</td><td data-label="Retirados">127</td><td data-label="% Rotación">71,8%</td><td data-label="Activos">50</td><td data-label="Precio medio">293.269&euro;</td></tr>
+          <tr class="highlight"><td><strong>Locales o Naves</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">177</td><td data-label="%">57,7%</td><td data-label="Retirados">127</td><td data-label="% Rotación">71,8%</td><td data-label="Activos">50</td><td data-label="Precio medio">293.269&euro;</td></tr>
           <tr><td>Garaje</td><td data-label="Publicados">95</td><td data-label="%">30,9%</td><td data-label="Retirados">41</td><td data-label="% Rotación">43,2%</td><td data-label="Activos">54</td><td data-label="Precio medio">72.284&euro;</td></tr>
           <tr><td>Terreno</td><td data-label="Publicados">15</td><td data-label="%">4,9%</td><td data-label="Retirados">2</td><td data-label="% Rotación">13,3%</td><td data-label="Activos">13</td><td data-label="Precio medio">141.133&euro;</td></tr>
           <tr><td>Casa Rural</td><td data-label="Publicados">13</td><td data-label="%">4,2%</td><td data-label="Retirados">5</td><td data-label="% Rotación">38,5%</td><td data-label="Activos">8</td><td data-label="Precio medio">606.154&euro;</td></tr>
@@ -966,8 +967,8 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>#</th><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td>🥇</td><td data-label="Producto"><strong>Piso 4 dorm. / 2 baños</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">155</td><td data-label="Precio mín.">259.900&euro;</td><td data-label="Precio medio">380.056&euro;</td><td data-label="Precio máx.">695.000&euro;</td></tr>
-          <tr class="highlight-asset"><td>🥈</td><td data-label="Producto"><strong>Piso 3 dorm. / 2 baños</strong> <span class="mark mark-asset">Producto</span></td><td data-label="Retirados">142</td><td data-label="Precio mín.">195.000&euro;</td><td data-label="Precio medio">302.228&euro;</td><td data-label="Precio máx.">560.000&euro;</td></tr>
+          <tr class="highlight"><td>🥇</td><td data-label="Producto"><strong>Piso 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">155</td><td data-label="Precio mín.">259.900&euro;</td><td data-label="Precio medio">380.056&euro;</td><td data-label="Precio máx.">695.000&euro;</td></tr>
+          <tr class="highlight-asset"><td>🥈</td><td data-label="Producto"><strong>Piso 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">142</td><td data-label="Precio mín.">195.000&euro;</td><td data-label="Precio medio">302.228&euro;</td><td data-label="Precio máx.">560.000&euro;</td></tr>
           <tr><td>🥉</td><td data-label="Producto">Piso 5 dorm. / 2 baños</td><td data-label="Retirados">128</td><td data-label="Precio mín.">295.000&euro;</td><td data-label="Precio medio">344.586&euro;</td><td data-label="Precio máx.">420.000&euro;</td></tr>
           <tr><td>4</td><td data-label="Producto">Piso 3 dorm. / 1 baño</td><td data-label="Retirados">80</td><td data-label="Precio mín.">152.000&euro;</td><td data-label="Precio medio">254.854&euro;</td><td data-label="Precio máx.">349.000&euro;</td></tr>
           <tr><td>5</td><td data-label="Producto">Piso 2 dorm. / 2 baños</td><td data-label="Retirados">22</td><td data-label="Precio mín.">356.500&euro;</td><td data-label="Precio medio">356.659&euro;</td><td data-label="Precio máx.">360.000&euro;</td></tr>
@@ -986,8 +987,8 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>#</th><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td>🥇</td><td data-label="Producto"><strong>Habitación en vivienda de 3 dorm. / 1 baño</strong> <span class="mark mark-pulso">PULSO</span></td><td data-label="Retirados">44</td><td data-label="Precio mín.">200&euro;</td><td data-label="Precio medio">315&euro;</td><td data-label="Precio máx.">750&euro;</td></tr>
-          <tr><td>🥈</td><td data-label="Producto">Habitación en vivienda de 4 dorm. / 2 baños</td><td data-label="Retirados">43</td><td data-label="Precio mín.">185&euro;</td><td data-label="Precio medio">305&euro;</td><td data-label="Precio máx.">450&euro;</td></tr>
+          <tr class="highlight"><td>🥇</td><td data-label="Producto"><strong>Habitación en vivienda de 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">43</td><td data-label="Precio mín.">185&euro;</td><td data-label="Precio medio">305&euro;</td><td data-label="Precio máx.">450&euro;</td></tr>
+          <tr><td>🥈</td><td data-label="Producto">Habitación en vivienda de 3 dorm. / 1 baño</td><td data-label="Retirados">42</td><td data-label="Precio mín.">200&euro;</td><td data-label="Precio medio">295&euro;</td><td data-label="Precio máx.">425&euro;</td></tr>
           <tr><td>🥉</td><td data-label="Producto">Habitación en vivienda de 5 dorm. / 2 baños</td><td data-label="Retirados">26</td><td data-label="Precio mín.">200&euro;</td><td data-label="Precio medio">321&euro;</td><td data-label="Precio máx.">390&euro;</td></tr>
           <tr><td>4</td><td data-label="Producto">Habitación en vivienda de 4 dorm. / 1 baño</td><td data-label="Retirados">14</td><td data-label="Precio mín.">190&euro;</td><td data-label="Precio medio">249&euro;</td><td data-label="Precio máx.">300&euro;</td></tr>
           <tr><td>5</td><td data-label="Producto">Habitación en vivienda de 3 dorm. / 2 baños</td><td data-label="Retirados">12</td><td data-label="Precio mín.">250&euro;</td><td data-label="Precio medio">329&euro;</td><td data-label="Precio máx.">400&euro;</td></tr>
@@ -995,19 +996,19 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         </table>
       </div>
       <div class="insight insight-orange">
-        <strong>Lectura:</strong> en venta, el producto que más absorbe el mercado es el piso de <strong>4 dormitorios y 2 baños</strong> (155 retirados), pero el de esta operación &mdash;<strong>3 dormitorios y 2 baños</strong>&mdash; va justo detrás (142 retirados) y lo hace en una banda de precio más accesible: de 195.000 a 560.000&euro;, con un medio de 302.228&euro;. Es decir, el activo no está en un nicho: está en el segundo producto más líquido de la zona y en el tramo donde entra más comprador. En alquiler por habitaciones, lo que más rota es la habitación en vivienda de 3 dormitorios y 1 baño (44 colocadas, rentas de 200 a 750&euro;).
+        <strong>Lectura:</strong> en venta, el producto que más absorbe el mercado es el piso de <strong>4 dormitorios y 2 baños</strong> (155 retirados), pero el de esta operación &mdash;<strong>3 dormitorios y 2 baños</strong>&mdash; va justo detrás (142 retirados) y lo hace en una banda de precio más accesible: de 195.000 a 560.000&euro;, con un medio de 302.228&euro;. Es decir, el activo no está en un nicho: está en el segundo producto más líquido de la zona y en el tramo donde entra más comprador. En alquiler por habitaciones, lo que más se coloca es la habitación en vivienda de <strong>4 dormitorios y 2 baños</strong> (43 colocadas, rentas de 185 a 450&euro;).
       </div>
     </div>
 
     <div class="term-explainer">
-      <strong>Antes de leer el veredicto:</strong> todas las tablas de esta fuente comparan el <strong>PULSO</strong> (el producto que más se mueve) con el <strong>piso de la operación</strong> (el producto de este flip). El piso coincide con el propio PULSO de la zona: no es un nicho, es el mercado principal.
+      <strong>Antes de leer el veredicto:</strong> todas las tablas de esta fuente comparan el <strong>PULSO</strong> (el producto que más se mueve) con el <strong>piso de la operación</strong> (el producto de esta operación). El piso coincide con el propio PULSO de la zona: no es un nicho, es el mercado principal.
     </div>
 
     <!-- Conclusión PULSO -->
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
       <div>
-        <strong>Conclusión del PULSO.</strong> El latido principal del mercado en Ronda-Arabial es el piso (1.345 anuncios, 70,4% de rotación, tramo dominante hasta 350.000&euro;), y es exactamente el tipo de activo de esta operación: no hay que forzar un encaje, el producto ya es el mercado principal de la zona. Del alquiler, esta carga solo ha recogido el de habitación (320 anuncios, 47,8% de rotación). El alquiler de vivienda completa existe en la zona, pero no se descargó en esta entrega: queda pendiente de la próxima actualización de la base. La combinación de 3 dormitorios y 2 baños es, dentro de las configuraciones con dato completo, la de mayor volumen (271 anuncios).
+        <strong>Conclusión del PULSO.</strong> El latido principal del mercado en Ronda-Arabial es el piso (1.345 anuncios, 70,4% de rotación, tramo dominante hasta 350.000&euro;), y es exactamente el tipo de activo de esta operación: no hay que forzar un encaje, el producto ya es el mercado principal de la zona. Del alquiler, esta carga solo ha recogido el de habitación (315 anuncios, 47,9% de rotación). El alquiler de vivienda completa existe en la zona, pero no se descargó en esta entrega: queda pendiente de la próxima actualización de la base. La combinación de 3 dormitorios y 2 baños es, dentro de las configuraciones con dato completo, la de mayor volumen (271 anuncios).
       </div>
     </div>
   </div>
@@ -1084,7 +1085,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         <table class="table-mobile">
           <thead><tr><th>Tipología</th><th>Testigos (n)</th><th>Fiabilidad</th></tr></thead>
           <tbody>
-          <tr class="highlight-asset"><td><strong>Piso de 91-121 m² en Ronda-Arabial</strong> <span class="mark mark-asset">Producto</span></td><td data-label="Testigos (n)">380</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
+          <tr class="highlight-asset"><td><strong>Piso de 91-121 m² en Ronda-Arabial</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Testigos (n)">380</td><td data-label="Fiabilidad"><span class="fiab-alta">Fiabilidad alta</span></td></tr>
           </tbody>
         </table>
       </div>
@@ -1261,7 +1262,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
       <div>
-        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">307.100&euro;</strong> para el piso una vez reformado (horquilla de 284.700 a 349.800&euro;), a partir de 380 testigos reales retirados en Ronda-Arabial. El precio de compra anunciado (250.000&euro;, a reformar) queda por debajo del escenario conservador de reformado, coherente con una estrategia de flip — el margen exacto depende del coste de reforma, que no está en esta base de datos.
+        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">307.100&euro;</strong> para el piso una vez reformado (horquilla de 284.700 a 349.800&euro;), a partir de 380 testigos reales retirados en Ronda-Arabial. El precio de compra anunciado (250.000&euro;, a reformar) queda por debajo del escenario conservador de reformado, coherente con una operación de compra, reforma y venta — el margen exacto depende del coste de reforma, que no está en esta base de datos.
       </div>
     </div>
   </div>
@@ -1360,7 +1361,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
           <thead><tr><th>Nacionalidad</th><th>% del total</th></tr></thead>
           <tbody>
           <tr class="highlight-notarial"><td><svg class="flag" viewBox="0 0 6 4"><rect width="6" height="4" fill="#AD1519"/><rect width="6" height="2" y="1" fill="#FABD00"/></svg> <strong>España</strong> <span class="mark mark-notarial">Dominante</span></td><td data-label="Porcentaje"><strong>97,33%</strong></td></tr>
-          <tr><td>Extranjeros (conjunto) <span class="mark mark-muestra">Muestra mínima</span></td><td data-label="Porcentaje">2,67%</td></tr>
+          <tr><td>Extranjeros (conjunto) <span class="mark-line"><span class="mark mark-muestra">Muestra mínima</span></span></td><td data-label="Porcentaje">2,67%</td></tr>
           </tbody>
         </table>
       </div>
@@ -1486,7 +1487,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       </div>
       <div class="cruce-verdict">
         <div class="cv-title">Conclusión del cruce</div>
-        <div class="cv-text">Dos fuentes independientes &mdash;los testigos de IM&middot;PULSO (mercado) y el Portal del Notariado (oficial)&mdash; describen el mismo mercado desde ángulos distintos: <strong>líquido</strong> (269 compraventas/año) y <strong>de uso real</strong> (96,85% personas físicas), pero con una <strong>corrección de precio leve</strong> en 2025 (&minus;2,58%) tras un ciclo largo de subidas con un respiro plano en 2021. No es un mercado en boom ahora mismo, pero tampoco en caída fuerte: es un contexto sólido y estable para una operación de flip, siempre que el margen se calcule sobre el escenario conservador (284.700&euro;) y no sobre el optimista.</div>
+        <div class="cv-text">Dos fuentes independientes &mdash;los testigos de IM&middot;PULSO (mercado) y el Portal del Notariado (oficial)&mdash; describen el mismo mercado desde ángulos distintos: <strong>líquido</strong> (269 compraventas/año) y <strong>de uso real</strong> (96,85% personas físicas), pero con una <strong>corrección de precio leve</strong> en 2025 (&minus;2,58%) tras un ciclo largo de subidas con un respiro plano en 2021. No es un mercado en boom ahora mismo, pero tampoco en caída fuerte: es un contexto sólido y estable para una operación de compra, reforma y venta, siempre que el margen se calcule sobre el escenario conservador (284.700&euro;) y no sobre el optimista.</div>
       </div>
     </div>
 
@@ -1564,7 +1565,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
-          <span><strong>El plan B de alquiler, pendiente de datos:</strong> esta entrega no trae el alquiler de vivienda completa de la zona por una incidencia de descarga, así que el informe no puede poner todavía una cifra de renta para el piso entero. No es que no exista ese mercado: es que aún no está medido aquí. Lo que sí está medido es el alquiler por habitación (320 anuncios, renta media 319&euro;, 19,5 días hasta colocarse), que en esta zona universitaria es un uso real y con demanda.</span>
+          <span><strong>Alquiler:</strong> la renta de vivienda completa no entra en este informe porque esa categoría no se descargó. Lo que sí está medido es el alquiler por habitación: 315 anuncios, renta media 310&euro;, 19,8 días hasta colocarse.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
@@ -1602,7 +1603,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></span>
-          <span><strong>PULSO:</strong> el latido de Ronda-Arabial es el <strong>piso</strong>, con 70,4% de rotación en venta (1.345 anuncios) — el mismo tipo de activo de esta operación. Del alquiler, lo medido en esta carga es el de habitación (320 anuncios, 47,8% de rotación). El de vivienda completa no se capturó por la incidencia de descarga.</span>
+          <span><strong>PULSO:</strong> el latido de Ronda-Arabial es el <strong>piso</strong>, con 70,4% de rotación en venta (1.345 anuncios) — el mismo tipo de activo de esta operación. Del alquiler, lo medido en esta carga es el de habitación (315 anuncios, 47,9% de rotación). El de vivienda completa no se capturó por la incidencia de descarga.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>
@@ -1640,7 +1641,7 @@ El PULSO mide la <strong>actividad real</strong> de Ronda-Arabial (Granada): no 
       </div>
       <div class="no-sample">
         <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
-        <span><strong>4. Costes de reforma y explotación.</strong> No están contrastados con proveedores en esta plantilla. Quedan fuera del alcance de las fuentes de este informe — el inversor debe afinarlos aparte antes de calcular el margen neto real del flip.</span>
+        <span><strong>4. Costes de reforma y explotación.</strong> No están contrastados con proveedores en esta plantilla. Quedan fuera del alcance de las fuentes de este informe — el inversor debe afinarlos aparte antes de calcular el margen neto real de la operación.</span>
       </div>
     </div>
 

@@ -93,6 +93,10 @@
   .tier.t3 .label { color: #FFB199; }
   .tier.t3 .price { color: white; }
   .tier.t3 .desc { color: rgba(255,255,255,0.7); }
+  #s12 .tiers.three { gap: 10px; }
+  #s12 .tiers.three .tier { padding: 16px; }
+  #s12 .tiers.three .tier .price { font-size: 21px; line-height: 1.12; }
+  #s12 .tiers.three .tier .desc { font-size: 12px; line-height: 1.42; }
 
   /* Vía alternativa MTVV */
   .via-alt { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
@@ -263,6 +267,12 @@
   .op-pill .label { font-size: 17px; line-height: 1.22; font-weight: 800; color: #141B36; }
   .op-pill.exception { border-color: rgba(255,77,46,0.32); background: linear-gradient(180deg, rgba(255,77,46,0.055), white); }
   .op-pill .question-badge { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #FF4D2E; color: white; font-size: 22px; line-height: 1; font-weight: 800; box-shadow: 0 8px 18px rgba(255,77,46,0.24); }
+  .debt-op-block { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(20,27,54,0.08); max-width: 580px; }
+  .debt-op-block .badge { display: inline-flex; background: #FF4D2E; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
+  .debt-op-block .op-pill { min-height: 0; padding: 18px 20px; flex-direction: row; justify-content: flex-start; gap: 18px; text-align: left; }
+  .debt-op-block .op-pill svg { margin-bottom: 0; flex: 0 0 auto; }
+  .debt-op-block .op-pill .label { font-size: 18px; }
+  .debt-op-block .small { margin-top: 8px; font-size: 13px; color: #5B6485; font-style: italic; line-height: 1.45; }
   .inside-note { margin-top: 18px; font-size: 15px; color: #5B6485; line-height: 1.45; max-width: 860px; }
   #s7 h1 { max-width: 980px; font-size: 50px; margin-bottom: 18px; }
   #s7 .sub { max-width: 880px; }
@@ -562,15 +572,24 @@
         <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M9 12h30v26H9z" stroke="currentColor" stroke-linejoin="round"/><path d="M24 12v26" stroke="currentColor" stroke-linecap="round" stroke-dasharray="4 4"/><path d="M15 21h5M28 21h5M15 30h5M28 30h5" stroke="currentColor" stroke-linecap="round"/></svg>
         <div class="label">División y segregación</div>
       </div>
+      <div class="op-pill">
+        <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M9 22L24 10l15 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 22v17h20V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><rect x="19.5" y="27" width="9" height="8" rx="1.5" stroke="currentColor" stroke-linejoin="round"/><path d="M21.5 27v-2.5a2.5 2.5 0 0 1 5 0V27" stroke="currentColor" stroke-linecap="round"/></svg>
+        <div class="label">Vivienda okupada</div>
+      </div>
+    </div>
+
+    <div class="debt-op-block">
+      <span class="badge">Para los perfiles más avanzados</span>
       <div class="op-pill exception">
         <div class="question-badge">?</div>
         <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 17h24v23H12z" stroke="currentColor" stroke-linejoin="round"/><path d="M17 17v-4h14v4" stroke="currentColor" stroke-linecap="round"/><path d="M18 27h12" stroke="currentColor" stroke-linecap="round"/><path d="M18 33h8" stroke="currentColor" stroke-linecap="round"/><path d="M34 29l4 4 6-8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="label">Compra de deuda</div>
       </div>
+      <div class="small">No se toca en el Programa. Sí en el Máster y en el Grado.</div>
     </div>
 
     <div class="mantra-block">No estamos hechos para el mercado inmobiliario. Estamos hechos para cómo invierte esta comunidad.</div>
-    <p class="inside-note">Ningún software mide las viviendas resultantes de un cambio de uso una a una. Es una casuística que solo se entiende desde dentro.</p>
+    <p class="inside-note">Ningún software mide las viviendas resultantes de un cambio de uso una a una, ni distingue una vivienda okupada. Nuestra base sí. Son casuísticas que solo se entienden desde dentro.</p>
   </div>
 </section>
 
@@ -647,12 +666,17 @@
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
     <h1>Para que exista esa cuarta fuente hacen falta MTVV. Cuantos más, mejor.</h1>
     <p class="sub">Hay información muy valiosa olvidada en carpetas y ordenadores. MTVV ya hechos, con horas de campo, que podrían trabajar para la comunidad.</p>
+    <p class="sub">Estas son las dos vías que vemos para conseguirlos.</p>
     <div class="vias">
       <div class="via proveedor">
         <div class="tag">Vía 1</div>
         <h3>Quien ya tiene un MTVV hecho</h3>
-        <div class="perfil">Lo aporta tal cual. Lo revisamos para confirmar un mínimo de calidad.</div>
-        <div class="via-callout"><strong>A cambio, se lleva un IMPULSO.</strong></div>
+        <ul>
+          <li>Cualquiera del programa con un MTVV ya hecho puede aportarlo.</li>
+          <li>Con una antigüedad máxima de <strong>6 meses a un año</strong>, según la zona.</li>
+          <li>Pasa un <strong>control de calidad</strong> antes de entrar a la base.</li>
+        </ul>
+        <div class="via-callout"><strong>A cambio, se lleva un IMPULSO.</strong> Y cuanto más crece IM·PULSO, más vale ese cambio: más gente querrá soltar un MTVV que, si no, se queda en un cajón.</div>
       </div>
       <div class="via partner">
         <div class="tag">Vía 2</div>
@@ -678,7 +702,7 @@
   <div class="slide-num">11 / 17</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> La visión</div>
-    <h1>Y así, <span class="accent">el MTVV deja de quedarse parado.</span></h1>
+    <h1>Y así, <span class="accent">el MTVV deja de servir una sola vez.</span></h1>
     <p class="sub">Cada MTVV contiene oro: testigos reales, contactos y lectura de campo. Si entra al sistema, los siguientes ganan.</p>
 
     <div class="bbdd-flow">
@@ -714,7 +738,7 @@
       Que en la comunidad se diga <strong>"voy a hacerme un IM·PULSO"</strong> como hoy se dice "voy a hacer un MTVV". <strong>No como sustituto.</strong> Como herramienta previa o paralela: filtro para inbrutos, contraste para receptores y repositorio vivo.
     </div>
 
-    <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36;">Vosotros mantenéis la autoridad técnica del MTVV. Nosotros operamos la infraestructura que lo nutre. <strong>Cada uno donde es bueno.</strong></p>
+    <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36;">El MTVV no está en discusión. Antes de ejecutar una operación hay que comprobarla en campo: eso es norma, y la seguiremos empujando. Nosotros solo operamos la infraestructura que la alimenta. <strong>Cada uno donde es bueno.</strong></p>
   </div>
 </section>
 
@@ -722,29 +746,40 @@
 <section id="s12" class="slide">
   <div class="slide-num">12 / 17</div>
   <div class="slide-inner">
-    <div class="speaker both"><span class="dot"></span> Objeción</div>
+    <div class="speaker both"><span class="dot"></span> Objeciones de proveedores</div>
     <h1>«¿Y esto no me perjudica?»</h1>
     <div class="objection">«Si yo pago o hago un MTVV y otro obtiene ese contexto más barato, pierdo yo.»</div>
-    <div class="tiers">
+    <p class="sub" style="margin-top: 18px;">Es la que nos hemos encontrado. Va rota, punto por punto.</p>
+    <div class="tiers three">
       <div class="tier t1">
         <div class="label">1</div>
         <div class="price">No vendemos el MTVV.</div>
-        <div class="desc">Solo entran testigos y datos, nunca el documento.</div>
-      </div>
-      <div class="tier t1">
-        <div class="label">2</div>
-        <div class="price">El trato sigue siendo del proveedor.</div>
-        <div class="desc">No entramos en su relación con el cliente.</div>
+        <div class="desc">Lo que se vende es un estudio IM·PULSO con un MTVV integrado de una operación pasada, que sirve de prefiltro. Nunca el documento del proveedor, y nunca la operación concreta de nadie.</div>
       </div>
       <div class="tier t2">
+        <div class="label">2</div>
+        <div class="price">El trato sigue siendo del proveedor.</div>
+        <div class="desc">Si aporta el método de una zona, el acuerdo queda con él. Si después llega otro, se respeta su trato: no se reescribe a su costa.</div>
+      </div>
+      <div class="tier t3">
         <div class="label">3</div>
+        <div class="price">Su trabajo le sigue rentando.</div>
+        <div class="desc">Un MTVV ya hecho vuelve a tener valor en operaciones futuras, sin diluir el producto que vende hoy.</div>
+      </div>
+      <div class="tier t1">
+        <div class="label">4</div>
+        <div class="price">Su entregable sale reforzado.</div>
+        <div class="desc">El método va con el cruce de IM·PULSO detrás: producto más completo, y margen para cobrarlo mejor.</div>
+      </div>
+      <div class="tier t2">
+        <div class="label">5</div>
         <div class="price">Nunca se cobra dos veces.</div>
         <div class="desc">Y siempre con permiso del cliente.</div>
       </div>
       <div class="tier t3">
-        <div class="label">4</div>
+        <div class="label">6</div>
         <div class="price">Proveedor asociado.</div>
-        <div class="desc">Condiciones especiales e informes de cortesía.</div>
+        <div class="desc">Precio especial, informes de cortesía y visibilidad como validador dentro de la comunidad.</div>
       </div>
     </div>
     <div class="via-alt">

@@ -46,15 +46,14 @@
   .slide-cover h1, .slide-cover h2 { color: white; }
   .slide-cover .sub { color: rgba(255,255,255,0.72); }
   .slide-cover .speaker { background: rgba(255,77,46,0.2); color: #FFB199; }
-  .cover-hero { min-height: calc(100vh - 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; padding: 42px 0 28px; }
-  .cover-hero .logo-img { width: min(150px, 34vw); height: auto; display: block; margin-bottom: 54px; opacity: 0.9; }
-  .cover-tagline { color: #FF4D2E; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 22px; }
-  .cover-thanks { font-size: clamp(17px, 1.45vw, 22px); line-height: 1.35; color: rgba(255,255,255,0.7); font-weight: 500; margin-bottom: 18px; }
-  .cover-title { max-width: 1040px; font-size: clamp(50px, 6.8vw, 92px); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; color: white; margin-bottom: 32px; }
-  .cover-positioning { font-size: clamp(30px, 3.8vw, 50px); line-height: 1.12; color: white; font-weight: 800; max-width: 940px; margin: 0 auto 20px; letter-spacing: -0.02em; }
-  .cover-subtitle { font-size: clamp(17px, 1.55vw, 21px); line-height: 1.35; color: rgba(255,255,255,0.62); font-weight: 500; font-style: italic; max-width: 780px; margin: 0 auto; }
-  .cover-names { margin-top: 62px; font-size: 23px; color: rgba(255,255,255,0.9); font-weight: 700; }
-  .cover-date { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.48); font-weight: 600; letter-spacing: 0.4px; }
+  .cover-hero { min-height: calc(100vh - 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; padding: 34px 0 24px; }
+  .cover-hero .logo-img { width: min(260px, 48vw); height: auto; display: block; margin-bottom: 38px; opacity: 0.96; }
+  .cover-tagline { color: #FFB199; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 16px; }
+  .cover-thanks { font-size: clamp(19px, 1.7vw, 25px); line-height: 1.35; color: rgba(255,255,255,0.86); font-weight: 700; margin-bottom: 16px; }
+  .cover-title { max-width: 920px; font-size: clamp(38px, 5vw, 66px); font-weight: 800; line-height: 1.06; letter-spacing: -0.02em; color: white; margin-bottom: 30px; }
+  .cover-positioning { display: inline-block; font-size: clamp(24px, 3vw, 38px); line-height: 1.16; color: white; font-weight: 800; max-width: 820px; margin: 0 auto 18px; letter-spacing: -0.01em; padding: 22px 30px; border: 1px solid rgba(255,77,46,0.38); border-left: 8px solid #FF4D2E; border-radius: 0 14px 14px 0; background: rgba(255,255,255,0.05); box-shadow: 0 18px 44px rgba(0,0,0,0.12); }
+  .cover-subtitle { font-size: clamp(16px, 1.35vw, 19px); line-height: 1.35; color: rgba(255,255,255,0.62); font-weight: 500; font-style: italic; max-width: 780px; margin: 0 auto; }
+  .cover-date { margin-top: 18px; font-size: 14px; color: rgba(255,255,255,0.54); font-weight: 600; letter-spacing: 0.4px; }
 
   /* Reusable visual blocks */
   .centered { text-align: center; }
@@ -160,17 +159,25 @@
   .friction-card .quote { font-size: 19px; line-height: 1.35; color: #141B36; font-weight: 700; }
   .friction-card .answer { align-self: end; font-size: 15px; color: #5B6485; border-top: 1px solid rgba(20,27,54,0.08); padding-top: 14px; }
 
-  .brakes-quote { max-width: 780px; margin: 16px 0 44px; padding-left: 28px; border-left: 6px solid #FF4D2E; font-size: 34px; line-height: 1.22; font-weight: 800; letter-spacing: -0.02em; color: #141B36; }
-  .survey-kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #5B6485; font-weight: 800; margin-bottom: 14px; }
-  .brakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 34px; }
+  .brakes-quote { max-width: 780px; margin: 16px 0 34px; padding-left: 28px; border-left: 6px solid #FF4D2E; font-size: 30px; line-height: 1.18; font-weight: 800; letter-spacing: -0.02em; color: #141B36; }
+  .survey-kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #5B6485; font-weight: 800; margin-bottom: 10px; }
+  .brakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 26px; }
   .brake-item { border-top: 1px solid rgba(20,27,54,0.12); padding-top: 18px; }
   .brake-item .number { display: block; font-size: 92px; line-height: 0.9; font-weight: 800; letter-spacing: -0.06em; color: #FF4D2E; margin-bottom: 16px; }
   .brake-item .label { font-size: 20px; line-height: 1.2; font-weight: 800; color: #141B36; max-width: 230px; }
   .survey-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
-  .survey-quotes blockquote { background: white; border: 1px solid rgba(20,27,54,0.08); border-left: 4px solid #141B36; border-radius: 0 14px 14px 0; padding: 20px 22px; font-size: 18px; line-height: 1.35; font-style: italic; font-weight: 700; color: #141B36; min-height: 132px; display: flex; flex-direction: column; justify-content: space-between; }
-  .survey-quotes cite { display: block; margin-top: 18px; font-size: 11px; line-height: 1; text-transform: uppercase; letter-spacing: 1.4px; color: #5B6485; font-style: normal; font-weight: 800; }
-  .brakes-close { margin-top: 36px; font-size: 25px; line-height: 1.25; font-weight: 800; color: #141B36; }
+  .survey-quotes blockquote { background: white; border: 1px solid rgba(20,27,54,0.08); border-left: 4px solid #141B36; border-radius: 0 14px 14px 0; padding: 16px 18px; font-size: 16px; line-height: 1.28; font-style: italic; font-weight: 700; color: #141B36; min-height: 110px; display: flex; flex-direction: column; justify-content: space-between; }
+  .survey-quotes cite { display: block; margin-top: 14px; font-size: 10px; line-height: 1; text-transform: uppercase; letter-spacing: 1.4px; color: #5B6485; font-style: normal; font-weight: 800; }
+  .brakes-close { margin-top: 26px; font-size: 23px; line-height: 1.22; font-weight: 800; color: #141B36; }
   .definition-line { max-width: 920px; font-size: 48px; line-height: 1.08; letter-spacing: -0.02em; font-weight: 800; color: #141B36; margin-top: 18px; }
+  #s3 h1 { font-size: 48px; margin-bottom: 16px; }
+  #s3 .mantra-block { margin-top: 16px; padding: 22px 28px; font-size: 20px; line-height: 1.35; }
+  #s3 .survey-kicker { margin-top: 22px !important; }
+  #s3 .stats { margin-top: 18px; }
+  #s3 .stat.big { min-height: 112px; padding: 20px; }
+  #s3 .stat.big .num { font-size: 44px; }
+  #s3 .survey-quotes blockquote { min-height: 88px; padding: 14px 16px; font-size: 15px; }
+  #s3 .brakes-close { margin-top: 18px; font-size: 21px; }
 
   .pulse-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
   .pulse-block { color: white; background: #141B36; border-radius: 14px; padding: 30px; min-height: 165px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -190,6 +197,31 @@
   .source-pill .sp-name-title { font-size: 17px; font-weight: 800; line-height: 1.3; }
   .source-pill .sp-subtitle { font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.58); margin-top: 2px; line-height: 1.35; text-transform: uppercase; letter-spacing: 1.2px; }
   .source-pill .sp-desc { font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 12px; line-height: 1.45; }
+
+  .source-answers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+  .source-answer { background: white; border: 1px solid rgba(20,27,54,0.08); border-radius: 14px; padding: 24px; min-height: 230px; border-top: 5px solid #94A3B8; }
+  .source-answer.orange { border-top-color: #F97316; }
+  .source-answer.green { border-top-color: #16A34A; }
+  .source-answer.blue { border-top-color: #2563EB; }
+  .source-answer .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; color: #5B6485; font-weight: 800; margin-bottom: 10px; }
+  .source-answer h3 { font-size: 28px; line-height: 1; margin-bottom: 16px; }
+  .source-answer .main { font-size: 18px; line-height: 1.3; font-weight: 800; color: #141B36; margin-bottom: 16px; }
+  .source-answer .metrics { display: grid; gap: 10px; }
+  .source-answer .metric { border-left: 4px solid rgba(20,27,54,0.12); padding-left: 12px; }
+  .source-answer .value { font-size: 28px; line-height: 1; font-weight: 800; color: #141B36; }
+  .source-answer .label { font-size: 12px; color: #5B6485; margin-top: 4px; line-height: 1.35; }
+  #s5 .speaker { margin-bottom: 18px; }
+  #s5 h1 { font-size: 48px; margin-bottom: 14px; }
+  #s5 .source-answers { margin-top: 18px; }
+  #s5 .source-answer { min-height: 0; padding: 18px; }
+  #s5 .source-answer h3 { font-size: 24px; margin-bottom: 12px; }
+  #s5 .source-answer .main { font-size: 16px; margin-bottom: 12px; }
+  #s5 .source-answer .metrics { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  #s5 .source-answer .value { font-size: 23px; }
+  #s5 .source-answer .label { font-size: 11px; }
+  #s5 .mantra-block { margin-top: 20px; padding: 22px 28px; font-size: 20px; line-height: 1.35; }
+  #s5 .link-card { margin-top: 18px; padding: 14px 18px; }
+  #s5 .after-card-note { margin-top: 12px; font-size: 15px; line-height: 1.45; }
 
   .price-gap { margin-top: 28px; }
   .price-gap h2 { font-size: 31px; line-height: 1.15; margin-bottom: 16px; color: #141B36; }
@@ -278,7 +310,7 @@
     .slide { padding: 90px 24px 60px; }
     h1 { font-size: 36px; }
     h2 { font-size: 26px; }
-    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias, .source-pieces, .notary-gap, .gap-comparison { grid-template-columns: 1fr; }
+    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias, .source-pieces, .source-answers, .notary-gap, .gap-comparison { grid-template-columns: 1fr; }
     .source-pill { min-width: 100%; }
     .source-piece, .source-piece:first-child, .source-piece:last-child { border-radius: 14px; }
     .source-piece + .source-piece { margin-left: 0; margin-top: 12px; padding-left: 34px; }
@@ -288,10 +320,10 @@
     .conv-table .row { grid-template-columns: 1fr; gap: 8px; }
     .conv-table .price { text-align: left; }
     .cover-hero { min-height: calc(100vh - 150px); }
-    .cover-hero .logo-img { margin-bottom: 40px; }
+    .cover-hero .logo-img { width: min(220px, 58vw); margin-bottom: 32px; }
     .cover-tagline { font-size: 10px; letter-spacing: 3px; }
     .cover-thanks { font-size: 16px; margin-bottom: 14px; }
-    .cover-title { font-size: clamp(38px, 11vw, 58px); }
+    .cover-title { font-size: clamp(34px, 9.5vw, 52px); }
     .cover-positioning { font-size: clamp(28px, 8.8vw, 40px); }
     .cover-subtitle { font-size: 17px; }
     .cover-names { margin-top: 48px; font-size: 20px; }
@@ -356,7 +388,7 @@
       <img src="in/impulso-logo.png" alt="IM·PULSO" class="logo-img">
       <div class="cover-tagline">INTELIGENCIA DE MERCADO</div>
       <p class="cover-thanks">Gracias por el espacio, José y Vicente.</p>
-      <h1 class="cover-title">¿Por qué creemos que IM-PULSO encaja en la Comunidad IN?</h1>
+      <h1 class="cover-title">¿Por qué creemos que IM·PULSO encaja en la Comunidad IN?</h1>
       <p class="cover-positioning">Ha nacido aquí. Pertenece a la cantera IN.</p>
       <p class="cover-subtitle">Los argumentos, a continuación</p>
       <div class="cover-date">30 de julio de 2026</div>
@@ -386,15 +418,15 @@
   <div class="slide-num">03 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> El problema</div>
-    <h1>¿Cuáles son los frenos de la comunidad hoy?</h1>
+    <h1>Frenos de la comunidad.</h1>
     <div class="mantra-block">
       <div class="label">Punto de partida</div>
       Un servicio solo vale lo que vale el problema que resuelve.
     </div>
     <div class="survey-kicker" style="margin-top: 34px;">Encuesta Levante-IN · marzo 2026 · 115 respuestas</div>
     <div class="stats three">
-      <div class="stat big"><div class="num">57</div><div class="label">precios elevados de compra</div></div>
-      <div class="stat big"><div class="num">47</div><div class="label">falta de oportunidades</div></div>
+      <div class="stat big"><div class="num">57</div><div class="label">precio de compra alto</div></div>
+      <div class="stat big"><div class="num">47</div><div class="label">faltan oportunidades</div></div>
       <div class="stat big"><div class="num">27</div><div class="label">«mi mentalidad, yo mismo»</div></div>
     </div>
     <div class="survey-quotes">
@@ -435,83 +467,47 @@
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Tres fuentes, un informe.</h1>
-    <div class="hero-sources">
-      <div class="source-pill">
-        <div class="sp-icon">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#F97316" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <div class="source-answers">
+      <div class="source-answer orange">
+        <div class="tag">PULSO responde</div>
+        <h3>Qué se mueve</h3>
+        <div class="main">Piso de 3 dormitorios y 2 baños.</div>
+        <div class="metrics">
+          <div class="metric"><div class="value">424</div><div class="label">operaciones cerradas</div></div>
+          <div class="metric"><div class="value">89,1 %</div><div class="label">rotación</div></div>
         </div>
-        <div class="sp-name-title" style="color:#F97316;">PULSO</div>
-        <div class="sp-desc">Radiografía completa del mercado de una zona: tipologías que rotan, productos estrella, precios reales, comparativa por barrios. Sin tocar el precio del activo concreto.</div>
       </div>
-      <div class="source-pill">
-        <div class="sp-icon">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#16A34A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <div class="source-answer green">
+        <div class="tag">IMPULSO responde</div>
+        <h3>A cuánto</h3>
+        <div class="main">Precio del activo con testigos del barrio.</div>
+        <div class="metrics">
+          <div class="metric"><div class="value">563</div><div class="label">testigos reales</div></div>
+          <div class="metric"><div class="value">3</div><div class="label">escenarios de precio</div></div>
         </div>
-        <div class="sp-name-title" style="color:#16A34A;">IMPULSO</div>
-        <div class="sp-desc">Centrado en un activo concreto. Cruza los datos para validar el precio que el inversor está mirando. Más directo, más decisivo.</div>
       </div>
-      <div class="source-pill">
-        <div class="sp-icon">
-          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+      <div class="source-answer blue">
+        <div class="tag">Notariado responde</div>
+        <h3>Quién compra</h3>
+        <div class="main">Mercado de particulares, en subida.</div>
+        <div class="metrics">
+          <div class="metric"><div class="value">227</div><div class="label">compraventas al año</div></div>
+          <div class="metric"><div class="value">91,4 %</div><div class="label">particulares</div></div>
+          <div class="metric"><div class="value">43 años</div><div class="label">edad mediana</div></div>
+          <div class="metric"><div class="value">+8,2 %</div><div class="label">mercado al alza</div></div>
         </div>
-        <div class="sp-name-title" style="color:#2563EB;">NOTARIADO</div>
-        <div class="sp-desc">Lo que de verdad se firma ante notario.</div>
       </div>
     </div>
-    <div class="price-gap">
-      <h2>Lo que se pide nunca es lo que se firma.</h2>
-      <div class="gap-comparison">
-        <div class="gap-example">
-          <div class="zone">Murcia, distrito Sur</div>
-          <div class="values">
-            <div class="metric ask">
-              <div class="label">Se piden</div>
-              <div class="value">1.776</div>
-            </div>
-            <div class="metric signed">
-              <div class="label">Se firman</div>
-              <div class="value">1.491,52</div>
-            </div>
-          </div>
-          <div class="delta">Un 16 por ciento menos.</div>
-        </div>
-        <div class="gap-example">
-          <div class="zone">Granada, Ronda-Arabial</div>
-          <div class="values">
-            <div class="metric ask">
-              <div class="label">Se piden</div>
-              <div class="value">3.009</div>
-            </div>
-            <div class="metric signed">
-              <div class="label">Se firman</div>
-              <div class="value">1.991,53</div>
-            </div>
-          </div>
-          <div class="delta">Un 34 por ciento menos.</div>
-        </div>
-      </div>
-      <div class="mantra-block">
-        La brecha existe siempre. Cuánto de grande, depende de la zona. Por eso hay que medirla zona a zona.
-      </div>
+    <div class="mantra-block">
+      <div class="label">El cruce</div>
+      Sabes que se vende, a cuánto, a quién llamar y quién te lo va a comprar. <strong>Antes de mover un euro.</strong>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
       <div><div class="title">Informe PULSO completo - distrito Sur, Murcia</div><div class="desc">Zona real, datos verificables</div></div>
       <div class="url">munoz-murcia-sur.html</div>
     </a>
-    <div class="link-pair">
-      <a class="link-card" href="https://www.notion.so/PULSO_1451-Latido-del-Mercado-Elda-Fraternidad-320f1524dd60817cb0e6cec50df59ee7" target="_blank" rel="noopener">
-        <div class="icon">↗</div>
-        <div><div class="title">Abrir el PULSO original</div><div class="desc">Elda · Fraternidad</div></div>
-        <div class="url">notion.so/PULSO_1451...</div>
-      </a>
-      <a class="link-card" href="https://www.notion.so/IMPULSO_1449-Decisi-n-de-Compra-Calle-Agust-n-Cavero-36-38-320f1524dd6081288ddce9060643f42e" target="_blank" rel="noopener">
-        <div class="icon">↗</div>
-        <div><div class="title">Abrir el IMPULSO de Calle Agustín Cavero</div><div class="desc">Activo real usado en el testeo con Salva</div></div>
-        <div class="url">notion.so/IMPULSO_1449...</div>
-      </a>
-    </div>
-    <p class="after-card-note">Vicente ya tiene el de Granada. Este lo hemos hecho de una zona que probablemente conozcáis, para que el juicio sobre si los datos cuadran sea vuestro y no nuestro.</p>
+    <p class="after-card-note">José, esta es una zona que probablemente conozcas. Ábrela y comprueba tú mismo si los datos cuadran con lo que sabes de ella.</p>
   </div>
 </section>
 
@@ -537,20 +533,20 @@
   <div class="slide-num">07 / 17</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
-    <h1>La cuarta fuente: <span class="accent">el método total.</span></h1>
-    <p class="sub large">Las tres primeras leen el mercado desde fuera. El método total lo lee desde el suelo: es el único que pisa la calle. Es una fuente <strong>OPCIONAL</strong>: el informe funciona sin ella, pero con ella deja de ser una lectura de mercado y pasa a ser una validación.</p>
+    <h1>La cuarta fuente: <span class="accent">MTVV.</span></h1>
+    <p class="sub large">PULSO, IMPULSO y Notariado leen mercado. El MTVV pisa calle. En el informe no valida: <strong>refuerza las fuentes</strong> cuando existe dentro de la Comunidad IN.</p>
     <div class="tiers">
       <div class="tier t1"><div class="label">Fuente 1</div><div class="price">PULSO</div><div class="desc">Zona y velocidad.</div></div>
       <div class="tier t1"><div class="label">Fuente 2</div><div class="price">IMPULSO</div><div class="desc">Activo y testigos.</div></div>
       <div class="tier t2"><div class="label">Fuente 3</div><div class="price">NOTARIADO</div><div class="desc">Firma real.</div></div>
-      <div class="tier t3"><div class="label">Fuente 4 · OPCIONAL</div><div class="price">MTVV</div><div class="desc">Validación de campo. El informe funciona sin ella; con ella cambia de nivel.</div></div>
+      <div class="tier t3"><div class="label">Fuente 4 · OPCIONAL</div><div class="price">MTVV</div><div class="desc">Refuerzo de campo. Exclusivo si lo aporta la Comunidad IN.</div></div>
     </div>
     <div class="via-alt">
       <div class="badge-row">
         <span class="badge">Encaje</span>
-        <span class="head-text">Con la cuarta fuente deja de ser lectura de mercado y pasa a ser validación.</span>
+        <span class="head-text">El MTVV integrado no valida. Refuerza el cruce.</span>
       </div>
-      <p>El método total no sustituye a las otras fuentes. Las contrasta desde la calle.</p>
+      <p>La valoración la hace el MTVV real. IM·PULSO incorpora sus datos como otra fuente de contraste.</p>
     </div>
   </div>
 </section>
@@ -560,21 +556,21 @@
   <div class="slide-num">08 / 17</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
-    <h1>Antes de soltar nada al mercado, <span class="accent">quisimos enseñárselo a alguien de confianza.</span></h1>
-    <p class="sub">Pensamos en Salva — proveedor de método total dentro de la comunidad. Le conocíamos, sabíamos cómo trabaja, y queríamos su lectura honesta. <strong>Fuimos nosotros a buscarle</strong>, le enseñamos lo que estábamos haciendo, y le ofrecimos un PULSO de su zona y un IMPULSO de su activo. Cambio de Uso en Calle Agustín Cavero, Elda.</p>
+    <h1>Antes de quedarnos con integrar el MTVV, <span class="accent">quisimos probar la idea.</span></h1>
+    <p class="sub">Fuimos a Salva, proveedor MTVV de la comunidad. Le enseñamos PULSO e IMPULSO sobre su zona y su activo: Cambio de Uso en Calle Agustín Cavero, Elda.</p>
 
     <div style="background: white; border-left: 4px solid #FF4D2E; padding: 26px 30px; border-radius: 0 14px 14px 0; margin-top: 28px;">
-      <p style="font-size: 19px; color: #141B36; line-height: 1.55; margin: 0; font-weight: 600;">Y de esa colaboración salió algo que <strong style="color: #FF4D2E;">no esperábamos</strong>: Salva integró nuestros datos dentro de su propio método total. Por iniciativa suya. Sin que se lo pidiéramos.</p>
-      <p style="font-size: 14px; color: #5B6485; margin-top: 12px; font-style: italic;">Su MTVV tiene 8 pestañas. Las 6 primeras son los pasos del método tal como se enseña en el programa. Las dos últimas las añadió él: las llamó <strong>"Pulso"</strong> e <strong>"Impulso"</strong>.</p>
+      <p style="font-size: 19px; color: #141B36; line-height: 1.45; margin: 0; font-weight: 600;">Y pasó algo inesperado: <strong style="color: #FF4D2E;">Salva integró nuestros datos en su MTVV</strong>. Por iniciativa suya.</p>
+      <p style="font-size: 14px; color: #5B6485; margin-top: 12px; font-style: italic;">Su MTVV tiene 8 pestañas. Las dos últimas las añadió él: <strong>"Pulso"</strong> e <strong>"Impulso"</strong>.</p>
     </div>
 
     <div class="conv-table">
       <div class="row">
-        <div class="label">Hipótesis del método <small>Techo aspiracional con peso obra nueva</small></div>
+        <div class="label">Hipótesis MTVV <small>Techo aspiracional con peso obra nueva</small></div>
         <div class="price">89.000 €</div>
       </div>
       <div class="row highlight">
-        <div class="label">Verificación empírica del método <small>Salva, manual, 1-2 semanas mercado</small></div>
+        <div class="label">MTVV real de Salva <small>Campo manual, 1-2 semanas de mercado</small></div>
         <div class="price">74.000 €</div>
       </div>
       <div class="row highlight">
@@ -582,27 +578,27 @@
         <div class="price">75.000 €</div>
       </div>
       <div class="row final">
-        <div class="label">Conclusión final del método total</div>
+        <div class="label">Conclusión final MTVV</div>
         <div class="price">74.000 €</div>
       </div>
     </div>
 
     <div class="conv-result">
       <div class="num">1,3 %</div>
-      <div class="text">Mil euros entre la verificación a mano del método y nuestro motor automático. <strong style="color: #FFB199;">Cuando hay datos suficientes, no hay atajo — hay convergencia.</strong></div>
+      <div class="text">Mil euros entre el MTVV real y nuestro motor automático. <strong style="color: #FFB199;">Cuando hay datos suficientes, hay convergencia.</strong></div>
     </div>
 
-    <p class="sub" style="margin-top: 24px; font-style: italic; font-size: 17px; color: #141B36;">No sustituimos el método del programa. Lo que hacemos es <strong>cruzar datos en paralelo</strong> — y cuando hay base suficiente, llegamos al mismo sitio. Eso le permite al inversor decidir <strong>cuándo</strong> necesita gastar las semanas del paso 4 manual.</p>
+    <p class="sub" style="margin-top: 24px; font-style: italic; font-size: 17px; color: #141B36;">No sustituimos el MTVV del programa. <strong>Cruzamos datos en paralelo</strong> y ayudamos a decidir cuándo merece invertir semanas en campo.</p>
 
     <div class="link-pair">
       <a class="link-card" href="assets/salva-elda-cavero.xlsx" target="_blank" rel="noopener">
         <div class="icon">↗</div>
-        <div><div class="title">Abrir el método total de Salva en pantalla</div><div class="desc">Cambio de Uso · Calle Agustín Cavero, Elda</div></div>
+        <div><div class="title">Abrir el MTVV de Salva en pantalla</div><div class="desc">Cambio de Uso · Calle Agustín Cavero, Elda</div></div>
         <div class="url">assets/salva-elda-cavero.xlsx</div>
       </a>
       <a class="link-card featured" href="demo-completa.html" target="_blank" rel="noopener">
         <div class="icon">↗</div>
-        <div><div class="title">Ver el informe con el método total dentro</div><div class="desc">La pieza completa, con las fuentes cruzadas.</div></div>
+        <div><div class="title">Ver el informe con MTVV dentro</div><div class="desc">La pieza completa, con las fuentes reforzadas.</div></div>
         <div class="url">demo-completa.html</div>
       </a>
     </div>
@@ -614,20 +610,20 @@
   <div class="slide-num">09 / 17</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
-    <h1>Para que exista esa cuarta fuente hacen falta métodos totales. Cuantos más, mejor.</h1>
-    <p class="sub">Hoy hay información muy valiosa muriendo en cajones. Métodos totales ya hechos, con horas de campo dentro, que no vuelven a usarse nunca. Esa información podría estar trabajando para la comunidad.</p>
+    <h1>Para que exista esa cuarta fuente hacen falta MTVV. Cuantos más, mejor.</h1>
+    <p class="sub">Hay información muy valiosa olvidada en carpetas y ordenadores. MTVV ya hechos, con horas de campo, que podrían trabajar para la comunidad.</p>
     <div class="vias">
       <div class="via proveedor">
         <div class="tag">Vía 1</div>
-        <h3>Cualquiera que tenga un método total</h3>
-        <div class="perfil">Quien ha seguido el programa y lo ha hecho siguiendo sus instrucciones, puede aportarlo. Se le pasa un escaneo para comprobar que cumple un estándar mínimo de calidad.</div>
-        <div class="via-callout">Ese método no es del activo que tenéis delante, y no pretende serlo. Pero da contexto, testigos y referencias de zona. Habrá información que sirva y otra que no, pero es mucho mejor tenerla que no tenerla. Ya existe: aprovechémosla.</div>
+        <h3>Cualquiera con un MTVV</h3>
+        <div class="perfil">Aporta un MTVV hecho según el programa. Lo escaneamos para confirmar un mínimo de calidad.</div>
+        <div class="via-callout">No sustituye el análisis del activo. Da contexto, testigos y referencias de zona que ya existen.</div>
       </div>
       <div class="via partner">
         <div class="tag">Vía 2</div>
-        <h3>Proveedores de método total</h3>
-        <div class="perfil">Pueden vitaminar sus propios métodos: les integramos PULSO e IMPULSO dentro de su método total final, como se hizo en el ejemplo que acabamos de ver. Y ese método, ya enriquecido, se aporta a la base.</div>
-        <div class="via-callout">Y el cliente que paga ese método total se lleva su informe IMPULSO gratis. El proveedor entrega un método más completo, con un sello detrás, y puede ponerlo en valor.</div>
+        <h3>Proveedores MTVV</h3>
+        <div class="perfil">Integramos PULSO e IMPULSO dentro de su MTVV final, como en el ejemplo de Salva. Ese MTVV enriquecido alimenta la base.</div>
+        <div class="via-callout">El cliente recibe su IMPULSO gratis. El proveedor entrega un trabajo más completo y con respaldo.</div>
       </div>
     </div>
     <div class="mantra-block">
@@ -646,12 +642,12 @@
 
     <div style="background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; padding: 50px 40px; border-radius: 18px; margin-bottom: 32px;">
       <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FFB199; font-weight: 800; margin-bottom: 16px;">La pregunta que nos llevó hasta aquí</div>
-      <h2 style="color: white; font-size: 42px; line-height: 1.2; margin: 0;">Si esto ha pasado <span style="color: #FF4D2E;">de forma espontánea</span> con un proveedor de método total — ¿qué pasaría si lo abrimos a <span style="color: #FF4D2E;">toda la comunidad</span>?</h2>
+      <h2 style="color: white; font-size: 42px; line-height: 1.2; margin: 0;">Si esto ha pasado <span style="color: #FF4D2E;">de forma espontánea</span> con un proveedor MTVV, ¿qué pasaría si lo abrimos a <span style="color: #FF4D2E;">toda la comunidad</span>?</h2>
     </div>
 
     <div style="text-align: center;">
       <div style="font-size: 26px; font-weight: 700; color: #141B36; line-height: 1.4; max-width: 720px; margin: 0 auto 28px;">Esa pregunta es <span class="accent">lo que puede llegar a ser IM·PULSO v2.</span></div>
-      <div style="font-size: 16px; font-weight: 500; color: #5B6485; line-height: 1.5; max-width: 640px; margin: 0 auto 36px;">Lo que viene a continuación es por dónde lo estamos pensando — para que vosotros lo veáis y nos digáis. Sin vuestra lectura, el bloque del método total no se mueve.</div>
+      <div style="font-size: 16px; font-weight: 500; color: #5B6485; line-height: 1.5; max-width: 640px; margin: 0 auto 36px;">Lo siguiente es el encaje que imaginamos. Sin vuestra lectura, el bloque MTVV no se mueve.</div>
       <img src="in/impulso-logo.png" alt="IM·PULSO" style="width: 240px; height: auto; display: block; margin: 0 auto;">
     </div>
   </div>
@@ -663,11 +659,11 @@
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Objeción</div>
     <h1>«¿Y esto no me perjudica?»</h1>
-    <div class="objection">«Si yo hago un método total que me cuesta dinero y horas, y otra persona saca la misma información a un menor coste con un IMPULSO, no estamos equilibrados: ahí pierdo yo.»</div>
+    <div class="objection">«Si yo pago o hago un MTVV y otro obtiene ese contexto más barato, pierdo yo.»</div>
     <div class="tiers">
       <div class="tier t1">
         <div class="label">1</div>
-        <div class="price">No vendemos el método.</div>
+        <div class="price">No vendemos el MTVV.</div>
         <div class="desc">Solo entran testigos y datos, nunca el documento.</div>
       </div>
       <div class="tier t1">
@@ -691,7 +687,7 @@
         <span class="badge">Resumen</span>
         <span class="head-text">Esto no sustituye al proveedor. Le suma.</span>
       </div>
-      <p>El método sale reforzado, el proveedor puede cobrar más por él, y su cliente se lleva informes gratis.</p>
+      <p>El MTVV sale reforzado, el proveedor gana valor y su cliente recibe informes gratis.</p>
     </div>
   </div>
 </section>
@@ -701,30 +697,30 @@
   <div class="slide-num">12 / 17</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> La visión</div>
-    <h1>Y al final, <span class="accent">el método total deja de morir en un cajón.</span></h1>
-    <p class="sub">Cada método total que hace un compañero contiene oro: testigos reales, contactos, validaciones de campo. Hoy se queda en un Excel personal. Si entra al sistema, todos los siguientes ganan.</p>
+    <h1>Y al final, <span class="accent">el MTVV deja de quedarse parado.</span></h1>
+    <p class="sub">Cada MTVV contiene oro: testigos reales, contactos y lectura de campo. Si entra al sistema, los siguientes ganan.</p>
 
     <div class="bbdd-flow">
       <div class="bbdd-col in">
         <div class="head">Lo que entra</div>
-        <h4>Proveedores de método total</h4>
+        <h4>Proveedores MTVV</h4>
         <ul>
           <li>Salva y profesionales similares</li>
           <li>Gestores que preparan inbrutos</li>
           <li>Alumnos con su MTVV de la última operación</li>
-          <li>Cualquier compañero con un método total hecho</li>
+          <li>Cualquier compañero con un MTVV hecho</li>
         </ul>
       </div>
       <div class="bbdd-center">
         <div class="label">Núcleo</div>
         <div class="name">BBDD<br>colectiva<br><span>IM·PULSO</span></div>
-        <div class="what">Notariado + Idealista + métodos totales de la comunidad. Tres fuentes que se cruzan.</div>
+        <div class="what">Notariado + Idealista + MTVV de la comunidad. Tres fuentes que se cruzan.</div>
       </div>
       <div class="bbdd-col out">
         <div class="head">Lo que sale</div>
         <h4>Comunidad enriquecida</h4>
         <ul>
-          <li>Validaciones de precio más sólidas en más zonas</li>
+          <li>Más contraste de precio en más zonas</li>
           <li>Decisiones de operación más rápidas</li>
           <li>Inbrutos con respaldo de cruce de datos</li>
           <li>Menos tiempo perdido en operaciones inviables</li>
@@ -734,10 +730,10 @@
 
     <div class="mantra-block" style="margin-top: 36px; font-size: 22px;">
       <div class="label">La visión a 12 meses</div>
-      Que en la comunidad se diga <strong>"voy a hacerme un IM·PULSO"</strong> como hoy se dice "voy a hacer un método total". <strong>No como sustituto.</strong> Como herramienta estándar previa o paralela. Filtro rápido para inbrutos. Validación rápida para receptores. Repositorio vivo para todos.
+      Que en la comunidad se diga <strong>"voy a hacerme un IM·PULSO"</strong> como hoy se dice "voy a hacer un MTVV". <strong>No como sustituto.</strong> Como herramienta previa o paralela: filtro para inbrutos, contraste para receptores y repositorio vivo.
     </div>
 
-    <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36;">Vosotros mantenéis la autoridad técnica del método del programa. Nosotros operamos la infraestructura que lo nutre, lo escala y lo hace colectivo. <strong>Cada uno donde es bueno.</strong></p>
+    <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36;">Vosotros mantenéis la autoridad técnica del MTVV. Nosotros operamos la infraestructura que lo nutre. <strong>Cada uno donde es bueno.</strong></p>
   </div>
 </section>
 
@@ -746,8 +742,8 @@
   <div class="slide-num">13 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
-    <h1>Ya nos hemos integrado en operaciones complejas.</h1>
-    <p class="sub large">En una compra de deuda, la lectura de mercado no es un extra: es lo que dice si la operación se sostiene. Lo hicimos, y el análisis de IM·PULSO va dentro del dossier de la oportunidad.</p>
+    <h1>También encaja en operaciones complejas.</h1>
+    <p class="sub large">En compra de deuda, la lectura de mercado decide si la operación se sostiene. IM·PULSO ya va dentro del dossier de oportunidad.</p>
     <div class="stats five">
       <div class="stat"><div class="num naranja">01</div><div class="label">la oportunidad en cifras</div></div>
       <div class="stat"><div class="num naranja">02</div><div class="label">escenarios de inversión</div></div>
@@ -768,8 +764,8 @@
   <div class="slide-num">14 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
-    <h1>Y en las grandes, como parte del equipo.</h1>
-    <p class="sub large">Un edificio con varias viviendas y distintos tramos de venta no se lee una vez. Se lee en cada tramo, en el momento que toca. IM·PULSO se enchufa a la operación de principio a fin y va dando la lectura de cada vivienda resultante cuando hace falta, no una foto del día uno.</p>
+    <h1>Y en las grandes, como propuesta de encaje.</h1>
+    <p class="sub large">Nos han salido conversaciones para edificios con varias viviendas. Aún no ha salido: creemos que IM·PULSO puede aportar lectura de mercado por tramos, cuando cada vivienda resultante lo necesite.</p>
     <div class="mantra-block">
       <div class="label">Modelo de encaje</div>
       No cobramos ahora. <strong>Cobramos cuando el inversor cobra.</strong>
@@ -777,13 +773,13 @@
     <div class="via-alt">
       <div class="badge-row">
         <span class="badge">Equipo</span>
-        <span class="head-text">La inteligencia de mercado también se gestiona.</span>
+        <span class="head-text">La inteligencia de mercado puede ser parte del equipo.</span>
       </div>
-      <p>Igual que se pagan los honorarios técnicos, la inteligencia de mercado es parte del equipo gestor.</p>
+      <p>Igual que existen honorarios técnicos, puede existir gestión de mercado si la operación lo justifica.</p>
     </div>
     <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
-      <div><div class="title">Operación real</div><div class="desc">Celia Lozano - Nuevo Altabix, Elche</div></div>
+      <div><div class="title">Propuesta de operación grande</div><div class="desc">Celia Lozano - Nuevo Altabix, Elche</div></div>
       <div class="url">xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html</div>
     </a>
   </div>
@@ -795,7 +791,7 @@
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>Y si le damos la vuelta a la pregunta.</h1>
-    <p class="sub large">Queríamos compartir información en vídeo, enseñar pepitas de oro escondidas en la base de datos. Y para eso hicimos algo distinto: en vez de preguntarle a la base por un sitio concreto, le hicimos buenas preguntas y dejamos que fuera ella la que dijera dónde mirar.</p>
+    <p class="sub large">Para vídeo, en vez de preguntar por una zona concreta, preguntamos a la base dónde mirar.</p>
     <div class="mantra-block">
       <div class="label">El radar</div>
       El radar no caza. <strong>Levanta la oportunidad.</strong> La escopeta la coge el inversor.
@@ -805,7 +801,7 @@
         <span class="badge">Por qué importa</span>
         <span class="head-text">El mercado abre lugares que muchos inversores no estaban mirando.</span>
       </div>
-      <p>Mucha gente se cierra en banda con ciertos lugares porque nunca los ha contemplado y no tiene información de ellos. El movimiento del mercado dice que ahí hay algo que merece investigarse a fondo.</p>
+      <p>El movimiento del mercado señala lugares que muchos inversores aún no miran.</p>
     </div>
     <div class="stats five">
       <div class="stat"><div class="num">Elda</div><div class="label">zona detectada</div></div>

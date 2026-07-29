@@ -102,25 +102,16 @@
   .via-alt p { font-size: 16px; color: #141B36; line-height: 1.6; margin: 0; }
   .via-alt .footer-text { font-size: 13px; color: #5B6485; line-height: 1.5; margin-top: 10px; font-style: italic; }
 
-  /* Convergencia tabla */
-  .conv-table { background: white; border-radius: 16px; overflow: hidden; margin-top: 28px; box-shadow: 0 2px 12px rgba(20,27,54,0.06); }
-  .conv-table .row { display: grid; grid-template-columns: 1fr 200px; padding: 20px 28px; align-items: center; }
-  .conv-table .row + .row { border-top: 1px solid rgba(20,27,54,0.06); }
-  .conv-table .row.highlight { background: linear-gradient(90deg, rgba(255,77,46,0.04), white); }
-  .conv-table .row.final { background: #141B36; color: white; }
-  .conv-table .row.final .label { color: rgba(255,255,255,0.7); }
-  .conv-table .label { font-size: 16px; color: #1F2937; }
-  .conv-table .label small { display: block; font-size: 12px; color: #9CA3AF; margin-top: 2px; }
-  .conv-table .price { font-size: 28px; font-weight: 800; color: #141B36; text-align: right; }
-  .conv-table .row.highlight .price { color: #FF4D2E; }
-  .conv-table .row.final .price { color: white; }
-  .conv-result { margin-top: 20px; background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; padding: 24px; border-radius: 14px; text-align: center; }
-  .conv-result .num { font-size: 56px; font-weight: 800; color: #FF4D2E; letter-spacing: -0.03em; line-height: 1; }
-  .conv-result .text { margin-top: 10px; font-size: 16px; opacity: 0.85; }
+  .salva-distance { margin-top: 24px; font-size: 19px; line-height: 1.45; color: #141B36; font-weight: 600; }
+  .bridge-question { background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; padding: 34px 36px; border-radius: 18px; margin-top: 30px; }
+  .bridge-question h2 { color: white; font-size: 30px; line-height: 1.22; margin: 0; }
+  .bridge-question h2 span { color: #FF4D2E; }
+  .bridge-question .small { margin-top: 14px; font-size: 15px; color: rgba(255,255,255,0.68); }
 
   /* Vías */
   .vias { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
-  .via { background: white; border-radius: 16px; padding: 30px; border: 1px solid rgba(20,27,54,0.06); position: relative; overflow: hidden; }
+  .via { background: white; border-radius: 16px; padding: 30px; border: 1px solid rgba(20,27,54,0.06); position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  .via .via-callout { margin-top: auto; }
   .via::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
   .via.proveedor::before { background: #FF4D2E; }
   .via.partner::before { background: #2563EB; }
@@ -204,6 +195,11 @@
   .source-answer.orange { border-top-color: #F97316; }
   .source-answer.green { border-top-color: #16A34A; }
   .source-answer.blue { border-top-color: #2563EB; }
+  .source-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .source-icon svg { width: 22px; height: 22px; }
+  .source-answer.orange .source-icon { color: #F97316; background: #FFF7ED; }
+  .source-answer.green .source-icon { color: #16A34A; background: #F0FDF4; }
+  .source-answer.blue .source-icon { color: #2563EB; background: #EFF6FF; }
   .source-answer .tag { font-size: 11px; text-transform: uppercase; letter-spacing: 1.4px; color: #5B6485; font-weight: 800; margin-bottom: 10px; }
   .source-answer h3 { font-size: 28px; line-height: 1; margin-bottom: 16px; }
   .source-answer .main { font-size: 18px; line-height: 1.3; font-weight: 800; color: #141B36; margin-bottom: 16px; }
@@ -221,6 +217,7 @@
   #s5 .source-answer .value { font-size: 23px; }
   #s5 .source-answer .label { font-size: 11px; }
   #s5 .mantra-block { margin-top: 20px; padding: 22px 28px; font-size: 20px; line-height: 1.35; }
+  #s5 .fast-highlight { text-decoration: underline; text-decoration-color: #FF4D2E; text-decoration-thickness: 0.18em; text-underline-offset: 0.16em; }
   #s5 .link-card { margin-top: 18px; padding: 14px 18px; }
   #s5 .after-card-note { margin-top: 12px; font-size: 15px; line-height: 1.45; }
 
@@ -329,8 +326,6 @@
     .source-piece::before, .source-piece::after { display: none; }
     .bbdd-flow { grid-template-columns: 1fr; }
     .bbdd-flow { gap: 16px; }
-    .conv-table .row { grid-template-columns: 1fr; gap: 8px; }
-    .conv-table .price { text-align: left; }
     .cover-hero { min-height: calc(100vh - 150px); }
     .cover-hero .logo-img { width: min(220px, 58vw); margin-bottom: 32px; }
     .cover-tagline { font-size: 10px; letter-spacing: 3px; }
@@ -391,7 +386,6 @@
     <div class="dot" onclick="document.getElementById('s15').scrollIntoView()"></div>
     <div class="dot" onclick="document.getElementById('s16').scrollIntoView()"></div>
     <div class="dot" onclick="document.getElementById('s17').scrollIntoView()"></div>
-    <div class="dot" onclick="document.getElementById('s18').scrollIntoView()"></div>
   </div>
 </div>
 
@@ -410,7 +404,7 @@
 
 <!-- SLIDE 2 -->
 <section id="s2" class="slide">
-  <div class="slide-num">02 / 18</div>
+  <div class="slide-num">02 / 17</div>
   <div class="slide-inner centered">
     <div class="speaker both"><span class="dot"></span> Empezamos por vosotros</div>
     <h1 class="opening-title">Antes de nuestra lectura, la vuestra.</h1>
@@ -427,7 +421,7 @@
 
 <!-- SLIDE 3 -->
 <section id="s3" class="slide">
-  <div class="slide-num">03 / 18</div>
+  <div class="slide-num">03 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> El problema</div>
     <h1>Frenos de la comunidad.</h1>
@@ -452,7 +446,7 @@
 
 <!-- SLIDE 4 -->
 <section id="s4" class="slide">
-  <div class="slide-num">04 / 18</div>
+  <div class="slide-num">04 / 17</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Qué es IM·PULSO.</h1>
@@ -475,12 +469,13 @@
 
 <!-- SLIDE 5 -->
 <section id="s5" class="slide">
-  <div class="slide-num">05 / 18</div>
+  <div class="slide-num">05 / 17</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Tres fuentes, un informe.</h1>
     <div class="source-answers">
       <div class="source-answer orange">
+        <div class="source-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
         <div class="tag">PULSO responde</div>
         <h3>Qué se mueve</h3>
         <div class="main">Piso de 3 dormitorios y 2 baños.</div>
@@ -490,6 +485,7 @@
         </div>
       </div>
       <div class="source-answer green">
+        <div class="source-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="tag">IMPULSO responde</div>
         <h3>A cuánto</h3>
         <div class="main">Precio del activo con testigos del barrio.</div>
@@ -499,6 +495,7 @@
         </div>
       </div>
       <div class="source-answer blue">
+        <div class="source-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
         <div class="tag">Notariado responde</div>
         <h3>Quién compra</h3>
         <div class="main">Mercado de particulares, en subida.</div>
@@ -512,7 +509,7 @@
     </div>
     <div class="mantra-block">
       <div class="label">El cruce</div>
-      Sabes que se vende, a cuánto, a quién llamar y quién te lo va a comprar. <strong>Antes de mover un euro.</strong>
+      Sabes <strong>qué</strong> se vende, a cuánto, a quién llamar y quién te lo va a comprar. <strong>Antes de mover un euro. <span class="fast-highlight">Y de forma rápida.</span></strong>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
@@ -525,7 +522,7 @@
 
 <!-- SLIDE 6 -->
 <section id="s6" class="slide">
-  <div class="slide-num">06 / 18</div>
+  <div class="slide-num">06 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Lo que el mercado nos enseñó.</h1>
@@ -542,7 +539,7 @@
 
 <!-- SLIDE 7 -->
 <section id="s7" class="slide">
-  <div class="slide-num">07 / 18</div>
+  <div class="slide-num">07 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> El encaje diferencial</div>
     <h1>Ellos tienen cosas que nosotros no. Nosotros tenemos una que ellos no.</h1>
@@ -579,7 +576,7 @@
 
 <!-- SLIDE 8 -->
 <section id="s8" class="slide">
-  <div class="slide-num">08 / 18</div>
+  <div class="slide-num">08 / 17</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
     <h1>La cuarta fuente: <span class="accent">MTVV.</span></h1>
@@ -602,10 +599,10 @@
 
 <!-- SLIDE 9 -->
 <section id="s9" class="slide">
-  <div class="slide-num">09 / 18</div>
+  <div class="slide-num">09 / 17</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
-    <h1>Antes de quedarnos con integrar el MTVV, <span class="accent">quisimos probar la idea.</span></h1>
+    <h1>Antes de proponéroslo, <span class="accent">quisimos comprobarlo.</span></h1>
     <p class="sub">Fuimos a Salva, proveedor MTVV de la comunidad. Le enseñamos PULSO e IMPULSO sobre su zona y su activo: Cambio de Uso en Calle Agustín Cavero, Elda.</p>
 
     <div style="background: white; border-left: 4px solid #FF4D2E; padding: 26px 30px; border-radius: 0 14px 14px 0; margin-top: 28px;">
@@ -613,31 +610,15 @@
       <p style="font-size: 14px; color: #5B6485; margin-top: 12px; font-style: italic;">Su MTVV tiene 8 pestañas. Las dos últimas las añadió él: <strong>"Pulso"</strong> e <strong>"Impulso"</strong>.</p>
     </div>
 
-    <div class="conv-table">
-      <div class="row">
-        <div class="label">Hipótesis MTVV <small>Techo aspiracional con peso obra nueva</small></div>
-        <div class="price">89.000 €</div>
-      </div>
-      <div class="row highlight">
-        <div class="label">MTVV real de Salva <small>Campo manual, 1-2 semanas de mercado</small></div>
-        <div class="price">74.000 €</div>
-      </div>
-      <div class="row highlight">
-        <div class="label">IMPULSO <small>Motor automático IM·PULSO, en minutos</small></div>
-        <div class="price">75.000 €</div>
-      </div>
-      <div class="row final">
-        <div class="label">Conclusión final MTVV</div>
-        <div class="price">74.000 €</div>
-      </div>
-    </div>
+    <p class="salva-distance">Su verificación de campo y nuestro motor automático se quedaron a un <strong>1,7 %</strong> de distancia.</p>
 
-    <div class="conv-result">
-      <div class="num">1,3 %</div>
-      <div class="text">Mil euros entre el MTVV real y nuestro motor automático. <strong style="color: #FFB199;">Cuando hay datos suficientes, hay convergencia.</strong></div>
+    <div class="via-alt">
+      <div class="badge-row">
+        <span class="badge">El encaje</span>
+        <span class="head-text"><strong>No sustituimos el MTVV del programa.</strong> Se cruzan ambos datos en paralelo.</span>
+      </div>
+      <p>Así se decide <strong>cuándo merece la pena invertir semanas de campo.</strong></p>
     </div>
-
-    <p class="sub" style="margin-top: 24px; font-style: italic; font-size: 17px; color: #141B36;">No sustituimos el MTVV del programa. <strong>Cruzamos datos en paralelo</strong> y ayudamos a decidir cuándo merece invertir semanas en campo.</p>
 
     <div class="link-pair">
       <a class="link-card" href="assets/salva-elda-cavero.xlsx" target="_blank" rel="noopener">
@@ -647,16 +628,21 @@
       </a>
       <a class="link-card featured" href="demo-completa.html" target="_blank" rel="noopener">
         <div class="icon">↗</div>
-        <div><div class="title">Ver el informe con MTVV dentro</div><div class="desc">La pieza completa, con las fuentes reforzadas.</div></div>
+        <div><div class="title">Ver el informe con el MTVV integrado</div><div class="desc">La pieza completa, con las fuentes reforzadas.</div></div>
         <div class="url">demo-completa.html</div>
       </a>
+    </div>
+
+    <div class="bridge-question">
+      <h2>Si esto ha pasado <span>de forma espontánea</span> con un proveedor, ¿qué pasaría si lo abrimos a <span>toda la comunidad</span>?</h2>
+      <div class="small">Eso es lo que puede llegar a ser IM·PULSO v2.</div>
     </div>
   </div>
 </section>
 
 <!-- SLIDE 10 -->
 <section id="s10" class="slide">
-  <div class="slide-num">10 / 18</div>
+  <div class="slide-num">10 / 17</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
     <h1>Para que exista esa cuarta fuente hacen falta MTVV. Cuantos más, mejor.</h1>
@@ -664,89 +650,35 @@
     <div class="vias">
       <div class="via proveedor">
         <div class="tag">Vía 1</div>
-        <h3>Cualquiera con un MTVV</h3>
-        <div class="perfil">Aporta un MTVV hecho según el programa. Lo escaneamos para confirmar un mínimo de calidad.</div>
-        <div class="via-callout">No sustituye el análisis del activo. Da contexto, testigos y referencias de zona que ya existen.</div>
+        <h3>Quien ya tiene un MTVV hecho</h3>
+        <div class="perfil">Lo aporta tal cual. Lo revisamos para confirmar un mínimo de calidad.</div>
+        <div class="via-callout"><strong>A cambio, se lleva un IMPULSO.</strong></div>
       </div>
       <div class="via partner">
         <div class="tag">Vía 2</div>
         <h3>Proveedores MTVV</h3>
-        <div class="perfil">Integramos PULSO e IMPULSO dentro de su MTVV final, como en el ejemplo de Salva. Ese MTVV enriquecido alimenta la base.</div>
-        <div class="via-callout">El cliente recibe su IMPULSO gratis. El proveedor entrega un trabajo más completo y con respaldo.</div>
+        <div class="perfil">Profesionales que ya dan ese servicio dentro de la comunidad. Se integran PULSO e IMPULSO dentro de su MTVV final, como hizo Salva.</div>
+        <div class="via-callout">
+          <div>✓ Su método sale enriquecido.</div>
+          <div>✓ Sello de calidad de la comunidad.</div>
+          <div>✓ Su cliente se lleva un IMPULSO para la siguiente operación.</div>
+        </div>
       </div>
     </div>
     <div class="mantra-block">
       <div class="label">Base común</div>
       La base de datos es de <strong>IM·PULSO</strong>. Lo que se construye encima es de todos.
     </div>
-    <p class="final-line">Cómo se articula exactamente esto está abierto. Es de las cosas que queremos pensar con vosotros.</p>
+    <p class="final-line">Cómo se articula exactamente —y qué recibe cada uno— está abierto. Es de las cosas que queremos pensar con vosotros.</p>
   </div>
 </section>
 
 <!-- SLIDE 11 -->
 <section id="s11" class="slide">
-  <div class="slide-num">11 / 18</div>
-  <div class="slide-inner">
-    <div class="speaker"><span class="dot"></span> La pregunta bisagra</div>
-
-    <div style="background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; padding: 50px 40px; border-radius: 18px; margin-bottom: 32px;">
-      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FFB199; font-weight: 800; margin-bottom: 16px;">La pregunta que nos llevó hasta aquí</div>
-      <h2 style="color: white; font-size: 42px; line-height: 1.2; margin: 0;">Si esto ha pasado <span style="color: #FF4D2E;">de forma espontánea</span> con un proveedor MTVV, ¿qué pasaría si lo abrimos a <span style="color: #FF4D2E;">toda la comunidad</span>?</h2>
-    </div>
-
-    <div style="text-align: center;">
-      <div style="font-size: 26px; font-weight: 700; color: #141B36; line-height: 1.4; max-width: 720px; margin: 0 auto 28px;">Esa pregunta es <span class="accent">lo que puede llegar a ser IM·PULSO v2.</span></div>
-      <div style="font-size: 16px; font-weight: 500; color: #5B6485; line-height: 1.5; max-width: 640px; margin: 0 auto 36px;">Lo siguiente es el encaje que imaginamos. Sin vuestra lectura, el bloque MTVV no se mueve.</div>
-      <img src="in/impulso-logo.png" alt="IM·PULSO" style="width: 240px; height: auto; display: block; margin: 0 auto;">
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 12 -->
-<section id="s12" class="slide">
-  <div class="slide-num">12 / 18</div>
-  <div class="slide-inner">
-    <div class="speaker both"><span class="dot"></span> Objeción</div>
-    <h1>«¿Y esto no me perjudica?»</h1>
-    <div class="objection">«Si yo pago o hago un MTVV y otro obtiene ese contexto más barato, pierdo yo.»</div>
-    <div class="tiers">
-      <div class="tier t1">
-        <div class="label">1</div>
-        <div class="price">No vendemos el MTVV.</div>
-        <div class="desc">Solo entran testigos y datos, nunca el documento.</div>
-      </div>
-      <div class="tier t1">
-        <div class="label">2</div>
-        <div class="price">El trato sigue siendo del proveedor.</div>
-        <div class="desc">No entramos en su relación con el cliente.</div>
-      </div>
-      <div class="tier t2">
-        <div class="label">3</div>
-        <div class="price">Nunca se cobra dos veces.</div>
-        <div class="desc">Y siempre con permiso del cliente.</div>
-      </div>
-      <div class="tier t3">
-        <div class="label">4</div>
-        <div class="price">Proveedor asociado.</div>
-        <div class="desc">Condiciones especiales e informes de cortesía.</div>
-      </div>
-    </div>
-    <div class="via-alt">
-      <div class="badge-row">
-        <span class="badge">Resumen</span>
-        <span class="head-text">Esto no sustituye al proveedor. Le suma.</span>
-      </div>
-      <p>El MTVV sale reforzado, el proveedor gana valor y su cliente recibe informes gratis.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 13 -->
-<section id="s13" class="slide">
-  <div class="slide-num">13 / 18</div>
+  <div class="slide-num">11 / 17</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> La visión</div>
-    <h1>Y al final, <span class="accent">el MTVV deja de quedarse parado.</span></h1>
+    <h1>Y así, <span class="accent">el MTVV deja de quedarse parado.</span></h1>
     <p class="sub">Cada MTVV contiene oro: testigos reales, contactos y lectura de campo. Si entra al sistema, los siguientes ganan.</p>
 
     <div class="bbdd-flow">
@@ -786,9 +718,48 @@
   </div>
 </section>
 
-<!-- SLIDE 14 -->
-<section id="s14" class="slide">
-  <div class="slide-num">14 / 18</div>
+<!-- SLIDE 12 -->
+<section id="s12" class="slide">
+  <div class="slide-num">12 / 17</div>
+  <div class="slide-inner">
+    <div class="speaker both"><span class="dot"></span> Objeción</div>
+    <h1>«¿Y esto no me perjudica?»</h1>
+    <div class="objection">«Si yo pago o hago un MTVV y otro obtiene ese contexto más barato, pierdo yo.»</div>
+    <div class="tiers">
+      <div class="tier t1">
+        <div class="label">1</div>
+        <div class="price">No vendemos el MTVV.</div>
+        <div class="desc">Solo entran testigos y datos, nunca el documento.</div>
+      </div>
+      <div class="tier t1">
+        <div class="label">2</div>
+        <div class="price">El trato sigue siendo del proveedor.</div>
+        <div class="desc">No entramos en su relación con el cliente.</div>
+      </div>
+      <div class="tier t2">
+        <div class="label">3</div>
+        <div class="price">Nunca se cobra dos veces.</div>
+        <div class="desc">Y siempre con permiso del cliente.</div>
+      </div>
+      <div class="tier t3">
+        <div class="label">4</div>
+        <div class="price">Proveedor asociado.</div>
+        <div class="desc">Condiciones especiales e informes de cortesía.</div>
+      </div>
+    </div>
+    <div class="via-alt">
+      <div class="badge-row">
+        <span class="badge">Resumen</span>
+        <span class="head-text">Esto no sustituye al proveedor. Le suma.</span>
+      </div>
+      <p>El MTVV sale reforzado, el proveedor gana valor y su cliente recibe informes gratis.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 13 -->
+<section id="s13" class="slide">
+  <div class="slide-num">13 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>También encaja en operaciones complejas.</h1>
@@ -808,9 +779,9 @@
   </div>
 </section>
 
-<!-- SLIDE 15 -->
-<section id="s15" class="slide">
-  <div class="slide-num">15 / 18</div>
+<!-- SLIDE 14 -->
+<section id="s14" class="slide">
+  <div class="slide-num">14 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>Y en las grandes, como propuesta de encaje.</h1>
@@ -834,9 +805,9 @@
   </div>
 </section>
 
-<!-- SLIDE 16 -->
-<section id="s16" class="slide">
-  <div class="slide-num">16 / 18</div>
+<!-- SLIDE 15 -->
+<section id="s15" class="slide">
+  <div class="slide-num">15 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>Y si le damos la vuelta a la pregunta.</h1>
@@ -872,9 +843,9 @@
   </div>
 </section>
 
-<!-- SLIDE 17 -->
-<section id="s17" class="slide">
-  <div class="slide-num">17 / 18</div>
+<!-- SLIDE 16 -->
+<section id="s16" class="slide">
+  <div class="slide-num">16 / 17</div>
   <div class="slide-inner centered">
     <div class="speaker both"><span class="dot"></span> Propuesta</div>
     <h1>La propuesta.</h1>
@@ -892,9 +863,9 @@
   </div>
 </section>
 
-<!-- SLIDE 18 -->
-<section id="s18" class="slide slide-cierre">
-  <div class="slide-num">18 / 18</div>
+<!-- SLIDE 17 -->
+<section id="s17" class="slide slide-cierre">
+  <div class="slide-num">17 / 17</div>
   <div class="slide-inner">
     <div class="speaker" style="background: rgba(255,77,46,0.2); color: #FFB199;"><span class="dot"></span> Vuestra lectura</div>
     <h1>Vuestra lectura.</h1>

@@ -133,6 +133,10 @@
   .via .ejemplo a { color: inherit; text-decoration: none; border-bottom: 1px dashed currentColor; }
   .via.proveedor .ejemplo a { color: #FF4D2E; }
   .via.partner .ejemplo a { color: #2563EB; }
+  .via-callout { margin-top: 18px; padding: 16px 18px; border-radius: 12px; background: rgba(20,27,54,0.04); border-left: 4px solid currentColor; font-size: 14px; color: #1F2937; line-height: 1.55; }
+  .via.proveedor .via-callout { color: #9F3412; background: rgba(255,77,46,0.06); }
+  .via.partner .via-callout { color: #1E40AF; background: rgba(37,99,235,0.06); }
+  .final-line { margin-top: 18px; font-size: 16px; color: #5B6485; line-height: 1.5; }
 
   .triad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
   .tri-card { background: white; border-radius: 14px; padding: 24px; border: 1px solid rgba(20,27,54,0.08); border-top: 4px solid #94A3B8; min-height: 170px; }
@@ -166,6 +170,29 @@
   .pulse-block:nth-child(3) { background: #2563EB; }
   .pulse-block .name { font-size: 26px; font-weight: 800; letter-spacing: 1.2px; }
   .pulse-block .line { color: rgba(255,255,255,0.78); font-size: 14px; margin-top: 16px; }
+
+  .source-pieces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 30px; filter: drop-shadow(0 12px 28px rgba(20,27,54,0.08)); }
+  .source-piece { position: relative; background: white; min-height: 210px; padding: 28px 34px; border: 1px solid rgba(20,27,54,0.08); display: flex; flex-direction: column; justify-content: space-between; }
+  .source-piece:first-child { border-radius: 14px 0 0 14px; }
+  .source-piece:last-child { border-radius: 0 14px 14px 0; }
+  .source-piece + .source-piece { margin-left: -1px; padding-left: 44px; }
+  .source-piece:not(:last-child)::after { content: ''; position: absolute; top: 50%; right: -23px; width: 46px; height: 46px; border-radius: 50%; background: inherit; border: 1px solid rgba(20,27,54,0.08); border-left: 0; transform: translateY(-50%); z-index: 2; }
+  .source-piece:not(:first-child)::before { content: ''; position: absolute; top: 50%; left: -23px; width: 46px; height: 46px; border-radius: 50%; background: #FAFAFA; border: 1px solid rgba(20,27,54,0.08); transform: translateY(-50%); z-index: 3; }
+  .source-piece.pulso { border-top: 5px solid #141B36; }
+  .source-piece.impulso { border-top: 5px solid #FF4D2E; background: linear-gradient(180deg, rgba(255,77,46,0.05), white 42%); }
+  .source-piece.notariado { border-top: 5px solid #2563EB; background: linear-gradient(180deg, rgba(37,99,235,0.05), white 42%); }
+  .source-piece .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #5B6485; }
+  .source-piece .name { font-size: 27px; font-weight: 800; color: #141B36; margin: 12px 0 10px; }
+  .source-piece .desc { font-size: 15px; color: #5B6485; line-height: 1.5; }
+  .source-piece strong { color: #141B36; }
+
+  .notary-gap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; align-items: stretch; margin-top: 28px; }
+  .notary-gap .explain, .notary-gap .highlight { background: white; border: 1px solid rgba(20,27,54,0.08); border-radius: 14px; padding: 24px 26px; }
+  .notary-gap .explain { font-size: 18px; line-height: 1.55; color: #141B36; }
+  .notary-gap .highlight { background: #141B36; color: white; border-color: #141B36; display: flex; flex-direction: column; justify-content: center; }
+  .notary-gap .highlight .num { color: #FF4D2E; font-size: 54px; line-height: 1; font-weight: 800; margin-bottom: 14px; }
+  .notary-gap .highlight p { color: rgba(255,255,255,0.78); font-size: 18px; line-height: 1.45; margin: 0; }
+  .after-card-note { margin-top: 16px; font-size: 16px; line-height: 1.55; color: #5B6485; max-width: 920px; }
 
   .link-card { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; background: white; color: #141B36; text-decoration: none; border: 1px solid rgba(255,77,46,0.26); border-left: 5px solid #FF4D2E; border-radius: 14px; padding: 20px 22px; margin-top: 26px; box-shadow: 0 8px 28px rgba(20,27,54,0.08); transition: transform 0.2s, box-shadow 0.2s; }
   .link-card:hover { transform: translateY(-2px); box-shadow: 0 12px 34px rgba(20,27,54,0.12); }
@@ -237,7 +264,10 @@
     .slide { padding: 90px 24px 60px; }
     h1 { font-size: 36px; }
     h2 { font-size: 26px; }
-    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias { grid-template-columns: 1fr; }
+    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias, .source-pieces, .notary-gap { grid-template-columns: 1fr; }
+    .source-piece, .source-piece:first-child, .source-piece:last-child { border-radius: 14px; }
+    .source-piece + .source-piece { margin-left: 0; margin-top: 12px; padding-left: 34px; }
+    .source-piece::before, .source-piece::after { display: none; }
     .bbdd-flow { grid-template-columns: 1fr; }
     .bbdd-flow { gap: 16px; }
     .conv-table .row { grid-template-columns: 1fr; gap: 8px; }
@@ -308,6 +338,7 @@
       <div class="cover-tagline">Inteligencia de mercado</div>
       <h1 class="cover-title">José y Vicente</h1>
       <div class="cover-context">Programa IN, 30 de julio de 2026</div>
+      <p class="sub" style="margin-top: 22px;">Escuchar primero. Para que esta hora valga por diez.</p>
     </div>
   </div>
 </section>
@@ -317,12 +348,12 @@
   <div class="slide-num">02 / 17</div>
   <div class="slide-inner centered">
     <div class="speaker both"><span class="dot"></span> Empezamos por vosotros</div>
-    <h1 class="opening-title">Empezamos como empiezan las buenas cosas: por vosotros.</h1>
+    <h1 class="opening-title">Empezamos como empiezan las buenas cosas: poniendo la oreja.</h1>
     <div class="questions">
       <div class="question">¿Qué conocéis hoy de IM·PULSO?</div>
       <div class="question">¿Qué creéis que es?</div>
-      <div class="question">¿Qué creéis que le aportaría a la comunidad?</div>
-      <div class="question highlight">¿Qué problemas que tiene hoy la comunidad creéis que puede resolver IM·PULSO?</div>
+      <div class="question">¿Qué os gustaría que fuera?</div>
+      <div class="question highlight">¿Qué problemas tiene hoy la comunidad que creéis que IM·PULSO puede resolver?</div>
     </div>
     <p class="footnote">Tomamos nota. Todo lo que viene después se ancla a lo que nos digáis.</p>
   </div>
@@ -381,35 +412,45 @@
   <div class="slide-num">05 / 17</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
-    <h1>Tres motores, un informe.</h1>
-    <div class="tiers three">
-      <div class="tier t1">
-        <div class="label">Motor 1</div>
-        <div class="price">PULSO</div>
-        <div class="desc">El latido de la zona: qué se publica, qué se retira y a qué velocidad. <strong>Absorción, no oferta.</strong></div>
+    <h1>Tres fuentes, un informe.</h1>
+    <div class="source-pieces">
+      <div class="source-piece pulso">
+        <div>
+          <div class="label">Fuente 1</div>
+          <div class="name">PULSO</div>
+          <div class="desc">El latido de la zona: qué se publica, qué se retira y a qué velocidad. <strong>Absorción, no oferta.</strong></div>
+        </div>
       </div>
-      <div class="tier t2">
-        <div class="label">Motor 2</div>
-        <div class="price">IMPULSO</div>
-        <div class="desc">El activo concreto: testigos reales del barrio y tres escenarios de precio.</div>
+      <div class="source-piece impulso">
+        <div>
+          <div class="label">Fuente 2</div>
+          <div class="name">IMPULSO</div>
+          <div class="desc">El activo concreto: testigos reales del barrio y tres escenarios de precio.</div>
+        </div>
       </div>
-      <div class="tier t3">
-        <div class="label">Motor 3</div>
-        <div class="price">NOTARIADO</div>
-        <div class="desc">Lo que de verdad se firma ante notario.</div>
+      <div class="source-piece notariado">
+        <div>
+          <div class="label">Fuente 3</div>
+          <div class="name">NOTARIADO</div>
+          <div class="desc">Lo que de verdad se firma ante notario.</div>
+        </div>
       </div>
     </div>
-    <div class="stats" style="grid-template-columns: 1fr; max-width: 620px;">
-      <div class="stat big">
-        <div class="num">16 %</div>
-        <div class="label">se pide más de lo que se escritura. Ese hueco es la negociación.</div>
+    <div class="notary-gap">
+      <div class="explain">
+        En el código postal del activo, en el portal se pide una media de <strong>1.776 euros por metro</strong>. Ante notario se firma a <strong>1.491,52</strong>. Un <strong>16 por ciento menos</strong>.
+      </div>
+      <div class="highlight">
+        <div class="num">16%</div>
+        <p>Esa diferencia entre lo que se pide y lo que se firma es el margen real de negociación. Es el dato que no aparece en ningún portal.</p>
       </div>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
-      <div><div class="title">Informe de Murcia — entregado hoy</div><div class="desc">Un informe ya tocable para abrir en la reunión.</div></div>
+      <div><div class="title">Informe PULSO completo - distrito Sur, Murcia</div><div class="desc">Zona real, datos verificables</div></div>
       <div class="url">munoz-murcia-sur.html</div>
     </a>
+    <p class="after-card-note">Vicente ya tiene el suyo, de Granada, y dirá lo que tenga que decir. Para ti, José, hemos hecho el de una zona que probablemente conozcas, para que puedas comprobar tú mismo si los datos cuadran con lo que sabes de ella.</p>
   </div>
 </section>
 
@@ -418,19 +459,20 @@
   <div class="slide-num">06 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Lo que ya funciona</div>
-    <h1>La demanda ya existe. <span class="accent">Y se está yendo fuera.</span></h1>
+    <h1>La demanda de esto ya existe.</h1>
+    <p class="sub">No hablamos de una demanda genérica de invertir. Hablamos de demanda de lo que hace IM·PULSO: saber si una zona se mueve, si un precio tiene sentido y dónde están las oportunidades.</p>
     <div class="stats">
       <div class="stat big"><div class="num">115</div><div class="label">inversores</div></div>
       <div class="stat big"><div class="num">85 %</div><div class="label">quiere más operaciones en 2026</div></div>
-      <div class="stat big"><div class="num">21,2 M€</div><div class="label">declarados</div></div>
-      <div class="stat big"><div class="num">150.000 €</div><div class="label">de mediana</div></div>
+      <div class="stat big"><div class="num">21,2&nbsp;M€</div><div class="label">declarados</div></div>
+      <div class="stat big"><div class="num">150.000€</div><div class="label">de mediana</div></div>
     </div>
     <div class="via-alt">
       <div class="badge-row">
         <span class="badge">Fuera</span>
         <span class="head-text">La necesidad ya se está resolviendo fuera del ecosistema IN</span>
       </div>
-      <p>Se está yendo a <strong>Lystos</strong>, <strong>Casafari</strong> e <strong>Invisor</strong>. La pregunta no es si hay demanda: es si esa demanda puede quedarse dentro.</p>
+      <p>Y esa demanda ya se está atendiendo fuera: han ido apareciendo grupos y servicios que la cubren -<strong>Lystos</strong> entre 79 y 199 euros al mes, <strong>Invisor</strong> entre 42 y 117, <strong>Casafari</strong> en formato empresa-. Se está resolviendo fuera del ecosistema IN.</p>
     </div>
   </div>
 </section>
@@ -439,21 +481,21 @@
 <section id="s7" class="slide">
   <div class="slide-num">07 / 17</div>
   <div class="slide-inner">
-    <div class="speaker"><span class="dot"></span> El cuarto motor</div>
-    <h1>El cuarto motor: <span class="accent">el método total.</span></h1>
-    <p class="sub large">Los tres motores anteriores leen el mercado desde fuera. El método total lo lee desde el suelo. Es el único que pisa la calle.</p>
+    <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
+    <h1>La cuarta fuente: <span class="accent">el método total.</span></h1>
+    <p class="sub large">Las tres primeras leen el mercado desde fuera. El método total lo lee desde el suelo: es el único que pisa la calle. Es una fuente <strong>OPCIONAL</strong>: el informe funciona sin ella, pero con ella deja de ser una lectura de mercado y pasa a ser una validación.</p>
     <div class="tiers">
-      <div class="tier t1"><div class="label">Motor 1</div><div class="price">PULSO</div><div class="desc">Zona y velocidad.</div></div>
-      <div class="tier t1"><div class="label">Motor 2</div><div class="price">IMPULSO</div><div class="desc">Activo y testigos.</div></div>
-      <div class="tier t2"><div class="label">Motor 3</div><div class="price">NOTARIADO</div><div class="desc">Firma real.</div></div>
-      <div class="tier t3"><div class="label">Motor 4 · opcional</div><div class="price">MTVV</div><div class="desc">Validación de campo. El informe funciona sin él; con él cambia de nivel.</div></div>
+      <div class="tier t1"><div class="label">Fuente 1</div><div class="price">PULSO</div><div class="desc">Zona y velocidad.</div></div>
+      <div class="tier t1"><div class="label">Fuente 2</div><div class="price">IMPULSO</div><div class="desc">Activo y testigos.</div></div>
+      <div class="tier t2"><div class="label">Fuente 3</div><div class="price">NOTARIADO</div><div class="desc">Firma real.</div></div>
+      <div class="tier t3"><div class="label">Fuente 4 · OPCIONAL</div><div class="price">MTVV</div><div class="desc">Validación de campo. El informe funciona sin ella; con ella cambia de nivel.</div></div>
     </div>
     <div class="via-alt">
       <div class="badge-row">
         <span class="badge">Encaje</span>
-        <span class="head-text">Con el cuarto motor deja de ser lectura de mercado y pasa a ser validación.</span>
+        <span class="head-text">Con la cuarta fuente deja de ser lectura de mercado y pasa a ser validación.</span>
       </div>
-      <p>El método total no sustituye a los otros motores. Los contrasta desde la calle.</p>
+      <p>El método total no sustituye a las otras fuentes. Las contrasta desde la calle.</p>
     </div>
   </div>
 </section>
@@ -462,12 +504,12 @@
 <section id="s8" class="slide">
   <div class="slide-num">08 / 17</div>
   <div class="slide-inner">
-    <div class="speaker"><span class="dot"></span> El cuarto motor</div>
-    <h1>Y ya ha pasado.</h1>
-    <p class="sub">No lo hemos diseñado en una pizarra. Ocurrió solo.</p>
+    <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
+    <h1>Y lo probamos.</h1>
+    <p class="sub">Con esta idea nos pusimos en contacto con un proveedor de método total de valoración de vivienda y le propusimos un testeo: hacer un PULSO de su zona y un IMPULSO de su activo, y ver si su método y nuestro análisis se daban la mano. Esto es lo que salió.</p>
     <div class="mantra-block">
       <div class="label">Lo que ocurrió</div>
-      Le dimos un PULSO y un IMPULSO de su operación en Elda a un proveedor de método total. <strong>Él, por su cuenta, añadió las pestañas a su método. Nadie se lo pidió.</strong>
+      PULSO, IMPULSO y método total leyeron la misma operación desde ángulos distintos. La pregunta era sencilla: si los datos eran buenos, tenían que encontrarse.
     </div>
     <div class="conv-table">
       <div class="row">
@@ -475,7 +517,7 @@
         <div class="price">74.000 €</div>
       </div>
       <div class="row highlight">
-        <div class="label">Nuestro motor<small>57 testigos</small></div>
+        <div class="label">Nuestra fuente<small>57 testigos</small></div>
         <div class="price">75.285 €</div>
       </div>
       <div class="row final">
@@ -489,7 +531,7 @@
     </div>
     <a class="link-card featured" href="demo-completa.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
-      <div><div class="title">Ver el informe con el método total dentro</div><div class="desc">La pieza completa, con los motores cruzados.</div></div>
+      <div><div class="title">Ver el informe con el método total dentro</div><div class="desc">La pieza completa, con las fuentes cruzadas.</div></div>
       <div class="url">demo-completa.html</div>
     </a>
   </div>
@@ -499,43 +541,28 @@
 <section id="s9" class="slide">
   <div class="slide-num">09 / 17</div>
   <div class="slide-inner">
-    <div class="speaker"><span class="dot"></span> El cuarto motor</div>
-    <h1>Cómo se consigue.</h1>
-    <p class="sub">Para que el cuarto motor exista, hacen falta métodos totales. Y hoy cada uno muere en el cajón de quien lo hizo.</p>
+    <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
+    <h1>Para que exista esa cuarta fuente hacen falta métodos totales. Cuantos más, mejor.</h1>
+    <p class="sub">Hoy hay información muy valiosa muriendo en cajones. Métodos totales ya hechos, con horas de campo dentro, que no vuelven a usarse nunca. Esa información podría estar trabajando para la comunidad.</p>
     <div class="vias">
       <div class="via proveedor">
         <div class="tag">Vía 1</div>
-        <h3>Aportas tu método total</h3>
-        <div class="perfil">Trabajo reciente, útil y contrastable.</div>
-        <ul>
-          <li>Pasa un filtro de calidad</li>
-          <li>Recibes un informe IMPULSO completo</li>
-          <li>Sin tarjeta, sin plazo de uso</li>
-        </ul>
+        <h3>Cualquiera que tenga un método total</h3>
+        <div class="perfil">Quien ha seguido el programa y lo ha hecho siguiendo sus instrucciones, puede aportarlo. Se le pasa un escaneo para comprobar que cumple un estándar mínimo de calidad.</div>
+        <div class="via-callout">Ese método no es del activo que tienes delante, y no pretende serlo. Pero da contexto, testigos y referencias de zona. Habrá información que sirva y otra que no, pero es mucho mejor tenerla que no tenerla. Ya existe: aprovechémosla.</div>
       </div>
       <div class="via partner">
         <div class="tag">Vía 2</div>
-        <h3>Y te cuidamos como proveedor</h3>
-        <div class="perfil">La relación con tu cliente sigue siendo tuya.</div>
-        <ul>
-          <li>Condiciones especiales</li>
-          <li>Informes de cortesía</li>
-          <li>El trato con tu cliente permanece contigo</li>
-        </ul>
+        <h3>Proveedores de método total</h3>
+        <div class="perfil">Pueden vitaminar sus propios métodos: les integramos PULSO e IMPULSO dentro de su método total final, como se hizo en el ejemplo que acabamos de ver. Y ese método, ya enriquecido, se aporta a la base.</div>
+        <div class="via-callout">Y el cliente que paga ese método total se lleva su informe IMPULSO gratis. El proveedor entrega un método más completo, con un sello detrás, y puede ponerlo en valor.</div>
       </div>
     </div>
-    <div class="via-alt">
-      <div class="badge-row">
-        <span class="badge">Requisito</span>
-        <span class="head-text">Método reciente (≤30 días) y que pase el filtro.</span>
-      </div>
-      <p>Comprobamos que el método es sólido antes de integrarlo. No entra cualquier cosa.</p>
+    <div class="mantra-block">
+      <div class="label">Base común</div>
+      La base de datos es de <strong>IM·PULSO</strong>. Lo que se construye encima es de todos.
     </div>
-    <a class="link-card" href="tanteo-novelda-alquiler.html" target="_blank" rel="noopener">
-      <div class="icon">↗</div>
-      <div><div class="title">Le devolvimos el favor: tanteo en Novelda, sin coste</div><div class="desc">Ejemplo de cuidado al proveedor.</div></div>
-      <div class="url">tanteo-novelda-alquiler.html</div>
-    </a>
+    <p class="final-line">Cómo se articula exactamente esto está abierto. Es de las cosas que queremos pensar con vosotros.</p>
   </div>
 </section>
 

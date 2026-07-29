@@ -94,9 +94,10 @@
   .tier.t3 .price { color: white; }
   .tier.t3 .desc { color: rgba(255,255,255,0.7); }
   #s12 .tiers.three { gap: 10px; }
-  #s12 .tiers.three .tier { padding: 16px; }
+  #s12 .tiers.three .tier { padding: 16px; background: white; border: 1px solid rgba(20,27,54,0.08); border-top: 3px solid #FF4D2E; color: #141B36; }
+  #s12 .tiers.three .tier .label { color: #FF4D2E; }
   #s12 .tiers.three .tier .price { font-size: 21px; line-height: 1.12; }
-  #s12 .tiers.three .tier .desc { font-size: 12px; line-height: 1.42; }
+  #s12 .tiers.three .tier .desc { font-size: 12px; line-height: 1.42; color: #5B6485; }
 
   /* Vía alternativa MTVV */
   .via-alt { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
@@ -261,21 +262,17 @@
   .conv-metric.hot .value { color: #FF4D2E; }
   .conv-metric.hot .label { color: #FFB199; }
 
-  .ops-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 34px; }
-  .op-pill { position: relative; min-height: 178px; background: white; border: 1px solid rgba(20,27,54,0.08); border-radius: 14px; padding: 24px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 10px 26px rgba(20,27,54,0.05); }
-  .op-pill svg { width: 48px; height: 48px; margin-bottom: 18px; color: #FF4D2E; stroke-width: 2; }
-  .op-pill .label { font-size: 17px; line-height: 1.22; font-weight: 800; color: #141B36; }
+  .ops-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-top: 48px; }
+  .op-pill { position: relative; aspect-ratio: 1; background: white; border: 1px solid rgba(20,27,54,0.08); border-radius: 14px; padding: 18px 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; box-shadow: 0 10px 26px rgba(20,27,54,0.05); }
+  .op-pill svg { width: 38px; height: 38px; margin-bottom: 13px; color: #FF4D2E; stroke-width: 2; }
+  .op-pill .label { font-size: 14px; line-height: 1.18; font-weight: 800; color: #141B36; }
   .op-pill.exception { border-color: rgba(255,77,46,0.32); background: linear-gradient(180deg, rgba(255,77,46,0.055), white); }
-  .op-pill .question-badge { position: absolute; top: 12px; right: 12px; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #FF4D2E; color: white; font-size: 22px; line-height: 1; font-weight: 800; box-shadow: 0 8px 18px rgba(255,77,46,0.24); }
-  .debt-op-block { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(20,27,54,0.08); max-width: 580px; }
-  .debt-op-block .badge { display: inline-flex; background: #FF4D2E; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 10px; }
-  .debt-op-block .op-pill { min-height: 0; padding: 18px 20px; flex-direction: row; justify-content: flex-start; gap: 18px; text-align: left; }
-  .debt-op-block .op-pill svg { margin-bottom: 0; flex: 0 0 auto; }
-  .debt-op-block .op-pill .label { font-size: 18px; }
-  .debt-op-block .small { margin-top: 8px; font-size: 13px; color: #5B6485; font-style: italic; line-height: 1.45; }
+  .op-pill .question-badge { position: absolute; top: 10px; right: 10px; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #FF4D2E; color: white; font-size: 18px; line-height: 1; font-weight: 800; box-shadow: 0 8px 18px rgba(255,77,46,0.24); }
+  .op-pill .badge { position: absolute; top: -20px; left: 50%; transform: translateX(-50%); width: calc(100% - 14px); display: inline-flex; justify-content: center; background: #FF4D2E; color: white; padding: 4px 7px; border-radius: 6px; font-size: 9px; line-height: 1.12; font-weight: 800; letter-spacing: 0.5px; text-transform: uppercase; }
   .inside-note { margin-top: 18px; font-size: 15px; color: #5B6485; line-height: 1.45; max-width: 860px; }
   #s7 h1 { max-width: 980px; font-size: 50px; margin-bottom: 18px; }
   #s7 .sub { max-width: 880px; }
+  #s7 .ops-grid { grid-template-columns: repeat(6, 1fr); }
   #s7 .mantra-block { margin-top: 32px; font-size: 25px; line-height: 1.32; font-weight: 800; }
 
   .quote-slide { background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
@@ -576,16 +573,12 @@
         <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M9 22L24 10l15 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 22v17h20V22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/><rect x="19.5" y="27" width="9" height="8" rx="1.5" stroke="currentColor" stroke-linejoin="round"/><path d="M21.5 27v-2.5a2.5 2.5 0 0 1 5 0V27" stroke="currentColor" stroke-linecap="round"/></svg>
         <div class="label">Vivienda okupada</div>
       </div>
-    </div>
-
-    <div class="debt-op-block">
-      <span class="badge">Para los perfiles más avanzados</span>
       <div class="op-pill exception">
-        <div class="question-badge">?</div>
+        <span class="badge">Para los perfiles más avanzados</span>
+        <div class="question-badge">!</div>
         <svg viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 17h24v23H12z" stroke="currentColor" stroke-linejoin="round"/><path d="M17 17v-4h14v4" stroke="currentColor" stroke-linecap="round"/><path d="M18 27h12" stroke="currentColor" stroke-linecap="round"/><path d="M18 33h8" stroke="currentColor" stroke-linecap="round"/><path d="M34 29l4 4 6-8" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="label">Compra de deuda</div>
       </div>
-      <div class="small">No se toca en el Programa. Sí en el Máster y en el Grado.</div>
     </div>
 
     <div class="mantra-block">No estamos hechos para el mercado inmobiliario. Estamos hechos para cómo invierte esta comunidad.</div>
@@ -671,23 +664,27 @@
       <div class="via proveedor">
         <div class="tag">Vía 1</div>
         <h3>Quien ya tiene un MTVV hecho</h3>
+        <div class="perfil">Cualquiera del programa que ya tenga uno hecho.</div>
         <ul>
-          <li>Cualquiera del programa con un MTVV ya hecho puede aportarlo.</li>
+          <li>Lo aporta tal cual, sin trabajo extra.</li>
           <li>Con una antigüedad máxima de <strong>6 meses a un año</strong>, según la zona.</li>
           <li>Pasa un <strong>control de calidad</strong> antes de entrar a la base.</li>
         </ul>
-        <div class="via-callout"><strong>A cambio, se lleva un IMPULSO.</strong> Y cuanto más crece IM·PULSO, más vale ese cambio: más gente querrá soltar un MTVV que, si no, se queda en un cajón.</div>
       </div>
       <div class="via partner">
         <div class="tag">Vía 2</div>
         <h3>Proveedores MTVV</h3>
-        <div class="perfil">Profesionales que ya dan ese servicio dentro de la comunidad. Se integran PULSO e IMPULSO dentro de su MTVV final, como hizo Salva.</div>
-        <div class="via-callout">
-          <div>✓ Su método sale enriquecido.</div>
-          <div>✓ Sello de calidad de la comunidad.</div>
-          <div>✓ Su cliente se lleva un IMPULSO para la siguiente operación.</div>
-        </div>
+        <div class="perfil">Profesionales que ya dan ese servicio dentro de la comunidad.</div>
+        <ul>
+          <li>PULSO e IMPULSO se integran dentro de su MTVV final, como hizo Salva.</li>
+          <li>Su método sale enriquecido y con <strong>sello de calidad</strong> de la comunidad.</li>
+          <li>Su cliente se lleva un <strong>IMPULSO</strong> para la siguiente operación.</li>
+        </ul>
       </div>
+    </div>
+    <div class="via-callout">
+      <strong>QUÉ GANA QUIEN APORTA</strong><br>
+      Quien aporta su MTVV <strong>se lleva un IMPULSO.</strong> Y cuanto más crece IM·PULSO, más vale ese intercambio: más gente querrá ofrecer un método que, si no, se queda en el olvido.
     </div>
     <div class="mantra-block">
       <div class="label">Base común</div>
@@ -738,7 +735,7 @@
       Que en la comunidad se diga <strong>"voy a hacerme un IM·PULSO"</strong> como hoy se dice "voy a hacer un MTVV". <strong>No como sustituto.</strong> Como herramienta previa o paralela: filtro para inbrutos, contraste para receptores y repositorio vivo.
     </div>
 
-    <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36;">El MTVV no está en discusión. Antes de ejecutar una operación hay que comprobarla en campo: eso es norma, y la seguiremos empujando. Nosotros solo operamos la infraestructura que la alimenta. <strong>Cada uno donde es bueno.</strong></p>
+    <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36; max-width: none;">El MTVV no está en discusión: comprobar en campo antes de ejecutar es norma, y la seguiremos empujando. Nosotros solo operamos la infraestructura que la alimenta. <strong>Cada uno donde es bueno.</strong></p>
   </div>
 </section>
 
@@ -749,34 +746,33 @@
     <div class="speaker both"><span class="dot"></span> Objeciones de proveedores</div>
     <h1>«¿Y esto no me perjudica?»</h1>
     <div class="objection">«Si yo pago o hago un MTVV y otro obtiene ese contexto más barato, pierdo yo.»</div>
-    <p class="sub" style="margin-top: 18px;">Es la que nos hemos encontrado. Va rota, punto por punto.</p>
     <div class="tiers three">
-      <div class="tier t1">
+      <div class="tier">
         <div class="label">1</div>
         <div class="price">No vendemos el MTVV.</div>
         <div class="desc">Lo que se vende es un estudio IM·PULSO con un MTVV integrado de una operación pasada, que sirve de prefiltro. Nunca el documento del proveedor, y nunca la operación concreta de nadie.</div>
       </div>
-      <div class="tier t2">
+      <div class="tier">
         <div class="label">2</div>
         <div class="price">El trato sigue siendo del proveedor.</div>
         <div class="desc">Si aporta el método de una zona, el acuerdo queda con él. Si después llega otro, se respeta su trato: no se reescribe a su costa.</div>
       </div>
-      <div class="tier t3">
+      <div class="tier">
         <div class="label">3</div>
         <div class="price">Su trabajo le sigue rentando.</div>
         <div class="desc">Un MTVV ya hecho vuelve a tener valor en operaciones futuras, sin diluir el producto que vende hoy.</div>
       </div>
-      <div class="tier t1">
+      <div class="tier">
         <div class="label">4</div>
         <div class="price">Su entregable sale reforzado.</div>
         <div class="desc">El método va con el cruce de IM·PULSO detrás: producto más completo, y margen para cobrarlo mejor.</div>
       </div>
-      <div class="tier t2">
+      <div class="tier">
         <div class="label">5</div>
         <div class="price">Nunca se cobra dos veces.</div>
         <div class="desc">Y siempre con permiso del cliente.</div>
       </div>
-      <div class="tier t3">
+      <div class="tier">
         <div class="label">6</div>
         <div class="price">Proveedor asociado.</div>
         <div class="desc">Precio especial, informes de cortesía y visibilidad como validador dentro de la comunidad.</div>
@@ -798,7 +794,7 @@
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>También encaja en operaciones complejas.</h1>
-    <p class="sub large">En compra de deuda, la lectura de mercado decide si la operación se sostiene. IM·PULSO ya va dentro del dossier de oportunidad.</p>
+    <p class="sub large">En compra de deuda, la lectura de mercado decide si la operación se sostiene. IM·PULSO <strong>se integra</strong> dentro del dossier de la oportunidad.</p>
     <div class="stats five">
       <div class="stat"><div class="num naranja">01</div><div class="label">la oportunidad en cifras</div></div>
       <div class="stat"><div class="num naranja">02</div><div class="label">escenarios de inversión</div></div>
@@ -806,10 +802,10 @@
       <div class="stat"><div class="num naranja">04</div><div class="label">riesgos y mitigaciones</div></div>
       <div class="stat"><div class="num naranja">05</div><div class="label">timeline del proceso</div></div>
     </div>
-    <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/assets/dossier-modelo-core.html" target="_blank" rel="noopener">
+    <a class="link-card" href="https://im-pulso.app/op-0047-full" target="_blank" rel="noopener">
       <div class="icon">↗</div>
-      <div><div class="title">Dossier de oportunidad - compra de deuda</div><div class="desc">El análisis de mercado, dentro de la operación</div></div>
-      <div class="url">xaviriera.github.io/im-pulso-share/assets/dossier-modelo-core.html</div>
+      <div><div class="title">Dossier de oportunidad — compra de deuda real</div><div class="desc">El análisis de mercado, dentro de la operación</div></div>
+      <div class="url">im-pulso.app/op-0047-full</div>
     </a>
   </div>
 </section>
@@ -820,23 +816,30 @@
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>Y en las grandes, como propuesta de encaje.</h1>
-    <p class="sub large">Nos han salido conversaciones para edificios con varias viviendas. Aún no ha salido: creemos que IM·PULSO puede aportar lectura de mercado por tramos, cuando cada vivienda resultante lo necesite.</p>
+    <p class="sub large">Nos han salido conversaciones para edificios con varias viviendas. Aún no ha salido: creemos que IM·PULSO puede aportar <strong>la inteligencia de mercado</strong> por tramos, cuando cada vivienda resultante lo necesite.</p>
     <div class="mantra-block">
       <div class="label">Modelo de encaje</div>
-      No cobramos ahora. <strong>Cobramos cuando el inversor cobra.</strong>
+      No cobramos ahora. <strong>Cobramos cuando el inversor cobra</strong>: un porcentaje pactado del beneficio que arroje la operación.
     </div>
     <div class="via-alt">
       <div class="badge-row">
         <span class="badge">Equipo</span>
         <span class="head-text">La inteligencia de mercado puede ser parte del equipo.</span>
       </div>
-      <p>Igual que existen honorarios técnicos, puede existir gestión de mercado si la operación lo justifica.</p>
+      <p>Igual que existen honorarios técnicos, puede existir <strong>la gestión de la inteligencia de mercado</strong> cuando la operación lo justifique.</p>
     </div>
-    <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html" target="_blank" rel="noopener">
-      <div class="icon">↗</div>
-      <div><div class="title">Propuesta de operación grande</div><div class="desc">Celia Lozano - Nuevo Altabix, Elche</div></div>
-      <div class="url">xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html</div>
-    </a>
+    <div class="link-pair">
+      <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html" target="_blank" rel="noopener">
+        <div class="icon">↗</div>
+        <div><div class="title">Propuesta de operación grande</div><div class="desc">Celia Lozano - Nuevo Altabix, Elche</div></div>
+        <div class="url">xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html</div>
+      </a>
+      <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/beniarbeig.html" target="_blank" rel="noopener">
+        <div class="icon">↗</div>
+        <div><div class="title">Estudio de un edificio completo</div><div class="desc">Av. del Vergel 5, Beniarbeig — varias viviendas</div></div>
+        <div class="url">xaviriera.github.io/im-pulso-share/beniarbeig.html</div>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -845,30 +848,18 @@
   <div class="slide-num">15 / 17</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
-    <h1>Y si le damos la vuelta a la pregunta.</h1>
-    <p class="sub large">Para vídeo, en vez de preguntar por una zona concreta, preguntamos a la base dónde mirar.</p>
+    <h1>En vez de preguntar por una zona, <strong>le preguntamos a la base dónde mirar.</strong></h1>
+    <p class="sub large">Le hicimos consultas cruzando datos para que fuera ella la que señalara dónde se está moviendo el mercado. De ahí salieron diez zonas por las que empezar a buscar.</p>
     <div class="mantra-block">
-      <div class="label">El radar</div>
-      El radar no caza. <strong>Levanta la oportunidad.</strong> La escopeta la coge el inversor.
+      <div class="label">EL RADAR</div>
+      El radar no dice dónde invertir. <strong>Dice dónde merece la pena mirar.</strong>
     </div>
     <div class="via-alt">
       <div class="badge-row">
-        <span class="badge">Por qué importa</span>
-        <span class="head-text">El mercado abre lugares que muchos inversores no estaban mirando.</span>
+        <span class="badge">Para qué más sirve</span>
+        <span class="head-text">No nació solo para invertir.</span>
       </div>
-      <p>El movimiento del mercado señala lugares que muchos inversores aún no miran.</p>
-    </div>
-    <div class="stats five">
-      <div class="stat"><div class="num">Elda</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Almoradí</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Callosa</div><div class="label">de Segura</div></div>
-      <div class="stat"><div class="num">Jijona</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Fuente-Álamo</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Orihuela</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Villena</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Alguazas</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Torre-Pacheco</div><div class="label">zona detectada</div></div>
-      <div class="stat"><div class="num">Cocentaina</div><div class="label">zona detectada</div></div>
+      <p>Un radar así da material para vídeo, para un canal dentro de la comunidad y para varias cosas más.</p>
     </div>
     <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/radar-oportunidades-impulso.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
@@ -883,16 +874,17 @@
   <div class="slide-num">16 / 17</div>
   <div class="slide-inner centered">
     <div class="speaker both"><span class="dot"></span> Propuesta</div>
-    <h1>La propuesta.</h1>
+    <h1>La propuesta <strong>la escribimos juntos.</strong></h1>
     <div class="proposal-box">
-      <div class="headline">No hay que implementar nada. Probémoslo.</div>
-      <p class="sub" style="margin: 0 auto;">Una operación real de vuestros círculos. Nosotros ponemos la inteligencia de mercado; vosotros juzgáis si suma.</p>
+      <div class="headline">Hoy no proponemos nada.</div>
+      <p class="sub" style="margin: 0 auto;">Queríamos enseñaros de lo que es capaz IM·PULSO. La propuesta le damos forma entre todos, con vuestras necesidades y vuestro criterio delante.</p>
     </div>
     <div class="via-alt" style="text-align: left; max-width: 760px; margin-left: auto; margin-right: auto;">
       <div class="badge-row">
-        <span class="badge">Piloto</span>
-        <span class="head-text">Sin coste, sin compromiso, sin cambiar nada de lo que ya hacéis.</span>
+        <span class="badge">Lo que haga falta</span>
+        <span class="head-text">¿Necesitáis probarlo más? Se prueba.</span>
       </div>
+      <p>Una operación real de un círculo de confianza vuestro, la que digáis. Nosotros ponemos la inteligencia de mercado y vosotros juzgáis si suma. Sin coste, sin compromiso y sin cambiar nada de lo que ya hacéis.</p>
       <p>Hoy no va de precio; el precio se concreta en la propuesta posterior.</p>
     </div>
   </div>

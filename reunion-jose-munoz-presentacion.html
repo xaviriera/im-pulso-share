@@ -46,17 +46,20 @@
   .slide-cover h1, .slide-cover h2 { color: white; }
   .slide-cover .sub { color: rgba(255,255,255,0.72); }
   .slide-cover .speaker { background: rgba(255,77,46,0.2); color: #FFB199; }
-  .cover-hero { min-height: calc(100vh - 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; }
-  .cover-hero .logo-img { width: min(440px, 72vw); height: auto; display: block; margin-bottom: 48px; }
-  .cover-tagline { color: #FF4D2E; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 22px; }
-  .cover-title { font-size: clamp(54px, 8vw, 108px); font-weight: 800; line-height: 0.98; letter-spacing: -0.02em; color: white; margin-bottom: 24px; }
-  .cover-context { font-size: 19px; color: rgba(255,255,255,0.7); font-weight: 500; }
+  .cover-hero { min-height: calc(100vh - 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; padding: 42px 0 28px; }
+  .cover-hero .logo-img { width: min(150px, 34vw); height: auto; display: block; margin-bottom: 64px; opacity: 0.9; }
+  .cover-tagline { color: #FF4D2E; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 26px; }
+  .cover-title { max-width: 980px; font-size: clamp(64px, 9.2vw, 124px); font-weight: 800; line-height: 0.98; letter-spacing: -0.02em; color: white; margin-bottom: 30px; }
+  .cover-subtitle { font-size: clamp(20px, 2.1vw, 28px); line-height: 1.35; color: rgba(255,255,255,0.72); font-weight: 500; max-width: 780px; margin: 0 auto; }
+  .cover-names { margin-top: 70px; font-size: 23px; color: rgba(255,255,255,0.9); font-weight: 700; }
+  .cover-date { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.48); font-weight: 600; letter-spacing: 0.4px; }
 
   /* Reusable visual blocks */
   .centered { text-align: center; }
   .centered .sub { margin-left: auto; margin-right: auto; }
   .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; font-weight: 800; margin-bottom: 12px; }
   .opening-title { max-width: 980px; margin: 0 auto 34px; }
+  .opening-sub { margin: -14px auto 34px; font-size: 21px; color: #5B6485; line-height: 1.45; max-width: 760px; }
   .questions { display: grid; gap: 16px; max-width: 920px; margin: 20px auto 0; }
   .question { font-size: 28px; font-weight: 800; line-height: 1.15; color: #141B36; padding: 18px 0; border-bottom: 1px solid rgba(20,27,54,0.08); }
   .question.highlight { margin-top: 8px; padding: 28px 30px; border: 2px solid rgba(255,77,46,0.28); border-left: 8px solid #FF4D2E; border-radius: 14px; background: rgba(255,77,46,0.06); color: #FF4D2E; font-size: 38px; box-shadow: 0 18px 40px rgba(20,27,54,0.08); }
@@ -273,9 +276,11 @@
     .conv-table .row { grid-template-columns: 1fr; gap: 8px; }
     .conv-table .price { text-align: left; }
     .cover-hero { min-height: calc(100vh - 150px); }
-    .cover-hero .logo-img { margin-bottom: 36px; }
+    .cover-hero .logo-img { margin-bottom: 46px; }
     .cover-tagline { font-size: 10px; letter-spacing: 3px; }
-    .cover-context { font-size: 16px; }
+    .cover-title { font-size: clamp(48px, 16vw, 72px); }
+    .cover-subtitle { font-size: 18px; }
+    .cover-names { margin-top: 48px; font-size: 20px; }
     .question { font-size: 22px; }
     .question.highlight { font-size: 27px; padding: 22px; }
     .stat.big .num { font-size: 40px; }
@@ -336,9 +341,10 @@
     <div class="cover-hero">
       <img src="in/impulso-logo.png" alt="IM·PULSO" class="logo-img">
       <div class="cover-tagline">Inteligencia de mercado</div>
-      <h1 class="cover-title">José y Vicente</h1>
-      <div class="cover-context">Programa IN, 30 de julio de 2026</div>
-      <p class="sub" style="margin-top: 22px;">Escuchar primero. Para que esta hora valga por diez.</p>
+      <h1 class="cover-title">El mercado ya ha contestado</h1>
+      <p class="cover-subtitle">Una propuesta de inteligencia de mercado para el Programa IN</p>
+      <div class="cover-names">José y Vicente</div>
+      <div class="cover-date">30 de julio de 2026</div>
     </div>
   </div>
 </section>
@@ -348,7 +354,8 @@
   <div class="slide-num">02 / 17</div>
   <div class="slide-inner centered">
     <div class="speaker both"><span class="dot"></span> Empezamos por vosotros</div>
-    <h1 class="opening-title">Empezamos como empiezan las buenas cosas: poniendo la oreja.</h1>
+    <h1 class="opening-title">Antes de nuestra lectura, la vuestra.</h1>
+    <p class="opening-sub">Lo que sigue está preparado. Pero preferimos que empiece por vosotros.</p>
     <div class="questions">
       <div class="question">¿Qué conocéis hoy de IM·PULSO?</div>
       <div class="question">¿Qué creéis que es?</div>

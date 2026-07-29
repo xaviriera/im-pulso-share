@@ -50,8 +50,9 @@
   .cover-hero .logo-img { width: min(150px, 34vw); height: auto; display: block; margin-bottom: 64px; opacity: 0.9; }
   .cover-tagline { color: #FF4D2E; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 26px; }
   .cover-title { max-width: 980px; font-size: clamp(64px, 9.2vw, 124px); font-weight: 800; line-height: 0.98; letter-spacing: -0.02em; color: white; margin-bottom: 30px; }
-  .cover-subtitle { font-size: clamp(20px, 2.1vw, 28px); line-height: 1.35; color: rgba(255,255,255,0.72); font-weight: 500; max-width: 780px; margin: 0 auto; }
-  .cover-names { margin-top: 70px; font-size: 23px; color: rgba(255,255,255,0.9); font-weight: 700; }
+  .cover-positioning { font-size: clamp(30px, 4vw, 54px); line-height: 1.12; color: white; font-weight: 800; max-width: 940px; margin: 0 auto 24px; letter-spacing: -0.02em; }
+  .cover-subtitle { font-size: clamp(18px, 1.7vw, 23px); line-height: 1.35; color: rgba(255,255,255,0.66); font-weight: 500; max-width: 780px; margin: 0 auto; }
+  .cover-names { margin-top: 62px; font-size: 23px; color: rgba(255,255,255,0.9); font-weight: 700; }
   .cover-date { margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.48); font-weight: 600; letter-spacing: 0.4px; }
 
   /* Reusable visual blocks */
@@ -174,27 +175,30 @@
   .pulse-block .name { font-size: 26px; font-weight: 800; letter-spacing: 1.2px; }
   .pulse-block .line { color: rgba(255,255,255,0.78); font-size: 14px; margin-top: 16px; }
 
-  .source-pieces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 30px; filter: drop-shadow(0 12px 28px rgba(20,27,54,0.08)); }
-  .source-piece { position: relative; background: white; min-height: 210px; padding: 28px 34px; border: 1px solid rgba(20,27,54,0.08); display: flex; flex-direction: column; justify-content: space-between; }
-  .source-piece:first-child { border-radius: 14px 0 0 14px; }
-  .source-piece:last-child { border-radius: 0 14px 14px 0; }
-  .source-piece + .source-piece { margin-left: -1px; padding-left: 44px; }
-  .source-piece:not(:last-child)::after { content: ''; position: absolute; top: 50%; right: -23px; width: 46px; height: 46px; border-radius: 50%; background: inherit; border: 1px solid rgba(20,27,54,0.08); border-left: 0; transform: translateY(-50%); z-index: 2; }
-  .source-piece:not(:first-child)::before { content: ''; position: absolute; top: 50%; left: -23px; width: 46px; height: 46px; border-radius: 50%; background: #FAFAFA; border: 1px solid rgba(20,27,54,0.08); transform: translateY(-50%); z-index: 3; }
-  .source-piece.pulso { border-top: 5px solid #141B36; }
-  .source-piece.impulso { border-top: 5px solid #FF4D2E; background: linear-gradient(180deg, rgba(255,77,46,0.05), white 42%); }
-  .source-piece.notariado { border-top: 5px solid #2563EB; background: linear-gradient(180deg, rgba(37,99,235,0.05), white 42%); }
-  .source-piece .label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; color: #5B6485; }
-  .source-piece .name { font-size: 27px; font-weight: 800; color: #141B36; margin: 12px 0 10px; }
-  .source-piece .desc { font-size: 15px; color: #5B6485; line-height: 1.5; }
-  .source-piece strong { color: #141B36; }
+  .hero-sources { display: flex; justify-content: center; align-items: stretch; gap: 14px; flex-wrap: wrap; max-width: 980px; margin: 30px auto 0; }
+  .source-pill {
+    background: #141B36; border: 1px solid rgba(255,255,255,0.12); border-radius: 14px;
+    padding: 18px 20px; text-align: left; flex: 1; min-width: 230px; min-height: 172px;
+    display: flex; flex-direction: column; box-shadow: 0 12px 28px rgba(20,27,54,0.12);
+  }
+  .source-pill .sp-icon { display: flex; align-items: center; justify-content: flex-start; margin-bottom: 8px; }
+  .source-pill .sp-icon svg { width: 26px; height: 26px; }
+  .source-pill .sp-name-title { font-size: 17px; font-weight: 800; line-height: 1.3; }
+  .source-pill .sp-subtitle { font-size: 12px; font-weight: 800; color: rgba(255,255,255,0.58); margin-top: 2px; line-height: 1.35; text-transform: uppercase; letter-spacing: 1.2px; }
+  .source-pill .sp-desc { font-size: 14px; color: rgba(255,255,255,0.72); margin-top: 12px; line-height: 1.45; }
 
-  .notary-gap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; align-items: stretch; margin-top: 28px; }
-  .notary-gap .explain, .notary-gap .highlight { background: white; border: 1px solid rgba(20,27,54,0.08); border-radius: 14px; padding: 24px 26px; }
-  .notary-gap .explain { font-size: 18px; line-height: 1.55; color: #141B36; }
-  .notary-gap .highlight { background: #141B36; color: white; border-color: #141B36; display: flex; flex-direction: column; justify-content: center; }
-  .notary-gap .highlight .num { color: #FF4D2E; font-size: 54px; line-height: 1; font-weight: 800; margin-bottom: 14px; }
-  .notary-gap .highlight p { color: rgba(255,255,255,0.78); font-size: 18px; line-height: 1.45; margin: 0; }
+  .price-gap { margin-top: 28px; }
+  .price-gap h2 { font-size: 31px; line-height: 1.15; margin-bottom: 16px; color: #141B36; }
+  .gap-comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .gap-example { background: white; border: 1px solid rgba(20,27,54,0.08); border-radius: 14px; padding: 24px 26px; }
+  .gap-example .zone { font-size: 12px; color: #5B6485; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; margin-bottom: 16px; }
+  .gap-example .values { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .gap-example .metric { border-left: 4px solid rgba(20,27,54,0.12); padding-left: 14px; }
+  .gap-example .metric.ask { border-left-color: #F97316; }
+  .gap-example .metric.signed { border-left-color: #2563EB; }
+  .gap-example .label { font-size: 11px; color: #5B6485; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 800; margin-bottom: 5px; }
+  .gap-example .value { font-size: 29px; line-height: 1; font-weight: 800; color: #141B36; }
+  .gap-example .delta { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(20,27,54,0.08); font-size: 22px; line-height: 1.2; font-weight: 800; color: #DA1839; }
   .after-card-note { margin-top: 16px; font-size: 16px; line-height: 1.55; color: #5B6485; max-width: 920px; }
 
   .link-card { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; background: white; color: #141B36; text-decoration: none; border: 1px solid rgba(255,77,46,0.26); border-left: 5px solid #FF4D2E; border-radius: 14px; padding: 20px 22px; margin-top: 26px; box-shadow: 0 8px 28px rgba(20,27,54,0.08); transition: transform 0.2s, box-shadow 0.2s; }
@@ -267,7 +271,8 @@
     .slide { padding: 90px 24px 60px; }
     h1 { font-size: 36px; }
     h2 { font-size: 26px; }
-    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias, .source-pieces, .notary-gap { grid-template-columns: 1fr; }
+    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias, .source-pieces, .notary-gap, .gap-comparison { grid-template-columns: 1fr; }
+    .source-pill { min-width: 100%; }
     .source-piece, .source-piece:first-child, .source-piece:last-child { border-radius: 14px; }
     .source-piece + .source-piece { margin-left: 0; margin-top: 12px; padding-left: 34px; }
     .source-piece::before, .source-piece::after { display: none; }
@@ -279,6 +284,7 @@
     .cover-hero .logo-img { margin-bottom: 46px; }
     .cover-tagline { font-size: 10px; letter-spacing: 3px; }
     .cover-title { font-size: clamp(48px, 16vw, 72px); }
+    .cover-positioning { font-size: clamp(28px, 8.8vw, 40px); }
     .cover-subtitle { font-size: 18px; }
     .cover-names { margin-top: 48px; font-size: 20px; }
     .question { font-size: 22px; }
@@ -342,7 +348,8 @@
       <img src="in/impulso-logo.png" alt="IM·PULSO" class="logo-img">
       <div class="cover-tagline">Inteligencia de mercado</div>
       <h1 class="cover-title">El mercado ya ha contestado</h1>
-      <p class="cover-subtitle">Una propuesta de inteligencia de mercado para el Programa IN</p>
+      <p class="cover-positioning">No llega de fuera.<br>Nació dentro de la comunidad IN.</p>
+      <p class="cover-subtitle">Una propuesta para el Programa IN</p>
       <div class="cover-names">José y Vicente</div>
       <div class="cover-date">30 de julio de 2026</div>
     </div>
@@ -420,36 +427,63 @@
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Tres fuentes, un informe.</h1>
-    <div class="source-pieces">
-      <div class="source-piece pulso">
-        <div>
-          <div class="label">Fuente 1</div>
-          <div class="name">PULSO</div>
-          <div class="desc">El latido de la zona: qué se publica, qué se retira y a qué velocidad. <strong>Absorción, no oferta.</strong></div>
+    <div class="hero-sources">
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#F97316" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
+        <div class="sp-name-title" style="color:#F97316;">PULSO</div>
+        <div class="sp-desc">El latido de la zona. Qué se publica, qué se retira y a qué velocidad.</div>
       </div>
-      <div class="source-piece impulso">
-        <div>
-          <div class="label">Fuente 2</div>
-          <div class="name">IMPULSO</div>
-          <div class="desc">El activo concreto: testigos reales del barrio y tres escenarios de precio.</div>
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#16A34A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
+        <div class="sp-name-title" style="color:#16A34A;">IMPULSO</div>
+        <div class="sp-desc">El activo concreto. Testigos reales del barrio y tres escenarios de precio.</div>
       </div>
-      <div class="source-piece notariado">
-        <div>
-          <div class="label">Fuente 3</div>
-          <div class="name">NOTARIADO</div>
-          <div class="desc">Lo que de verdad se firma ante notario.</div>
+      <div class="source-pill">
+        <div class="sp-icon">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
         </div>
+        <div class="sp-name-title" style="color:#2563EB;">NOTARIADO</div>
+        <div class="sp-desc">Lo que de verdad se firma ante notario.</div>
       </div>
     </div>
-    <div class="notary-gap">
-      <div class="explain">
-        En el código postal del activo, en el portal se pide una media de <strong>1.776 euros por metro</strong>. Ante notario se firma a <strong>1.491,52</strong>. Un <strong>16 por ciento menos</strong>.
+    <div class="price-gap">
+      <h2>Lo que se pide nunca es lo que se firma.</h2>
+      <div class="gap-comparison">
+        <div class="gap-example">
+          <div class="zone">Murcia, distrito Sur</div>
+          <div class="values">
+            <div class="metric ask">
+              <div class="label">Se piden</div>
+              <div class="value">1.776</div>
+            </div>
+            <div class="metric signed">
+              <div class="label">Se firman</div>
+              <div class="value">1.491,52</div>
+            </div>
+          </div>
+          <div class="delta">Un 16 por ciento menos.</div>
+        </div>
+        <div class="gap-example">
+          <div class="zone">Granada, Ronda-Arabial</div>
+          <div class="values">
+            <div class="metric ask">
+              <div class="label">Se piden</div>
+              <div class="value">3.009</div>
+            </div>
+            <div class="metric signed">
+              <div class="label">Se firman</div>
+              <div class="value">1.991,53</div>
+            </div>
+          </div>
+          <div class="delta">Un 34 por ciento menos.</div>
+        </div>
       </div>
-      <div class="highlight">
-        <div class="num">16%</div>
-        <p>Esa diferencia entre lo que se pide y lo que se firma es el margen real de negociación. Es el dato que no aparece en ningún portal.</p>
+      <div class="mantra-block">
+        La brecha existe siempre. Cuánto de grande, depende de la zona. Por eso hay que medirla zona a zona.
       </div>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
@@ -457,7 +491,7 @@
       <div><div class="title">Informe PULSO completo - distrito Sur, Murcia</div><div class="desc">Zona real, datos verificables</div></div>
       <div class="url">munoz-murcia-sur.html</div>
     </a>
-    <p class="after-card-note">Vicente ya tiene el suyo, de Granada, y dirá lo que tenga que decir. Para ti, José, hemos hecho el de una zona que probablemente conozcas, para que puedas comprobar tú mismo si los datos cuadran con lo que sabes de ella.</p>
+    <p class="after-card-note">Vicente ya tiene el de Granada. Este lo hemos hecho de una zona que probablemente conozcáis, para que el juicio sobre si los datos cuadran sea vuestro y no nuestro.</p>
   </div>
 </section>
 
@@ -467,7 +501,7 @@
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Lo que ya funciona</div>
     <h1>La demanda de esto ya existe.</h1>
-    <p class="sub">No hablamos de una demanda genérica de invertir. Hablamos de demanda de lo que hace IM·PULSO: saber si una zona se mueve, si un precio tiene sentido y dónde están las oportunidades.</p>
+    <p class="sub">No hablamos de demanda de invertir. Hablamos de demanda de saber: si una zona se mueve, si un precio tiene sentido, dónde están las oportunidades.</p>
     <div class="stats">
       <div class="stat big"><div class="num">115</div><div class="label">inversores</div></div>
       <div class="stat big"><div class="num">85 %</div><div class="label">quiere más operaciones en 2026</div></div>
@@ -475,11 +509,7 @@
       <div class="stat big"><div class="num">150.000€</div><div class="label">de mediana</div></div>
     </div>
     <div class="via-alt">
-      <div class="badge-row">
-        <span class="badge">Fuera</span>
-        <span class="head-text">La necesidad ya se está resolviendo fuera del ecosistema IN</span>
-      </div>
-      <p>Y esa demanda ya se está atendiendo fuera: han ido apareciendo grupos y servicios que la cubren -<strong>Lystos</strong> entre 79 y 199 euros al mes, <strong>Invisor</strong> entre 42 y 117, <strong>Casafari</strong> en formato empresa-. Se está resolviendo fuera del ecosistema IN.</p>
+      <p>Y se está yendo fuera: <strong>Lystos</strong>, <strong>Invisor</strong>, <strong>Casafari</strong>.</p>
     </div>
   </div>
 </section>
@@ -513,7 +543,7 @@
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
     <h1>Y lo probamos.</h1>
-    <p class="sub">Con esta idea nos pusimos en contacto con un proveedor de método total de valoración de vivienda y le propusimos un testeo: hacer un PULSO de su zona y un IMPULSO de su activo, y ver si su método y nuestro análisis se daban la mano. Esto es lo que salió.</p>
+    <p class="sub">Con esta idea nos pusimos en contacto con un proveedor de MTVV que da servicio en la comunidad -Salva- y le propusimos un testeo: hacer un PULSO de su zona y un IMPULSO de su activo, y ver si su método y nuestro análisis se daban la mano. Esto es lo que salió.</p>
     <div class="mantra-block">
       <div class="label">Lo que ocurrió</div>
       PULSO, IMPULSO y método total leyeron la misma operación desde ángulos distintos. La pregunta era sencilla: si los datos eran buenos, tenían que encontrarse.

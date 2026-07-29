@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>IM·PULSO — Presentación José Muñoz</title>
+<title>IM·PULSO — Presentación José y Vicente</title>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -42,24 +42,24 @@
 
   /* Slide cover (slide 1) */
   .slide-cover { background: radial-gradient(ellipse at top right, #243B5A 0%, #141B36 60%); color: white; overflow: hidden; }
-  .slide-cover::before { content: ''; position: absolute; top: 30%; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,77,46,0.15) 0%, transparent 70%); border-radius: 50%; pointer-events: none; }
+  .slide-cover::before { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.035), transparent 42%); pointer-events: none; }
   .slide-cover h1, .slide-cover h2 { color: white; }
   .slide-cover .sub { color: rgba(255,255,255,0.72); }
   .slide-cover .speaker { background: rgba(255,77,46,0.2); color: #FFB199; }
-  .cover-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; position: relative; z-index: 1; }
-  .cover-left .logo-img { height: 72px; width: auto; display: block; margin-bottom: 36px; }
-  .cover-right { display: flex; flex-direction: column; gap: 16px; }
-  .cover-right .info-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 22px 26px; }
-  .cover-right .info-card .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FFB199; font-weight: 800; margin-bottom: 8px; }
-  .cover-right .info-card .text { color: white; font-size: 16px; line-height: 1.55; font-weight: 500; }
+  .cover-hero { min-height: calc(100vh - 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; }
+  .cover-hero .logo-img { width: min(440px, 72vw); height: auto; display: block; margin-bottom: 48px; }
+  .cover-tagline { color: #FF4D2E; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 22px; }
+  .cover-title { font-size: clamp(54px, 8vw, 108px); font-weight: 800; line-height: 0.98; letter-spacing: -0.02em; color: white; margin-bottom: 24px; }
+  .cover-context { font-size: 19px; color: rgba(255,255,255,0.7); font-weight: 500; }
 
   /* Reusable visual blocks */
   .centered { text-align: center; }
   .centered .sub { margin-left: auto; margin-right: auto; }
   .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; font-weight: 800; margin-bottom: 12px; }
+  .opening-title { max-width: 980px; margin: 0 auto 34px; }
   .questions { display: grid; gap: 16px; max-width: 920px; margin: 20px auto 0; }
-  .question { font-size: 42px; font-weight: 800; line-height: 1.1; color: #141B36; padding: 18px 0; border-bottom: 1px solid rgba(20,27,54,0.08); }
-  .question:nth-child(2) { color: #FF4D2E; }
+  .question { font-size: 28px; font-weight: 800; line-height: 1.15; color: #141B36; padding: 18px 0; border-bottom: 1px solid rgba(20,27,54,0.08); }
+  .question.highlight { margin-top: 8px; padding: 28px 30px; border: 2px solid rgba(255,77,46,0.28); border-left: 8px solid #FF4D2E; border-radius: 14px; background: rgba(255,77,46,0.06); color: #FF4D2E; font-size: 38px; box-shadow: 0 18px 40px rgba(20,27,54,0.08); }
   .footnote { margin-top: 26px; color: #5B6485; font-size: 15px; font-style: italic; }
 
   .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
@@ -83,6 +83,17 @@
   .friction-card .level { font-size: 12px; color: #FF4D2E; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 800; }
   .friction-card .quote { font-size: 19px; line-height: 1.35; color: #141B36; font-weight: 700; }
   .friction-card .answer { align-self: end; font-size: 15px; color: #5B6485; border-top: 1px solid rgba(20,27,54,0.08); padding-top: 14px; }
+
+  .brakes-quote { max-width: 780px; margin: 16px 0 44px; padding-left: 28px; border-left: 6px solid #FF4D2E; font-size: 34px; line-height: 1.22; font-weight: 800; letter-spacing: -0.02em; color: #141B36; }
+  .survey-kicker { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #5B6485; font-weight: 800; margin-bottom: 14px; }
+  .brakes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 34px; }
+  .brake-item { border-top: 1px solid rgba(20,27,54,0.12); padding-top: 18px; }
+  .brake-item .number { display: block; font-size: 92px; line-height: 0.9; font-weight: 800; letter-spacing: -0.06em; color: #FF4D2E; margin-bottom: 16px; }
+  .brake-item .label { font-size: 20px; line-height: 1.2; font-weight: 800; color: #141B36; max-width: 230px; }
+  .survey-quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 10px; }
+  .survey-quotes blockquote { background: white; border: 1px solid rgba(20,27,54,0.08); border-left: 4px solid #141B36; border-radius: 0 14px 14px 0; padding: 20px 22px; font-size: 18px; line-height: 1.35; font-style: italic; font-weight: 700; color: #141B36; min-height: 132px; display: flex; flex-direction: column; justify-content: space-between; }
+  .survey-quotes cite { display: block; margin-top: 18px; font-size: 11px; line-height: 1; text-transform: uppercase; letter-spacing: 1.4px; color: #5B6485; font-style: normal; font-weight: 800; }
+  .brakes-close { margin-top: 36px; font-size: 25px; line-height: 1.25; font-weight: 800; color: #141B36; }
 
   .pulse-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
   .pulse-block { color: white; background: #141B36; border-radius: 14px; padding: 30px; min-height: 165px; display: flex; flex-direction: column; justify-content: space-between; }
@@ -161,10 +172,18 @@
     h1 { font-size: 36px; }
     h2 { font-size: 26px; }
     .stats, .triad, .pulse-row, .conv-grid, .link-pair { grid-template-columns: 1fr; }
-    .cover-grid, .bbdd-flow { grid-template-columns: 1fr; }
+    .bbdd-flow { grid-template-columns: 1fr; }
     .bbdd-flow { gap: 16px; }
-    .question { font-size: 30px; }
+    .cover-hero { min-height: calc(100vh - 150px); }
+    .cover-hero .logo-img { margin-bottom: 36px; }
+    .cover-tagline { font-size: 10px; letter-spacing: 3px; }
+    .cover-context { font-size: 16px; }
+    .question { font-size: 22px; }
+    .question.highlight { font-size: 27px; padding: 22px; }
     .stat.big .num { font-size: 40px; }
+    .brakes-quote { font-size: 25px; margin-bottom: 32px; }
+    .brakes-grid, .survey-quotes { grid-template-columns: 1fr; }
+    .brake-item .number { font-size: 70px; }
     .link-card { grid-template-columns: auto 1fr; }
     .link-card .url { grid-column: 1 / -1; text-align: left; }
     .quote-slide blockquote { font-size: 21px; }
@@ -213,23 +232,11 @@
 <!-- SLIDE 1 -->
 <section id="s1" class="slide slide-cover">
   <div class="slide-inner">
-    <div class="cover-grid">
-      <div class="cover-left">
-        <div class="speaker"><span class="dot"></span> Xavi</div>
-        <img src="in/impulso-logo.png" alt="IM·PULSO" class="logo-img">
-        <h1>José, gracias.</h1>
-        <p class="sub large">No venimos a contarte una película de quince minutos. Venimos a empezar al revés.</p>
-      </div>
-      <div class="cover-right">
-        <div class="info-card">
-          <div class="label">Reunión</div>
-          <div class="text">Jueves 30-jul, 16:30. José Muñoz y Vicente Mayenco.</div>
-        </div>
-        <div class="info-card">
-          <div class="label">Clave</div>
-          <div class="text">Entender qué problema de la comunidad resolvemos antes de hablar de producto.</div>
-        </div>
-      </div>
+    <div class="cover-hero">
+      <img src="in/impulso-logo.png" alt="IM·PULSO" class="logo-img">
+      <div class="cover-tagline">Inteligencia de mercado</div>
+      <h1 class="cover-title">José y Vicente</h1>
+      <div class="cover-context">Programa IN, 30 de julio de 2026</div>
     </div>
   </div>
 </section>
@@ -238,13 +245,15 @@
 <section id="s2" class="slide">
   <div class="slide-num">02 / 15</div>
   <div class="slide-inner centered">
-    <div class="speaker both"><span class="dot"></span> Empezamos por ti</div>
+    <div class="speaker both"><span class="dot"></span> Empezamos por vosotros</div>
+    <h1 class="opening-title">Empezamos como empiezan las buenas cosas: por vosotros.</h1>
     <div class="questions">
-      <div class="question">¿Qué conoces hoy de IM·PULSO?</div>
-      <div class="question">¿Qué crees que es?</div>
-      <div class="question">¿Qué crees que le aportaría a la comunidad?</div>
+      <div class="question">¿Qué conocéis hoy de IM·PULSO?</div>
+      <div class="question">¿Qué creéis que es?</div>
+      <div class="question">¿Qué creéis que le aportaría a la comunidad?</div>
+      <div class="question highlight">¿Qué problemas que tiene hoy la comunidad creéis que puede resolver IM·PULSO?</div>
     </div>
-    <p class="footnote">Tomamos nota. Todo lo que viene después se ancla a lo que nos digas.</p>
+    <p class="footnote">Tomamos nota. Todo lo que viene después se ancla a lo que nos digáis.</p>
   </div>
 </section>
 
@@ -254,31 +263,20 @@
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Rafa</div>
     <h1>Qué es IM·PULSO hoy.</h1>
-    <p class="sub"><strong>Inteligencia de mercado.</strong> Una base de datos propia que se acopla a lo que ya hacéis.</p>
-    <div class="triad">
-      <div class="tri-card orange">
-        <div class="tag">Al que empieza</div>
-        <h3>Leer zona</h3>
-        <p>Qué se mueve, qué se retira y dónde hay pulso real.</p>
-      </div>
-      <div class="tri-card salmon">
-        <div class="tag">Al que está a medias</div>
-        <h3>Contrastar precio</h3>
-        <p>Testigos reales del barrio y escenarios de decisión.</p>
-      </div>
-      <div class="tri-card blue">
-        <div class="tag">Al que va avanzado</div>
-        <h3>Elegir mejor</h3>
-        <p>Radar para comparar oportunidades antes de entrar.</p>
-      </div>
-    </div>
-    <div class="stats">
+    <p style="max-width: 900px; font-size: 43px; line-height: 1.12; letter-spacing: -0.02em; font-weight: 800; color: #141B36; margin-top: 18px;">No medimos lo que se pide. Medimos lo que el mercado se lleva.</p>
+    <p class="sub" style="margin-top: 18px;">Una base de datos propia del mercado real: qué se publica, qué se retira, a qué precio y en cuánto tiempo.</p>
+    <div class="stats" style="margin-top: 38px;">
       <div class="stat big"><div class="num">745</div><div class="label">municipios</div></div>
       <div class="stat big"><div class="num">47</div><div class="label">zonas</div></div>
       <div class="stat big"><div class="num">7</div><div class="label">provincias</div></div>
       <div class="stat big"><div class="num">5</div><div class="label">comunidades</div></div>
     </div>
-    <p class="footnote">Cubrimos bien lo que cubrimos. Abrir toda España pide otra infraestructura. Se escala si tiene sentido y si el programa escala.</p>
+    <a class="link-card" href="https://xaviriera.github.io/im-pulso-bbdd-status/" target="_blank" rel="noopener">
+      <div class="icon">↗</div>
+      <div><div class="title">La base de datos, en vivo</div><div class="desc">El estado real de la cobertura, actualizado</div></div>
+      <div class="url">xaviriera.github.io/im-pulso-bbdd-status/</div>
+    </a>
+    <p class="footnote">Esto es lo que hay hoy. Hasta donde crece depende del sentido que le demos.</p>
   </div>
 </section>
 
@@ -287,26 +285,29 @@
   <div class="slide-num">04 / 15</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Comunidad</div>
-    <h1>En la comunidad surgen dudas. <span class="accent">Y tú, más que nadie, lo sabes.</span></h1>
-    <p class="sub">Un servicio es algo que resuelve un problema.</p>
-    <div class="triad">
-      <div class="friction-card">
-        <div class="level">Empieza</div>
-        <div class="quote">«¿Esta zona es buena? ¿Me meto en un sitio muerto?»</div>
-        <div class="answer">Qué se publica, qué se retira y a qué velocidad. <strong>Absorción, no oferta.</strong></div>
+    <h1>Cuáles son los frenos de la comunidad hoy.</h1>
+    <blockquote class="brakes-quote">Un servicio solo vale lo que vale el problema que resuelve.</blockquote>
+    <div class="survey-kicker">Encuesta Levante-IN, marzo 2026 - 115 respuestas</div>
+    <div class="brakes-grid">
+      <div class="brake-item">
+        <span class="number">57</span>
+        <div class="label">Precios elevados de compra</div>
       </div>
-      <div class="friction-card">
-        <div class="level">A medias</div>
-        <div class="quote">«¿Este precio tiene sentido o me ven la cara?»</div>
-        <div class="answer">Testigos reales del barrio y tres escenarios de precio.</div>
+      <div class="brake-item">
+        <span class="number">47</span>
+        <div class="label">Falta de oportunidades</div>
       </div>
-      <div class="friction-card">
-        <div class="level">Avanzado</div>
-        <div class="quote">«¿Entro aquí o hay algo mejor esperando?»</div>
-        <div class="answer">El radar y el hueco entre lo que se pide y lo que se firma.</div>
+      <div class="brake-item">
+        <span class="number">27</span>
+        <div class="label">Mi mentalidad, yo mismo</div>
       </div>
     </div>
-    <p class="footnote">Hueco reservado para las 4 citas textuales de la encuesta cuando Xavi las elija.</p>
+    <div class="survey-quotes">
+      <blockquote>«Las oportunidades vuelan y no llego a tiempo»<cite>Respuesta literal</cite></blockquote>
+      <blockquote>«El tiempo que he necesitado para dedicarle al estudio de oportunidades»<cite>Respuesta literal</cite></blockquote>
+      <blockquote>«Voy muy despacio»<cite>Respuesta literal</cite></blockquote>
+    </div>
+    <p class="brakes-close">Los tres frenos más votados son los tres que sabemos leer.</p>
   </div>
 </section>
 
@@ -329,7 +330,7 @@
     </div>
     <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
-      <div><div class="title">Informe de Murcia — entregado hoy</div><div class="desc">Datos de una zona que José conoce.</div></div>
+      <div><div class="title">Informe de Murcia — entregado hoy</div><div class="desc">Datos de una zona cercana a vuestro criterio.</div></div>
       <div class="url">xaviriera.github.io/im-pulso-share/munoz-murcia-sur.html</div>
     </a>
   </div>
@@ -513,7 +514,7 @@
         <div class="url">xaviriera.github.io/im-pulso-share/radar-oportunidades-impulso.html</div>
       </a>
     </div>
-    <p class="footnote">«Todo el mundo hace su comprobación. Pero si te levantan la liebre, es más fácil cazarla.»</p>
+    <p class="footnote">«Todo el mundo hace su comprobación. Pero si os levantan la liebre, es más fácil cazarla.»</p>
   </div>
 </section>
 
@@ -525,7 +526,7 @@
     <h1>La propuesta.</h1>
     <div class="proposal-box">
       <div class="headline">No hay que implementar nada. Probémoslo.</div>
-      <p class="sub" style="margin: 0 auto;">Una operación real de tus círculos. Nosotros ponemos la inteligencia de mercado; vosotros juzgáis si suma.</p>
+      <p class="sub" style="margin: 0 auto;">Una operación real de vuestros círculos. Nosotros ponemos la inteligencia de mercado; vosotros juzgáis si suma.</p>
     </div>
     <p class="sub" style="margin: 28px auto 0;"><strong>Sin coste, sin compromiso, sin cambiar nada de lo que ya hacéis.</strong></p>
   </div>
@@ -535,7 +536,7 @@
 <section id="s15" class="slide slide-cierre">
   <div class="slide-inner">
     <div class="speaker" style="background: rgba(255,77,46,0.2); color: #FFB199;"><span class="dot"></span> Xavi</div>
-    <h1>Tu lectura.</h1>
+    <h1>Vuestra lectura.</h1>
     <div class="opciones">
       <div class="opcion">
         <div class="label">Opción 1</div>
@@ -550,8 +551,8 @@
         <div class="text">Por aquí no</div>
       </div>
     </div>
-    <p class="sub" style="margin-top: 36px;">No esperamos una respuesta hoy. Esperamos tu lectura honesta.</p>
-    <div class="footer-cierre">Gracias, José.</div>
+    <p class="sub" style="margin-top: 36px;">No esperamos una respuesta hoy. Esperamos vuestra lectura honesta.</p>
+    <div class="footer-cierre">Gracias, José y Vicente.</div>
   </div>
 </section>
 

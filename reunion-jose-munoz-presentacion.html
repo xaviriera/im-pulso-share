@@ -20,7 +20,7 @@
   .topbar .nav .dot:hover, .topbar .nav .dot.active { background: #FF4D2E; transform: scale(1.4); }
 
   /* Slide */
-  .slide { min-height: 100vh; scroll-snap-align: start; padding: 100px 60px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; border-bottom: 1px solid rgba(20,27,54,0.04); }
+  .slide { min-height: calc(100vh - 1px); scroll-snap-align: start; padding: 100px 60px 80px; display: flex; flex-direction: column; justify-content: center; position: relative; border-bottom: 1px solid rgba(20,27,54,0.04); }
   .slide-inner { max-width: 1080px; margin: 0 auto; width: 100%; }
 
   /* Speaker */
@@ -46,7 +46,7 @@
   .slide-cover h1, .slide-cover h2 { color: white; }
   .slide-cover .sub { color: rgba(255,255,255,0.72); }
   .slide-cover .speaker { background: rgba(255,77,46,0.2); color: #FFB199; }
-  .cover-hero { min-height: calc(100vh - 180px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; padding: 34px 0 24px; }
+  .cover-hero { min-height: calc(100vh - 181px); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; padding: 34px 0 24px; }
   .cover-hero .logo-img { width: min(260px, 48vw); height: auto; display: block; margin-bottom: 38px; opacity: 0.96; }
   .cover-tagline { color: #FFB199; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 16px; }
   .cover-thanks { font-size: clamp(19px, 1.7vw, 25px); line-height: 1.35; color: rgba(255,255,255,0.86); font-weight: 700; margin-bottom: 16px; }
@@ -311,24 +311,25 @@
   .mantra-block .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; margin-bottom: 12px; font-weight: 800; }
   .mantra-block strong { color: #FF4D2E; font-weight: 800; }
 
-  #s15 { min-height: calc(100vh - 1px); padding-top: 70px; padding-bottom: 48px; }
+  #s15 { min-height: calc(100vh - 1px); padding-top: 52px; padding-bottom: 34px; }
   #s15 .slide-inner { max-width: 1080px; }
-  #s15 h1 { font-size: 46px; }
-  #s15 .sub.large { font-size: 21px; margin-top: 16px; }
-  #s15 .radar-layout { display: grid; grid-template-columns: 330px 1fr; gap: 34px; align-items: center; margin-top: 22px; }
+  #s15 h1 { font-size: 44px; }
+  #s15 .sub.large { font-size: 20px; margin-top: 12px; }
+  #s15 .radar-layout { display: grid; grid-template-columns: 315px 1fr; gap: 26px; align-items: center; margin-top: 14px; }
   #s15 .radar-visual { display: flex; justify-content: center; align-items: center; }
-  #s15 .radar-svg { width: 286px; height: 286px; display: block; overflow: visible; }
+  #s15 .radar-svg { width: 270px; height: 270px; display: block; overflow: visible; }
   #s15 .radar-grid { fill: none; stroke: rgba(20,27,54,0.14); stroke-width: 1.4; }
   #s15 .radar-axis { stroke: rgba(20,27,54,0.14); stroke-width: 1.4; }
   #s15 .radar-sweep { transform-box: view-box; transform-origin: 150px 150px; animation: radarSweep 7s linear infinite; }
   #s15 .radar-blip { fill: #FF4D2E; }
   #s15 .radar-halo { fill: #FF4D2E; opacity: 0.16; }
-  #s15 .mantra-block { margin-top: 0; padding: 24px 28px; font-size: 20px; }
-  #s15 .radar-uses { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 20px 24px; margin-top: 16px; }
+  #s15 .mantra-block { margin-top: 0; padding: 22px 26px; font-size: 20px; }
+  #s15 .radar-uses { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 18px 22px; margin-top: 12px; }
   #s15 .radar-uses .badge { display: inline-flex; background: #FF4D2E; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
   #s15 .radar-uses ul { list-style: none; display: grid; gap: 8px; padding: 0; margin: 0; }
   #s15 .radar-uses li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.38; color: #141B36; }
   #s15 .radar-uses li::before { content: ''; position: absolute; left: 0; top: 0.66em; width: 7px; height: 7px; border-radius: 50%; background: #FF4D2E; }
+  #s15 .link-card { margin-top: 16px; padding: 16px 20px; }
   @keyframes radarSweep {
     to { transform: rotate(360deg); }
   }
@@ -423,11 +424,11 @@
   .slide-cierre { min-height: calc(100vh - 1px); background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
   .slide-cierre .slide-num { color: rgba(255,255,255,0.36); }
   .slide-cierre .slide-inner { max-width: 1040px; }
-  .slide-cierre .cierre-gracias { color: white; font-size: 36px; line-height: 1.12; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .slide-cierre .cierre-gracias { color: white; font-size: 34px; line-height: 1.12; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 12px; }
   .slide-cierre h1 { color: white; font-size: 44px; margin-bottom: 12px; }
   .slide-cierre h1 span, .slide-cierre h1 strong { color: #FF4D2E; }
   .slide-cierre .sub { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.45; max-width: 860px; margin: 0 auto; }
-  .cierre-escalera { display: flex; align-items: flex-end; gap: 18px; min-height: 285px; margin: 34px auto 26px; max-width: 930px; }
+  .cierre-escalera { display: flex; align-items: flex-end; gap: 18px; min-height: 285px; margin: 26px auto 18px; max-width: 930px; }
   .cierre-peldano { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; text-align: left; border: 1px solid rgba(255,255,255,0.14); border-radius: 14px 14px 4px 4px; padding: 22px 20px; box-shadow: 0 24px 55px rgba(0,0,0,0.22); }
   .cierre-peldano.p1 { height: 150px; background: linear-gradient(180deg, rgba(255,177,153,0.34), rgba(255,77,46,0.22)); }
   .cierre-peldano.p2 { height: 215px; background: linear-gradient(180deg, rgba(255,131,89,0.58), rgba(255,77,46,0.36)); }
@@ -435,11 +436,11 @@
   .cierre-peldano .step-num { color: rgba(255,255,255,0.58); font-size: 12px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 8px; }
   .cierre-peldano h2 { color: white; font-size: 23px; line-height: 1.08; margin: 0 0 10px; letter-spacing: 0; }
   .cierre-peldano p { color: rgba(255,255,255,0.88); font-size: 15px; line-height: 1.35; margin: 0; font-weight: 650; }
-  .slide-cierre .cierre-certeza { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.45; max-width: 920px; margin: 0 auto 22px; }
-  .slide-cierre .cierre-final { color: white; font-size: 46px; line-height: 1.08; font-weight: 900; letter-spacing: -0.02em; margin: 0 auto; max-width: 960px; }
+  .slide-cierre .cierre-certeza { color: rgba(255,255,255,0.72); font-size: 15px; line-height: 1.42; max-width: 880px; margin: 18px auto 0; padding: 12px 0 12px 18px; border-left: 4px solid #FF4D2E; text-align: left; text-wrap: pretty; }
+  .slide-cierre .cierre-final { color: white; font-size: 42px; line-height: 1.08; font-weight: 900; letter-spacing: -0.02em; margin: 0 auto; max-width: 960px; }
 
   @media (min-width: 901px) {
-    .cierre-escalera { position: relative; min-height: 340px; margin: 26px auto 20px; }
+    .cierre-escalera { position: relative; min-height: 340px; margin: 22px auto 16px; }
     .cierre-escalera::before { content: ''; position: absolute; left: 12%; right: 12%; bottom: 72px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0.22), rgba(255,77,46,0.82)); transform: rotate(-16deg); transform-origin: left center; pointer-events: none; z-index: 2; }
     .cierre-escalera::after { content: ''; position: absolute; right: 10.5%; top: 37px; width: 12px; height: 12px; border-top: 2px solid rgba(255,77,46,0.86); border-right: 2px solid rgba(255,77,46,0.86); transform: rotate(27deg); pointer-events: none; z-index: 2; }
     .cierre-peldano { position: relative; overflow: hidden; }
@@ -1130,9 +1131,9 @@
 <section id="s16" class="slide slide-cierre">
   <div class="slide-num">16 / 16</div>
   <div class="slide-inner">
-    <div class="cierre-gracias">Gracias por el interés y por el tiempo invertido.</div>
+    <div class="cierre-gracias">Gracias José y Vicente, por el interés y por el tiempo invertido.</div>
     <h1>Esto es IM·PULSO <strong>hoy.</strong></h1>
-    <p class="sub">Hasta aquí hemos llegado Rafa y yo. Creemos que hay argumentos suficientes para que sea un buen candidato a cubrir esa necesidad.</p>
+    <p class="sub">Hasta aquí hemos llegado <strong>Rafa y Xavi</strong>. Creemos que hay argumentos suficientes para que sea un buen candidato a cubrir esa <strong>necesidad real</strong>.</p>
 
     <div class="cierre-escalera" aria-label="Progresión de IM·PULSO">
       <div class="cierre-peldano p1">
@@ -1143,17 +1144,17 @@
       <div class="cierre-peldano p2">
         <div class="step-num">02</div>
         <h2>EL SIGUIENTE ESCALÓN</h2>
-        <p>La comunidad le da forma.</p>
+        <p>Apoyo e integración de la Comunidad IN.</p>
       </div>
       <div class="cierre-peldano p3">
         <div class="step-num">03</div>
         <h2>MAÑANA</h2>
-        <p>Impulsado por IA, que mejora cada día.</p>
+        <p>Un servicio moderno y potente, impulsado por IA: <strong>cuanto más se usa, mejor se vuelve.</strong></p>
       </div>
     </div>
 
-    <p class="cierre-certeza">Si necesitáis certeza, nos integramos en operaciones que ya estéis llevando a cabo, con las pruebas y el testeo que haga falta.</p>
-    <p class="cierre-final">No es lo que es hoy. Es lo que será mañana.</p>
+    <p class="cierre-final">No es lo que es hoy. Es lo que podría ser mañana.</p>
+    <p class="cierre-certeza">Si necesitáis más certeza, nos podemos integrar en operaciones que ya estéis llevando a cabo con vuestro equipo de confianza, para hacer las pruebas y los testeos necesarios y validar el servicio y su potencial de forma directa.</p>
   </div>
 </section>
 

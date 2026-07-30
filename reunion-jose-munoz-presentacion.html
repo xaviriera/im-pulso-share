@@ -214,6 +214,7 @@
   .source-answer .metric { border-left: 4px solid rgba(20,27,54,0.12); padding-left: 12px; }
   .source-answer .value { font-size: 28px; line-height: 1; font-weight: 800; color: #141B36; }
   .source-answer .label { font-size: 12px; color: #5B6485; margin-top: 4px; line-height: 1.35; }
+  #s5 { min-height: calc(100vh - 1px); padding-top: 96px; padding-bottom: 74px; }
   #s5 .speaker { margin-bottom: 18px; }
   #s5 h1 { font-size: 48px; margin-bottom: 14px; }
   #s5 .source-answers { margin-top: 18px; }
@@ -223,8 +224,15 @@
   #s5 .source-answer .metrics { grid-template-columns: repeat(2, 1fr); gap: 8px; }
   #s5 .source-answer .value { font-size: 23px; }
   #s5 .source-answer .label { font-size: 11px; }
-  #s5 .mantra-block { margin-top: 20px; padding: 22px 28px; font-size: 20px; line-height: 1.35; }
-  #s5 .fast-highlight { text-decoration: underline; text-decoration-color: #FF4D2E; text-decoration-thickness: 0.18em; text-underline-offset: 0.16em; }
+  #s5 .cross-block { margin-top: 20px; padding: 24px 28px; border-radius: 14px; background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; box-shadow: 0 18px 42px rgba(20,27,54,0.2); }
+  #s5 .cross-block .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; margin-bottom: 14px; font-weight: 800; }
+  #s5 .cross-keys { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: stretch; }
+  #s5 .cross-key { color: white; font-size: 21px; line-height: 1.16; font-weight: 800; padding: 0 18px; text-align: center; }
+  #s5 .cross-key:first-child { padding-left: 0; }
+  #s5 .cross-key:last-child { padding-right: 0; }
+  #s5 .cross-key + .cross-key { border-left: 1px solid rgba(255,255,255,0.18); }
+  #s5 .cross-remate { margin-top: 16px; font-size: 16px; line-height: 1.4; color: rgba(255,255,255,0.72); }
+  #s5 .fast-highlight { color: #FF4D2E; font-weight: 800; }
   #s5 .link-card { margin-top: 18px; padding: 14px 18px; }
   #s5 .after-card-note { margin-top: 12px; font-size: 15px; line-height: 1.45; }
 
@@ -303,6 +311,7 @@
   .mantra-block .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; margin-bottom: 12px; font-weight: 800; }
   .mantra-block strong { color: #FF4D2E; font-weight: 800; }
 
+  #s15 { min-height: calc(100vh - 1px); padding-top: 70px; padding-bottom: 48px; }
   #s15 .slide-inner { max-width: 1080px; }
   #s15 h1 { font-size: 46px; }
   #s15 .sub.large { font-size: 21px; margin-top: 16px; }
@@ -325,35 +334,134 @@
   }
 
   .objection { background: white; border-radius: 16px; border: 1px solid rgba(20,27,54,0.08); padding: 32px; margin-top: 24px; font-size: 25px; line-height: 1.35; font-weight: 700; color: #141B36; }
+
+  /* Ronda 10 · Cambio C: compactación desktop 1440x900 */
+  #s4 { padding-top: 80px; padding-bottom: 50px; }
+  #s4 .speaker { margin-bottom: 16px; }
+  #s4 h1 { font-size: 48px; margin-bottom: 14px; }
+  #s4 .definition-line { font-size: 42px; margin-top: 10px; }
+  #s4 .sub { font-size: 18px; line-height: 1.42; margin-top: 12px !important; }
+  #s4 .stats { margin-top: 24px !important; }
+  #s4 .stat.big { min-height: 118px; padding: 18px 20px; }
+  #s4 .stat.big .num { font-size: 46px; }
+  #s4 .link-card { margin-top: 20px; padding: 14px 18px; }
+  #s4 .footnote { margin-top: 18px; padding: 14px 18px; font-size: 15px; line-height: 1.42; }
+
+  #s9 { padding-top: 72px; padding-bottom: 44px; }
+  #s9 .speaker { margin-bottom: 16px; }
+  #s9 h1 { font-size: 46px; margin-bottom: 14px; }
+  #s9 .sub { font-size: 18px; line-height: 1.42; max-width: 900px; }
+  #s9 .salva-compact-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 16px; align-items: stretch; margin-top: 20px; }
+  #s9 .salva-compact-grid .via-alt { margin-top: 0; padding: 19px 22px; }
+  #s9 .salva-moment { margin-top: 0 !important; padding: 20px 22px !important; height: auto; }
+  #s9 .salva-moment p:first-child { font-size: 17px !important; line-height: 1.36 !important; }
+  #s9 .salva-moment p + p { font-size: 13px !important; margin-top: 9px !important; }
+  #s9 .salva-distance { margin-top: 12px; padding: 16px 18px; border-radius: 12px; background: rgba(20,27,54,0.04); font-size: 17px; line-height: 1.34; }
+  #s9 .via-alt .badge-row { margin-bottom: 8px; }
+  #s9 .via-alt p { font-size: 15px; line-height: 1.42; }
+  #s9 .link-pair { margin-top: 18px; gap: 12px; }
+  #s9 .link-card { padding: 13px 15px; gap: 12px; margin-top: 0; }
+  #s9 .link-card .icon { width: 40px; height: 40px; font-size: 20px; }
+  #s9 .link-card .title { font-size: 17px; }
+  #s9 .link-card .desc { font-size: 13px; }
+  #s9 .link-card .url { font-size: 11px; }
+  #s9 .bridge-question { margin-top: 18px; padding: 20px 24px; border-radius: 14px; }
+  #s9 .bridge-question h2 { font-size: 24px; line-height: 1.18; }
+  #s9 .bridge-question .small { margin-top: 8px; font-size: 13px; }
+
+  #s10 { padding-top: 72px; padding-bottom: 44px; }
+  #s10 .speaker { margin-bottom: 16px; }
+  #s10 h1 { font-size: 44px; margin-bottom: 14px; }
+  #s10 .sub { font-size: 17px; line-height: 1.38; max-width: 920px; }
+  #s10 .vias { margin-top: 22px; gap: 14px; }
+  #s10 .via { padding: 21px 22px; border-radius: 14px; }
+  #s10 .via h3 { font-size: 20px; margin-bottom: 5px; }
+  #s10 .via .perfil { font-size: 13px; margin-bottom: 10px; }
+  #s10 .via li { font-size: 13px; line-height: 1.36; padding-top: 4px; padding-bottom: 4px; }
+  #s10 .via li::before { top: 11px; }
+  #s10 .s10-support-row { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 14px; margin-top: 16px; align-items: stretch; }
+  #s10 .s10-support-row .via-callout { margin-top: 0; padding: 15px 17px; font-size: 13px; line-height: 1.42; }
+  #s10 .s10-support-row .mantra-block { margin-top: 0; padding: 15px 18px; font-size: 17px; line-height: 1.34; }
+  #s10 .s10-support-row .mantra-block .label { margin-bottom: 7px; }
+  #s10 .final-line { margin-top: 12px; font-size: 14px; line-height: 1.38; }
+
+  #s11 { padding-top: 72px; padding-bottom: 44px; }
+  #s11 .speaker { margin-bottom: 16px; }
+  #s11 h1 { font-size: 44px; margin-bottom: 14px; }
+  #s11 .sub { font-size: 17px; line-height: 1.38; }
+  #s11 .bbdd-flow { margin-top: 22px; gap: 16px; }
+  #s11 .bbdd-col { padding: 18px 20px; }
+  #s11 .bbdd-col .head { margin-bottom: 8px; }
+  #s11 .bbdd-col h4 { margin-bottom: 8px; }
+  #s11 .bbdd-col li { font-size: 12.5px; line-height: 1.34; padding-top: 4px; padding-bottom: 4px; }
+  #s11 .bbdd-center { min-width: 170px; padding: 20px 18px; }
+  #s11 .bbdd-center .label { margin-bottom: 7px; }
+  #s11 .bbdd-center .name { font-size: 19px; }
+  #s11 .bbdd-center .what { font-size: 11px; line-height: 1.38; margin-top: 7px; }
+  #s11 .mantra-block { margin-top: 22px !important; padding: 20px 24px; font-size: 18px !important; line-height: 1.36; }
+  #s11 .mantra-block .label { margin-bottom: 8px; }
+  #s11 .mantra-block + .sub { margin-top: 16px !important; font-size: 16px; line-height: 1.36; }
+
+  #s14 { padding-top: 72px; padding-bottom: 44px; }
+  #s14 .speaker { margin-bottom: 16px; }
+  #s14 h1 { font-size: 44px; margin-bottom: 14px; }
+  #s14 .sub.large { font-size: 18px; line-height: 1.38; max-width: 980px; }
+  #s14 .s14-block-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; align-items: stretch; }
+  #s14 .s14-block-grid .mantra-block, #s14 .s14-block-grid .via-alt { margin-top: 0; padding: 19px 22px; }
+  #s14 .s14-block-grid .mantra-block { font-size: 18px; line-height: 1.38; }
+  #s14 .s14-block-grid .mantra-block .label { margin-bottom: 8px; }
+  #s14 .s14-block-grid .via-alt p { font-size: 15px; line-height: 1.38; }
+  #s14 .s14-block-grid .via-alt .badge-row { margin-bottom: 8px; }
+  #s14 .link-pair { margin-top: 16px; gap: 12px; }
+  #s14 .link-card { margin-top: 0; padding: 13px 15px; gap: 12px; }
+  #s14 .link-card .icon { width: 40px; height: 40px; font-size: 20px; }
+  #s14 .link-card .title { font-size: 17px; }
+  #s14 .link-card .desc { font-size: 13px; }
+  #s14 .link-card .url { font-size: 11px; }
+
   /* Cierre */
-  .slide-cierre { background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
+  .slide-cierre { min-height: calc(100vh - 1px); background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
   .slide-cierre .slide-num { color: rgba(255,255,255,0.36); }
-  .slide-cierre h1 { color: white; font-size: 46px; margin-bottom: 18px; }
+  .slide-cierre .slide-inner { max-width: 1040px; }
+  .slide-cierre .cierre-gracias { color: white; font-size: 36px; line-height: 1.12; font-weight: 850; letter-spacing: -0.02em; margin-bottom: 14px; }
+  .slide-cierre h1 { color: white; font-size: 44px; margin-bottom: 12px; }
   .slide-cierre h1 span, .slide-cierre h1 strong { color: #FF4D2E; }
-  .slide-cierre .speaker { margin-bottom: 28px; background: rgba(255,77,46,0.18); color: #FFB199; font-size: 14px; padding: 9px 14px; }
-  .slide-cierre .sub { color: rgba(255,255,255,0.68); font-size: 18px; line-height: 1.55; max-width: 820px; margin: 0 auto; }
-  .slide-cierre .anclaje { margin: 30px auto 0; max-width: 820px; text-align: center; }
-  .slide-cierre .anclaje .label { color: #FFB199; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
-  .slide-cierre .anclaje p { color: rgba(255,255,255,0.82); font-size: 17px; line-height: 1.5; margin: 0; }
-  .slide-cierre .anclaje p strong { color: white; font-style: normal; }
-  .slide-cierre .cierre-remate { margin: 36px auto 0; max-width: 880px; text-align: center; color: rgba(255,255,255,0.78); }
-  .slide-cierre .cierre-remate p { margin: 0 auto 16px; font-size: 19px; line-height: 1.45; }
-  .slide-cierre .cierre-remate p:first-child { color: rgba(255,255,255,0.92); font-weight: 600; }
-  .slide-cierre .cierre-remate strong { color: #FFB199; font-weight: 800; }
-  .slide-cierre .cierre-final { display: block; margin-top: 22px; color: white; font-size: 44px; line-height: 1.12; font-weight: 850; }
+  .slide-cierre .sub { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.45; max-width: 860px; margin: 0 auto; }
+  .cierre-escalera { display: flex; align-items: flex-end; gap: 18px; min-height: 285px; margin: 34px auto 26px; max-width: 930px; }
+  .cierre-peldano { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; text-align: left; border: 1px solid rgba(255,255,255,0.14); border-radius: 14px 14px 4px 4px; padding: 22px 20px; box-shadow: 0 24px 55px rgba(0,0,0,0.22); }
+  .cierre-peldano.p1 { height: 150px; background: linear-gradient(180deg, rgba(255,177,153,0.34), rgba(255,77,46,0.22)); }
+  .cierre-peldano.p2 { height: 215px; background: linear-gradient(180deg, rgba(255,131,89,0.58), rgba(255,77,46,0.36)); }
+  .cierre-peldano.p3 { height: 285px; background: linear-gradient(180deg, #FF4D2E, rgba(255,77,46,0.58)); }
+  .cierre-peldano .step-num { color: rgba(255,255,255,0.58); font-size: 12px; font-weight: 900; letter-spacing: 1.5px; margin-bottom: 8px; }
+  .cierre-peldano h2 { color: white; font-size: 23px; line-height: 1.08; margin: 0 0 10px; letter-spacing: 0; }
+  .cierre-peldano p { color: rgba(255,255,255,0.88); font-size: 15px; line-height: 1.35; margin: 0; font-weight: 650; }
+  .slide-cierre .cierre-certeza { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.45; max-width: 920px; margin: 0 auto 22px; }
+  .slide-cierre .cierre-final { color: white; font-size: 46px; line-height: 1.08; font-weight: 900; letter-spacing: -0.02em; margin: 0 auto; max-width: 960px; }
+
+  @media (min-width: 901px) {
+    .cierre-escalera { position: relative; min-height: 340px; margin: 26px auto 20px; }
+    .cierre-escalera::before { content: ''; position: absolute; left: 12%; right: 12%; bottom: 72px; height: 2px; background: linear-gradient(90deg, rgba(255,255,255,0.22), rgba(255,77,46,0.82)); transform: rotate(-16deg); transform-origin: left center; pointer-events: none; z-index: 2; }
+    .cierre-escalera::after { content: ''; position: absolute; right: 10.5%; top: 37px; width: 12px; height: 12px; border-top: 2px solid rgba(255,77,46,0.86); border-right: 2px solid rgba(255,77,46,0.86); transform: rotate(27deg); pointer-events: none; z-index: 2; }
+    .cierre-peldano { position: relative; overflow: hidden; }
+    .cierre-peldano.p1 { height: 108px; background: rgba(255,255,255,0.055); border-color: rgba(255,255,255,0.10); box-shadow: 0 16px 34px rgba(0,0,0,0.16); }
+    .cierre-peldano.p2 { height: 220px; background: linear-gradient(180deg, rgba(255,117,70,0.72), rgba(255,77,46,0.46)); border-color: rgba(255,118,76,0.46); }
+    .cierre-peldano.p3 { height: 340px; background: #FF4D2E; border-color: rgba(255,255,255,0.22); box-shadow: 0 34px 76px rgba(255,77,46,0.28), 0 26px 55px rgba(0,0,0,0.24); }
+  }
 
   /* Responsive */
   @media (max-width: 900px) {
-    .slide { padding: 90px 24px 60px; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    .slide { padding: 90px 24px 60px; overflow-x: clip; }
+    .slide-inner, .slide-inner > * { min-width: 0; max-width: 100%; }
     h1 { font-size: 36px; }
     h2 { font-size: 26px; }
-    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .tiers.four, .vias, .source-pieces, .source-answers, .notary-gap, .gap-comparison, .ops-grid { grid-template-columns: 1fr; }
+    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .tiers.four, .vias, .source-pieces, .source-answers, .notary-gap, .gap-comparison, .gap-example .values, .ops-grid { grid-template-columns: 1fr; }
+    #s7 .ops-grid, #s12 .tiers.four, #s9 .salva-compact-grid, #s10 .s10-support-row, #s14 .s14-block-grid { grid-template-columns: 1fr; }
     .source-pill { min-width: 100%; }
     .source-piece, .source-piece:first-child, .source-piece:last-child { border-radius: 14px; }
     .source-piece + .source-piece { margin-left: 0; margin-top: 12px; padding-left: 34px; }
     .source-piece::before, .source-piece::after { display: none; }
-    .bbdd-flow { grid-template-columns: 1fr; }
-    .bbdd-flow { gap: 16px; }
+    .bbdd-flow { grid-template-columns: 1fr; gap: 16px; }
     .cover-hero { min-height: calc(100vh - 150px); }
     .cover-hero .logo-img { width: min(220px, 58vw); margin-bottom: 32px; }
     .cover-tagline { font-size: 10px; letter-spacing: 3px; }
@@ -371,15 +479,102 @@
     .brake-item .number { font-size: 70px; }
     .definition-line { font-size: 33px; }
     #s15 .radar-layout { grid-template-columns: 1fr; gap: 24px; margin-top: 26px; }
-    #s15 .radar-svg { width: min(300px, 78vw); height: auto; }
+    #s15 .radar-svg { width: 100%; max-width: 260px; height: auto; margin: 0 auto; }
+    #s5 .cross-keys { grid-template-columns: repeat(2, 1fr); row-gap: 14px; }
+    #s5 .cross-key { padding: 0 14px; }
+    #s5 .cross-key:nth-child(3) { border-left: 0; }
     .link-card { grid-template-columns: auto 1fr; }
     .link-card .url { grid-column: 1 / -1; text-align: left; }
     .quote-slide blockquote { font-size: 21px; }
     .quote-slide .big-question { font-size: 34px; }
+    .slide-cierre .cierre-gracias { font-size: 30px; }
     .slide-cierre h1 { font-size: 36px; }
-    .slide-cierre .sub, .slide-cierre .anclaje p, .slide-cierre .cierre-remate p { font-size: 18px; }
+    .slide-cierre .sub, .slide-cierre .cierre-certeza { font-size: 16px; }
+    .cierre-escalera { gap: 12px; min-height: 240px; }
+    .cierre-peldano { padding: 18px 16px; }
+    .cierre-peldano.p1 { height: 130px; }
+    .cierre-peldano.p2 { height: 185px; }
+    .cierre-peldano.p3 { height: 240px; }
+    .cierre-peldano h2 { font-size: 19px; }
     .slide-cierre .cierre-final { font-size: 30px; }
     .slide-num { right: 24px; top: 90px; font-size: 10px; }
+  }
+
+  @media (max-width: 600px) {
+    html { scroll-snap-type: none; }
+    .topbar { padding: 10px 14px; }
+    .topbar .logo img { height: 24px; }
+    .topbar .nav { gap: 4px; }
+    .topbar .nav .dot { width: 6px; height: 6px; }
+
+    .slide { min-height: 100vh; padding: 76px 22px 34px; justify-content: flex-start; }
+    .slide-num { top: 62px; right: 22px; font-size: 9px; }
+    .speaker { gap: 6px; padding: 5px 10px; font-size: 9px; letter-spacing: 1px; margin-bottom: 14px; }
+    h1, #s3 h1, #s4 h1, #s5 h1, #s7 h1, #s9 h1, #s10 h1, #s11 h1, #s14 h1, #s15 h1 { font-size: 29px; line-height: 1.12; margin-bottom: 14px; letter-spacing: 0; }
+    h2 { font-size: 23px; }
+    h3, .tri-card h3, .via h3 { font-size: 19px; }
+    .sub, .sub.large, .opening-sub, #s4 .sub, #s9 .sub, #s10 .sub, #s11 .sub, #s14 .sub.large, #s15 .sub.large { font-size: 15px; line-height: 1.45; max-width: 100%; }
+    body, .final-line, .footnote, .inside-note, .tier .desc, .via li, .via-alt p, .mantra-block, .tri-card p, .source-answer .main { font-size: 14px; }
+
+    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .tiers.four, .vias, .source-answers, .brakes-grid, .survey-quotes, .gap-comparison, .gap-example .values, .ops-grid, .bbdd-flow, #s7 .ops-grid, #s12 .tiers.four, #s9 .salva-compact-grid, #s10 .s10-support-row, #s14 .s14-block-grid, #s15 .radar-layout { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .stats, .tiers, .pulse-row, .source-answers, .ops-grid, .bbdd-flow, .link-pair, .vias, .triad { margin-top: 18px; }
+
+    .stat, .stat.big, .tier, .via, .via-alt, .mantra-block, .source-answer, .tri-card, .friction-card, .objection, .radar-uses { padding: 16px; border-radius: 12px; min-height: 0; }
+    .stat .num { font-size: 24px; }
+    .stat.big .num, #s3 .stat.big .num, #s4 .stat.big .num { font-size: 28px; }
+    .conv-metric .value { font-size: 30px; }
+    .brake-item .number { font-size: 42px; }
+    .definition-line, #s4 .definition-line { font-size: 27px; line-height: 1.12; }
+    .question { font-size: 18px; padding: 13px 0; }
+    .question.highlight { font-size: 21px; padding: 16px; }
+
+    .cover-hero { min-height: auto; padding: 18px 0 0; }
+    .cover-hero .logo-img { width: min(170px, 54vw); margin-bottom: 24px; }
+    .cover-title { font-size: 30px; }
+    .cover-positioning { font-size: 27px; padding: 16px 18px; border-left-width: 5px; }
+    .cover-positioning .nowrap { white-space: normal; }
+    .cover-subtitle { font-size: 16px; }
+
+    .op-pill { aspect-ratio: auto; min-height: 72px; padding: 14px 16px; flex-direction: row; justify-content: flex-start; text-align: left; gap: 14px; }
+    .op-pill svg { flex: 0 0 auto; width: 30px; height: 30px; margin: 0; }
+    .op-pill .label { font-size: 14px; }
+    .op-pill .badge { position: static; transform: none; width: auto; margin-left: auto; }
+    .op-pill .question-badge { top: 8px; right: 8px; width: 24px; height: 24px; font-size: 15px; }
+
+    .link-card, .link-pair .link-card { grid-template-columns: 1fr; gap: 10px; padding: 14px 15px; }
+    .link-card .icon { width: 38px; height: 38px; font-size: 19px; }
+    .link-card .title { font-size: 16px; line-height: 1.25; }
+    .link-card .desc { font-size: 13px; line-height: 1.35; }
+    .link-card .url, .link-pair .link-card .url { grid-column: auto; max-width: 100%; min-width: 0; overflow-wrap: anywhere; word-break: break-word; text-align: left; font-size: 10px; line-height: 1.35; }
+
+    #s5 .source-answer .metrics, #s5 .cross-keys { grid-template-columns: 1fr; }
+    #s5 .cross-block { padding: 18px; }
+    #s5 .cross-key { padding: 12px 0; border-left: 0 !important; border-top: 1px solid rgba(255,255,255,0.16); font-size: 18px; }
+    #s5 .cross-key:first-child { border-top: 0; padding-top: 0; }
+    #s5 .cross-remate { font-size: 14px; }
+
+    #s15 .radar-visual { justify-content: center; }
+    #s15 .radar-svg { width: 100%; max-width: 260px; height: auto; }
+    #s15 .radar-uses { padding: 16px; }
+    #s15 .radar-uses li { font-size: 14px; }
+
+    .bbdd-center { min-width: 0; }
+    .bbdd-center .name { font-size: 20px; }
+    .bbdd-col li { font-size: 13px; }
+
+    .slide-cierre { justify-content: flex-start; }
+    .slide-cierre .cierre-gracias { font-size: 26px; }
+    .slide-cierre h1 { font-size: 29px; }
+    .slide-cierre .sub, .slide-cierre .cierre-certeza { font-size: 14px; }
+    .cierre-escalera { flex-direction: column; align-items: stretch; gap: 12px; min-height: 0; margin: 22px auto 18px; }
+    .cierre-peldano { position: relative; min-height: 112px; height: auto !important; padding: 16px 16px 16px 30px; border-radius: 12px; }
+    .cierre-peldano::before { content: ''; position: absolute; left: 12px; bottom: 16px; width: 5px; border-radius: 999px; background: #FF4D2E; }
+    .cierre-peldano.p1::before { height: 30%; opacity: 0.45; }
+    .cierre-peldano.p2::before { height: 55%; opacity: 0.7; }
+    .cierre-peldano.p3::before { height: 80%; opacity: 1; }
+    .cierre-peldano h2 { font-size: 18px; }
+    .cierre-peldano p { font-size: 13px; }
+    .slide-cierre .cierre-final { font-size: 25px; line-height: 1.12; }
   }
 
   @media print {
@@ -537,17 +732,22 @@
         </div>
       </div>
     </div>
-    <div class="mantra-block">
+    <div class="cross-block">
       <div class="label">El cruce</div>
-      <strong>Qué se vende. A cuánto. A quién llamar. Y quién te lo va a comprar.</strong><br>
-      Todo antes de mover un euro — <strong>y <span class="fast-highlight">rápido, no en semanas.</span></strong>
+      <div class="cross-keys">
+        <div class="cross-key">Qué se vende</div>
+        <div class="cross-key">A cuánto</div>
+        <div class="cross-key">A quién llamar</div>
+        <div class="cross-key">Quién te lo va a comprar</div>
+      </div>
+      <div class="cross-remate">Todo antes de mover un euro, y <span class="fast-highlight">rápido, no en semanas.</span></div>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
-      <div><div class="title">Informe PULSO completo - distrito Sur, Murcia</div><div class="desc">Zona real, datos verificables</div></div>
+      <div><div class="title">Informe IM·PULSO completo — distrito Sur, Murcia</div><div class="desc">Zona real, datos verificables</div></div>
       <div class="url">munoz-murcia-sur.html</div>
     </a>
-    <p class="after-card-note"><strong>José, la hemos elegido en una zona que conoces. Así puedes mirarla con conocimiento de causa.</strong></p>
+    <p class="after-card-note"><strong>Está hecho sobre una zona que conoces, José. Así no tienes que fiarte de nuestra palabra.</strong></p>
   </div>
 </section>
 
@@ -641,19 +841,22 @@
     <h1>Antes de proponerlo, <span class="accent">quisimos comprobarlo.</span></h1>
     <p class="sub">Fuimos a Salva, proveedor MTVV de la comunidad. Le enseñamos PULSO e IMPULSO sobre su zona y su activo: Cambio de Uso en Calle Agustín Cavero, Elda.</p>
 
-    <div style="background: white; border-left: 4px solid #FF4D2E; padding: 26px 30px; border-radius: 0 14px 14px 0; margin-top: 28px;">
-      <p style="font-size: 19px; color: #141B36; line-height: 1.45; margin: 0; font-weight: 600;">Y pasó algo inesperado: <strong style="color: #FF4D2E;">Salva integró nuestros datos en su MTVV</strong>. Por iniciativa suya.</p>
-      <p style="font-size: 14px; color: #5B6485; margin-top: 12px; font-style: italic;">Su MTVV tiene 8 pestañas. Las dos últimas las añadió él: <strong>"Pulso"</strong> e <strong>"Impulso"</strong>.</p>
-    </div>
-
-    <p class="salva-distance">Su verificación de campo y nuestro motor automático se quedaron a un <strong>1,7 %</strong> de distancia.</p>
-
-    <div class="via-alt">
-      <div class="badge-row">
-        <span class="badge">El encaje</span>
-        <span class="head-text"><strong>No sustituimos el MTVV del programa.</strong> Se cruzan ambos datos en paralelo.</span>
+    <div class="salva-compact-grid">
+      <div>
+        <div class="salva-moment" style="background: white; border-left: 4px solid #FF4D2E; padding: 26px 30px; border-radius: 0 14px 14px 0; margin-top: 28px;">
+          <p style="font-size: 19px; color: #141B36; line-height: 1.45; margin: 0; font-weight: 600;">Y pasó algo inesperado: <strong style="color: #FF4D2E;">Salva integró nuestros datos en su MTVV</strong>. Por iniciativa suya.</p>
+          <p style="font-size: 14px; color: #5B6485; margin-top: 12px; font-style: italic;">Su MTVV tiene 8 pestañas. Las dos últimas las añadió él: <strong>"Pulso"</strong> e <strong>"Impulso"</strong>.</p>
+        </div>
+        <p class="salva-distance">Su verificación de campo y nuestro motor automático se quedaron a un <strong>1,7 %</strong> de distancia.</p>
       </div>
-      <p>Así se decide <strong>cuándo merece la pena invertir semanas de campo.</strong></p>
+
+      <div class="via-alt">
+        <div class="badge-row">
+          <span class="badge">El encaje</span>
+          <span class="head-text"><strong>No sustituimos el MTVV del programa.</strong> Se cruzan ambos datos en paralelo.</span>
+        </div>
+        <p>Así se decide <strong>cuándo merece la pena invertir semanas de campo.</strong></p>
+      </div>
     </div>
 
     <div class="link-pair">
@@ -706,13 +909,15 @@
         </ul>
       </div>
     </div>
-    <div class="via-callout">
-      <strong>QUÉ GANA QUIEN APORTA</strong><br>
-      Quien aporta su MTVV <strong>se lleva un IMPULSO.</strong> Y cuanto más crece IM·PULSO, más vale ese intercambio: más gente querrá ofrecer un método que, si no, se queda en el olvido.
-    </div>
-    <div class="mantra-block">
-      <div class="label">Base común</div>
-      La base de datos es de <strong>IM·PULSO</strong>. Lo que se construye encima es de todos.
+    <div class="s10-support-row">
+      <div class="via-callout">
+        <strong>QUÉ GANA QUIEN APORTA</strong><br>
+        Quien aporta su MTVV <strong>se lleva un IMPULSO.</strong> Y cuanto más crece IM·PULSO, más vale ese intercambio: más gente querrá ofrecer un método que, si no, se queda en el olvido.
+      </div>
+      <div class="mantra-block">
+        <div class="label">Base común</div>
+        La base de datos es de <strong>IM·PULSO</strong>. Lo que se construye encima es <strong>beneficio para todos</strong>.
+      </div>
     </div>
     <p class="final-line">Cómo se articula exactamente —y qué recibe cada uno— está abierto. Es de las cosas que queremos pensar con vosotros.</p>
   </div>
@@ -756,7 +961,7 @@
 
     <div class="mantra-block" style="margin-top: 36px; font-size: 22px;">
       <div class="label">La visión a 12 meses</div>
-      Que en la comunidad se diga <strong>"voy a hacerme un IM·PULSO"</strong> como hoy se dice "voy a hacer un MTVV". <strong>No como sustituto.</strong> Como herramienta previa o paralela: filtro para inbrutos, contraste para receptores y repositorio vivo.
+      Que en la comunidad se diga <strong>"voy a hacerme un IM·PULSO"</strong> como hoy se dice "voy a hacer un MTVV". <strong>No como sustituto.</strong> Como herramienta <strong>previa y de acción rápida</strong>: filtro para inbrutos, contraste para receptores y repositorio vivo.
     </div>
 
     <p class="sub" style="margin-top: 24px; font-style: italic; color: #141B36; max-width: none;">El MTVV no está en discusión: comprobar en campo antes de ejecutar es norma, y la seguiremos empujando. Nosotros solo operamos la infraestructura que la alimenta. <strong>Cada uno donde es bueno.</strong></p>
@@ -829,18 +1034,20 @@
   <div class="slide-num">14 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
-    <h1>Y en las grandes, como propuesta de encaje.</h1>
+    <h1>Y en las <strong>operaciones grandes</strong>, como propuesta de encaje.</h1>
     <p class="sub large">Nos han salido conversaciones para edificios con varias viviendas. Aún no ha salido: creemos que IM·PULSO puede aportar <strong>la inteligencia de mercado</strong> por tramos, cuando cada vivienda resultante lo necesite.</p>
-    <div class="mantra-block">
-      <div class="label">Modelo de encaje</div>
-      No cobramos ahora. <strong>Cobramos cuando el inversor cobra</strong>: un porcentaje pactado del beneficio que arroje la operación.
-    </div>
-    <div class="via-alt">
-      <div class="badge-row">
-        <span class="badge">Equipo</span>
-        <span class="head-text">La inteligencia de mercado puede ser parte del equipo.</span>
+    <div class="s14-block-grid">
+      <div class="mantra-block">
+        <div class="label">Modelo de encaje</div>
+        No cobramos ahora. <strong>Cobramos cuando el inversor cobra</strong>: un porcentaje pactado del beneficio que arroje la operación.
       </div>
-      <p>Igual que existen honorarios técnicos, puede existir <strong>la gestión de la inteligencia de mercado</strong> cuando la operación lo justifique.</p>
+      <div class="via-alt">
+        <div class="badge-row">
+          <span class="badge">Equipo</span>
+          <span class="head-text">La inteligencia de mercado puede ser parte del equipo.</span>
+        </div>
+        <p>Igual que existen honorarios técnicos, puede existir <strong>la gestión de la inteligencia de mercado</strong> cuando la operación lo justifique.</p>
+      </div>
     </div>
     <div class="link-pair">
       <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/operaciones/celia-lozano-nuevo-altabix.html" target="_blank" rel="noopener">
@@ -902,7 +1109,7 @@
         <div class="radar-uses">
           <span class="badge">Para qué puede servir</span>
           <ul>
-            <li>Contenido para vídeo: una zona, un dato y un porqué.</li>
+            <li><strong>Contenido para redes sociales</strong> — Instagram, YouTube: una zona, un dato y un porqué.</li>
             <li>Contrastar lo que llega por el boca a boca: si alguien oye que una zona se mueve, la base lo confirma o lo desmiente.</li>
             <li>Avisos para quien está buscando dónde entrar.</li>
             <li>Material para los gestores que salen a buscar operaciones.</li>
@@ -923,19 +1130,30 @@
 <section id="s16" class="slide slide-cierre">
   <div class="slide-num">16 / 16</div>
   <div class="slide-inner">
-    <div class="speaker"><span class="dot"></span> Gracias por el espacio y por el tiempo.</div>
-    <h1>La propuesta <strong>la escribimos juntos.</strong></h1>
-    <p class="sub">Queríamos enseñaros de lo que es capaz IM·PULSO. La forma se la damos entre todos: con vuestra visión, vuestra experiencia y lo que de verdad hace falta.</p>
+    <div class="cierre-gracias">Gracias por el interés y por el tiempo invertido.</div>
+    <h1>Esto es IM·PULSO <strong>hoy.</strong></h1>
+    <p class="sub">Hasta aquí hemos llegado Rafa y yo. Creemos que hay argumentos suficientes para que sea un buen candidato a cubrir esa necesidad.</p>
 
-    <div class="anclaje">
-      <div class="label">Si necesitáis certeza</div>
-      <p>Nos integramos en operaciones que ya estéis llevando a cabo, con las pruebas y el testeo que haga falta.</p>
+    <div class="cierre-escalera" aria-label="Progresión de IM·PULSO">
+      <div class="cierre-peldano p1">
+        <div class="step-num">01</div>
+        <h2>HOY</h2>
+        <p>Lo que acabáis de ver.</p>
+      </div>
+      <div class="cierre-peldano p2">
+        <div class="step-num">02</div>
+        <h2>EL SIGUIENTE ESCALÓN</h2>
+        <p>La comunidad le da forma.</p>
+      </div>
+      <div class="cierre-peldano p3">
+        <div class="step-num">03</div>
+        <h2>MAÑANA</h2>
+        <p>Impulsado por IA, que mejora cada día.</p>
+      </div>
     </div>
 
-    <div class="cierre-remate">
-      <p><strong>El dolor es real y lo conocéis.</strong> La tecnología para cubrirlo ya está aquí: no viene a sustituir el MTVV, viene a modernizarlo y a resolver <strong>rápido lo que hoy cuesta semanas.</strong></p>
-      <p>Esto lo hemos empezado Rafa y yo, y hasta aquí hemos llegado solos. <strong class="cierre-final">El siguiente escalón es la comunidad.</strong></p>
-    </div>
+    <p class="cierre-certeza">Si necesitáis certeza, nos integramos en operaciones que ya estéis llevando a cabo, con las pruebas y el testeo que haga falta.</p>
+    <p class="cierre-final">No es lo que es hoy. Es lo que será mañana.</p>
   </div>
 </section>
 

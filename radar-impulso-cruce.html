@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El radar — IM·PULSO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#141B36;
+      --navy-2:#1e2a4a;
+      --orange:#FF4D2E;
+      --orange-soft:#fff0eb;
+      --ink:#2b2f38;
+      --muted:#626a78;
+      --bg:#faf9f7;
+      --paper:#ffffff;
+      --line:#e6e5e1;
+      --murcia:#0f8f67;
+      --murcia-soft:#eaf8f2;
+      --gold:#d79a18;
+      --gold-soft:#fff6dc;
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      background:var(--bg);
+      color:var(--ink);
+      font-family:"Manrope","Segoe UI",system-ui,-apple-system,Roboto,Helvetica,Arial,sans-serif;
+      font-size:17px;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      overflow-x:hidden;
+    }
+
+    .topbar{
+      background:var(--navy);
+      color:rgba(255,255,255,.82);
+      border-bottom:4px solid var(--orange);
+    }
+    .topbar-inner{
+      width:min(1120px,100%);
+      margin:0 auto;
+      padding:14px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+    .brand{
+      font-size:1rem;
+      font-weight:800;
+      letter-spacing:.04em;
+      white-space:nowrap;
+    }
+    .brand span{color:var(--orange)}
+    .tagline{
+      color:rgba(255,255,255,.56);
+      font-size:.72rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      text-align:right;
+    }
+
+    .hero{
+      background:linear-gradient(150deg,var(--navy) 0%,var(--navy-2) 100%);
+      color:#fff;
+      padding:72px 22px 58px;
+      text-align:center;
+    }
+    .hero-inner{
+      width:min(920px,100%);
+      margin:0 auto;
+    }
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:30px;
+      padding:6px 16px;
+      border:1px solid rgba(255,77,46,.55);
+      border-radius:999px;
+      background:rgba(255,77,46,.14);
+      color:#ffb19f;
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:24px 0 10px;
+      font-size:clamp(2.25rem,5vw,4.8rem);
+      line-height:1.02;
+      letter-spacing:0;
+      font-weight:800;
+    }
+    .hero-subtitle{
+      margin:0 auto 26px;
+      color:rgba(255,255,255,.78);
+      font-size:clamp(1.02rem,2.2vw,1.34rem);
+      font-weight:600;
+    }
+    .thesis{
+      width:min(720px,100%);
+      margin:0 auto 28px;
+      padding:24px 28px;
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:12px;
+      background:rgba(255,255,255,.07);
+      color:rgba(255,255,255,.86);
+      font-size:1.04rem;
+      font-weight:600;
+    }
+    .thesis strong{
+      display:block;
+      margin-bottom:8px;
+      color:#ffb19f;
+      font-size:1.15rem;
+    }
+    .hero-foot{
+      margin:0;
+      color:rgba(255,255,255,.56);
+      font-size:.82rem;
+      font-weight:700;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    main{
+      width:min(1120px,100%);
+      margin:0 auto;
+      padding:48px 22px 86px;
+    }
+    section{
+      margin:0 0 72px;
+      scroll-margin-top:24px;
+    }
+    .section-kicker{
+      margin:0 0 6px;
+      color:var(--orange);
+      font-size:.76rem;
+      font-weight:800;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+    h2{
+      margin:0 0 22px;
+      padding-left:16px;
+      border-left:4px solid var(--orange);
+      color:var(--navy);
+      font-size:clamp(1.45rem,2.5vw,2rem);
+      line-height:1.18;
+      font-weight:800;
+      letter-spacing:0;
+    }
+    h3{
+      margin:0 0 10px;
+      color:var(--navy);
+      font-size:1.08rem;
+      line-height:1.25;
+      font-weight:800;
+    }
+    p{margin:0 0 16px}
+    strong{color:var(--navy);font-weight:800}
+
+    .lead{
+      max-width:760px;
+      color:var(--muted);
+      font-size:1.03rem;
+    }
+    .method-grid,.signal-grid,.podium-grid,.cards-grid,.notice-grid{
+      display:grid;
+      gap:16px;
+    }
+    .method-grid{
+      grid-template-columns:repeat(4,minmax(0,1fr));
+      margin-top:24px;
+    }
+    .signal-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .podium-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .cards-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .notice-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+    .card,.podium,.notice,.proof{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:8px;
+      box-shadow:0 10px 28px rgba(20,27,54,.05);
+    }
+    .card{padding:22px}
+    .icon{
+      display:grid;
+      place-items:center;
+      width:38px;
+      height:38px;
+      margin-bottom:14px;
+      border-radius:8px;
+      background:var(--orange-soft);
+      color:var(--orange);
+      font-size:1.15rem;
+      font-weight:800;
+    }
+    .method-note{
+      margin-top:22px;
+      padding:16px 18px;
+      border-left:3px solid var(--orange);
+      border-radius:0 8px 8px 0;
+      background:var(--orange-soft);
+      font-weight:800;
+      color:var(--navy);
+    }
+
+    .table-wrap{
+      width:100%;
+      overflow-x:auto;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:var(--paper);
+    }
+    table{
+      width:100%;
+      min-width:900px;
+      border-collapse:collapse;
+      font-size:.91rem;
+    }
+    th,td{
+      padding:12px 14px;
+      border-bottom:1px solid var(--line);
+      text-align:left;
+      vertical-align:middle;
+    }
+    th{
+      background:var(--navy);
+      color:#fff;
+      font-size:.74rem;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    tbody tr:nth-child(even) td{background:#fbfbfa}
+    tbody tr:last-child td{border-bottom:0}
+    tbody tr.murcia td{background:linear-gradient(90deg,var(--murcia-soft),#fff)}
+    .num{white-space:nowrap;font-weight:700;color:var(--navy)}
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      min-height:24px;
+      padding:3px 9px;
+      border-radius:999px;
+      font-size:.7rem;
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .badge-murcia{background:var(--murcia-soft);color:var(--murcia);border:1px solid rgba(15,143,103,.2)}
+    .zone-name{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+    .podium{padding:20px}
+    .podium-title{
+      margin:0 0 14px;
+      color:var(--navy);
+      font-weight:800;
+      line-height:1.25;
+    }
+    .rank{
+      display:grid;
+      grid-template-columns:34px 1fr;
+      gap:10px;
+      align-items:center;
+      padding:9px 0;
+      border-top:1px dashed var(--line);
+      color:var(--muted);
+      font-size:.92rem;
+    }
+    .rank:first-of-type{border-top:0}
+    .rank b{
+      display:grid;
+      place-items:center;
+      width:30px;
+      height:30px;
+      border-radius:8px;
+      background:#f3f2ef;
+      color:var(--navy);
+      font-size:.82rem;
+    }
+    .rank.first{
+      margin:0 -8px 4px;
+      padding:10px 8px;
+      border-radius:8px;
+      background:var(--gold-soft);
+      color:var(--navy);
+      font-weight:800;
+    }
+    .rank.first b{background:var(--gold);color:#fff}
+    .remate{
+      margin-top:18px;
+      padding:18px 20px;
+      border-left:3px solid var(--orange);
+      border-radius:0 8px 8px 0;
+      background:var(--orange-soft);
+      color:var(--navy);
+      font-size:1.02rem;
+      font-weight:800;
+    }
+
+    .signal-card{padding:0;overflow:hidden}
+    .signal-head{
+      padding:20px 22px;
+      background:var(--navy);
+      color:#fff;
+    }
+    .signal-head h3{color:#fff}
+    .signal-head p{
+      margin:0;
+      color:#ffb19f;
+      font-size:.9rem;
+      font-weight:800;
+    }
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:10px;
+      padding:18px 22px 10px;
+    }
+    .metric{
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      background:#fbfbfa;
+    }
+    .metric small{
+      display:block;
+      margin-bottom:4px;
+      color:var(--muted);
+      font-size:.68rem;
+      font-weight:800;
+      letter-spacing:.05em;
+      text-transform:uppercase;
+    }
+    .metric span{
+      color:var(--navy);
+      font-size:.96rem;
+      font-weight:800;
+      white-space:nowrap;
+    }
+    .signal-body{padding:8px 22px 22px}
+    .caution{
+      margin-top:14px;
+      padding:12px 14px;
+      border-left:3px solid var(--orange);
+      border-radius:0 8px 8px 0;
+      background:var(--orange-soft);
+      font-size:.9rem;
+    }
+
+    .proof{padding:22px}
+    .proof table{min-width:760px}
+    .quote{
+      margin:18px 0 0;
+      padding:18px 20px;
+      border-left:3px solid var(--orange);
+      border-radius:0 8px 8px 0;
+      background:var(--orange-soft);
+      color:var(--navy);
+      font-weight:700;
+    }
+    .quote strong{display:block;margin-bottom:5px}
+
+    .notice{
+      padding:18px 20px;
+      border-left:4px solid var(--orange);
+    }
+    .notice p{margin:0;color:var(--muted);font-size:.94rem}
+    .notice strong{display:block;margin-bottom:6px}
+
+    .closing{
+      margin:0 auto;
+      max-width:760px;
+      padding:28px;
+      border-radius:8px;
+      background:var(--navy);
+      color:rgba(255,255,255,.82);
+      text-align:center;
+      font-size:1.08rem;
+      font-weight:600;
+    }
+    .closing strong{
+      display:block;
+      margin-bottom:12px;
+      color:#ffb19f;
+      font-size:1.35rem;
+    }
+    .closing p:last-child{margin-bottom:0}
+
+    footer{
+      background:var(--navy);
+      color:rgba(255,255,255,.58);
+      padding:24px 22px;
+      text-align:center;
+      font-size:.78rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    @media (max-width:960px){
+      .method-grid,.podium-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .signal-grid,.cards-grid,.notice-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:560px){
+      body{font-size:16px}
+      .topbar-inner{align-items:flex-start;flex-direction:column;padding:12px 18px}
+      .tagline{text-align:left}
+      .hero{padding:48px 18px 42px}
+      .thesis{padding:20px 18px}
+      main{padding:38px 18px 68px}
+      section{margin-bottom:56px}
+      .method-grid,.podium-grid{grid-template-columns:1fr}
+      .card,.podium,.proof{padding:18px}
+      table{font-size:.86rem}
+      th,td{padding:10px 12px}
+      .metrics{grid-template-columns:1fr;padding:16px 18px 8px}
+      .signal-head,.signal-body{padding-left:18px;padding-right:18px}
+      .closing{padding:24px 18px}
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">IM<span>·</span>PULSO</div>
+      <div class="tagline">Inteligencia de mercado</div>
+    </div>
+  </header>
+
+  <section class="hero" id="portada" aria-labelledby="title">
+    <div class="hero-inner">
+      <div class="eyebrow">IM·PULSO</div>
+      <h1 id="title">El radar</h1>
+      <p class="hero-subtitle">Le preguntamos a la base dónde mirar.</p>
+      <div class="thesis">
+        <strong>El radar no dice dónde invertir. Dice dónde merece la pena mirar.</strong>
+        Levanta señales. Lo que viene después —ir a fondo en una zona— es otro trabajo.
+      </div>
+      <p class="hero-foot">Datos propios · base IM·PULSO · corte 27 de julio de 2026</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="metodo">
+      <p class="section-kicker">02 · Método</p>
+      <h2>Cómo se le pregunta a la base</h2>
+      <p class="lead">Se mira lo que <strong>se retira</strong> del mercado, no lo que se pide. Un anuncio que desaparece es una operación que ha pasado; un anuncio publicado solo es una intención.</p>
+      <p class="lead">Solo <strong>viviendas</strong>: piso, ático, chalet, dúplex, estudio, casa rural, obra nueva.</p>
+      <div class="method-grid" aria-label="Cuatro preguntas del radar">
+        <article class="card">
+          <div class="icon">%</div>
+          <h3>¿Dónde se mueve?</h3>
+          <p>% de anuncios retirados sobre el total.</p>
+        </article>
+        <article class="card">
+          <div class="icon">€</div>
+          <h3>¿Dónde está barato?</h3>
+          <p>€/m² medio de lo que se ha retirado.</p>
+        </article>
+        <article class="card">
+          <div class="icon">×</div>
+          <h3>¿Dónde renta el alquiler?</h3>
+          <p>Alquiler medio × 11 meses sobre el precio real de venta.</p>
+        </article>
+        <article class="card">
+          <div class="icon">Δ</div>
+          <h3>¿Dónde está subiendo?</h3>
+          <p>Variación del €/m² de un año al siguiente.</p>
+        </article>
+      </div>
+      <div class="method-note">Ninguna de las cuatro decide sola. Lo que interesa es dónde coinciden varias.</div>
+    </section>
+
+    <section id="zonas">
+      <p class="section-kicker">03 · Resultado</p>
+      <h2>Lo que levantó — las 10 zonas</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Zona</th>
+              <th>Provincia</th>
+              <th>% retirado</th>
+              <th>€/m²</th>
+              <th>Precio medio</th>
+              <th>Rentabilidad alquiler</th>
+              <th>Δ €/m² 25→26</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="murcia">
+              <td><span class="zone-name"><strong>Alguazas</strong><span class="badge badge-murcia">Murcia</span></span></td>
+              <td>Murcia</td>
+              <td class="num">74,54 %</td>
+              <td class="num">646,60 €</td>
+              <td class="num">100.843 €</td>
+              <td class="num">6,63 %</td>
+              <td class="num">−3,97 %</td>
+            </tr>
+            <tr>
+              <td><strong>Almoradí</strong></td>
+              <td>Alicante</td>
+              <td class="num">77,66 %</td>
+              <td class="num">1.235,88 €</td>
+              <td class="num">165.740 €</td>
+              <td class="num">4,55 %</td>
+              <td class="num">+15,02 %</td>
+            </tr>
+            <tr>
+              <td><strong>Callosa de Segura</strong></td>
+              <td>Alicante</td>
+              <td class="num">84,51 %</td>
+              <td class="num">771,13 €</td>
+              <td class="num">119.681 €</td>
+              <td class="num">6,62 %</td>
+              <td class="num">+11,63 %</td>
+            </tr>
+            <tr>
+              <td><strong>Cocentaina</strong></td>
+              <td>Alicante</td>
+              <td class="num">76,75 %</td>
+              <td class="num">805,72 €</td>
+              <td class="num">169.486 €</td>
+              <td class="num">4,30 %</td>
+              <td class="num">+14,34 %</td>
+            </tr>
+            <tr>
+              <td><strong>Elda</strong></td>
+              <td>Alicante</td>
+              <td class="num">83,75 %</td>
+              <td class="num">934,23 €</td>
+              <td class="num">121.632 €</td>
+              <td class="num">5,89 %</td>
+              <td class="num">+10,15 %</td>
+            </tr>
+            <tr class="murcia">
+              <td><span class="zone-name"><strong>Fuente-Álamo</strong><span class="badge badge-murcia">Murcia</span></span></td>
+              <td>Murcia</td>
+              <td class="num">80,00 %</td>
+              <td class="num">1.475,02 €</td>
+              <td class="num">197.721 €</td>
+              <td class="num">4,03 %</td>
+              <td class="num">— <em>(sin fecha de retirada)</em></td>
+            </tr>
+            <tr>
+              <td><strong>Jijona / Xixona</strong></td>
+              <td>Alicante</td>
+              <td class="num">75,38 %</td>
+              <td class="num">848,67 €</td>
+              <td class="num">143.474 €</td>
+              <td class="num">4,56 %</td>
+              <td class="num">+19,63 %</td>
+            </tr>
+            <tr>
+              <td><strong>Orihuela</strong></td>
+              <td>Alicante</td>
+              <td class="num">75,50 %</td>
+              <td class="num">2.797,69 €</td>
+              <td class="num">323.190 €</td>
+              <td class="num">4,67 %</td>
+              <td class="num">+3,79 %</td>
+            </tr>
+            <tr class="murcia">
+              <td><span class="zone-name"><strong>Torre-Pacheco</strong><span class="badge badge-murcia">Murcia</span></span></td>
+              <td>Murcia</td>
+              <td class="num">82,40 %</td>
+              <td class="num">2.049,03 €</td>
+              <td class="num">228.256 €</td>
+              <td class="num">3,98 %</td>
+              <td class="num">+4,26 %</td>
+            </tr>
+            <tr>
+              <td><strong>Villena</strong></td>
+              <td>Alicante</td>
+              <td class="num">60,68 %</td>
+              <td class="num">821,04 €</td>
+              <td class="num">132.831 €</td>
+              <td class="num">4,95 %</td>
+              <td class="num">−0,16 %</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="podios">
+      <p class="section-kicker">04 · Podios</p>
+      <h2>Quién gana en cada pregunta</h2>
+      <div class="podium-grid">
+        <article class="podium">
+          <p class="podium-title">Dónde más se mueve</p>
+          <div class="rank first"><b>1</b><span>Callosa de Segura 84,51 %</span></div>
+          <div class="rank"><b>2</b><span>Elda 83,75 %</span></div>
+          <div class="rank"><b>3</b><span>Torre-Pacheco 82,40 %</span></div>
+        </article>
+        <article class="podium">
+          <p class="podium-title">Dónde más renta el alquiler</p>
+          <div class="rank first"><b>1</b><span>Alguazas 6,63 %</span></div>
+          <div class="rank"><b>2</b><span>Callosa de Segura 6,62 %</span></div>
+          <div class="rank"><b>3</b><span>Elda 5,89 %</span></div>
+        </article>
+        <article class="podium">
+          <p class="podium-title">Dónde más sube el precio</p>
+          <div class="rank first"><b>1</b><span>Jijona 19,63 %</span></div>
+          <div class="rank"><b>2</b><span>Almoradí 15,02 %</span></div>
+          <div class="rank"><b>3</b><span>Cocentaina 14,34 %</span></div>
+        </article>
+        <article class="podium">
+          <p class="podium-title">Dónde está más barato</p>
+          <div class="rank first"><b>1</b><span>Alguazas 646,60 €</span></div>
+          <div class="rank"><b>2</b><span>Callosa de Segura 771,13 €</span></div>
+          <div class="rank"><b>3</b><span>Cocentaina 805,72 €</span></div>
+        </article>
+      </div>
+      <div class="remate">Dos zonas aparecen en tres de los cuatro podios: Alguazas y Callosa de Segura. Ahí es donde el radar señala más fuerte.</div>
+    </section>
+
+    <section id="senales">
+      <p class="section-kicker">05 · Señales fuertes</p>
+      <h2>Tres zonas donde el radar señala más fuerte</h2>
+      <div class="signal-grid">
+        <article class="card signal-card">
+          <div class="signal-head">
+            <h3>ALGUAZAS (Murcia)</h3>
+            <p>La más barata y la que más renta</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><small>€/m²</small><span>646,60 €/m²</span></div>
+            <div class="metric"><small>Precio medio</small><span>100.843 €</span></div>
+            <div class="metric"><small>Rentabilidad</small><span>6,63 %</span></div>
+            <div class="metric"><small>Rotación</small><span>74,54 %</span></div>
+          </div>
+          <div class="signal-body">
+            <p>Contexto verificable: supera los <strong>10.000 habitantes</strong> (INE, dato de <strong>enero de 2024</strong>) y pertenece al <strong>área urbana funcional de Murcia</strong> (687.269 habitantes, delimitación del Ministerio de Transportes). Demanda estructural, no de temporada.</p>
+            <p class="caution"><em>Cautela honesta: la muestra de alquiler es pequeña (33 operaciones). Suficiente para señalar, no para concluir.</em></p>
+          </div>
+        </article>
+
+        <article class="card signal-card">
+          <div class="signal-head">
+            <h3>CALLOSA DE SEGURA (Alicante)</h3>
+            <p>La que más se mueve</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><small>Rotación</small><span>84,51 %</span></div>
+            <div class="metric"><small>€/m²</small><span>771,13 €/m²</span></div>
+            <div class="metric"><small>Precio medio</small><span>119.681 €</span></div>
+            <div class="metric"><small>Rentabilidad</small><span>6,62 %</span></div>
+            <div class="metric"><small>Variación</small><span>+11,63 %</span></div>
+          </div>
+          <div class="signal-body">
+            <p>Está en tres de los cuatro podios y no tiene dato notarial: es la que más pide una segunda mirada.</p>
+          </div>
+        </article>
+
+        <article class="card signal-card">
+          <div class="signal-head">
+            <h3>ELDA (Alicante)</h3>
+            <p>La que ya hemos verificado</p>
+          </div>
+          <div class="metrics">
+            <div class="metric"><small>Rotación</small><span>83,75 %</span></div>
+            <div class="metric"><small>€/m²</small><span>934,23 €/m²</span></div>
+            <div class="metric"><small>Precio medio</small><span>121.632 €</span></div>
+            <div class="metric"><small>Rentabilidad</small><span>5,89 %</span></div>
+          </div>
+          <div class="signal-body">
+            <p>Es la única de la que tenemos las tres capas cruzadas, y aguanta (ver sección siguiente).</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="elda">
+      <p class="section-kicker">06 · Verificación</p>
+      <h2>Cuando se va a fondo: la verificación de Elda</h2>
+      <article class="proof">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Capa</th>
+                <th>Fuente</th>
+                <th>Dato</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lo que sale del mercado</td>
+                <td>Base IM·PULSO (retirados, mayo 2026)</td>
+                <td><strong>1.044 €/m²</strong></td>
+              </tr>
+              <tr>
+                <td>Lo que publica el portal</td>
+                <td>idealista, informe de precios, mayo 2026</td>
+                <td><strong>1.004 €/m²</strong></td>
+              </tr>
+              <tr>
+                <td>Lo que se firma ante notario</td>
+                <td>Portal del Notariado, informe 10-jul-2026</td>
+                <td><strong>774,14 €/m²</strong> (pisos) · <strong>694,89 €/m²</strong> (casas)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="quote">
+          <strong>Dos fuentes que no se hablan entre sí, con un 4 % de diferencia.</strong>
+          Nuestra base y el portal dan prácticamente el mismo precio de salida. El notarial, por debajo, marca lo que de verdad se firma.
+        </div>
+        <div class="quote">
+          En <strong>Cocentaina</strong> pasa lo mismo con la variación: el portal publica <strong>+13,1 %</strong> interanual y nuestra base da <strong>+13,5 %</strong>.
+        </div>
+      </article>
+    </section>
+
+    <section id="limites">
+      <p class="section-kicker">07 · Honestidad</p>
+      <h2>Lo que este radar NO dice</h2>
+      <div class="notice-grid">
+        <article class="notice">
+          <p><strong>Esto no es una recomendación de compra.</strong> Son señales estadísticas sobre datos de mercado. Cada zona hay que verificarla antes de mover un euro.</p>
+        </article>
+        <article class="notice">
+          <p><strong>2026 es un año parcial</strong> (datos hasta el 27 de julio). Las variaciones interanuales comparan un año completo con uno a medias: sirven para ordenar, no para afirmar un porcentaje exacto.</p>
+        </article>
+        <article class="notice">
+          <p><strong>Fuente-Álamo no tiene variación calculable</strong>: el 99,7 % de sus anuncios retirados no registran fecha de retirada.</p>
+        </article>
+        <article class="notice">
+          <p><strong>El dato notarial no cubre todo</strong>: solo existe para 5 de las 10 zonas (Elda, Orihuela, Villena, Cocentaina y Torre-Pacheco).</p>
+        </article>
+        <article class="notice">
+          <p><strong>Orihuela mezcla dos mercados.</strong> Los portales publican «Orihuela» juntando la ciudad y Orihuela Costa, que son mercados distintos. Por eso su €/m² sale alto. El notarial sí los separa; nosotros también podemos, pero hay que hacerlo a propósito.</p>
+        </article>
+        <article class="notice">
+          <p><strong>La muestra de alquiler de Alguazas es pequeña</strong> (33 operaciones).</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="cierre">
+      <p class="section-kicker">08 · Cierre</p>
+      <h2>Cierre</h2>
+      <div class="closing">
+        <strong>Esto es lo que levanta el radar en una tarde.</strong>
+        <p>No hemos trabajado esta herramienta a fondo todavía. Si se trabaja, cada una de estas señales se puede convertir en un estudio de zona con nombres, calles y números.</p>
+        <p><strong>El radar señala. Ir a buscar es el trabajo siguiente.</strong></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>IM·PULSO · Datos propios · base IM·PULSO · corte 27 de julio de 2026</footer>
+</body>
+</html>

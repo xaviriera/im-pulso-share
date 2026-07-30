@@ -303,18 +303,22 @@
   .mantra-block .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; margin-bottom: 12px; font-weight: 800; }
   .mantra-block strong { color: #FF4D2E; font-weight: 800; }
 
-  #s15 .radar-layout { display: grid; grid-template-columns: 360px 1fr; gap: 42px; align-items: center; margin-top: 34px; }
+  #s15 .slide-inner { max-width: 1080px; }
+  #s15 h1 { font-size: 46px; }
+  #s15 .sub.large { font-size: 21px; margin-top: 16px; }
+  #s15 .radar-layout { display: grid; grid-template-columns: 330px 1fr; gap: 34px; align-items: center; margin-top: 22px; }
   #s15 .radar-visual { display: flex; justify-content: center; align-items: center; }
-  #s15 .radar-svg { width: 300px; height: 300px; display: block; overflow: visible; }
+  #s15 .radar-svg { width: 286px; height: 286px; display: block; overflow: visible; }
   #s15 .radar-grid { fill: none; stroke: rgba(20,27,54,0.14); stroke-width: 1.4; }
   #s15 .radar-axis { stroke: rgba(20,27,54,0.14); stroke-width: 1.4; }
   #s15 .radar-sweep { transform-box: view-box; transform-origin: 150px 150px; animation: radarSweep 7s linear infinite; }
   #s15 .radar-blip { fill: #FF4D2E; }
   #s15 .radar-halo { fill: #FF4D2E; opacity: 0.16; }
-  #s15 .radar-uses { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
-  #s15 .radar-uses .badge { display: inline-flex; background: #FF4D2E; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
-  #s15 .radar-uses ul { list-style: none; display: grid; gap: 10px; padding: 0; margin: 0; }
-  #s15 .radar-uses li { position: relative; padding-left: 20px; font-size: 16px; line-height: 1.45; color: #141B36; }
+  #s15 .mantra-block { margin-top: 0; padding: 24px 28px; font-size: 20px; }
+  #s15 .radar-uses { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 20px 24px; margin-top: 16px; }
+  #s15 .radar-uses .badge { display: inline-flex; background: #FF4D2E; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  #s15 .radar-uses ul { list-style: none; display: grid; gap: 8px; padding: 0; margin: 0; }
+  #s15 .radar-uses li { position: relative; padding-left: 18px; font-size: 15px; line-height: 1.38; color: #141B36; }
   #s15 .radar-uses li::before { content: ''; position: absolute; left: 0; top: 0.66em; width: 7px; height: 7px; border-radius: 50%; background: #FF4D2E; }
   @keyframes radarSweep {
     to { transform: rotate(360deg); }
@@ -324,19 +328,18 @@
   /* Cierre */
   .slide-cierre { background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
   .slide-cierre .slide-num { color: rgba(255,255,255,0.36); }
-  .slide-cierre h1 { color: white; font-size: 60px; margin-bottom: 28px; }
-  .slide-cierre h1 span { color: #FF4D2E; }
-  .slide-cierre .sub { color: rgba(255,255,255,0.65); font-size: 22px; margin: 0 auto; }
-  .slide-cierre .opciones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 820px; margin: 50px auto 0; }
-  .slide-cierre .opciones .opcion { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 14px; padding: 26px 20px; transition: all 0.3s; }
-  .slide-cierre .opciones .opcion:hover { background: rgba(255,255,255,0.08); }
-  .slide-cierre .opciones .opcion .label { color: #FF4D2E; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
-  .slide-cierre .opciones .opcion .text { font-size: 18px; font-weight: 700; color: white; }
-  .slide-cierre .anclaje { background: rgba(255,77,46,0.08); border: 1px solid rgba(255,77,46,0.2); border-radius: 14px; padding: 24px 28px; margin-top: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-align: left; }
+  .slide-cierre h1 { color: white; font-size: 54px; margin-bottom: 20px; }
+  .slide-cierre h1 span, .slide-cierre h1 strong { color: #FF4D2E; }
+  .slide-cierre .sub { color: rgba(255,255,255,0.65); font-size: 20px; margin: 0 auto; }
+  .slide-cierre .anclaje { background: rgba(255,77,46,0.08); border: 1px solid rgba(255,77,46,0.2); border-radius: 14px; padding: 20px 26px; margin-top: 26px; max-width: 780px; margin-left: auto; margin-right: auto; text-align: left; }
   .slide-cierre .anclaje .label { color: #FFB199; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
   .slide-cierre .anclaje p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.6; font-style: italic; margin: 0; }
   .slide-cierre .anclaje p strong { color: white; font-style: normal; }
-  .slide-cierre .footer-cierre { margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); max-width: 600px; margin-left: auto; margin-right: auto; }
+  .slide-cierre .cierre-remate { margin: 30px auto 0; max-width: 850px; text-align: left; color: rgba(255,255,255,0.82); }
+  .slide-cierre .cierre-remate p { margin: 0 0 16px; font-size: 20px; line-height: 1.45; }
+  .slide-cierre .cierre-remate p:first-child { font-size: 24px; line-height: 1.35; color: white; font-weight: 650; }
+  .slide-cierre .cierre-remate strong { color: #FFB199; font-weight: 800; }
+  .slide-cierre .gracias { margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.14); text-align: center; color: #FFB199; font-size: 20px; font-weight: 800; }
 
   /* Responsive */
   @media (max-width: 900px) {
@@ -373,7 +376,8 @@
     .quote-slide blockquote { font-size: 21px; }
     .quote-slide .big-question { font-size: 34px; }
     .slide-cierre h1 { font-size: 36px; }
-    .slide-cierre .opciones { grid-template-columns: 1fr; }
+    .slide-cierre .cierre-remate p, .slide-cierre .gracias { font-size: 18px; }
+    .slide-cierre .cierre-remate p:first-child { font-size: 21px; }
     .slide-num { right: 24px; top: 90px; font-size: 10px; }
   }
 
@@ -479,16 +483,16 @@
     <p class="sub" style="margin-top: 18px;">Una base de datos propia del mercado real: qué se publica, qué se retira, a qué precio y en cuánto tiempo.</p>
     <div class="stats" style="margin-top: 38px;">
       <div class="stat big"><div class="num">746</div><div class="label">municipios</div></div>
-      <div class="stat big"><div class="num">48</div><div class="label">zonas</div></div>
+      <div class="stat big"><div class="num">22</div><div class="label">zonas</div></div>
       <div class="stat big"><div class="num">8</div><div class="label">provincias</div></div>
-      <div class="stat big"><div class="num">5</div><div class="label">comunidades</div></div>
+      <div class="stat big"><div class="num">739.151</div><div class="label">propiedades</div></div>
     </div>
     <a class="link-card" href="https://xaviriera.github.io/im-pulso-bbdd-status/" target="_blank" rel="noopener">
       <div class="icon">↗</div>
       <div><div class="title">La base de datos, en vivo</div><div class="desc">Cobertura actual y estado real de la base.</div></div>
       <div class="url">xaviriera.github.io/im-pulso-bbdd-status/</div>
     </a>
-    <p class="footnote">Cobertura de hoy: <strong>Comunitat Valenciana, Murcia, Andalucía, Canarias y País Vasco</strong> — con València, Castellón, Almería y Las Palmas completas, y el resto (Alicante, Murcia, Gipuzkoa, Granada) <strong>por zonas</strong>. Llegar a <strong>toda España</strong> no es una cuestión técnica: es una cuestión de inversión.</p>
+    <p class="footnote"><strong>Alicante · Valencia · Castellón · Murcia · Almería · Las Palmas · Granada (capital) · Guipúzcoa (Donostialdea)</strong><br>Valencia, Castellón, Almería y Las Palmas, completas. Alicante y Murcia, por comarcas. Llegar a <strong>toda España</strong> no es una cuestión técnica: es una cuestión de inversión.</p>
   </div>
 </section>
 
@@ -768,33 +772,33 @@
     <div class="tiers three">
       <div class="tier">
         <div class="label">1</div>
-        <div class="price">No vendemos el MTVV.</div>
-        <div class="desc">Lo que se vende es un estudio IM·PULSO con un MTVV integrado de una operación pasada, que sirve de prefiltro. Nunca el documento del proveedor, y nunca la operación concreta de nadie.</div>
+        <div class="price">No vendemos su MTVV.</div>
+        <div class="desc">A la base entran testigos y datos, nunca su documento. Lo que se vende es un estudio IM·PULSO con un MTVV integrado de una operación pasada, que sirve de prefiltro.</div>
       </div>
       <div class="tier">
         <div class="label">2</div>
-        <div class="price">El trato sigue siendo del proveedor.</div>
-        <div class="desc">Si aporta el método de una zona, el acuerdo queda con él. Si después llega otro, se respeta su trato: no se reescribe a su costa.</div>
+        <div class="price">Quien aporta primero, conserva su acuerdo.</div>
+        <div class="desc">Si aporta el MTVV de una zona, el trato es suyo. Si mañana otro aporta esa misma zona, no se renegocia a la baja.</div>
       </div>
       <div class="tier">
         <div class="label">3</div>
-        <div class="price">Su trabajo le sigue rentando.</div>
-        <div class="desc">Un MTVV ya hecho vuelve a tener valor en operaciones futuras, sin diluir el producto que vende hoy.</div>
+        <div class="price">Su cliente no paga dos veces.</div>
+        <div class="desc">El MTVV se aporta con el permiso de quien lo pagó. Ese cliente no vuelve a pagar por él: al revés, se lleva IMPULSOS.</div>
       </div>
       <div class="tier">
         <div class="label">4</div>
         <div class="price">Su entregable sale reforzado.</div>
-        <div class="desc">El método va con el cruce de IM·PULSO detrás: producto más completo, y margen para cobrarlo mejor.</div>
+        <div class="desc">Su MTVV va con el cruce de IM·PULSO detrás. Entrega más valor a su cliente, y por eso puede cobrarle más.</div>
       </div>
       <div class="tier">
         <div class="label">5</div>
-        <div class="price">Nunca se cobra dos veces.</div>
-        <div class="desc">Y siempre con permiso del cliente.</div>
+        <div class="price">Trato de proveedor asociado.</div>
+        <div class="desc">Sigue cobrando su MTVV como hasta ahora, y además: precio especial, informes de cortesía y visibilidad como validador dentro de la comunidad.</div>
       </div>
       <div class="tier">
         <div class="label">6</div>
-        <div class="price">Proveedor asociado.</div>
-        <div class="desc">Precio especial, informes de cortesía y visibilidad como validador dentro de la comunidad.</div>
+        <div class="price">Su trabajo no muere en una operación.</div>
+        <div class="desc">Un MTVV hecho para una operación sigue dando contexto en las siguientes. No regala su producto ni diluye lo que vende hoy: lo reutiliza.</div>
       </div>
     </div>
     <div class="via-alt">
@@ -802,7 +806,7 @@
         <span class="badge">Resumen</span>
         <span class="head-text">Esto no sustituye al proveedor. Le suma.</span>
       </div>
-      <p>El MTVV sale reforzado, el proveedor gana valor y su cliente recibe informes gratis.</p>
+      <p>El MTVV sale reforzado, el proveedor gana valor, y su cliente recibe informes de más calidad además de IMPULSOS gratis.</p>
     </div>
   </div>
 </section>
@@ -866,7 +870,7 @@
 <section id="s15" class="slide">
   <div class="slide-num">15 / 16</div>
   <div class="slide-inner">
-    <div class="speaker both"><span class="dot"></span> La visión</div>
+    <div class="speaker both"><span class="dot"></span> El radar IM·PULSO</div>
     <h1>En vez de preguntar por una zona, <strong>le preguntamos a la base dónde mirar.</strong></h1>
     <p class="sub large">Le hicimos consultas cruzando datos para que fuera ella la que señalara dónde se está moviendo el mercado. De ahí salieron diez zonas por las que empezar a buscar.</p>
     <div class="radar-layout">
@@ -905,12 +909,13 @@
           El radar no dice dónde invertir. <strong>Dice dónde merece la pena mirar.</strong>
         </div>
         <div class="radar-uses">
-          <span class="badge">Para qué sirve</span>
+          <span class="badge">Para qué puede servir</span>
           <ul>
-            <li>Contenido para vídeo: una zona, un dato, un porqué.</li>
-            <li>Un canal de zonas dentro de la comunidad.</li>
+            <li>Contenido para vídeo: una zona, un dato y un porqué.</li>
+            <li>Contrastar lo que llega por el boca a boca: si alguien oye que una zona se mueve, la base lo confirma o lo desmiente.</li>
             <li>Avisos para quien está buscando dónde entrar.</li>
             <li>Material para los gestores que salen a buscar operaciones.</li>
+            <li>Dirigir el foco de la comunidad hacia donde de verdad hay recorrido.</li>
           </ul>
         </div>
       </div>
@@ -928,36 +933,19 @@
   <div class="slide-num">16 / 16</div>
   <div class="slide-inner">
     <div class="speaker" style="background: rgba(255,77,46,0.2); color: #FFB199;"><span class="dot"></span> Vuestra lectura</div>
-    <h1>La propuesta la escribimos juntos.</h1>
+    <h1>La propuesta <strong>la escribimos juntos.</strong></h1>
     <p class="sub">Hoy no proponemos nada. Queríamos enseñaros de lo que es capaz IM·PULSO — la forma se la damos entre todos, con vuestras necesidades y vuestro criterio delante.</p>
 
     <div class="anclaje">
       <div class="label">Si necesitáis certeza</div>
-      <p>Nos integramos en operaciones que ya estéis llevando a cabo. Desde ahí le damos forma al servicio, hasta que aporte el valor suficiente para que esa comprobación tenga sentido.</p>
+      <p>Nos integramos en operaciones que ya estéis llevando a cabo. Desde ahí le damos forma al servicio, con las pruebas y el testeo que haga falta.</p>
     </div>
 
-    <div class="opciones">
-      <div class="opcion">
-        <div class="label">Opción 1</div>
-        <div class="text">Por aquí sí.</div>
-      </div>
-      <div class="opcion">
-        <div class="label">Opción 2</div>
-        <div class="text">Por aquí sí, pero falta esto.</div>
-      </div>
-      <div class="opcion">
-        <div class="label">Opción 3</div>
-        <div class="text">Por aquí no.</div>
-      </div>
-    </div>
-
-    <div class="anclaje">
-      <p>No esperamos respuesta hoy. Tomaos el tiempo que necesitéis: lo importante es que sea <strong>vuestra lectura honesta</strong>, no una respuesta rápida.</p>
-    </div>
-
-    <div class="footer-cierre">
-      Lo que hemos empezado lo ponemos al servicio de la comunidad. Queremos darle forma <strong style="color: white;">con lo que de verdad pide</strong>, no con lo que uno crea que puede ser mejor.<br><br>
-      <strong style="color: #FFB199;">Gracias por el espacio, José y Vicente.</strong>
+    <div class="cierre-remate">
+      <p><strong>Esto lo hemos empezado Rafa y yo.</strong> Hasta aquí hemos podido llegar solos; para el siguiente paso hace falta la comunidad.</p>
+      <p>El dolor con el que abríamos lo conocéis tan bien como nosotros, y <strong>la tecnología para cubrirlo ya está aquí.</strong> No viene a sustituir el método: viene a modernizarlo y a resolver en minutos lo que hoy cuesta semanas.</p>
+      <p>Lo ponemos al servicio de la comunidad. <strong>Nos gustaría darle forma con lo que de verdad se necesita.</strong></p>
+      <div class="gracias">Gracias por el espacio, José y Vicente.</div>
     </div>
   </div>
 </section>

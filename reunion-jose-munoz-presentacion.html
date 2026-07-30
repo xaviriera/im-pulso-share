@@ -93,11 +93,11 @@
   .tier.t3 .label { color: #FFB199; }
   .tier.t3 .price { color: white; }
   .tier.t3 .desc { color: rgba(255,255,255,0.7); }
-  #s12 .tiers.three { gap: 10px; }
-  #s12 .tiers.three .tier { padding: 16px; background: white; border: 1px solid rgba(20,27,54,0.08); border-top: 3px solid #FF4D2E; color: #141B36; }
-  #s12 .tiers.three .tier .label { color: #FF4D2E; }
-  #s12 .tiers.three .tier .price { font-size: 21px; line-height: 1.12; }
-  #s12 .tiers.three .tier .desc { font-size: 12px; line-height: 1.42; color: #5B6485; }
+  #s12 .tiers.four { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  #s12 .tiers.four .tier { padding: 18px; background: white; border: 1px solid rgba(20,27,54,0.08); border-top: 3px solid #FF4D2E; color: #141B36; }
+  #s12 .tiers.four .tier .label { color: #FF4D2E; }
+  #s12 .tiers.four .tier .price { font-size: 21px; line-height: 1.12; }
+  #s12 .tiers.four .tier .desc { font-size: 12px; line-height: 1.42; color: #5B6485; }
 
   /* Vía alternativa MTVV */
   .via-alt { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
@@ -328,25 +328,26 @@
   /* Cierre */
   .slide-cierre { background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
   .slide-cierre .slide-num { color: rgba(255,255,255,0.36); }
-  .slide-cierre h1 { color: white; font-size: 54px; margin-bottom: 20px; }
+  .slide-cierre h1 { color: white; font-size: 46px; margin-bottom: 18px; }
   .slide-cierre h1 span, .slide-cierre h1 strong { color: #FF4D2E; }
-  .slide-cierre .sub { color: rgba(255,255,255,0.65); font-size: 20px; margin: 0 auto; }
-  .slide-cierre .anclaje { background: rgba(255,77,46,0.08); border: 1px solid rgba(255,77,46,0.2); border-radius: 14px; padding: 20px 26px; margin-top: 26px; max-width: 780px; margin-left: auto; margin-right: auto; text-align: left; }
-  .slide-cierre .anclaje .label { color: #FFB199; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
-  .slide-cierre .anclaje p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.6; font-style: italic; margin: 0; }
+  .slide-cierre .speaker { margin-bottom: 28px; background: rgba(255,77,46,0.18); color: #FFB199; font-size: 14px; padding: 9px 14px; }
+  .slide-cierre .sub { color: rgba(255,255,255,0.68); font-size: 18px; line-height: 1.55; max-width: 820px; margin: 0 auto; }
+  .slide-cierre .anclaje { margin: 30px auto 0; max-width: 820px; text-align: center; }
+  .slide-cierre .anclaje .label { color: #FFB199; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
+  .slide-cierre .anclaje p { color: rgba(255,255,255,0.82); font-size: 17px; line-height: 1.5; margin: 0; }
   .slide-cierre .anclaje p strong { color: white; font-style: normal; }
-  .slide-cierre .cierre-remate { margin: 30px auto 0; max-width: 850px; text-align: left; color: rgba(255,255,255,0.82); }
-  .slide-cierre .cierre-remate p { margin: 0 0 16px; font-size: 20px; line-height: 1.45; }
-  .slide-cierre .cierre-remate p:first-child { font-size: 24px; line-height: 1.35; color: white; font-weight: 650; }
+  .slide-cierre .cierre-remate { margin: 36px auto 0; max-width: 880px; text-align: center; color: rgba(255,255,255,0.78); }
+  .slide-cierre .cierre-remate p { margin: 0 auto 16px; font-size: 19px; line-height: 1.45; }
+  .slide-cierre .cierre-remate p:first-child { color: rgba(255,255,255,0.92); font-weight: 600; }
   .slide-cierre .cierre-remate strong { color: #FFB199; font-weight: 800; }
-  .slide-cierre .gracias { margin-top: 24px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.14); text-align: center; color: #FFB199; font-size: 20px; font-weight: 800; }
+  .slide-cierre .cierre-final { display: block; margin-top: 22px; color: white; font-size: 44px; line-height: 1.12; font-weight: 850; }
 
   /* Responsive */
   @media (max-width: 900px) {
     .slide { padding: 90px 24px 60px; }
     h1 { font-size: 36px; }
     h2 { font-size: 26px; }
-    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .vias, .source-pieces, .source-answers, .notary-gap, .gap-comparison, .ops-grid { grid-template-columns: 1fr; }
+    .stats, .stats.three, .stats.five, .triad, .pulse-row, .conv-grid, .link-pair, .tiers, .tiers.three, .tiers.four, .vias, .source-pieces, .source-answers, .notary-gap, .gap-comparison, .ops-grid { grid-template-columns: 1fr; }
     .source-pill { min-width: 100%; }
     .source-piece, .source-piece:first-child, .source-piece:last-child { border-radius: 14px; }
     .source-piece + .source-piece { margin-left: 0; margin-top: 12px; padding-left: 34px; }
@@ -376,8 +377,8 @@
     .quote-slide blockquote { font-size: 21px; }
     .quote-slide .big-question { font-size: 34px; }
     .slide-cierre h1 { font-size: 36px; }
-    .slide-cierre .cierre-remate p, .slide-cierre .gracias { font-size: 18px; }
-    .slide-cierre .cierre-remate p:first-child { font-size: 21px; }
+    .slide-cierre .sub, .slide-cierre .anclaje p, .slide-cierre .cierre-remate p { font-size: 18px; }
+    .slide-cierre .cierre-final { font-size: 30px; }
     .slide-num { right: 24px; top: 90px; font-size: 10px; }
   }
 
@@ -492,7 +493,7 @@
       <div><div class="title">La base de datos, en vivo</div><div class="desc">Cobertura actual y estado real de la base.</div></div>
       <div class="url">xaviriera.github.io/im-pulso-bbdd-status/</div>
     </a>
-    <p class="footnote"><strong>Alicante · Valencia · Castellón · Murcia · Almería · Las Palmas · Granada (capital) · Guipúzcoa (Donostialdea)</strong><br>Valencia, Castellón, Almería y Las Palmas, completas. Alicante y Murcia, por comarcas. Llegar a <strong>toda España</strong> no es una cuestión técnica: es una cuestión de inversión.</p>
+    <p class="footnote"><strong>Alicante · Valencia · Castellón · Murcia · Almería · Las Palmas · Granada (capital) · Guipúzcoa (Donostialdea)</strong><br>Llegar a <strong>toda España</strong> no es una cuestión técnica: es una cuestión de una estructura sólida y una inversión que la sostenga.</p>
   </div>
 </section>
 
@@ -539,7 +540,7 @@
     <div class="mantra-block">
       <div class="label">El cruce</div>
       <strong>Qué se vende. A cuánto. A quién llamar. Y quién te lo va a comprar.</strong><br>
-      Todo antes de mover un euro — <strong>y <span class="fast-highlight">en minutos, no en semanas.</span></strong>
+      Todo antes de mover un euro — <strong>y <span class="fast-highlight">rápido, no en semanas.</span></strong>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
@@ -769,7 +770,7 @@
     <div class="speaker both"><span class="dot"></span> Objeciones de proveedores</div>
     <h1>«¿Y esto no me perjudica?»</h1>
     <div class="objection">«Si yo pago o hago un MTVV y otro obtiene ese contexto más barato, pierdo yo.»</div>
-    <div class="tiers three">
+    <div class="tiers four">
       <div class="tier">
         <div class="label">1</div>
         <div class="price">No vendemos su MTVV.</div>
@@ -777,28 +778,18 @@
       </div>
       <div class="tier">
         <div class="label">2</div>
-        <div class="price">Quien aporta primero, conserva su acuerdo.</div>
-        <div class="desc">Si aporta el MTVV de una zona, el trato es suyo. Si mañana otro aporta esa misma zona, no se renegocia a la baja.</div>
+        <div class="price">Su entregable sale reforzado.</div>
+        <div class="desc">Su MTVV va con el cruce de IM·PULSO detrás. Entrega un trabajo más completo a su cliente, y por eso puede cobrarle más.</div>
       </div>
       <div class="tier">
         <div class="label">3</div>
-        <div class="price">Su cliente no paga dos veces.</div>
-        <div class="desc">El MTVV se aporta con el permiso de quien lo pagó. Ese cliente no vuelve a pagar por él: al revés, se lleva IMPULSOS.</div>
+        <div class="price">Su cliente también gana.</div>
+        <div class="desc">Por dar el permiso para que ese MTVV entre a la base, se lleva un IMPULSO gratis para su siguiente operación.</div>
       </div>
       <div class="tier">
         <div class="label">4</div>
-        <div class="price">Su entregable sale reforzado.</div>
-        <div class="desc">Su MTVV va con el cruce de IM·PULSO detrás. Entrega más valor a su cliente, y por eso puede cobrarle más.</div>
-      </div>
-      <div class="tier">
-        <div class="label">5</div>
         <div class="price">Trato de proveedor asociado.</div>
         <div class="desc">Sigue cobrando su MTVV como hasta ahora, y además: precio especial, informes de cortesía y visibilidad como validador dentro de la comunidad.</div>
-      </div>
-      <div class="tier">
-        <div class="label">6</div>
-        <div class="price">Su trabajo no muere en una operación.</div>
-        <div class="desc">Un MTVV hecho para una operación sigue dando contexto en las siguientes. No regala su producto ni diluye lo que vende hoy: lo reutiliza.</div>
       </div>
     </div>
     <div class="via-alt">
@@ -932,20 +923,18 @@
 <section id="s16" class="slide slide-cierre">
   <div class="slide-num">16 / 16</div>
   <div class="slide-inner">
-    <div class="speaker" style="background: rgba(255,77,46,0.2); color: #FFB199;"><span class="dot"></span> Vuestra lectura</div>
+    <div class="speaker"><span class="dot"></span> Gracias por el espacio y por el tiempo.</div>
     <h1>La propuesta <strong>la escribimos juntos.</strong></h1>
-    <p class="sub">Hoy no proponemos nada. Queríamos enseñaros de lo que es capaz IM·PULSO — la forma se la damos entre todos, con vuestras necesidades y vuestro criterio delante.</p>
+    <p class="sub">Queríamos enseñaros de lo que es capaz IM·PULSO. La forma se la damos entre todos: con vuestra visión, vuestra experiencia y lo que de verdad hace falta.</p>
 
     <div class="anclaje">
       <div class="label">Si necesitáis certeza</div>
-      <p>Nos integramos en operaciones que ya estéis llevando a cabo. Desde ahí le damos forma al servicio, con las pruebas y el testeo que haga falta.</p>
+      <p>Nos integramos en operaciones que ya estéis llevando a cabo, con las pruebas y el testeo que haga falta.</p>
     </div>
 
     <div class="cierre-remate">
-      <p><strong>Esto lo hemos empezado Rafa y yo.</strong> Hasta aquí hemos podido llegar solos; para el siguiente paso hace falta la comunidad.</p>
-      <p>El dolor con el que abríamos lo conocéis tan bien como nosotros, y <strong>la tecnología para cubrirlo ya está aquí.</strong> No viene a sustituir el método: viene a modernizarlo y a resolver en minutos lo que hoy cuesta semanas.</p>
-      <p>Lo ponemos al servicio de la comunidad. <strong>Nos gustaría darle forma con lo que de verdad se necesita.</strong></p>
-      <div class="gracias">Gracias por el espacio, José y Vicente.</div>
+      <p><strong>El dolor es real y lo conocéis.</strong> La tecnología para cubrirlo ya está aquí: no viene a sustituir el MTVV, viene a modernizarlo y a resolver <strong>rápido lo que hoy cuesta semanas.</strong></p>
+      <p>Esto lo hemos empezado Rafa y yo, y hasta aquí hemos llegado solos. <strong class="cierre-final">El siguiente escalón es la comunidad.</strong></p>
     </div>
   </div>
 </section>

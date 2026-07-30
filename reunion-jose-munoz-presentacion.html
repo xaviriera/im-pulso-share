@@ -174,6 +174,8 @@
   #s3 .stat.big { min-height: 112px; padding: 20px; }
   #s3 .stat.big .num { font-size: 44px; }
   #s3 .survey-quotes blockquote { min-height: 88px; padding: 14px 16px; font-size: 15px; }
+  #s4 .footnote { margin-top: 28px; padding: 16px 20px; border-left: 4px solid #FF4D2E; background: rgba(255,77,46,0.06); color: #141B36; font-size: 16px; line-height: 1.55; font-style: normal; }
+  #s4 .footnote strong { color: #FF4D2E; }
   #s3 .brakes-close { margin-top: 18px; font-size: 21px; }
 
   .pulse-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; }
@@ -301,10 +303,24 @@
   .mantra-block .label { font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #FF4D2E; margin-bottom: 12px; font-weight: 800; }
   .mantra-block strong { color: #FF4D2E; font-weight: 800; }
 
-  .objection { background: white; border-radius: 16px; border: 1px solid rgba(20,27,54,0.08); padding: 32px; margin-top: 24px; font-size: 25px; line-height: 1.35; font-weight: 700; color: #141B36; }
-  .proposal-box { background: white; border-radius: 16px; padding: 38px; border: 1px solid rgba(20,27,54,0.08); margin-top: 28px; }
-  .proposal-box .headline { font-size: 42px; font-weight: 800; line-height: 1.1; color: #FF4D2E; margin-bottom: 18px; }
+  #s15 .radar-layout { display: grid; grid-template-columns: 360px 1fr; gap: 42px; align-items: center; margin-top: 34px; }
+  #s15 .radar-visual { display: flex; justify-content: center; align-items: center; }
+  #s15 .radar-svg { width: 300px; height: 300px; display: block; overflow: visible; }
+  #s15 .radar-grid { fill: none; stroke: rgba(20,27,54,0.14); stroke-width: 1.4; }
+  #s15 .radar-axis { stroke: rgba(20,27,54,0.14); stroke-width: 1.4; }
+  #s15 .radar-sweep { transform-box: view-box; transform-origin: 150px 150px; animation: radarSweep 7s linear infinite; }
+  #s15 .radar-blip { fill: #FF4D2E; }
+  #s15 .radar-halo { fill: #FF4D2E; opacity: 0.16; }
+  #s15 .radar-uses { background: white; border: 2px dashed rgba(255,77,46,0.35); border-radius: 14px; padding: 24px 28px; margin-top: 24px; }
+  #s15 .radar-uses .badge { display: inline-flex; background: #FF4D2E; color: white; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  #s15 .radar-uses ul { list-style: none; display: grid; gap: 10px; padding: 0; margin: 0; }
+  #s15 .radar-uses li { position: relative; padding-left: 20px; font-size: 16px; line-height: 1.45; color: #141B36; }
+  #s15 .radar-uses li::before { content: ''; position: absolute; left: 0; top: 0.66em; width: 7px; height: 7px; border-radius: 50%; background: #FF4D2E; }
+  @keyframes radarSweep {
+    to { transform: rotate(360deg); }
+  }
 
+  .objection { background: white; border-radius: 16px; border: 1px solid rgba(20,27,54,0.08); padding: 32px; margin-top: 24px; font-size: 25px; line-height: 1.35; font-weight: 700; color: #141B36; }
   /* Cierre */
   .slide-cierre { background: linear-gradient(135deg, #141B36 0%, #1F2D5A 100%); color: white; text-align: center; }
   .slide-cierre .slide-num { color: rgba(255,255,255,0.36); }
@@ -317,6 +333,7 @@
   .slide-cierre .opciones .opcion .label { color: #FF4D2E; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
   .slide-cierre .opciones .opcion .text { font-size: 18px; font-weight: 700; color: white; }
   .slide-cierre .anclaje { background: rgba(255,77,46,0.08); border: 1px solid rgba(255,77,46,0.2); border-radius: 14px; padding: 24px 28px; margin-top: 40px; max-width: 700px; margin-left: auto; margin-right: auto; text-align: left; }
+  .slide-cierre .anclaje .label { color: #FFB199; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
   .slide-cierre .anclaje p { color: rgba(255,255,255,0.85); font-size: 16px; line-height: 1.6; font-style: italic; margin: 0; }
   .slide-cierre .anclaje p strong { color: white; font-style: normal; }
   .slide-cierre .footer-cierre { margin-top: 36px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; color: rgba(255,255,255,0.5); max-width: 600px; margin-left: auto; margin-right: auto; }
@@ -349,6 +366,8 @@
     .brakes-grid, .survey-quotes { grid-template-columns: 1fr; }
     .brake-item .number { font-size: 70px; }
     .definition-line { font-size: 33px; }
+    #s15 .radar-layout { grid-template-columns: 1fr; gap: 24px; margin-top: 26px; }
+    #s15 .radar-svg { width: min(300px, 78vw); height: auto; }
     .link-card { grid-template-columns: auto 1fr; }
     .link-card .url { grid-column: 1 / -1; text-align: left; }
     .quote-slide blockquote { font-size: 21px; }
@@ -356,7 +375,6 @@
     .slide-cierre h1 { font-size: 36px; }
     .slide-cierre .opciones { grid-template-columns: 1fr; }
     .slide-num { right: 24px; top: 90px; font-size: 10px; }
-    .proposal-box .headline { font-size: 32px; }
   }
 
   @media print {
@@ -392,12 +410,12 @@
     <div class="dot" onclick="document.getElementById('s14').scrollIntoView()"></div>
     <div class="dot" onclick="document.getElementById('s15').scrollIntoView()"></div>
     <div class="dot" onclick="document.getElementById('s16').scrollIntoView()"></div>
-    <div class="dot" onclick="document.getElementById('s17').scrollIntoView()"></div>
   </div>
 </div>
 
 <!-- SLIDE 1 -->
 <section id="s1" class="slide slide-cover">
+  <div class="slide-num">01 / 16</div>
   <div class="slide-inner">
     <div class="cover-hero">
       <img src="in/impulso-logo.png" alt="IM·PULSO" class="logo-img">
@@ -411,7 +429,7 @@
 
 <!-- SLIDE 2 -->
 <section id="s2" class="slide">
-  <div class="slide-num">02 / 17</div>
+  <div class="slide-num">02 / 16</div>
   <div class="slide-inner centered">
     <div class="speaker both"><span class="dot"></span> Empezamos por vosotros</div>
     <h1 class="opening-title">Antes de nuestra lectura, la vuestra.</h1>
@@ -428,7 +446,7 @@
 
 <!-- SLIDE 3 -->
 <section id="s3" class="slide">
-  <div class="slide-num">03 / 17</div>
+  <div class="slide-num">03 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> El problema</div>
     <h1>Frenos de la comunidad.</h1>
@@ -453,16 +471,16 @@
 
 <!-- SLIDE 4 -->
 <section id="s4" class="slide">
-  <div class="slide-num">04 / 17</div>
+  <div class="slide-num">04 / 16</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Qué es IM·PULSO.</h1>
     <p class="definition-line">No medimos lo que se pide. Medimos lo que el mercado se lleva.</p>
     <p class="sub" style="margin-top: 18px;">Una base de datos propia del mercado real: qué se publica, qué se retira, a qué precio y en cuánto tiempo.</p>
     <div class="stats" style="margin-top: 38px;">
-      <div class="stat big"><div class="num">745</div><div class="label">municipios</div></div>
-      <div class="stat big"><div class="num">47</div><div class="label">zonas</div></div>
-      <div class="stat big"><div class="num">7</div><div class="label">provincias</div></div>
+      <div class="stat big"><div class="num">746</div><div class="label">municipios</div></div>
+      <div class="stat big"><div class="num">48</div><div class="label">zonas</div></div>
+      <div class="stat big"><div class="num">8</div><div class="label">provincias</div></div>
       <div class="stat big"><div class="num">5</div><div class="label">comunidades</div></div>
     </div>
     <a class="link-card" href="https://xaviriera.github.io/im-pulso-bbdd-status/" target="_blank" rel="noopener">
@@ -470,13 +488,13 @@
       <div><div class="title">La base de datos, en vivo</div><div class="desc">Cobertura actual y estado real de la base.</div></div>
       <div class="url">xaviriera.github.io/im-pulso-bbdd-status/</div>
     </a>
-    <p class="footnote">Esto es lo que hay hoy. Hasta dónde crece depende del sentido que le demos.</p>
+    <p class="footnote">Cobertura de hoy: <strong>Comunitat Valenciana, Murcia, Andalucía, Canarias y País Vasco</strong> — con València, Castellón, Almería y Las Palmas completas, y el resto (Alicante, Murcia, Gipuzkoa, Granada) <strong>por zonas</strong>. Llegar a <strong>toda España</strong> no es una cuestión técnica: es una cuestión de inversión.</p>
   </div>
 </section>
 
 <!-- SLIDE 5 -->
 <section id="s5" class="slide">
-  <div class="slide-num">05 / 17</div>
+  <div class="slide-num">05 / 16</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Tres fuentes, un informe.</h1>
@@ -516,20 +534,21 @@
     </div>
     <div class="mantra-block">
       <div class="label">El cruce</div>
-      Sabes <strong>qué</strong> se vende, a cuánto, a quién llamar y quién te lo va a comprar. <strong>Antes de mover un euro. <span class="fast-highlight">Y de forma rápida.</span></strong>
+      <strong>Qué se vende. A cuánto. A quién llamar. Y quién te lo va a comprar.</strong><br>
+      Todo antes de mover un euro — <strong>y <span class="fast-highlight">en minutos, no en semanas.</span></strong>
     </div>
     <a class="link-card" href="munoz-murcia-sur.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
       <div><div class="title">Informe PULSO completo - distrito Sur, Murcia</div><div class="desc">Zona real, datos verificables</div></div>
       <div class="url">munoz-murcia-sur.html</div>
     </a>
-    <p class="after-card-note">José, esta es una zona que probablemente conozcas. Ábrela y comprueba tú mismo si los datos cuadran con lo que sabes de ella.</p>
+    <p class="after-card-note"><strong>José, la hemos elegido en una zona que conoces. Así puedes mirarla con conocimiento de causa.</strong></p>
   </div>
 </section>
 
 <!-- SLIDE 6 -->
 <section id="s6" class="slide">
-  <div class="slide-num">06 / 17</div>
+  <div class="slide-num">06 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Lo que ya funciona</div>
     <h1>Lo que el mercado nos enseñó.</h1>
@@ -546,7 +565,7 @@
 
 <!-- SLIDE 7 -->
 <section id="s7" class="slide">
-  <div class="slide-num">07 / 17</div>
+  <div class="slide-num">07 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> El encaje diferencial</div>
     <h1>Ellos tienen cosas que nosotros no. Nosotros tenemos una que ellos no.</h1>
@@ -588,7 +607,7 @@
 
 <!-- SLIDE 8 -->
 <section id="s8" class="slide">
-  <div class="slide-num">08 / 17</div>
+  <div class="slide-num">08 / 16</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
     <h1>La cuarta fuente: <span class="accent">MTVV.</span></h1>
@@ -611,10 +630,10 @@
 
 <!-- SLIDE 9 -->
 <section id="s9" class="slide">
-  <div class="slide-num">09 / 17</div>
+  <div class="slide-num">09 / 16</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
-    <h1>Antes de proponéroslo, <span class="accent">quisimos comprobarlo.</span></h1>
+    <h1>Antes de proponerlo, <span class="accent">quisimos comprobarlo.</span></h1>
     <p class="sub">Fuimos a Salva, proveedor MTVV de la comunidad. Le enseñamos PULSO e IMPULSO sobre su zona y su activo: Cambio de Uso en Calle Agustín Cavero, Elda.</p>
 
     <div style="background: white; border-left: 4px solid #FF4D2E; padding: 26px 30px; border-radius: 0 14px 14px 0; margin-top: 28px;">
@@ -654,7 +673,7 @@
 
 <!-- SLIDE 10 -->
 <section id="s10" class="slide">
-  <div class="slide-num">10 / 17</div>
+  <div class="slide-num">10 / 16</div>
   <div class="slide-inner">
     <div class="speaker"><span class="dot"></span> La cuarta fuente</div>
     <h1>Para que exista esa cuarta fuente hacen falta MTVV. Cuantos más, mejor.</h1>
@@ -696,7 +715,7 @@
 
 <!-- SLIDE 11 -->
 <section id="s11" class="slide">
-  <div class="slide-num">11 / 17</div>
+  <div class="slide-num">11 / 16</div>
   <div class="slide-inner">
     <div class="speaker rafa"><span class="dot"></span> La visión</div>
     <h1>Y así, <span class="accent">el MTVV deja de servir una sola vez.</span></h1>
@@ -741,7 +760,7 @@
 
 <!-- SLIDE 12 -->
 <section id="s12" class="slide">
-  <div class="slide-num">12 / 17</div>
+  <div class="slide-num">12 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> Objeciones de proveedores</div>
     <h1>«¿Y esto no me perjudica?»</h1>
@@ -790,7 +809,7 @@
 
 <!-- SLIDE 13 -->
 <section id="s13" class="slide">
-  <div class="slide-num">13 / 17</div>
+  <div class="slide-num">13 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>También encaja en operaciones complejas.</h1>
@@ -812,7 +831,7 @@
 
 <!-- SLIDE 14 -->
 <section id="s14" class="slide">
-  <div class="slide-num">14 / 17</div>
+  <div class="slide-num">14 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>Y en las grandes, como propuesta de encaje.</h1>
@@ -845,21 +864,56 @@
 
 <!-- SLIDE 15 -->
 <section id="s15" class="slide">
-  <div class="slide-num">15 / 17</div>
+  <div class="slide-num">15 / 16</div>
   <div class="slide-inner">
     <div class="speaker both"><span class="dot"></span> La visión</div>
     <h1>En vez de preguntar por una zona, <strong>le preguntamos a la base dónde mirar.</strong></h1>
     <p class="sub large">Le hicimos consultas cruzando datos para que fuera ella la que señalara dónde se está moviendo el mercado. De ahí salieron diez zonas por las que empezar a buscar.</p>
-    <div class="mantra-block">
-      <div class="label">EL RADAR</div>
-      El radar no dice dónde invertir. <strong>Dice dónde merece la pena mirar.</strong>
-    </div>
-    <div class="via-alt">
-      <div class="badge-row">
-        <span class="badge">Para qué más sirve</span>
-        <span class="head-text">No nació solo para invertir.</span>
+    <div class="radar-layout">
+      <div class="radar-visual" aria-hidden="true">
+        <svg class="radar-svg" viewBox="0 0 300 300" role="img">
+          <defs>
+            <radialGradient id="radarSweepGradient" cx="150" cy="150" r="130" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#FF4D2E" stop-opacity="0.28" />
+              <stop offset="0.56" stop-color="#FF4D2E" stop-opacity="0.13" />
+              <stop offset="1" stop-color="#FF4D2E" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <circle class="radar-grid" cx="150" cy="150" r="34" />
+          <circle class="radar-grid" cx="150" cy="150" r="68" />
+          <circle class="radar-grid" cx="150" cy="150" r="102" />
+          <circle class="radar-grid" cx="150" cy="150" r="136" />
+          <line class="radar-axis" x1="14" y1="150" x2="286" y2="150" />
+          <line class="radar-axis" x1="150" y1="14" x2="150" y2="286" />
+          <g class="radar-sweep">
+            <path d="M150 150 L262.6 85 A130 130 0 0 1 262.6 215 Z" fill="url(#radarSweepGradient)" />
+          </g>
+          <circle class="radar-halo" cx="205" cy="92" r="12" />
+          <circle class="radar-blip" cx="205" cy="92" r="4.5" />
+          <circle class="radar-halo" cx="88" cy="118" r="10" />
+          <circle class="radar-blip" cx="88" cy="118" r="4" />
+          <circle class="radar-blip" cx="188" cy="188" r="4.5" />
+          <circle class="radar-halo" cx="117" cy="220" r="11" />
+          <circle class="radar-blip" cx="117" cy="220" r="4.5" />
+          <circle class="radar-blip" cx="238" cy="166" r="3.8" />
+          <circle class="radar-blip" cx="151" cy="72" r="3.8" />
+        </svg>
       </div>
-      <p>Un radar así da material para vídeo, para un canal dentro de la comunidad y para varias cosas más.</p>
+      <div>
+        <div class="mantra-block">
+          <div class="label">EL RADAR</div>
+          El radar no dice dónde invertir. <strong>Dice dónde merece la pena mirar.</strong>
+        </div>
+        <div class="radar-uses">
+          <span class="badge">Para qué sirve</span>
+          <ul>
+            <li>Contenido para vídeo: una zona, un dato, un porqué.</li>
+            <li>Un canal de zonas dentro de la comunidad.</li>
+            <li>Avisos para quien está buscando dónde entrar.</li>
+            <li>Material para los gestores que salen a buscar operaciones.</li>
+          </ul>
+        </div>
+      </div>
     </div>
     <a class="link-card" href="https://xaviriera.github.io/im-pulso-share/radar-oportunidades-impulso.html" target="_blank" rel="noopener">
       <div class="icon">↗</div>
@@ -870,33 +924,17 @@
 </section>
 
 <!-- SLIDE 16 -->
-<section id="s16" class="slide">
-  <div class="slide-num">16 / 17</div>
-  <div class="slide-inner centered">
-    <div class="speaker both"><span class="dot"></span> Propuesta</div>
-    <h1>La propuesta <strong>la escribimos juntos.</strong></h1>
-    <div class="proposal-box">
-      <div class="headline">Hoy no proponemos nada.</div>
-      <p class="sub" style="margin: 0 auto;">Queríamos enseñaros de lo que es capaz IM·PULSO. La propuesta le damos forma entre todos, con vuestras necesidades y vuestro criterio delante.</p>
-    </div>
-    <div class="via-alt" style="text-align: left; max-width: 760px; margin-left: auto; margin-right: auto;">
-      <div class="badge-row">
-        <span class="badge">Lo que haga falta</span>
-        <span class="head-text">¿Necesitáis probarlo más? Se prueba.</span>
-      </div>
-      <p>Una operación real de un círculo de confianza vuestro, la que digáis. Nosotros ponemos la inteligencia de mercado y vosotros juzgáis si suma. Sin coste, sin compromiso y sin cambiar nada de lo que ya hacéis.</p>
-      <p>Hoy no va de precio; el precio se concreta en la propuesta posterior.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 17 -->
-<section id="s17" class="slide slide-cierre">
-  <div class="slide-num">17 / 17</div>
+<section id="s16" class="slide slide-cierre">
+  <div class="slide-num">16 / 16</div>
   <div class="slide-inner">
     <div class="speaker" style="background: rgba(255,77,46,0.2); color: #FFB199;"><span class="dot"></span> Vuestra lectura</div>
-    <h1>Vuestra lectura.</h1>
-    <p class="sub">Hemos cerrado la película. Ahora queremos lo que no podemos construir solos: <strong style="color:white;">vuestro criterio.</strong> Sea cual sea.</p>
+    <h1>La propuesta la escribimos juntos.</h1>
+    <p class="sub">Hoy no proponemos nada. Queríamos enseñaros de lo que es capaz IM·PULSO — la forma se la damos entre todos, con vuestras necesidades y vuestro criterio delante.</p>
+
+    <div class="anclaje">
+      <div class="label">Si necesitáis certeza</div>
+      <p>Nos integramos en operaciones que ya estéis llevando a cabo. Desde ahí le damos forma al servicio, hasta que aporte el valor suficiente para que esa comprobación tenga sentido.</p>
+    </div>
 
     <div class="opciones">
       <div class="opcion">
@@ -914,11 +952,11 @@
     </div>
 
     <div class="anclaje">
-      <p>No esperamos respuesta hoy. <strong>Tomaos el tiempo que necesitéis</strong> para asentarlo y, si queréis, lo retomamos cuando vosotros nos digáis. Lo importante es que sea <strong>vuestra lectura honesta</strong>, no una respuesta rápida.</p>
+      <p>No esperamos respuesta hoy. Tomaos el tiempo que necesitéis: lo importante es que sea <strong>vuestra lectura honesta</strong>, no una respuesta rápida.</p>
     </div>
 
     <div class="footer-cierre">
-      Lo que hemos empezado lo ponemos al servicio de la comunidad. La base de datos puede abrirse mucho más, podemos investigar mucho más. Pero <strong style="color: white;">queremos que nos ayudéis a darle forma con sentido</strong> — con lo que de verdad pide la comunidad. No con lo que uno cree que puede ser lo mejor.<br><br>
+      Lo que hemos empezado lo ponemos al servicio de la comunidad. Queremos darle forma <strong style="color: white;">con lo que de verdad pide</strong>, no con lo que uno crea que puede ser mejor.<br><br>
       <strong style="color: #FFB199;">Gracias por el espacio, José y Vicente.</strong>
     </div>
   </div>

@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Portal de Testigos — planteamiento interno IM·PULSO</title>
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pulso: #F97316; --pulso-bg: #FFF7ED; --pulso-border: #FDBA74;
+    --impulso: #16A34A; --impulso-bg: #F0FDF4; --impulso-border: #86EFAC;
+    --notarial: #2563EB; --notarial-bg: #EFF6FF; --notarial-border: #93C5FD;
+    --mtvv: #DA1839; --mtvv-bg: #FEF2F4; --mtvv-border: #F4A6B2;
+    --navy: #0F1F3D; --navy-soft: #1E3A5F;
+    --gray-900: #111827; --gray-700: #374151; --gray-500: #6B7280;
+    --gray-300: #D1D5DB; --gray-100: #F3F4F6; --gray-50: #F9FAFB;
+    --white: #FFFFFF;
+    --insight-red: #DC2626;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--gray-50);
+    color: var(--gray-900);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* HEADER */
+  .header { background: var(--navy); color: white; padding: 16px 0; }
+  .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .wordmark { font-size: 20px; font-weight: 800; letter-spacing: .5px; color: #fff; }
+  .wordmark-dot { color: var(--pulso); }
+  .badge { background: var(--pulso); color: white; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; flex-shrink: 0; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: white; padding: 48px 0 40px; text-align: center; }
+  .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
+  .hero .subtitle { font-size: 15px; opacity: .65; margin-bottom: 20px; }
+  .hero-meta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
+  .hero-meta .hm-item { font-size: 13px; color: rgba(255,255,255,.6); }
+  .hero-meta .hm-sep { width: 1px; height: 14px; background: rgba(255,255,255,.2); }
+  .op-ficha { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; max-width: 860px; margin: 0 auto; text-align: left; padding: 0 24px; }
+  .op-cell { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; padding: 16px 18px; }
+  .op-key { font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--pulso); font-weight: 800; margin-bottom: 6px; }
+  .op-val { font-size: 14px; font-weight: 600; color: white; line-height: 1.4; }
+  .op-val small { display: block; font-size: 12px; font-weight: 400; opacity: .6; margin-top: 3px; }
+
+  /* LAYOUT */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  .section { margin: 48px 0; }
+  .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
+  .section-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-icon svg { width: 22px; height: 22px; }
+  .section-title { font-size: 22px; font-weight: 700; color: var(--navy); }
+  .section-subtitle { font-size: 13px; color: var(--gray-500); }
+  .section-divider { border: none; border-top: 2px dashed var(--gray-300); margin: 40px 0; }
+
+  .zone-badge { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: .5px; margin-left: auto; flex-shrink: 0; }
+  .zone-badge.pulso { background: var(--pulso-bg); color: var(--pulso); }
+  .zone-badge.impulso { background: var(--impulso-bg); color: var(--impulso); }
+  .zone-badge.notarial { background: var(--notarial-bg); color: var(--notarial); }
+
+  .card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04); margin-bottom: 16px; border: 1px solid #e5e7eb; }
+  .card-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+  .card-subtitle { font-size: 13px; color: var(--gray-500); margin-bottom: 16px; }
+  .card p { font-size: 14px; color: var(--gray-700); }
+  .card p + p { margin-top: 10px; }
+  .motor-pulso .card { border-left: 4px solid var(--pulso); }
+  .motor-impulso .card { border-left: 4px solid var(--impulso); }
+  .motor-notarial .card { border-left: 4px solid var(--notarial); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 760px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+  .grid-2 .card { margin-bottom: 0; }
+
+  /* TABLAS */
+  .table-wrap { overflow-x: auto; margin: 12px 0; border-radius: 12px; border: 1px solid #e5e7eb; background: white; }
+  .table-wrap table { min-width: 480px; width: 100%; border-collapse: collapse; font-size: 14px; }
+  th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--gray-100); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--gray-50); }
+  tr.highlight td { background: var(--pulso-bg); }
+  tr.highlight-asset td { background: var(--impulso-bg); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+  tfoot td { background: var(--gray-100); font-weight: 800; border-top: 2px solid var(--gray-300); }
+
+  /* KPIs */
+  .kpi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin: 16px 0; }
+  @media (min-width: 700px) { .kpi-row { grid-template-columns: repeat(4, 1fr); } }
+  .kpi { background: white; padding: 16px; border-radius: 12px; text-align: center; border: 1px solid #e5e7eb; }
+  .kpi-value { font-size: 28px; font-weight: 800; color: var(--navy); }
+  .kpi-label { font-size: 12px; color: var(--gray-500); text-transform: uppercase; letter-spacing: .5px; margin-top: 2px; }
+
+  /* AVISOS */
+  .insight { margin-top: 12px; padding: 12px 16px; border-radius: 8px; font-size: 13px; line-height: 1.55; }
+  .insight-orange { background: var(--pulso-bg); border-left: 3px solid var(--pulso); }
+  .insight-green { background: var(--impulso-bg); border-left: 3px solid var(--impulso); }
+  .insight-purple { background: var(--notarial-bg); border-left: 3px solid var(--notarial); }
+  .insight-gray { background: var(--gray-100); color: var(--gray-700); border-left: 3px solid var(--gray-500); }
+  .insight-red { background: #FEF2F2; border-left: 3px solid var(--insight-red); color: #7F1D1D; }
+
+  .callout { background: var(--gray-50); border: 1px solid #e2e8f0; border-left: 4px solid var(--navy); border-radius: 0 10px 10px 0; padding: 14px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6; }
+  .callout strong { color: var(--navy); }
+
+  .no-sample { background: #fef2f2; border: 1px solid #FCA5A5; border-radius: 12px; padding: 20px 24px; margin: 16px 0; font-size: 13.5px; line-height: 1.65; color: #7f1d1d; }
+  .no-sample .ns-title { font-size: 17px; font-weight: 800; color: #b91c1c; margin-bottom: 10px; }
+  .no-sample p + p { margin-top: 10px; }
+  .no-sample strong { color: #991b1b; }
+
+  .disclaimer { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 14px 18px; margin: 14px 0; font-size: 12.5px; line-height: 1.6; color: #1e3a8a; }
+  .disclaimer strong { color: #1e40af; }
+
+  .quote-block { border-left: 4px solid var(--pulso); background: var(--pulso-bg); padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 14px 0; font-size: 15px; line-height: 1.55; font-style: italic; color: var(--gray-900); }
+
+  .empty-box { border: 2px dashed var(--gray-300); background: white; border-radius: 12px; padding: 28px 20px; text-align: center; color: var(--gray-500); font-size: 14px; font-style: italic; margin: 14px 0; }
+
+  /* CONVERGENCIA / VEREDICTO */
+  .convergence { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); border-radius: 16px; padding: 32px; text-align: center; color: white; margin: 24px 0; }
+  .convergence .conv-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; opacity: .55; margin-bottom: 8px; }
+  .convergence .conv-verdict { font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
+  .convergence p { font-size: 14px; opacity: .75; max-width: 46rem; margin: 0 auto; }
+  .convergence .accent { color: var(--pulso); }
+
+  .verdict-navy { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: white; border-radius: 12px; padding: 20px 24px; margin: 20px 0; font-size: 15px; font-weight: 600; }
+
+  /* PANTALLAS */
+  .demo { display: flex; flex-direction: column; gap: 18px; }
+  .screen { border: 1px solid #e5e7eb; background: white; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 14px rgba(15,31,61,.06); }
+  .screen-bar { background: var(--gray-100); border-bottom: 1px solid #e5e7eb; padding: 10px 18px; font-size: 11px; letter-spacing: .8px; text-transform: uppercase; font-weight: 800; color: var(--gray-500); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .screen-bar .side { color: var(--notarial); }
+  .screen-bar .side.im { color: var(--pulso); }
+  .screen-body { padding: 22px; }
+
+  .map { position: relative; height: 15rem; border-radius: 12px; border: 1px solid #e5e7eb;
+    background: repeating-linear-gradient(0deg, transparent 0 2.4rem, #eef0f3 2.4rem calc(2.4rem + 1px)),
+                repeating-linear-gradient(90deg, transparent 0 3.2rem, #eef0f3 3.2rem calc(3.2rem + 1px)), var(--gray-50); }
+  .zona { position: absolute; background: white; border: 1px solid var(--notarial-border); border-radius: 8px; padding: 6px 10px; font-size: 11px; line-height: 1.35; box-shadow: 0 2px 8px rgba(15,31,61,.1); text-align: center; white-space: nowrap; }
+  .zona b { display: block; font-size: 12px; color: var(--navy); font-weight: 800; }
+  .zona span { color: var(--gray-500); font-variant-numeric: tabular-nums; }
+  .pin { position: absolute; width: 13px; height: 13px; border-radius: 50%; background: var(--notarial); border: 2px solid white; box-shadow: 0 1px 4px rgba(0,0,0,.3); }
+  .pin.active { width: 17px; height: 17px; background: var(--pulso); }
+  .pin-price { position: absolute; background: white; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 10.5px; font-weight: 800; padding: 2px 6px; font-variant-numeric: tabular-nums; box-shadow: 0 2px 6px rgba(0,0,0,.1); white-space: nowrap; color: var(--navy); }
+
+  .split { display: grid; grid-template-columns: 1fr; gap: 16px; }
+  @media (min-width: 760px) { .split { grid-template-columns: 1.05fr 1fr; align-items: start; } }
+
+  .panel { background: white; border: 1px solid #e5e7eb; border-radius: 14px; box-shadow: 0 4px 14px rgba(15,31,61,.07); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; }
+  .panel .ttl { font-weight: 800; font-size: 15px; color: var(--navy); }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 12.5px; }
+  .kv dt { color: var(--gray-500); }
+  .kv dd { font-variant-numeric: tabular-nums; font-weight: 700; color: var(--navy); }
+
+  .photo { position: relative; overflow: hidden; border-radius: 8px; background: linear-gradient(160deg, #B9C2CB 0%, #8E99A4 46%, #717D89 100%); border: 1px solid #e5e7eb; display: flex; align-items: flex-end; }
+  .photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(200deg, rgba(255,255,255,.2) 0 28%, transparent 28.5%), linear-gradient(15deg, rgba(0,0,0,.18) 0 34%, transparent 34.5%); }
+  .photo.tall { height: 170px; }
+  .photo.thumb { height: 58px; }
+  .photo.blur { background: linear-gradient(160deg, #AFB8C1 0%, #A3ACB5 50%, #97A0A9 100%); }
+  .photo.blur::before { filter: blur(6px); }
+  .lock { position: absolute; inset: 0; z-index: 2; display: flex; align-items: center; justify-content: center; }
+  .lock svg { width: 20px; height: 20px; color: rgba(255,255,255,.9); }
+  .wm { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 8.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.5); transform: rotate(-22deg); white-space: nowrap; }
+  .photo-note { position: relative; z-index: 3; width: 100%; background: rgba(15,31,61,.62); color: #fff; font-size: 10px; padding: 4px 8px; font-weight: 600; }
+  .grid-thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .grid-thumbs.tres { grid-template-columns: repeat(3, 1fr); }
+
+  .tip { background: var(--navy); color: #fff; font-size: 11.5px; line-height: 1.45; padding: 9px 12px; border-radius: 8px; position: relative; }
+  .tip b { color: var(--pulso); }
+  .tip::before { content: ""; position: absolute; left: 22px; top: -5px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-bottom: 5px solid var(--navy); }
+
+  .qbox { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+  .qbox .qh { font-size: 10.5px; letter-spacing: .8px; text-transform: uppercase; font-weight: 800; color: var(--gray-500); padding: 7px 12px; background: var(--gray-50); border-bottom: 1px solid #e5e7eb; }
+  .qbox ol { margin: 0; padding: 8px 12px 8px 28px; display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; color: var(--gray-700); }
+  .qbox .out { padding: 0 12px 9px; }
+  .qbox .out b { color: var(--pulso); font-size: 11.5px; font-weight: 800; }
+  .qbox .out span { font-size: 10.5px; color: var(--gray-500); }
+
+  .sig { font-size: 10.5px; color: var(--gray-500); border-top: 1px solid var(--gray-100); padding-top: 8px; }
+  .sig b { color: var(--pulso); font-weight: 800; }
+
+  .gate { border: 1px solid var(--notarial-border); background: var(--notarial-bg); border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+  .gate .gt { font-weight: 800; font-size: 13px; color: var(--navy); }
+  .checkline { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--gray-700); line-height: 1.5; }
+  .checkbox { width: 14px; height: 14px; border: 2px solid var(--notarial); border-radius: 3px; flex: none; margin-top: 2px; }
+  .btn-soft { display: block; text-align: center; background: white; color: var(--notarial); font-size: 12.5px; font-weight: 800; padding: 8px 12px; border: 1px solid var(--notarial); border-radius: 8px; }
+  .btn-cta { display: block; text-align: center; background: var(--pulso); color: white; font-size: 13px; font-weight: 800; padding: 10px 14px; border-radius: 8px; box-shadow: 0 4px 12px rgba(249,115,22,.28); }
+  .field { background: var(--gray-50); border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px 11px; font-size: 12.5px; color: var(--gray-500); }
+  .banner { background: var(--gray-50); border-left: 4px solid var(--navy); border-radius: 0 8px 8px 0; padding: 10px 14px; font-size: 12.5px; color: var(--gray-700); }
+  .banner b { color: var(--navy); }
+  .micro { font-size: 11.5px; color: var(--gray-500); line-height: 1.5; }
+  .caption { font-size: 13px; color: var(--gray-500); line-height: 1.6; margin-top: 14px; }
+  .caption strong { color: var(--gray-900); }
+
+  .arrow { text-align: center; color: var(--pulso); font-size: 20px; font-weight: 800; line-height: 1; }
+
+  /* PASOS */
+  .steps { display: flex; flex-direction: column; border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; background: white; }
+  .step { display: grid; grid-template-columns: 92px 1fr; gap: 0 18px; padding: 16px 20px; border-bottom: 1px solid var(--gray-100); align-items: start; }
+  .step:last-child { border-bottom: none; }
+  .step .when { font-size: 11px; letter-spacing: .8px; text-transform: uppercase; font-weight: 800; color: var(--pulso); padding-top: 3px; }
+  .step .wt { font-weight: 700; color: var(--navy); font-size: 14.5px; }
+  .step p { font-size: 13.5px; color: var(--gray-700); margin-top: 3px; }
+
+  /* PREGUNTAS */
+  .qa { display: flex; flex-direction: column; border: 1px solid #e5e7eb; border-radius: 14px; overflow: hidden; background: white; }
+  .qa-item { padding: 18px 22px; border-bottom: 1px solid var(--gray-100); }
+  .qa-item:last-child { border-bottom: none; }
+  .qa-q { font-size: 15px; font-style: italic; color: var(--navy); font-weight: 600; margin-bottom: 6px; }
+  .qa-a { color: var(--gray-700); font-size: 14px; }
+  .qa-a strong { color: var(--gray-900); }
+
+  ul.plain { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  ul.plain li { font-size: 14px; color: var(--gray-700); padding-left: 18px; position: relative; }
+  ul.plain li::before { content: ""; position: absolute; left: 0; top: 9px; width: 6px; height: 6px; border-radius: 2px; background: var(--pulso); }
+  ul.plain li strong { color: var(--gray-900); }
+
+  /* FOOTER */
+  .footer { background: var(--navy); color: rgba(255,255,255,.7); padding: 40px 0 36px; margin-top: 56px; }
+  .footer-inner { max-width: 1100px; margin: 0 auto; padding: 0 24px; text-align: center; }
+  .footer-title { font-size: 18px; font-weight: 800; color: white; margin-bottom: 8px; }
+  .footer p { font-size: 12.5px; line-height: 1.7; max-width: 52rem; margin: 0 auto; }
+  .footer-fine { margin-top: 20px; font-size: 11.5px; opacity: .5; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="wordmark">IM<span class="wordmark-dot">·</span>PULSO</div>
+    <span class="badge">Documento interno</span>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="container">
+    <h1>Portal de Testigos</h1>
+    <div class="subtitle">Programa IN · Acuerdo de proveedor de datos</div>
+    <div class="hero-meta">
+      <div class="hm-item">Planteamiento · 15 de agosto de 2026</div>
+      <span class="hm-sep"></span>
+      <div class="hm-item">460.004 testigos en archivo</div>
+      <span class="hm-sep"></span>
+      <div class="hm-item">3.000 miembros en la comunidad</div>
+    </div>
+    <div class="op-ficha">
+      <div class="op-cell">
+        <div class="op-key">La oportunidad</div>
+        <div class="op-val">Entrar en el Programa IN<small>José Muñoz quiere un mapa de testigos y necesita nuestro archivo</small></div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">Lo que damos</div>
+        <div class="op-val">Consultas, nunca la base<small>Dato crudo, tres miniaturas y el estado de cada testigo</small></div>
+      </div>
+      <div class="op-cell">
+        <div class="op-key">Lo que ganamos</div>
+        <div class="op-val">La comunidad entera<small>Marca en cada testigo y el tráfico de quien va a invertir</small></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- TESIS -->
+  <div class="section">
+    <div class="convergence">
+      <div class="conv-label">El principio</div>
+      <div class="conv-verdict">Le damos la leche a demanda.<br><span class="accent">Las vacas se quedan en nuestra granja.</span></div>
+      <p>José pone el mapa y sus 3.000 personas. Nosotros ponemos el archivo, la infraestructura y la responsabilidad. No hay volcado de datos: su portal pregunta y nosotros respondemos, consulta a consulta. Y en su portal no hay ni un botón nuestro — solo avisos de que lo que falta está fuera, y la firma de quién custodia el archivo.</p>
+    </div>
+  </div>
+
+  <!-- REGLAS -->
+  <div class="section motor-pulso">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--pulso-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Las tres reglas del diseño</div>
+        <div class="section-subtitle">Todo lo demás se deduce de aquí</div>
+      </div>
+      <span class="zone-badge pulso">Criterio</span>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">El mapa cuenta, no opina</div>
+        <p>En su portal solo viven <strong>hechos</strong>: cuántos testigos hay, qué son, a cuánto se retiraron y cuándo. Ninguna media, ningún porcentaje.</p>
+        <p>Un contador es un hecho; una media es una opinión — y las opiniones son el PULSO, que ni se regala ni se mezcla.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">No se vende: se pregunta</div>
+        <p>Ni una oferta ni un precio dentro de su portal. Solo <strong>preguntas que ese dato no puede responder</strong>.</p>
+        <p>Una pregunta no es promoción, así que José no asume nada — y quien la lee sabe perfectamente que le falta la respuesta.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="card-title">La promesa del programa se cumple entera</div>
+      <p>José prometió a su gente que verían las fotos. <strong>Las ven: las 24, gratis y sin formulario.</strong> Lo único que cambia es dónde, porque no pueden vivir en su portal sin exponerle. Si al otro lado hubiera un muro de pago en vez de las fotos, le habríamos dejado en evidencia a él.</p>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- ORIGEN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--gray-100)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div>
+        <div class="section-title">De dónde viene</div>
+        <div class="section-subtitle">Reunión del 30 de julio y audio del 6 de agosto</div>
+      </div>
+    </div>
+
+    <div class="quote-block">Que la gente sea colaborativo, que cargue todo lo de la plataforma, que se pueda ver en un mapa, que tú puedas filtrar fácilmente por fechas, por tipología, en esta zona ¿qué hay?</div>
+
+    <div class="card">
+      <p>Quiere zona, tipología, precio de baja <strong>y foto</strong>. Sobre la foto fue tajante: «simplemente es saber cómo era esa vivienda, míralo y ya está». El 6 de agosto matizó: «el objetivo no es usar las fotos, son una referencia, no es para venderlas o descargarlas».</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-title">Lo que le mueve</div>
+        <p>El miedo a la responsabilidad legal y su identidad pública: «quiero hacer algo, ya me conocéis, totalmente legal». Nos traslada el riesgo sin disimulo: «esa cuestión es algo que vosotros tenéis que ver, pues sois los proveedores».</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Lo que nos deja libre</div>
+        <p><strong>No monetiza el portal</strong> y <strong>no quiere el negocio de los informes</strong>: «no quiero ninguna parte». No es competencia: es distribución. El portal ya está construido, gratis, por Raúl, un alumno ingeniero.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- RECORRIDO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--notarial-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round"><path d="M9 20l-6-3V4l6 3m0 13l6-3m-6 3V7m6 10l6 3V7l-6-3m0 13V4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">El recorrido</div>
+        <div class="section-subtitle">Tres pasos. Los dos primeros son suyos; solo el tercero es nuestro</div>
+      </div>
+      <span class="zone-badge notarial">Producto</span>
+    </div>
+
+    <div class="demo">
+
+      <div class="screen">
+        <div class="screen-bar"><span>1 · Vista de zona</span><span class="side">Portal del Programa IN</span></div>
+        <div class="screen-body">
+          <div class="map">
+            <div class="zona" style="left:9%; top:18%"><b>Altabix</b><span>47 testigos · 24 meses</span></div>
+            <div class="zona" style="left:55%; top:12%"><b>Carrús</b><span>31 testigos · 24 meses</span></div>
+            <div class="zona" style="left:18%; top:63%"><b>El Pla</b><span>68 testigos · 24 meses</span></div>
+            <div class="zona" style="left:61%; top:67%"><b>Centro</b><span>22 testigos · 24 meses</span></div>
+          </div>
+          <p class="caption">De lejos, el mapa solo cuenta. Nada de medias ni porcentajes: eso sería dato elaborado —lo que él desconfía— y además es el PULSO, que no se regala.</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <div class="screen">
+        <div class="screen-bar"><span>2 · Testigos de la zona</span><span class="side">Portal del Programa IN</span></div>
+        <div class="screen-body">
+          <div class="split">
+            <div class="map" style="height:19rem">
+              <div class="pin" style="left:16%; top:38%"></div>
+              <div class="pin-price" style="left:10%; top:47%">148.500 €</div>
+              <div class="pin" style="left:52%; top:66%"></div>
+              <div class="pin-price" style="left:45%; top:75%">96.000 €</div>
+              <div class="pin active" style="left:33%; top:16%"></div>
+              <div class="pin-price" style="left:26%; top:25%">172.000 €</div>
+              <div class="pin" style="left:71%; top:34%"></div>
+              <div class="pin-price" style="left:64%; top:43%">210.000 €</div>
+            </div>
+
+            <div class="panel">
+              <div class="ttl">Piso · Altabix, Elche</div>
+              <div class="grid-thumbs tres">
+                <div class="photo thumb" style="outline:2px solid var(--pulso); outline-offset:1px"><div class="wm">IM·PULSO</div></div>
+                <div class="photo thumb"><div class="wm">IM·PULSO</div></div>
+                <div class="photo thumb"><div class="wm">IM·PULSO</div></div>
+              </div>
+              <div class="tip">Las <b>24 fotografías</b> están en IM·PULSO, proveedor de datos. Servicio externo: el programa no interviene.</div>
+              <div class="micro"><strong style="color:var(--navy)">A reformar.</strong> Cocina y baños originales, muy luminoso.</div>
+              <dl class="kv">
+                <dt>Superficie</dt><dd>92 m² · 3 hab · 2 baños</dd>
+                <dt>Planta</dt><dd>4.ª exterior · ascensor</dd>
+                <dt>Salida</dt><dd>178.000 €</dd>
+                <dt>Baja</dt><dd>148.500 €</dd>
+                <dt>Retirado</dt><dd>marzo 2026</dd>
+              </dl>
+              <div class="qbox">
+                <div class="qh">Estos datos permiten responder</div>
+                <ol>
+                  <li>¿Cuánto vale hoy uno como este?</li>
+                  <li>¿Quién vendió los 47 de esta zona?</li>
+                  <li>¿Qué se paga de verdad por metro aquí?</li>
+                </ol>
+                <div class="out"><b>Estas respuestas están en IM·PULSO ↗</b> <span>· servicio externo</span></div>
+              </div>
+              <div class="sig">Fotografías y registro custodiados por <b>IM·PULSO</b></div>
+            </div>
+          </div>
+          <p class="caption">Aquí termina lo que le damos a José, y <strong>ya ha recibido todo lo que pidió</strong>: dato crudo, filtros y foto. No hay ningún botón nuestro — hay <strong>dos avisos de que lo que falta está fuera</strong>. Uno salta al pinchar una miniatura para ampliarla, gesto que hace cualquiera; el otro cierra las preguntas.</p>
+          <p class="caption">Cuando no caben todos los testigos, mandan <strong>los más recientes</strong>: cualquier «destacado» sería criterio editorial y eso lo huele. El pin va a nivel de manzana, nunca en el portal exacto.</p>
+        </div>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <div class="screen">
+        <div class="screen-bar"><span>3 · Nuestra página</span><span class="side im">IM·PULSO · fuera del Programa IN</span></div>
+        <div class="screen-body">
+          <div class="banner" style="margin-bottom:16px">Testigo <b>#ALC-2481</b> · Piso 92 m², Altabix · retirado en marzo de 2026 por 148.500 €</div>
+
+          <div class="split">
+            <div style="display:flex; flex-direction:column; gap:10px">
+              <div class="gate">
+                <div class="gt">Antes de ver las fotografías</div>
+                <div class="checkline"><div class="checkbox"></div><div>Son de <strong>consulta personal</strong>: no puedo descargarlas, publicarlas ni cederlas. Las imágenes pertenecen a sus autores; IM·PULSO custodia el registro.</div></div>
+                <div class="btn-soft">Ver las fotografías</div>
+              </div>
+              <div class="photo tall blur">
+                <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                <div class="photo-note">24 fotografías · pendientes de aceptación</div>
+              </div>
+              <div class="grid-thumbs">
+                <div class="photo thumb blur"><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div></div>
+                <div class="photo thumb blur"><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div></div>
+                <div class="photo thumb blur"><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div></div>
+                <div class="photo thumb blur"><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div></div>
+              </div>
+              <div class="micro">Al aceptar, la galería se desbloquea entera. <strong style="color:var(--navy)">Gratis y sin formulario.</strong></div>
+            </div>
+
+            <div style="display:flex; flex-direction:column; gap:10px">
+              <div class="qbox">
+                <div class="qh">Lo que este testigo no responde</div>
+                <ol>
+                  <li>¿Cuánto vale hoy uno como este?</li>
+                  <li>¿Qué se paga de verdad por metro aquí?</li>
+                  <li>¿Qué agencia vende más este tipo de piso?</li>
+                  <li>¿Cuánto tardan en venderse los de 3 habitaciones?</li>
+                </ol>
+              </div>
+              <div style="font-size:16px; font-weight:800; color:var(--navy); line-height:1.35">Este se vendió por 148.500 €.<br>¿Y el que tú estás mirando?</div>
+              <div class="field">Dirección o zona</div>
+              <div class="field">Superficie y distribución</div>
+              <div class="field">Tu correo electrónico</div>
+              <div class="btn-cta">Pedir el análisis</div>
+              <div class="micro" style="text-align:center">Te decimos qué incluye y el precio antes de que decidas nada.</div>
+            </div>
+          </div>
+
+          <p class="caption">Una sola página con tres momentos: <strong>se acepta, se ve, y solo entonces se pregunta.</strong> La galería llega bloqueada y se abre entera al aceptar — esa casilla es la pieza legal que traslada al usuario la responsabilidad de su uso, y sin ella no se puede servir ninguna foto.</p>
+          <p class="caption">El informe no interrumpe: cuelga de las preguntas que el testigo deja abiertas. Se puede pedir <strong>sin pagar</strong>, así queda el contacto y se sabe qué inmueble le interesa — el lead más cualificado de este negocio.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- POR QUÉ ASÍ -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--gray-100)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3M12 17h.01"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Por qué así y no de otra forma</div>
+        <div class="section-subtitle">Cada decisión responde a un motivo concreto</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Decisión</th><th>Motivo</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Preguntas en vez de ofertas</strong></td><td>Nadie puede acusar de promoción a una pregunta. Y quien la lee sabe que le falta la respuesta</td></tr>
+          <tr><td>El detonante es la miniatura, no un botón</td><td>El paso no lo da el portal, lo da el usuario al querer ampliar una foto</td></tr>
+          <tr><td>Aviso de servicio externo en los dos accesos</td><td>Marca dónde acaba su responsabilidad y empieza la nuestra</td></tr>
+          <tr class="highlight-asset"><td><strong>Las fotos, gratis y sin formulario</strong></td><td>La promesa que hizo el programa se cumple entera. Un muro aquí le dejaría a él en evidencia</td></tr>
+          <tr><td>Aceptación antes de ver</td><td>Es lo que traslada la responsabilidad de uso al usuario. Sin ella no se puede servir ninguna imagen</td></tr>
+          <tr class="highlight"><td>Solo recuentos en el mapa</td><td>Las medias son dato elaborado, y además son el PULSO, que se vende a 49 €</td></tr>
+          <tr><td>Tres miniaturas, no una foto grande</td><td>Se entiende el estado y no sirven para nada más. Una imagen degradada se defiende mejor que una legible</td></tr>
+          <tr><td>Firma al pie, nunca cabecera</td><td>Custodio de un archivo, no anunciante</td></tr>
+          <tr><td><strong>Se vende la valoración, no el testigo</strong></td><td>El testigo es de otro. Lo que quiere saber es cuánto vale <strong>el suyo</strong>. Ese es el producto</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight insight-gray"><strong>Un índice enseña qué falta. Una pregunta te hace sentir que te falta.</strong></div>
+
+    <div class="card" style="margin-top:16px; border-left:4px solid var(--pulso)">
+      <div class="card-title">Decisión: los anuncios activos se quedan fuera</div>
+      <p>Sería fácil añadir al mapa los anuncios vivos y enlazarlos a idealista: cero riesgo y cero coste. <strong>Pero diluye el producto.</strong> Los activos los ve cualquiera gratis; el diferencial son los retirados. Meterlos daría relevancia a un dato que no es nuestro, competiría con idealista en su terreno y —lo peor— le enseñaría a José que parte de su mapa funciona sin nosotros.</p>
+      <p>El mapa es de <strong>testigos</strong>: lo que ya pasó.</p>
+    </div>
+  </div>
+
+  <!-- SISTEMA DE CONSULTAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--gray-100)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Su sistema de consultas</div>
+        <div class="section-subtitle">Antes de abrir cada testigo se comprueba con el portal si ese miembro tiene consultas</div>
+      </div>
+    </div>
+    <div class="empty-box">Cuántas consultas tiene cada miembro y cómo se ganan, lo decide él.<br>Este espacio es suyo.</div>
+    <div class="insight insight-orange"><strong>Le importa más de lo que parece.</strong> Si el mapa estuviera abierto de par en par, su moneda no valdría nada y nadie aportaría sus operaciones. Al ser la llave de cada testigo, su incentivo pasa a valer mucho — y el diseño lo consigue sin que toquemos nada de su terreno.</div>
+  </div>
+
+  <!-- QUÉ SE VE DÓNDE -->
+  <div class="section motor-impulso">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--impulso-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Qué se ve en cada sitio</div>
+        <div class="section-subtitle">La asimetría es el motor del negocio</div>
+      </div>
+      <span class="zone-badge impulso">Monetización</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>En su portal</th><th>Solo en IM·PULSO</th></tr></thead>
+        <tbody>
+          <tr><td>Recuento de testigos por zona</td><td>Las 24 fotografías del testigo</td></tr>
+          <tr><td>Tipología, superficie, distribución, planta</td><td><strong>Precio estimado de compra</strong> del inmueble que le interesa</td></tr>
+          <tr><td>Precio de salida y precio de baja</td><td>Qué rota y qué se queda parado en la zona</td></tr>
+          <tr><td>Fecha de retirada</td><td>Precio por metro real de cierre</td></tr>
+          <tr><td><strong>Tres miniaturas</strong> con marca de agua</td><td><strong>Qué agencia vende más</strong> ese tipo de inmueble ahí</td></tr>
+          <tr><td>Una línea del estado general</td><td>Perfil del comprador de la zona</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="insight insight-green">Lo de la izquierda describe <strong>un piso que ya se vendió</strong>. Lo de la derecha responde a <strong>qué hacer con el que tienes delante</strong>. Ese es el salto que empuja — y por eso el producto no es el testigo, es la valoración.</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- BLINDAJE LEGAL -->
+  <div class="section motor-notarial">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--notarial-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="section-title">El blindaje legal</div>
+        <div class="section-subtitle">Siete reglas, cada una con su motivo. Van al contrato</div>
+      </div>
+      <span class="zone-badge notarial">Marco</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Regla</th><th>Por qué</th></tr></thead>
+        <tbody>
+          <tr><td>Su portal nunca aloja ni cachea las fotos</td><td>Quien aloja y muestra es quien responde</td></tr>
+          <tr><td>Las miniaturas se sirven desde nuestro dominio</td><td>El acto lo realiza IM·PULSO, no el portal</td></tr>
+          <tr><td>Aviso de servicio externo antes de salir</td><td>Deja constancia de que el programa no interviene</td></tr>
+          <tr><td>Aceptación de condiciones antes de ver</td><td>Traslada al usuario la responsabilidad de su uso</td></tr>
+          <tr><td>Un testigo por consulta, sin catálogo</td><td>Uso puntual y justificado, no explotación masiva</td></tr>
+          <tr><td>Marca de agua nominativa y enlaces que caducan</td><td>Trazabilidad real y prueba de diligencia</td></tr>
+          <tr><td>Retirada en 72 horas, pública</td><td>La mejor prueba de buena fe, y cuesta cero</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">La frontera de Raúl</div>
+      <p>Raúl construye el mapa y la capa de consultas. <strong>La página de fotografías y todo lo que hay detrás es nuestro y cerrado.</strong> La frontera técnica tiene que coincidir con la legal: si acaba tocando esa parte, la responsabilidad vuelve a casa de José y el archivo queda expuesto a un tercero.</p>
+      <p>Va escrito como cláusula de arquitectura, no de desconfianza.</p>
+    </div>
+  </div>
+
+  <!-- LO QUE NO CUBRE -->
+  <div class="section">
+    <div class="no-sample">
+      <div class="ns-title">Lo que el blindaje NO cubre</div>
+      <p>Esto es entre nosotros. No va en lo que se le enseña a él.</p>
+      <p><strong>El diseño protege a José, no a nosotros.</strong> Reduce mucho su exposición, pero no la elimina — y no se le puede prometer inmunidad: si su abogado lo matiza, perdemos la credibilidad de golpe. La frase correcta es «tu exposición queda en el mínimo posible y el que responde soy yo».</p>
+      <p><strong>El origen no se cura.</strong> Las fotos vienen de idealista sin licencia. Frente al titular responde IM·PULSO, y en lo penal sería Xavi en persona: ni la LLC ni el seguro cubren eso — ninguna póliza cubre infracción dolosa de propiedad intelectual.</p>
+      <p><strong>La marca de agua tiene doble filo:</strong> da trazabilidad y marca, pero poner nuestro nombre sobre una foto ajena, ante su titular, parece apropiación. Compensa, pero conviene saberlo.</p>
+      <p><strong>Condición previa innegociable:</strong> cambiar la herramienta de captura, que hoy hace ingeniería inversa de la API de idealista. Es el único frente que puede acabar en lo penal y es evitable. Necesita dueño y fecha.</p>
+    </div>
+  </div>
+
+  <!-- BLINDAJE TÉCNICO -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--gray-100)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      </div>
+      <div>
+        <div class="section-title">El blindaje técnico</div>
+        <div class="section-subtitle">Que no se lleven las vacas</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Medida</th><th>Cómo</th></tr></thead>
+        <tbody>
+          <tr><td>Petición por vista de mapa</td><td>Solo lo visible, a rejilla de 100 m, tope de 200-300 resultados; si hay más, se agrupan</td></tr>
+          <tr><td>Límite de ritmo</td><td>60 peticiones/minuto y 20.000/día por clave; 20/minuto por usuario</td></tr>
+          <tr><td>Detección de barrido</td><td>Recorrido sistemático del mapa: bloqueo automático de una hora y aviso</td></tr>
+          <tr><td>Claves rotables</td><td>Se renuevan cada 90 días y se revocan sin tocar su portal</td></tr>
+          <tr><td>Fotografías</td><td>Enlace firmado que caduca en 5 minutos, sin caché</td></tr>
+          <tr><td>Si nuestra API cae</td><td>Su portal muestra lo último con aviso de «datos no actualizados». No se queda en blanco</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="insight insight-purple">Dimensionado para <strong>3.000 usuarios con picos de 300 a la vez</strong> — el caso real es que lo presente en directo y entren todos de golpe.</div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- COSTES -->
+  <div class="section motor-impulso">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--impulso-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Lo que cuesta</div>
+        <div class="section-subtitle">Archivo en calidad media · 2,1 TB</div>
+      </div>
+      <span class="zone-badge impulso">Números</span>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi"><div class="kpi-value">100 $</div><div class="kpi-label">Dar el servicio</div></div>
+      <div class="kpi"><div class="kpi-value">198 $</div><div class="kpi-label">Captura nacional</div></div>
+      <div class="kpi"><div class="kpi-value">300 $</div><div class="kpi-label">Total al mes</div></div>
+      <div class="kpi"><div class="kpi-value">0 €</div><div class="kpi-label">Coste para José</div></div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Concepto</th><th>Coste</th><th>Detalle</th></tr></thead>
+        <tbody>
+          <tr><td>Almacenamiento</td><td class="num">15 $/mes</td><td>2,1 TB en calidad media</td></tr>
+          <tr><td>Copia de seguridad</td><td class="num">2 $/mes</td><td>En otro proveedor</td></tr>
+          <tr><td>Miniaturas y marcas de agua</td><td class="num">25 $/mes</td><td>Generadas al vuelo</td></tr>
+          <tr><td>API, límites y red</td><td class="num">30 $/mes</td><td>Aguanta los picos</td></tr>
+          <tr><td>Formulario y correos</td><td class="num">22 $/mes</td><td>Sin límite de respuestas</td></tr>
+          <tr><td>Dominio y varios</td><td class="num">5 $/mes</td><td></td></tr>
+          <tr class="highlight-asset"><td><strong>Dos suscripciones de captura</strong></td><td class="num">198 $/mes</td><td>Las paga Rafa hoy de su bolsillo</td></tr>
+        </tbody>
+        <tfoot><tr><td>Total</td><td class="num">≈ 300 $/mes</td><td></td></tr></tfoot>
+      </table>
+    </div>
+
+    <div class="insight insight-green"><strong>Decisión para Rafa:</strong> que las dos suscripciones pasen a coste del proyecto desde la firma. No es un gasto nuevo del acuerdo — es uno que ya existe y que este acuerdo por fin justifica.</div>
+  </div>
+
+  <!-- PRECIO -->
+  <div class="section motor-impulso">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--impulso-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#16A34A" stroke-width="1.8" stroke-linecap="round"><path d="M20.6 13.4L12 22l-9-9V3h10z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg>
+      </div>
+      <div>
+        <div class="section-title">El precio</div>
+        <div class="section-subtitle">Tres opciones y una recomendación</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>Opción</th><th>A favor</th><th>En contra</th></tr></thead>
+        <tbody>
+          <tr><td>Gratis a secas</td><td>Adopción inmediata</td><td>Se devalúa e imposibilita cobrar el año 2</td></tr>
+          <tr><td>150 €/mes</td><td>Compromiso formal</td><td>Su portal no genera ingresos: no lo va a pagar</td></tr>
+          <tr class="highlight-asset"><td><strong>Socio fundador</strong></td><td>Tiene precio y valor asignado sin que él pague</td><td>Exige contrapartidas bien escritas</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-title">149 €/mes de lista · gratis el primer año</div>
+      <div class="card-subtitle">No es un regalo: es un servicio con precio que recibe cubierto</div>
+      <ul class="plain">
+        <li>Firma «Fotografías y registro custodiados por IM·PULSO» y marca de agua, <strong>inamovibles</strong>.</li>
+        <li><strong>Exclusividad</strong>: único proveedor de testigos retirados mientras dure el acuerdo.</li>
+        <li>El aviso de servicio externo y la aceptación forman parte del diseño legal y <strong>no se retiran</strong>.</li>
+        <li><strong>12 meses</strong>, renovación anual a renegociar.</li>
+        <li>Al terminar: cese, sin volcado y borrado de cachés.</li>
+        <li>Frontera técnica de Raúl respetada.</li>
+      </ul>
+      <div class="callout" style="margin-top:16px"><strong>Los 12 meses, sin que suene a atarle:</strong> «no te atan a pagar, nos atan a nosotros a servirte. Amortizamos el montaje y garantizamos que tu comunidad no se queda sin la herramienta a mitad». Con cláusula de resolución si incumplimos nosotros, el plazo pasa a ser su garantía.</div>
+    </div>
+  </div>
+
+  <!-- PROYECCIÓN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--pulso-bg)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="1.8" stroke-linecap="round"><path d="M23 6l-9.5 9.5-5-5L1 18"/><path d="M17 6h6v6"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Lo que puede entrar</div>
+        <div class="section-subtitle">Sobre 3.000 miembros, con supuestos explícitos</div>
+      </div>
+      <span class="zone-badge pulso">Estimación</span>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th></th><th>Conservador</th><th>Bueno</th></tr></thead>
+        <tbody>
+          <tr><td>Usan el mapa cada mes</td><td class="num">400 · 13 %</td><td class="num">900 · 30 %</td></tr>
+          <tr><td>Salen a ver fotografías</td><td class="num">40/mes</td><td class="num">135/mes</td></tr>
+          <tr><td>Informes de 49 €</td><td class="num">4 · 196 €</td><td class="num">20 · 980 €</td></tr>
+          <tr><td>Packs de 249 €</td><td class="num">125 €</td><td class="num">500 €</td></tr>
+          <tr><td>Consultorías de 125 €</td><td class="num">125 €</td><td class="num">375 €</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>Al mes</td><td class="num">≈ 445 €</td><td class="num">≈ 1.850 €</td></tr>
+          <tr><td>Cubre los 300 $</td><td class="num">Mes 2-3</td><td class="num">Mes 1</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <div class="insight insight-gray">Sin llamada a la acción dentro de su portal, la conversión es más lenta que con botón — y más duradera, porque quien llega, llega convencido. El grupo de 3.000 se agota: a los seis o nueve meses lo repone el alumnado nuevo.</div>
+  </div>
+
+  <!-- PLAN -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--gray-100)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Cómo se monta</div>
+        <div class="section-subtitle">Cuatro fases, con hito en cada una</div>
+      </div>
+    </div>
+
+    <div class="steps">
+      <div class="step"><div class="when">Sem. 1-2</div><div><div class="wt">Acuerdo y cimientos</div><p>Firma. Migración de Alicante con su copia. Seguro contratado. Arranca el cambio de la herramienta de captura, que es condición previa.</p></div></div>
+      <div class="step"><div class="when">Sem. 3</div><div><div class="wt">La página de fotografías</div><p>Tres a cinco días: aceptación, galería con marca de agua y formulario del análisis. Sin desplegar aplicación.</p></div></div>
+      <div class="step"><div class="when">Sem. 4-6</div><div><div class="wt">La API y el piloto</div><p>Especificación para Raúl. Piloto con 25 alumnos y 100 consultas antes de abrir a los 3.000.</p></div></div>
+      <div class="step"><div class="when">Mes 3-4</div><div><div class="wt">España completa</div><p>Resto del archivo y captura nueva en calidad media desde webs de agencias.</p></div></div>
+    </div>
+  </div>
+
+  <!-- PREGUNTAS -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-icon" style="background:var(--gray-100)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#374151" stroke-width="1.8" stroke-linecap="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.9-.9L3 21l1.9-5.1A8.4 8.4 0 0 1 4 12a8.5 8.5 0 0 1 8.4-8.5h.5A8.5 8.5 0 0 1 21 11.5z"/></svg>
+      </div>
+      <div>
+        <div class="section-title">Lo que va a preguntar</div>
+        <div class="section-subtitle">Y qué se le contesta</div>
+      </div>
+    </div>
+
+    <div class="qa">
+      <div class="qa-item">
+        <div class="qa-q">«Déjame poner las fotos en mi portal.»</div>
+        <div class="qa-a">Están: tres miniaturas con nuestra marca. Las 24 no pueden estar ahí, y no es capricho nuestro. Lo que cambia no es que tus miembros las vean —las ven igual y gratis— sino <strong>quién las está publicando</strong>.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">«No quiero que se promocione nada dentro del programa.»</div>
+        <div class="qa-a">No hay ningún botón nuestro. Hay <strong>dos avisos de que lo que falta está fuera</strong> y de que el programa no interviene. Y consta quién custodia el registro, igual que un archivo lleva el sello de quien lo guarda: si mañana alguien discute una cifra, hay que poder saber de dónde salió.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">«¿Y si alguien se siente engañado al salir?»</div>
+        <div class="qa-a">No puede: se le avisa antes de salir, y al llegar recibe <strong>exactamente lo que iba a buscar</strong> — las 24 fotos, gratis y sin formulario. La promesa que hiciste tú se cumple entera.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">«¿Esto me deja libre de responsabilidad?»</div>
+        <div class="qa-a"><strong>Deja tu exposición en el mínimo posible, y el que responde soy yo.</strong> No alojas, no cacheas, se avisa de que es un servicio externo y hay retirada en 72 horas. Contrástalo con tu abogado.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">«¿Cuánto me cuesta?»</div>
+        <div class="qa-a">El servicio son 149 € al mes. <strong>A ti, cero el primer año.</strong> Lo que pedimos no es dinero: ser el proveedor, y que conste quién custodia los datos.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">«¿Y si mañana cerráis?»</div>
+        <div class="qa-a">Tu mapa deja de mostrar testigos, pero el portal sigue siendo tuyo y funcionando. Por eso el compromiso de 12 meses: es la garantía de que tu comunidad no se queda a medias.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ANTES DE ENSEÑARLO -->
+  <div class="section">
+    <div class="verdict-navy">
+      <div style="font-size:18px; font-weight:800; margin-bottom:12px">Tres cosas antes de enseñárselo</div>
+      <div style="font-weight:400; font-size:14px; line-height:1.7; opacity:.9">
+        <strong style="color:var(--pulso)">El pin difuminado a nivel de manzana.</strong> Si va exacto, ya le hemos dado la dirección y no se puede reservar. Hay que fijarlo antes de la demo.<br><br>
+        <strong style="color:var(--pulso)">Mirar una foto del histórico a tamaño real.</strong> Están en miniatura y no se pueden mejorar: esos anuncios ya no existen. Si no se ven bien, no cambia el diseño — cambia lo que se le promete.<br><br>
+        <strong style="color:var(--pulso)">Raúl es la amenaza a medio plazo.</strong> Viendo cómo funciona puede empezar a capturar por su cuenta. Lo que no puede replicar es el archivo de 460.004. Por eso van por escrito la exclusividad, los 12 meses y su frontera técnica.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-inner">
+    <div class="footer-title">IM·PULSO — Inteligencia de Mercado Inmobiliario</div>
+    <p>Base: transcripción de la reunión del 30 de julio y audio del 6 de agosto, cotejados palabra por palabra · dictámenes legales del 1, 4 y 14 de agosto · medición real del archivo de fotografías · auditoría de integridad del dato sobre 56.972 registros (99,9 %) · comparativa de proveedores de almacenamiento con tarifas de 2026 · condiciones de uso de agregadores del sector y jurisprudencia europea reciente.</p>
+    <div class="footer-fine">Documento interno de IM·PULSO. Contiene notas y valoraciones propias que no deben salir de aquí. La propuesta que se le presenta a José es otro documento, derivado de este.</div>
+  </div>
+</div>
+</body>
+</html>

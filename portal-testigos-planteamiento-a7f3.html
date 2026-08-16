@@ -86,6 +86,7 @@
   tr.highlight td { background: var(--pulso-bg); }
   tr.highlight-asset td { background: var(--impulso-bg); }
   td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+  th.num { text-align: right; }
   .table-wrap a { color: var(--notarial); text-decoration: none; border-bottom: 1px solid var(--notarial-border); font-weight: 600; }
   .table-wrap a:hover { border-bottom-color: var(--notarial); }
   tfoot td { background: var(--gray-100); font-weight: 800; border-top: 2px solid var(--gray-300); }
@@ -126,6 +127,7 @@
   .convergence .conv-verdict { font-size: 24px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
   .convergence p { font-size: 14px; opacity: .75; max-width: 46rem; margin: 0 auto; }
   .convergence .accent { color: var(--pulso); }
+  .convergence .accent { color: var(--pulso); font-weight: 800; }
 
   .verdict-navy { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%); color: white; border-radius: 12px; padding: 20px 24px; margin: 20px 0; font-size: 15px; font-weight: 600; }
 
@@ -320,7 +322,7 @@
     <div class="convergence">
       <div class="conv-label">El principio</div>
       <div class="conv-verdict">Le damos la leche a demanda.<br><span class="accent">Las vacas se quedan en nuestra granja.</span></div>
-      <p>José pone el mapa y sus 3.000 personas. Nosotros ponemos el archivo, la infraestructura y la responsabilidad. No hay volcado de datos: su portal pregunta y nosotros respondemos, consulta a consulta. Y en su portal no hay ni un botón nuestro — solo avisos de que lo que falta está fuera, y la firma de quién custodia el archivo.</p>
+      <p>José pone el mapa y sus 3.000 personas. Nosotros ponemos el archivo, la infraestructura y la responsabilidad. No hay volcado de datos: su portal pregunta y nosotros respondemos, consulta a consulta. Y en su portal no hay publicidad nuestra: ni una oferta, ni un precio, ni un argumento de venta. Solo una puerta que dice a dónde lleva, el aviso de que al cruzarla se sale del programa, y la firma de quién custodia el archivo.</p>
     </div>
   </div>
 
@@ -628,7 +630,7 @@
       <p><strong>Esto no es legal al cien por cien y no puede serlo.</strong> Las fotografías tienen autor y no tenemos su licencia. No existe una arquitectura que convierta eso en impecable — lo que existe es una que reduce mucho la probabilidad de que alguien reclame y, si reclama, el tamaño del golpe.</p>
       <p>Dónde estamos: <strong>a José le cubrimos las espaldas casi del todo</strong> —no aloja, no cachea, no publica, avisa de que es servicio externo y hay retirada en 72 horas—; <strong>a nosotros nos cubrimos en torno a un 90 %</strong>, y ese resto es riesgo asumido a sabiendas.</p>
       <p>Lo que sostiene esa posición es la diferencia entre <strong>enseñar y vender</strong>. No cedemos el archivo, no se puede descargar, no se puede redifundir, y cada consulta es de una persona identificada dentro de una comunidad cerrada que ha aceptado por escrito que esas imágenes no son suyas. Se le muestra algo, uno a uno, con nombre y apellidos. Eso no es lo mismo que ponerlo en abierto para que cualquiera lo coja.</p>
-      <p>Y es la misma posición desde la que operan los agregadores del sector: ninguno tiene licencia firmada con los portales. La diferencia entre los que trabajan tranquilos y el que fue condenado en Francia el año pasado no fue tener papeles — fue <strong>no republicar de forma masiva y no competir con el portal de origen</strong>. Nosotros no competimos con idealista: servimos análisis a inversores.</p>
+      <p>Y es la misma posición desde la que operan los agregadores del sector: ninguno tiene licencia firmada con los portales. <strong>Casafari</strong>, sin acuerdo con ningún portal, declara en sus condiciones de uso que no otorga derecho alguno sobre las imágenes y traslada la responsabilidad a quien las use. <strong>Jinka</strong> hacía scraping masivo y republicaba anuncios y fotografías de forma persistente en su propia aplicación, compitiendo con el portal de origen: la <em>Cour d'appel</em> de Versalles lo condenó el 16 de diciembre de 2025 a cesar, borrar todo el contenido y pagar 60.000 € por reutilización sustancial de base de datos. Nosotros no competimos con idealista: servimos análisis a inversores.</p>
     </div>
 
     <div class="card-title" style="margin-top:22px">Las siete reglas que lo sostienen</div>
@@ -698,15 +700,18 @@
     <div class="kpi-row">
       <div class="kpi"><div class="kpi-value">57 €</div><div class="kpi-label">Infraestructura nueva</div></div>
       <div class="kpi"><div class="kpi-value">143 €</div><div class="kpi-label">Gasto nuevo real</div></div>
-      <div class="kpi"><div class="kpi-value">290 €</div><div class="kpi-label">Total al mes</div></div>
+      <div class="kpi"><div class="kpi-value">364 €</div><div class="kpi-label">Total al mes</div></div>
       <div class="kpi"><div class="kpi-value">1.750 €</div><div class="kpi-label">Montarlo entre socios</div></div>
     </div>
 
     <div class="card-title" style="margin-top:20px">Coste recurrente, línea por línea</div>
+    <p style="margin-bottom:12px">Una mejora que entra con este montaje: <strong>la descarga pasa a ir directa al almacenamiento en la nube</strong>, en vez de al disco de la máquina de captura. Desaparece el cuello de botella del disco local, no hay que migrar nada después y la copia de seguridad es automática desde el primer día.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Concepto</th><th>Herramienta y plan</th><th>Al mes</th></tr></thead>
+        <thead><tr><th>Concepto</th><th>Herramienta y plan</th><th class="num">Al mes</th></tr></thead>
         <tbody>
+          <tr style="color:var(--gray-500)"><td>Plataforma, dominio y base de datos <em>(ya se paga)</em></td><td>GoHighLevel, Supabase, SIM y hosting</td><td class="num">122 €</td></tr>
+          <tr style="color:var(--gray-500)"><td>Primera licencia de descarga <em>(ya se paga)</em></td><td>La que cubre la captura actual</td><td class="num">99 €</td></tr>
           <tr><td>Almacenamiento · 2,1 TB</td><td><a href="https://www.backblaze.com/cloud-storage/pricing" target="_blank" rel="noopener">Backblaze B2 Standard</a> · 6 $/TB</td><td class="num">12,91 €</td></tr>
           <tr><td>Copia de seguridad · 2,1 TB</td><td><a href="https://wasabi.com/cloud-storage-pricing" target="_blank" rel="noopener">Wasabi</a> · pago por uso, otro proveedor</td><td class="num">14,50 €</td></tr>
           <tr><td>Miniaturas y marcas de agua</td><td><a href="https://developers.cloudflare.com/images/pricing/" target="_blank" rel="noopener">Cloudflare Images</a> · transformación al vuelo</td><td class="num">8,21 €</td></tr>
@@ -719,8 +724,9 @@
           <tr class="highlight"><td><strong>Segunda licencia de scraping</strong><br><span style="font-size:12px;color:var(--gray-500)">La herramienta que descarga los anuncios, no la API nuestra</span></td><td>Hace falta una segunda para cubrir España completa</td><td class="num">85,53 €</td></tr>
         </tbody>
         <tfoot>
-          <tr><td>Gasto nuevo que genera este acuerdo</td><td></td><td class="num">142,75 €</td></tr>
-          <tr><td>Total recurrente, con lo ya contratado</td><td></td><td class="num">≈ 290 €</td></tr>
+          <tr><td>Ya se paga hoy</td><td></td><td class="num">221 €</td></tr>
+          <tr><td>Gasto nuevo que genera este acuerdo</td><td></td><td class="num">143 €</td></tr>
+          <tr><td>Total recurrente</td><td></td><td class="num">≈ 364 €</td></tr>
         </tfoot>
       </table>
     </div>
@@ -728,7 +734,7 @@
     <div class="card-title" style="margin-top:24px">Puesta en marcha, una sola vez</div>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Trabajo</th><th>Horas</th><th>Coste</th></tr></thead>
+        <thead><tr><th>Trabajo</th><th class="num">Horas</th><th class="num">Coste</th></tr></thead>
         <tbody>
           <tr><td>API de consulta con sus límites y protección<br><span style="font-size:12px;color:var(--gray-500)">Los límites de ritmo y el WAF son configuración de Cloudflare, no código</span></td><td class="num">18 h</td><td class="num"></td></tr>
           <tr><td>Miniaturas y marca de agua por usuario</td><td class="num">16 h</td><td class="num"></td></tr>
@@ -801,7 +807,7 @@
 
     <div class="insight insight-orange"><strong>Las cuatro llevan compromiso de 12 meses</strong>, sin excepción. Montar esto son setenta horas de trabajo y una infraestructura nueva: con menos recorrido no tiene sentido ni empezar.</div>
 
-    <div class="insight insight-green"><strong>Y todas cubren el gasto desde el primer mes.</strong> El servicio nos cuesta unos 290 € mensuales entre almacenamiento, licencias de descarga y plataforma. Cualquier cifra por debajo significa poner dinero cada mes para que otro tenga un mapa — y eso no es un acuerdo, es un patrocinio.</div>
+    <div class="insight insight-green"><strong>Y todas cubren de sobra lo que este acuerdo añade</strong>, que son 143 € al mes entre infraestructura y la segunda licencia de descarga. El resto del gasto del proyecto —hasta unos 364 € en total— es de IM·PULSO y existiría igualmente. Lo que no puede pasar es cobrar por debajo de lo que el acuerdo cuesta: eso no es un acuerdo, es un patrocinio.</div>
 
     <div class="card">
       <div class="card-title">Lo que va por escrito en cualquiera de las cuatro</div>
@@ -863,21 +869,21 @@
 
     <div class="card" style="border-left:4px solid var(--insight-red)">
       <div class="card-title">Primero, la mala noticia</div>
-      <p>Vendiendo informes uno a uno dentro del programa, <strong>el techo son unos 980 € al mes</strong>. Y no es problema del precio: con 40 a 135 personas llegando a la página cada mes, ningún precio salva el modelo. A 49 € salen 196-980 €; a 199 €, con una conversión honesta, salen 160-800 €.</p>
-      <p><strong>El cuello de botella es el tráfico, no la conversión.</strong> Montar toda esta infraestructura y asumir el riesgo para sacar mil euros no compensa. Hay que cambiar el producto, no la tarifa.</p>
+      <p>Vendiendo informes uno a uno dentro del programa, <strong>el techo son unos mil euros al mes</strong>. Y no es problema del precio: con 40 a 135 personas llegando cada mes, ningún precio salva el modelo.</p>
     </div>
 
     <div class="table-wrap">
       <table>
-        <thead><tr><th>Solo informes, dentro del programa</th><th>Conservador</th><th>Bueno</th></tr></thead>
+        <thead><tr><th>Solo informes, dentro del programa</th><th class="num">Conservador</th><th class="num">Bueno</th></tr></thead>
         <tbody>
-          <tr><td>Usan el mapa cada mes</td><td class="num">400</td><td class="num">900</td></tr>
-          <tr><td>Salen a ver fotografías</td><td class="num">40</td><td class="num">135</td></tr>
-          <tr><td>Compran informe</td><td class="num">4</td><td class="num">20</td></tr>
+          <tr><td>Llegan a nuestra página cada mes</td><td class="num">40 personas</td><td class="num">135 personas</td></tr>
+          <tr><td><strong>Compran informe</strong></td><td class="num">4</td><td class="num">20</td></tr>
+          <tr><td>Si el informe vale 49 €</td><td class="num">196 €</td><td class="num">980 €</td></tr>
+          <tr class="highlight-asset"><td>Si el informe vale <strong>89 €</strong></td><td class="num">356 €</td><td class="num">1.780 €</td></tr>
         </tbody>
-        <tfoot><tr><td>Al mes</td><td class="num">196 €</td><td class="num">980 €</td></tr></tfoot>
       </table>
     </div>
+    <div class="insight insight-gray">De cada diez personas que llegan a la ficha, una acaba comprando. Duplicar la tarifa duplica el resultado, pero se parte de tan poco que sigue sin ser un negocio. <strong>Lo que falta no son euros por informe: es gente entrando.</strong></div>
 
     <div class="card" style="margin-top:20px; border-left:4px solid var(--impulso)">
       <div class="card-title">Esto no va de facturar: va de que nos conozcan</div>
@@ -900,17 +906,16 @@
 
     <div class="insight insight-green"><strong>La vara de medir el primer año no son los euros.</strong> Son cuántos correos hay en la lista, a cuánta gente se le ha quedado el nombre, y si ha aparecido la primera conversación de una operación grande. Si eso pasa, el acuerdo ha funcionado aunque la facturación sea modesta.</div>
 
-    <div class="insight insight-gray">Dicho eso, hay que ser realistas con la caja: <strong>informes a 89 € cubriendo unos 290 €/mes de coste</strong> significa que con tres o cuatro informes al mes esto se paga solo. Ese es el listón mínimo, y es bajo. Todo lo que venga por encima es lo que justifica haberlo montado.</div>
+    <div class="insight insight-gray">Con los pies en el suelo: la cuota de José ya cubre de sobra lo que este acuerdo añade. <strong>Los informes, por tanto, no tienen que pagar la operación: son margen desde el primero.</strong> Si se quisiera que este acuerdo cargara además con todo el gasto del proyecto, 364 € al mes, harían falta unos cinco informes mensuales a 89 €. Sigue siendo un listón bajo.</div>
 
     <div class="card" style="border-left:4px solid var(--insight-red)">
-      <div class="card-title">Y el precio del informe: 89 €, y dejar de regalarlo</div>
-      <p>La facturación real hasta hoy: <strong>723 € cobrados.</strong> Y se han entregado muchos más informes de los que se han facturado, la mayoría como demostración o por relación.</p>
-      <p><strong>Eso no demuestra que 49 € sea caro: demuestra que apenas se ha vendido.</strong> Y en lo poco que se ha cobrado, la mayor parte viene de un paquete de 249 € y de trabajos para CdU a 25 y 75 € — no de informes vendidos a inversores.</p>
-      <p>Y 49 € comunica producto barato ante gente que mueve operaciones de seis cifras. La credibilidad que faltaba ya está: 460.004 anuncios y un dato auditado al 99,9 %.</p>
-      <p><strong>Los 129 € se reservan para el informe con MTVV integrado</strong>, que serán pocos. El estándar es 89 €.</p>
-      <p><strong>Los 49 € son precio de lanzamiento y hay que dejarlo dicho siempre</strong>, en la web y en cada entrega. Si no consta que es promocional, subir mañana a 89 € parece un capricho en vez de lo que es: el final de una promoción.</p>
-      <p><strong>Y el gratis deja de ser un regalo:</strong> solo se emite a un inversor <strong>con una operación identificada en curso</strong>, y se cobra en especie — los datos de esa operación, una presentación o un testimonio. El informe gratis es prospección dirigida; el resto, caja.</p>
-      <p>Aparte queda la <strong>integración en operaciones grandes</strong>, que no lleva tarifa: se pacta a medida según lo que se aporte y lo que se mueva.</p>
+      <div class="card-title">El precio del informe: 89 €, y dejar de regalarlo</div>
+      <p>La facturación real hasta hoy: <strong>723 € cobrados</strong>. Y se han entregado muchos más informes de los que se han facturado, la mayoría como demostración o por relación.</p>
+      <p>Eso no demuestra que 49 € sea caro: demuestra que <strong>apenas se ha vendido</strong>. Y de lo cobrado, la mayor parte viene de un paquete de 249 € y de trabajos para CdU a 25 y 75 € — no de informes vendidos a inversores.</p>
+      <p>Además, 49 € comunica producto barato ante gente que mueve operaciones de seis cifras. <strong>El estándar pasa a 89 €</strong>, y los 129 € quedan reservados para el informe con MTVV integrado, que serán pocos.</p>
+      <p>Mientras se mantenga el precio de lanzamiento hay que <strong>decirlo siempre</strong>, en la web y en cada entrega: si no consta que es promocional, subir después parece un capricho en vez de lo que es, el final de una promoción.</p>
+      <p><strong>Y el gratis deja de ser un regalo:</strong> solo se emite a un inversor con una operación identificada en curso, y se cobra en especie — los datos de esa operación, una presentación o un testimonio. El informe gratis es prospección dirigida; el resto, caja.</p>
+      <p>Aparte queda la integración en operaciones grandes, que no lleva tarifa: se pacta a medida según lo que se aporte y lo que se mueva.</p>
     </div>
 
     <div class="insight insight-purple"><strong>Esto reencuadra el acuerdo:</strong> José no es la fuente de ingresos. Son 3.000 inversores cualificados a coste de captación cero, y el sitio donde aparecen las operaciones. Su valor no se mide en cuotas: se mide en cuántas operaciones trae.</div>
@@ -957,7 +962,7 @@
       </div>
       <div class="qa-item">
         <div class="qa-q">«No quiero que se promocione nada dentro del programa.»</div>
-        <div class="qa-a">No hay ningún botón nuestro. Hay <strong>dos avisos de que lo que falta está fuera</strong> y de que el programa no interviene. Y consta quién custodia el registro, igual que un archivo lleva el sello de quien lo guarda: si mañana alguien discute una cifra, hay que poder saber de dónde salió.</div>
+        <div class="qa-a">No hay publicidad nuestra: <strong>solo un enlace que dice a dónde lleva y avisa de que se sale del programa</strong>. Y consta quién custodia el registro, igual que un archivo lleva el sello de quien lo guarda: si mañana alguien discute una cifra, hay que poder saber de dónde salió.</div>
       </div>
       <div class="qa-item">
         <div class="qa-q">«¿Y si alguien se siente engañado al salir?»</div>
@@ -981,11 +986,12 @@
   <!-- ANTES DE ENSEÑARLO -->
   <div class="section">
     <div class="verdict-navy">
-      <div style="font-size:18px; font-weight:800; margin-bottom:12px">Tres cosas antes de enseñárselo</div>
-      <div style="font-weight:400; font-size:14px; line-height:1.7; opacity:.9">
-        <strong style="color:var(--pulso)">El pin difuminado a nivel de manzana.</strong> Si va exacto, ya le hemos dado la dirección y no se puede reservar. Hay que fijarlo antes de la demo.<br><br>
-        <strong style="color:var(--pulso)">Mirar una foto del histórico a tamaño real.</strong> Están en miniatura y no se pueden mejorar: esos anuncios ya no existen. Si no se ven bien, no cambia el diseño — cambia lo que se le promete.<br><br>
-        <strong style="color:var(--pulso)">Raúl podría serlo a medio plazo.</strong> Viendo cómo funciona, con el tiempo podría capturar por su cuenta. Lo que no puede replicar es el archivo de 460.004. Por eso van por escrito la exclusividad, los 12 meses y su frontera técnica — no por desconfianza, sino porque es lo que hace que la colaboración dure.
+      <div style="font-size:18px; font-weight:800; margin-bottom:12px">Antes de sentarse con él</div>
+      <div style="font-weight:400; font-size:14px; line-height:1.7; opacity:.92">
+        <strong style="color:var(--pulso)">Lleva desde el 6 de agosto esperando respuesta.</strong> Dijo «yo te puedo dar una respuesta» y aún no se le ha contestado. El primer riesgo de esta operación no es legal ni técnico: es que se enfríe.<br><br>
+        <strong style="color:var(--pulso)">Hay tres datos que solo él tiene</strong> y que condicionan todo lo demás: cuántos miembros activos hay de verdad, si IM·PULSO es <em>el</em> proveedor o uno más, y cuándo piensa lanzar el portal de testigos — que hoy no tiene fecha. Sin eso, el plan y el precio son suposiciones.<br><br>
+        <strong style="color:var(--pulso)">No se le puede prometer inmunidad legal.</strong> Es lo único que puede romper la conversación entera: si se le dice «quedas fuera» y su abogado lo matiza, se pierde la credibilidad de golpe. La frase es «tu exposición queda en el mínimo posible y el que responde soy yo».<br><br>
+        <strong style="color:var(--pulso)">Raúl es quien construye el mapa por parte de José</strong> y va a ver cómo funciona todo por dentro. Con el tiempo podría montar su propia captura. Lo que no puede replicar es el archivo de retirados. Por eso la exclusividad, los doce meses y su frontera técnica van por escrito: no por desconfianza, sino porque es lo que hace que la colaboración dure.
       </div>
     </div>
   </div>

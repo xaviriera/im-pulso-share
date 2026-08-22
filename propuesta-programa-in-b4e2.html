@@ -127,6 +127,8 @@ ul.plain li strong{color:var(--gray-900)}
 .screen-bar .side{color:var(--notarial)}
 .screen-bar .side.mid{color:var(--gray-500)}
 .screen-body{padding:24px}
+.map-tag{position:absolute;z-index:2;left:11px;top:10px;font-size:9.5px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400,#9CA3AF)}
+.map.zonas{padding-top:30px}
 .map{position:relative;height:15rem;border-radius:12px;border:1px solid #e5e7eb;background:repeating-linear-gradient(0deg,transparent 0 2.4rem,#eef0f3 2.4rem calc(2.4rem + 1px)),repeating-linear-gradient(90deg,transparent 0 3.2rem,#eef0f3 3.2rem calc(3.2rem + 1px)),var(--gray-50)}
 .zona{position:absolute;background:#fff;border:1px solid var(--notarial-border);border-radius:8px;padding:6px 10px;font-size:11px;line-height:1.35;box-shadow:0 2px 8px rgba(15,31,61,.1);text-align:center;white-space:nowrap}
 .zona b{display:block;font-size:12px;color:var(--navy);font-weight:800}
@@ -283,7 +285,7 @@ p.body{font-size:15.5px}
 p.body.big{font-size:17px}
 }
 @media(max-width:480px){
-.map.zonas{height:auto;background:none;border:none;border-radius:0;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.map.zonas{height:auto;min-height:12rem;display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:14px;align-content:center}
 .map.zonas .zona{position:static;left:auto!important;top:auto!important}
 .map{height:13rem}
 .split .map,.map-pins{height:16.5rem}
@@ -423,7 +425,7 @@ p.body.big{font-size:17px}
   <div class="hero-inner">
     <div class="eyebrow">Propuesta de colaboración</div>
     <h1>El mercado borra sus huellas. <em>Nosotros las guardamos.</em></h1>
-    <p class="lead">Cada semana desaparecen de los portales miles de anuncios, y con ellos el dato que más vale a la hora de invertir: <strong>a qué precio se retiró del mercado un inmueble</strong>. Esta es una propuesta para que la comunidad lo tenga integrado en la plataforma IN, con todo lo delicado que hay detrás ya resuelto y sin comprometer a nadie.</p>
+    <p class="lead">Cada semana desaparecen de los portales miles de anuncios, y con ellos el dato que más vale al invertir: <strong>a qué precio se retiró un inmueble</strong>. Esta propuesta lo lleva a la plataforma IN, con lo delicado ya resuelto y sin comprometer a nadie.</p>
     <div class="hero-foot">
       <div><b>Un mapa vivo</b>integrado en la plataforma IN</div>
       <div><b>Cobertura nacional</b>desplegada durante el acuerdo</div>
@@ -448,13 +450,13 @@ p.body.big{font-size:17px}
 
     <div class="una-col">
       <div>
-        <p class="body">En la reunión de julio nos contaste lo que tenías en la cabeza: un mapa dentro de la plataforma donde la comunidad pudiera filtrar por zona, por tipología y por fecha, y ver de un vistazo qué se ha movido de verdad en cada sitio. Con la fotografía delante, para saber cómo era esa vivienda sin tener que imaginársela.</p>
+        <p class="body">En la reunión de julio nos contaste tu idea: un mapa donde la comunidad filtre por zona, tipología y fecha y vea qué se ha movido de verdad en cada sitio, con la fotografía delante para saber cómo era la vivienda.</p>
         <p class="body">Y pusiste una condición por encima de todo lo demás: <strong>que fuera limpio</strong>. Que nada de esto dejara expuesto al programa.</p>
-        <p class="body">Nos interesaba de entrada, y no solo como proveedores: <strong>esta herramienta nos la pedíamos a nosotros mismos</strong> mucho antes de esa conversación, cuando analizábamos operaciones dentro del programa como uno más.</p>
+        <p class="body">Nos interesaba, y no solo como proveedores: <strong>esta herramienta nos la pedíamos a nosotros mismos</strong> mucho antes de esa conversación, cuando analizábamos operaciones en el programa como uno más.</p>
       </div>
       <div>
         <p class="body">Nos pusimos con ello, y lo primero que aprendimos es que esa condición no era un detalle: <strong>era el problema entero</strong>.</p>
-        <p class="body">Por eso esto no llega en cuatro números. Lo que pedías requería estudiarlo antes de poder ofrecer nada — y ese estudio es lo que tienes en las manos. En un cálculo rápido no habrían salido la mitad de las cosas que salieron; habríamos empezado a montar y las sorpresas habrían aparecido con la comunidad ya dentro. La espera <em>es</em> el estudio: estas semanas la captura ha estado corriendo de verdad para poder darte cifras medidas y no supuestas. Que sea agosto tampoco ha ayudado.</p>
+        <p class="body">Esto no llega en cuatro números porque había que estudiarlo, y ese estudio es este documento. A ojo no habría salido ni la mitad: las sorpresas habrían llegado con la comunidad ya dentro. La espera <em>es</em> el estudio — la captura lleva semanas corriendo para darte cifras medidas, no supuestas. Agosto tampoco ha ayudado.</p>
       </div>
     </div>
   </div>
@@ -477,33 +479,33 @@ p.body.big{font-size:17px}
         <div class="n"></div>
         <div>
           <div class="t">Los datos no son el problema. Las fotografías sí</div>
-          <div class="d">Precios de salida, precios de retirada, superficies, fechas y tipologías son hechos del mercado. Las fotografías, en cambio, tienen autor — y quien las publica es quien responde de ellas.</div>
+          <div class="d">Precios de salida y de retirada, superficies, fechas y tipologías son hechos del mercado. Las fotografías tienen autor — y quien las publica responde de ellas.</div>
         </div>
       </div>
       <div class="hz">
         <div class="n"></div>
         <div>
           <div class="t">El sector ya tiene sentencias, y son recientes</div>
-          <div class="d">En diciembre de 2025, un agregador inmobiliario fue condenado en Versalles a cesar su actividad, borrar el contenido y pagar 60.000 €. No por enseñar una fotografía suelta: por reutilización masiva. La línea entre una cosa y otra es fina, pero está escrita.</div>
+          <div class="d">En diciembre de 2025 un agregador inmobiliario fue condenado en Versalles a cesar su actividad, borrar el contenido y pagar 60.000 €. No por una fotografía suelta: por reutilización masiva. La línea es fina, pero está escrita.</div>
         </div>
       </div>
       <div class="hz">
         <div class="n"></div>
         <div>
           <div class="t">Si las imágenes viven en la plataforma, el expuesto es el programa</div>
-          <div class="d">Da igual quién las capture: quien las aloja y las muestra es quien aparece delante. Con la plataforma IN llena de imágenes ajenas, cualquier reclamación llegaría a vuestra puerta y no a la nuestra.</div>
+          <div class="d">Quien aloja y muestra las imágenes da la cara, las capture quien las capture. Con la plataforma IN llena de imágenes ajenas, toda reclamación llegaría a vuestra puerta, no a la nuestra.</div>
         </div>
       </div>
       <div class="hz">
         <div class="n"></div>
         <div>
           <div class="t">Pero sin fotografías, esto no sirve</div>
-          <div class="d">Como nos planteaste, se trata de ver cómo era la vivienda. Un mapa de cifras sin imágenes es media herramienta. Así que no valía ni renunciar a ellas ni ponerlas de cualquier manera.</div>
+          <div class="d">Como nos planteaste, se trata de ver cómo era la vivienda: un mapa de cifras sin imágenes es media herramienta. Ni renunciar a ellas, ni ponerlas de cualquier manera.</div>
         </div>
       </div>
     </div>
 
-    <div class="insight insight-blue"><strong>De ahí sale todo lo que viene a continuación.</strong> Esto no está diseñado buscando lo más cómodo de construir, sino lo único que cumple las dos cosas a la vez: que la comunidad vea las fotografías, y que el programa no esté detrás de ellas.</div>
+    <div class="insight insight-blue"><strong>De ahí sale todo lo que sigue.</strong> No es lo más cómodo de construir: es lo único que cumple las dos cosas — que la comunidad vea las fotografías y que el programa no esté detrás.</div>
   </div>
 
   <!-- 3 · CÓMO SE RESUELVE -->
@@ -523,49 +525,49 @@ p.body.big{font-size:17px}
 
     <div class="una-col">
       <div>
-        <p class="body">El archivo no se copia ni se traspasa a ninguna parte. Vive en nuestros servidores y se consulta <strong>a demanda</strong>: cuando un alumno abre una zona del mapa, la plataforma nos pregunta qué hay ahí y nosotros respondemos en ese instante. Se muestra, pero no se guarda.</p>
+        <p class="body">El archivo ni se copia ni se traspasa: vive en nuestros servidores y se consulta <strong>a demanda</strong>. Al abrir una zona del mapa, la plataforma nos pregunta y respondemos al instante. Se muestra, no se guarda.</p>
         <p class="body">El mapa lo construye vuestro equipo, como ya tenéis previsto. Nosotros conectamos el flujo de datos que lo alimenta.</p>
       </div>
       <div>
-        <p class="body">Eso significa que en la plataforma IN <strong>no queda almacenado nada</strong>: ni el archivo, ni las fichas, ni por supuesto las imágenes. Y lo que no está en un servidor, no compromete a quien lo enseña.</p>
-        <p class="body">Es la diferencia entre tener una base de datos ajena dentro de casa y consultar un servicio externo. La primera te hace responsable; la segunda, no.</p>
+        <p class="body">En la plataforma IN <strong>no queda almacenado nada</strong>: ni archivo, ni fichas, ni imágenes. Lo que no está en un servidor no compromete a quien lo enseña.</p>
+        <p class="body">Es la diferencia entre tener una base de datos ajena en casa y consultar un servicio externo: la primera te hace responsable; la segunda, no.</p>
       </div>
     </div>
 
     <div class="table-wrap">
       <table>
-        <thead><tr><th style="width:46%">Cómo está montado</th><th>Qué consigue</th></tr></thead>
-        <tbody>
-          <tr class="highlight-asset"><td><strong>La plataforma no guarda datos ni imágenes</strong></td><td>Todo se sirve a demanda. Lo que no se aloja, no compromete.</td></tr>
-          <tr><td><strong>Las miniaturas se sirven desde fuera</strong></td><td>El acto de mostrarlas lo realiza IM·PULSO, no el programa.</td></tr>
-          <tr><td><strong>Se avisa antes de salir de la plataforma</strong></td><td>Nadie sale del Programa IN sin saberlo, y queda constancia de ello.</td></tr>
-          <tr><td><strong>Aceptación de condiciones antes de ver</strong></td><td>El uso que haga cada persona queda bajo su responsabilidad, por escrito.</td></tr>
-          <tr><td><strong>Las fotografías, testigo a testigo</strong></td><td>Nunca una galería navegable ni descargable en bloque: se abren de una en una. Es consulta puntual, no explotación masiva — ahí está la línea de la sentencia.</td></tr>
-          <tr><td><strong>Cada imagen marcada, a la vista, con la sesión de quien la mira</strong></td><td>Si una aparece donde no debe, se sabe exactamente de dónde salió.</td></tr>
-          <tr class="highlight"><td><strong>Retirada en 72 horas, publicada</strong></td><td>Cualquier aviso se resuelve retirando una imagen. Y ahí se acaba.</td></tr>
-        </tbody>
-      </table>
+<thead><tr><th style="width:46%">Cómo está montado</th><th>Qué consigue</th></tr></thead>
+<tbody>
+<tr class="highlight-asset"><td><strong>La plataforma no guarda datos ni imágenes</strong></td><td>Todo se sirve a demanda. Lo que no se aloja, no compromete.</td></tr>
+<tr><td><strong>Las miniaturas se sirven desde fuera</strong></td><td>Mostrarlas es un acto de IM·PULSO, no del programa.</td></tr>
+<tr><td><strong>Aviso antes de salir de la plataforma</strong></td><td>Nadie sale del Programa IN sin saberlo, y queda constancia.</td></tr>
+<tr><td><strong>Aceptación de condiciones antes de ver</strong></td><td>El uso de cada persona queda bajo su responsabilidad, por escrito.</td></tr>
+<tr><td><strong>Las fotografías, testigo a testigo</strong></td><td>Nunca una galería navegable ni descargable en bloque: de una en una. Consulta puntual, no explotación masiva — la línea de la sentencia.</td></tr>
+<tr><td><strong>Cada imagen marcada, a la vista, con la sesión de quien mira</strong></td><td>Si una aparece donde no debe, se sabe de dónde salió.</td></tr>
+<tr class="highlight"><td><strong>Retirada en 72 horas, publicada</strong></td><td>Cualquier aviso se resuelve retirando una imagen. Y ahí se acaba.</td></tr>
+</tbody>
+</table>
     </div>
 
     <div class="card" style="margin-top:20px">
       <div class="card-title">La marca: cada captura lleva nombre</div>
-      <p>La fotografía original nunca sale de nuestros servidores. <strong>No se entrega: se visualiza</strong> — y lo que se ve es esa misma fotografía con una capa de seguridad encima: la marca de IM·PULSO y, junto a ella, el código de la sesión de quien está mirando. Funciona así:</p>
+      <p>La fotografía original nunca sale de nuestros servidores: <strong>no se entrega, se visualiza</strong> — con una capa de seguridad encima: la marca de IM·PULSO y el código de sesión de quien mira. Funciona así:</p>
       <div class="table-wrap" style="margin-top:14px">
         <table>
-          <tbody>
-            <tr><td style="width:38px;font-weight:800;color:var(--pulso)">1</td><td>La galería aparece <strong>bloqueada</strong>. No se ve nada hasta el final del proceso.</td></tr>
-            <tr><td style="font-weight:800;color:var(--pulso)">2</td><td>La persona deja su correo y <strong>acepta las condiciones</strong> de uso.</td></tr>
-            <tr><td style="font-weight:800;color:var(--pulso)">3</td><td>Recibe un <strong>código por email</strong> y lo introduce. Eso confirma que el correo es suyo de verdad.</td></tr>
-            <tr class="highlight-asset"><td style="font-weight:800;color:var(--impulso)">4</td><td>Esa validación genera un <strong>código de sesión</strong>, y ese código va impreso, a la vista, sobre cada fotografía que se le muestra.</td></tr>
-          </tbody>
-        </table>
+<tbody>
+<tr><td style="width:38px;font-weight:800;color:var(--pulso)">1</td><td>La galería aparece <strong>bloqueada</strong> hasta el final del proceso.</td></tr>
+<tr><td style="font-weight:800;color:var(--pulso)">2</td><td>La persona deja su correo y <strong>acepta las condiciones</strong> de uso.</td></tr>
+<tr><td style="font-weight:800;color:var(--pulso)">3</td><td>Recibe un <strong>código por email</strong> y lo introduce: confirma que el correo es suyo.</td></tr>
+<tr class="highlight-asset"><td style="font-weight:800;color:var(--impulso)">4</td><td>Esa validación genera un <strong>código de sesión</strong> que va impreso, a la vista, sobre cada fotografía.</td></tr>
+</tbody>
+</table>
       </div>
-      <p style="margin-top:14px">Ese código <strong>se ve a propósito</strong>. Si alguien no puede descargar la imagen pero amplía la pantalla, hace una captura y la publica, el código viaja dentro de la imagen — y nos dice de qué sesión salió, y por tanto a qué correo pertenece. No es el correo en sí: es un código que solo nosotros podemos traducir, para que una captura publicada no exponga los datos de nadie. No impide la captura — eso no lo impide nadie, y decir lo contrario sería mentir. Lo que hace es que <strong>capturar deje nombre</strong>.</p>
+      <p style="margin-top:14px">Ese código <strong>se ve a propósito</strong>. La captura de pantalla no la impide nadie — decir lo contrario sería mentir. Pero si alguien captura y publica, el código viaja dentro de la imagen y nos dice de qué sesión salió y de qué correo. No es el correo en sí: solo nosotros podemos traducirlo, así que no expone los datos de nadie. Lo que hace es que <strong>capturar deje nombre</strong>.</p>
     </div>
 
-    <div class="callout"><strong>Hasta aquí llega lo que nosotros hemos podido averiguar.</strong> No existe la inmunidad total y no te la vamos a vender. Lo que consigue este diseño es dejar la exposición del programa en el mínimo y que quien responda en primera línea seamos nosotros.</div>
+    <div class="callout"><strong>Hasta aquí llega lo que hemos podido averiguar.</strong> La inmunidad total no existe y no te la vamos a vender: el diseño deja la exposición del programa en el mínimo y nos pone a nosotros en primera línea.</div>
 
-    <div class="insight insight-orange"><strong>Todo esto se entiende mejor viéndolo.</strong> Justo debajo hay un esbozo del recorrido, pantalla a pantalla, para que se vea cómo encaja lo que acabamos de contar. <strong>No es una propuesta de diseño</strong> — el aspecto lo decidís vosotros, aquí solo está la mecánica.</div>
+    <div class="insight insight-orange"><strong>Esto se entiende mejor viéndolo.</strong> Debajo, un esbozo del recorrido pantalla a pantalla. <strong>No es una propuesta de diseño</strong>: el aspecto lo decidís vosotros; aquí va solo la mecánica.</div>
   </div>
 
   <!-- 4 · LA DEMO -->
@@ -585,6 +587,7 @@ p.body.big{font-size:17px}
       <div class="screen-bar"><span>1 · Vista de zona</span><span class="side">Plataforma IN</span></div>
       <div class="screen-body">
         <div class="map zonas">
+          <span class="map-tag">Elche · plano de zonas</span>
           <div class="zona" style="left:9%; top:18%"><b>Altabix</b><span>47 testigos</span></div>
           <div class="zona" style="left:55%; top:12%"><b>Carrús</b><span>31 testigos</span></div>
           <div class="zona" style="left:18%; top:63%"><b>El Pla</b><span>68 testigos</span></div>
@@ -592,7 +595,7 @@ p.body.big{font-size:17px}
         </div>
       </div>
     </div>
-    <div class="nota-pantalla"><div>De lejos, el mapa <strong>cuenta</strong>: dice dónde hay movimiento y dónde no. Recuentos, nunca medias — un recuento es un hecho; una media ya es una opinión, y la plataforma no opina.</div></div>
+    <div class="nota-pantalla"><div>De lejos, el mapa <strong>cuenta</strong>: dónde hay movimiento y dónde no. Recuentos, nunca medias — el recuento es un hecho; la media, una opinión, y la plataforma no opina.</div></div>
 
     <div class="arrow">↓</div>
 
@@ -639,7 +642,7 @@ p.body.big{font-size:17px}
         </div>
       </div>
     </div>
-    <div class="nota-pantalla"><div>Salió a 178.000 y se retiró a 148.500. <strong>Esa diferencia no está en ningún portal</strong>, porque el anuncio ya no existe. Las miniaturas no son la galería: solo avisan de que este testigo tiene fotografías. Al pasar por encima aparece quién las custodia, y el botón dice adónde lleva antes de pulsarlo. El pin se sitúa a nivel de manzana, nunca en la dirección exacta.</div></div>
+    <div class="nota-pantalla"><div>Salió a 178.000 y se retiró a 148.500. <strong>Esa diferencia no está en ningún portal</strong>: el anuncio ya no existe. Las miniaturas solo avisan de que hay fotografías; al pasar por encima se ve quién las custodia, y el botón dice adónde lleva. El pin va a nivel de manzana, nunca a la dirección exacta.</div></div>
 
     <div class="arrow">↓</div>
 
@@ -656,7 +659,7 @@ p.body.big{font-size:17px}
               <div class="field">tu@correo.com</div>
               <div class="btn-paso">Ver las fotografías</div>
             </div>
-            <div class="checkline acc-legal"><div class="checkbox"></div><div>Son de <b>consulta personal</b>: no puedo descargarlas, publicarlas ni cederlas. Las imágenes pertenecen a sus autores; IM·PULSO custodia el registro.</div></div>
+            <div class="checkline acc-legal"><div class="checkbox"></div><div>Son de <b>consulta personal</b>: no puedo descargarlas, publicarlas ni cederlas. Pertenecen a sus autores; IM·PULSO custodia el registro.</div></div>
           </div>
 
           <div class="galeria">
@@ -692,7 +695,7 @@ p.body.big{font-size:17px}
         </div>
       </div>
     </div>
-    <div class="nota-pantalla"><div>Es una página intermedia: <strong>ni está dentro del Programa IN, ni es la web de IM·PULSO</strong>. Sirve para una cosa — que quien ha venido a ver las fotografías las vea, todas. Deja su correo una sola vez, confirma con el código que le llega y entra. <strong>Desde ese momento, cada imagen que abre sale marcada con su sesión, a la vista sobre la propia fotografía.</strong> Abajo, sin robarle sitio a las fotografías, quedan las preguntas que este testigo no responde: si alguna le resuena, deja un teléfono.</div></div>
+    <div class="nota-pantalla"><div>Página intermedia: <strong>ni está en el Programa IN ni es la web de IM·PULSO</strong>. Sirve para que quien viene a ver las fotografías las vea todas: deja su correo una vez, confirma con el código que recibe y entra. <strong>Cada imagen que abre sale marcada con su sesión, a la vista sobre la propia fotografía.</strong> Abajo, las preguntas que este testigo no responde: si alguna resuena, deja un teléfono.</div></div>
   </div>
 
   <!-- 5 · LA FRONTERA -->
@@ -739,12 +742,12 @@ p.body.big{font-size:17px}
 
     <div class="una-col">
       <div>
-        <p class="body">Esto no es un fichero que se entrega y se acaba. Es una <strong>captura viva</strong>: hay que rastrear el mercado nacional todas las semanas y guardar cada anuncio que desaparece, antes de que se borre — porque una vez borrado, ya no hay dónde ir a buscarlo.</p>
-        <p class="body">Ese archivo se monta y se mantiene <strong>en nuestros depósitos</strong>, que es donde tiene que estar para poder servirlo. Con sus copias de seguridad en dos proveedores distintos, su gestión y su vigilancia. Nada de eso pasa a la plataforma ni hay que ocuparse de ello desde vuestro lado.</p>
+        <p class="body">No es un fichero que se entrega y ya: es una <strong>captura viva</strong>. Hay que rastrear el mercado nacional cada semana y guardar cada anuncio que desaparece, porque una vez borrado no hay dónde buscarlo.</p>
+        <p class="body">El archivo vive <strong>en nuestros depósitos</strong>, donde debe estar para poder servirlo, con copias de seguridad duplicadas, gestión y vigilancia. Nada de eso pasa a la plataforma ni ocupa a vuestro equipo.</p>
       </div>
       <div>
         <p class="body">A partir del <strong>segundo mes</strong> el mapa empieza a poblarse, y desde ahí crece solo, semana a semana, sin que nadie tenga que intervenir.</p>
-        <p class="body">Por eso el acuerdo se plantea a doce meses: <strong>no se compra un archivo, se contrata un servicio que hay que sostener</strong>. Mientras dura, la comunidad consulta todo lo que quiera; el depósito y su mantenimiento quedan de nuestra parte.</p>
+        <p class="body">Por eso el acuerdo es a doce meses: <strong>no se compra un archivo, se contrata un servicio que hay que sostener</strong>. Mientras dura, la comunidad consulta sin límite; el depósito y su mantenimiento van de nuestra parte.</p>
       </div>
     </div>
 
@@ -759,9 +762,9 @@ p.body.big{font-size:17px}
       </table>
     </div>
 
-    <div class="insight insight-gray"><strong>Estas cifras son aproximadas y así hay que tomarlas.</strong> Salen de haber tenido la captura funcionando estas semanas y de extrapolar lo descargado al conjunto del país. Además son semanas de verano, con el mercado bajo. Dan el orden de magnitud, que es lo que hacía falta para poder proponerte algo con sentido — pero no es un número cerrado, y no vamos a presentártelo como si lo fuera. <strong>El consumo real de un año normal solo se sabrá con el servicio funcionando</strong>, y de ahí depende directamente la cuota.</div>
+    <div class="insight insight-gray"><strong>Estas cifras son aproximadas y así hay que tomarlas.</strong> Salen de extrapolar al país lo capturado estas semanas — de verano, con el mercado bajo. Dan el orden de magnitud, que era lo necesario para proponerte algo con sentido; no son un número cerrado. <strong>El consumo real de un año normal solo se sabrá con el servicio funcionando</strong>, y de ahí depende la cuota.</div>
 
-    <div class="callout"><strong>Y conviene saber de dónde viene el peso de la cuota.</strong> La partida que más pesa, con diferencia, es la descarga semanal de las fotografías de todo el país y su gestión posterior. No es un extra que nos quedemos: es lo que cuesta traer y ordenar ese volumen cada semana. El resto — infraestructura, almacenamiento, copias, protección — es comparativamente menor.</div>
+    <div class="callout"><strong>Conviene saber de dónde viene el peso de la cuota.</strong> La partida mayor, con diferencia, es la descarga semanal de las fotografías de todo el país y su gestión: no es un extra que nos quedemos, es lo que cuesta traer y ordenar ese volumen. El resto — infraestructura, almacenamiento, copias, protección — pesa mucho menos.</div>
   </div>
 
   <!-- 7 · CÓMO SE MONTA -->
@@ -778,7 +781,7 @@ p.body.big{font-size:17px}
     </div>
 
     <div class="steps">
-      <div class="step"><div class="when">Sem. 1-2</div><div><div class="what">Acuerdo y arranque de la captura</div><div class="how">Se firma y se pone a rastrear el mercado nacional desde el primer día. Infraestructura montada, copias configuradas y seguro contratado.</div></div></div>
+      <div class="step"><div class="when">Sem. 1-2</div><div><div class="what">Acuerdo y arranque de la captura</div><div class="how">Se firma y se rastrea el mercado nacional desde el primer día: infraestructura montada, copias configuradas, seguro contratado.</div></div></div>
       <div class="step"><div class="when">Sem. 3</div><div><div class="what">El visualizador de fotografías</div><div class="how">Aceptación y validación por código, galería que se desbloquea, marca por persona y enlaces que caducan.</div></div></div>
       <div class="step"><div class="when">Sem. 4-5</div><div><div class="what">La conexión con la plataforma</div><div class="how">Se entrega documentada y con ejemplos, para que vuestro equipo la integre en el mapa sin depender de nosotros.</div></div></div>
       <div class="step"><div class="when">Sem. 6</div><div><div class="what">Piloto cerrado</div><div class="how">25 alumnos y unas cien consultas reales antes de abrir a los 3.000. Si algo chirría, se corrige aquí y no delante de toda la comunidad.</div></div></div>
@@ -786,7 +789,7 @@ p.body.big{font-size:17px}
       <div class="step"><div class="when">Mes 3-4</div><div><div class="what">Cobertura nacional</div><div class="how">La captura ya cubre el país entero y el archivo sigue creciendo solo.</div></div></div>
     </div>
 
-    <div class="insight insight-gray">El calendario está planteado sobre lo que sabemos hoy. <strong>Cuando vuestro equipo entre en el detalle técnico</strong>, habrá cosas que se ajusten — y es mejor ajustarlas antes de empezar que a mitad.</div>
+    <div class="insight insight-gray">El calendario se apoya en lo que sabemos hoy. <strong>Cuando vuestro equipo entre en el detalle técnico</strong> habrá ajustes — mejor antes de empezar que a mitad.</div>
   </div>
 
   <!-- 8 · EL PRECIO -->
@@ -817,29 +820,29 @@ p.body.big{font-size:17px}
           <li><strong>La descarga semanal de las fotografías de toda España</strong> — con diferencia, la partida más grande</li>
           <li><strong>El flujo servido a demanda</strong> para alimentar vuestro mapa, y su mantenimiento</li>
         </ul>
-        <div class="insight insight-gray" style="margin-top:20px"><strong>En esa cifra no hay margen nuestro</strong>, y eso tiene una consecuencia que preferimos decir ahora y no dentro de seis meses. La partida grande — la descarga — depende de cuánto publique el mercado cada semana, y está medida en agosto, el mes más flojo del año. <strong>No es un precio cerrado: es el mejor cálculo posible con lo que hemos podido medir.</strong><br><br>Cuando el servicio lleve unos meses a pleno funcionamiento sabremos el consumo de verdad. Si queda por debajo, la cuota baja. Si queda por encima, te lo enseñamos con la factura del proveedor delante y se ajusta — porque al ir a coste no hay margen del que tirar para absorberlo. En las dos direcciones y con los números a la vista.</div>
+        <div class="insight insight-gray" style="margin-top:20px"><strong>En esa cifra no hay margen nuestro</strong>, y mejor decirlo ahora que en seis meses. La partida grande — la descarga — depende de cuánto publique el mercado cada semana, y está medida en agosto, el mes más flojo. <strong>No es un precio cerrado: es el mejor cálculo posible con lo medido.</strong><br><br>Con unos meses a pleno funcionamiento sabremos el consumo real: por debajo, la cuota baja; por encima, se ajusta con la factura del proveedor delante — a coste no hay margen del que tirar. En las dos direcciones, con los números a la vista.</div>
       </div>
     </div>
 
     <div class="card" style="margin-top:20px">
       <div class="card-title">Y el montaje: 1.900 € una sola vez, al firmar</div>
-      <p>No es una cuota: se paga <strong>una vez</strong> y cubre construir el servicio. Son unas setenta horas de montar la infraestructura, levantar el visualizador con toda su custodia y dejar la conexión documentada para vuestro equipo.</p>
-      <p>Es un <strong>precio simbólico</strong>: un desarrollo así, encargado fuera, cuesta bastante más. Lo ponemos así por lo mismo que la cuota — nos interesa que esto salga adelante.</p>
+      <p>Se paga <strong>una vez</strong> — no es cuota — y cubre construir el servicio: unas setenta horas de infraestructura, el visualizador con su custodia y la conexión documentada para vuestro equipo.</p>
+      <p>Es un <strong>precio simbólico</strong>: encargado fuera, un desarrollo así cuesta bastante más. Lo ponemos por lo mismo que la cuota: nos interesa que esto salga adelante.</p>
     </div>
 
     <div class="una-col" style="margin-top:26px">
       <div>
         <p class="body big" style="margin-bottom:14px">Podíamos haberte pasado una tarifa de mercado. No lo hacemos, y no es un detalle: es la propuesta.</p>
-        <p class="body">Nosotros no vivimos de vender datos en bruto. Vivimos de lo que viene después: coger todo esto y convertirlo en un análisis que dice a cuánto conviene comprar, qué rota y qué no. Eso es lo que sabemos hacer, y para que exista hace falta que la gente sepa que existimos.</p>
+        <p class="body">No vivimos de vender datos en bruto, sino de lo que viene después: convertirlos en un análisis que dice a cuánto comprar, qué rota y qué no. Eso sabemos hacer — y para que exista, hace falta que se sepa que existimos.</p>
       </div>
       <div>
         <p class="body">Este acuerdo nos da exactamente eso: la comunidad ve el trabajo, y quien quiera ir más allá del dato tiene dónde pedirlo.</p>
-        <p class="body">Preferimos decirlo a disimularlo. Tú tienes una herramienta que ninguna otra comunidad tiene, por lo que cuesta sostenerla. Nosotros llegamos a tres mil inversores haciendo lo que sabemos hacer. <strong>Los dos salimos ganando, y por caminos distintos.</strong></p>
+        <p class="body">Preferimos decirlo a disimularlo: tú tienes una herramienta que ninguna otra comunidad tiene, por lo que cuesta sostenerla; nosotros llegamos a tres mil inversores. <strong>Los dos ganamos, por caminos distintos.</strong></p>
       </div>
     </div>
 
 
-    <div class="insight insight-blue"><strong>Y si quieres contrastarlo, hazlo.</strong> Tanto el acceso a los datos como la descarga se facturan por volumen: se paga por lo que se mueve. Cualquiera que conozca este terreno te dirá lo mismo: montar una prueba pequeña cuesta muy poco, y sostener el país entero cada semana es otra cosa. <strong>El precio no cambia según quién pregunte; cambia con la escala.</strong></div>
+    <div class="insight insight-blue"><strong>Si quieres contrastarlo, hazlo.</strong> Datos y descarga se facturan por volumen: se paga por lo que se mueve. Cualquiera del terreno te lo dirá: una prueba pequeña cuesta muy poco; el país entero cada semana es otra cosa. <strong>El precio no cambia según quién pregunte; cambia con la escala.</strong></div>
 
     <div class="opt-grid">
       <div class="opt">
@@ -888,17 +891,17 @@ p.body.big{font-size:17px}
 
     <div class="card">
       <ul class="plain">
-        <li><strong>Custodia y marca inamovibles.</strong> La firma va al pie del visualizador, nunca en cabecera: somos el custodio de un archivo, no un anunciante dentro del programa.</li>
+        <li><strong>Custodia y marca inamovibles.</strong> La firma va al pie del visualizador, nunca en cabecera: custodiamos un archivo, no nos anunciamos en el programa.</li>
         <li><strong>Exclusividad</strong> como proveedor de testigos retirados mientras dure el acuerdo.</li>
-        <li><strong>Revisión de la cuota.</strong> Cada trimestre, con el consumo medido delante y la factura del proveedor a la vista. Al alza o a la baja, sin ajustes unilaterales.</li>
-        <li><strong>El archivo no se cede.</strong> Se sirve a demanda mientras el acuerdo esté vigente. No hay volcado, ni copia, ni entrega de base de datos.</li>
-        <li><strong>Frontera técnica.</strong> El visualizador y lo que hay detrás queda de nuestro lado. Si esa parte cambiara de manos, el diseño dejaría de proteger al programa.</li>
+        <li><strong>Revisión de la cuota.</strong> Trimestral, con el consumo medido y la factura del proveedor a la vista. Al alza o a la baja, sin ajustes unilaterales.</li>
+        <li><strong>El archivo no se cede.</strong> Se sirve a demanda mientras el acuerdo esté vigente: ni volcado, ni copia, ni entrega de base de datos.</li>
+        <li><strong>Frontera técnica.</strong> El visualizador y lo que hay detrás queda de nuestro lado; en otras manos, el diseño dejaría de proteger al programa.</li>
         <li><strong>Doce meses,</strong> con cláusula de resolución si incumplimos nosotros.</li>
         <li><strong>Al terminar:</strong> cese ordenado y borrado de cachés, sin volcado del archivo.</li>
       </ul>
     </div>
 
-    <div class="callout"><strong>Sobre nuestro nombre en el visualizador.</strong> No os pedimos que nos promocionéis. Pedimos que conste quién custodia el archivo, que es lo que protege al programa el día que alguien discuta una cifra y haya que saber de dónde salió.</div>
+    <div class="callout"><strong>Sobre nuestro nombre en el visualizador.</strong> No pedimos promoción: pedimos que conste quién custodia el archivo — lo que protege al programa el día que alguien discuta una cifra y haya que saber de dónde salió.</div>
   </div>
 
   <!-- 10 · CIERRE -->
@@ -906,10 +909,10 @@ p.body.big{font-size:17px}
     <div class="cierre">
       <div class="cl">Una última cosa</div>
       <div class="cv">El anuncio que desaparece hoy sin que nadie lo guarde <span class="accent">no vuelve</span></div>
-      <p>Hoy capturamos lo que podemos sostener por nuestra cuenta. Mantener el país entero, semana tras semana, solo tiene sentido con un acuerdo detrás — y lo que decidáis marca desde cuándo empieza a servir también a la comunidad.</p>
+      <p>Hoy capturamos lo que podemos sostener solos. Mantener el país entero, semana a semana, solo tiene sentido con un acuerdo detrás — y lo que decidáis marca desde cuándo empieza a servir también a la comunidad.</p>
     </div>
 
-    <p class="body" style="margin-top:34px">Te lo dejamos para que lo revises con calma y nos digas qué ajustarías. Si tu equipo quiere entrar en el detalle técnico o legal, nos sentamos con ellos cuando digas.</p>
+    <p class="body" style="margin-top:34px">Revísalo con calma y dinos qué ajustarías. Si tu equipo quiere entrar en el detalle técnico o legal, nos sentamos con ellos cuando digas.</p>
   </div>
 
 </div>

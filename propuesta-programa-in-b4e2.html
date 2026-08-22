@@ -293,67 +293,65 @@ p.body.big{font-size:17px}
 .grid-thumbs.cuatro{grid-template-columns:repeat(2,1fr)}
 }
 
-/* ---- pantalla 3 · el visor: dos columnas, compacto ---- */
+/* ---- pantalla 3 · el visor: UNA sola ventana, sin una caja por texto ---- */
 .screen-bar .side.own{color:var(--pulso)}
-.vis-ficha{background:var(--gray-50);border-left:3px solid var(--navy);border-radius:0 8px 8px 0;padding:8px 12px;font-size:11.5px;color:var(--gray-700);margin-bottom:10px;max-width:640px;margin-left:auto;margin-right:auto}
-.vis-ficha b{color:var(--navy);font-weight:800}
-.p3{display:block;max-width:640px;margin:0 auto}
-.p3-col{min-width:0}
+.p3{max-width:620px;margin:0 auto}
+.p3-ficha{font-size:11.5px;color:var(--gray-500);text-align:center;padding-bottom:11px;border-bottom:1px solid var(--gray-100);margin-bottom:13px}
+.p3-ficha b{color:var(--navy);font-weight:800}
 
-/* acceso */
-.acceso{background:var(--notarial-bg);border:1px solid var(--notarial-border);border-radius:10px;padding:11px 13px;margin-bottom:10px}
+/* acceso: sin caja propia, solo contenido */
+.p3-acceso{background:var(--gray-50);border-radius:9px;padding:11px 12px}
+.acc-ttl{font-size:12.5px;font-weight:800;color:var(--navy);margin-bottom:8px}
 .acc-row{display:flex;gap:8px;align-items:stretch}
-.acc-ttl{font-size:12px;font-weight:800;color:var(--navy);margin-bottom:8px}
-.acceso .field{flex:1;min-width:0;background:#fff;display:flex;align-items:center;padding:9px 11px;font-size:12px}
-.acc-legal{margin:8px 0 0;font-size:10px;line-height:1.45;color:var(--gray-500)}
+.acc-row .field{flex:1;min-width:0;background:#fff;border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;padding:9px 12px;font-size:12px;color:var(--gray-500)}
+.btn-paso{flex:none;display:flex;align-items:center;justify-content:center;white-space:nowrap;background:#fff;color:var(--notarial);border:1px solid var(--notarial);border-radius:8px;font-size:12.5px;font-weight:800;padding:9px 16px;cursor:pointer}
+.acc-legal{margin-top:9px;padding-top:8px;border-top:1px solid #e5e7eb;font-size:10px;line-height:1.5;color:var(--gray-500)}
 .acc-legal b{color:var(--gray-700);font-weight:700}
 .acc-legal .checkbox{width:12px;height:12px;border-width:1.5px}
-.btn-paso{flex:none;display:flex;align-items:center;justify-content:center;white-space:nowrap;background:#fff;color:var(--notarial);border:1px solid var(--notarial-border);border-radius:8px;font-size:12.5px;font-weight:800;padding:9px 15px;cursor:pointer}
 
-/* galeria: una pieza, sobre fondo oscuro como cualquier visor de fotos real.
-   Asi la foto tiene alto contenido sin que el aire lateral se lea como hueco. */
-.galeria{border:1px solid #d7dde5;border-radius:10px;overflow:hidden;background:#101d33;margin-bottom:10px}
-.gal-marco{padding:10px 10px 0;display:flex;justify-content:center}
-.galeria .photo.grande{height:236px;aspect-ratio:16/10;width:auto;border:none;border-radius:6px;align-items:flex-end;justify-content:center;max-width:100%}
+/* galeria: el marco se cine a la foto. Nada de fondo oscuro */
+.galeria{width:fit-content;max-width:100%;margin:14px auto 0}
+.galeria .photo.grande{width:436px;max-width:100%;height:272px;aspect-ratio:auto;border:1px solid #e5e7eb;border-radius:9px;align-items:flex-end;justify-content:center}
 .galeria .lock{align-items:center}
-.galeria .lock svg{width:26px;height:26px;color:rgba(255,255,255,.92)}
-.wm.big{font-size:19px;letter-spacing:3.5px;color:rgba(255,255,255,.26)}
-.photo-note{position:relative;z-index:3;width:100%;background:rgba(0,0,0,.5);color:#fff;font-size:10px;padding:5px 9px;font-weight:600;letter-spacing:.2px}
-.tira4{display:flex;justify-content:center;gap:6px;padding:8px 10px 0}
-.tira4 .photo.thumb{width:62px;height:42px;border:none;border-radius:5px}
-.tira4 .wm{font-size:5.5px;letter-spacing:.4px;color:rgba(255,255,255,.45)}
-.tira4 .lock svg{width:12px;height:12px;color:rgba(255,255,255,.85)}
-.desbloq{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 12px;margin-top:9px;background:rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.1)}
-.db-txt{font-size:10.5px;color:rgba(255,255,255,.62);font-weight:600}
-.desbloq .field.cod{flex:none;width:72px;background:rgba(255,255,255,.95);border:none;border-radius:6px;padding:6px 4px 6px 9px;letter-spacing:4px;font-weight:800;color:var(--navy);font-size:11.5px;text-align:center}
-.btn-db{flex:none;background:#fff;color:var(--navy);border-radius:6px;font-size:11px;font-weight:800;padding:7px 13px;white-space:nowrap;cursor:pointer}
+.galeria .lock svg{width:24px;height:24px;color:rgba(255,255,255,.92)}
+.wm.big{font-size:18px;letter-spacing:3.5px;color:rgba(255,255,255,.26)}
+.photo-note{position:relative;z-index:3;width:100%;background:rgba(15,31,61,.6);color:#fff;font-size:9.5px;padding:5px 9px;font-weight:600}
+.tira4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px;width:436px;max-width:100%}
+.tira4 .photo.thumb{height:52px;border-radius:6px}
+.tira4 .wm{font-size:6px;letter-spacing:.3px;color:rgba(255,255,255,.55)}
+.tira4 .lock svg{width:15px;height:15px;color:rgba(255,255,255,.95)}
+.desbloq{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;margin-top:8px;width:436px;max-width:100%}
+.db-txt{flex:1;min-width:0;font-size:10.5px;color:var(--gray-500);line-height:1.3}
+.desbloq .field.cod{flex:none;width:58px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:6px 0;letter-spacing:3px;font-weight:800;color:var(--navy);font-size:12px;text-align:center;white-space:nowrap}
+.btn-db{flex:none;background:var(--notarial);color:#fff;border-radius:6px;font-size:11px;font-weight:800;padding:7px 13px;white-space:nowrap;cursor:pointer}
 
-/* columna derecha: presente pero callada */
-.preguntas{border:1px solid #e5e7eb;border-radius:10px;padding:10px 12px;margin-bottom:10px}
-.cap-list{columns:2;column-gap:26px}
-.cap-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--gray-500);margin-bottom:8px}
-.cap-list{margin:0;padding-left:16px;font-size:11.5px;color:var(--gray-700);line-height:1.65}
-.cap-gancho{font-size:12.5px;color:var(--gray-700);line-height:1.5;margin-bottom:8px}
+/* cierre: un solo bloque centrado, sin subcajas */
+.p3-cierre{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-100);text-align:center}
+.cap-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--gray-500);margin-bottom:9px}
+.cap-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 22px;margin:0 auto 11px;padding:0;list-style:none;counter-reset:q;max-width:520px;text-align:left}
+.cap-list li{counter-increment:q;font-size:11.5px;color:var(--gray-700);line-height:1.5;padding-left:16px;position:relative}
+.cap-list li::before{content:counter(q) ".";position:absolute;left:0;color:var(--gray-300);font-weight:800}
+.cap-gancho{font-size:12.5px;color:var(--gray-700);line-height:1.5;margin-bottom:9px}
 .cap-gancho b{color:var(--navy);font-weight:800}
-.cap-form{display:flex;gap:7px;max-width:430px}
-.cap-form .field{flex:1;min-width:0;background:#fff;display:flex;align-items:center;padding:9px 11px;font-size:12px}
-.btn-cta.contorno{background:#fff;color:var(--pulso);border:1.5px solid var(--pulso);box-shadow:none;white-space:nowrap;padding:9px 14px;font-size:12px;cursor:pointer}
-.cap-fine{margin-top:7px;font-size:10.5px;color:var(--gray-500);line-height:1.45}
-.cap-aviso{margin-top:8px;padding:6px 9px;background:var(--gray-50);border:1px solid #e5e7eb;border-radius:7px;font-size:10px;color:var(--gray-500);line-height:1.5}
+.cap-form{display:flex;gap:7px;max-width:390px;margin:0 auto}
+.cap-form .field{flex:1;min-width:0;background:var(--gray-50);border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;padding:9px 12px;font-size:12px;color:var(--gray-500)}
+.btn-cta.contorno{background:#fff;color:var(--pulso);border:1.5px solid var(--pulso);box-shadow:none;white-space:nowrap;padding:9px 15px;font-size:12px;cursor:pointer}
+.cap-fine{margin-top:8px;font-size:10.5px;color:var(--gray-500);line-height:1.45}
+.cap-aviso{margin-top:7px;font-size:10px;color:var(--gray-500);line-height:1.45}
 .cap-aviso b{color:var(--gray-700);font-weight:700}
 /* la nota explicativa NO forma parte de la maqueta: se separa visualmente */
 .nota-pantalla{display:flex;gap:11px;font-size:13.5px;color:var(--gray-500);line-height:1.65;margin:13px 2px 4px;padding-left:14px;border-left:3px solid var(--gray-300)}
 .nota-pantalla strong{color:var(--gray-900)}
 @media(max-width:780px){
   .acc-row{flex-direction:column}
-  .cap-list{columns:1}
-  .galeria .photo.grande{height:auto;width:100%;aspect-ratio:4/3}
-  .tira4{flex-wrap:wrap}
+  .galeria,.tira4,.desbloq{width:100%}
+  .galeria .photo.grande{width:100%;height:auto;aspect-ratio:16/10}
   .desbloq{flex-wrap:wrap}
-  .db-txt{flex:1 0 100%;margin-bottom:2px}
+  .db-txt{flex:1 0 100%}
   .desbloq .field.cod{flex:1}
+  .cap-list{grid-template-columns:minmax(0,1fr)}
   .cap-form{flex-direction:column}
-  .btn-cta.contorno{text-align:center;padding:11px 14px}
+  .btn-cta.contorno{text-align:center;padding:11px 15px}
   .nota-pantalla{font-size:12.5px}
 }
 /* ---- responsive: las tablas dejan de pedir scroll lateral en movil ---- */
@@ -645,44 +643,40 @@ p.body.big{font-size:17px}
       <div class="screen-bar"><span>3 · Las fotografías</span><span class="side own">IM·PULSO · fuera del Programa IN</span></div>
       <div class="screen-body">
 
-        <div class="vis-ficha">Testigo <b>#ALC-2481</b> &#183; Piso 92 m&#178;, Altabix &#183; retirado en marzo de 2026 a <b>148.500 &#8364;</b></div>
-
         <div class="p3">
-          <div class="p3-col">
-            <div class="acceso">
-              <div class="acc-ttl">Antes de ver las fotografías</div>
-              <div class="acc-row">
-                <div class="field">tu@correo.com</div>
-                <div class="btn-paso">Ver las fotografías</div>
-              </div>
-              <div class="checkline acc-legal"><div class="checkbox"></div><div>Son de <b>consulta personal</b>: no puedo descargarlas, publicarlas ni cederlas. Las imágenes pertenecen a sus autores; IM·PULSO custodia el registro.</div></div>
-            </div>
+          <div class="p3-ficha">Testigo <b>#ALC-2481</b> &#183; Piso 92 m&#178;, Altabix &#183; retirado en marzo de 2026 a <b>148.500 &#8364;</b></div>
 
-            <div class="galeria">
-              <div class="gal-marco"><div class="photo grande blur">
-                <div class="wm big">IM&#183;PULSO</div>
-                <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
-                <div class="photo-note">24 fotografías · con la marca de quien las mira</div>
-              </div></div>
-              <div class="tira4"><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div></div>
-              <div class="desbloq">
-                <span class="db-txt">Código del correo</span>
-                <span class="field cod">4 7 2 9</span>
-                <span class="btn-db">Desbloquear</span>
-              </div>
+          <div class="p3-acceso">
+            <div class="acc-ttl">Antes de ver las fotografías</div>
+            <div class="acc-row">
+              <div class="field">tu@correo.com</div>
+              <div class="btn-paso">Ver las fotografías</div>
+            </div>
+            <div class="checkline acc-legal"><div class="checkbox"></div><div>Son de <b>consulta personal</b>: no puedo descargarlas, publicarlas ni cederlas. Las imágenes pertenecen a sus autores; IM·PULSO custodia el registro.</div></div>
+          </div>
+
+          <div class="galeria">
+            <div class="photo grande blur">
+              <div class="wm big">IM&#183;PULSO</div>
+              <div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div>
+              <div class="photo-note">24 fotografías · con la marca de quien las mira</div>
+            </div>
+            <div class="tira4"><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div><div class="photo thumb blur"><div class="wm">IM&#183;PULSO</div><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div></div>
+            <div class="desbloq">
+              <span class="db-txt">Introduce el código enviado a tu correo</span>
+              <span class="field cod">4729</span>
+              <span class="btn-db">Desbloquear</span>
             </div>
           </div>
 
-          <div class="p3-col">
-            <div class="preguntas">
-              <div class="cap-kicker">Lo que este testigo no responde</div>
-              <ol class="cap-list">
-                <li>¿Qué tipo de vivienda rota más en esta zona?</li>
-                <li>¿Cuánto se paga de alquiler por un piso así?</li>
-                <li>¿Qué agencia mueve más este tipo de piso?</li>
-                <li>¿Quién compra estas viviendas y para qué?</li>
-              </ol>
-            </div>
+          <div class="p3-cierre">
+            <div class="cap-kicker">Lo que este testigo no responde</div>
+            <ol class="cap-list">
+              <li>¿Qué tipo de vivienda rota más en esta zona?</li>
+              <li>¿Cuánto se paga de alquiler por un piso así?</li>
+              <li>¿Qué agencia mueve más este tipo de piso?</li>
+              <li>¿Quién compra estas viviendas y para qué?</li>
+            </ol>
             <div class="cap-gancho">Esas y otras respuestas están en el <b>informe de IM·PULSO</b>.</div>
             <div class="cap-form">
               <div class="field">Tu teléfono</div>

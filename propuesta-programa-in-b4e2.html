@@ -293,38 +293,26 @@ p.body.big{font-size:17px}
 .grid-thumbs.cuatro{grid-template-columns:repeat(2,1fr)}
 }
 
-/* ---- pantalla 3 · el visor: una pantalla, tres momentos etiquetados ---- */
+/* ---- pantalla 3 · el visor: una sola pantalla, continua ---- */
 .screen-bar .side.own{color:var(--pulso)}
-.vis-ficha{background:var(--gray-50);border-left:3px solid var(--navy);border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;color:var(--gray-700);margin-bottom:15px}
+.vis-ficha{background:var(--gray-50);border-left:3px solid var(--navy);border-radius:0 8px 8px 0;padding:10px 14px;font-size:12px;color:var(--gray-700);margin-bottom:14px}
 .vis-ficha b{color:var(--navy);font-weight:800}
 
-.fase{position:relative;padding-left:30px;margin-bottom:16px}
-.fase:last-of-type{margin-bottom:0}
-/* el hilo que ata los tres momentos: es un recorrido, no tres tarjetas sueltas */
-.fase::before{content:"";position:absolute;left:8px;top:21px;bottom:-17px;width:2px;background:var(--gray-300)}
-.fase:last-of-type::before{display:none}
-.fase-tag{display:flex;align-items:center;font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--gray-500);margin-bottom:7px;min-height:18px}
-.fase-num{position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--navy);color:#fff;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;letter-spacing:0;box-shadow:0 0 0 3px #fff}
-.fase-caja{border:1px solid #e5e7eb;border-radius:11px;padding:13px 15px}
-
-/* 1 · la puerta */
-.puerta{background:var(--notarial-bg);border-color:var(--notarial-border);display:flex;gap:15px;align-items:flex-start}
-.pu-mini{flex:none;display:grid;grid-template-columns:repeat(3,34px);gap:5px}
-.pu-mini .photo.thumb{height:34px;border-radius:6px}
-.pu-mini .lock svg{width:13px;height:13px}
-.pu-cuerpo{flex:1;min-width:0}
+/* la puerta: correo arriba, codigo y desbloqueo debajo */
+.puerta{background:var(--notarial-bg);border:1px solid var(--notarial-border);border-radius:11px;padding:14px 16px;margin-bottom:14px}
 .pu-linea{display:flex;gap:8px;align-items:stretch}
 .pu-linea .field{flex:1;min-width:0;background:#fff;display:flex;align-items:center;padding:9px 12px;font-size:12px}
+.pu-linea .field.cod{flex:0 0 96px;letter-spacing:5px;font-weight:800;color:var(--navy);justify-content:center;padding-right:7px}
 .btn-paso{flex:none;display:flex;align-items:center;justify-content:center;white-space:nowrap;background:#fff;color:var(--notarial);border:1px solid var(--notarial-border);border-radius:8px;font-size:12px;font-weight:800;padding:9px 15px}
 .btn-paso.fuerte{background:var(--notarial);border-color:var(--notarial);color:#fff}
 .pu-legal{margin-top:8px;font-size:10.5px;line-height:1.5;color:var(--gray-500)}
 .pu-legal b{color:var(--gray-700);font-weight:700}
 .pu-legal .checkbox{width:12px;height:12px;border-width:1.5px}
-.pu-hint{margin-top:6px;font-size:10.5px;line-height:1.5}
-.pu-hint b{color:var(--gray-700)}
+.pu-sep{height:1px;background:#bfd0ec;margin:14px 0 13px}
+.pu-hint{margin-top:7px;font-size:10.5px;line-height:1.5}
 
-/* 2 · la galeria, ya abierta */
-.visor-marco{background:var(--gray-50)}
+/* la galeria */
+.visor-marco{background:var(--gray-50);border:1px solid #e5e7eb;border-radius:11px;padding:13px}
 .visor{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:9px;max-width:620px;margin:0 auto}
 .photo.grande{aspect-ratio:4/3;height:auto;border-radius:9px;align-items:flex-end}
 .wm.big{font-size:17px;letter-spacing:3px;color:rgba(255,255,255,.18)}
@@ -335,37 +323,28 @@ p.body.big{font-size:17px}
 .vis-pie{display:flex;justify-content:space-between;gap:10px;align-items:baseline;margin-top:8px;font-size:10.5px;color:var(--gray-500)}
 .vis-pie span:first-child{font-weight:800;color:var(--gray-700);flex-shrink:0}
 
-/* 3 · las preguntas y el analisis, juntos */
-.captacion{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:26px;align-items:stretch}
-.cap-kicker{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--notarial);margin-bottom:9px}
-.cap-list{margin:0;padding-left:17px;font-size:12px;color:var(--gray-700);line-height:1.85}
-.cap-accion{padding-left:22px;border-left:1px solid #e5e7eb}
-.cap-gancho{font-size:12.5px;font-weight:500;color:var(--gray-500);line-height:1.6;margin-bottom:12px}
-.cap-gancho b{color:var(--gray-900);font-weight:700}
-.cap-form{display:flex;gap:8px}
+/* el pie: preguntas y peticion, todo seguido y sin cortes */
+.captacion{margin-top:15px;padding-top:14px;border-top:1px solid var(--gray-100)}
+.cap-kicker{font-size:10.5px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--notarial);margin-bottom:8px}
+.cap-list{margin:0 0 11px;padding-left:18px;font-size:12.5px;color:var(--gray-700);line-height:1.85}
+.cap-gancho{font-size:13px;color:var(--gray-700);margin-bottom:10px}
+.cap-gancho b{color:var(--navy);font-weight:800}
+.cap-form{display:flex;gap:8px;max-width:470px}
 .cap-form .field{flex:1;min-width:0;background:#fff;display:flex;align-items:center}
-.btn-cta.contorno{background:#fff;color:var(--pulso);border:1.5px solid var(--pulso);box-shadow:none;white-space:nowrap;padding:10px 16px;font-size:12.5px}
-.cap-fine{margin-top:11px;display:flex;flex-direction:column;gap:6px}
-.cf-badge{display:inline-flex;align-items:center;gap:7px;align-self:flex-start;background:var(--gray-50);border:1px solid #e5e7eb;color:var(--gray-500);font-size:10px;font-weight:700;letter-spacing:.3px;padding:4px 10px;border-radius:20px}
-.cf-badge::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--pulso);flex:none}
-.cf-txt{font-size:11px;color:var(--gray-500);line-height:1.5}
+.btn-cta.contorno{background:#fff;color:var(--pulso);border:1.5px solid var(--pulso);box-shadow:none;white-space:nowrap;padding:10px 17px;font-size:12.5px}
+.cap-fine{margin-top:11px;font-size:11px;color:var(--gray-500);line-height:1.55}
+.cf-sep{color:var(--gray-300);margin:0 4px}
 /* la nota explicativa NO forma parte de la maqueta: se separa visualmente */
 .nota-pantalla{display:flex;gap:11px;font-size:13.5px;color:var(--gray-500);line-height:1.65;margin:12px 2px 4px;padding-left:14px;border-left:3px solid var(--gray-300)}
 .nota-pantalla strong{color:var(--gray-900)}
-@media(max-width:420px){.fase-caja{padding:11px 12px}.cap-list{padding-left:15px}}
 @media(max-width:780px){
-  .puerta{flex-direction:column;gap:11px}
-  .pu-mini{grid-template-columns:repeat(6,1fr);width:100%}
   .pu-linea{flex-direction:column}
+  .pu-linea .field.cod{flex:none;letter-spacing:7px}
   .btn-paso{padding:11px 15px}
   .visor{grid-template-columns:minmax(0,1fr);max-width:none}
   .tira.lateral{grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;height:auto}
-  .captacion{grid-template-columns:minmax(0,1fr);gap:18px}
-  .cap-accion{padding-left:0;border-left:none;border-top:1px solid var(--gray-100);padding-top:16px}
-  .cap-form{flex-direction:column}
+  .cap-form{flex-direction:column;max-width:none}
   .btn-cta.contorno{text-align:center;padding:12px 16px}
-  .fase{padding-left:26px}
-  .fase::before{left:7px}
   .vis-pie{flex-direction:column;align-items:flex-start;gap:3px}
   .nota-pantalla{font-size:12.5px}
 }
@@ -660,70 +639,52 @@ p.body.big{font-size:17px}
 
         <div class="vis-ficha">Testigo <b>#ALC-2481</b> &#183; Piso 92 m&#178;, Altabix &#183; retirado en marzo de 2026 a <b>148.500 &#8364;</b></div>
 
-        <div class="fase">
-          <div class="fase-tag"><span class="fase-num">1</span>Antes de verlas</div>
-          <div class="fase-caja puerta">
-            <div class="pu-mini">
-              <div class="photo thumb blur"><div class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg></div></div>
-              <div class="photo thumb blur"></div>
-              <div class="photo thumb blur"></div>
-            </div>
-            <div class="pu-cuerpo">
-              <div class="pu-linea">
-                <div class="field">tu@correo.com</div>
-                <div class="btn-paso fuerte">Ver las 24 fotografías</div>
-              </div>
-              <div class="checkline pu-legal"><div class="checkbox"></div><div>Confirmo que las consulto a título personal y que <b>no las descargaré, publicaré ni cederé</b>. Las imágenes son de sus autores.</div></div>
-              <div class="micro pu-hint">Te llega un <b>código al correo</b> y lo confirmas aquí mismo, sin salir de la página. Solo se pide una vez.</div>
-            </div>
+        <div class="puerta">
+          <div class="pu-linea">
+            <div class="field">tu@correo.com</div>
+            <div class="btn-paso">Ver las 24 fotografías</div>
           </div>
+          <div class="checkline pu-legal"><div class="checkbox"></div><div>Confirmo que las consulto a título personal y que <b>no las descargaré, publicaré ni cederé</b>. Las imágenes son de sus autores.</div></div>
+          <div class="pu-sep"></div>
+          <div class="pu-linea">
+            <div class="field cod">4 7 2 9</div>
+            <div class="btn-paso fuerte">Desbloquear</div>
+          </div>
+          <div class="micro pu-hint">Escribe aquí el código que acabamos de enviarte a ese correo.</div>
         </div>
 
-        <div class="fase">
-          <div class="fase-tag"><span class="fase-num">2</span>Ya dentro</div>
-          <div class="fase-caja visor-marco">
-            <div class="visor">
-              <div>
-                <div class="photo grande">
-                  <div class="wm big">IM&#183;PULSO</div>
-                  <div class="marca">IM&#183;PULSO &#183; sesión #4729-ALX</div>
-                </div>
-                <div class="vis-pie"><span>1 de 24</span><span>La marca de la sesión va impresa en cada una</span></div>
-              </div>
-              <div class="tira lateral">
-                <div class="photo thumb on"></div>
-                <div class="photo thumb"></div>
-                <div class="photo thumb"></div>
-                <div class="photo thumb"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="fase">
-          <div class="fase-tag"><span class="fase-num">3</span>Si quiere saber más</div>
-          <div class="fase-caja captacion">
+        <div class="visor-marco">
+          <div class="visor">
             <div>
-              <div class="cap-kicker">Lo que este testigo no responde</div>
-              <ol class="cap-list">
-                <li>¿Cuánto vale hoy uno como este?</li>
-                <li>¿Qué se paga de verdad por metro aquí?</li>
-                <li>¿Qué agencia mueve más este tipo de piso?</li>
-                <li>¿Cuánto tardan en salir del mercado los de 3 habitaciones?</li>
-              </ol>
+              <div class="photo grande">
+                <div class="wm big">IM&#183;PULSO</div>
+                <div class="marca">IM&#183;PULSO &#183; sesión #4729-ALX</div>
+              </div>
+              <div class="vis-pie"><span>1 de 24</span><span>La marca de la sesión va impresa en cada una</span></div>
             </div>
-            <div class="cap-accion">
-              <div class="cap-gancho">Estas cuatro no las responde el anuncio. <b>Estas — y las que le hayan surgido mirando las fotografías — las responde el informe de zona de IM·PULSO.</b></div>
-              <div class="cap-form">
-                <div class="field">Tu teléfono</div>
-                <div class="btn-cta contorno">Quiero el análisis de esta zona</div>
-              </div>
-              <div class="cap-fine">
-                <span class="cf-badge">Servicio de IM·PULSO · ajeno al Programa IN</span>
-                <span class="cf-txt">Te decimos qué incluye y el precio antes de que decidas nada.</span>
-              </div>
+            <div class="tira lateral">
+              <div class="photo thumb on"></div>
+              <div class="photo thumb"></div>
+              <div class="photo thumb"></div>
+              <div class="photo thumb"></div>
             </div>
           </div>
+        </div>
+
+        <div class="captacion">
+          <div class="cap-kicker">Lo que este testigo no responde</div>
+          <ol class="cap-list">
+            <li>¿Qué tipo de vivienda rota más en esta zona?</li>
+            <li>¿Cuánto se paga de alquiler por un piso así?</li>
+            <li>¿Qué agencia mueve más este tipo de piso?</li>
+            <li>¿Quién compra estas viviendas y para qué?</li>
+          </ol>
+          <div class="cap-gancho">Esas y otras respuestas están en el <b>informe de IM·PULSO</b>.</div>
+          <div class="cap-form">
+            <div class="field">Tu teléfono</div>
+            <div class="btn-cta contorno">Solicitar análisis completo</div>
+          </div>
+          <div class="cap-fine">Te decimos qué incluye exactamente y el precio antes de nada. <span class="cf-sep">·</span> Servicio de IM·PULSO, ajeno al Programa IN.</div>
         </div>
       </div>
     </div>

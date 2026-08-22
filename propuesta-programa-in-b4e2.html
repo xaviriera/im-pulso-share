@@ -310,35 +310,37 @@ p.body.big{font-size:17px}
 .acc-legal .checkbox{width:12px;height:12px;border-width:1.5px}
 
 /* galeria: el marco se cine a la foto. Nada de fondo oscuro */
-.galeria{width:fit-content;max-width:100%;margin:14px auto 0}
-.galeria .photo.grande{width:436px;max-width:100%;height:272px;aspect-ratio:auto;border:1px solid #e5e7eb;border-radius:9px;align-items:flex-end;justify-content:center}
+.galeria{width:100%;margin:14px auto 0}
+.galeria .photo.grande{width:100%;height:auto;aspect-ratio:2/1;border:1px solid #e5e7eb;border-radius:9px;align-items:flex-end;justify-content:center}
 .galeria .lock{align-items:center}
 .galeria .lock svg{width:24px;height:24px;color:rgba(255,255,255,.92)}
 .wm.big{font-size:18px;letter-spacing:3.5px;color:rgba(255,255,255,.26)}
 .photo-note{position:relative;z-index:3;width:100%;background:rgba(15,31,61,.6);color:#fff;font-size:9.5px;padding:5px 9px;font-weight:600}
-.tira4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px;width:436px;max-width:100%}
-.tira4 .photo.thumb{height:52px;border-radius:6px}
+.tira4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:6px;width:100%}
+.tira4 .photo.thumb{height:58px;border-radius:6px}
 .tira4 .wm{font-size:6px;letter-spacing:.3px;color:rgba(255,255,255,.55)}
 .tira4 .lock svg{width:15px;height:15px;color:rgba(255,255,255,.95)}
-.desbloq{display:flex;align-items:center;gap:7px;flex-wrap:nowrap;margin-top:8px;width:436px;max-width:100%}
+.desbloq{display:flex;align-items:center;gap:8px;flex-wrap:nowrap;margin-top:9px;width:100%}
 .db-txt{flex:1;min-width:0;font-size:10.5px;color:var(--gray-500);line-height:1.3}
 .desbloq .field.cod{flex:none;width:58px;background:#fff;border:1px solid #e5e7eb;border-radius:6px;padding:6px 0;letter-spacing:3px;font-weight:800;color:var(--navy);font-size:12px;text-align:center;white-space:nowrap}
 .btn-db{flex:none;background:var(--notarial);color:#fff;border-radius:6px;font-size:11px;font-weight:800;padding:7px 13px;white-space:nowrap;cursor:pointer}
 
 /* cierre: un solo bloque centrado, sin subcajas */
-.p3-cierre{margin-top:16px;padding-top:14px;border-top:1px solid var(--gray-100);text-align:center}
-.cap-kicker{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--gray-500);margin-bottom:9px}
-.cap-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px 22px;margin:0 auto 11px;padding:0;list-style:none;counter-reset:q;max-width:520px;text-align:left}
-.cap-list li{counter-increment:q;font-size:11.5px;color:var(--gray-700);line-height:1.5;padding-left:16px;position:relative}
-.cap-list li::before{content:counter(q) ".";position:absolute;left:0;color:var(--gray-300);font-weight:800}
-.cap-gancho{font-size:12.5px;color:var(--gray-700);line-height:1.5;margin-bottom:9px}
+.p3-cierre{margin-top:22px;padding-top:20px;border-top:1px solid var(--gray-100);text-align:center}
+.cap-kicker{font-size:12.5px;font-weight:800;text-transform:uppercase;letter-spacing:1.3px;color:var(--navy);margin-bottom:19px}
+.cap-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px 30px;margin:0 auto;padding:0;list-style:none;counter-reset:q;max-width:540px;text-align:left}
+.cap-list li{counter-increment:q;font-size:12px;color:var(--gray-500);line-height:1.55;padding-left:23px;position:relative}
+.cap-list li b{color:var(--navy);font-weight:700}
+.cap-list li::before{content:counter(q);position:absolute;left:0;top:1px;width:16px;height:16px;border-radius:50%;background:var(--gray-50);border:1px solid #e5e7eb;color:var(--gray-500);font-weight:800;font-size:9.5px;display:flex;align-items:center;justify-content:center}
+.cap-gancho{font-size:13.5px;color:var(--gray-700);line-height:1.5;margin:22px 0 12px;padding-top:16px;border-top:1px solid var(--gray-100)}
 .cap-gancho b{color:var(--navy);font-weight:800}
 .cap-form{display:flex;gap:7px;max-width:390px;margin:0 auto}
 .cap-form .field{flex:1;min-width:0;background:var(--gray-50);border:1px solid #e5e7eb;border-radius:8px;display:flex;align-items:center;padding:9px 12px;font-size:12px;color:var(--gray-500)}
 .btn-cta.contorno{background:#fff;color:var(--pulso);border:1.5px solid var(--pulso);box-shadow:none;white-space:nowrap;padding:9px 15px;font-size:12px;cursor:pointer}
-.cap-fine{margin-top:8px;font-size:10.5px;color:var(--gray-500);line-height:1.45}
-.cap-aviso{margin-top:7px;font-size:10px;color:var(--gray-500);line-height:1.45}
-.cap-aviso b{color:var(--gray-700);font-weight:700}
+.cap-fine{margin-top:9px;font-size:10.5px;color:var(--gray-500);line-height:1.45}
+.cap-aviso{display:inline-flex;align-items:center;gap:8px;margin-top:15px;padding:8px 14px 8px 12px;background:var(--pulso-bg);border-radius:20px;font-size:10px;color:#9A3412;line-height:1.4;text-align:left}
+.cap-aviso::before{content:"";flex:none;width:6px;height:6px;border-radius:50%;background:var(--pulso)}
+.cap-aviso b{color:#7C2D12;font-weight:800}
 /* la nota explicativa NO forma parte de la maqueta: se separa visualmente */
 .nota-pantalla{display:flex;gap:11px;font-size:13.5px;color:var(--gray-500);line-height:1.65;margin:13px 2px 4px;padding-left:14px;border-left:3px solid var(--gray-300)}
 .nota-pantalla strong{color:var(--gray-900)}
@@ -349,7 +351,9 @@ p.body.big{font-size:17px}
   .desbloq{flex-wrap:wrap}
   .db-txt{flex:1 0 100%}
   .desbloq .field.cod{flex:1}
-  .cap-list{grid-template-columns:minmax(0,1fr)}
+  .cap-list{grid-template-columns:minmax(0,1fr);gap:14px}
+  .cap-aviso{align-items:flex-start;line-height:1.55;padding:9px 13px 9px 11px}
+  .cap-aviso::before{margin-top:4px}
   .cap-form{flex-direction:column}
   .btn-cta.contorno{text-align:center;padding:11px 15px}
   .nota-pantalla{font-size:12.5px}
@@ -672,10 +676,10 @@ p.body.big{font-size:17px}
           <div class="p3-cierre">
             <div class="cap-kicker">Lo que este testigo no responde</div>
             <ol class="cap-list">
-              <li>¿Qué tipo de vivienda rota más en esta zona?</li>
-              <li>¿Cuánto se paga de alquiler por un piso así?</li>
-              <li>¿Qué agencia mueve más este tipo de piso?</li>
-              <li>¿Quién compra estas viviendas y para qué?</li>
+              <li>¿Qué <b>tipo de vivienda</b> rota más en esta zona?</li>
+              <li>¿Cuánto se paga de <b>alquiler</b> por un piso así?</li>
+              <li>¿Qué <b>agencia</b> mueve más este tipo de piso?</li>
+              <li>¿<b>Quién compra</b> estas viviendas y para qué?</li>
             </ol>
             <div class="cap-gancho">Esas y otras respuestas están en el <b>informe de IM·PULSO</b>.</div>
             <div class="cap-form">

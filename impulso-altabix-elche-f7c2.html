@@ -224,10 +224,6 @@
   /* ===================== TABLE (responsive: table-wrap único) ===================== */
   .table-wrap { overflow-x: auto; margin: 12px 0; position: relative; background-repeat: no-repeat; background-attachment: local, local, scroll, scroll; background-size: 24px 100%, 24px 100%, 12px 100%, 12px 100%; background-position: 0 0, 100% 0, 0 0, 100% 0; background-image: linear-gradient(to right, white 40%, rgba(255,255,255,0)), linear-gradient(to left, white 40%, rgba(255,255,255,0)), linear-gradient(to right, rgba(15,31,61,.16), rgba(15,31,61,0)), linear-gradient(to left, rgba(15,31,61,.16), rgba(15,31,61,0)); }
   .table-wrap table { min-width: 480px; }
-  .table-scroll-hint { display: none; font-size: 11.5px; font-weight: 800; letter-spacing: 0.2px; color: var(--pulso); background: var(--pulso-bg); border: 1px solid var(--pulso-border); text-align: right; margin: -4px 0 8px; padding: 4px 10px; border-radius: 20px; width: fit-content; margin-inline-start: auto; }
-  @media (max-width: 720px) {
-    .table-scroll-hint { display: block; }
-  }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
   th:first-child { border-radius: 8px 0 0 0; }
@@ -257,17 +253,54 @@
   .table-config th:nth-child(2), .table-config td:nth-child(2) { width: 1%; white-space: nowrap; padding-right: 12px; }
 
   @media (max-width: 480px) {
-    .table-mobile thead { display: none; }
-    .table-mobile tbody, .table-mobile tr { display: block; width: 100%; }
-    .table-mobile tr { margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; background: white; }
-    .table-mobile tr.highlight { background: var(--pulso-bg); border-color: var(--pulso-border); }
-    .table-mobile tr.highlight-asset { background: var(--impulso-bg); border-color: var(--impulso-border); }
-    .table-mobile tr.highlight-notarial { background: var(--notarial-bg); border-color: var(--notarial-border); }
-    .table-mobile td { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 5px 0; border-bottom: none; font-size: 13px; text-align: right; }
-    .table-mobile td:first-child { font-size: 15px; font-weight: 800; color: var(--navy); padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--gray-100); text-align: left; display: block; }
-    .table-mobile td:not(:first-child)::before { content: attr(data-label); font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
-    .table-mobile tr:hover td { background: transparent; }
-    .table-wrap table.table-mobile { min-width: 0; }
+    /* Tablas anchas (4+ columnas): CUADRÍCULA real con scroll lateral y 1ª columna fija.
+       El cliente rechazó el patrón de tarjetas apiladas (se pierde la rejilla, informe kilométrico). */
+    .table-wrap { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+    .table-wrap:has(.table-mobile:has(th:nth-child(4)))::after {
+      content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 22px;
+      background: linear-gradient(to right, rgba(15,31,61,0), rgba(15,31,61,0.20));
+      pointer-events: none; border-radius: 0 8px 8px 0;
+    }
+    .table-mobile:has(th:nth-child(4)) { display: table; width: 100%; border-collapse: collapse; table-layout: auto; }
+    .table-mobile:has(th:nth-child(4)) thead { display: table-header-group; }
+    .table-mobile:has(th:nth-child(4)) tbody { display: table-row-group; }
+    .table-mobile:has(th:nth-child(4)) tr { display: table-row; width: auto; margin: 0; padding: 0; border: 0; }
+    .table-mobile:has(th:nth-child(4)) th,
+    .table-mobile:has(th:nth-child(4)) td { display: table-cell; text-align: left; border-bottom: 1px solid var(--gray-100); }
+    .table-mobile:has(th:nth-child(4)) td::before { content: none; }
+    .table-mobile:has(th:nth-child(4)) { min-width: 480px; }
+    .table-mobile:has(th:nth-child(5)) { min-width: 540px; }
+    .table-mobile:has(th:nth-child(6)) { min-width: 600px; }
+    .table-mobile:has(th:nth-child(7)) { min-width: 660px; }
+    .table-mobile:has(th:nth-child(8)) { min-width: 720px; }
+    .table-mobile:has(th:nth-child(9)) { min-width: 780px; }
+    .table-mobile:has(th:nth-child(4)) th,
+    .table-mobile:has(th:nth-child(4)) td { padding: 7px 9px; font-size: 11.5px; }
+    .table-mobile:has(th:nth-child(4)) th { font-size: 9px; letter-spacing: 0.2px; }
+    .table-mobile:has(th:nth-child(4)) td:first-child,
+    .table-mobile:has(th:nth-child(4)) th:first-child {
+      position: sticky; left: 0; z-index: 3; box-shadow: 2px 0 4px rgba(0,0,0,0.10);
+    }
+    .table-mobile:has(th:nth-child(4)) th:first-child { background: var(--navy); }
+    .table-mobile:has(th:nth-child(4)) tbody td:first-child { background: white; }
+    .table-mobile:has(th:nth-child(4)) tr.highlight td:first-child { background: var(--pulso-bg); }
+    .table-mobile:has(th:nth-child(4)) tr.highlight-asset td:first-child { background: var(--impulso-bg); }
+    .table-mobile:has(th:nth-child(4)) tr.highlight-notarial td:first-child { background: var(--notarial-bg); }
+    .table-mobile:has(th:nth-child(4)) tr.no-data td:first-child { background: var(--gray-100); }
+    .table-mobile:has(th:nth-child(4)) tr.warn td:first-child { background: #FEF3C7; }
+
+    /* Tablas de 3 columnas o menos: siguen colapsando en tarjeta (más legible con pocos datos) */
+    .table-mobile:not(:has(th:nth-child(4))) { min-width: 0; }
+    .table-mobile:not(:has(th:nth-child(4))) thead { display: none; }
+    .table-mobile:not(:has(th:nth-child(4))) tbody, .table-mobile:not(:has(th:nth-child(4))) tr { display: block; width: 100%; }
+    .table-mobile:not(:has(th:nth-child(4))) tr { margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; background: white; }
+    .table-mobile:not(:has(th:nth-child(4))) tr.highlight { background: var(--pulso-bg); border-color: var(--pulso-border); }
+    .table-mobile:not(:has(th:nth-child(4))) tr.highlight-asset { background: var(--impulso-bg); border-color: var(--impulso-border); }
+    .table-mobile:not(:has(th:nth-child(4))) tr.highlight-notarial { background: var(--notarial-bg); border-color: var(--notarial-border); }
+    .table-mobile:not(:has(th:nth-child(4))) td { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 5px 0; border-bottom: none; font-size: 13px; text-align: right; }
+    .table-mobile:not(:has(th:nth-child(4))) td:first-child { font-size: 15px; font-weight: 800; color: var(--navy); padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--gray-100); text-align: left; display: block; }
+    .table-mobile:not(:has(th:nth-child(4))) td:not(:first-child)::before { content: attr(data-label); font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
+    .table-mobile:not(:has(th:nth-child(4))) tr:hover td { background: transparent; }
 
     .hero-sources,
     .hero-sources.sources-4 {
@@ -904,7 +937,6 @@
       <div class="card-title">1.2 Tipologías de vivienda &middot; modalidad venta</div>
       <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de vender, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -926,7 +958,6 @@
       <div class="card-title">1.3 Tipologías de vivienda &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de alquilar, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th><th>Días</th></tr></thead>
           <tbody>
@@ -958,7 +989,6 @@
       <div class="card-title">1.5 Configuración por dormitorios y baños &middot; modalidad venta</div>
       <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de vender, en Altabix (Elche) · solo pisos</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile table-config">
           <thead><tr><th>Dorm.</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -983,7 +1013,6 @@
       <div class="card-title">1.6 Configuración por dormitorios y baños &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de alquilar la vivienda completa, en Altabix (Elche) · solo pisos</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile table-config">
           <thead><tr><th>Dorm.</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th></tr></thead>
           <tbody>
@@ -1021,7 +1050,6 @@
       <div class="card-title">1.8 Tramos de precio &middot; modalidad venta</div>
       <div class="card-subtitle">Qué tramo de precio mueve el mercado a la hora de vender, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>Días</th></tr></thead>
           <tbody>
@@ -1043,7 +1071,6 @@
       <div class="card-title">1.9 Tramos de precio &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Qué tramo de renta mueve el mercado a la hora de alquilar la vivienda completa, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th><th>Días</th></tr></thead>
           <tbody>
@@ -1074,7 +1101,6 @@
       <div class="card-title">1.11 Comparativa por barrios colindantes &middot; modalidad venta</div>
       <div class="card-subtitle">Zonas con actividad de venta en Elche · incluye la propia calle de la operación · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Distrito</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -1096,7 +1122,6 @@
       <div class="card-title">1.12 Comparativa por barrios colindantes &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Zonas con actividad de alquiler tradicional en Elche · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Distrito</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -1128,7 +1153,6 @@
       <div class="card-title">1.14 Comparativa por calles &middot; modalidad venta</div>
       <div class="card-subtitle">Calles con actividad de venta en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>%</th><th>Retirados</th></tr></thead>
           <tbody>
@@ -1152,7 +1176,6 @@
       <div class="card-title">1.15 Comparativa por calles &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Calles con actividad de alquiler tradicional en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>%</th><th>Retirados</th></tr></thead>
           <tbody>
@@ -1190,7 +1213,6 @@
       <div class="card-title">1.17 Otros activos &middot; modalidad venta</div>
       <div class="card-subtitle">Mercado no residencial de Altabix (Elche): locales, garajes y trasteros</div>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -1236,7 +1258,6 @@
       </div>
       <h3>Modalidad venta</h3>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead>
           <tbody>
@@ -1251,7 +1272,6 @@
 
       <h3>Modalidad alquiler de vivienda completa</h3>
       <div class="table-wrap">
-        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Producto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead>
           <tbody>

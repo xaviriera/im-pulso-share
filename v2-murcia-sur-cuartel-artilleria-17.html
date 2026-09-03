@@ -167,21 +167,44 @@
   details.acc { display: block; }
   details.acc > summary { cursor: pointer; list-style: none; position: relative; }
   details.acc > summary::-webkit-details-marker { display: none; }
-  details.acc > summary:focus-visible { outline: 3px solid var(--pulso); outline-offset: 3px; border-radius: 12px; }
-  .fuente-resumen { flex-basis: 100%; margin-top: 12px; padding-top: 13px; border-top: 1px solid var(--gray-200); }
-  .fuente-resumen .fr-que { margin: 0 0 10px; font-size: 13.5px; line-height: 1.55; color: var(--gray-700); max-width: 68ch; }
-  .fuente-resumen .fr-datos { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-  .fuente-resumen .fr-dato { font-size: 12px; color: var(--gray-700); background: var(--white); border: 1px solid var(--gray-200); border-radius: 999px; padding: 4px 11px; white-space: nowrap; }
-  .fuente-resumen .fr-dato b { font-weight: 800; color: var(--navy); font-variant-numeric: tabular-nums; }
-  .fuente-resumen .fr-accion { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .02em; color: var(--navy); }
-  .acc-chevron { width: 15px; height: 15px; transition: transform .22s ease; }
+  details.acc > summary:focus-visible { outline: 3px solid var(--pulso); outline-offset: 4px; border-radius: 14px; }
+
+  /* la seccion cerrada se lee como una tarjeta con su color */
+  details.acc:not([open]) > summary { border-radius: 14px; transition: box-shadow .2s ease, transform .2s ease; }
+  details.acc:not([open]) > summary:hover { box-shadow: 0 6px 20px -8px rgba(15,31,61,.30); }
+  @media (prefers-reduced-motion: no-preference) {
+    details.acc:not([open]) > summary:hover .acc-btn { transform: translateY(-1px); }
+  }
+
+  .fuente-resumen { flex-basis: 100%; margin-top: 16px; padding-top: 16px; border-top: 2px solid var(--gray-100); }
+  .fuente-resumen .fr-que { margin: 0 0 14px; font-size: 15px; line-height: 1.6; color: var(--navy); font-weight: 600; max-width: 60ch; }
+  .fuente-resumen .fr-datos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 18px; }
+  .fuente-resumen .fr-dato { background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 10px; padding: 11px 13px; text-align: left; }
+  .fuente-resumen .fr-dato b { display: block; font-size: 19px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .fuente-resumen .fr-dato span { display: block; font-size: 11px; color: var(--gray-600); margin-top: 3px; line-height: 1.35; }
+
+  /* el boton */
+  .acc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+    padding: 13px 26px; border-radius: 10px; font-size: 14.5px; font-weight: 800; letter-spacing: .01em;
+    color: #fff; border: none; box-shadow: 0 3px 10px -3px rgba(15,31,61,.35); transition: transform .18s ease; }
+  .acc-chevron { width: 17px; height: 17px; transition: transform .22s ease; }
   details.acc[open] > summary .acc-chevron { transform: rotate(180deg); }
   details.acc[open] > summary .fr-que, details.acc[open] > summary .fr-datos { display: none; }
-  details.acc[open] > summary .fuente-resumen { margin-top: 10px; padding-top: 10px; }
-  details.acc.motor-pulso > summary .fr-accion { color: var(--pulso); }
-  details.acc.motor-impulso > summary .fr-accion { color: var(--impulso); }
-  details.acc.motor-notarial > summary .fr-accion { color: var(--notarial); }
-  @media (prefers-reduced-motion: reduce) { .acc-chevron { transition: none; } }
+  details.acc[open] > summary .fuente-resumen { margin-top: 12px; padding-top: 12px; border-top-width: 1px; }
+  details.acc[open] > summary .acc-btn { padding: 8px 18px; font-size: 13px; box-shadow: none; opacity: .85; }
+
+  details.acc.motor-pulso    > summary .acc-btn { background: var(--pulso); }
+  details.acc.motor-impulso  > summary .acc-btn { background: var(--impulso); }
+  details.acc.motor-notarial > summary .acc-btn { background: var(--notarial); }
+
+  @media (max-width: 640px) {
+    .fuente-resumen .fr-datos { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .fuente-resumen .fr-dato:nth-child(3) { grid-column: 1 / -1; }
+    .fuente-resumen .fr-dato b { font-size: 17px; }
+    .fuente-resumen .fr-que { font-size: 14px; }
+    .acc-btn { width: 100%; padding: 14px 18px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .acc-chevron, .acc-btn, details.acc:not([open]) > summary { transition: none; } }
   @media print { details.acc > summary .fuente-resumen { display: none; } }
   .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; }
   .section-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
@@ -247,11 +270,6 @@
 
   /* ===================== TABLE (responsive: table-wrap único) ===================== */
   .table-wrap { overflow-x: auto; overflow-y: hidden; margin: 12px 0; position: relative; -webkit-overflow-scrolling: touch; }
-  .table-wrap::after {
-    content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 24px;
-    background: linear-gradient(to right, rgba(15,31,61,0), rgba(15,31,61,0.16));
-    pointer-events: none; border-radius: 0 8px 8px 0;
-  }
   .table-wrap table { min-width: 480px; }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
@@ -944,7 +962,7 @@
       </div>
       <span class="zone-badge pulso">El mercado</span>
     
-      <div class="fuente-resumen"><p class="fr-que">Cómo se mueve de verdad el mercado del distrito Sur: qué se publica, qué se retira y a qué velocidad.</p><div class="fr-datos"><span class="fr-dato"><b>3.007</b> anuncios analizados</span><span class="fr-dato"><b>84,5 %</b> rotación en venta</span><span class="fr-dato"><b>17</b> apartados</span></div><span class="fr-accion">Ver el mercado al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
+      <div class="fuente-resumen"><p class="fr-que">Cómo se mueve de verdad el mercado del distrito Sur: qué se publica, qué se retira y a qué velocidad.</p><div class="fr-datos"><span class="fr-dato"><b>3.007</b><span>anuncios analizados</span></span><span class="fr-dato"><b>84,5 %</b><span>rotación en venta</span></span><span class="fr-dato"><b>17</b><span>apartados</span></span></div><span class="acc-btn">Ver el mercado al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
     </summary>
 
     <!-- ============================================ -->
@@ -953,9 +971,7 @@
     <!-- ============================================ -->
     <div class="card">
       <div class="card-title">Qué vas a encontrar en esta fuente</div>
-      <div class="card-subtitle">FUENTE 1 · PULSO — el latido del mercado</div>
-
-    <div class="card term-explainer glosario" id="glosario">
+<div class="card term-explainer glosario" id="glosario">
         <span class="ge-badge">Glosario de campos</span><br>
         <div class="glossary-grid">
           <div class="glossary-card"><span class="glossary-term">Testigo</span><span class="glossary-def">Anuncio retirado con características parecidas. Los publicados están a precio de deseo.</span></div>
@@ -970,6 +986,9 @@
         </div>
         <div class="ge-method">Todas las cifras son medias sobre anuncios retirados, excluyendo los que llevaban más de un año publicados.</div>
       </div>
+      <div class="card-subtitle">FUENTE 1 · PULSO — el latido del mercado</div>
+
+    
 
       <div class="legend">
         <span class="lg-item"><span class="lg-dot" style="background:var(--pulso);"></span> <strong>PULSO</strong> = el segmento con MÁS volumen (el producto dominante de la zona).</span>
@@ -987,9 +1006,9 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       -->
     </div>
 
-    <!-- 1.1 Resumen del mercado -->
+    <!-- -->
     <div class="card">
-      <div class="card-title">1.1 Resumen — KPIs y desglose</div>
+      <div class="card-title">1.1 Resumen del mercado</div>
       <div class="card-subtitle">Venta, alquiler tradicional y alquiler por habitaciones en el distrito Sur</div>
       <div class="kpi-row">
         <div class="kpi"><div class="kpi-value">3.007</div><div class="kpi-label">Anuncios de la zona</div></div>
@@ -998,10 +1017,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         <div class="kpi"><div class="kpi-value">83,8%</div><div class="kpi-label">Rotación alquiler habitaciones</div></div>
       </div>
       <div class="term-explainer">
-        <strong>Desglose:</strong> Venta de vivienda: 1.867 anuncios · 1.593 retirados · 84,5% de rotación. Alquiler tradicional: 1.053 anuncios · 946 retirados · 89,8% de rotación. Alquiler por habitaciones: 681 anuncios · 571 retirados · 83,8% de rotación.<br><br>
-        <strong>Retirados</strong> — absorción: lo que el mercado se ha llevado.<br>
-        <strong>Activos</strong> — competencia: lo que sigue compitiendo hoy.<br>
-        <strong>Precio medio</strong> — el último precio al que estuvieron anunciados los inmuebles ya retirados del mercado. No es el precio de salida ni el precio de escritura.
+        <strong>Desglose:</strong> Venta de vivienda: 1.867 anuncios · 1.593 retirados · 84,5% de rotación. Alquiler tradicional: 1.053 anuncios · 946 retirados · 89,8% de rotación. Alquiler por habitaciones: 681 anuncios · 571 retirados · 83,8% de rotación.
       </div>
     </div>
 
@@ -1108,9 +1124,9 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <div class="card">
       <div class="card-title">1.17 Productos que más se retiran</div>
       <div class="card-subtitle">Ranking de productos retirados del mercado en el distrito Sur</div>
-      <h3>Modalidad venta</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 Piso 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">424</td><td data-label="Precio mín.">63.000&euro;</td><td data-label="Precio medio">203.525&euro;</td><td data-label="Precio máx.">445.000&euro;</td></tr><tr><td>🥈 Piso 2 dorm. / 1 baño</td><td data-label="Retirados">250</td><td data-label="Precio mín.">47.000&euro;</td><td data-label="Precio medio">135.928&euro;</td><td data-label="Precio máx.">250.000&euro;</td></tr><tr><td>🥉 Piso 4 dorm. / 2 baños</td><td data-label="Retirados">219</td><td data-label="Precio mín.">45.000&euro;</td><td data-label="Precio medio">212.332&euro;</td><td data-label="Precio máx.">430.000&euro;</td></tr><tr><td>4 · Piso 3 dorm. / 1 baño</td><td data-label="Retirados">173</td><td data-label="Precio mín.">49.000&euro;</td><td data-label="Precio medio">126.863&euro;</td><td data-label="Precio máx.">309.000&euro;</td></tr><tr><td>5 · Piso 1 dorm. / 1 baño</td><td data-label="Retirados">153</td><td data-label="Precio mín.">48.900&euro;</td><td data-label="Precio medio">114.805&euro;</td><td data-label="Precio máx.">361.000&euro;</td></tr></tbody></table></div>
+      <h3>Modalidad venta</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">424</td><td data-label="Precio mín.">63.000&euro;</td><td data-label="Precio medio">203.525&euro;</td><td data-label="Precio máx.">445.000&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">250</td><td data-label="Precio mín.">47.000&euro;</td><td data-label="Precio medio">135.928&euro;</td><td data-label="Precio máx.">250.000&euro;</td></tr><tr><td>🥉 4 dorm. / 2 baños</td><td data-label="Retirados">219</td><td data-label="Precio mín.">45.000&euro;</td><td data-label="Precio medio">212.332&euro;</td><td data-label="Precio máx.">430.000&euro;</td></tr><tr><td>4.&ordm; 3 dorm. / 1 baño</td><td data-label="Retirados">173</td><td data-label="Precio mín.">49.000&euro;</td><td data-label="Precio medio">126.863&euro;</td><td data-label="Precio máx.">309.000&euro;</td></tr><tr><td>5.&ordm; 1 dorm. / 1 baño</td><td data-label="Retirados">153</td><td data-label="Precio mín.">48.900&euro;</td><td data-label="Precio medio">114.805&euro;</td><td data-label="Precio máx.">361.000&euro;</td></tr></tbody></table></div>
       <div class="insight insight-orange"><strong>Lectura:</strong> el producto que más se retira del distrito es exactamente el del activo: piso de tres dormitorios y dos baños, con 424 operaciones cerradas. No es un producto de nicho, es el caballo ganador de la zona.</div>
-      <h3>Modalidad alquiler tradicional</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 Piso 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">189</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">855&euro;</td><td data-label="Renta máx.">1.400&euro;</td></tr><tr><td>🥈 Piso 2 dorm. / 1 baño</td><td data-label="Retirados">177</td><td data-label="Renta mín.">450&euro;</td><td data-label="Renta media">719&euro;</td><td data-label="Renta máx.">1.500&euro;</td></tr><tr><td>🥉 Piso 1 dorm. / 1 baño</td><td data-label="Retirados">169</td><td data-label="Renta mín.">470&euro;</td><td data-label="Renta media">631&euro;</td><td data-label="Renta máx.">1.200&euro;</td></tr><tr><td>4 · Piso 4 dorm. / 2 baños</td><td data-label="Retirados">88</td><td data-label="Renta mín.">650&euro;</td><td data-label="Renta media">1.002&euro;</td><td data-label="Renta máx.">1.450&euro;</td></tr><tr><td>5 · Piso 3 dorm. / 1 baño</td><td data-label="Retirados">72</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">791&euro;</td><td data-label="Renta máx.">1.100&euro;</td></tr></tbody></table></div>
+      <h3>Modalidad alquiler tradicional</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">189</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">855&euro;</td><td data-label="Renta máx.">1.400&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">177</td><td data-label="Renta mín.">450&euro;</td><td data-label="Renta media">719&euro;</td><td data-label="Renta máx.">1.500&euro;</td></tr><tr><td>🥉 1 dorm. / 1 baño</td><td data-label="Retirados">169</td><td data-label="Renta mín.">470&euro;</td><td data-label="Renta media">631&euro;</td><td data-label="Renta máx.">1.200&euro;</td></tr><tr><td>4.&ordm; 4 dorm. / 2 baños</td><td data-label="Retirados">88</td><td data-label="Renta mín.">650&euro;</td><td data-label="Renta media">1.002&euro;</td><td data-label="Renta máx.">1.450&euro;</td></tr><tr><td>5.&ordm; 3 dorm. / 1 baño</td><td data-label="Retirados">72</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">791&euro;</td><td data-label="Renta máx.">1.100&euro;</td></tr></tbody></table></div>
       <h3>Modalidad alquiler por habitaciones</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight"><td><strong>🥇 Habitación en vivienda de 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">157</td><td data-label="Renta mín.">170&euro;</td><td data-label="Renta media">299&euro;</td><td data-label="Renta máx.">600&euro;</td></tr><tr><td>🥈 Habitación en vivienda de 5 dorm. / 2 baños</td><td data-label="Retirados">123</td><td data-label="Renta mín.">145&euro;</td><td data-label="Renta media">347&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr class="highlight-asset"><td><strong>🥉 Habitación en vivienda de 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">67</td><td data-label="Renta mín.">200&euro;</td><td data-label="Renta media">291&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr><td>4 · Habitación en vivienda de 3 dorm. / 1 baño</td><td data-label="Retirados">66</td><td data-label="Renta mín.">160&euro;</td><td data-label="Renta media">294&euro;</td><td data-label="Renta máx.">430&euro;</td></tr><tr><td>5 · Habitación en vivienda de 4 dorm. / 1 baño</td><td data-label="Retirados">47</td><td data-label="Renta mín.">190&euro;</td><td data-label="Renta media">307&euro;</td><td data-label="Renta máx.">390&euro;</td></tr></tbody></table></div>
     </div>
 
@@ -1146,7 +1162,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       </div>
       <span class="zone-badge impulso">El activo</span>
     
-      <div class="fuente-resumen"><p class="fr-que">Cuánto vale este piso, calculado sobre testigos reales del mismo barrio y del mismo tamaño.</p><div class="fr-datos"><span class="fr-dato"><b>128.300–181.600 €</b> horquilla de valor</span><span class="fr-dato"><b>206</b> testigos reales</span><span class="fr-dato"><b>3</b> escenarios</span></div><span class="fr-accion">Ver la valoración al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
+      <div class="fuente-resumen"><p class="fr-que">Cuánto vale este piso, calculado sobre testigos reales del mismo barrio y del mismo tamaño.</p><div class="fr-datos"><span class="fr-dato"><b>128.300–181.600 €</b><span>horquilla de valor</span></span><span class="fr-dato"><b>206</b><span>testigos reales</span></span><span class="fr-dato"><b>3</b><span>escenarios</span></span></div><span class="acc-btn">Ver la valoración al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
     </summary>
 
     <!-- Qué vas a encontrar en este motor -->
@@ -1240,19 +1256,34 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         </div>
       </div>
 
+      <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso); margin: 14px 0 4px;">
+        <strong>Cómo se calcula cada escenario.</strong> Los tres salen de los precios a los que se
+        retiraron del mercado los testigos comparables, ordenados de menor a mayor:
+        <div style="margin-top:8px; font-size:13px; line-height:1.65;">
+          &bull; <strong>Conservador</strong> &mdash; el <strong>percentil 25</strong>: el precio por debajo del cual
+          se quedó solo una cuarta parte de los testigos. Dicho al revés, <strong>tres de cada cuatro se
+          retiraron por encima</strong>.<br>
+          &bull; <strong>Medio</strong> &mdash; la <strong>media</strong> de todos ellos. No es el del medio de la lista:
+          es el promedio, así que los extremos pesan.<br>
+          &bull; <strong>Optimista</strong> &mdash; el <strong>percentil 75</strong>: solo uno de cada cuatro testigos
+          superó ese precio.
+        </div>
+      </div>
+
+
       <div class="price-widget">
         <div class="price-box">
-          <div class="price-label">Conservador (P25)</div>
+          <div class="price-label">Conservador</div>
           <div class="price-value">128.300&euro;</div>
           <div class="price-note">1.425&euro;/m²</div>
         </div>
         <div class="price-box main">
-          <div class="price-label">Medio (P50)</div>
+          <div class="price-label">Medio</div>
           <div class="price-value">159.800&euro;</div>
           <div class="price-note">1.776&euro;/m²</div>
         </div>
         <div class="price-box">
-          <div class="price-label">Optimista (P75)</div>
+          <div class="price-label">Optimista</div>
           <div class="price-value">181.600&euro;</div>
           <div class="price-note">2.018&euro;/m²</div>
         </div>
@@ -1429,7 +1460,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       </div>
       <span class="zone-badge notarial">El contexto</span>
     
-      <div class="fuente-resumen"><p class="fr-que">Qué dicen las escrituras: lo que de verdad se firma ante notario en este código postal.</p><div class="fr-datos"><span class="fr-dato"><b>227</b> compraventas en 12 meses</span><span class="fr-dato"><b>97,3 %</b> segunda mano</span><span class="fr-dato"><b>43</b> años, edad mediana</span></div><span class="fr-accion">Ver el contexto oficial <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
+      <div class="fuente-resumen"><p class="fr-que">Qué dicen las escrituras: lo que de verdad se firma ante notario en este código postal.</p><div class="fr-datos"><span class="fr-dato"><b>227</b><span>compraventas en 12 meses</span></span><span class="fr-dato"><b>97,3 %</b><span>segunda mano</span></span><span class="fr-dato"><b>43</b><span>años, edad mediana</span></span></div><span class="acc-btn">Ver el contexto oficial <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
     </summary>
 
     <!-- 3.1 Datos clave -->

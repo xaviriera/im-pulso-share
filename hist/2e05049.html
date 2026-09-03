@@ -89,12 +89,6 @@
   .hero h1 { font-size: 32px; font-weight: 800; margin-bottom: 8px; line-height: 1.2; }
   .hero .subtitle { font-size: 15px; opacity: 0.65; margin-bottom: 20px; }
 
-  .pantalla-grande { display: none; }
-  @media (max-width: 900px) {
-    .pantalla-grande { display: flex; gap: 9px; align-items: flex-start; max-width: 520px; margin: 0 auto 22px; padding: 11px 14px; background: rgba(255,255,255,0.09); border: 1px solid rgba(255,255,255,0.18); border-radius: 9px; font-size: 12.5px; line-height: 1.5; color: rgba(255,255,255,0.82); text-align: left; }
-    .pantalla-grande svg { flex-shrink: 0; width: 17px; height: 17px; margin-top: 1px; opacity: 0.85; }
-    .pantalla-grande strong { color: #fff; font-weight: 700; }
-  }
   .hero-meta { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
   .hero-meta .hm-item { font-size: 13px; color: rgba(255,255,255,0.6); display: flex; align-items: center; gap: 6px; }
   .hero-meta .hm-item svg { width: 15px; height: 15px; flex-shrink: 0; }
@@ -208,7 +202,7 @@
   .term-explainer.glosario .glossary-card { background: var(--white); border: 1px solid var(--gray-300); border-left: 3px solid var(--navy); border-radius: 8px; padding: 8px 10px; }
   .term-explainer.glosario .glossary-term { display: block; font-weight: 700; color: var(--navy); font-size: 12px; margin-bottom: 2px; }
   .term-explainer.glosario .glossary-def { display: block; font-size: 11px; line-height: 1.35; color: var(--gray-700); }
-  @media (max-width: 640px) { .term-explainer.glosario .glossary-grid { grid-template-columns: 1fr 1fr; gap: 6px; } .term-explainer.glosario .glossary-card { padding: 7px 9px; } .term-explainer.glosario .glossary-term { font-size: 11.5px; } .term-explainer.glosario .glossary-def { font-size: 10.5px; line-height: 1.4; } }
+  @media (max-width: 640px) { .term-explainer.glosario .glossary-grid { grid-template-columns: 1fr; } }
   .term-explainer.glosario.card { border-radius: 16px; padding: 28px; margin: 0 0 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); border: 1px solid #e5e7eb; border-left: 6px solid var(--navy); }
 
   /* Lista gráfica de escenarios (P25/P50/P75) — §2.4 IMPULSO */
@@ -230,6 +224,10 @@
   /* ===================== TABLE (responsive: table-wrap único) ===================== */
   .table-wrap { overflow-x: auto; margin: 12px 0; position: relative; background-repeat: no-repeat; background-attachment: local, local, scroll, scroll; background-size: 24px 100%, 24px 100%, 12px 100%, 12px 100%; background-position: 0 0, 100% 0, 0 0, 100% 0; background-image: linear-gradient(to right, white 40%, rgba(255,255,255,0)), linear-gradient(to left, white 40%, rgba(255,255,255,0)), linear-gradient(to right, rgba(15,31,61,.16), rgba(15,31,61,0)), linear-gradient(to left, rgba(15,31,61,.16), rgba(15,31,61,0)); }
   .table-wrap table { min-width: 480px; }
+  .table-scroll-hint { display: none; font-size: 11.5px; font-weight: 800; letter-spacing: 0.2px; color: var(--pulso); background: var(--pulso-bg); border: 1px solid var(--pulso-border); text-align: right; margin: -4px 0 8px; padding: 4px 10px; border-radius: 20px; width: fit-content; margin-inline-start: auto; }
+  @media (max-width: 720px) {
+    .table-scroll-hint { display: block; }
+  }
   table { width: 100%; border-collapse: collapse; font-size: 14px; }
   th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
   th:first-child { border-radius: 8px 0 0 0; }
@@ -259,79 +257,17 @@
   .table-config th:nth-child(2), .table-config td:nth-child(2) { width: 1%; white-space: nowrap; padding-right: 12px; }
 
   @media (max-width: 480px) {
-    /* Tablas anchas (4+ columnas): CUADRÍCULA real con scroll lateral y 1ª columna fija.
-       El cliente rechazó el patrón de tarjetas apiladas (se pierde la rejilla, informe kilométrico). */
-    .table-wrap { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
-    .table-wrap:has(.table-mobile:has(th:nth-child(4)))::after {
-      content: ""; position: absolute; top: 0; right: 0; bottom: 0; width: 22px;
-      background: linear-gradient(to right, rgba(15,31,61,0), rgba(15,31,61,0.20));
-      pointer-events: none; border-radius: 0 8px 8px 0;
-    }
-    .table-mobile:has(th:nth-child(4)) { display: table; width: 100%; border-collapse: collapse; table-layout: auto; }
-    .table-mobile:has(th:nth-child(4)) thead { display: table-header-group; }
-    .table-mobile:has(th:nth-child(4)) tbody { display: table-row-group; }
-    .table-mobile:has(th:nth-child(4)) tr { display: table-row; width: auto; margin: 0; padding: 0; border: 0; }
-    .table-mobile:has(th:nth-child(4)) th,
-    .table-mobile:has(th:nth-child(4)) td { display: table-cell; text-align: left; border-bottom: 1px solid var(--gray-100); }
-    .table-mobile:has(th:nth-child(4)) td::before { content: none; }
-    .table-mobile:has(th:nth-child(4)) { min-width: 480px; }
-    .table-mobile:has(th:nth-child(5)) { min-width: 540px; }
-    .table-mobile:has(th:nth-child(6)) { min-width: 600px; }
-    .table-mobile:has(th:nth-child(7)) { min-width: 660px; }
-    .table-mobile:has(th:nth-child(8)) { min-width: 720px; }
-    .table-mobile:has(th:nth-child(9)) { min-width: 780px; }
-    .table-mobile:has(th:nth-child(4)) th,
-    .table-mobile:has(th:nth-child(4)) td { padding: 7px 9px; font-size: 11.5px; }
-    .table-mobile:has(th:nth-child(4)) th { font-size: 9px; letter-spacing: 0.2px; }
-    .table-mobile:has(th:nth-child(4)) td:first-child,
-    .table-mobile:has(th:nth-child(4)) th:first-child {
-      position: sticky; left: 0; z-index: 3; box-shadow: 2px 0 4px rgba(0,0,0,0.10);
-    }
-    .table-mobile:has(th:nth-child(4)) th:first-child { background: var(--navy); }
-    .table-mobile:has(th:nth-child(4)) tbody td:first-child { background: white; }
-    .table-mobile:has(th:nth-child(4)) tr.highlight td:first-child { background: var(--pulso-bg); }
-    .table-mobile:has(th:nth-child(4)) tr.highlight-asset td:first-child { background: var(--impulso-bg); }
-    .table-mobile:has(th:nth-child(4)) tr.highlight-notarial td:first-child { background: var(--notarial-bg); }
-    .table-mobile:has(th:nth-child(4)) tr.no-data td:first-child { background: var(--gray-100); }
-    .table-mobile:has(th:nth-child(4)) tr.warn td:first-child { background: #FEF3C7; }
-
-    /* Columna fija angosta (feedback cliente 03-sep): la zona con scroll gana espacio.
-       Los badges bajan debajo del nombre y se reducen; VIVIENDA RESULTANTE pasa a punto de color
-       (la leyenda de encima de cada tabla ya explica el color). */
-    .table-mobile:has(th:nth-child(4)) td:first-child,
-    .table-mobile:has(th:nth-child(4)) th:first-child {
-      max-width: 118px; width: 118px; white-space: normal; word-break: break-word;
-    }
-    .table-mobile:has(th:nth-child(4)) td:first-child .mark-line {
-      display: flex; flex-direction: column; align-items: flex-start; gap: 3px; margin-top: 4px;
-    }
-    .table-mobile:has(th:nth-child(4)) td:first-child .mark {
-      font-size: 7.5px; padding: 2px 5px; margin: 0; max-width: 100%; white-space: normal; line-height: 1.3;
-    }
-    .table-mobile:has(th:nth-child(4)) td:first-child .mark-asset {
-      font-size: 0; line-height: 0; padding: 0; width: 10px; height: 10px; min-width: 10px;
-      border-radius: 50%; display: inline-block;
-    }
-    .table-mobile:has(th:nth-child(4)) td:first-child .mark-asset.mark-asset--vr {
-      font-size: 0; line-height: 1.3; padding: 2px 5px; width: auto; height: auto; min-width: 0;
-      border-radius: 3px; display: inline-block;
-    }
-    .table-mobile:has(th:nth-child(4)) td:first-child .mark-asset.mark-asset--vr::after {
-      content: "V. Result."; font-size: 7.5px;
-    }
-
-    /* Tablas de 3 columnas o menos: siguen colapsando en tarjeta (más legible con pocos datos) */
-    .table-mobile:not(:has(th:nth-child(4))) { min-width: 0; }
-    .table-mobile:not(:has(th:nth-child(4))) thead { display: none; }
-    .table-mobile:not(:has(th:nth-child(4))) tbody, .table-mobile:not(:has(th:nth-child(4))) tr { display: block; width: 100%; }
-    .table-mobile:not(:has(th:nth-child(4))) tr { margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; background: white; }
-    .table-mobile:not(:has(th:nth-child(4))) tr.highlight { background: var(--pulso-bg); border-color: var(--pulso-border); }
-    .table-mobile:not(:has(th:nth-child(4))) tr.highlight-asset { background: var(--impulso-bg); border-color: var(--impulso-border); }
-    .table-mobile:not(:has(th:nth-child(4))) tr.highlight-notarial { background: var(--notarial-bg); border-color: var(--notarial-border); }
-    .table-mobile:not(:has(th:nth-child(4))) td { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 5px 0; border-bottom: none; font-size: 13px; text-align: right; }
-    .table-mobile:not(:has(th:nth-child(4))) td:first-child { font-size: 15px; font-weight: 800; color: var(--navy); padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--gray-100); text-align: left; display: block; }
-    .table-mobile:not(:has(th:nth-child(4))) td:not(:first-child)::before { content: attr(data-label); font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
-    .table-mobile:not(:has(th:nth-child(4))) tr:hover td { background: transparent; }
+    .table-mobile thead { display: none; }
+    .table-mobile tbody, .table-mobile tr { display: block; width: 100%; }
+    .table-mobile tr { margin-bottom: 12px; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px 16px; background: white; }
+    .table-mobile tr.highlight { background: var(--pulso-bg); border-color: var(--pulso-border); }
+    .table-mobile tr.highlight-asset { background: var(--impulso-bg); border-color: var(--impulso-border); }
+    .table-mobile tr.highlight-notarial { background: var(--notarial-bg); border-color: var(--notarial-border); }
+    .table-mobile td { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 5px 0; border-bottom: none; font-size: 13px; text-align: right; }
+    .table-mobile td:first-child { font-size: 15px; font-weight: 800; color: var(--navy); padding-bottom: 8px; margin-bottom: 4px; border-bottom: 1px solid var(--gray-100); text-align: left; display: block; }
+    .table-mobile td:not(:first-child)::before { content: attr(data-label); font-size: 11px; font-weight: 700; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.5px; text-align: left; }
+    .table-mobile tr:hover td { background: transparent; }
+    .table-wrap table.table-mobile { min-width: 0; }
 
     .hero-sources,
     .hero-sources.sources-4 {
@@ -427,13 +363,6 @@
   .no-sample .ns-icon svg { width: 22px; height: 22px; }
 
   /* Aviso discreto de muestra reducida (tira, no card) — deliberadamente distinto de .insight-method / .card */
-  .apunte-clave { display: flex; gap: 13px; align-items: flex-start; background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%); border: 1px solid #FCD34D; border-left: 5px solid #F59E0B; border-radius: 10px; padding: 15px 18px; margin: 16px 0 20px; }
-  .apunte-clave .ac-icon { flex-shrink: 0; width: 34px; height: 34px; border-radius: 9px; background: #F59E0B; color: #fff; display: flex; align-items: center; justify-content: center; }
-  .apunte-clave .ac-icon svg { width: 19px; height: 19px; }
-  .apunte-clave .ac-title { font-size: 12px; font-weight: 800; color: #92400E; text-transform: uppercase; letter-spacing: 0.7px; margin-bottom: 4px; }
-  .apunte-clave .ac-text { font-size: 13px; line-height: 1.6; color: #78350F; }
-  .apunte-clave .ac-text strong { color: #92400E; font-weight: 700; }
-  @media (max-width: 640px) { .apunte-clave { padding: 13px 14px; gap: 10px; } .apunte-clave .ac-icon { width: 28px; height: 28px; } .apunte-clave .ac-text { font-size: 12.5px; } }
   .market-note { display: flex; gap: 9px; align-items: flex-start; background: #FFFBEB; border: 1px solid #FDE68A; border-radius: 8px; padding: 9px 14px; margin: 12px 0 0; font-size: 11.5px; line-height: 1.55; color: #92400E; }
   .market-note svg { flex-shrink: 0; width: 15px; height: 15px; margin-top: 1px; }
   .market-note strong { color: #B45309; }
@@ -756,7 +685,7 @@
 <div class="header">
   <div class="header-inner">
     <img src="https://assets.cdn.filesafe.space/9FLX4fUFluqRQ8w19kzs/media/697e322e1311f62a92201cc6.png" alt="IM·PULSO">
-    <span class="badge">Altabix &middot; Elche</span>
+    <span class="badge">Informe V2 · Datos reales</span>
   </div>
 </div>
 
@@ -795,12 +724,6 @@
         796 anuncios residenciales analizados en la zona
       </div>
     </div>
-
-    <div class="pantalla-grande">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      <span>Este estudio incluye tablas de mercado extensas. <strong>Se aprecia mucho mejor en la pantalla de un ordenador</strong> &mdash; guárdate el enlace para revisarlo con calma.</span>
-    </div>
-
 
     <!-- FICHA DE OPERACIÓN -->
     <div class="op-ficha">
@@ -981,10 +904,11 @@
       <div class="card-title">1.2 Tipologías de vivienda &middot; modalidad venta</div>
       <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de vender, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Publicados">417</td><td data-label="%">92%</td><td data-label="Retirados">352</td><td data-label="Rotación">84,4%</td><td data-label="Activos">64</td><td data-label="P. medio">165.045&euro;</td><td data-label="Días">57</td><td data-label="€/m² medio">1.617&euro;</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Publicados">417</td><td data-label="%">92%</td><td data-label="Retirados">352</td><td data-label="Rotación">84,4%</td><td data-label="Activos">64</td><td data-label="P. medio">165.045&euro;</td><td data-label="Días">57</td><td data-label="€/m² medio">1.617&euro;</td></tr>
           <tr><td>Chalet</td><td data-label="Publicados">18</td><td data-label="%">4%</td><td data-label="Retirados">9</td><td data-label="Rotación">50,0%</td><td data-label="Activos">9</td><td data-label="P. medio">242.522&euro;</td><td data-label="Días">63</td><td data-label="€/m² medio">1.260&euro;</td></tr>
           <tr><td>Estudio</td><td data-label="Publicados">10</td><td data-label="%">2%</td><td data-label="Retirados">8</td><td data-label="Rotación">80,0%</td><td data-label="Activos">2</td><td data-label="P. medio">119.963&euro;</td><td data-label="Días">118</td><td data-label="€/m² medio">2.697&euro;</td></tr>
           <tr><td>Dúplex <span class="mark-line"><span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Publicados">3</td><td data-label="%">1%</td><td data-label="Retirados">3</td><td data-label="Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="P. medio">261.333&euro;</td><td data-label="Días">90</td><td data-label="€/m² medio">1.835&euro;</td></tr>
@@ -1002,10 +926,11 @@
       <div class="card-title">1.3 Tipologías de vivienda &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Qué tipología de vivienda mueve el mercado a la hora de alquilar, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th><th>Días</th></tr></thead>
           <tbody>
-          <tr class="highlight"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Publicados">315</td><td data-label="%">91%</td><td data-label="Retirados">278</td><td data-label="Rotación">88,3%</td><td data-label="Activos">28</td><td data-label="R. media">849&euro;</td><td data-label="Días">54</td></tr>
+          <tr class="highlight"><td><strong>Piso</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Publicados">315</td><td data-label="%">91%</td><td data-label="Retirados">278</td><td data-label="Rotación">88,3%</td><td data-label="Activos">28</td><td data-label="R. media">849&euro;</td><td data-label="Días">54</td></tr>
           <tr><td>Ático</td><td data-label="Publicados">14</td><td data-label="%">4%</td><td data-label="Retirados">13</td><td data-label="Rotación">92,9%</td><td data-label="Activos">0</td><td data-label="R. media">1.050&euro;</td><td data-label="Días">50</td></tr>
           <tr><td>Estudio</td><td data-label="Publicados">12</td><td data-label="%">3%</td><td data-label="Retirados">9</td><td data-label="Rotación">75,0%</td><td data-label="Activos">2</td><td data-label="R. media">569&euro;</td><td data-label="Días">55</td></tr>
           <tr><td>Chalet <span class="mark-line"><span class="mark mark-muestra">Muestra limitada</span></span></td><td data-label="Publicados">3</td><td data-label="%">1%</td><td data-label="Retirados">3</td><td data-label="Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="R. media">1.300&euro;</td><td data-label="Días">33</td></tr>
@@ -1033,17 +958,18 @@
       <div class="card-title">1.5 Configuración por dormitorios y baños &middot; modalidad venta</div>
       <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de vender, en Altabix (Elche) · solo pisos</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile table-config">
-          <thead><tr><th>Config.</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
+          <thead><tr><th>Dorm.</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
-          <tr><td>1<span class="unit">D</span>/1<span class="unit">B</span></td><td data-label="Publicados">9</td><td data-label="%">2%</td><td data-label="Retirados">9</td><td data-label="Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="P. medio">137.611&euro;</td><td data-label="Días">88</td><td data-label="€/m² medio">2.307&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>2<span class="unit">D</span>/1<span class="unit">B</span></strong> <span class="mark-line"><span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Publicados">25</td><td data-label="%">6%</td><td data-label="Retirados">23</td><td data-label="Rotación">92,0%</td><td data-label="Activos">1</td><td data-label="P. medio">132.842&euro;</td><td data-label="Días">58</td><td data-label="€/m² medio">1.637&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>2<span class="unit">D</span>/2<span class="unit">B</span></strong> <span class="mark-line"><span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Publicados">17</td><td data-label="%">4%</td><td data-label="Retirados">13</td><td data-label="Rotación">76,5%</td><td data-label="Activos">4</td><td data-label="P. medio">186.900&euro;</td><td data-label="Días">49</td><td data-label="€/m² medio">2.095&euro;</td></tr>
-          <tr class="highlight"><td><strong>3<span class="unit">D</span>/1<span class="unit">B</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">133</td><td data-label="%">33%</td><td data-label="Retirados">112</td><td data-label="Rotación">84,2%</td><td data-label="Activos">18</td><td data-label="P. medio">138.683&euro;</td><td data-label="Días">54</td><td data-label="€/m² medio">1.459&euro;</td></tr>
-          <tr><td>3<span class="unit">D</span>/2<span class="unit">B</span></td><td data-label="Publicados">122</td><td data-label="%">30%</td><td data-label="Retirados">103</td><td data-label="Rotación">84,4%</td><td data-label="Activos">14</td><td data-label="P. medio">186.935&euro;</td><td data-label="Días">51</td><td data-label="€/m² medio">1.780&euro;</td></tr>
-          <tr><td>4<span class="unit">D</span>/1<span class="unit">B</span></td><td data-label="Publicados">39</td><td data-label="%">10%</td><td data-label="Retirados">33</td><td data-label="Rotación">84,6%</td><td data-label="Activos">5</td><td data-label="P. medio">148.667&euro;</td><td data-label="Días">64</td><td data-label="€/m² medio">1.363&euro;</td></tr>
-          <tr><td>4<span class="unit">D</span>/2<span class="unit">B</span></td><td data-label="Publicados">45</td><td data-label="%">11%</td><td data-label="Retirados">35</td><td data-label="Rotación">77,8%</td><td data-label="Activos">9</td><td data-label="P. medio">179.274&euro;</td><td data-label="Días">71</td><td data-label="€/m² medio">1.489&euro;</td></tr>
-          <tr><td>5<span class="unit">D</span>/2<span class="unit">B</span></td><td data-label="Publicados">11</td><td data-label="%">3%</td><td data-label="Retirados">10</td><td data-label="Rotación">90,9%</td><td data-label="Activos">1</td><td data-label="P. medio">199.390&euro;</td><td data-label="Días">89</td><td data-label="€/m² medio">1.451&euro;</td></tr>
+          <tr><td>1 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">9</td><td data-label="%">2%</td><td data-label="Retirados">9</td><td data-label="Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="P. medio">137.611&euro;</td><td data-label="Días">88</td><td data-label="€/m² medio">2.307&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>2 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Baños"><strong>1 <span class="unit">B</span></strong></td><td data-label="Publicados">25</td><td data-label="%">6%</td><td data-label="Retirados">23</td><td data-label="Rotación">92,0%</td><td data-label="Activos">1</td><td data-label="P. medio">132.842&euro;</td><td data-label="Días">58</td><td data-label="€/m² medio">1.637&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>2 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Baños"><strong>2 <span class="unit">B</span></strong></td><td data-label="Publicados">17</td><td data-label="%">4%</td><td data-label="Retirados">13</td><td data-label="Rotación">76,5%</td><td data-label="Activos">4</td><td data-label="P. medio">186.900&euro;</td><td data-label="Días">49</td><td data-label="€/m² medio">2.095&euro;</td></tr>
+          <tr class="highlight"><td><strong>3 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Baños"><strong>1 <span class="unit">B</span></strong></td><td data-label="Publicados">133</td><td data-label="%">33%</td><td data-label="Retirados">112</td><td data-label="Rotación">84,2%</td><td data-label="Activos">18</td><td data-label="P. medio">138.683&euro;</td><td data-label="Días">54</td><td data-label="€/m² medio">1.459&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">122</td><td data-label="%">30%</td><td data-label="Retirados">103</td><td data-label="Rotación">84,4%</td><td data-label="Activos">14</td><td data-label="P. medio">186.935&euro;</td><td data-label="Días">51</td><td data-label="€/m² medio">1.780&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">39</td><td data-label="%">10%</td><td data-label="Retirados">33</td><td data-label="Rotación">84,6%</td><td data-label="Activos">5</td><td data-label="P. medio">148.667&euro;</td><td data-label="Días">64</td><td data-label="€/m² medio">1.363&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">45</td><td data-label="%">11%</td><td data-label="Retirados">35</td><td data-label="Rotación">77,8%</td><td data-label="Activos">9</td><td data-label="P. medio">179.274&euro;</td><td data-label="Días">71</td><td data-label="€/m² medio">1.489&euro;</td></tr>
+          <tr><td>5 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">11</td><td data-label="%">3%</td><td data-label="Retirados">10</td><td data-label="Rotación">90,9%</td><td data-label="Activos">1</td><td data-label="P. medio">199.390&euro;</td><td data-label="Días">89</td><td data-label="€/m² medio">1.451&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -1057,17 +983,18 @@
       <div class="card-title">1.6 Configuración por dormitorios y baños &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Qué combinación de dormitorios y baños mueve el mercado a la hora de alquilar la vivienda completa, en Altabix (Elche) · solo pisos</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile table-config">
-          <thead><tr><th>Config.</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th></tr></thead>
+          <thead><tr><th>Dorm.</th><th>Baños</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th></tr></thead>
           <tbody>
-          <tr><td>1<span class="unit">D</span>/1<span class="unit">B</span></td><td data-label="Publicados">20</td><td data-label="%">7%</td><td data-label="Retirados">17</td><td data-label="Rotación">85,0%</td><td data-label="Activos">3</td><td data-label="R. media">646&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>2<span class="unit">D</span>/1<span class="unit">B</span></strong> <span class="mark-line"><span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Publicados">30</td><td data-label="%">10%</td><td data-label="Retirados">26</td><td data-label="Rotación">86,7%</td><td data-label="Activos">4</td><td data-label="R. media">722&euro;</td></tr>
-          <tr class="highlight-asset"><td><strong>2<span class="unit">D</span>/2<span class="unit">B</span></strong> <span class="mark-line"><span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Publicados">18</td><td data-label="%">6%</td><td data-label="Retirados">16</td><td data-label="Rotación">88,9%</td><td data-label="Activos">2</td><td data-label="R. media">821&euro;</td></tr>
-          <tr><td>3<span class="unit">D</span>/1<span class="unit">B</span></td><td data-label="Publicados">54</td><td data-label="%">18%</td><td data-label="Retirados">50</td><td data-label="Rotación">92,6%</td><td data-label="Activos">4</td><td data-label="R. media">774&euro;</td></tr>
-          <tr class="highlight"><td><strong>3<span class="unit">D</span>/2<span class="unit">B</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">91</td><td data-label="%">30%</td><td data-label="Retirados">84</td><td data-label="Rotación">92,3%</td><td data-label="Activos">7</td><td data-label="R. media">852&euro;</td></tr>
-          <tr><td>4<span class="unit">D</span>/1<span class="unit">B</span></td><td data-label="Publicados">37</td><td data-label="%">12%</td><td data-label="Retirados">29</td><td data-label="Rotación">78,4%</td><td data-label="Activos">8</td><td data-label="R. media">887&euro;</td></tr>
-          <tr><td>4<span class="unit">D</span>/2<span class="unit">B</span></td><td data-label="Publicados">48</td><td data-label="%">16%</td><td data-label="Retirados">41</td><td data-label="Rotación">85,4%</td><td data-label="Activos">7</td><td data-label="R. media">997&euro;</td></tr>
-          <tr><td>5<span class="unit">D</span>/2<span class="unit">B</span></td><td data-label="Publicados">6</td><td data-label="%">2%</td><td data-label="Retirados">6</td><td data-label="Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="R. media">1.431&euro;</td></tr>
+          <tr><td>1 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">20</td><td data-label="%">7%</td><td data-label="Retirados">17</td><td data-label="Rotación">85,0%</td><td data-label="Activos">3</td><td data-label="R. media">646&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>2 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Baños"><strong>1 <span class="unit">B</span></strong></td><td data-label="Publicados">30</td><td data-label="%">10%</td><td data-label="Retirados">26</td><td data-label="Rotación">86,7%</td><td data-label="Activos">4</td><td data-label="R. media">722&euro;</td></tr>
+          <tr class="highlight-asset"><td><strong>2 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Baños"><strong>2 <span class="unit">B</span></strong></td><td data-label="Publicados">18</td><td data-label="%">6%</td><td data-label="Retirados">16</td><td data-label="Rotación">88,9%</td><td data-label="Activos">2</td><td data-label="R. media">821&euro;</td></tr>
+          <tr><td>3 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">54</td><td data-label="%">18%</td><td data-label="Retirados">50</td><td data-label="Rotación">92,6%</td><td data-label="Activos">4</td><td data-label="R. media">774&euro;</td></tr>
+          <tr class="highlight"><td><strong>3 <span class="unit">D</span></strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Baños"><strong>2 <span class="unit">B</span></strong></td><td data-label="Publicados">91</td><td data-label="%">30%</td><td data-label="Retirados">84</td><td data-label="Rotación">92,3%</td><td data-label="Activos">7</td><td data-label="R. media">852&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">1 <span class="unit">B</span></td><td data-label="Publicados">37</td><td data-label="%">12%</td><td data-label="Retirados">29</td><td data-label="Rotación">78,4%</td><td data-label="Activos">8</td><td data-label="R. media">887&euro;</td></tr>
+          <tr><td>4 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">48</td><td data-label="%">16%</td><td data-label="Retirados">41</td><td data-label="Rotación">85,4%</td><td data-label="Activos">7</td><td data-label="R. media">997&euro;</td></tr>
+          <tr><td>5 <span class="unit">D</span></td><td data-label="Baños">2 <span class="unit">B</span></td><td data-label="Publicados">6</td><td data-label="%">2%</td><td data-label="Retirados">6</td><td data-label="Rotación">100,0%</td><td data-label="Activos">0</td><td data-label="R. media">1.431&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -1094,6 +1021,7 @@
       <div class="card-title">1.8 Tramos de precio &middot; modalidad venta</div>
       <div class="card-subtitle">Qué tramo de precio mueve el mercado a la hora de vender, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>Días</th></tr></thead>
           <tbody>
@@ -1115,6 +1043,7 @@
       <div class="card-title">1.9 Tramos de precio &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Qué tramo de renta mueve el mercado a la hora de alquilar la vivienda completa, en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tramo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th><th>Días</th></tr></thead>
           <tbody>
@@ -1145,6 +1074,7 @@
       <div class="card-title">1.11 Comparativa por barrios colindantes &middot; modalidad venta</div>
       <div class="card-subtitle">Zonas con actividad de venta en Elche · incluye la propia calle de la operación · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Distrito</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -1166,6 +1096,7 @@
       <div class="card-title">1.12 Comparativa por barrios colindantes &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Zonas con actividad de alquiler tradicional en Elche · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Distrito</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>Activos</th><th>R. media</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -1197,6 +1128,7 @@
       <div class="card-title">1.14 Comparativa por calles &middot; modalidad venta</div>
       <div class="card-subtitle">Calles con actividad de venta en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>%</th><th>Retirados</th></tr></thead>
           <tbody>
@@ -1220,6 +1152,7 @@
       <div class="card-title">1.15 Comparativa por calles &middot; modalidad alquiler tradicional</div>
       <div class="card-subtitle">Calles con actividad de alquiler tradicional en Altabix (Elche) · vivienda residencial</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Calle</th><th>Publicados</th><th>%</th><th>Retirados</th></tr></thead>
           <tbody>
@@ -1257,6 +1190,7 @@
       <div class="card-title">1.17 Otros activos &middot; modalidad venta</div>
       <div class="card-subtitle">Mercado no residencial de Altabix (Elche): locales, garajes y trasteros</div>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Tipo</th><th>Publicados</th><th>%</th><th>Retirados</th><th>Rotación</th><th>P. medio</th><th>Días</th><th>€/m² medio</th></tr></thead>
           <tbody>
@@ -1302,6 +1236,7 @@
       </div>
       <h3>Modalidad venta</h3>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead>
           <tbody>
@@ -1309,13 +1244,14 @@
           <tr><td>🥈 3 dorm &middot; 2 baños</td><td data-label="Retirados">103</td><td data-label="Precio mín.">124.900&euro;</td><td data-label="Precio medio">186.935&euro;</td><td data-label="Precio máx.">249.000&euro;</td></tr>
           <tr><td>🥉 4 dorm &middot; 2 baños</td><td data-label="Retirados">35</td><td data-label="Precio mín.">149.990&euro;</td><td data-label="Precio medio">179.274&euro;</td><td data-label="Precio máx.">210.000&euro;</td></tr>
           <tr><td><span class="rank-badge">4.&ordm;</span>4 dorm &middot; 1 baño</td><td data-label="Retirados">33</td><td data-label="Precio mín.">89.500&euro;</td><td data-label="Precio medio">148.667&euro;</td><td data-label="Precio máx.">185.000&euro;</td></tr>
-          <tr class="highlight-asset"><td><span class="rank-badge">5.&ordm;</span><strong>2 dorm &middot; 1 baño</strong> <span class="mark-line"><span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Retirados">23</td><td data-label="Precio mín.">90.000&euro;</td><td data-label="Precio medio">132.842&euro;</td><td data-label="Precio máx.">173.000&euro;</td></tr>
+          <tr class="highlight-asset"><td><span class="rank-badge">5.&ordm;</span><strong>2 dorm &middot; 1 baño</strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Retirados">23</td><td data-label="Precio mín.">90.000&euro;</td><td data-label="Precio medio">132.842&euro;</td><td data-label="Precio máx.">173.000&euro;</td></tr>
           </tbody>
         </table>
       </div>
 
       <h3>Modalidad alquiler de vivienda completa</h3>
       <div class="table-wrap">
+        <div class="table-scroll-hint">&rarr; desliza para ver más</div>
         <table class="table-mobile">
           <thead><tr><th>Producto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead>
           <tbody>
@@ -1323,7 +1259,7 @@
           <tr><td>🥈 3 dorm &middot; 1 baño</td><td data-label="Retirados">50</td><td data-label="Renta mín.">650&euro;</td><td data-label="Renta media">774&euro;</td><td data-label="Renta máx.">900&euro;</td></tr>
           <tr><td>🥉 4 dorm &middot; 2 baños</td><td data-label="Retirados">41</td><td data-label="Renta mín.">750&euro;</td><td data-label="Renta media">997&euro;</td><td data-label="Renta máx.">1.200&euro;</td></tr>
           <tr><td><span class="rank-badge">4.&ordm;</span>4 dorm &middot; 1 baño</td><td data-label="Retirados">29</td><td data-label="Renta mín.">700&euro;</td><td data-label="Renta media">887&euro;</td><td data-label="Renta máx.">1.100&euro;</td></tr>
-          <tr class="highlight-asset"><td><span class="rank-badge">5.&ordm;</span><strong>2 dorm &middot; 1 baño</strong> <span class="mark-line"><span class="mark mark-asset mark-asset--vr">Vivienda resultante</span></span></td><td data-label="Retirados">26</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">722&euro;</td><td data-label="Renta máx.">840&euro;</td></tr>
+          <tr class="highlight-asset"><td><span class="rank-badge">5.&ordm;</span><strong>2 dorm &middot; 1 baño</strong> <span class="mark-line"><span class="mark mark-asset">Vivienda resultante</span></span></td><td data-label="Retirados">26</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">722&euro;</td><td data-label="Renta máx.">840&euro;</td></tr>
           </tbody>
         </table>
       </div>
@@ -1459,19 +1395,6 @@
       <div class="card-title">2.4 Precio por vivienda resultante</div>
       <div class="card-subtitle">Estimación de mercado, conservador / medio / optimista — desglosada por cada unidad</div>
 
-      <div class="apunte-clave">
-        <div class="ac-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-        </div>
-        <div class="ac-body">
-          <div class="ac-title">Antes de leer las cifras</div>
-          <div class="ac-text">
-            Por las lecturas históricas de IM&middot;PULSO, <strong>el escenario optimista suele acercarse más a la realidad que el medio</strong>. Es una observación de método sobre operaciones pasadas &mdash; <strong>no una previsión garantizada</strong> para esta operación en concreto.
-          </div>
-        </div>
-      </div>
-
-
       <div class="tipo-card">
         <div class="tipo-card-header">
           <div>
@@ -1551,7 +1474,10 @@
         </ul>
       </div>
 
-      
+      <div class="market-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span><strong>Apunte (observación, no garantía).</strong> Por las lecturas históricas de IM&middot;PULSO, el escenario optimista suele acercarse más a la realidad que el medio/realista. Es una observación de método sobre operaciones pasadas, no una previsión garantizada para esta operación en concreto.</span>
+      </div>
 
       <div class="insight insight-gray" style="margin-bottom:0;">
         El escenario <strong>medio (281.518&euro; en conjunto)</strong> es la cifra prudente de referencia. V2 aporta 39.546&euro; más que V1 &mdash;un baño y 19 m² más&mdash; y se retira en la mitad de tiempo (40 días frente a 78). El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
@@ -2087,7 +2013,7 @@
       </div>
       <div class="no-sample">
         <span class="ns-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b91c1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
-        <span><strong>3. Costes de reforma y explotación.</strong> No están contrastados con proveedores. Quedan fuera del alcance de las fuentes de este informe — el inversor debe afinarlos aparte.</span>
+        <span><strong>3. Costes de reforma y explotación.</strong> No están contrastados con proveedores en esta plantilla. Quedan fuera del alcance de las fuentes de este informe — el inversor debe afinarlos aparte.</span>
       </div>
     </div>
 

@@ -289,6 +289,24 @@
     .table-mobile:has(th:nth-child(4)) tr.no-data td:first-child { background: var(--gray-100); }
     .table-mobile:has(th:nth-child(4)) tr.warn td:first-child { background: #FEF3C7; }
 
+    /* Columna fija angosta (feedback cliente 03-sep): la zona con scroll gana espacio.
+       Los badges bajan debajo del nombre y se reducen; VIVIENDA RESULTANTE pasa a punto de color
+       (la leyenda de encima de cada tabla ya explica el color). */
+    .table-mobile:has(th:nth-child(4)) td:first-child,
+    .table-mobile:has(th:nth-child(4)) th:first-child {
+      max-width: 118px; width: 118px; white-space: normal; word-break: break-word;
+    }
+    .table-mobile:has(th:nth-child(4)) td:first-child .mark-line {
+      display: flex; flex-direction: column; align-items: flex-start; gap: 3px; margin-top: 4px;
+    }
+    .table-mobile:has(th:nth-child(4)) td:first-child .mark {
+      font-size: 7.5px; padding: 2px 5px; margin: 0; max-width: 100%; white-space: normal; line-height: 1.3;
+    }
+    .table-mobile:has(th:nth-child(4)) td:first-child .mark-asset {
+      font-size: 0; line-height: 0; padding: 0; width: 10px; height: 10px; min-width: 10px;
+      border-radius: 50%; display: inline-block;
+    }
+
     /* Tablas de 3 columnas o menos: siguen colapsando en tarjeta (más legible con pocos datos) */
     .table-mobile:not(:has(th:nth-child(4))) { min-width: 0; }
     .table-mobile:not(:has(th:nth-child(4))) thead { display: none; }

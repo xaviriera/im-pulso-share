@@ -319,6 +319,7 @@
   tr.warn td { background: #FEF3C7; }
   tr.highlight-notarial td { background: var(--notarial-bg); }
 
+.rank-badge { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: rgba(15,31,61,0.12); color: var(--navy); font-size: 13px; font-weight: 800; margin-right: 6px; vertical-align: middle; }
   .mark { display: inline-block; font-size: 9px; font-weight: 800; padding: 2px 7px; border-radius: 5px; margin-left: 6px; vertical-align: middle; letter-spacing: 0.5px; text-transform: uppercase; }
   .mark-pulso { background: var(--pulso); color: white; }
   .mark-asset { background: var(--impulso); color: white; }
@@ -987,7 +988,23 @@
   <!-- ============================================ -->
   <!-- 6. MOTOR 1 · PULSO -->
   
-  <div class="container previo-fuentes">
+  
+
+<!-- ============================================ -->
+  <details class="section motor-pulso acc">
+    <summary class="section-header">
+      <div class="section-icon" style="background: var(--pulso-bg); color: var(--pulso);">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+      </div>
+      <div>
+        <div class="section-title">FUENTE 1 · PULSO — El latido del mercado</div>
+        <div class="section-subtitle">Qué se publica y qué se retira en el distrito Sur de Murcia</div>
+      </div>
+      <span class="zone-badge pulso">El mercado</span>
+    
+      <div class="fuente-resumen"><p class="fr-que">Qué producto manda de verdad en el distrito Sur, en qué tramo de precio se mueve y cuánto tarda en desaparecer del mercado. No lo que se pide: lo que el mercado se ha llevado.</p><div class="fr-dentro"><span class="fd-tit">Dentro de esta fuente</span><ul><li>Qué tipo de vivienda domina y con qué configuración</li><li>En qué tramos de precio se concentra la actividad</li><li>Cómo compara El Carmen con los barrios vecinos</li><li>Qué productos se retiran antes</li></ul></div><div class="fr-datos"><span class="fr-dato"><b>3.601</b><span>anuncios analizados</span></span><span class="fr-dato"><b>84,5 %</b><span>rotación en venta</span></span><span class="fr-dato"><b>17</b><span>apartados</span></span></div><span class="acc-btn">Ver el mercado al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
+    </summary>
+
 <div class="card-title">Qué vas a encontrar en esta fuente</div>
 <div class="card term-explainer glosario" id="glosario">
         <span class="ge-badge">Glosario de campos</span><br>
@@ -1004,22 +1021,8 @@
         </div>
         <div class="ge-method">Todas las cifras son medias sobre anuncios retirados, excluyendo los que llevaban más de un año publicados.</div>
       </div>
-  </div>
+  
 
-<!-- ============================================ -->
-  <details class="section motor-pulso acc">
-    <summary class="section-header">
-      <div class="section-icon" style="background: var(--pulso-bg); color: var(--pulso);">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      </div>
-      <div>
-        <div class="section-title">FUENTE 1 · PULSO — El latido del mercado</div>
-        <div class="section-subtitle">Qué se publica y qué se retira en el distrito Sur de Murcia</div>
-      </div>
-      <span class="zone-badge pulso">El mercado</span>
-    
-      <div class="fuente-resumen"><p class="fr-que">Qué producto manda de verdad en el distrito Sur, en qué tramo de precio se mueve y cuánto tarda en desaparecer del mercado. No lo que se pide: lo que el mercado se ha llevado.</p><div class="fr-dentro"><span class="fd-tit">Dentro de esta fuente</span><ul><li>Qué tipo de vivienda domina y con qué configuración</li><li>En qué tramos de precio se concentra la actividad</li><li>Cómo compara El Carmen con los barrios vecinos</li><li>Qué productos se retiran antes</li></ul></div><div class="fr-datos"><span class="fr-dato"><b>3.601</b><span>anuncios analizados</span></span><span class="fr-dato"><b>84,5 %</b><span>rotación en venta</span></span><span class="fr-dato"><b>17</b><span>apartados</span></span></div><span class="acc-btn">Ver el mercado al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
-    </summary>
 
     <!-- ============================================ -->
     <!-- 4. QUÉ VAS A ENCONTRAR EN ESTE MOTOR (bloque introductorio único, justo debajo del encabezado de MOTOR 1 · PULSO) -->
@@ -1166,10 +1169,10 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <div class="card">
       <div class="card-title">1.17 Productos que más se retiran</div>
       <div class="card-subtitle">Ranking de productos retirados del mercado en el distrito Sur</div>
-      <h3>Modalidad venta</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">424</td><td data-label="Precio mín.">63.000&euro;</td><td data-label="Precio medio">203.525&euro;</td><td data-label="Precio máx.">445.000&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">250</td><td data-label="Precio mín.">47.000&euro;</td><td data-label="Precio medio">135.928&euro;</td><td data-label="Precio máx.">250.000&euro;</td></tr><tr><td>🥉 4 dorm. / 2 baños</td><td data-label="Retirados">219</td><td data-label="Precio mín.">45.000&euro;</td><td data-label="Precio medio">212.332&euro;</td><td data-label="Precio máx.">430.000&euro;</td></tr><tr><td>4.&ordm; 3 dorm. / 1 baño</td><td data-label="Retirados">173</td><td data-label="Precio mín.">49.000&euro;</td><td data-label="Precio medio">126.863&euro;</td><td data-label="Precio máx.">309.000&euro;</td></tr><tr><td>5.&ordm; 1 dorm. / 1 baño</td><td data-label="Retirados">153</td><td data-label="Precio mín.">48.900&euro;</td><td data-label="Precio medio">114.805&euro;</td><td data-label="Precio máx.">361.000&euro;</td></tr></tbody></table></div>
+      <h3>Modalidad venta</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">424</td><td data-label="Precio mín.">63.000&euro;</td><td data-label="Precio medio">203.525&euro;</td><td data-label="Precio máx.">445.000&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">250</td><td data-label="Precio mín.">47.000&euro;</td><td data-label="Precio medio">135.928&euro;</td><td data-label="Precio máx.">250.000&euro;</td></tr><tr><td>🥉 4 dorm. / 2 baños</td><td data-label="Retirados">219</td><td data-label="Precio mín.">45.000&euro;</td><td data-label="Precio medio">212.332&euro;</td><td data-label="Precio máx.">430.000&euro;</td></tr><tr><td><span class="rank-badge">4.&ordm;</span>3 dorm. / 1 baño</td><td data-label="Retirados">173</td><td data-label="Precio mín.">49.000&euro;</td><td data-label="Precio medio">126.863&euro;</td><td data-label="Precio máx.">309.000&euro;</td></tr><tr><td><span class="rank-badge">5.&ordm;</span>1 dorm. / 1 baño</td><td data-label="Retirados">153</td><td data-label="Precio mín.">48.900&euro;</td><td data-label="Precio medio">114.805&euro;</td><td data-label="Precio máx.">361.000&euro;</td></tr></tbody></table></div>
       <div class="insight insight-orange"><strong>Lectura:</strong> el producto que más se retira del distrito es exactamente el del activo: piso de tres dormitorios y dos baños, con 424 anuncios retirados. No es un producto de nicho, es el caballo ganador de la zona.</div>
-      <h3>Modalidad alquiler tradicional</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">189</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">855&euro;</td><td data-label="Renta máx.">1.400&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">177</td><td data-label="Renta mín.">450&euro;</td><td data-label="Renta media">719&euro;</td><td data-label="Renta máx.">1.500&euro;</td></tr><tr><td>🥉 1 dorm. / 1 baño</td><td data-label="Retirados">169</td><td data-label="Renta mín.">470&euro;</td><td data-label="Renta media">631&euro;</td><td data-label="Renta máx.">1.200&euro;</td></tr><tr><td>4.&ordm; 4 dorm. / 2 baños</td><td data-label="Retirados">88</td><td data-label="Renta mín.">650&euro;</td><td data-label="Renta media">1.002&euro;</td><td data-label="Renta máx.">1.450&euro;</td></tr><tr><td>5.&ordm; 3 dorm. / 1 baño</td><td data-label="Retirados">72</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">791&euro;</td><td data-label="Renta máx.">1.100&euro;</td></tr></tbody></table></div>
-      <h3>Modalidad alquiler por habitaciones</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight"><td><strong>🥇 Habitación en vivienda de 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">157</td><td data-label="Renta mín.">170&euro;</td><td data-label="Renta media">299&euro;</td><td data-label="Renta máx.">600&euro;</td></tr><tr><td>🥈 Habitación en vivienda de 5 dorm. / 2 baños</td><td data-label="Retirados">123</td><td data-label="Renta mín.">145&euro;</td><td data-label="Renta media">347&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr class="highlight-asset"><td><strong>🥉 Habitación en vivienda de 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">67</td><td data-label="Renta mín.">200&euro;</td><td data-label="Renta media">291&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr><td>4.&ordm; Habitación en vivienda de 3 dorm. / 1 baño</td><td data-label="Retirados">66</td><td data-label="Renta mín.">160&euro;</td><td data-label="Renta media">294&euro;</td><td data-label="Renta máx.">430&euro;</td></tr><tr><td>5.&ordm; Habitación en vivienda de 4 dorm. / 1 baño</td><td data-label="Retirados">47</td><td data-label="Renta mín.">190&euro;</td><td data-label="Renta media">307&euro;</td><td data-label="Renta máx.">390&euro;</td></tr></tbody></table></div>
+      <h3>Modalidad alquiler tradicional</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">189</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">855&euro;</td><td data-label="Renta máx.">1.400&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">177</td><td data-label="Renta mín.">450&euro;</td><td data-label="Renta media">719&euro;</td><td data-label="Renta máx.">1.500&euro;</td></tr><tr><td>🥉 1 dorm. / 1 baño</td><td data-label="Retirados">169</td><td data-label="Renta mín.">470&euro;</td><td data-label="Renta media">631&euro;</td><td data-label="Renta máx.">1.200&euro;</td></tr><tr><td><span class="rank-badge">4.&ordm;</span>4 dorm. / 2 baños</td><td data-label="Retirados">88</td><td data-label="Renta mín.">650&euro;</td><td data-label="Renta media">1.002&euro;</td><td data-label="Renta máx.">1.450&euro;</td></tr><tr><td><span class="rank-badge">5.&ordm;</span>3 dorm. / 1 baño</td><td data-label="Retirados">72</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">791&euro;</td><td data-label="Renta máx.">1.100&euro;</td></tr></tbody></table></div>
+      <h3>Modalidad alquiler por habitaciones</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight"><td><strong>🥇 Habitación en vivienda de 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">157</td><td data-label="Renta mín.">170&euro;</td><td data-label="Renta media">299&euro;</td><td data-label="Renta máx.">600&euro;</td></tr><tr><td>🥈 Habitación en vivienda de 5 dorm. / 2 baños</td><td data-label="Retirados">123</td><td data-label="Renta mín.">145&euro;</td><td data-label="Renta media">347&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr class="highlight-asset"><td><strong>🥉 Habitación en vivienda de 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">67</td><td data-label="Renta mín.">200&euro;</td><td data-label="Renta media">291&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr><td><span class="rank-badge">4.&ordm;</span>Habitación en vivienda de 3 dorm. / 1 baño</td><td data-label="Retirados">66</td><td data-label="Renta mín.">160&euro;</td><td data-label="Renta media">294&euro;</td><td data-label="Renta máx.">430&euro;</td></tr><tr><td><span class="rank-badge">5.&ordm;</span>Habitación en vivienda de 4 dorm. / 1 baño</td><td data-label="Retirados">47</td><td data-label="Renta mín.">190&euro;</td><td data-label="Renta media">307&euro;</td><td data-label="Renta máx.">390&euro;</td></tr></tbody></table></div>
     </div>
 
 
@@ -1256,7 +1259,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
           <tr><td>Calle Madre Elisea Oliver Molina</td><td data-label="Superficie">99 m²</td><td data-label="Dorm.">2</td><td data-label="Baños">1</td><td data-label="Precio de retirada">185.000&euro;</td><td data-label="Días">330</td><td data-label="&euro;/m²">1.869&euro;</td></tr>
           <tr class="highlight-asset"><td><strong>Calle Juan Antonio Hernández del Águila, 12</strong></td><td data-label="Superficie">102 m²</td><td data-label="Dorm.">3</td><td data-label="Baños">2</td><td data-label="Precio de retirada">206.000&euro;</td><td data-label="Días">84</td><td data-label="&euro;/m²">2.020&euro;</td></tr>
           <tr><td>Avenida Río Segura, 5</td><td data-label="Superficie">100 m²</td><td data-label="Dorm.">3</td><td data-label="Baños">2</td><td data-label="Precio de retirada">235.000&euro;</td><td data-label="Días">8</td><td data-label="&euro;/m²">2.350&euro;</td></tr>
-          </tbody>
+          <tr class="highlight-asset"><td><strong>El activo de esta operación</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Superficie">90 m²</td><td data-label="Dorm.">3</td><td data-label="Baños">2</td><td data-label="Precio de retirada">125.000&euro; <small>(asking price)</small></td><td data-label="Días">&mdash;</td><td data-label="&euro;/m²">1.389&euro;</td></tr></tbody>
         </table>
       </div>
       <div class="insight insight-green">
@@ -1324,18 +1327,12 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
           <li><span class="sl-tag">Optimista</span> <span>venta a <strong>181.600&euro;</strong> &mdash; <strong>percentil 75</strong>: solo uno de cada cuatro testigos superó ese precio.</span></li>
         </ul>
         <div style="margin-top:12px; padding-top:11px; border-top:1px dashed var(--gray-300); font-size:12.5px; line-height:1.6; color:var(--gray-700);">
-          <strong>Para quien quiera reproducirlo.</strong> Conservador y optimista son los <strong>percentiles 25 y 75</strong>;
-          el medio es la <strong>media aritmética</strong> de todos los testigos, no el valor central de la lista.
-          Los percentiles se toman <strong>por posición en la lista ordenada, sin interpolar</strong> entre dos valores
-          contiguos, de modo que el resultado puede diferir del que devuelve una hoja de cálculo. Todo se calcula
-          sobre el <strong>precio total</strong> de cada testigo, nunca sobre &euro;/m&sup2; multiplicado por la superficie.
+          <strong>Cómo se calculan.</strong> Se ordenan de menor a mayor los precios a los que se retiraron los
+          testigos. El <strong>conservador</strong> y el <strong>optimista</strong> son los valores que dejan
+          una cuarta parte de ellos por debajo y por encima; el <strong>medio</strong> es la media de todos.
+          Se comparan pisos del mismo barrio y del mismo tamaño &mdash;no por cómo estén repartidos por dentro,
+          porque en una reforma eso se cambia&mdash;, siempre sobre el precio total, nunca sobre &euro;/m&sup2;.
         </div>
-          <div style="margin-top:10px; padding-top:10px; border-top:1px dashed var(--gray-300);">
-            <strong>Por qué los testigos se acotan por superficie y zona, y no por número de dormitorios o baños.</strong>
-            En una operación con reforma la distribución interior es una decisión del proyecto: un baño se construye
-            y un tabique se mueve. Los <strong>metros y la ubicación, no</strong>. Por eso el comparable es el piso del
-            mismo barrio y del mismo tamaño, con independencia de cómo esté repartido por dentro.
-          </div>
       </div>
 
       
@@ -1346,7 +1343,48 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
 
       <!-- 2.5 Que aporta cada elemento dentro de los mismos metros -->
       <div class="card">
-        <div class="card-title">2.5 Qué aporta el segundo baño dentro de los mismos metros</div>
+              <div class="card">
+        <div class="card-title">2.5 Qué aporta un baño o un dormitorio más</div>
+        <div class="card-subtitle">El precio se calcula por metros y zona; cómo se repartan esos metros lo decide la reforma. Esto es lo que el mercado paga por cada reparto</div>
+
+        <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso);">
+          La valoración de arriba <strong>no depende de cómo esté repartido el piso hoy</strong>: en una compra
+          con reforma un baño se construye y un tabique se mueve. Los metros y la ubicación, no.
+          <strong>Pero el mercado paga distinto según el reparto final</strong>, y conviene saberlo antes de
+          cerrar el proyecto de obra.
+        </div>
+
+        <h3>Un baño más</h3>
+        <div class="table-wrap"><table class="table-mobile">
+          <thead><tr><th>Pisos reformados</th><th>Testigos</th><th>&euro;/m&sup2;</th><th>Precio medio</th><th>Días en retirarse</th></tr></thead>
+          <tbody>
+            <tr><td>Con <strong>1 baño</strong></td><td data-label="Testigos">34</td><td data-label="&euro;/m&sup2;">1.764&euro;</td><td data-label="Precio medio">162.558&euro;</td><td data-label="Días en retirarse">152</td></tr>
+            <tr class="highlight"><td><strong>Con 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Testigos">16</td><td data-label="&euro;/m&sup2;"><strong>1.940&euro;</strong></td><td data-label="Precio medio"><strong>182.562&euro;</strong></td><td data-label="Días en retirarse"><strong>46</strong></td></tr>
+          </tbody>
+        </table></div>
+        <div class="insight insight-green"><strong>El segundo baño sí se paga:</strong> <strong>20.000&euro; más</strong> y se retira en un tercio del tiempo &mdash; 46 días frente a 152.</div>
+
+        <h3>Un dormitorio más</h3>
+        <div class="table-wrap"><table class="table-mobile">
+          <thead><tr><th>Pisos reformados</th><th>Testigos</th><th>&euro;/m&sup2;</th><th>Precio medio</th><th>Días en retirarse</th></tr></thead>
+          <tbody>
+            <tr><td>Con <strong>2 dormitorios</strong></td><td data-label="Testigos">19</td><td data-label="&euro;/m&sup2;">1.801&euro;</td><td data-label="Precio medio">163.737&euro;</td><td data-label="Días en retirarse">188</td></tr>
+            <tr class="highlight"><td><strong>Con 3 dormitorios</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Testigos">29</td><td data-label="&euro;/m&sup2;">1.814&euro;</td><td data-label="Precio medio">171.620&euro;</td><td data-label="Días en retirarse"><strong>76</strong></td></tr>
+          </tbody>
+        </table></div>
+        <div class="insight insight-gray"><strong>El tercer dormitorio no se paga, pero vende:</strong> el precio por metro apenas se mueve (1.801 frente a 1.814&euro;), y sin embargo tarda <strong>menos de la mitad</strong> en retirarse &mdash; 76 días frente a 188.</div>
+
+        <div class="card-subtitle" style="margin-top:14px; margin-bottom:0;">Testigos retirados en El Carmen, de <strong>80 a 100 m&sup2;</strong> &mdash;los 90 del activo con diez arriba y diez abajo&mdash; y <strong>ya reformados</strong>: mismo barrio, mismo tamaño y el mismo estado en que saldrá el activo tras la obra.</div>
+
+        <div class="insight insight-orange">
+          <strong>Qué hacer con esto.</strong> Dentro de los mismos 90 m&sup2;, el reparto que mejor funciona en
+          este barrio es <strong>3 dormitorios y 2 baños</strong>, que es además el producto que más se retira
+          del distrito (ver 1.5). El segundo baño aporta precio; el tercer dormitorio aporta velocidad de
+          venta. <strong>Los metros fijan el precio de partida; el reparto decide si se cobra la parte alta
+          de la banda o la baja, y en cuánto tiempo.</strong>
+        </div>
+      </div>
+
         <div class="card-subtitle">El precio se calcula por superficie y zona; la distribución interior la decide el proyecto. Esto es lo que el mercado paga por ella</div>
 
         <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso);">

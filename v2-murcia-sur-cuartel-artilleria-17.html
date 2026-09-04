@@ -183,7 +183,7 @@
   details.acc[open] > summary { padding: 0 0 4px; }
 
   .fuente-resumen { flex-basis: 100%; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--gray-200); }
-  .fuente-resumen .fr-que { margin: 0 0 18px; font-size: 15.5px; line-height: 1.62; color: var(--gray-700); max-width: 62ch; }
+  .fuente-resumen .fr-que { margin: 0 0 20px; font-size: 15.5px; line-height: 1.62; color: var(--gray-700); }
 
   .fr-dentro { margin-bottom: 20px; }
   .fr-dentro .fd-tit { display: block; font-size: 10.5px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--gray-500); margin-bottom: 9px; }
@@ -199,10 +199,19 @@
   .fuente-resumen .fr-dato b { display: block; font-size: 21px; font-weight: 800; color: var(--navy); letter-spacing: -.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
   .fuente-resumen .fr-dato span { display: block; font-size: 11.5px; color: var(--gray-600); margin-top: 4px; line-height: 1.35; }
 
-  .acc-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-    padding: 14px 30px; border-radius: 11px; font-size: 15px; font-weight: 800; letter-spacing: .01em;
-    color: #fff; border: none; box-shadow: 0 4px 12px -4px rgba(15,31,61,.4); transition: transform .18s ease, box-shadow .18s ease; }
-  details.acc:not([open]) > summary:hover .acc-btn { transform: translateY(-2px); box-shadow: 0 8px 18px -6px rgba(15,31,61,.45); }
+  .acc-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; justify-content: center; gap: 11px;
+    padding: 15px 32px; border-radius: 12px; font-size: 15px; font-weight: 800; letter-spacing: .012em;
+    color: #fff; border: none; isolation: isolate;
+    transition: transform .25s cubic-bezier(.2,.8,.3,1), box-shadow .25s cubic-bezier(.2,.8,.3,1); }
+  .acc-btn::before { content: ""; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(135deg, rgba(255,255,255,.20), rgba(255,255,255,0) 55%); }
+  .acc-btn::after { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 45%; z-index: -1;
+    background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.28), rgba(255,255,255,0));
+    transform: skewX(-18deg); transition: left .55s cubic-bezier(.2,.8,.3,1); }
+  details.acc:not([open]) > summary:hover .acc-btn { transform: translateY(-2px); }
+  details.acc:not([open]) > summary:hover .acc-btn::after { left: 130%; }
+  details.acc:not([open]) > summary:hover .acc-chevron { transform: translateY(3px); }
+  details.acc:not([open]) > summary:active .acc-btn { transform: translateY(0); }
   .acc-chevron { width: 18px; height: 18px; transition: transform .22s ease; }
   details.acc[open] > summary .acc-chevron { transform: rotate(180deg); }
   details.acc[open] > summary .fr-que,
@@ -211,9 +220,12 @@
   details.acc[open] > summary .fuente-resumen { margin-top: 10px; padding-top: 10px; }
   details.acc[open] > summary .acc-btn { padding: 8px 18px; font-size: 12.5px; box-shadow: none; opacity: .8; }
 
-  details.acc.motor-pulso    > summary .acc-btn { background: var(--pulso); }
-  details.acc.motor-impulso  > summary .acc-btn { background: var(--impulso); }
-  details.acc.motor-notarial > summary .acc-btn { background: var(--notarial); }
+  details.acc.motor-pulso    > summary .acc-btn { background: var(--pulso); box-shadow: 0 6px 18px -6px rgba(249,115,22,.65); }
+  details.acc.motor-pulso:not([open])    > summary:hover .acc-btn { box-shadow: 0 12px 26px -8px rgba(249,115,22,.75); }
+  details.acc.motor-impulso  > summary .acc-btn { background: var(--impulso); box-shadow: 0 6px 18px -6px rgba(22,163,74,.60); }
+  details.acc.motor-impulso:not([open])  > summary:hover .acc-btn { box-shadow: 0 12px 26px -8px rgba(22,163,74,.72); }
+  details.acc.motor-notarial > summary .acc-btn { background: var(--notarial); box-shadow: 0 6px 18px -6px rgba(37,99,235,.58); }
+  details.acc.motor-notarial:not([open]) > summary:hover .acc-btn { box-shadow: 0 12px 26px -8px rgba(37,99,235,.70); }
 
   @media (max-width: 640px) {
     details.acc:not([open]) > summary { padding: 20px 18px; border-radius: 14px; }
@@ -242,6 +254,10 @@
 
   /* ===================== CARD ===================== */
   .card { background: white; border-radius: 16px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); margin-bottom: 16px; border: 1px solid #e5e7eb; }
+  /* Subtitulos de modalidad dentro de una tarjeta (ranking de retirados) */
+  .card h3 { font-size: 14px; font-weight: 800; color: var(--navy); letter-spacing: .01em;
+    margin: 26px 0 10px; padding-top: 18px; border-top: 1px solid var(--gray-200); }
+  .card h3:first-of-type { margin-top: 14px; padding-top: 0; border-top: none; }
   .card-title { font-size: 17px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
   .card-subtitle { font-size: 13px; color: var(--gray-500); margin-bottom: 16px; }
 
@@ -268,7 +284,7 @@
   .term-explainer.glosario .glossary-term { display: block; font-weight: 700; color: var(--navy); font-size: 12px; margin-bottom: 2px; }
   .term-explainer.glosario .glossary-def { display: block; font-size: 11px; line-height: 1.35; color: var(--gray-700); }
   .term-explainer.glosario.card { border-radius: 16px; padding: 28px; margin: 0 0 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04); border: 1px solid #e5e7eb; border-left: 6px solid var(--navy); }
-  @media (max-width: 640px) { .term-explainer.glosario .glossary-grid { grid-template-columns: 1fr 1fr; gap: 8px; } }
+  @media (max-width: 640px) { .term-explainer.glosario .glossary-grid { grid-template-columns: 1fr; gap: 8px; } }
   .term-explainer { background: var(--gray-50); border: 1px solid #e2e8f0; border-left: 4px solid var(--navy); border-radius: 0 10px 10px 0; padding: 16px 20px; margin: 14px 0; font-size: 13px; line-height: 1.6; }
   .term-explainer strong { color: var(--navy); }
 
@@ -970,7 +986,27 @@
 
   <!-- ============================================ -->
   <!-- 6. MOTOR 1 · PULSO -->
-  <!-- ============================================ -->
+  
+  <div class="container previo-fuentes">
+<div class="card-title">Qué vas a encontrar en esta fuente</div>
+<div class="card term-explainer glosario" id="glosario">
+        <span class="ge-badge">Glosario de campos</span><br>
+        <div class="glossary-grid">
+          <div class="glossary-card"><span class="glossary-term">Testigo</span><span class="glossary-def">Anuncio retirado con características parecidas. Los publicados están a precio de deseo.</span></div>
+          <div class="glossary-card"><span class="glossary-term">Publicados</span><span class="glossary-def">Todo lo que salió al mercado. El tamaño real.</span></div>
+          <div class="glossary-card"><span class="glossary-term">%</span><span class="glossary-def">De todo lo que se publica en la zona, qué parte es de este tipo.</span></div>
+          <div class="glossary-card"><span class="glossary-term">Retirados</span><span class="glossary-def">Lo que el mercado ha absorbido de verdad.</span></div>
+          <div class="glossary-card"><span class="glossary-term">% Rotación</span><span class="glossary-def">% de lo publicado ya retirado. Mide liquidez.</span></div>
+          <div class="glossary-card"><span class="glossary-term">Activos</span><span class="glossary-def">Lo que sigue anunciado hoy: la competencia.</span></div>
+          <div class="glossary-card"><span class="glossary-term">Días</span><span class="glossary-def">Cuánto tarda un anuncio en retirarse.</span></div>
+          <div class="glossary-card"><span class="glossary-term">&euro;/m²</span><span class="glossary-def">Precio medio por m² de los retirados.</span></div>
+          <div class="glossary-card"><span class="glossary-term">Precio medio</span><span class="glossary-def">Precio medio de los retirados de esa fila.</span></div>
+        </div>
+        <div class="ge-method">Todas las cifras son medias sobre anuncios retirados, excluyendo los que llevaban más de un año publicados.</div>
+      </div>
+  </div>
+
+<!-- ============================================ -->
   <details class="section motor-pulso acc">
     <summary class="section-header">
       <div class="section-icon" style="background: var(--pulso-bg); color: var(--pulso);">
@@ -990,22 +1026,8 @@
     <!-- Nota: Notarial y Método Total ya se explican en las 4 tarjetas de portada — no se repiten aquí. -->
     <!-- ============================================ -->
     <div class="card">
-      <div class="card-title">Qué vas a encontrar en esta fuente</div>
-<div class="card term-explainer glosario" id="glosario">
-        <span class="ge-badge">Glosario de campos</span><br>
-        <div class="glossary-grid">
-          <div class="glossary-card"><span class="glossary-term">Testigo</span><span class="glossary-def">Anuncio retirado con características parecidas. Los publicados están a precio de deseo.</span></div>
-          <div class="glossary-card"><span class="glossary-term">Publicados</span><span class="glossary-def">Todo lo que salió al mercado. El tamaño real.</span></div>
-          <div class="glossary-card"><span class="glossary-term">%</span><span class="glossary-def">De todo lo que se publica en la zona, qué parte es de este tipo.</span></div>
-          <div class="glossary-card"><span class="glossary-term">Retirados</span><span class="glossary-def">Lo que el mercado ha absorbido de verdad.</span></div>
-          <div class="glossary-card"><span class="glossary-term">% Rotación</span><span class="glossary-def">% de lo publicado ya retirado. Mide liquidez.</span></div>
-          <div class="glossary-card"><span class="glossary-term">Activos</span><span class="glossary-def">Lo que sigue anunciado hoy: la competencia.</span></div>
-          <div class="glossary-card"><span class="glossary-term">Días</span><span class="glossary-def">Cuánto tarda un anuncio en retirarse.</span></div>
-          <div class="glossary-card"><span class="glossary-term">&euro;/m²</span><span class="glossary-def">Precio medio por m² de los retirados.</span></div>
-          <div class="glossary-card"><span class="glossary-term">Precio medio</span><span class="glossary-def">Precio medio de los retirados de esa fila.</span></div>
-        </div>
-        <div class="ge-method">Todas las cifras son medias sobre anuncios retirados, excluyendo los que llevaban más de un año publicados.</div>
-      </div>
+      
+
       <div class="card-subtitle">FUENTE 1 · PULSO — el latido del mercado</div>
 
     
@@ -1125,7 +1147,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <div class="card"><div class="card-title">1.13 Comparativa por barrios del distrito · modalidad alquiler por habitaciones</div><div class="card-subtitle">Comparativa de los barrios dentro del distrito Sur.</div><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Barrio</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Renta media</th><th>Días</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>El Carmen</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Publicados">396</td><td data-label="%">58,1%</td><td data-label="Retirados">312</td><td data-label="% Rotación">78,8%</td><td data-label="Activos">84</td><td data-label="Renta media">304&euro;</td><td data-label="Días">117,5</td></tr><tr><td>Infante Juan Manuel</td><td data-label="Publicados">207</td><td data-label="%">30,4%</td><td data-label="Retirados">194</td><td data-label="% Rotación">93,7%</td><td data-label="Activos">13</td><td data-label="Renta media">325&euro;</td><td data-label="Días">51,0</td></tr><tr><td>Santiago el Mayor</td><td data-label="Publicados">27</td><td data-label="%">4,0%</td><td data-label="Retirados">22</td><td data-label="% Rotación">81,5%</td><td data-label="Activos">5</td><td data-label="Renta media">289&euro;</td><td data-label="Días">161,9</td></tr><tr><td>Ronda Sur</td><td data-label="Publicados">24</td><td data-label="%">3,5%</td><td data-label="Retirados">21</td><td data-label="% Rotación">87,5%</td><td data-label="Activos">3</td><td data-label="Renta media">328&euro;</td><td data-label="Días">106,6</td></tr><tr><td>La Purísima-Barriomar</td><td data-label="Publicados">21</td><td data-label="%">3,1%</td><td data-label="Retirados">17</td><td data-label="% Rotación">81,0%</td><td data-label="Activos">4</td><td data-label="Renta media">271&euro;</td><td data-label="Días">80,4</td></tr><tr><td>San Pío X</td><td data-label="Publicados">6</td><td data-label="%">0,9%</td><td data-label="Retirados">5</td><td data-label="% Rotación">83,3%</td><td data-label="Activos">1</td><td data-label="Renta media">280&euro;</td><td data-label="Días">199,4</td></tr></tbody></table></div><div class="insight insight-orange"><strong>Lectura:</strong> El alquiler por habitaciones se concentra en El Carmen e Infante Juan Manuel, que suman nueve de cada diez anuncios del distrito. Infante es el que mejor funciona: coloca el 93,7 % de sus habitaciones en 51 días, el ritmo más rápido del distrito. La renta más alta la marca Ronda Sur con 328 euros, pero con mucho menos volumen.</div></div>
 
     <!-- 1.14 Otros activos · modalidad venta -->
-    <div class="card"><div class="card-title">1.14 Otros activos · modalidad venta</div><div class="card-subtitle">Activos no residenciales en venta en el distrito Sur</div><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días</th></tr></thead><tbody><tr class="highlight"><td><strong>Locales o Naves</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">325</td><td data-label="%">49,5%</td><td data-label="Retirados">207</td><td data-label="% Rotación">63,7%</td><td data-label="Activos">118</td><td data-label="Días">125,9</td></tr><tr><td>Garaje</td><td data-label="Publicados">207</td><td data-label="%">31,5%</td><td data-label="Retirados">119</td><td data-label="% Rotación">57,5%</td><td data-label="Activos">88</td><td data-label="Días">119,6</td></tr><tr><td>Terreno</td><td data-label="Publicados">68</td><td data-label="%">10,4%</td><td data-label="Retirados">22</td><td data-label="% Rotación">32,4%</td><td data-label="Activos">46</td><td data-label="Días">88,8</td></tr><tr><td>Edificio</td><td data-label="Publicados">21</td><td data-label="%">3,2%</td><td data-label="Retirados">7</td><td data-label="% Rotación">33,3%</td><td data-label="Activos">14</td><td data-label="Días">150,0</td></tr><tr><td>Casa Rural</td><td data-label="Publicados">20</td><td data-label="%">3,0%</td><td data-label="Retirados">15</td><td data-label="% Rotación">75,0%</td><td data-label="Activos">5</td><td data-label="Días">83,5</td></tr><tr><td>Trastero</td><td data-label="Publicados">12</td><td data-label="%">1,8%</td><td data-label="Retirados">8</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">4</td><td data-label="Días">230,0</td></tr><tr><td>Oficina</td><td data-label="Publicados">4</td><td data-label="%">0,6%</td><td data-label="Retirados">1</td><td data-label="% Rotación">25,0%</td><td data-label="Activos">3</td><td data-label="Días">13,0</td></tr></tbody></table></div><div class="insight insight-orange"><strong>Lectura:</strong> el local es el activo no residencial con más movimiento del distrito, con 207 operaciones cerradas. El suelo, en cambio, apenas rota: uno de cada tres.</div></div>
+    <div class="card"><div class="card-title">1.14 Otros activos · modalidad venta</div><div class="card-subtitle">Activos no residenciales en venta en el distrito Sur</div><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días</th></tr></thead><tbody><tr class="highlight"><td><strong>Locales o Naves</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">325</td><td data-label="%">49,5%</td><td data-label="Retirados">207</td><td data-label="% Rotación">63,7%</td><td data-label="Activos">118</td><td data-label="Días">125,9</td></tr><tr><td>Garaje</td><td data-label="Publicados">207</td><td data-label="%">31,5%</td><td data-label="Retirados">119</td><td data-label="% Rotación">57,5%</td><td data-label="Activos">88</td><td data-label="Días">119,6</td></tr><tr><td>Terreno</td><td data-label="Publicados">68</td><td data-label="%">10,4%</td><td data-label="Retirados">22</td><td data-label="% Rotación">32,4%</td><td data-label="Activos">46</td><td data-label="Días">88,8</td></tr><tr><td>Edificio</td><td data-label="Publicados">21</td><td data-label="%">3,2%</td><td data-label="Retirados">7</td><td data-label="% Rotación">33,3%</td><td data-label="Activos">14</td><td data-label="Días">150,0</td></tr><tr><td>Casa Rural</td><td data-label="Publicados">20</td><td data-label="%">3,0%</td><td data-label="Retirados">15</td><td data-label="% Rotación">75,0%</td><td data-label="Activos">5</td><td data-label="Días">83,5</td></tr><tr><td>Trastero</td><td data-label="Publicados">12</td><td data-label="%">1,8%</td><td data-label="Retirados">8</td><td data-label="% Rotación">66,7%</td><td data-label="Activos">4</td><td data-label="Días">230,0</td></tr><tr><td>Oficina</td><td data-label="Publicados">4</td><td data-label="%">0,6%</td><td data-label="Retirados">1</td><td data-label="% Rotación">25,0%</td><td data-label="Activos">3</td><td data-label="Días">13,0</td></tr></tbody></table></div><div class="insight insight-orange"><strong>Lectura:</strong> el local es el activo no residencial con más movimiento del distrito, con 207 anuncios retirados. El suelo, en cambio, apenas rota: uno de cada tres.</div></div>
 
     <!-- 1.15 Otros activos · modalidad alquiler tradicional -->
     <div class="card"><div class="card-title">1.15 Otros activos · modalidad alquiler tradicional</div><div class="card-subtitle">Activos no residenciales en alquiler tradicional en el distrito Sur</div><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Publicados</th><th>%</th><th>Retirados</th><th>% Rotación</th><th>Activos</th><th>Días</th></tr></thead><tbody><tr class="highlight"><td><strong>Garaje</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Publicados">266</td><td data-label="%">55,5%</td><td data-label="Retirados">212</td><td data-label="% Rotación">79,7%</td><td data-label="Activos">54</td><td data-label="Días">80,9</td></tr><tr><td>Locales o Naves</td><td data-label="Publicados">175</td><td data-label="%">36,5%</td><td data-label="Retirados">109</td><td data-label="% Rotación">62,3%</td><td data-label="Activos">66</td><td data-label="Días">115,8</td></tr><tr><td>Trastero</td><td data-label="Publicados">22</td><td data-label="%">4,6%</td><td data-label="Retirados">17</td><td data-label="% Rotación">77,3%</td><td data-label="Activos">5</td><td data-label="Días">75,9</td></tr><tr><td>Oficina</td><td data-label="Publicados">15</td><td data-label="%">3,1%</td><td data-label="Retirados">5</td><td data-label="% Rotación">33,3%</td><td data-label="Activos">10</td><td data-label="Días">29,8</td></tr></tbody></table></div></div>
@@ -1145,9 +1167,9 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       <div class="card-title">1.17 Productos que más se retiran</div>
       <div class="card-subtitle">Ranking de productos retirados del mercado en el distrito Sur</div>
       <h3>Modalidad venta</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Producto</th><th>Retirados</th><th>Precio mín.</th><th>Precio medio</th><th>Precio máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">424</td><td data-label="Precio mín.">63.000&euro;</td><td data-label="Precio medio">203.525&euro;</td><td data-label="Precio máx.">445.000&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">250</td><td data-label="Precio mín.">47.000&euro;</td><td data-label="Precio medio">135.928&euro;</td><td data-label="Precio máx.">250.000&euro;</td></tr><tr><td>🥉 4 dorm. / 2 baños</td><td data-label="Retirados">219</td><td data-label="Precio mín.">45.000&euro;</td><td data-label="Precio medio">212.332&euro;</td><td data-label="Precio máx.">430.000&euro;</td></tr><tr><td>4.&ordm; 3 dorm. / 1 baño</td><td data-label="Retirados">173</td><td data-label="Precio mín.">49.000&euro;</td><td data-label="Precio medio">126.863&euro;</td><td data-label="Precio máx.">309.000&euro;</td></tr><tr><td>5.&ordm; 1 dorm. / 1 baño</td><td data-label="Retirados">153</td><td data-label="Precio mín.">48.900&euro;</td><td data-label="Precio medio">114.805&euro;</td><td data-label="Precio máx.">361.000&euro;</td></tr></tbody></table></div>
-      <div class="insight insight-orange"><strong>Lectura:</strong> el producto que más se retira del distrito es exactamente el del activo: piso de tres dormitorios y dos baños, con 424 operaciones cerradas. No es un producto de nicho, es el caballo ganador de la zona.</div>
+      <div class="insight insight-orange"><strong>Lectura:</strong> el producto que más se retira del distrito es exactamente el del activo: piso de tres dormitorios y dos baños, con 424 anuncios retirados. No es un producto de nicho, es el caballo ganador de la zona.</div>
       <h3>Modalidad alquiler tradicional</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight highlight-asset"><td><strong>🥇 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span> <span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">189</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">855&euro;</td><td data-label="Renta máx.">1.400&euro;</td></tr><tr><td>🥈 2 dorm. / 1 baño</td><td data-label="Retirados">177</td><td data-label="Renta mín.">450&euro;</td><td data-label="Renta media">719&euro;</td><td data-label="Renta máx.">1.500&euro;</td></tr><tr><td>🥉 1 dorm. / 1 baño</td><td data-label="Retirados">169</td><td data-label="Renta mín.">470&euro;</td><td data-label="Renta media">631&euro;</td><td data-label="Renta máx.">1.200&euro;</td></tr><tr><td>4.&ordm; 4 dorm. / 2 baños</td><td data-label="Retirados">88</td><td data-label="Renta mín.">650&euro;</td><td data-label="Renta media">1.002&euro;</td><td data-label="Renta máx.">1.450&euro;</td></tr><tr><td>5.&ordm; 3 dorm. / 1 baño</td><td data-label="Retirados">72</td><td data-label="Renta mín.">600&euro;</td><td data-label="Renta media">791&euro;</td><td data-label="Renta máx.">1.100&euro;</td></tr></tbody></table></div>
-      <h3>Modalidad alquiler por habitaciones</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight"><td><strong>🥇 Habitación en vivienda de 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">157</td><td data-label="Renta mín.">170&euro;</td><td data-label="Renta media">299&euro;</td><td data-label="Renta máx.">600&euro;</td></tr><tr><td>🥈 Habitación en vivienda de 5 dorm. / 2 baños</td><td data-label="Retirados">123</td><td data-label="Renta mín.">145&euro;</td><td data-label="Renta media">347&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr class="highlight-asset"><td><strong>🥉 Habitación en vivienda de 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">67</td><td data-label="Renta mín.">200&euro;</td><td data-label="Renta media">291&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr><td>4 · Habitación en vivienda de 3 dorm. / 1 baño</td><td data-label="Retirados">66</td><td data-label="Renta mín.">160&euro;</td><td data-label="Renta media">294&euro;</td><td data-label="Renta máx.">430&euro;</td></tr><tr><td>5 · Habitación en vivienda de 4 dorm. / 1 baño</td><td data-label="Retirados">47</td><td data-label="Renta mín.">190&euro;</td><td data-label="Renta media">307&euro;</td><td data-label="Renta máx.">390&euro;</td></tr></tbody></table></div>
+      <h3>Modalidad alquiler por habitaciones</h3><div class="table-wrap"><table class="table-mobile"><thead><tr><th>Concepto</th><th>Retirados</th><th>Renta mín.</th><th>Renta media</th><th>Renta máx.</th></tr></thead><tbody><tr class="highlight"><td><strong>🥇 Habitación en vivienda de 4 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-pulso">PULSO</span></span></td><td data-label="Retirados">157</td><td data-label="Renta mín.">170&euro;</td><td data-label="Renta media">299&euro;</td><td data-label="Renta máx.">600&euro;</td></tr><tr><td>🥈 Habitación en vivienda de 5 dorm. / 2 baños</td><td data-label="Retirados">123</td><td data-label="Renta mín.">145&euro;</td><td data-label="Renta media">347&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr class="highlight-asset"><td><strong>🥉 Habitación en vivienda de 3 dorm. / 2 baños</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Retirados">67</td><td data-label="Renta mín.">200&euro;</td><td data-label="Renta media">291&euro;</td><td data-label="Renta máx.">450&euro;</td></tr><tr><td>4.&ordm; Habitación en vivienda de 3 dorm. / 1 baño</td><td data-label="Retirados">66</td><td data-label="Renta mín.">160&euro;</td><td data-label="Renta media">294&euro;</td><td data-label="Renta máx.">430&euro;</td></tr><tr><td>5.&ordm; Habitación en vivienda de 4 dorm. / 1 baño</td><td data-label="Retirados">47</td><td data-label="Renta mín.">190&euro;</td><td data-label="Renta media">307&euro;</td><td data-label="Renta máx.">390&euro;</td></tr></tbody></table></div>
     </div>
 
 
@@ -1161,7 +1183,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></div>
       <div>
-        <strong>Conclusión del PULSO.</strong> El producto que manda en el distrito Sur es el piso de tres dormitorios y dos baños: 476 anuncios y 424 retirados, un 89,1 % de rotación. Es exactamente el del activo. Su barrio, El Carmen, absorbe el 87,1 % de lo que publica y su precio medio, 180.399 euros, deja al activo muy por debajo con sus 125.000. En la propia calle Cuartel de Artillería se han vendido cinco pisos a 141.000 de media y no queda ninguno en venta.
+        <strong>Conclusión del PULSO.</strong> El producto que manda en el distrito Sur es el piso de tres dormitorios y dos baños: 476 anuncios y 424 retirados, un 89,1 % de rotación. Es exactamente el del activo. Su barrio, El Carmen, absorbe el 87,1 % de lo que publica y su precio medio, 180.399 euros, deja al activo muy por debajo con sus 125.000. En la propia calle Cuartel de Artillería se han retirado cinco pisos a 141.000 de media y no queda ninguno en venta.
       </div>
     </div>
   </details>
@@ -1182,7 +1204,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       </div>
       <span class="zone-badge impulso">El activo</span>
     
-      <div class="fuente-resumen"><p class="fr-que">Dónde se sitúa el valor de un inmueble como este, calculado sobre testigos reales del mismo barrio y del mismo tamaño que ya se retiraron del mercado. Una horquilla, no una cifra cerrada.</p><div class="fr-dentro"><span class="fd-tit">Dentro de esta fuente</span><ul><li>Los testigos comparables que sostienen la lectura</li><li>La horquilla de valor en tres escenarios</li><li>Cuánto tarda en retirarse un piso así</li><li>Quién mueve este producto en la zona</li></ul></div><div class="fr-datos"><span class="fr-dato"><b>128.300–181.600 €</b><span>horquilla de valor</span></span><span class="fr-dato"><b>206</b><span>testigos reales</span></span><span class="fr-dato"><b>3</b><span>escenarios</span></span></div><span class="acc-btn">Ver la valoración al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
+      <div class="fuente-resumen"><p class="fr-que">Dónde se sitúa el valor de un inmueble como este, calculado sobre testigos reales del mismo barrio y del mismo tamaño que ya se retiraron del mercado. Tres precios de referencia, no una cifra única.</p><div class="fr-dentro"><span class="fd-tit">Dentro de esta fuente</span><ul><li>Los testigos comparables que sostienen la lectura</li><li>Tres precios de referencia, no una cifra única</li><li>Cuánto tarda en retirarse un piso así</li><li>Quién mueve este producto en la zona</li></ul></div><div class="fr-datos"><span class="fr-dato"><b>206</b><span>testigos reales del barrio</span></span><span class="fr-dato"><b>3</b><span>escenarios de precio</span></span><span class="fr-dato"><b>El Carmen</b><span>zona acotada, no todo el distrito</span></span></div><span class="acc-btn">Ver la valoración al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg></span></div>
     </summary>
 
     <!-- Qué vas a encontrar en este motor -->
@@ -1190,7 +1212,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       <div class="card-title">Qué vas a encontrar en esta fuente</div>
       <div class="card-subtitle">FUENTE 2 · IMPULSO — la valoración del activo</div>
       <div class="term-explainer">
-        IMPULSO es la fuente que <strong>valora el activo</strong>: mide cuánto puede valer hoy esta vivienda concreta. Se enfoca únicamente en su tipología y superficie exactas —piso de 90 m², 3 dormitorios, 2 baños— dentro del distrito Sur de Murcia. Se basa en los <strong>testigos reales de la zona</strong>: anuncios de venta ya retirados del mercado, con las mismas características. IMPULSO no fija un precio de venta cerrado, sino que construye una <strong>estimación de mercado</strong> a partir de esos datos reales: sirve para saber, antes de mover un dedo, si el precio pedido está alineado con lo que el mercado ha pagado.
+        IMPULSO es la fuente que <strong>valora el activo</strong>: mide cuánto puede valer hoy esta vivienda concreta. Se enfoca únicamente en su tipología y superficie exactas —piso de 90 m², 3 dormitorios, 2 baños— dentro del distrito Sur de Murcia. Se basa en los <strong>testigos reales de la zona</strong>: anuncios de venta ya retirados del mercado, con las mismas características. IMPULSO no fija un precio de venta cerrado, sino que construye una <strong>estimación de mercado</strong> a partir de esos datos reales: sirve para saber, antes de mover un dedo, si el asking price está alineado con lo que el mercado ha pagado.
       </div>
     </div>
 
@@ -1210,19 +1232,19 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
           <tr><td>Planta</td><td data-label="Valor">3&ordf;, con ascensor</td></tr>
           <tr><td>Estado</td><td data-label="Valor">A reformar</td></tr>
           <tr><td>Extras</td><td data-label="Valor">Balcón, exterior</td></tr>
-          <tr class="highlight-asset"><td><strong>Precio pedido</strong></td><td data-label="Valor"><strong>125.000&euro;</strong></td></tr>
+          <tr class="highlight-asset"><td><strong>Asking price</strong></td><td data-label="Valor"><strong>125.000&euro;</strong></td></tr>
           <tr><td>Estrategia declarada</td><td data-label="Valor">Compra / reforma / venta</td></tr>
-          <tr><td>Solicitante</td><td data-label="Valor">Rafael Romero Romero</td></tr>
+          
           </tbody>
         </table>
       </div>
-      <div class="insight insight-gray" style="margin-bottom:0;"><sup>&dagger;</sup> Dato de baños aportado por el solicitante; el formulario de solicitud no recoge el número de baños.</div>
+      <div class="insight insight-gray" style="margin-bottom:0;"><sup>&dagger;</sup> Dato de baños aportado en la consulta; el formulario de solicitud no recoge el número de baños.</div>
     </div>
 
     <!-- 2.2 Testigos comparables -->
     <div class="card">
       <div class="card-title">2.2 Testigos comparables</div>
-      <div class="card-subtitle">Pisos de 77 a 104 m² en el barrio El Carmen, ya retirados del mercado. Siete testigos escalonados que cubren toda la horquilla de precio.</div>
+      <div class="card-subtitle">Pisos de 77 a 104 m² en el barrio El Carmen, ya retirados del mercado. Siete testigos escalonados que cubren todo el recorrido de precio.</div>
       <div class="table-wrap">
         <table class="table-mobile">
           <thead><tr><th>Dirección</th><th>Superficie</th><th>Dorm.</th><th>Baños</th><th>Precio de retirada</th><th>Días</th><th>&euro;/m²</th></tr></thead>
@@ -1238,7 +1260,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         </table>
       </div>
       <div class="insight insight-green">
-        <strong>Lectura:</strong> Una muestra de los 206 testigos reales que sostienen la valoración: pisos del mismo barrio y del mismo tamaño que el activo, ya retirados del mercado. Es el último precio al que estuvieron anunciados antes de desaparecer, no el precio de escritura. Se movieron entre 1.078 y 2.350 &euro;/m², y el valor central de la muestra completa está en 1.776 &euro;/m². Esa horquilla es la base del precio que calculamos a continuación.
+        <strong>Lectura:</strong> Una muestra de los 206 testigos reales que sostienen la valoración: pisos del mismo barrio y del mismo tamaño que el activo, ya retirados del mercado. Es el último precio al que estuvieron anunciados antes de desaparecer, no el precio de escritura. Se movieron entre 1.078 y 2.350 &euro;/m², y el valor central de la muestra completa está en 1.776 &euro;/m². Ese recorrido es la base de los tres precios que calculamos a continuación.
       </div>
     </div>
 
@@ -1262,7 +1284,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <!-- 2.4 Precio por vivienda resultante -->
     <div class="card">
       <div class="card-title">2.4 Precio por vivienda resultante</div>
-      <div class="card-subtitle">n = 206 · superficie media de la muestra 92,1 m² · aplicado a los 90 m² del activo</div>
+      <div class="card-subtitle">Calculado sobre <strong>206 pisos ya retirados</strong> del mismo barrio y de tamaño equivalente &mdash; de media 92,1 m², frente a los 90 m² del activo</div>
 
       <div class="apunte-clave">
         <div class="ac-icon">
@@ -1305,7 +1327,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
 
       
       <div class="insight insight-green" style="margin-bottom:0;">
-        <strong>Lectura:</strong> El activo se ofrece a 125.000&euro;, por debajo incluso del escenario conservador de su propio barrio. Acotar la valoración a El Carmen &mdash;en lugar de a todo el distrito&mdash; estrecha la horquilla en más de 20.000 &euro; y deja el precio pedido fuera de rango por abajo. La diferencia con el escenario medio, 159.800&euro;, es el recorrido teórico de la operación; parte la explica el estado, a reformar, y hay que descontarla del presupuesto de obra.
+        <strong>Lectura:</strong> El activo se ofrece a 125.000&euro;, por debajo incluso del escenario conservador de su propio barrio. Acotar la valoración a El Carmen &mdash;en lugar de a todo el distrito&mdash; estrecha el recorrido en más de 20.000 &euro; y deja el asking price fuera de rango por abajo. La diferencia con el escenario medio, 159.800&euro;, es el recorrido teórico de la operación; parte la explica el estado, a reformar, y hay que descontarla del presupuesto de obra.
       </div>
     </div>
 
@@ -1327,7 +1349,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       <div class="card-title">2.6 Comparativa por calles del entorno · modalidad venta</div>
       <div class="card-subtitle">Calles del barrio El Carmen con al menos 5 anuncios. Solo Piso. La calle del activo se muestra aparte al pie.</div>
       <div class="table-wrap"><table class="table-mobile"><thead><tr><th>Calle</th><th>Pub</th><th>Ret</th><th>Precio medio</th><th>Días</th><th>€/m²</th></tr></thead><tbody><tr><td>Calle Floridablanca</td><td data-label="Pub">36</td><td data-label="Ret">28</td><td data-label="Precio medio">163.007&euro;</td><td data-label="Días">91,0</td><td data-label="€/m²">1.508&euro;</td></tr><tr><td>Calle Cartagena</td><td data-label="Pub">23</td><td data-label="Ret">23</td><td data-label="Precio medio">199.465&euro;</td><td data-label="Días">90,3</td><td data-label="€/m²">1.872&euro;</td></tr><tr><td>Calle Torre de Romo</td><td data-label="Pub">21</td><td data-label="Ret">18</td><td data-label="Precio medio">154.465&euro;</td><td data-label="Días">108,4</td><td data-label="€/m²">1.354&euro;</td></tr><tr><td>Calle Princesa</td><td data-label="Pub">21</td><td data-label="Ret">19</td><td data-label="Precio medio">276.453&euro;</td><td data-label="Días">109,9</td><td data-label="€/m²">2.334&euro;</td></tr><tr><td>Paseo Marqués de Corvera</td><td data-label="Pub">18</td><td data-label="Ret">16</td><td data-label="Precio medio">157.291&euro;</td><td data-label="Días">85,0</td><td data-label="€/m²">1.837&euro;</td></tr><tr><td>Calle Álvarez Quintero</td><td data-label="Pub">16</td><td data-label="Ret">14</td><td data-label="Precio medio">92.950&euro;</td><td data-label="Días">150,6</td><td data-label="€/m²">1.446&euro;</td></tr><tr><td>Calle Santa Úrsula</td><td data-label="Pub">14</td><td data-label="Ret">13</td><td data-label="Precio medio">114.308&euro;</td><td data-label="Días">74,2</td><td data-label="€/m²">1.650&euro;</td></tr><tr><td>Avenida Río Segura</td><td data-label="Pub">12</td><td data-label="Ret">12</td><td data-label="Precio medio">280.333&euro;</td><td data-label="Días">94,3</td><td data-label="€/m²">2.596&euro;</td></tr><tr><td>Calle Pascual Abellán</td><td data-label="Pub">11</td><td data-label="Ret">11</td><td data-label="Precio medio">145.636&euro;</td><td data-label="Días">51,6</td><td data-label="€/m²">1.919&euro;</td></tr><tr><td>Calle Mateos</td><td data-label="Pub">11</td><td data-label="Ret">9</td><td data-label="Precio medio">129.233&euro;</td><td data-label="Días">100,4</td><td data-label="€/m²">1.349&euro;</td></tr><tr class="highlight-asset"><td><strong>Calle Cuartel de Artillería</strong> <span class="mark-line"><span class="mark mark-asset">Producto</span></span></td><td data-label="Pub">5</td><td data-label="Ret">5</td><td data-label="Precio medio">141.000&euro;</td><td data-label="Días">109,0</td><td data-label="€/m²">1.570&euro;</td></tr></tbody></table></div>
-      <div class="insight insight-green"><strong>Lectura:</strong> La calle del activo se ha vaciado por completo: los cinco pisos que salieron a la venta se vendieron, a 141.000 € de media y 1.570 €/m². No queda ninguno compitiendo hoy. Está por debajo de las calles caras del barrio —Río Segura a 2.596 €/m², Princesa a 2.334 €— y en línea con el grueso del entorno. El activo, a 125.000 €, entra por debajo de lo que se ha pagado en su propia calle.</div>
+      <div class="insight insight-green"><strong>Lectura:</strong> La calle del activo se ha vaciado por completo: los cinco pisos que salieron a la venta se han retirado, a 141.000 € de media y 1.570 €/m². No queda ninguno compitiendo hoy. Está por debajo de las calles caras del barrio —Río Segura a 2.596 €/m², Princesa a 2.334 €— y en línea con el grueso del entorno. El activo, a 125.000 €, entra por debajo de lo que se ha pagado en su propia calle.</div>
       <div class="market-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg><span>En alquiler tradicional la calle del activo no alcanza el mínimo de 5 anuncios, así que no se publica su dato.</span></div>
     </div>
 
@@ -1445,7 +1467,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
       <div>
-        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">159.800&euro;</strong> (horquilla de 128.300 a 181.600&euro;), a partir de 206 testigos reales retirados en el barrio El Carmen (valor central 1.776&euro;/m²). El activo se ofrece a 125.000&euro;, por debajo del escenario conservador de su barrio: recorrido claro hasta el escenario medio, con demanda alta (91,4 días de media para un piso).
+        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">159.800&euro;</strong> (128.300&euro; conservador, 159.800&euro; medio y 181.600&euro; optimista), a partir de 206 testigos reales retirados en el barrio El Carmen (valor central 1.776&euro;/m²). El activo se ofrece a 125.000&euro;, por debajo del escenario conservador de su barrio: recorrido claro hasta el escenario medio, con demanda alta (91,4 días de media para un piso).
       </div>
     </div>
   </details>
@@ -1500,7 +1522,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         <span><strong>227 compraventas al año</strong> equivalen a &sim;18,9 al mes de media (rango real 8-32 compraventas/mes, ver 3.5).</span>
       </div>
       <div class="insight insight-purple" style="margin-top:12px; margin-bottom:0;">
-        <strong>Lectura:</strong> la superficie media escriturada del CP (87,66 m²) es casi idéntica a los 90 m² del activo, y el importe medio notarial (130.750&euro;) está muy cerca del precio pedido (125.000&euro;) — el activo se comporta como el inmueble mediano del código postal, tanto en tamaño como en precio. El 97,25% de segunda mano frente al 2,75% de obra nueva confirma que el stock existente domina la oferta.
+        <strong>Lectura:</strong> la superficie media escriturada del CP (87,66 m²) es casi idéntica a los 90 m² del activo, y el importe medio notarial (130.750&euro;) está muy cerca del asking price (125.000&euro;) — el activo se comporta como el inmueble mediano del código postal, tanto en tamaño como en precio. El 97,25% de segunda mano frente al 2,75% de obra nueva confirma que el stock existente domina la oferta.
       </div>
     </div>
 
@@ -1511,7 +1533,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         <strong>Qué cubre el CP 30002.</strong> Es un código postal de Murcia capital (barrio El Carmen, distrito Sur, y su entorno inmediato). La lectura notarial de este apartado se ciñe a ese ámbito, no a todo el municipio de Murcia.
       </div>
       <div class="insight insight-purple" style="margin-top:0; margin-bottom:0;">
-        <strong>Lectura del precio.</strong> Aquí el notarial SÍ es comparable en tamaño: 87,66 m² medios frente a 90 m² del activo (casi exacto). El importe medio de escritura (130.750&euro;) queda por encima del precio pedido (125.000&euro;) en solo un 4,4%, lo que confirma que el precio pedido no está desalineado del mercado escriturado real de la zona — con la salvedad de que el notarial mezcla todo estado de conservación (reformado y sin reformar) y el activo se vende a reformar.
+        <strong>Lectura del precio.</strong> Aquí el notarial SÍ es comparable en tamaño: 87,66 m² medios frente a 90 m² del activo (casi exacto). El importe medio de escritura (130.750&euro;) queda por encima del asking price (125.000&euro;) en solo un 4,4%, lo que confirma que el asking price no está desalineado del mercado escriturado real de la zona — con la salvedad de que el notarial mezcla todo estado de conservación (reformado y sin reformar) y el activo se vende a reformar.
       </div>
     </div>
 
@@ -1692,7 +1714,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
     <div class="verdict-navy">
       <div class="verdict-icon" style="background: rgba(37,99,235,0.18);"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
       <div>
-        <strong>Conclusión del NOTARIADO.</strong> El CP 30002 confirma un mercado activo (227 compraventas al año, +8,2% interanual, con 2024 como el mayor salto de la serie histórica) y comprador de uso real (91,4% personas físicas, edad mediana 43 años). El precio de escritura (1.491,52&euro;/m²) queda un 16,4% por debajo de lo que pide el portal: el activo, ofrecido a 1.389&euro;/m², entra por debajo incluso de ese suelo real de mercado.
+        <strong>Conclusión del NOTARIADO.</strong> El CP 30002 confirma un mercado activo (227 compraventas al año, +8,2% interanual, con 2024 como el mayor salto de la serie histórica) y comprador de uso real (91,4% personas físicas, edad mediana 43 años). El precio de escritura (1.491,52&euro;/m²) queda un 16,0% por debajo de lo que pide el portal: el activo, ofrecido a 1.389&euro;/m², entra por debajo incluso de ese suelo real de mercado.
       </div>
     </div>
   </details>
@@ -1708,7 +1730,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
       <div>
-        <div class="section-title">9 · Convergencia de las fuentes disponibles</div>
+        <div class="section-title">4 · Convergencia de las fuentes disponibles</div>
         <div class="section-subtitle">Dos fuentes independientes, comparadas</div>
       </div>
     </div>
@@ -1722,7 +1744,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       <div class="validation-card notarial">
         <div class="v-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
         <div class="v-source">Fuente 3 · Notarial (oficial)</div>
-        <div class="v-detail">227 compraventas/año<br>1.491,52&euro;/m² escriturado &mdash; 16,4% por debajo del portal</div>
+        <div class="v-detail">227 compraventas/año<br>1.491,52&euro;/m² escriturado &mdash; 16,0% por debajo del portal</div>
       </div>
     </div>
 
@@ -1745,7 +1767,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg>
       </div>
       <div>
-        <div class="section-title">10 · Lectura para el inversor</div>
+        <div class="section-title">5 · Lectura para el inversor</div>
         <div class="section-subtitle">Síntesis de valoración y mercado · Calle Cuartel de Artillería 17</div>
       </div>
     </div>
@@ -1754,19 +1776,19 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-          <span><strong>Valor orientativo del activo:</strong> horquilla de 128.300&euro; (conservador) a 181.600&euro; (optimista), con 159.800&euro; como escenario medio, sobre 206 testigos reales del barrio El Carmen (valor central 1.776&euro;/m²). El activo se ofrece a 125.000&euro;, por debajo del escenario conservador de su barrio: hay recorrido claro hasta el escenario medio, aun descontando el coste de la reforma.</span>
+          <span><strong>Valor orientativo del activo:</strong> tres precios de referencia: 128.300&euro; conservador, 159.800&euro; medio y 181.600&euro; optimista, sobre 206 testigos reales del barrio El Carmen (valor central 1.776&euro;/m²). El activo se ofrece a 125.000&euro;, por debajo del escenario conservador de su barrio: hay recorrido claro hasta el escenario medio, aun descontando el coste de la reforma.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></span>
-          <span><strong>El producto exacto que domina el distrito:</strong> el piso de tres dormitorios y dos baños —la configuración exacta del activo— es la que más se retira de todo el distrito Sur, con 424 operaciones cerradas y un 89,1% de rotación. No es un nicho: es el caballo ganador de la zona.</span>
+          <span><strong>El producto exacto que domina el distrito:</strong> el piso de tres dormitorios y dos baños —la configuración exacta del activo— es la que más se retira de todo el distrito Sur, con 424 anuncios retirados y un 89,1% de rotación. No es un nicho: es el caballo ganador de la zona.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>
-          <span><strong>Liquidez alta:</strong> un piso del distrito Sur se retira en 96,2 días de media, por debajo de los 101,5 días del conjunto del distrito y muy por debajo del Centro (124 días). En la propia calle del activo, cinco pisos ya se han vendido a 141.000&euro; de media: el activo, a 125.000&euro;, se ofrece un 11% por debajo de esa referencia directa.</span>
+          <span><strong>Liquidez alta:</strong> un piso del distrito Sur se retira en 96,2 días de media. En la propia calle del activo, cinco pisos ya se han retirado a 141.000&euro; de media: el activo, a 125.000&euro;, se ofrece un 11% por debajo de esa referencia directa.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
-          <span><strong>Notarial como confirmación, no como techo:</strong> el CP 30002 confirma un mercado activo y en aceleración (1.491,52&euro;/m² de media, +8,2% interanual, con 2024 como el mayor salto de la serie), con una superficie media escriturada (87,66 m²) casi idéntica a los 90 m² del activo. El precio de escritura queda un 16,4% por debajo de lo que pide el portal, y el activo entra un 6,9% por debajo incluso de ese suelo real.</span>
+          <span><strong>Notarial como confirmación, no como techo:</strong> el CP 30002 confirma un mercado activo y en aceleración (1.491,52&euro;/m² de media, +8,2% interanual, con 2024 como el mayor salto de la serie), con una superficie media escriturada (87,66 m²) casi idéntica a los 90 m² del activo. El precio de escritura queda un 16,0% por debajo de lo que pide el portal, y el activo entra un 6,9% por debajo incluso de ese suelo real.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
@@ -1791,7 +1813,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
       </div>
       <div>
-        <div class="section-title">11 · Conclusión del estudio</div>
+        <div class="section-title">6 · Conclusión del estudio</div>
         <div class="section-subtitle">Resumen ejecutivo · Calle Cuartel de Artillería 17, Murcia</div>
       </div>
     </div>
@@ -1800,15 +1822,15 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></span>
-          <span><strong>PULSO:</strong> el latido del distrito Sur es el piso, con 86,3% de rotación en venta (1.658 anuncios) y 89,0% en alquiler tradicional. La configuración exacta del activo —3 dormitorios, 2 baños— es el producto que más se retira de todo el distrito: 424 operaciones cerradas, 89,1% de rotación.</span>
+          <span><strong>PULSO:</strong> el latido del distrito Sur es el piso, con 86,3% de rotación en venta (1.658 anuncios) y 89,0% en alquiler tradicional. La configuración exacta del activo —3 dormitorios, 2 baños— es el producto que más se retira de todo el distrito: 424 anuncios retirados, 89,1% de rotación.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
-          <span><strong>IMPULSO — Valoración:</strong> horquilla de 128.300&euro; a 181.600&euro; (escenario medio 159.800&euro;), sobre 206 testigos reales de venta del barrio El Carmen (valor central 1.776&euro;/m²). El activo, a 125.000&euro;, se sitúa por debajo del escenario conservador de su barrio.</span>
+          <span><strong>IMPULSO — Valoración:</strong> tres precios de referencia: 128.300&euro; conservador, 159.800&euro; medio y 181.600&euro; optimista, sobre 206 testigos reales de venta del barrio El Carmen (valor central 1.776&euro;/m²). El activo, a 125.000&euro;, se sitúa por debajo del escenario conservador de su barrio.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 12 7 12 10 4 14 20 17 12 21 12"></polyline></svg></span>
-          <span><strong>IMPULSO — Demanda:</strong> un piso en El Carmen tarda 91,4 días de media, por debajo de la media del distrito, que está en 96,2 días. En la propia calle del activo, cinco pisos ya vendidos a 141.000&euro; de media — el activo se ofrece un 11% por debajo de esa referencia directa.</span>
+          <span><strong>IMPULSO — Demanda:</strong> un piso en El Carmen tarda 91,4 días de media, por debajo de la media del distrito, que está en 96,2 días. En la propia calle del activo, cinco pisos ya retirados a 141.000&euro; de media — el activo se ofrece un 11% por debajo de esa referencia directa.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>
@@ -1816,7 +1838,7 @@ El PULSO mide la <strong>actividad real</strong> del distrito Sur de Murcia: no 
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-          <span><strong>Cruce notarial × mercado:</strong> el precio de escritura queda un 16,4% por debajo de lo que pide el portal. El activo, a 1.389&euro;/m², entra un 6,9% por debajo incluso de ese suelo real de mercado —no del techo publicado.</span>
+          <span><strong>Cruce notarial × mercado:</strong> el precio de escritura queda un 16,0% por debajo de lo que pide el portal. El activo, a 1.389&euro;/m², entra un 6,9% por debajo incluso de ese suelo real de mercado —no del techo publicado.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg></span>

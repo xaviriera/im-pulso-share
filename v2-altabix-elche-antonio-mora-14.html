@@ -842,8 +842,8 @@
 
   @media print { details.acc { display: block !important; } details.acc > * { display: revert !important; } }
 
-  /* ===================== 2.2 · MÓDULO DE FOTOS DE LOS TESTIGOS =====================
-     Va DENTRO de la card del 2.2. Deliberadamente sin .card para no anidar tarjetas.
+  /* ===================== 2.5 · LOS TESTIGOS VISUALES =====================
+     Apartado propio desde el 7-sep. Antes colgaba del 2.2.
      Cero JavaScript: el aviso y las galerías son <details> nativos, igual que el
      acordeón de las fuentes. Fotos por URL y loading="lazy": no se embeben. */
   .ft-wrap { margin-top: 22px; padding-top: 20px; border-top: 1px solid var(--gray-300); }
@@ -937,6 +937,70 @@
   .ft-tag-fuera { background: var(--gray-700); color: var(--white); }
   .ft-intro-aviso { background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 9px; padding: 11px 14px; font-size: 12.5px; }
   .ft-intro-aviso strong { color: var(--navy); }
+
+  /* ===== 2.5 · CANDADO DE ACEPTACIÓN + BRILLO (7-sep, encargo de Xavi) =====
+     Sin JavaScript. El checkbox gobierna el botón y el contenido por CSS.
+     No se usa :target para el contenedor: las lupas ya lo usan y al ampliar
+     una foto se cerraría la galería entera. */
+
+  .ft-acepto { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+
+  /* --- La caja del aviso --- */
+  .ft-gate2 { border: 1.5px solid var(--impulso-border); background: linear-gradient(180deg, var(--impulso-bg) 0%, var(--white) 100%); border-radius: 14px; padding: 20px 22px; margin-bottom: 18px; }
+  .ft-gate2 .ft-gate-title { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); margin-bottom: 8px; }
+  .ft-gate2 .ft-gate-text { font-size: 13px; line-height: 1.6; color: var(--gray-700); }
+  .ft-gate2 .ft-gate-text strong { color: var(--navy); }
+
+  /* --- El check --- */
+  .ft-check { display: flex; gap: 11px; align-items: flex-start; cursor: pointer; margin-top: 15px; padding: 12px 14px; background: var(--white); border: 1px solid var(--impulso-border); border-radius: 10px; transition: border-color .18s ease, box-shadow .18s ease; }
+  .ft-check:hover { border-color: var(--impulso); box-shadow: 0 2px 10px -4px rgba(22,163,74,.45); }
+  .ft-check-box { width: 20px; height: 20px; flex-shrink: 0; border: 2px solid var(--impulso); border-radius: 5px; background: var(--white); position: relative; margin-top: 1px; transition: background .16s ease; }
+  .ft-check-box::after { content: ""; position: absolute; left: 5px; top: 1px; width: 5px; height: 10px; border: solid var(--white); border-width: 0 2.5px 2.5px 0; transform: rotate(45deg) scale(0); transition: transform .16s ease; }
+  .ft-check-txt { font-size: 12.5px; line-height: 1.55; color: var(--gray-700); }
+  .ft-check-txt strong { color: var(--navy); }
+  .ft-acepto:checked ~ .ft-gate2 .ft-check { border-color: var(--impulso); background: var(--impulso-bg); }
+  .ft-acepto:checked ~ .ft-gate2 .ft-check-box { background: var(--impulso); }
+  .ft-acepto:checked ~ .ft-gate2 .ft-check-box::after { transform: rotate(45deg) scale(1); }
+
+  /* --- El botón: apagado hasta que se acepta --- */
+  .ft-btn-ver { display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin-top: 15px; padding: 13px 26px; border-radius: 999px; font-size: 13.5px; font-weight: 800; letter-spacing: .01em; background: var(--gray-300); color: var(--gray-500); box-shadow: none; pointer-events: none; opacity: .75; transition: background .2s ease, color .2s ease, box-shadow .2s ease, opacity .2s ease; }
+  .ft-btn-ver .ft-btn-candado { display: inline-flex; }
+  .ft-btn-ver .ft-btn-flecha { display: none; }
+  .ft-acepto:checked ~ .ft-gate2 .ft-btn-ver { background: var(--impulso); color: var(--white); pointer-events: auto; opacity: 1; box-shadow: 0 8px 22px -7px rgba(22,163,74,.75); }
+  .ft-acepto:checked ~ .ft-gate2 .ft-btn-ver:hover { box-shadow: 0 13px 30px -8px rgba(22,163,74,.85); transform: translateY(-1px); }
+  .ft-acepto:checked ~ .ft-gate2 .ft-btn-ver .ft-btn-candado { display: none; }
+  .ft-acepto:checked ~ .ft-gate2 .ft-btn-ver .ft-btn-flecha { display: inline-flex; }
+  .ft-gate-nota { font-size: 11.5px; color: var(--gray-500); margin-top: 9px; }
+  .ft-acepto:checked ~ .ft-gate2 .ft-gate-nota { color: var(--impulso); font-weight: 700; }
+
+  /* --- El contenido, oculto hasta aceptar --- */
+  .ft-contenido { display: none; }
+  .ft-acepto:checked ~ .ft-contenido { display: block; animation: ftAparece .35s ease both; }
+  @keyframes ftAparece { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* ===== BRILLO: el botón de abrir las fotos de cada testigo ===== */
+  .ft-galeria > summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; padding: 9px 18px; border-radius: 999px; background: var(--impulso-bg); border: 1.5px solid var(--impulso-border); color: var(--impulso); font-size: 12.5px; font-weight: 800; letter-spacing: .01em; transition: background .18s ease, color .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .ft-galeria > summary:hover { background: var(--impulso); border-color: var(--impulso); color: var(--white); box-shadow: 0 7px 18px -6px rgba(22,163,74,.7); text-decoration: none; }
+  .ft-galeria[open] > summary { background: var(--impulso); border-color: var(--impulso); color: var(--white); }
+
+  /* Las miniaturas, más grandes y con relieve al pasar por encima */
+  .ft-grid { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); gap: 10px; }
+  .ft-shot { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+  .ft-shot:hover { transform: scale(1.035); box-shadow: 0 10px 24px -8px rgba(15,23,42,.45); border-color: var(--impulso); }
+  .ft-thumb img { transition: transform .25s ease; }
+  .ft-thumb:hover img { transform: scale(1.06); }
+
+  @media (max-width: 640px) {
+    .ft-gate2 { padding: 16px 15px; }
+    .ft-btn-ver { width: 100%; }
+    .ft-grid { grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); }
+  }
+
+  /* Al imprimir se ve todo, haya o no aceptación en pantalla */
+  @media print {
+    .ft-contenido { display: block !important; }
+    .ft-btn-ver, .ft-check { display: none !important; }
+  }
 
 </style>
 </head>
@@ -1812,25 +1876,29 @@
         
         <p class="ft-intro">Hasta aquí los testigos son un número. Estos son doce pisos concretos de Altabix, seis por cada vivienda resultante: los más cercanos en tamaño y distribución, no los que más favorecen. De cada uno se muestra el precio al que se retiró del mercado, lo que era y cuánto tardó en salir.</p>
 
-        <details class="ft-gate">
-          <summary>
-            <div class="ft-gate-title">Antes de ver las imágenes</div>
-            <div class="ft-gate-text">Estas fotografías se incorporan <strong>para que puedas juzgar por ti mismo con qué se ha comparado tu activo</strong>. Van marcadas con la referencia de este informe: si aparecen en cualquier otro sitio, se sabe de dónde salieron. Al continuar aceptas <strong>consultarlas aquí, y no descargarlas, publicarlas ni cederlas a terceros</strong>.</div>
-            <span class="ft-gate-btn">Lo entiendo, ver las imágenes <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-            <span class="ft-gate-accepted">Aceptado · imágenes de consulta personal</span>
-          </summary>
-          <div class="ft-gate-body">
+        <input type="checkbox" id="ft-acepto" class="ft-acepto">
+        <div class="ft-gate2">
+          <div class="ft-gate-title">Antes de ver las imágenes</div>
+          <div class="ft-gate-text">Estas fotografías se incorporan <strong>para que puedas juzgar por ti mismo con qué se ha comparado tu activo</strong>. Van marcadas con la referencia de este informe: si aparecen en cualquier otro sitio, se sabe de dónde salieron.</div>
+          <label for="ft-acepto" class="ft-check">
+            <span class="ft-check-box" aria-hidden="true"></span>
+            <span class="ft-check-txt">He leído lo anterior y acepto <strong>consultar estas imágenes aquí, sin descargarlas, publicarlas ni cederlas a terceros</strong>.</span>
+          </label>
+          <a href="#ft-testigos" class="ft-btn-ver">
+            <span class="ft-btn-candado"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
+            Ver los 12 testigos con sus fotografías
+            <span class="ft-btn-flecha"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
+          </a>
+          <div class="ft-gate-nota">Marca la casilla para desbloquear las imágenes.</div>
+        </div>
+        <div class="ft-contenido" id="ft-testigos">
         <div class="ft-group">
           <div class="ft-group-head">
             <span class="ft-group-name">V2 <span class="ft-group-spec">· 75,1 m² · 2 dorm / 2 baños</span></span>
             <span class="ft-group-count">21 testigos sostienen su precio · aquí 6 pisos, uno a uno</span>
           </div>
           <p class="ft-group-nota">Seis pisos del barrio con la misma distribución y de tamaño equivalente al de la vivienda que sale.</p>
-          <div class="scenario-row" style="margin:14px 0 18px;">
-            <div class="scenario-box"><div class="sc-label">Conservador</div><div class="sc-value">145.000€</div></div>
-            <div class="scenario-box main-scenario"><div class="sc-label">Medio</div><div class="sc-value">160.532€</div></div>
-            <div class="scenario-box"><div class="sc-label">Optimista</div><div class="sc-value">196.000€</div></div>
-          </div>
+          <p class="ft-group-rango">Estos seis se retiraron entre <strong>136.300€</strong> y <strong>179.500€</strong>, en superficies de 73 a 80 m² y plazos de 2 a 83 días.</p>
           <div class="ft-ficha" id="ft-111885206">
             <div class="ft-ficha-top">
               <div class="ft-thumb"><a href="#f-111885206-01" class="ft-thumb-link"><img src="fotos/INF-005/111885206/01-mini.webp" alt="" loading="lazy" decoding="async"></a></div>
@@ -1973,11 +2041,7 @@
             <span class="ft-group-count">8 testigos sostienen su precio · aquí 6 pisos, uno a uno</span>
           </div>
           <p class="ft-group-nota">Mismo criterio para la vivienda pequeña: seis pisos de dos dormitorios y un baño, los más parecidos que hay en Altabix.</p>
-          <div class="scenario-row" style="margin:14px 0 18px;">
-            <div class="scenario-box"><div class="sc-label">Conservador</div><div class="sc-value">99.990€</div></div>
-            <div class="scenario-box main-scenario"><div class="sc-label">Medio</div><div class="sc-value">120.986€</div></div>
-            <div class="scenario-box"><div class="sc-label">Optimista</div><div class="sc-value">160.000€</div></div>
-          </div>
+          <p class="ft-group-rango">Estos seis se retiraron entre <strong>90.000€</strong> y <strong>169.000€</strong>, en superficies de 50 a 75 m² y plazos de 1 a 93 días.</p>
           <div class="ft-ficha" id="ft-109619149">
             <div class="ft-ficha-top">
               <div class="ft-thumb"><a href="#f-109619149-01" class="ft-thumb-link"><img src="fotos/INF-005/109619149/01-mini.webp" alt="" loading="lazy" decoding="async"></a></div>
@@ -2110,7 +2174,6 @@
 <div id="f-109691772-01" class="ft-lupa"><a href="#ft-109691772" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109691772/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109691772" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
         </div>
           </div>
-        </details>
 
         <div class="insight insight-green" style="margin-top:14px;">
           <strong>Lectura:</strong> ninguno de estos testigos es una vivienda a estrenar &mdash; son el producto existente del barrio. Tus dos viviendas salen nuevas a un mercado donde la obra nueva no existe en Altabix. Fíjate en el de la misma calle: se retiró a <strong>179.500€</strong> estando <strong>para reformar</strong>, y en <strong>11 días</strong>. Si al verlos concluyes que tu producto terminado los supera, el escenario optimista deja de ser una cifra lejana.
@@ -2152,7 +2215,7 @@
       </div>
     </div>
 
-    <!-- 2.6 Demanda -->
+    <!-- 2.7 Demanda -->
     <div class="card">
       <div class="card-title">2.7 Demanda: cuánto tarda en retirarse del mercado</div>
       <div class="card-subtitle">Días desde publicación hasta retirada. Menos días = más demanda.</div>
@@ -2185,7 +2248,7 @@
       </div>
     </div>
 
-    <!-- 2.7 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
+    <!-- 2.8 CONTACTOS DESTACADOS (SIEMPRE al final de IMPULSO) -->
     <div class="contactos-destacados">
       <div class="cd-header">
         <span class="cd-icon">

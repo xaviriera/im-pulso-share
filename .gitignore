@@ -1,3 +1,6 @@
 
 # Copias de seguridad de los informes: nunca se publican
 *.bak-*
+
+# Originales SIN marca de agua: se guardan en local para regenerar, NUNCA se publican
+fotos/*/_raw/

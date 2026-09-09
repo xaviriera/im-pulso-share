@@ -501,7 +501,9 @@
   .price-box .price-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.65; margin-bottom: 4px; font-weight: 700; }
   .price-box .price-value { font-size: 26px; font-weight: 800; color: var(--navy); }
   .price-box.main .price-value { color: white; font-size: 32px; }
-  .price-box .price-note { font-size: 11px; opacity: 0.55; margin-top: 4px; }
+  /* «Las 2 unidades» tiene que leerse: es lo que avisa de que la cifra del conjunto
+     es la suma de las dos viviendas y no el precio de una (8-sep). */
+  .price-box .price-note { font-size: 12.5px; font-weight: 700; opacity: 0.82; margin-top: 5px; letter-spacing: .01em; }
 
   .scenario-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
   .scenario-box { background: var(--impulso-bg); border: 1px solid var(--impulso-border); border-radius: 12px; padding: 18px; text-align: center; }
@@ -1018,14 +1020,45 @@
   .ft-group-name { font-size: 15px; font-weight: 800; color: var(--navy); }
   .ft-group-spec { font-size: 12.5px; font-weight: 500; color: var(--gray-500); }
   .ft-group-count { font-size: 11.5px; font-weight: 700; color: var(--impulso); background: var(--impulso-bg); border-radius: 999px; padding: 4px 12px; }
+  /* La cabecera de cada vivienda tiene que pesar como un rotulo de apartado: hoy
+     "Vivienda 1" se perdia entre las tarjetas y no quedaba claro que todo lo de
+     debajo era de esa vivienda y solo de esa (pulido 8-sep). */
+
+  /* Punto A del pulido (8-sep): cada vivienda es un desplegable propio, cerrado y
+     BLOQUEADO mientras no se acepte el aviso. Sin JavaScript: lo gobierna la casilla
+     desde el CSS. Doble cierre: no solo no se puede pulsar, es que el contenido no
+     se pinta hasta aceptar. */
+  .ft-vgroup { border: 1px solid var(--gray-300); border-radius: 12px; background: var(--white); padding: 0 16px 16px; }
+  .ft-vgroup + .ft-vgroup { margin-top: 14px; }
+  .ft-vsum { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; padding: 15px 2px; font-size: 16px; font-weight: 800; color: var(--navy); }
+  .ft-vsum::-webkit-details-marker { display: none; }
+  .ft-vsum .ft-vspec { font-weight: 500; font-size: 13px; color: var(--gray-500); }
+  .ft-vsum .ft-vicon { margin-left: auto; display: inline-flex; color: var(--impulso); }
+  .ft-vgroup[open] > .ft-vsum { border-bottom: 1px solid var(--gray-300); margin-bottom: 4px; }
+  .ft-vgroup[open] .ft-vchevron { transform: rotate(180deg); }
+  body:not(:has(.ft-acepto:checked)) .ft-vgroup { background: var(--gray-50); }
+  body:not(:has(.ft-acepto:checked)) .ft-vgroup > .ft-vsum { pointer-events: none; cursor: not-allowed; color: var(--gray-500); }
+  body:not(:has(.ft-acepto:checked)) .ft-vgroup > .ft-vsum .ft-vicon { color: var(--gray-500); }
+  body:not(:has(.ft-acepto:checked)) .ft-vgroup > *:not(.ft-vsum) { display: none !important; }
+  body:not(:has(.ft-acepto:checked)) .ft-vchevron { display: none; }
+  body:has(.ft-acepto:checked) .ft-vcandado { display: none; }
+  @media print { .ft-vgroup > *:not(.ft-vsum) { display: revert !important; } .ft-vcandado { display: none; } }
+  .ft-group > .ft-group-head { border-left: 4px solid var(--impulso); padding-left: 12px; margin-bottom: 4px; }
+  .ft-group > .ft-group-head .ft-group-name { font-size: 18px; letter-spacing: -.01em; }
+  .ft-group > .ft-group-head .ft-group-name .ft-group-spec { font-size: 13px; }
   .ft-group-nota { font-size: 12px; line-height: 1.55; color: var(--gray-500); margin: 9px 0 0; }
+  .tabla-nota { font-size: 11.5px; line-height: 1.55; color: var(--gray-500); margin: 8px 0 0; font-style: italic; }
+  /* Marcador temporal: bloques a la espera de las carpetas de fotos de Rafa */
+  .pendiente-fotos { margin: 10px 0 0; font-size: 12px; line-height: 1.55; color: #92400E; background: #FFFBEB; border: 1px dashed #F59E0B; border-radius: 9px; padding: 10px 13px; }
 
   /* ============ LAS TARJETAS DE TESTIGO (Elche es el primero con fotos) ============
      Antes: lista vertical, miniatura de 60 px al lado de un precio enorme — el número
      gritaba y la prueba susurraba. Ahora la foto es la protagonista y el precio va
      encima de ella. Rejilla, no lista: con doce testigos la página se hacía kilométrica. */
 
-  .tg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 14px; margin-top: 14px; }
+  /* align-items:start — al abrir la galeria de una tarjeta, las vecinas NO se estiran
+     hasta su altura dejando un hueco en blanco (visto por Xavi, 8-sep). */
+  .tg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 14px; margin-top: 14px; align-items: start; }
   .tg { border: 1px solid var(--gray-300); border-radius: 13px; overflow: hidden; background: var(--white); display: flex; flex-direction: column; transition: box-shadow .2s ease, transform .2s ease, border-color .2s ease; }
   .tg:hover { box-shadow: 0 14px 30px -14px rgba(15,23,42,.5); transform: translateY(-2px); border-color: var(--impulso-border); }
 
@@ -1058,6 +1091,7 @@
   .tg-shot img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .sb-nota { margin-top: 12px; font-size: 12px; line-height: 1.6; color: var(--gray-700); background: var(--gray-50); border: 1px solid var(--gray-300); border-radius: 9px; padding: 11px 13px; }
   .sb-nota strong { color: var(--navy); }
+  .tg-equiv { margin: 6px 0 0; font-size: 12px; line-height: 1.5; color: var(--impulso); background: var(--impulso-bg); border-radius: 7px; padding: 6px 9px; }
   .tg-solouna { margin-top: auto; text-align: center; font-size: 11.5px; color: var(--gray-500); background: var(--gray-50); border: 1px dashed var(--gray-300); border-radius: 9px; padding: 9px 12px; }
 
   /* --- El cristal: se enseña antes de pedir --- */
@@ -1067,7 +1101,14 @@
   .ft-contenido { display: block; }
   .ft-contenido .tg-foto img { filter: blur(14px) saturate(.85); transform: scale(1.09); }
   .ft-contenido .tg-mas, .ft-contenido .tg-shot { pointer-events: none; opacity: .45; }
+  /* Doble cierre del candado (8-sep): la foto grande de cada tarjeta es un enlace a la
+     lupa y NO estaba bloqueada — se abría la imagen nítida a pantalla completa sin
+     aceptar. Se corta el clic y, además, se anula la propia lupa mientras la casilla
+     no esté marcada, para que tampoco se llegue escribiendo el ancla en la barra. */
+  .ft-contenido .tg-foto { pointer-events: none; }
+  body:not(:has(.ft-acepto:checked)) .ft-lupa:target { display: none; }
   .ft-acepto:checked ~ .ft-contenido .tg-foto img { filter: none; transform: none; }
+  .ft-acepto:checked ~ .ft-contenido .tg-foto { pointer-events: auto; }
   .ft-acepto:checked ~ .ft-contenido .tg-mas,
   .ft-acepto:checked ~ .ft-contenido .tg-shot { pointer-events: auto; opacity: 1; }
 
@@ -1386,6 +1427,7 @@
           </tbody>
         </table>
       </div>
+      <p class="tabla-nota">Esta tabla cuenta <strong>solo pisos</strong>, así que su total queda por debajo del total de venta residencial del barrio: quedan fuera chalets, estudios, áticos y dúplex, y los anuncios que no declaran dormitorios o baños. No es un descuadre.</p>
       <div class="insight insight-orange">
         <strong>Lectura:</strong> lo que más se mueve en Altabix es el piso de 3 dormitorios y un baño: 107 anuncios retirados en 55 días de media. Nuestra vivienda Vivienda 2 (2 dormitorios, 2 baños) es la que menos tarda en retirarse de todo el barrio, solo 49 días, aunque con una muestra corta (13 casos) que pide cautela. En alquiler pasa justo lo contrario: el segundo baño no acelera la salida (ver 1.6).
       </div>
@@ -1701,7 +1743,7 @@
         <div class="section-subtitle">Cuánto valen las viviendas resultantes · Calle Antonio Mora Ferrández, 14</div>
       </div>
       <span class="zone-badge impulso">El activo</span>
-    <div class="fuente-resumen"><p class="fr-que">Dónde se sitúa el valor de las dos viviendas resultantes, apoyado en testigos del mismo barrio y del mismo tamaño. Es el cruce entre lo que el activo será y lo que el mercado paga hoy por ello.</p><div class="fr-dentro"><span class="fd-tit">Dentro de esta fuente</span><ul><li>Qué testigos sostienen cada precio y cuánta confianza dan</li><li>Los tres precios de referencia de Vivienda 1 y de Vivienda 2</li><li>Cuánto tarda en retirarse y a quién preguntar para contrastar</li></ul></div><div class="fr-datos"><span class="fr-dato"><b>29</b><span>testigos comparables</span></span><span class="fr-dato"><b>281.518&nbsp;€</b><span>valor conjunto, escenario medio</span></span><span class="fr-dato"><b>7</b><span>apartados</span></span></div><span class="acc-btn">Ver la valoración al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div></summary>
+    <div class="fuente-resumen"><p class="fr-que">Dónde se sitúa el valor de las dos viviendas resultantes, apoyado en testigos del mismo barrio y del mismo tamaño. Es el cruce entre lo que el activo será y lo que el mercado paga hoy por ello.</p><div class="fr-dentro"><span class="fd-tit">Dentro de esta fuente</span><ul><li>Qué testigos sostienen cada precio y cuánta confianza dan</li><li>Los tres precios de referencia de Vivienda 1 y de Vivienda 2</li><li>Cuánto tarda en retirarse y a quién preguntar para contrastar</li></ul></div><div class="fr-datos"><span class="fr-dato"><b>60</b><span>testigos comparables</span></span><span class="fr-dato"><b>278.573&nbsp;€</b><span>valor conjunto, escenario medio</span></span><span class="fr-dato"><b>7</b><span>apartados</span></span></div><span class="acc-btn">Ver la valoración al detalle <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></div></summary>
     
 
     <!-- Qué vas a encontrar en este motor (bloque introductorio único, justo debajo del encabezado de MOTOR 2 · IMPULSO) -->
@@ -1736,19 +1778,16 @@
     <!-- 2.2 Testigos comparables — la materia prima del cálculo -->
     <div class="card">
       <div class="card-title">2.2 Testigos comparables de la zona</div>
-      <div class="card-subtitle">Testigos retirados de Altabix, del mismo tipo y de superficie equivalente a cada vivienda resultante. Excluye servicers, anuncios «para reformar» y precios absurdos. Superficie: útil / construida.</div>
+      <div class="card-subtitle">Pisos retirados en Altabix con una superficie equivalente a la de cada vivienda resultante. Quedan fuera los servicers, los anuncios «para reformar» y los precios absurdos.</div>
       
       <div class="insight insight-green">
-        <strong>Lectura:</strong> testigos reales de Altabix, retirados del mercado: el precio al que se anunciaron por última vez, no el precio final de la venta. Vivienda 1 se apoya en 8 testigos; Vivienda 2, en 21, una muestra más amplia. Aun así, ambas viviendas salen a un precio por metro cuadrado muy parecido (2.164€ y 2.138€).
+        <strong>Lectura:</strong> testigos reales de Altabix, retirados del mercado: el precio al que se anunciaron por última vez, no el precio final de la venta. Vivienda 1 se apoya en 23 testigos; Vivienda 2, en 37. Cada testigo se corrige a los metros de la vivienda que valora, así que un piso algo mayor o menor sigue sirviendo de referencia. Ambas salen a un precio por metro cuadrado casi idéntico (2.155€ y 2.106€).
       </div>
 
 
-      <div class="insight insight-gray" style="margin-bottom:0;">
-        <strong>Para quien quiera reproducirlo.</strong> Los tres precios salen del <strong>precio total</strong> de cada testigo —nunca de multiplicar €/m² por la superficie—, ordenados de menor a mayor. Los percentiles se toman por <strong>índice simple, sin interpolar</strong>: no es la función de percentil de una hoja de cálculo. Con muestras cortas la diferencia entre un método y otro llega a ser de decenas de miles de euros, por eso se deja escrito.
-      </div>
       <div class="tv-cab">
-        <div class="tv-tit">Los testigos, uno a uno</div>
-        <div class="tv-sub">Los doce pisos con los que se ha calculado el precio, con sus fotografías. Seis por cada vivienda resultante: los más parecidos en metros cuadrados, no los que más favorecen.</div>
+        <div class="tv-tit">Galería fotográfica de los testigos retirados</div>
+        <div class="tv-sub">Los pisos retirados en Altabix con los que se ha comparado, con sus fotografías: los más parecidos en metros cuadrados a cada vivienda resultante, no los que más favorecen.</div>
       </div>
 <div class="ft-wrap">
 
@@ -1760,64 +1799,118 @@
             <span class="ft-check-box" aria-hidden="true"></span>
             <span class="ft-check-txt">He leído lo anterior y acepto <strong>consultar estas imágenes aquí, sin descargarlas, publicarlas ni cederlas a terceros</strong>.</span>
           </label>
-          <a href="#ft-testigos" class="ft-btn-ver">
-            <span class="ft-btn-candado"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span>
-            Ver los 12 testigos con sus fotografías
-            <span class="ft-btn-flecha"><svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-          </a>
           <div class="ft-gate-nota">Marca la casilla para desbloquear las imágenes.</div>
         </div>
         <div class="ft-contenido" id="ft-testigos">
-        <div class="ft-group">
+        <details class="ft-group ft-vgroup">
+          <summary class="ft-vsum">Vivienda 1 <span class="ft-vspec">· 55,9 m² · 11 testigos con fotografías</span><span class="ft-vicon ft-vcandado"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span><span class="ft-vicon ft-vchevron"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
           <div class="ft-group-head">
             <span class="ft-group-name">Vivienda 1 <span class="ft-group-spec">· 55,9 m² · 2 dorm / 1 baño</span></span>
-            <span class="ft-group-count">8 testigos sostienen su precio · aquí 6 pisos, uno a uno</span>
+            <span class="ft-group-count">23 testigos sostienen su precio</span>
           </div>
-          <p class="ft-group-nota">Mismo criterio para la vivienda pequeña: seis pisos de dos dormitorios y un baño, los más parecidos que hay en Altabix.</p>
-          <p class="ft-group-rango">Estos cinco se retiraron entre <strong>115.000€</strong> y <strong>169.000€</strong>, en plazos de 1 a 93 días.</p>
+          <p class="ft-group-nota"><strong>Vivienda 1.</strong> Su precio se sostiene sobre <strong>23 testigos retirados</strong> de un baño. Aquí están los más parecidos en metros cuadrados, con sus fotografías.</p>
           <div class="tg-grid">
-
-<div class="tg" id="ft-109619149">
-  <a href="#f-109619149-01" class="tg-foto"><img src="fotos/INF-005/109619149/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">160.000€<small>precio de retirada</small></span><span class="tg-marca"><span class="tg-tag tg-tag-cerca">El más cercano en metros</span></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>50 m²</strong></span><span class="tg-dato"><strong>3.200€/m²</strong></span><span class="tg-dato">1 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>93 días</strong></span></div>
-    <div class="tg-calle">Calle José María Castaño Martínez, 35</div>
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109619149-01" class="tg-shot"><img src="fotos/INF-005/109619149/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-02" class="tg-shot"><img src="fotos/INF-005/109619149/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-03" class="tg-shot"><img src="fotos/INF-005/109619149/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-04" class="tg-shot"><img src="fotos/INF-005/109619149/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-05" class="tg-shot"><img src="fotos/INF-005/109619149/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-06" class="tg-shot"><img src="fotos/INF-005/109619149/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-07" class="tg-shot"><img src="fotos/INF-005/109619149/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-08" class="tg-shot"><img src="fotos/INF-005/109619149/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-09" class="tg-shot"><img src="fotos/INF-005/109619149/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-109379303">
-  <a href="#f-109379303-01" class="tg-foto"><img src="fotos/INF-005/109379303/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">169.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>63 m²</strong></span><span class="tg-dato"><strong>2.683€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>12 días</strong></span></div>
-    
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109379303-01" class="tg-shot"><img src="fotos/INF-005/109379303/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-02" class="tg-shot"><img src="fotos/INF-005/109379303/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-03" class="tg-shot"><img src="fotos/INF-005/109379303/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-04" class="tg-shot"><img src="fotos/INF-005/109379303/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-05" class="tg-shot"><img src="fotos/INF-005/109379303/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-06" class="tg-shot"><img src="fotos/INF-005/109379303/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-07" class="tg-shot"><img src="fotos/INF-005/109379303/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-08" class="tg-shot"><img src="fotos/INF-005/109379303/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-09" class="tg-shot"><img src="fotos/INF-005/109379303/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-109849846">
-  <a href="#f-109849846-01" class="tg-foto"><img src="fotos/INF-005/109849846/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">169.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>63 m²</strong></span><span class="tg-dato"><strong>2.683€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>6 días</strong></span></div>
-    <div class="tg-calle">Calle José María Castaño Martínez</div>
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109849846-01" class="tg-shot"><img src="fotos/INF-005/109849846/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-02" class="tg-shot"><img src="fotos/INF-005/109849846/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-03" class="tg-shot"><img src="fotos/INF-005/109849846/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-04" class="tg-shot"><img src="fotos/INF-005/109849846/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-05" class="tg-shot"><img src="fotos/INF-005/109849846/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-06" class="tg-shot"><img src="fotos/INF-005/109849846/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-07" class="tg-shot"><img src="fotos/INF-005/109849846/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-08" class="tg-shot"><img src="fotos/INF-005/109849846/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109849846-09" class="tg-shot"><img src="fotos/INF-005/109849846/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
 <div class="tg" id="ft-110404218">
   <a href="#f-110404218-01" class="tg-foto"><img src="fotos/INF-005/110404218/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">115.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
   <div class="tg-body">
     <div class="tg-datos"><span class="tg-dato"><strong>65 m²</strong></span><span class="tg-dato"><strong>1.769€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>1 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>105.946€</strong> en una vivienda de 55,9 m²</div>
     <div class="tg-calle">Calle Clemente Gonzálvez Valls</div>
     <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110404218-01" class="tg-shot"><img src="fotos/INF-005/110404218/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-02" class="tg-shot"><img src="fotos/INF-005/110404218/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-03" class="tg-shot"><img src="fotos/INF-005/110404218/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-04" class="tg-shot"><img src="fotos/INF-005/110404218/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-05" class="tg-shot"><img src="fotos/INF-005/110404218/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-06" class="tg-shot"><img src="fotos/INF-005/110404218/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-07" class="tg-shot"><img src="fotos/INF-005/110404218/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-08" class="tg-shot"><img src="fotos/INF-005/110404218/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110404218-09" class="tg-shot"><img src="fotos/INF-005/110404218/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-111164934">
+  <a href="#f-111164934-01" class="tg-foto"><img src="fotos/INF-005/111164934/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">136.300€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>76 m²</strong></span><span class="tg-dato"><strong>1.793€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>18 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>116.301€</strong> en una vivienda de 55,9 m²</div>
+    <div class="tg-calle">Calle Clemente Gonzálvez Valls</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111164934-01" class="tg-shot"><img src="fotos/INF-005/111164934/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-02" class="tg-shot"><img src="fotos/INF-005/111164934/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-03" class="tg-shot"><img src="fotos/INF-005/111164934/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-04" class="tg-shot"><img src="fotos/INF-005/111164934/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-05" class="tg-shot"><img src="fotos/INF-005/111164934/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-06" class="tg-shot"><img src="fotos/INF-005/111164934/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-07" class="tg-shot"><img src="fotos/INF-005/111164934/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-08" class="tg-shot"><img src="fotos/INF-005/111164934/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-09" class="tg-shot"><img src="fotos/INF-005/111164934/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
   </div>
 </div>
 <div class="tg" id="ft-109518837">
   <a href="#f-109518837-01" class="tg-foto"><img src="fotos/INF-005/109518837/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">134.900€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
   <div class="tg-body">
     <div class="tg-datos"><span class="tg-dato"><strong>68 m²</strong></span><span class="tg-dato"><strong>1.984€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>19 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>122.861€</strong> en una vivienda de 55,9 m²</div>
     <div class="tg-calle">Calle Cayetano Martínez</div>
     <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109518837-01" class="tg-shot"><img src="fotos/INF-005/109518837/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-02" class="tg-shot"><img src="fotos/INF-005/109518837/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-03" class="tg-shot"><img src="fotos/INF-005/109518837/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-04" class="tg-shot"><img src="fotos/INF-005/109518837/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-05" class="tg-shot"><img src="fotos/INF-005/109518837/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-06" class="tg-shot"><img src="fotos/INF-005/109518837/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-07" class="tg-shot"><img src="fotos/INF-005/109518837/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-08" class="tg-shot"><img src="fotos/INF-005/109518837/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109518837-09" class="tg-shot"><img src="fotos/INF-005/109518837/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
   </div>
 </div>
+<div class="tg" id="ft-110910937">
+  <a href="#f-110910937-01" class="tg-foto"><img src="fotos/INF-005/110910937/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">143.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>76 m²</strong></span><span class="tg-dato"><strong>1.882€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>78 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>123.001€</strong> en una vivienda de 55,9 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110910937-01" class="tg-shot"><img src="fotos/INF-005/110910937/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-02" class="tg-shot"><img src="fotos/INF-005/110910937/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-03" class="tg-shot"><img src="fotos/INF-005/110910937/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-04" class="tg-shot"><img src="fotos/INF-005/110910937/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-05" class="tg-shot"><img src="fotos/INF-005/110910937/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-06" class="tg-shot"><img src="fotos/INF-005/110910937/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-07" class="tg-shot"><img src="fotos/INF-005/110910937/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-08" class="tg-shot"><img src="fotos/INF-005/110910937/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-09" class="tg-shot"><img src="fotos/INF-005/110910937/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
 </div>
+<div class="tg" id="ft-110945855">
+  <a href="#f-110945855-01" class="tg-foto"><img src="fotos/INF-005/110945855/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">143.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>75 m²</strong></span><span class="tg-dato"><strong>1.907€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>83 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>123.996€</strong> en una vivienda de 55,9 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110945855-01" class="tg-shot"><img src="fotos/INF-005/110945855/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-02" class="tg-shot"><img src="fotos/INF-005/110945855/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-03" class="tg-shot"><img src="fotos/INF-005/110945855/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-04" class="tg-shot"><img src="fotos/INF-005/110945855/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-05" class="tg-shot"><img src="fotos/INF-005/110945855/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-06" class="tg-shot"><img src="fotos/INF-005/110945855/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-07" class="tg-shot"><img src="fotos/INF-005/110945855/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-08" class="tg-shot"><img src="fotos/INF-005/110945855/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-09" class="tg-shot"><img src="fotos/INF-005/110945855/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-111885206">
+  <a href="#f-111885206-01" class="tg-foto"><img src="fotos/INF-005/111885206/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">155.000€<small>precio de retirada</small></span><span class="tg-marca"><span class="tg-tag tg-tag-cerca">El más parecido en metros cuadrados</span></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>75 m²</strong></span><span class="tg-dato"><strong>2.067€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>23 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>135.996€</strong> en una vivienda de 55,9 m²</div>
+    <div class="tg-calle">Calle Felipe Moya, 50</div>
+    <details class="tg-mas"><summary>Ver las 6 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111885206-01" class="tg-shot"><img src="fotos/INF-005/111885206/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-02" class="tg-shot"><img src="fotos/INF-005/111885206/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-03" class="tg-shot"><img src="fotos/INF-005/111885206/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-04" class="tg-shot"><img src="fotos/INF-005/111885206/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-05" class="tg-shot"><img src="fotos/INF-005/111885206/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-06" class="tg-shot"><img src="fotos/INF-005/111885206/06-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-112096331">
+  <a href="#f-112096331-01" class="tg-foto"><img src="fotos/INF-005/112096331/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">155.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>73 m²</strong></span><span class="tg-dato"><strong>2.123€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>2 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>137.986€</strong> en una vivienda de 55,9 m²</div>
+    <div class="tg-calle">Calle Felipe Moya</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-112096331-01" class="tg-shot"><img src="fotos/INF-005/112096331/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-02" class="tg-shot"><img src="fotos/INF-005/112096331/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-03" class="tg-shot"><img src="fotos/INF-005/112096331/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-04" class="tg-shot"><img src="fotos/INF-005/112096331/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-05" class="tg-shot"><img src="fotos/INF-005/112096331/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-06" class="tg-shot"><img src="fotos/INF-005/112096331/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-07" class="tg-shot"><img src="fotos/INF-005/112096331/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-08" class="tg-shot"><img src="fotos/INF-005/112096331/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-09" class="tg-shot"><img src="fotos/INF-005/112096331/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-109379303">
+  <a href="#f-109379303-01" class="tg-foto"><img src="fotos/INF-005/109379303/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">169.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>63 m²</strong></span><span class="tg-dato"><strong>2.683€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>12 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>161.936€</strong> en una vivienda de 55,9 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109379303-01" class="tg-shot"><img src="fotos/INF-005/109379303/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-02" class="tg-shot"><img src="fotos/INF-005/109379303/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-03" class="tg-shot"><img src="fotos/INF-005/109379303/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-04" class="tg-shot"><img src="fotos/INF-005/109379303/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-05" class="tg-shot"><img src="fotos/INF-005/109379303/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-06" class="tg-shot"><img src="fotos/INF-005/109379303/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-07" class="tg-shot"><img src="fotos/INF-005/109379303/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-08" class="tg-shot"><img src="fotos/INF-005/109379303/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109379303-09" class="tg-shot"><img src="fotos/INF-005/109379303/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-109619149">
+  <a href="#f-109619149-01" class="tg-foto"><img src="fotos/INF-005/109619149/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">160.000€<small>precio de retirada</small></span><span class="tg-marca"><span class="tg-tag tg-tag-cerca">El más parecido en metros cuadrados</span></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>50 m²</strong></span><span class="tg-dato"><strong>3.200€/m²</strong></span><span class="tg-dato">1 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>93 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>165.871€</strong> en una vivienda de 55,9 m²</div>
+    <div class="tg-calle">Calle José María Castaño Martínez, 35</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109619149-01" class="tg-shot"><img src="fotos/INF-005/109619149/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-02" class="tg-shot"><img src="fotos/INF-005/109619149/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-03" class="tg-shot"><img src="fotos/INF-005/109619149/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-04" class="tg-shot"><img src="fotos/INF-005/109619149/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-05" class="tg-shot"><img src="fotos/INF-005/109619149/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-06" class="tg-shot"><img src="fotos/INF-005/109619149/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-07" class="tg-shot"><img src="fotos/INF-005/109619149/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-08" class="tg-shot"><img src="fotos/INF-005/109619149/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109619149-09" class="tg-shot"><img src="fotos/INF-005/109619149/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-110131398">
+  <a href="#f-110131398-01" class="tg-foto"><img src="fotos/INF-005/110131398/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">165.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>78 m²</strong></span><span class="tg-dato"><strong>2,115€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>55 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>143.011€</strong> en una vivienda de 55,9 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110131398-01" class="tg-shot"><img src="fotos/INF-005/110131398/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-02" class="tg-shot"><img src="fotos/INF-005/110131398/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-03" class="tg-shot"><img src="fotos/INF-005/110131398/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-04" class="tg-shot"><img src="fotos/INF-005/110131398/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-05" class="tg-shot"><img src="fotos/INF-005/110131398/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-06" class="tg-shot"><img src="fotos/INF-005/110131398/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-07" class="tg-shot"><img src="fotos/INF-005/110131398/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-08" class="tg-shot"><img src="fotos/INF-005/110131398/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110131398-09" class="tg-shot"><img src="fotos/INF-005/110131398/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-109332134">
+  <a href="#f-109332134-01" class="tg-foto"><img src="fotos/INF-005/109332134/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">173.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>78 m²</strong></span><span class="tg-dato"><strong>2,218€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>64 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>151.011€</strong> en una vivienda de 55,9 m²</div>
+    <div class="tg-calle">Francisco Alemany Pérez, 5</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109332134-01" class="tg-shot"><img src="fotos/INF-005/109332134/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-02" class="tg-shot"><img src="fotos/INF-005/109332134/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-03" class="tg-shot"><img src="fotos/INF-005/109332134/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-04" class="tg-shot"><img src="fotos/INF-005/109332134/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-05" class="tg-shot"><img src="fotos/INF-005/109332134/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-06" class="tg-shot"><img src="fotos/INF-005/109332134/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-07" class="tg-shot"><img src="fotos/INF-005/109332134/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-08" class="tg-shot"><img src="fotos/INF-005/109332134/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109332134-09" class="tg-shot"><img src="fotos/INF-005/109332134/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+          </div>
+<!-- lupas -->
 <div id="f-109619149-01" class="ft-lupa"><a href="#ft-109619149" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109619149/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109619149" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-109619149-02" class="ft-lupa"><a href="#ft-109619149" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109619149/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109619149" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-109619149-03" class="ft-lupa"><a href="#ft-109619149" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109619149/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109619149" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
@@ -1863,65 +1956,6 @@
 <div id="f-109518837-07" class="ft-lupa"><a href="#ft-109518837" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109518837/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109518837" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-109518837-08" class="ft-lupa"><a href="#ft-109518837" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109518837/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109518837" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-109518837-09" class="ft-lupa"><a href="#ft-109518837" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109518837/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109518837" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
-
-        </div>
-        <div class="ft-group">
-          <div class="ft-group-head">
-            <span class="ft-group-name">Vivienda 2 <span class="ft-group-spec">· 75,1 m² · 2 dorm / 2 baños</span></span>
-            <span class="ft-group-count">21 testigos sostienen su precio · aquí 6 pisos, uno a uno</span>
-          </div>
-          <p class="ft-group-nota">Seis pisos del barrio <strong>de superficie equivalente</strong> a la de la vivienda que sale: los más parecidos en metros cuadrados, no los de la misma distribución.</p>
-          <p class="ft-group-rango">Estos seis se retiraron entre <strong>136.300€</strong> y <strong>179.500€</strong>, en plazos de 2 a 83 días.</p>
-          <div class="tg-grid">
-<div class="tg" id="ft-111080594">
-  <a href="#f-111080594-01" class="tg-foto"><img src="fotos/INF-005/111080594/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">179.500€<small>precio de retirada</small></span><span class="tg-marca"><span class="tg-tag tg-tag-calle">Tu misma calle</span></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>80 m²</strong></span><span class="tg-dato"><strong>2.244€/m²</strong></span><span class="tg-dato">2 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>11 días</strong></span></div>
-    <div class="tg-calle">Calle Antonio Mora Ferrández</div>
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111080594-01" class="tg-shot"><img src="fotos/INF-005/111080594/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-02" class="tg-shot"><img src="fotos/INF-005/111080594/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-03" class="tg-shot"><img src="fotos/INF-005/111080594/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-04" class="tg-shot"><img src="fotos/INF-005/111080594/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-05" class="tg-shot"><img src="fotos/INF-005/111080594/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-06" class="tg-shot"><img src="fotos/INF-005/111080594/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-07" class="tg-shot"><img src="fotos/INF-005/111080594/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-08" class="tg-shot"><img src="fotos/INF-005/111080594/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-09" class="tg-shot"><img src="fotos/INF-005/111080594/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-111885206">
-  <a href="#f-111885206-01" class="tg-foto"><img src="fotos/INF-005/111885206/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">155.000€<small>precio de retirada</small></span><span class="tg-marca"><span class="tg-tag tg-tag-cerca">El más cercano en metros</span></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>75 m²</strong></span><span class="tg-dato"><strong>2.067€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>23 días</strong></span></div>
-    <div class="tg-calle">Calle Felipe Moya, 50</div>
-    <details class="tg-mas"><summary>Ver las 6 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111885206-01" class="tg-shot"><img src="fotos/INF-005/111885206/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-02" class="tg-shot"><img src="fotos/INF-005/111885206/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-03" class="tg-shot"><img src="fotos/INF-005/111885206/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-04" class="tg-shot"><img src="fotos/INF-005/111885206/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-05" class="tg-shot"><img src="fotos/INF-005/111885206/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111885206-06" class="tg-shot"><img src="fotos/INF-005/111885206/06-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-110945855">
-  <a href="#f-110945855-01" class="tg-foto"><img src="fotos/INF-005/110945855/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">143.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>75 m²</strong></span><span class="tg-dato"><strong>1.907€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>83 días</strong></span></div>
-    
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110945855-01" class="tg-shot"><img src="fotos/INF-005/110945855/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-02" class="tg-shot"><img src="fotos/INF-005/110945855/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-03" class="tg-shot"><img src="fotos/INF-005/110945855/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-04" class="tg-shot"><img src="fotos/INF-005/110945855/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-05" class="tg-shot"><img src="fotos/INF-005/110945855/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-06" class="tg-shot"><img src="fotos/INF-005/110945855/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-07" class="tg-shot"><img src="fotos/INF-005/110945855/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-08" class="tg-shot"><img src="fotos/INF-005/110945855/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110945855-09" class="tg-shot"><img src="fotos/INF-005/110945855/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-111164934">
-  <a href="#f-111164934-01" class="tg-foto"><img src="fotos/INF-005/111164934/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">136.300€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>76 m²</strong></span><span class="tg-dato"><strong>1.793€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>18 días</strong></span></div>
-    <div class="tg-calle">Calle Clemente Gonzálvez Valls</div>
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111164934-01" class="tg-shot"><img src="fotos/INF-005/111164934/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-02" class="tg-shot"><img src="fotos/INF-005/111164934/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-03" class="tg-shot"><img src="fotos/INF-005/111164934/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-04" class="tg-shot"><img src="fotos/INF-005/111164934/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-05" class="tg-shot"><img src="fotos/INF-005/111164934/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-06" class="tg-shot"><img src="fotos/INF-005/111164934/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-07" class="tg-shot"><img src="fotos/INF-005/111164934/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-08" class="tg-shot"><img src="fotos/INF-005/111164934/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111164934-09" class="tg-shot"><img src="fotos/INF-005/111164934/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-110910937">
-  <a href="#f-110910937-01" class="tg-foto"><img src="fotos/INF-005/110910937/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">143.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>76 m²</strong></span><span class="tg-dato"><strong>1.882€/m²</strong></span><span class="tg-dato">3 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>78 días</strong></span></div>
-    
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110910937-01" class="tg-shot"><img src="fotos/INF-005/110910937/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-02" class="tg-shot"><img src="fotos/INF-005/110910937/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-03" class="tg-shot"><img src="fotos/INF-005/110910937/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-04" class="tg-shot"><img src="fotos/INF-005/110910937/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-05" class="tg-shot"><img src="fotos/INF-005/110910937/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-06" class="tg-shot"><img src="fotos/INF-005/110910937/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-07" class="tg-shot"><img src="fotos/INF-005/110910937/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-08" class="tg-shot"><img src="fotos/INF-005/110910937/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110910937-09" class="tg-shot"><img src="fotos/INF-005/110910937/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-<div class="tg" id="ft-112096331">
-  <a href="#f-112096331-01" class="tg-foto"><img src="fotos/INF-005/112096331/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">155.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
-  <div class="tg-body">
-    <div class="tg-datos"><span class="tg-dato"><strong>73 m²</strong></span><span class="tg-dato"><strong>2.123€/m²</strong></span><span class="tg-dato">2 dorm / 1 baño</span><span class="tg-dato">se retiró en <strong>2 días</strong></span></div>
-    <div class="tg-calle">Calle Felipe Moya</div>
-    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-112096331-01" class="tg-shot"><img src="fotos/INF-005/112096331/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-02" class="tg-shot"><img src="fotos/INF-005/112096331/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-03" class="tg-shot"><img src="fotos/INF-005/112096331/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-04" class="tg-shot"><img src="fotos/INF-005/112096331/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-05" class="tg-shot"><img src="fotos/INF-005/112096331/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-06" class="tg-shot"><img src="fotos/INF-005/112096331/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-07" class="tg-shot"><img src="fotos/INF-005/112096331/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-08" class="tg-shot"><img src="fotos/INF-005/112096331/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-112096331-09" class="tg-shot"><img src="fotos/INF-005/112096331/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
-  </div>
-</div>
-</div>
 <div id="f-111885206-01" class="ft-lupa"><a href="#ft-111885206" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111885206/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111885206" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-111885206-02" class="ft-lupa"><a href="#ft-111885206" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111885206/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111885206" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-111885206-03" class="ft-lupa"><a href="#ft-111885206" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111885206/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111885206" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
@@ -1973,7 +2007,197 @@
 <div id="f-111080594-07" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-111080594-08" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
 <div id="f-111080594-09" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
-        </div>
+<div id="f-110131398-01" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-02" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-03" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-04" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-05" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-06" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-07" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-08" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110131398-09" class="ft-lupa"><a href="#ft-110131398" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110131398/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110131398" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-01" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-02" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-03" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-04" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-05" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-06" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-07" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-08" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109332134-09" class="ft-lupa"><a href="#ft-109332134" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109332134/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109332134" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+        </details>
+        <details class="ft-group ft-vgroup">
+          <summary class="ft-vsum">Vivienda 2 <span class="ft-vspec">· 75,1 m² · 8 testigos con fotografías + la referencia de la calle</span><span class="ft-vicon ft-vcandado"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></span><span class="ft-vicon ft-vchevron"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></span></summary>
+          <div class="ft-group-head">
+            <span class="ft-group-name">Vivienda 2 <span class="ft-group-spec">· 75,1 m² · 2 dorm / 2 baños</span></span>
+            <span class="ft-group-count">37 testigos sostienen su precio</span>
+          </div>
+          <p class="ft-group-nota"><strong>Vivienda 2.</strong> Su precio se sostiene sobre <strong>37 testigos retirados</strong> de dos baños. Aquí están los más parecidos en metros cuadrados, con sus fotografías — no los que más favorecen.</p>
+                  <div class="tg-grid">
+<div class="tg" id="ft-108645975">
+  <a href="#f-108645975-01" class="tg-foto"><img src="fotos/INF-005/108645975/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">179.500€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>90 m²</strong></span><span class="tg-dato"><strong>1,994€/m²</strong></span><span class="tg-dato">4 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>204 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>164.675€</strong> en una vivienda de 75,1 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-108645975-01" class="tg-shot"><img src="fotos/INF-005/108645975/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-02" class="tg-shot"><img src="fotos/INF-005/108645975/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-03" class="tg-shot"><img src="fotos/INF-005/108645975/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-04" class="tg-shot"><img src="fotos/INF-005/108645975/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-05" class="tg-shot"><img src="fotos/INF-005/108645975/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-06" class="tg-shot"><img src="fotos/INF-005/108645975/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-07" class="tg-shot"><img src="fotos/INF-005/108645975/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-08" class="tg-shot"><img src="fotos/INF-005/108645975/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108645975-09" class="tg-shot"><img src="fotos/INF-005/108645975/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-108639356">
+  <a href="#f-108639356-01" class="tg-foto"><img src="fotos/INF-005/108639356/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">158.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>68 m²</strong></span><span class="tg-dato"><strong>2,324€/m²</strong></span><span class="tg-dato">3 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>71 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>165.065€</strong> en una vivienda de 75,1 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-108639356-01" class="tg-shot"><img src="fotos/INF-005/108639356/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-02" class="tg-shot"><img src="fotos/INF-005/108639356/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-03" class="tg-shot"><img src="fotos/INF-005/108639356/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-04" class="tg-shot"><img src="fotos/INF-005/108639356/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-05" class="tg-shot"><img src="fotos/INF-005/108639356/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-06" class="tg-shot"><img src="fotos/INF-005/108639356/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-07" class="tg-shot"><img src="fotos/INF-005/108639356/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-08" class="tg-shot"><img src="fotos/INF-005/108639356/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-108639356-09" class="tg-shot"><img src="fotos/INF-005/108639356/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-110098649">
+  <a href="#f-110098649-01" class="tg-foto"><img src="fotos/INF-005/110098649/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">189.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>90 m²</strong></span><span class="tg-dato"><strong>2,100€/m²</strong></span><span class="tg-dato">3 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>34 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>174.175€</strong> en una vivienda de 75,1 m²</div>
+    <div class="tg-calle">Calle Doctor Gregorio Marañón, 56</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110098649-01" class="tg-shot"><img src="fotos/INF-005/110098649/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-02" class="tg-shot"><img src="fotos/INF-005/110098649/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-03" class="tg-shot"><img src="fotos/INF-005/110098649/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-04" class="tg-shot"><img src="fotos/INF-005/110098649/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-05" class="tg-shot"><img src="fotos/INF-005/110098649/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-06" class="tg-shot"><img src="fotos/INF-005/110098649/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-07" class="tg-shot"><img src="fotos/INF-005/110098649/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-08" class="tg-shot"><img src="fotos/INF-005/110098649/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110098649-09" class="tg-shot"><img src="fotos/INF-005/110098649/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-110033000">
+  <a href="#f-110033000-01" class="tg-foto"><img src="fotos/INF-005/110033000/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">192.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>92 m²</strong></span><span class="tg-dato"><strong>2,087€/m²</strong></span><span class="tg-dato">2 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>49 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>175.185€</strong> en una vivienda de 75,1 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-110033000-01" class="tg-shot"><img src="fotos/INF-005/110033000/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-02" class="tg-shot"><img src="fotos/INF-005/110033000/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-03" class="tg-shot"><img src="fotos/INF-005/110033000/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-04" class="tg-shot"><img src="fotos/INF-005/110033000/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-05" class="tg-shot"><img src="fotos/INF-005/110033000/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-06" class="tg-shot"><img src="fotos/INF-005/110033000/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-07" class="tg-shot"><img src="fotos/INF-005/110033000/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-08" class="tg-shot"><img src="fotos/INF-005/110033000/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-110033000-09" class="tg-shot"><img src="fotos/INF-005/110033000/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-111342882">
+  <a href="#f-111342882-01" class="tg-foto"><img src="fotos/INF-005/111342882/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">196.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>90 m²</strong></span><span class="tg-dato"><strong>2,178€/m²</strong></span><span class="tg-dato">3 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>28 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>181.175€</strong> en una vivienda de 75,1 m²</div>
+    <div class="tg-calle">Calle Doctor Gregorio Marañón, 18</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111342882-01" class="tg-shot"><img src="fotos/INF-005/111342882/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-02" class="tg-shot"><img src="fotos/INF-005/111342882/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-03" class="tg-shot"><img src="fotos/INF-005/111342882/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-04" class="tg-shot"><img src="fotos/INF-005/111342882/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-05" class="tg-shot"><img src="fotos/INF-005/111342882/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-06" class="tg-shot"><img src="fotos/INF-005/111342882/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-07" class="tg-shot"><img src="fotos/INF-005/111342882/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-08" class="tg-shot"><img src="fotos/INF-005/111342882/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111342882-09" class="tg-shot"><img src="fotos/INF-005/111342882/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-111500875">
+  <a href="#f-111500875-01" class="tg-foto"><img src="fotos/INF-005/111500875/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">196.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>90 m²</strong></span><span class="tg-dato"><strong>2,178€/m²</strong></span><span class="tg-dato">3 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>28 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>181.175€</strong> en una vivienda de 75,1 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111500875-01" class="tg-shot"><img src="fotos/INF-005/111500875/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-02" class="tg-shot"><img src="fotos/INF-005/111500875/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-03" class="tg-shot"><img src="fotos/INF-005/111500875/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-04" class="tg-shot"><img src="fotos/INF-005/111500875/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-05" class="tg-shot"><img src="fotos/INF-005/111500875/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-06" class="tg-shot"><img src="fotos/INF-005/111500875/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-07" class="tg-shot"><img src="fotos/INF-005/111500875/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-08" class="tg-shot"><img src="fotos/INF-005/111500875/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111500875-09" class="tg-shot"><img src="fotos/INF-005/111500875/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-109957977">
+  <a href="#f-109957977-01" class="tg-foto"><img src="fotos/INF-005/109957977/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">199.990€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>87 m²</strong></span><span class="tg-dato"><strong>2,299€/m²</strong></span><span class="tg-dato">3 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>1 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>188.150€</strong> en una vivienda de 75,1 m²</div>
+    
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109957977-01" class="tg-shot"><img src="fotos/INF-005/109957977/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-02" class="tg-shot"><img src="fotos/INF-005/109957977/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-03" class="tg-shot"><img src="fotos/INF-005/109957977/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-04" class="tg-shot"><img src="fotos/INF-005/109957977/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-05" class="tg-shot"><img src="fotos/INF-005/109957977/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-06" class="tg-shot"><img src="fotos/INF-005/109957977/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-07" class="tg-shot"><img src="fotos/INF-005/109957977/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-08" class="tg-shot"><img src="fotos/INF-005/109957977/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109957977-09" class="tg-shot"><img src="fotos/INF-005/109957977/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-109844831">
+  <a href="#f-109844831-01" class="tg-foto"><img src="fotos/INF-005/109844831/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">210.000€<small>precio de retirada</small></span><span class="tg-marca"></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>90 m²</strong></span><span class="tg-dato"><strong>2,333€/m²</strong></span><span class="tg-dato">2 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>12 días</strong></span></div>
+    <div class="tg-equiv">equivale a <strong>195.175€</strong> en una vivienda de 75,1 m²</div>
+    <div class="tg-calle">Calle Fèlix Laorden García</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-109844831-01" class="tg-shot"><img src="fotos/INF-005/109844831/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-02" class="tg-shot"><img src="fotos/INF-005/109844831/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-03" class="tg-shot"><img src="fotos/INF-005/109844831/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-04" class="tg-shot"><img src="fotos/INF-005/109844831/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-05" class="tg-shot"><img src="fotos/INF-005/109844831/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-06" class="tg-shot"><img src="fotos/INF-005/109844831/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-07" class="tg-shot"><img src="fotos/INF-005/109844831/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-08" class="tg-shot"><img src="fotos/INF-005/109844831/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-109844831-09" class="tg-shot"><img src="fotos/INF-005/109844831/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+<div class="tg" id="ft-111080594">
+  <a href="#f-111080594-01" class="tg-foto"><img src="fotos/INF-005/111080594/01-mini.webp" alt="" loading="lazy" decoding="async"><span class="tg-precio">179.500€<small>precio de retirada</small></span><span class="tg-marca"><span class="tg-tag tg-tag-cerca">En la calle del activo</span><span class="tg-tag tg-tag-calle">Tu misma calle</span></span></a>
+  <div class="tg-body">
+    <div class="tg-datos"><span class="tg-dato"><strong>80 m²</strong></span><span class="tg-dato"><strong>2.244€/m²</strong></span><span class="tg-dato">2 dorm / 2 baños</span><span class="tg-dato">se retiró en <strong>11 días</strong></span></div>
+    <div class="tg-equiv" style="background:#FFFBEB;color:#92400E;">Referencia de la propia calle. Se anunciaba <strong>para reformar</strong>, así que <strong>no entra en el cálculo</strong> — la vivienda que sale es a estrenar.</div>
+    <div class="tg-calle">Calle Antonio Mora Ferrández</div>
+    <details class="tg-mas"><summary>Ver las 9 fotos<svg class="ft-chevron" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="tg-tira"><a href="#f-111080594-01" class="tg-shot"><img src="fotos/INF-005/111080594/01-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-02" class="tg-shot"><img src="fotos/INF-005/111080594/02-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-03" class="tg-shot"><img src="fotos/INF-005/111080594/03-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-04" class="tg-shot"><img src="fotos/INF-005/111080594/04-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-05" class="tg-shot"><img src="fotos/INF-005/111080594/05-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-06" class="tg-shot"><img src="fotos/INF-005/111080594/06-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-07" class="tg-shot"><img src="fotos/INF-005/111080594/07-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-08" class="tg-shot"><img src="fotos/INF-005/111080594/08-mini.webp" alt="" loading="lazy" decoding="async"></a><a href="#f-111080594-09" class="tg-shot"><img src="fotos/INF-005/111080594/09-mini.webp" alt="" loading="lazy" decoding="async"></a></div></details>
+  </div>
+</div>
+          </div>
+<div id="f-111080594-01" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-02" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-03" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-04" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-05" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-06" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-07" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-08" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111080594-09" class="ft-lupa"><a href="#ft-111080594" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111080594/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111080594" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-01" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-02" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-03" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-04" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-05" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-06" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-07" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-08" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108645975-09" class="ft-lupa"><a href="#ft-108645975" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108645975/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108645975" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-01" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-02" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-03" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-04" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-05" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-06" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-07" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-08" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-108639356-09" class="ft-lupa"><a href="#ft-108639356" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/108639356/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-108639356" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-01" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-02" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-03" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-04" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-05" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-06" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-07" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-08" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110098649-09" class="ft-lupa"><a href="#ft-110098649" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110098649/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110098649" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-01" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-02" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-03" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-04" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-05" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-06" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-07" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-08" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-110033000-09" class="ft-lupa"><a href="#ft-110033000" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/110033000/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-110033000" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-01" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-02" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-03" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-04" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-05" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-06" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-07" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-08" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111342882-09" class="ft-lupa"><a href="#ft-111342882" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111342882/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111342882" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-01" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-02" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-03" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-04" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-05" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-06" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-07" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-08" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-111500875-09" class="ft-lupa"><a href="#ft-111500875" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/111500875/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-111500875" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-01" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-02" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-03" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-04" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-05" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-06" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-07" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-08" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109957977-09" class="ft-lupa"><a href="#ft-109957977" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109957977/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109957977" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-01" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/01-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-02" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/02-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-03" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/03-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-04" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/04-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-05" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/05-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-06" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/06-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-07" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/07-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-08" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/08-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+<div id="f-109844831-09" class="ft-lupa"><a href="#ft-109844831" class="ft-lupa-bg" aria-label="Cerrar"></a><img src="fotos/INF-005/109844831/09-full.webp" alt="" loading="lazy" decoding="async"><a href="#ft-109844831" class="ft-lupa-close" aria-label="Cerrar">&times;</a></div>
+        </details>
           </div>
 
         <div class="insight insight-green" style="margin-top:14px;">
@@ -1985,24 +2209,24 @@
     <!-- 2.3 Confianza — cuánto podemos confiar en esos testigos antes de dar el precio -->
     <div class="card">
       <div class="card-title">2.3 Confianza de la lectura por tipología</div>
-      <div class="card-subtitle">Cuánto podemos confiar en cada precio según el número de testigos reales usados y el filtro aplicado</div>
+      <div class="card-subtitle">Cuánto podemos confiar en cada precio según el número de testigos reales usados y el criterio con el que se seleccionaron</div>
       <div class="table-wrap">
         <table class="table-mobile">
-          <thead><tr><th>Vivienda</th><th>Testigos (n)</th><th>Filtro dormitorios</th><th>Confianza</th></tr></thead>
+          <thead><tr><th>Vivienda</th><th>Testigos (n)</th><th>Criterio de selección</th><th>Confianza</th></tr></thead>
           <tbody>
-          <tr><td>Vivienda 1 · 55,9 m² · 2D/1B</td><td data-label="Testigos (n)">8</td><td data-label="Filtro dormitorios">Relajado (2 → 1-3)</td><td data-label="Confianza"><span class="fiab-media">Confianza media</span></td></tr>
-          <tr><td>Vivienda 2 · 75,1 m² · 2D/2B</td><td data-label="Testigos (n)">21</td><td data-label="Filtro dormitorios">Relajado (2 → 1-3)</td><td data-label="Confianza"><span class="fiab-alta">Confianza alta</span></td></tr>
+          <tr><td>Vivienda 1 · 55,9 m² · 1 baño</td><td data-label="Testigos (n)">23</td><td data-label="Criterio de selección">Mismo nº de baños · metros corregidos</td><td data-label="Confianza"><span class="fiab-alta">Confianza alta</span></td></tr>
+          <tr><td>Vivienda 2 · 75,1 m² · 2 baños</td><td data-label="Testigos (n)">37</td><td data-label="Criterio de selección">Mismo nº de baños · metros corregidos</td><td data-label="Confianza"><span class="fiab-alta">Confianza alta</span></td></tr>
           </tbody>
         </table>
       </div>
       <div class="insight insight-gray" style="margin-top:0;">
-        <strong>Confianza media</strong> (n&lt;15 testigos): rango razonable, no cifra cerrada. <strong>Confianza alta</strong> (n≥15): representativo. En ambas viviendas se relajó el filtro de dormitorios (de 2 exactos a 1-3) por muestra corta; es el motivo de que Vivienda 1 se quede en confianza media.
+        <strong>Confianza media</strong> (menos de 15 testigos): rango razonable, no cifra cerrada. <strong>Confianza alta</strong> (15 o más): representativo. Las dos viviendas quedan en confianza alta: 23 testigos la primera y 37 la segunda. No se filtra por número de dormitorios —una reforma los cambia— sino por baños y por metros, y estos últimos se corrigen en vez de descartarse.
       </div>
 
       <div class="card-subtitle" style="margin-top:16px;">Posicionamiento — cómo se sitúan estos €/m² implícitos frente a otras referencias del mercado</div>
       <ul class="scenario-list">
         <li><span class="sl-tag">Usado en Altabix</span> <span>Media <strong>1.647€/m²</strong> (362 testigos retirados, vivienda residencial).</span></li>
-        <li><span class="sl-tag">Vivienda 1 / Vivienda 2 (implícito)</span> <span><strong>2.164€/m²</strong> y <strong>2.138€/m²</strong> — casi idénticos entre sí, y situados entre el usado de Altabix y la obra nueva de Elche: el posicionamiento exacto de una vivienda a estrenar en un edificio ya existente.</span></li>
+        <li><span class="sl-tag">Vivienda 1 / Vivienda 2 (implícito)</span> <span><strong>2.155€/m²</strong> y <strong>2.106€/m²</strong> — casi idénticos entre sí, y situados entre el usado de Altabix y la obra nueva de Elche: el posicionamiento exacto de una vivienda a estrenar en un edificio ya existente.</span></li>
         <li><span class="sl-tag">Obra nueva en Elche</span> <span>Conservador <strong>2.204€/m²</strong> · medio <strong>2.632€/m²</strong> · optimista <strong>3.160€/m²</strong> (152 testigos, en todo el municipio). En Altabix no hay ni un solo testigo de obra nueva.</span></li>
         <li><span class="sl-tag">Notariado CP 03202</span> <span>Escrituras reales de pisos: <strong>1.565,53€/m²</strong>.</span></li>
       </ul>
@@ -2035,22 +2259,22 @@
         <div class="tipo-card-header">
           <div>
             <div class="tipo-card-title">Vivienda 1 · 54,19 m² útiles (55,9 construidos) <span class="mark mark-asset">2 dorm · 1 baño</span></div>
-            <div class="tipo-card-sub">Testigos del mismo tipo y superficie equivalente (45,9-65,9 m²)</div>
-            <div class="tipo-card-testigos">8 testigos retirados cruzados para esta vivienda · confianza media</div>
+            <div class="tipo-card-sub">Pisos de un baño retirados en Altabix, corregidos a los metros de esta vivienda</div>
+            <div class="tipo-card-testigos">23 testigos retirados cruzados para esta vivienda · confianza alta</div>
           </div>
         </div>
         <div class="scenario-row">
           <div class="scenario-box">
             <div class="sc-label">Conservador</div>
-            <div class="sc-value">99.990€</div>
+            <div class="sc-value">105.946€</div>
           </div>
           <div class="scenario-box main-scenario">
             <div class="sc-label">Medio</div>
-            <div class="sc-value">120.986€</div>
+            <div class="sc-value">120.444€</div>
           </div>
           <div class="scenario-box">
             <div class="sc-label">Optimista</div>
-            <div class="sc-value">160.000€</div>
+            <div class="sc-value">137.986€</div>
           </div>
         </div>
       </div>
@@ -2061,22 +2285,22 @@
         <div class="tipo-card-header">
           <div>
             <div class="tipo-card-title">Vivienda 2 · 72,86 m² útiles (75,1 construidos) <span class="mark mark-asset">2 dorm · 2 baños</span></div>
-            <div class="tipo-card-sub">Testigos del mismo tipo y superficie equivalente (60,1-90,1 m²)</div>
-            <div class="tipo-card-testigos">21 testigos retirados cruzados para esta vivienda · confianza alta</div>
+            <div class="tipo-card-sub">Pisos de dos baños retirados en Altabix, corregidos a los metros de esta vivienda</div>
+            <div class="tipo-card-testigos">37 testigos retirados cruzados para esta vivienda · confianza alta</div>
           </div>
         </div>
         <div class="scenario-row">
           <div class="scenario-box">
             <div class="sc-label">Conservador</div>
-            <div class="sc-value">145.000€</div>
+            <div class="sc-value">145.125€</div>
           </div>
           <div class="scenario-box main-scenario">
             <div class="sc-label">Medio</div>
-            <div class="sc-value">160.532€</div>
+            <div class="sc-value">158.129€</div>
           </div>
           <div class="scenario-box">
             <div class="sc-label">Optimista</div>
-            <div class="sc-value">196.000€</div>
+            <div class="sc-value">172.175€</div>
           </div>
         </div>
       </div>
@@ -2086,17 +2310,17 @@
       <div class="price-widget">
         <div class="price-box">
           <div class="price-label">Conservador</div>
-          <div class="price-value">244.990€</div>
+          <div class="price-value">251.071€</div>
           <div class="price-note">Las 2 unidades</div>
         </div>
         <div class="price-box main">
           <div class="price-label">Medio</div>
-          <div class="price-value">281.518€</div>
+          <div class="price-value">278.573€</div>
           <div class="price-note">Las 2 unidades</div>
         </div>
         <div class="price-box">
           <div class="price-label">Optimista</div>
-          <div class="price-value">356.000€</div>
+          <div class="price-value">310.161€</div>
           <div class="price-note">Las 2 unidades</div>
         </div>
       </div>
@@ -2104,9 +2328,9 @@
       <div class="term-explainer" style="background: var(--impulso-bg); border-left-color: var(--impulso); margin-top:12px;">
         <strong>Los tres escenarios, en cifras:</strong>
         <ul class="scenario-list">
-          <li><span class="sl-tag">Conservador</span> <span>venta conjunta a <strong>244.990€</strong>.</span></li>
-          <li><span class="sl-tag">Medio</span> <span>venta conjunta a <strong>281.518€</strong>.</span></li>
-          <li><span class="sl-tag">Optimista</span> <span>venta conjunta a <strong>356.000€</strong>.</span></li>
+          <li><span class="sl-tag">Conservador</span> <span>venta conjunta a <strong>251.071€</strong>.</span></li>
+          <li><span class="sl-tag">Medio</span> <span>venta conjunta a <strong>278.573€</strong>.</span></li>
+          <li><span class="sl-tag">Optimista</span> <span>venta conjunta a <strong>310.161€</strong>.</span></li>
         </ul>
       </div>
 
@@ -2119,8 +2343,12 @@
         </ul>
       </div>
 
+      <div class="insight insight-gray">
+        <strong>Cómo se comparan pisos de distinto tamaño.</strong> Ningún testigo mide exactamente lo mismo que la vivienda que se valora, así que en vez de descartar los que no encajan, <strong>se corrigen</strong>: en Altabix cada metro construido vale <strong>995€</strong> —medido sobre 327 pisos retirados del propio barrio—, y con eso se lleva el precio de cada testigo a los metros de la vivienda. Un piso de 90 m² retirado en 189.000€ equivale a <strong>174.175€</strong> en una vivienda de 75 m². Así entran todos los comparables del barrio y no solo un puñado, que es lo que hace que los tres escenarios signifiquen algo.
+      </div>
+
       <div class="insight insight-gray" style="margin-bottom:0;">
-        El escenario <strong>medio (281.518€ en conjunto)</strong> es la cifra prudente de referencia. Vivienda 2 aporta 39.546€ más que Vivienda 1 —un baño y 19 m² más— y se retira en la mitad de tiempo (40 días frente a 78). El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
+        El escenario <strong>medio (278.573€ en conjunto)</strong> es la cifra prudente de referencia. Vivienda 2 aporta 37.685€ más que Vivienda 1 —un baño y 19 m² más— y se retira en la mitad de tiempo (40 días frente a 78). El cierre real se contrasta con el Notariado (FUENTE 3) y, cuando exista MTVV de la zona, con la validación de campo (FUENTE 4).
       </div>
     </div>
 
@@ -2268,7 +2496,7 @@
     <div class="verdict-navy">
       <div class="verdict-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#F97316" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg></div>
       <div>
-        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">281.518€</strong> para las 2 viviendas (244.990€ conservador, 281.518€ medio y 356.000€ optimista), a partir de testigos reales retirados en Altabix, del mismo tipo y de superficie equivalente: 8 para Vivienda 1 (99.990-160.000€, confianza media) y 21 para Vivienda 2 (145.000-196.000€, confianza alta). Vivienda 2 aporta 39.546€ más que Vivienda 1 por un baño y 19 m² más, y se retira en la mitad de tiempo (40 días frente a 78). Ambas viviendas salen a un €/m² implícito casi idéntico (2.164€ y 2.138€), situado entre el usado de Altabix (1.647€) y la obra nueva de Elche (2.632€): el posicionamiento exacto de un producto a estrenar en edificio existente.
+        <strong>Veredicto IMPULSO.</strong> Estimamos un valor de mercado de <strong style="color:#F97316;">278.573€</strong> para las 2 viviendas (251.071€ conservador, 278.573€ medio y 310.161€ optimista), a partir de testigos reales retirados en Altabix, corregidos a los metros de cada vivienda: 23 para Vivienda 1 (105.946-137.986€, confianza alta) y 37 para Vivienda 2 (145.125-172.175€, confianza alta). Vivienda 2 aporta 37.685€ más que Vivienda 1 por un baño y 19 m² más, y se retira en la mitad de tiempo (40 días frente a 78). Ambas viviendas salen a un €/m² implícito casi idéntico (2.155€ y 2.106€), situado entre el usado de Altabix (1.647€) y la obra nueva de Elche (2.632€): el posicionamiento exacto de un producto a estrenar en edificio existente.
       </div>
     </div>
   </details>
@@ -2501,7 +2729,7 @@
           <tr><td>Liquidez</td><td data-label="Notarial (oficial)"><strong>251 compraventas</strong> de pisos (CP 03202)</td><td data-label="Mercado (IM·PULSO)">362 testigos de venta residencial retirados en Altabix; rotación 86,0%</td><td data-label="Lectura">Mercado activo, bajo riesgo de no vender</td></tr>
           <tr><td>Tendencia de precios</td><td data-label="Notarial (oficial)"><strong>+16,73%</strong> cierre de 2025 (dato del registro de 2026); +16,85% en 2024</td><td data-label="Mercado (IM·PULSO)">€/m² medio de venta residencial en Altabix: 1.647€ (362 testigos retirados)</td><td data-label="Lectura">Precios al alza en los dos últimos años; favorece a quien entra ahora</td></tr>
           <tr><td>Tipo de construcción</td><td data-label="Notarial (oficial)"><strong>94,14% segunda mano</strong> (5,86% obra nueva)</td><td data-label="Mercado (IM·PULSO)">0 testigos de obra nueva entre los 362 retirados en Altabix (venta residencial)</td><td data-label="Lectura">Barrio de producto existente: encaja de lleno con un cambio de uso, que entrega algo que no hay</td></tr>
-          <tr><td>Importe medio de compraventa</td><td data-label="Notarial (oficial)"><strong>161.455€</strong></td><td data-label="Mercado (IM·PULSO)">Vivienda 1: 99.990-160.000€ · Vivienda 2: 145.000-196.000€ (rango conservador-optimista, por vivienda)</td><td data-label="Lectura">Vivienda 2 se acerca al importe medio notarial; Vivienda 1 queda por debajo, coherente con su menor superficie</td></tr>
+          <tr><td>Importe medio de compraventa</td><td data-label="Notarial (oficial)"><strong>161.455€</strong></td><td data-label="Mercado (IM·PULSO)">Vivienda 1: 105.946-137.986€ · Vivienda 2: 145.125-172.175€ (rango conservador-optimista, por vivienda)</td><td data-label="Lectura">Vivienda 2 se acerca al importe medio notarial; Vivienda 1 queda por debajo, coherente con su menor superficie</td></tr>
           <tr><td>Perfil comprador</td><td data-label="Notarial (oficial)"><strong>94,48%</strong> personas físicas, edad mediana 45 años</td><td data-label="Mercado (IM·PULSO)">—</td><td data-label="Lectura">Demanda de uso real, no institucional</td></tr>
           <tr class="highlight-notarial"><td><strong>€ por m² — convergencia</strong></td><td data-label="Notarial (oficial)"><strong>1.565,53€/m²</strong> (escritura, pisos, 103,13 m² de media)</td><td data-label="Mercado (IM·PULSO)"><strong>1.647€/m²</strong> (media de venta residencial, Altabix, 362 testigos retirados)</td><td data-label="Lectura">5,2% de diferencia: la esperable entre precio de retirada de anuncio y precio de escritura</td></tr>
           </tbody>
@@ -2579,7 +2807,7 @@
       <ul class="conclusion-list">
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg></span>
-          <span><strong>Valor orientativo de las 2 viviendas:</strong> un valor medio de <strong>281.518€</strong> agregado (rango 244.990€ · 281.518€ · 356.000€, conservador / medio / optimista), sobre testigos reales de Altabix, del mismo tipo y de superficie equivalente. Vivienda 2 (72,86 m², 2D/2B, 21 testigos, confianza alta) aporta 160.532€ en el escenario medio; Vivienda 1 (54,19 m², 2D/1B, 8 testigos, confianza media) aporta 120.986€.</span>
+          <span><strong>Valor orientativo de las 2 viviendas:</strong> un valor medio de <strong>278.573€</strong> agregado (rango 251.071€ · 278.573€ · 310.161€, conservador / medio / optimista), sobre testigos reales de Altabix corregidos a los metros de cada vivienda. Vivienda 2 (72,86 m², 2 baños, 37 testigos, confianza alta) aporta 158.129€ en el escenario medio; Vivienda 1 (54,19 m², 1 baño, 23 testigos, confianza alta) aporta 120.444€.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
@@ -2595,7 +2823,7 @@
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
-          <span><strong>Sobre estas cifras:</strong> los rangos de venta salen de anuncios de portal retirados, no de precios de escritura. Vivienda 2 se apoya en 21 testigos (confianza alta); Vivienda 1 en 8, una muestra más corta (confianza media). El campo estado sí consta en el barrio (24% de la muestra: 384 reformados, 18 para reformar), y el motor ya excluye los anuncios «para reformar» de los comparables.</span>
+          <span><strong>Sobre estas cifras:</strong> los rangos de venta salen de anuncios de portal retirados, no de precios de escritura. Vivienda 2 se apoya en 37 testigos y Vivienda 1 en 23; las dos con confianza alta. El campo estado sí consta en el barrio (24% de la muestra: 384 reformados, 18 para reformar), y el motor ya excluye los anuncios «para reformar» de los comparables.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></span>
@@ -2633,7 +2861,7 @@
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-5 0V4.5A2.5 2.5 0 0 1 9.5 2z"></path><path d="M14.5 7a2.5 2.5 0 0 1 2.5 2.5v8a2.5 2.5 0 0 1-5 0"></path></svg></span>
-          <span><strong>IMPULSO — Venta:</strong> un valor medio de <strong>281.518€</strong> agregado por las 2 unidades (rango 244.990 – 356.000€), sobre testigos reales de venta de Altabix, del mismo tipo y de superficie equivalente. Vivienda 2 (21 testigos, 160.532€, confianza alta) es la lectura más robusta; Vivienda 1 (8 testigos, 120.986€, confianza media) se apoya en una muestra más corta.</span>
+          <span><strong>IMPULSO — Venta:</strong> un valor medio de <strong>278.573€</strong> agregado por las 2 unidades (rango 251.071 – 310.161€), sobre testigos reales de venta de Altabix corregidos a los metros de cada vivienda. Vivienda 2 (37 testigos, 158.129€) y Vivienda 1 (23 testigos, 120.444€), ambas con confianza alta.</span>
         </li>
         <li>
           <span class="cl-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"></path><path d="M5 21V7l8-4v18"></path><path d="M19 21V11l-6-4"></path></svg></span>

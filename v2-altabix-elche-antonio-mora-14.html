@@ -345,7 +345,8 @@
     /* Tarjeta de 2-3 columnas: que no salga más ancha que la pantalla (auditoría móvil 10-sep) */
     .table-mobile:not(:has(th:nth-child(4))) { display: block; width: 100%; }
     .table-mobile:not(:has(th:nth-child(4))) tr { box-sizing: border-box; }
-    .table-mobile:not(:has(th:nth-child(4))) td { min-width: 0; overflow-wrap: anywhere; }
+    .table-mobile:not(:has(th:nth-child(4))) td:not(:first-child) { display: flow-root; text-align: right; overflow-wrap: break-word; }
+    .table-mobile:not(:has(th:nth-child(4))) td:not(:first-child)::before { float: left; white-space: nowrap; margin-right: 12px; }
 
     .hero-sources,
     .hero-sources.sources-4 {

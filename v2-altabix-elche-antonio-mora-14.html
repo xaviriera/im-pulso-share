@@ -927,6 +927,12 @@
   .ft-lupa-close:hover, .ft-lupa-close:focus-visible { background: rgba(255,255,255,.3); }
   .ft-lupa-foto { position: relative; display: flex; justify-content: center; }
   .ft-lupa-foto > img { display: block; max-width: 100%; max-height: calc(100vh - 110px); max-height: calc(100dvh - 110px); object-fit: contain; border-radius: 6px; box-shadow: 0 20px 60px -10px rgba(0,0,0,.6); }
+  /* Tamaño de la ampliación: las fotos originales miden 480x360. Se muestran a 720 px (x1,5)
+     en pantalla normal y a 960 px en retina: el máximo que sigue nítido (revisión visual 10-sep). */
+  .ft-lupa-foto > img { width: min(720px, calc(100vw - 40px), calc((100vh - 110px) * 4 / 3)); height: auto; }
+  .ft-lupa-foto > img { width: min(720px, calc(100vw - 40px), calc((100dvh - 110px) * 4 / 3)); }
+  @media (min-resolution: 2dppx) { .ft-lupa-foto > img { width: min(960px, calc(100vw - 40px), calc((100dvh - 110px) * 4 / 3)); } }
+  @media (max-width: 640px) { .ft-lupa-foto > img { width: calc(100vw - 20px); } }
   .ft-lupa-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; background: rgba(15,23,42,.62); border: 1.5px solid rgba(255,255,255,.35); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 34px; line-height: 1; text-decoration: none; transition: background .15s ease; }
   .ft-lupa-nav span { margin-top: -4px; }
   .ft-lupa-prev { left: 12px; }
